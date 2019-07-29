@@ -1,0 +1,13 @@
+INSERT INTO complement_db.categories (id, name) VALUES (1, 'Nuevos Productos');
+INSERT INTO complement_db.categories (id, name) VALUES (2, 'Alimentos Terapéuticos');
+INSERT INTO complement_db.categories (id, name) VALUES (3, 'Dermatología');
+INSERT INTO complement_db.categories (id, name) VALUES (4, 'Estimulantes');
+INSERT INTO complement_db.categories (id, name) VALUES (5, 'Sistema Circulatorio');
+INSERT INTO complement_db.categories (id, name) VALUES (6, 'Sistema Digestivo');
+INSERT INTO complement_db.categories (id, name) VALUES (7, 'Sistema Genitourinario');
+INSERT INTO complement_db.categories (id, name) VALUES (8, 'Sistema Glandular');
+INSERT INTO complement_db.categories (id, name) VALUES (9, 'Sistema Inmunológico');
+INSERT INTO complement_db.categories (id, name) VALUES (10, 'Sistema Músculo Esquelético');
+INSERT INTO complement_db.categories (id, name) VALUES (11, 'Sistema Nervioso Central');
+INSERT INTO complement_db.categories (id, name) VALUES (12, 'Sistema Nutricional');
+INSERT INTO complement_db.categories (id, name) VALUES (13, 'Sistema Respiratorio');
