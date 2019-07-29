@@ -9,7 +9,7 @@ let styles = {
 
 const MyHeader = props => {
   // add the background to the styles const
-  // styles.header.backgroundImage = props.bgPhoto;
+  styles.header.backgroundImage = props.bgPhoto;
 
   return (
     <header className="py-5 mb-5" style={styles.header}>
