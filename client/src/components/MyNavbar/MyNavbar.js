@@ -9,7 +9,6 @@ import Button from "react-bootstrap/Button";
 
 function MyNavbar() {
   return (
-
     <Navbar bg="light" expand="lg">
       {/* logo */}
       <Navbar.Brand href="/home">
@@ -21,12 +20,23 @@ function MyNavbar() {
         <Nav className="mr-auto">
           <Nav.Link href="/home">Inicio</Nav.Link>
           <Nav.Link href="/store">Tienda</Nav.Link>
-          <Nav.Link href="/home">Mi Carrito<span className="badge badge-secondary" id="cart_counter">0</span></Nav.Link>
+          <Nav.Link href="/home">
+            Mi Carrito
+            <span className="badge badge-secondary" id="cart_counter">
+              0
+            </span>
+          </Nav.Link>
         </Nav>
         <Form inline>
           {/* login dropdown */}
           <Dropdown className="mr-2">
-            <Dropdown.Toggle className="text-secondary" variant="transparent" id="dropdown-basic">Inicia Sesión</Dropdown.Toggle>
+            <Dropdown.Toggle
+              className="text-secondary"
+              variant="transparent"
+              id="dropdown-basic"
+            >
+              Inicia Sesión
+            </Dropdown.Toggle>
             <Dropdown.Menu className="bg-light">
               <div className="px-4 py-3">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -40,17 +50,22 @@ function MyNavbar() {
                 <Form.Group className="mb-3" controlId="formBasicChecbox">
                   <Form.Check type="checkbox" label="Recuérdame" />
                 </Form.Group>
-                <Button variant="primary" type="submit">Entrar</Button>
+                <Button variant="primary" type="submit">
+                  Entrar
+                </Button>
               </div>
             </Dropdown.Menu>
           </Dropdown>
           {/* search bar */}
-          <FormControl type="text" placeholder="Buscar en la Tienda" className="mr-sm-2" />
+          <FormControl
+            type="text"
+            placeholder="Buscar en la Tienda"
+            className="mr-sm-2"
+          />
           <Button variant="primary">Buscar</Button>
         </Form>
       </Navbar.Collapse>
     </Navbar>
-
   );
 }
 

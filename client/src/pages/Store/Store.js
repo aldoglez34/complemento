@@ -7,24 +7,22 @@ import MyBreadcrum from "../../components/MyBreadcrum/MyBreadcrum";
 import API from "../../utils/API";
 
 class Store extends Component {
-  
   state = {
-    categories: []
+    categories: null
+  };
+
+  loadCategories = () => {
+    API.loadCategories()
+      .then(res => {
+        console.log(res.data);
+        this.setState({ categories: res.data });
+      })
+      .catch(err => console.log(err));
   };
 
   componentDidMount() {
     this.loadCategories();
   }
-
-  loadCategories = () => {
-    API.loadCategories()
-      .then(res => {
-        console.log("printing res.data from API");
-        console.log(res.data);
-        this.setState({ categories: res.data })
-      })
-      .catch(err => console.log(err));
-  };
 
   render() {
     return (
@@ -45,16 +43,21 @@ class Store extends Component {
             <div className="col-12 col-md-4">
               <strong>Categorías</strong>
               <div className="list-group my-3">
-                {/* {this.state.categories.map(category => (
-                  <span
-                    key={category.id}
-                    className="list-group-item list-group-item-action"
-                  >
-                    {category.name}
-                  </span>
-                ))} */}
+                {/* {this.state.categories ? (
+                  this.state.categories.map(category => (
+                    <span
+                      key={category.id}
+                      className="list-group-item list-group-item-action"
+                    >
+                      {category.name}
+                    </span>
+                  ))
+                ) : (
+                  <></>
+                )} */}
               </div>
             </div>
+
             {/* products */}
             <div className="col-12 col-md-8">
               {/* sufferings */}

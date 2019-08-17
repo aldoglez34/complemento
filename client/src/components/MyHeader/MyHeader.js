@@ -8,7 +8,8 @@ let styles = {
 };
 
 const MyHeader = props => {
-  // add the background to the styles const
+  console.log(props);
+
   styles.header.backgroundImage = props.bgPhoto;
 
   return (

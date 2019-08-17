@@ -14,8 +14,8 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-const routes = require("./routes");
-app.use(routes);
+const storeRoutes = require("./routes/storeRoutes");
+app.use("/api/store", storeRoutes);
 
 // Send every other request to the React app
 // Define any API routes before this runs
@@ -23,7 +23,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-db.sequelize.sync().then(function () {
+db.sequelize.sync().then(function() {
   app.listen(PORT, () => {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
   });
