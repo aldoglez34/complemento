@@ -1,10 +1,18 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
 import Row from "react-bootstrap/Row";
 import Layout from "../../components/Layout/Layout";
-import MyHeader from "../../components/MyHeader/MyHeader";
 import MyBreadcrum from "../../components/MyBreadcrum/MyBreadcrum";
 import API from "../../utils/API";
+
+const styles = {
+  header: {
+    backgroundImage: "url('images/bg-header-store.jpg')",
+    backgroundColor: "gray",
+    backgroundBlendMode: "multiply"
+  }
+};
 
 class Store extends Component {
   state = {
@@ -14,36 +22,60 @@ class Store extends Component {
   loadCategories = () => {
     API.loadCategories()
       .then(res => {
-        console.log(res.data);
         this.setState({ categories: res.data });
       })
       .catch(err => console.log(err));
   };
 
+  productsByCategory = cat => {
+    // API.productsByCategory(cat)
+    //   .then(res => {
+    //     console.log(res.data);
+    //     this.setState({ categories: res.data });
+    //   })
+    //   .catch(err => console.log(err));
+  };
+
   componentDidMount() {
     this.loadCategories();
+    this.productsByCategory(1);
   }
 
   render() {
     return (
       <Layout>
-        <MyHeader
-          bgPhoto="url('images/bg-header-store.jpg')"
-          title="Nuestra Tienda"
-          text="Contamos con un selecto catálogo de productos naturistas,
-            remedios herbolarios, suplementos alimenticios y medicina alternativa a precios de laboratorio,
-            hechos a base de plantas, raíces y hierbas."
-        />
+        <header className="py-5 mb-5" style={styles.header}>
+          <div className="container h-100">
+            <div className="row h-100 align-items-center">
+              <div className="col-lg-12">
+                <h1 className="display-4 text-white mt-5 mb-2">
+                  Nuestra Tienda
+                </h1>
+                <p className="lead mb-5 text-light">
+                  Contamos con un selecto catálogo de productos naturistas,
+                  remedios herbolarios, suplementos alimenticios y medicina
+                  alternativa a precios de laboratorio, hechos a base de
+                  plantas, raíces y hierbas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </header>
+
         <Container>
-          <strong>Navegación</strong>
-          <MyBreadcrum />
+          <MyBreadcrum
+            pages={[
+              { page: "Inicio", link: "/" },
+              { page: "Tienda", link: "nolink" }
+            ]}
+          />
 
           <Row className="mb-3">
             {/* category filters */}
             <div className="col-12 col-md-4">
               <strong>Categorías</strong>
               <div className="list-group my-3">
-                {/* {this.state.categories ? (
+                {this.state.categories ? (
                   this.state.categories.map(category => (
                     <span
                       key={category.id}
@@ -53,11 +85,10 @@ class Store extends Component {
                     </span>
                   ))
                 ) : (
-                  <></>
-                )} */}
+                  <Spinner animation="border" role="status" variant="success" />
+                )}
               </div>
             </div>
-
             {/* products */}
             <div className="col-12 col-md-8">
               {/* sufferings */}

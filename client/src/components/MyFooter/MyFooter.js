@@ -1,17 +1,20 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
+
+const styles = {
+  footer: {
+    height: 80,
+    color: "ghostwhite",
+    backgroundColor: "gray"
+  }
+};
 
 const MyFooter = () => (
-
-    <footer className="sticky-footer bg-secondary">
-        <Container className="my-auto text-light">
-            <div className="copyright text-center my-auto">
-                <span>Complemento Natural, 2019</span>
-            </div>
-        </Container>
-    </footer>
-
+  <footer
+    className="d-flex align-items-center justify-content-center"
+    style={styles.footer}
+  >
+    <strong>Complemento Natural, 2019</strong>
+  </footer>
 );
 
 export default MyFooter;
-
