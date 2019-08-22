@@ -13,7 +13,7 @@ const MyFooter = () => (
     className="d-flex align-items-center justify-content-center"
     style={styles.footer}
   >
-    <strong>Complemento Natural, 2019</strong>
+    <span>Complemento Natural, 2019</span>
   </footer>
 );
 

@@ -16,7 +16,10 @@ const styles = {
 
 class Store extends Component {
   state = {
-    categories: null
+    categories: null,
+    selectedCategoryId: 2,
+    sufferings: null,
+    products: []
   };
 
   loadCategories = () => {
@@ -27,18 +30,28 @@ class Store extends Component {
       .catch(err => console.log(err));
   };
 
+  sufferingsByCategory = cat => {
+    API.sufferingsByCategory(cat)
+      .then(res => {
+        console.log(res.data);
+        // this.setState({ sufferings: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
   productsByCategory = cat => {
-    // API.productsByCategory(cat)
-    //   .then(res => {
-    //     console.log(res.data);
-    //     this.setState({ categories: res.data });
-    //   })
-    //   .catch(err => console.log(err));
+    API.productsByCategory(cat)
+      .then(res => {
+        console.log(res.data);
+        // this.setState({ products: res.data });
+      })
+      .catch(err => console.log(err));
   };
 
   componentDidMount() {
     this.loadCategories();
-    this.productsByCategory(1);
+    this.sufferingsByCategory(2);
+    this.productsByCategory(2);
   }
 
   render() {
@@ -74,20 +87,24 @@ class Store extends Component {
             {/* category filters */}
             <div className="col-12 col-md-4">
               <strong>Categorías</strong>
-              <div className="list-group my-3">
+              <ul className="list-group my-3">
+                {/* categories filter */}
                 {this.state.categories ? (
                   this.state.categories.map(category => (
-                    <span
-                      key={category.id}
-                      className="list-group-item list-group-item-action"
-                    >
+                    <li key={category.categoryId} className="list-group-item">
                       {category.name}
-                    </span>
+                    </li>
+                    // <span
+                    //   key={category.categoryId}
+                    //   className="list-group-item list-group-item-action item"
+                    // >
+                    //   {category.name}
+                    // </span>
                   ))
                 ) : (
                   <Spinner animation="border" role="status" variant="success" />
                 )}
-              </div>
+              </ul>
             </div>
             {/* products */}
             <div className="col-12 col-md-8">

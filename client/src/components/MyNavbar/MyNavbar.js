@@ -3,13 +3,13 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Image from "react-bootstrap/Image";
 import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
+// import FormControl from "react-bootstrap/FormControl";
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 
 function MyNavbar() {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="md">
       {/* logo */}
       <Navbar.Brand href="/home">
         <Image src="/images/logo.png" alt="logo" fluid />
@@ -18,11 +18,11 @@ function MyNavbar() {
       <Navbar.Collapse id="basic-navbar-nav">
         {/* menu */}
         <Nav className="mr-auto">
-          <Nav.Link href="/home">Inicio</Nav.Link>
+          {/* <Nav.Link href="/home">Inicio</Nav.Link> */}
           <Nav.Link href="/store">Tienda</Nav.Link>
           <Nav.Link href="/home">
-            Mi Carrito
-            <span className="badge badge-secondary" id="cart_counter">
+            Carrito
+            <span className="badge badge-primary ml-2" id="cart_counter">
               0
             </span>
           </Nav.Link>
@@ -57,12 +57,12 @@ function MyNavbar() {
             </Dropdown.Menu>
           </Dropdown>
           {/* search bar */}
-          <FormControl
+          {/* <FormControl
             type="text"
             placeholder="Buscar en la Tienda"
             className="mr-sm-2"
           />
-          <Button variant="primary">Buscar</Button>
+          <Button variant="primary">Buscar</Button> */}
         </Form>
       </Navbar.Collapse>
     </Navbar>
