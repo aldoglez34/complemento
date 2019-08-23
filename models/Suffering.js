@@ -1,5 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
   const Suffering = sequelize.define("Suffering", {
+    sufferingId: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
     categoryId: {
       type: DataTypes.INTEGER
     },

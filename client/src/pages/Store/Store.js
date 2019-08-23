@@ -7,6 +7,7 @@ import Card from "react-bootstrap/Card";
 import Layout from "../../components/Layout/Layout";
 import MyBreadcrum from "../../components/MyBreadcrum/MyBreadcrum";
 import API from "../../utils/API";
+import "./store.css";
 
 const styles = {
   header: {
@@ -44,7 +45,7 @@ class Store extends Component {
   sufferingsByCategory = cat => {
     API.sufferingsByCategory(cat)
       .then(res => {
-        // console.log(res.data);
+        console.log(res.data);
         this.setState({ sufferings: res.data });
       })
       .catch(err => console.log(err));
@@ -83,6 +84,7 @@ class Store extends Component {
   render() {
     return (
       <Layout>
+
         <header className="py-5 mb-2" style={styles.header}>
           <div className="container h-100">
             <div className="row h-100 align-items-center">
@@ -102,6 +104,7 @@ class Store extends Component {
         </header>
 
         <Container fluid>
+
           {/* categories */}
           <ul className="list-group list-group-horizontal-lg shadow-sm mt-3 mb-4">
             {this.state.categories.length ? (
@@ -135,8 +138,8 @@ class Store extends Component {
                 }
               })
             ) : (
-              <Spinner animation="border" role="status" variant="success" />
-            )}
+                <Spinner animation="border" role="status" variant="success" />
+              )}
           </ul>
 
           <MyBreadcrum
@@ -147,24 +150,28 @@ class Store extends Component {
           />
 
           <Row className="d-flex flex-row mb-3">
+
             {/* column 1 */}
             <div className="col-12 col-md-4">
-              <div className="list-group my-3 shadow-sm">
+              {/* sufferings */}
+              {/* <div className="list-group my-3 shadow-sm">
+                <button
+                  type="button"
+                  key="todos"
+                  className="list-group-item list-group-item-action"
+                  onClick={() => this.handleChangeSuffering("Todos")}>Todos</button>
                 {this.state.sufferings.length ? (
                   this.state.sufferings.map(suffering => (
                     <button
                       type="button"
-                      key={suffering}
+                      key={suffering.sufferingId}
                       className="list-group-item list-group-item-action"
-                      onClick={() => this.handleChangeSuffering(suffering)}
-                    >
-                      {suffering}
-                    </button>
+                      onClick={() => this.handleChangeSuffering(suffering.id)}>{suffering.name}</button>
                   ))
                 ) : (
-                  <Spinner animation="border" role="status" variant="success" />
-                )}
-              </div>
+                    <Spinner animation="border" role="status" variant="success" />
+                  )}
+              </div> */}
             </div>
 
             {/* column 2 */}
@@ -200,12 +207,12 @@ class Store extends Component {
                             src={"/images/products/" + product.photo}
                           />
                         ) : (
-                          <Card.Img
-                            variant="top"
-                            height="250"
-                            src={"/images/products/placeholder.jpg"}
-                          />
-                        )}
+                            <Card.Img
+                              variant="top"
+                              height="250"
+                              src={"/images/products/placeholder.jpg"}
+                            />
+                          )}
                         <Card.Body>
                           {/* <Card.Title>Card Title</Card.Title> */}
                           <Card.Text>{product.content}</Card.Text>
@@ -218,10 +225,11 @@ class Store extends Component {
                     );
                   })
                 ) : (
-                  <Spinner animation="border" role="status" variant="success" />
-                )}
+                    <Spinner animation="border" role="status" variant="success" />
+                  )}
               </div>
             </div>
+
           </Row>
         </Container>
       </Layout>

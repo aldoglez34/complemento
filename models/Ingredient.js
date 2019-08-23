@@ -1,6 +1,12 @@
 module.exports = function (sequelize, DataTypes) {
 
     const Ingredient = sequelize.define("Ingredient", {
+        ingredientId: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+            allowNull: false
+        },
         productId: {
             type: DataTypes.INTEGER
         },

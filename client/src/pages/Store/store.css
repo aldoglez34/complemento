@@ -1,0 +1,14 @@
+.catItem {
+  cursor: pointer;
+  background-color: transparent;
+  color: grey;
+}
+
+.catItem:hover {
+  background-color: lightgreen;
+}
+
+.activeItem {
+  background-color: darkgreen;
+  color: ghostwhite;
+}

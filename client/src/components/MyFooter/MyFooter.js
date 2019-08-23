@@ -2,8 +2,8 @@ import React from "react";
 
 const styles = {
   footer: {
-    color: "gainsboro",
-    backgroundColor: "rgb(51,64,24)",
+    // color: "white",
+    backgroundColor: "#f5f5f5",
     marginTop: "auto",
   }
 };
@@ -11,7 +11,7 @@ const styles = {
 const MyFooter = () => (
 
   <footer className="mt-auto py-4 text-center" style={styles.footer}>
-    <strong>Complemento Natural</strong>
+    <span className="text-muted">Complemento Natural</span>
   </footer>
 
 );
