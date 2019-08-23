@@ -25,7 +25,7 @@ class Store extends Component {
   state = {
     // categories
     categories: [],
-    selectedCategoryId: 2,
+    selectedCategoryId: 1,
     // sufferings
     sufferings: [],
     selectedSuffering: "",
@@ -44,7 +44,7 @@ class Store extends Component {
   sufferingsByCategory = cat => {
     API.sufferingsByCategory(cat)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         this.setState({ sufferings: res.data });
       })
       .catch(err => console.log(err));
@@ -65,23 +65,24 @@ class Store extends Component {
     this.productsByCategory(this.state.selectedCategoryId);
   }
 
-  handleChangeCategory = (cat) => {
+  handleChangeCategory = cat => {
     this.setState({ selectedCategoryId: cat }, () => {
-      this.setState({ sufferings: [] }, () => { this.sufferingsByCategory(this.state.selectedCategoryId); })
-      this.setState({ products: [] }, () => { this.productsByCategory(this.state.selectedCategoryId); })
-    })
-  }
+      this.setState({ sufferings: [] }, () => {
+        this.sufferingsByCategory(this.state.selectedCategoryId);
+      });
+      this.setState({ products: [] }, () => {
+        this.productsByCategory(this.state.selectedCategoryId);
+      });
+    });
+  };
 
-  handleChangeSuffering = (suff) => {
-    this.setState({ selectedSuffering: suff })
-  }
+  handleChangeSuffering = suff => {
+    this.setState({ selectedSuffering: suff });
+  };
 
   render() {
-
     return (
-
       <Layout>
-
         <header className="py-5 mb-2" style={styles.header}>
           <div className="container h-100">
             <div className="row h-100 align-items-center">
@@ -101,30 +102,41 @@ class Store extends Component {
         </header>
 
         <Container fluid>
-
           {/* categories */}
           <ul className="list-group list-group-horizontal-lg shadow-sm mt-3 mb-4">
             {this.state.categories.length ? (
               this.state.categories.map(category => {
                 if (category.categoryId === this.state.selectedCategoryId) {
                   return (
-                    <button type="button"
+                    <button
+                      type="button"
                       key={category.categoryId}
                       className="list-group-item list-group-item-action active"
-                      onClick={() => this.handleChangeCategory(category.categoryId)}>{category.name}</button>
+                      onClick={() =>
+                        this.handleChangeCategory(category.categoryId)
+                      }
+                    >
+                      {category.name}
+                    </button>
                   );
                 } else {
                   return (
-                    <button type="button"
+                    <button
+                      type="button"
                       key={category.categoryId}
                       className="list-group-item list-group-item-action"
-                      onClick={() => this.handleChangeCategory(category.categoryId)}>{category.name}</button>
+                      onClick={() =>
+                        this.handleChangeCategory(category.categoryId)
+                      }
+                    >
+                      {category.name}
+                    </button>
                   );
                 }
               })
             ) : (
-                <Spinner animation="border" role="status" variant="success" />
-              )}
+              <Spinner animation="border" role="status" variant="success" />
+            )}
           </ul>
 
           <MyBreadcrum
@@ -135,27 +147,28 @@ class Store extends Component {
           />
 
           <Row className="d-flex flex-row mb-3">
-
             {/* column 1 */}
             <div className="col-12 col-md-4">
               <div className="list-group my-3 shadow-sm">
                 {this.state.sufferings.length ? (
                   this.state.sufferings.map(suffering => (
-                    <button type="button"
+                    <button
+                      type="button"
                       key={suffering}
                       className="list-group-item list-group-item-action"
-                      onClick={() => this.handleChangeSuffering(suffering)}>{suffering}</button>
-
+                      onClick={() => this.handleChangeSuffering(suffering)}
+                    >
+                      {suffering}
+                    </button>
                   ))
                 ) : (
-                    <Spinner animation="border" role="status" variant="success" />
-                  )}
+                  <Spinner animation="border" role="status" variant="success" />
+                )}
               </div>
             </div>
 
             {/* column 2 */}
             <div className="col-12 col-md-8">
-
               {/* pages */}
               <div className="mt-3" aria-label="...">
                 <ul className="pagination pagination-sm justify-content-center">
@@ -172,37 +185,48 @@ class Store extends Component {
                 {this.state.products.length ? (
                   this.state.products.map(product => {
                     return (
-                      <Card style={{ width: "13rem" }} key={product.productId} className="shadow-sm m-2">
-                        <Card.Header><a href="/store">{product.name}</a></Card.Header>
-                        {(product.photo) ? (
-                          <Card.Img variant="top" height="250" src={"/images/products/" + product.photo} />
+                      <Card
+                        style={{ width: "13rem" }}
+                        key={product.productId}
+                        className="shadow-sm m-2"
+                      >
+                        <Card.Header>
+                          <a href="/store">{product.name}</a>
+                        </Card.Header>
+                        {product.photo ? (
+                          <Card.Img
+                            variant="top"
+                            height="250"
+                            src={"/images/products/" + product.photo}
+                          />
                         ) : (
-                            <Card.Img variant="top" height="250" src={"/images/products/placeholder.jpg"} />
-                          )}
+                          <Card.Img
+                            variant="top"
+                            height="250"
+                            src={"/images/products/placeholder.jpg"}
+                          />
+                        )}
                         <Card.Body>
                           {/* <Card.Title>Card Title</Card.Title> */}
                           <Card.Text>{product.content}</Card.Text>
-                          <Button variant="primary"><i className="fas fa-shopping-cart mr-2"></i>Agregar</Button>
+                          <Button variant="primary">
+                            <i className="fas fa-shopping-cart mr-2" />
+                            Agregar
+                          </Button>
                         </Card.Body>
                       </Card>
                     );
                   })
                 ) : (
-                    <Spinner animation="border" role="status" variant="success" />
-                  )}
+                  <Spinner animation="border" role="status" variant="success" />
+                )}
               </div>
-
             </div>
-
           </Row>
-
         </Container>
-
-      </Layout >
-
+      </Layout>
     );
   }
-
 }
 
 export default Store;

@@ -58,32 +58,36 @@ CREATE TABLE products (
 
 DROP TABLE IF EXISTS complement_db.clientsOrders;
 CREATE TABLE clientsOrders (
-  orderId INT NOT NULL,
+  orderId INT NOT NULL AUTO_INCREMENT,
   productId INT NOT NULL,
   unitPrice DECIMAL(10,2) NOT NULL,
   createdAt DATE NULL,
   updatedAt DATE NULL,
-  FOREIGN KEY (orderId) REFERENCES orders(orderId),
+  PRIMARY KEY (orderId),
   FOREIGN KEY (productId) REFERENCES products(productId)
 );
 
 DROP TABLE IF EXISTS complement_db.sufferings;
 CREATE TABLE sufferings (
+  sufferingId INT NOT NULL AUTO_INCREMENT,
   categoryId INT NOT NULL,
   productId INT NOT NULL,
   name VARCHAR(250) NOT NULL,
   createdAt DATE NULL,
   updatedAt DATE NULL,
-  FOREIGN KEY (productId) REFERENCES products(productId),
-  FOREIGN KEY (categoryId) REFERENCES categories(categoryId)
+  PRIMARY KEY (sufferingId),
+  FOREIGN KEY (categoryId) REFERENCES categories(categoryId),
+  FOREIGN KEY (productId) REFERENCES products(productId)  
 );
 
 DROP TABLE IF EXISTS complement_db.ingredients;
 CREATE TABLE ingredients (
+  ingredientId INT NOT NULL AUTO_INCREMENT,
   productId INT NOT NULL,
   scientificName VARCHAR(250) NULL,
   commonName VARCHAR(250) NULL,
   createdAt DATE NULL,
   updatedAt DATE NULL,
+  PRIMARY KEY (ingredientId),
   FOREIGN KEY (productId) REFERENCES products(productId)
 );

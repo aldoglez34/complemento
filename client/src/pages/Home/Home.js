@@ -53,7 +53,7 @@ const Home = () => {
               nesciunt voluptate. Voluptatum.
             </p>
             <a className="btn btn-success btn-lg" href="/store">
-              <i class="fas fa-store-alt mr-2"></i>
+              <i className="fas fa-store-alt mr-2"></i>
               Descubre la tienda &raquo;
             </a>
           </div>
