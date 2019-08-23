@@ -9,32 +9,33 @@ import Button from "react-bootstrap/Button";
 
 function MyNavbar() {
   return (
+
     <Navbar bg="light" expand="md">
+
       {/* logo */}
       <Navbar.Brand href="/home">
         <Image src="/images/logo.png" alt="logo" fluid />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
+
         {/* menu */}
         <Nav className="mr-auto">
-          {/* <Nav.Link href="/home">Inicio</Nav.Link> */}
           <Nav.Link href="/store">Tienda</Nav.Link>
-          <Nav.Link href="/home">
-            Carrito
-            <span className="badge badge-primary ml-2" id="cart_counter">
+          <Nav.Link href="/home">Carrito
+            <span className="badge badge-success ml-2" id="cart_counter">
               0
             </span>
           </Nav.Link>
         </Nav>
+
         <Form inline>
           {/* login dropdown */}
-          <Dropdown className="mr-2">
+          <Dropdown>
             <Dropdown.Toggle
-              className="text-secondary"
+              className="text-primary px-0"
               variant="transparent"
-              id="dropdown-basic"
-            >
+              id="dropdown-basic">
               Inicia Sesión
             </Dropdown.Toggle>
             <Dropdown.Menu className="bg-light">
@@ -50,9 +51,7 @@ function MyNavbar() {
                 <Form.Group className="mb-3" controlId="formBasicChecbox">
                   <Form.Check type="checkbox" label="Recuérdame" />
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                  Entrar
-                </Button>
+                <Button variant="primary" type="submit">Entrar</Button>
               </div>
             </Dropdown.Menu>
           </Dropdown>
@@ -66,6 +65,7 @@ function MyNavbar() {
         </Form>
       </Navbar.Collapse>
     </Navbar>
+
   );
 }
 

@@ -12,7 +12,9 @@ const styles = {
 };
 
 const Home = () => {
+
   return (
+
     <Layout>
       <header className="py-5 mb-5" style={styles.header}>
         <div className="container h-100">
@@ -50,6 +52,7 @@ const Home = () => {
               nesciunt voluptate. Voluptatum.
             </p>
             <a className="btn btn-primary btn-lg" href="/store">
+              <i class="fas fa-store-alt mr-2"></i>
               Descubre la tienda &raquo;
             </a>
           </div>
@@ -65,10 +68,10 @@ const Home = () => {
               <br />
             </address>
             <address>
-              <i className="fas fa-phone" />
+              <i className="fas fa-phone mr-2" />
               (228) 111-2031
               <br />
-              <i className="fas fa-envelope" />
+              <i className="fas fa-envelope mr-2" />
               <a href="mailto:complemento.natural@gmail.com">
                 complemento.natural@gmail.com
               </a>
@@ -77,7 +80,9 @@ const Home = () => {
         </Row>
       </Container>
     </Layout>
+
   );
+
 };
 
 export default Home;

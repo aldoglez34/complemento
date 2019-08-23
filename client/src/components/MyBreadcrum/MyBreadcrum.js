@@ -2,7 +2,7 @@ import React from "react";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 const MyBreadcrum = props => (
-  <Breadcrumb className="mt-3">
+  <Breadcrumb>
     {props.pages.map(page => {
       if (page.link === "nolink") {
         return (

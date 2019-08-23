@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
 import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import Layout from "../../components/Layout/Layout";
 import MyBreadcrum from "../../components/MyBreadcrum/MyBreadcrum";
 import API from "../../utils/API";
@@ -11,14 +13,22 @@ const styles = {
     backgroundImage: "url('images/bg-header-store.jpg')",
     backgroundColor: "gray",
     backgroundBlendMode: "multiply"
+  },
+  container: {
+    marginLeft: 115,
+    marginRight: 115
   }
 };
 
 class Store extends Component {
   state = {
-    categories: null,
+    // categories
+    categories: [],
     selectedCategoryId: 2,
-    sufferings: null,
+    // sufferings
+    sufferings: [],
+    selectedSuffering: "",
+    // products
     products: []
   };
 
@@ -34,7 +44,7 @@ class Store extends Component {
     API.sufferingsByCategory(cat)
       .then(res => {
         console.log(res.data);
-        // this.setState({ sufferings: res.data });
+        this.setState({ sufferings: res.data });
       })
       .catch(err => console.log(err));
   };
@@ -42,22 +52,36 @@ class Store extends Component {
   productsByCategory = cat => {
     API.productsByCategory(cat)
       .then(res => {
-        console.log(res.data);
-        // this.setState({ products: res.data });
+        // console.log(res.data);
+        this.setState({ products: res.data });
       })
       .catch(err => console.log(err));
   };
 
   componentDidMount() {
     this.loadCategories();
-    this.sufferingsByCategory(2);
-    this.productsByCategory(2);
+    this.sufferingsByCategory(this.state.selectedCategoryId);
+    this.productsByCategory(this.state.selectedCategoryId);
+  }
+
+  handleChangeCategory = (cat) => {
+    this.setState({ selectedCategoryId: cat }, () => {
+      this.setState({ sufferings: [] }, () => { this.sufferingsByCategory(this.state.selectedCategoryId); })
+      this.setState({ products: [] }, () => { this.productsByCategory(this.state.selectedCategoryId); })
+    })
+  }
+
+  handleChangeSuffering = (suff) => {
+    this.setState({ selectedSuffering: suff })
   }
 
   render() {
+
     return (
+
       <Layout>
-        <header className="py-5 mb-5" style={styles.header}>
+
+        <header className="py-5 mb-2" style={styles.header}>
           <div className="container h-100">
             <div className="row h-100 align-items-center">
               <div className="col-lg-12">
@@ -75,7 +99,33 @@ class Store extends Component {
           </div>
         </header>
 
-        <Container>
+        <Container fluid>
+
+          {/* categories */}
+          <ul className="list-group list-group-horizontal-lg shadow-sm mt-3 mb-4">
+            {this.state.categories.length ? (
+              this.state.categories.map(category => {
+                if (category.categoryId === this.state.selectedCategoryId) {
+                  return (
+                    <button type="button"
+                      key={category.categoryId}
+                      className="list-group-item list-group-item-action active"
+                      onClick={() => this.handleChangeCategory(category.categoryId)}>{category.name}</button>
+                  );
+                } else {
+                  return (
+                    <button type="button"
+                      key={category.categoryId}
+                      className="list-group-item list-group-item-action"
+                      onClick={() => this.handleChangeCategory(category.categoryId)}>{category.name}</button>
+                  );
+                }
+              })
+            ) : (
+                <Spinner animation="border" role="status" variant="success" />
+              )}
+          </ul>
+
           <MyBreadcrum
             pages={[
               { page: "Inicio", link: "/" },
@@ -83,81 +133,75 @@ class Store extends Component {
             ]}
           />
 
-          <Row className="mb-3">
-            {/* category filters */}
+          <Row className="d-flex flex-row mb-3">
+
+            {/* column 1 */}
             <div className="col-12 col-md-4">
-              <strong>Categorías</strong>
-              <ul className="list-group my-3">
-                {/* categories filter */}
-                {this.state.categories ? (
-                  this.state.categories.map(category => (
-                    <li key={category.categoryId} className="list-group-item">
-                      {category.name}
-                    </li>
-                    // <span
-                    //   key={category.categoryId}
-                    //   className="list-group-item list-group-item-action item"
-                    // >
-                    //   {category.name}
-                    // </span>
+              <div className="list-group my-3 shadow-sm">
+                {this.state.sufferings.length ? (
+                  this.state.sufferings.map(suffering => (
+                    <button type="button"
+                      key={suffering}
+                      className="list-group-item list-group-item-action"
+                      onClick={() => this.handleChangeSuffering(suffering)}>{suffering}</button>
+
                   ))
                 ) : (
-                  <Spinner animation="border" role="status" variant="success" />
-                )}
-              </ul>
-            </div>
-            {/* products */}
-            <div className="col-12 col-md-8">
-              {/* sufferings */}
-              <div className="d-flex flex-wrap">
-                <div className="dropdown mr-auto">
-                  <button
-                    className="btn btn-transparent dropdown-toggle py-0"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <strong className="text-primary" id="suffsText">
-                      Todos los Padecimientos
-                    </strong>
-                  </button>
-                  <div
-                    className="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton"
-                    id="sufferingsdropdown"
-                  />
-                </div>
-                <strong
-                  className="pt-0 px-md-3 px-3 text-secondary"
-                  id="totalProducts"
-                />
+                    <Spinner animation="border" role="status" variant="success" />
+                  )}
               </div>
-              {/* pagination */}
-              <nav className="mt-3" aria-label="...">
-                <ul
-                  className="pagination pagination-sm justify-content-center"
-                  id="pages"
-                >
+            </div>
+
+            {/* column 2 */}
+            <div className="col-12 col-md-8">
+
+              {/* pages */}
+              <div className="mt-3" aria-label="...">
+                <ul className="pagination pagination-sm justify-content-center">
                   <li className="page-item active" aria-current="page">
                     <span className="page-link">
                       1<span className="sr-only">(current)</span>
                     </span>
                   </li>
                 </ul>
-              </nav>
-              {/* product rendering */}
-              <nav
-                className="d-flex flex-wrap justify-content-center"
-                id="cards"
-              />
+              </div>
+
+              {/* products */}
+              <div className="d-flex flex-wrap justify-content-center">
+                {this.state.products.length ? (
+                  this.state.products.map(product => {
+                    return (
+                      <Card style={{ width: "13rem" }} key={product.productId} className="shadow-sm m-2">
+                        <Card.Header><a href="/store">{product.name}</a></Card.Header>
+                        {(product.photo) ? (
+                          <Card.Img variant="top" height="250" src={"/images/products/" + product.photo} />
+                        ) : (
+                            <Card.Img variant="top" height="250" src={"/images/products/placeholder.jpg"} />
+                          )}
+                        <Card.Body>
+                          {/* <Card.Title>Card Title</Card.Title> */}
+                          <Card.Text>{product.content}</Card.Text>
+                          <Button variant="primary"><i className="fas fa-shopping-cart mr-2"></i>Agregar</Button>
+                        </Card.Body>
+                      </Card>
+                    );
+                  })
+                ) : (
+                    <Spinner animation="border" role="status" variant="success" />
+                  )}
+              </div>
+
             </div>
+
           </Row>
+
         </Container>
-      </Layout>
+
+      </Layout >
+
     );
   }
+
 }
 
 export default Store;

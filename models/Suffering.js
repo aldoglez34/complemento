@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   const Suffering = sequelize.define("Suffering", {
     categoryId: {
       type: DataTypes.INTEGER
@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Suffering.associate = function(models) {
+  Suffering.associate = function (models) {
     Suffering.hasOne(models.Category, {
       foreignKey: "categoryId"
     });
