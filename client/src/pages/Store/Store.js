@@ -12,6 +12,7 @@ const styles = {
   header: {
     backgroundImage: "url('images/bg-header-store.jpg')",
     backgroundColor: "gray",
+    backgroundSize: "cover",
     backgroundBlendMode: "multiply"
   },
   container: {

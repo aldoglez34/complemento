@@ -7,6 +7,7 @@ const styles = {
   header: {
     backgroundImage: "url('images/bg-header-home.jpg')",
     backgroundColor: "gray",
+    backgroundSize: "cover",
     backgroundBlendMode: "multiply"
   }
 };
@@ -51,7 +52,7 @@ const Home = () => {
               quidem quam odit commodi ducimus totam eum, alias, adipisci
               nesciunt voluptate. Voluptatum.
             </p>
-            <a className="btn btn-primary btn-lg" href="/store">
+            <a className="btn btn-success btn-lg" href="/store">
               <i class="fas fa-store-alt mr-2"></i>
               Descubre la tienda &raquo;
             </a>
