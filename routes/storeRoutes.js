@@ -25,8 +25,13 @@ router.get("/sufferings/:categoryId", function (req, res) {
     where: { categoryId: req.params.categoryId },
     order: ["name"]
   }).then(function (data) {
+
+    
     res.json(data);
+
+    
   });
+  
 
 
 
