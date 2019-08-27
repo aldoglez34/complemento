@@ -23,7 +23,7 @@ function MyNavbar() {
         <Nav className="mr-auto">
           <Nav.Link href="/store">Tienda</Nav.Link>
           <Nav.Link href="/home">Carrito
-            <span className="badge badge-success ml-2" id="cart_counter">
+            <span className="badge badge-primary ml-2" id="cart_counter">
               0
             </span>
           </Nav.Link>

@@ -29,7 +29,7 @@ class Store extends Component {
     selectedCategoryId: 1,
     // sufferings
     sufferings: [],
-    selectedSuffering: "",
+    selectedSuffering: "Todos",
     // products
     products: []
   };
@@ -45,7 +45,7 @@ class Store extends Component {
   sufferingsByCategory = cat => {
     API.sufferingsByCategory(cat)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         this.setState({ sufferings: res.data });
       })
       .catch(err => console.log(err));
@@ -60,6 +60,15 @@ class Store extends Component {
       .catch(err => console.log(err));
   };
 
+  productsByCatAndSuff = data => {
+    API.productsByCatAndSuff(data)
+      .then(res => {
+        console.log(res.data);
+        // this.setState({ products: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
   componentDidMount() {
     this.loadCategories();
     this.sufferingsByCategory(this.state.selectedCategoryId);
@@ -67,25 +76,34 @@ class Store extends Component {
   }
 
   handleChangeCategory = cat => {
-    this.setState({ selectedCategoryId: cat }, () => {
-      this.setState({ sufferings: [] }, () => {
-        this.sufferingsByCategory(this.state.selectedCategoryId);
+    this.setState({ selectedCategoryId: cat, selectedSuffering: "Todos" },
+      () => {
+        this.setState({ sufferings: [] },
+          () => {
+            this.sufferingsByCategory(this.state.selectedCategoryId);
+          });
+        this.setState({ products: [] },
+          () => {
+            this.productsByCategory(this.state.selectedCategoryId);
+          });
       });
-      this.setState({ products: [] }, () => {
-        this.productsByCategory(this.state.selectedCategoryId);
-      });
-    });
   };
 
   handleChangeSuffering = suff => {
-    this.setState({ selectedSuffering: suff });
+    this.setState({ selectedSuffering: suff, products: [] },
+      () => {
+        let data = {};
+        data.catId = this.state.selectedCategoryId;
+        data.suff = this.state.selectedSuffering;
+        this.productsByCatAndSuff(data);
+      });
   };
 
   render() {
     return (
       <Layout>
 
-        <header className="py-5 mb-2" style={styles.header}>
+        <header className="py-5 mb-4" style={styles.header}>
           <div className="container h-100">
             <div className="row h-100 align-items-center">
               <div className="col-lg-12">
@@ -105,8 +123,15 @@ class Store extends Component {
 
         <Container fluid>
 
+          <MyBreadcrum className="mb-4"
+            pages={[
+              { page: "Inicio", link: "/" },
+              { page: "Tienda", link: "nolink" }
+            ]}
+          />
+
           {/* categories */}
-          <ul className="list-group list-group-horizontal-lg shadow-sm mt-3 mb-4">
+          <ul className="list-group list-group-horizontal-lg shadow-sm mt-4 mb-3">
             {this.state.categories.length ? (
               this.state.categories.map(category => {
                 if (category.categoryId === this.state.selectedCategoryId) {
@@ -142,36 +167,42 @@ class Store extends Component {
               )}
           </ul>
 
-          <MyBreadcrum
-            pages={[
-              { page: "Inicio", link: "/" },
-              { page: "Tienda", link: "nolink" }
-            ]}
-          />
-
           <Row className="d-flex flex-row mb-3">
 
             {/* column 1 */}
             <div className="col-12 col-md-4">
+
               {/* sufferings */}
-              {/* <div className="list-group my-3 shadow-sm">
-                <button
-                  type="button"
-                  key="todos"
-                  className="list-group-item list-group-item-action"
-                  onClick={() => this.handleChangeSuffering("Todos")}>Todos</button>
+              <div className="list-group my-3 shadow-sm">
                 {this.state.sufferings.length ? (
-                  this.state.sufferings.map(suffering => (
-                    <button
-                      type="button"
-                      key={suffering.sufferingId}
-                      className="list-group-item list-group-item-action"
-                      onClick={() => this.handleChangeSuffering(suffering.id)}>{suffering.name}</button>
-                  ))
+                  this.state.sufferings.map(suff => {
+                    if (suff.name === this.state.selectedSuffering) {
+                      return (
+                        <button
+                          type="button"
+                          key={suff.name}
+                          className="list-group-item list-group-item-action active"
+                          onClick={() => this.handleChangeSuffering(suff.name)}>
+                          {suff.name} <span className="badge badge-light ml-2">{suff.qty}</span>
+                        </button>
+                      );
+                    } else {
+                      return (
+                        <button
+                          type="button"
+                          key={suff.name}
+                          className="list-group-item list-group-item-action"
+                          onClick={() => this.handleChangeSuffering(suff.name)}>
+                          {suff.name} <span className="badge badge-secondary ml-2">{suff.qty}</span>
+                        </button>
+                      );
+                    }
+                  })
                 ) : (
                     <Spinner animation="border" role="status" variant="success" />
                   )}
-              </div> */}
+              </div>
+
             </div>
 
             {/* column 2 */}
