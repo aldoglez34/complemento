@@ -17,6 +17,7 @@ const Home = () => {
   return (
 
     <Layout>
+
       <header className="py-5 mb-5" style={styles.header}>
         <div className="container h-100">
           <div className="row h-100 align-items-center">
@@ -35,7 +36,9 @@ const Home = () => {
           </div>
         </div>
       </header>
+
       <Container>
+
         <Row>
           <div className="col-md-8 mb-5">
             <h2>¿Quiénes Somos?</h2>
@@ -79,6 +82,17 @@ const Home = () => {
             </address>
           </div>
         </Row>
+
+        <Row className="mb-5">
+          <h2>Últimas ofertas</h2>
+          <hr />
+        </Row>
+
+        <Row>
+          <h2>Los más vendidos</h2>
+          <hr />
+        </Row>
+
       </Container>
     </Layout>
 

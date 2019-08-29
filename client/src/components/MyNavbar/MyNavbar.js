@@ -21,9 +21,13 @@ function MyNavbar() {
 
         {/* menu */}
         <Nav className="mr-auto">
-          <Nav.Link href="/store">Tienda</Nav.Link>
-          <Nav.Link href="/home">Carrito
-            <span className="badge badge-primary ml-2" id="cart_counter">
+          <Nav.Link href="/store">
+            <strong>Tienda</strong>
+          </Nav.Link>
+          <Nav.Link href="/home">
+            <i className="fas fa-shopping-cart mr-2" />
+            <strong>Carrito</strong>
+            <span className="badge badge-secondary ml-2" id="cart_counter">
               0
             </span>
           </Nav.Link>
@@ -36,7 +40,7 @@ function MyNavbar() {
               className="text-primary px-0"
               variant="transparent"
               id="dropdown-basic">
-              Inicia Sesión
+              <strong>Iniciar Sesión</strong>
             </Dropdown.Toggle>
             <Dropdown.Menu className="bg-light">
               <div className="px-4 py-3">
@@ -55,13 +59,6 @@ function MyNavbar() {
               </div>
             </Dropdown.Menu>
           </Dropdown>
-          {/* search bar */}
-          {/* <FormControl
-            type="text"
-            placeholder="Buscar en la Tienda"
-            className="mr-sm-2"
-          />
-          <Button variant="primary">Buscar</Button> */}
         </Form>
       </Navbar.Collapse>
     </Navbar>

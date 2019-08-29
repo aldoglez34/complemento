@@ -4,8 +4,9 @@ import Spinner from "react-bootstrap/Spinner";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Form from "react-bootstrap/Form";
+import FormControl from "react-bootstrap/FormControl";
 import Layout from "../../components/Layout/Layout";
-import MyBreadcrum from "../../components/MyBreadcrum/MyBreadcrum";
 import API from "../../utils/API";
 import "./store.css";
 
@@ -24,6 +25,8 @@ const styles = {
 
 class Store extends Component {
   state = {
+    // breadcrum
+    items: [{ item: "Inicio", link: "/store" }],
     // categories
     categories: [],
     selectedCategoryId: 1,
@@ -63,8 +66,8 @@ class Store extends Component {
   productsByCatAndSuff = data => {
     API.productsByCatAndSuff(data)
       .then(res => {
-        console.log(res.data);
-        // this.setState({ products: res.data });
+        // console.log(res.data);
+        this.setState({ products: res.data });
       })
       .catch(err => console.log(err));
   };
@@ -123,49 +126,47 @@ class Store extends Component {
 
         <Container fluid>
 
-          <MyBreadcrum className="mb-4"
-            pages={[
-              { page: "Inicio", link: "/" },
-              { page: "Tienda", link: "nolink" }
-            ]}
-          />
-
           {/* categories */}
-          <ul className="list-group list-group-horizontal-lg shadow-sm mt-4 mb-3">
-            {this.state.categories.length ? (
-              this.state.categories.map(category => {
-                if (category.categoryId === this.state.selectedCategoryId) {
-                  return (
-                    <button
-                      type="button"
-                      key={category.categoryId}
-                      className="list-group-item list-group-item-action active"
-                      onClick={() =>
-                        this.handleChangeCategory(category.categoryId)
-                      }
-                    >
-                      {category.name}
-                    </button>
-                  );
-                } else {
-                  return (
-                    <button
-                      type="button"
-                      key={category.categoryId}
-                      className="list-group-item list-group-item-action"
-                      onClick={() =>
-                        this.handleChangeCategory(category.categoryId)
-                      }
-                    >
-                      {category.name}
-                    </button>
-                  );
-                }
-              })
-            ) : (
-                <Spinner animation="border" role="status" variant="success" />
-              )}
-          </ul>
+
+          <div className="d-flex flex-row flex-wrap">
+
+            <ul className="list-group list-group-horizontal-lg shadow-sm mt-2 mb-3">
+              {this.state.categories.length ? (
+                this.state.categories.map(category => {
+                  if (category.categoryId === this.state.selectedCategoryId) {
+                    return (
+                      <button
+                        type="button"
+                        key={category.categoryId}
+                        className="catItem activeItem"
+                        onClick={() =>
+                          this.handleChangeCategory(category.categoryId)
+                        }
+                      >
+                        {category.name}
+                      </button>
+                    );
+                  } else {
+                    return (
+                      <button
+                        type="button"
+                        key={category.categoryId}
+                        className="catItem"
+                        onClick={() =>
+                          this.handleChangeCategory(category.categoryId)
+                        }
+                      >
+                        {category.name}
+                      </button>
+                    );
+                  }
+                })
+              ) : (
+                  <Spinner animation="border" role="status" variant="success" />
+                )}
+            </ul>
+
+          </div>
 
           <Row className="d-flex flex-row mb-3">
 
@@ -207,16 +208,12 @@ class Store extends Component {
 
             {/* column 2 */}
             <div className="col-12 col-md-8">
-              {/* pages */}
-              <div className="mt-3" aria-label="...">
-                <ul className="pagination pagination-sm justify-content-center">
-                  <li className="page-item active" aria-current="page">
-                    <span className="page-link">
-                      1<span className="sr-only">(current)</span>
-                    </span>
-                  </li>
-                </ul>
-              </div>
+
+              {/* search bar */}
+              <Form inline className="justify-content-center my-3">
+                <FormControl type="text" placeholder="Buscar en la tienda" className="w-75 mr-3" />
+                <Button variant="outline-primary">Buscar</Button>
+              </Form>
 
               {/* products */}
               <div className="d-flex flex-wrap justify-content-center">
@@ -224,19 +221,17 @@ class Store extends Component {
                   this.state.products.map(product => {
                     return (
                       <Card
-                        style={{ width: "13rem" }}
+                        style={{ width: "9.5rem" }}
                         key={product.productId}
-                        className="shadow-sm m-2"
-                      >
+                        className="shadow-sm m-2">
                         <Card.Header>
-                          <a href="/store">{product.name}</a>
+                          <a href={"/product/" + product.productId}>{product.name}</a>
                         </Card.Header>
                         {product.photo ? (
                           <Card.Img
                             variant="top"
                             height="250"
-                            src={"/images/products/" + product.photo}
-                          />
+                            src={"/images/products/" + product.photo} />
                         ) : (
                             <Card.Img
                               variant="top"
@@ -246,8 +241,9 @@ class Store extends Component {
                           )}
                         <Card.Body>
                           {/* <Card.Title>Card Title</Card.Title> */}
+                          <Card.Text className="h4">{product.price}</Card.Text>
                           <Card.Text>{product.content}</Card.Text>
-                          <Button variant="primary">
+                          <Button variant="success">
                             <i className="fas fa-shopping-cart mr-2" />
                             Agregar
                           </Button>
@@ -259,6 +255,7 @@ class Store extends Component {
                     <Spinner animation="border" role="status" variant="success" />
                   )}
               </div>
+
             </div>
 
           </Row>
@@ -269,3 +266,4 @@ class Store extends Component {
 }
 
 export default Store;
+
