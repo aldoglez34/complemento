@@ -2,7 +2,9 @@ import axios from "axios";
 
 export default {
 
-  // store
+  // ---------------------------------------------------------------------------
+  // STORE
+  // ---------------------------------------------------------------------------
 
   loadCategories: function () {
     return axios.get("/api/store/category/all");
@@ -12,18 +14,16 @@ export default {
     return axios.get("/api/store/sufferings/" + categoryId);
   },
 
-  productsByCategory: function (categoryId) {
-    return axios.get("/api/store/productsbycategory/" + categoryId);
+  getProducts: function (data) {
+    return axios.get("/api/store/products/" + data.catId + "/" + data.suff);
   },
 
-  productsByCatAndSuff: function (data) {
-    return axios.get("/api/store/productsbycatandsuff/" + data.catId + "/" + data.suff);
-  },
-
-  // product details
+  // ---------------------------------------------------------------------------
+  // PRODUCT DETAILS
+  // ---------------------------------------------------------------------------
 
   getProductDetails: function (productId) {
-    return axios.get("/api/product/" + productId);
+    return axios.get("/api/product/details/" + productId);
   }
 
 };

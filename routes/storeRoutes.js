@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const model = require("../models");
 
+// ------------------------------------------------------------
 // get all categories
 // matches with /api/store/category/all
 router.get("/category/all", function (req, res) {
@@ -16,6 +17,7 @@ router.get("/category/all", function (req, res) {
     });
 });
 
+// ------------------------------------------------------------
 // get unique sufferings from determined category
 // matches with /api/store/sufferings/:categoryId
 
@@ -64,37 +66,39 @@ router.get("/sufferings/:categoryId", function (req, res) {
   });
 });
 
-// get products by a category
-// matches with /api/store/productsbycategory/:cat
-router.get("/productsbycategory/:categoryId", function (req, res) {
-  model.Product.findAll({
-    where: {
-      categoryId: req.params.categoryId
-    }
-  }).then(function (data) {
-    res.json(data);
-  });
-});
+// ------------------------------------------------------------
+// get products by a category and a suffering
+// matches with /api/store/products/:categoryId/:suffering
+router.get("/products/:categoryId/:suffering", function (req, res) {
 
-// get products by a suffering
-// matches with /api/store/productsbysuffering/
-router.get("/productsbycatandsuff/:categoryId/:suffering", function (req, res) {
+  let suffering = req.params.suffering;
 
-  // first create an association
-  model.Product.hasMany(model.Suffering, { foreignKey: "productId" });
-
-  // this is like a join
-  model.Product.findAll({
-    include: [{
-      model: model.Suffering,
+  if (suffering === "Todos") {
+    // load all products without taking account of the suffering
+    // simple consult of select *
+    model.Product.findAll({
       where: {
-        name: req.params.suffering,
         categoryId: req.params.categoryId
       }
-    }]
-  }).then(function (data) {
-    res.json(data);
-  });
+    }).then(function (data) {
+      res.json(data);
+    });
+  } else {
+    // first create an association
+    model.Product.hasMany(model.Suffering, { foreignKey: "productId" });
+    // this is like a join
+    model.Product.findAll({
+      include: [{
+        model: model.Suffering,
+        where: {
+          name: req.params.suffering,
+          categoryId: req.params.categoryId
+        }
+      }]
+    }).then(function (data) {
+      res.json(data);
+    });
+  }
 
 });
 

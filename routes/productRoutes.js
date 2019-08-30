@@ -3,8 +3,8 @@ const model = require("../models");
 
 
 // get products by a category
-// matches with /api/product/:productId
-router.get("/:productId", function (req, res) {
+// matches with /api/product/details/:productId
+router.get("/details/:productId", function (req, res) {
     model.Product.findOne({
         where: {
             productId: req.params.productId

@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Image from "react-bootstrap/Image";
 import Form from "react-bootstrap/Form";
-// import FormControl from "react-bootstrap/FormControl";
+import Badge from "react-bootstrap/Badge";
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 
@@ -21,26 +21,29 @@ function MyNavbar() {
 
         {/* menu */}
         <Nav className="mr-auto">
-          <Nav.Link href="/store">
+
+          {/* store */}
+          {/* <Nav.Link href="/store">
             <strong>Tienda</strong>
-          </Nav.Link>
-          <Nav.Link href="/home">
-            <i className="fas fa-shopping-cart mr-2" />
-            <strong>Carrito</strong>
-            <span className="badge badge-secondary ml-2" id="cart_counter">
-              0
-            </span>
-          </Nav.Link>
+          </Nav.Link> */}
+
+          {/* caret */}
+          {/* <Form inline>
+            <Button variant="outline-success">
+              <strong>Carrito</strong>
+              <i className="fas fa-shopping-cart ml-2"></i>
+              <Badge variant="success" className="ml-2">0</Badge>
+            </Button>
+          </Form> */}
+
         </Nav>
 
         <Form inline>
+
           {/* login dropdown */}
           <Dropdown>
-            <Dropdown.Toggle
-              className="text-primary px-0"
-              variant="transparent"
-              id="dropdown-basic">
-              <strong>Iniciar Sesión</strong>
+            <Dropdown.Toggle className="mr-2" variant="primary" id="dropdown-basic">
+              Iniciar Sesión
             </Dropdown.Toggle>
             <Dropdown.Menu className="bg-light">
               <div className="px-4 py-3">
@@ -59,7 +62,16 @@ function MyNavbar() {
               </div>
             </Dropdown.Menu>
           </Dropdown>
+
+          {/* carrito */}
+          <Button variant="outline-primary">
+            Carrito
+            <i className="fas fa-shopping-cart ml-2"></i>
+            <Badge variant="primary" className="ml-2">0</Badge>
+          </Button>
+
         </Form>
+
       </Navbar.Collapse>
     </Navbar>
 

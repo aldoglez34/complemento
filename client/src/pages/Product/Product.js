@@ -1,17 +1,12 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Accordion from "react-bootstrap/Accordion";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import Layout from "../../components/Layout/Layout";
 import API from "../../utils/API";
-
-const styles = {
-    header: {
-        // backgroundImage: "url('../images/bg-header-product.jpg')",
-        backgroundColor: "darkslategray",
-        // backgroundSize: "cover",
-        // backgroundBlendMode: "multiply"
-    }
-};
 
 class Product extends Component {
     state = {
@@ -20,14 +15,14 @@ class Product extends Component {
         description: null,
         dose: null,
         photo: null,
-        price: null
+        price: null,
+        aditionalInfo: null
     }
 
-    componentDidMount() {
-
+    getProductDetails = () => {
         API.getProductDetails(this.props.routeProps.match.params.productId)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 this.setState({
                     name: res.data.name,
                     content: res.data.content,
@@ -35,10 +30,14 @@ class Product extends Component {
                     dose: res.data.dose,
                     photo: res.data.photo,
                     price: res.data.price,
+                    aditionalInfo: res.data.aditionalInfo
                 });
             })
             .catch(err => { console.log(err) });
+    }
 
+    componentDidMount() {
+        this.getProductDetails();
     }
 
     render() {
@@ -46,25 +45,74 @@ class Product extends Component {
 
             <Layout>
 
-                <header className="py-5 mb-5" style={styles.header}>
-                    <div className="container h-100">
-                        <div className="row h-100 align-items-center">
-                            <div className="col-lg-12">
-                                <h1 className="display-4 text-white mt-5 mb-2">{this.state.name}</h1>
-                                <p className="lead mb-5 text-light">Descripción del producto</p>
-                            </div>
-                        </div>
-                    </div>
-                </header>
+                {/* regresar */}
+                <div className="bg-light p-2">
+                    <a href="/store" className="ml-2"><i className="fas fa-arrow-circle-left mr-2"></i>Regresa a la Tienda</a>
+                </div>
 
                 <Container>
-                    <Row>
 
-                        <h1>Product info</h1>
-
+                    {/* first row */}
+                    <Row className="my-4">
+                        {/* image column */}
+                        <Col md={4} className="text-center">
+                            <img src={"../images/products/" + this.state.photo} className="img-fluid" alt="product" />
+                        </Col>
+                        {/* name column */}
+                        <Col md={8} className="text-center">
+                            <h2 className="text-dark mt-5 mb-2"><strong>{this.state.name}</strong></h2>
+                            <p className="lead my-3 text-dark">{this.state.content}</p>
+                            <h3 className="mb-3 text-dark">{this.state.price}</h3>
+                            <Button variant="outline-primary">
+                                <i className="fas fa-shopping-cart mr-2" />Agregar
+                          </Button>
+                        </Col>
                     </Row>
-                </Container>
 
+                    <Accordion className="mb-4" defaultActiveKey="0">
+                        <Card>
+                            <Card.Header>
+                                <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                                    <i className="fas fa-chevron-down mr-2"></i>Ingredientes
+                                    </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse eventKey="0">
+                                <Card.Body>Aquí se muestran los ingredientes</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card>
+                            <Card.Header>
+                                <Accordion.Toggle as={Button} variant="link" eventKey="1">
+                                    <i className="fas fa-chevron-down mr-2"></i>Descripción
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse eventKey="1">
+                                <Card.Body className="text-justify">{this.state.description}</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card>
+                            <Card.Header>
+                                <Accordion.Toggle as={Button} variant="link" eventKey="2">
+                                    <i className="fas fa-chevron-down mr-2"></i>Dosis
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse eventKey="2">
+                                <Card.Body>{this.state.dose}</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card>
+                            <Card.Header>
+                                <Accordion.Toggle as={Button} variant="link" eventKey="3">
+                                    <i className="fas fa-chevron-down mr-2"></i>Información Adicional
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse eventKey="3">
+                                <Card.Body>{this.state.aditionalInfo}</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                    </Accordion>
+
+                </Container>
             </Layout>
 
         );

@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Layout from "../../components/Layout/Layout";
 
 const styles = {
@@ -25,13 +26,17 @@ const Home = () => {
               <h1 className="display-4 text-white mt-5 mb-2">
                 Bienvenido a Complemento Natural
               </h1>
-              <p className="lead mb-5 text-light">
+              <p className="lead mb-4 text-light">
                 Somos una tienda en línea de medicina complementaria. Contamos
                 con un selecto catálogo de productos naturistas, remedios
                 herbolarios, suplementos alimenticios y medicina alternativa a
                 precios de laboratorio, hechos a base de plantas, raíces y
                 hierbas.
               </p>
+              <a className="btn btn-success btn-lg" href="/store">
+                <i className="fas fa-store-alt mr-2"></i>
+                Descubre la tienda &raquo;
+            </a>
             </div>
           </div>
         </div>
@@ -40,7 +45,7 @@ const Home = () => {
       <Container>
 
         <Row>
-          <div className="col-md-8 mb-5">
+          <Col md={8} className="mb-5">
             <h2>¿Quiénes Somos?</h2>
             <hr />
             <p>
@@ -55,12 +60,8 @@ const Home = () => {
               quidem quam odit commodi ducimus totam eum, alias, adipisci
               nesciunt voluptate. Voluptatum.
             </p>
-            <a className="btn btn-success btn-lg" href="/store">
-              <i className="fas fa-store-alt mr-2"></i>
-              Descubre la tienda &raquo;
-            </a>
-          </div>
-          <div className="col-md-4 mb-5">
+          </Col>
+          <Col md={4} className="mb-5">
             <h2>Contáctanos</h2>
             <hr />
             <address>
@@ -80,17 +81,21 @@ const Home = () => {
                 complemento.natural@gmail.com
               </a>
             </address>
-          </div>
+          </Col>
         </Row>
 
         <Row className="mb-5">
-          <h2>Últimas ofertas</h2>
-          <hr />
+          <Col>
+            <h2>Últimas ofertas</h2>
+            <hr />
+          </Col>
         </Row>
 
         <Row>
-          <h2>Los más vendidos</h2>
-          <hr />
+          <Col>
+            <h2>Los más vendidos</h2>
+            <hr />
+          </Col>
         </Row>
 
       </Container>
