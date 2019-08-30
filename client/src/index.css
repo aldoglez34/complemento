@@ -5,9 +5,7 @@
 html,
 body {
   height: 100%;
-  color: #5a5a5a;
+  /* color: #5a5a5a; */
   font-family: "Ubuntu", sans-serif;
-  /* padding-bottom: 1rem; */
-  /* background-image: url("../images/bg.png"); */
+  background-color: rgb(250, 250, 250);
 }
-

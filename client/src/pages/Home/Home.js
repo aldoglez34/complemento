@@ -34,9 +34,10 @@ const Home = () => {
                 hierbas.
               </p>
               <a className="btn btn-success btn-lg" href="/store">
-                <i className="fas fa-store-alt mr-2"></i>
-                Descubre la tienda &raquo;
-            </a>
+                Descubre la tienda
+                <i className="fas fa-store-alt mx-2"></i>
+                <i className="fas fa-angle-double-right"></i>
+              </a>
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
+import Modal from "react-bootstrap/Modal";
 import Layout from "../../components/Layout/Layout";
 import API from "../../utils/API";
 import "./store.css";
@@ -33,7 +34,9 @@ class Store extends Component {
     sufferings: [],
     selectedSuffering: "Todos",
     // products
-    products: []
+    products: [],
+    // modal
+    showModal: false
   };
 
   loadCategories = () => {
@@ -104,6 +107,9 @@ class Store extends Component {
       this.getProducts(data);
     });
   };
+
+  showModal = name => this.setState({ productSelected: name }, () => this.setState({ showModal: true }));
+  closeModal = () => this.setState({ showModal: false });
 
   render() {
     return (
@@ -229,9 +235,9 @@ class Store extends Component {
                   this.state.products.map(product => {
                     return (
                       <Card
-                        style={{ width: "9.5rem" }}
+                        style={{ width: "9.7rem" }}
                         key={product.productId}
-                        className="shadow-sm m-2">
+                        className="shadow-sm mt-2 mb-4 mx-2">
                         <Card.Header>
                           <a href={"/product/" + product.productId}>{product.name}</a>
                         </Card.Header>
@@ -239,21 +245,22 @@ class Store extends Component {
                           <Card.Img
                             variant="top"
                             height="250"
+                            className="rounded-0"
                             src={"/images/products/" + product.photo} />
                         ) : (
                             <Card.Img
                               variant="top"
                               height="250"
+                              className="rounded-0"
                               src={"/images/products/placeholder.jpg"}
                             />
                           )}
                         <Card.Body>
                           {/* <Card.Title>Card Title</Card.Title> */}
-                          <Card.Text className="h4">{product.price}</Card.Text>
+                          <Card.Text><strong>{"$" + product.price + " MXN"}</strong></Card.Text>
                           <Card.Text>{product.content}</Card.Text>
-                          <Button variant="outline-primary">
-                            <i className="fas fa-shopping-cart mr-2" />
-                            Agregar
+                          <Button variant="outline-primary" onClick={() => this.showModal(product.name)}>
+                            Agregar<i className="fas fa-shopping-cart ml-2" />
                           </Button>
                         </Card.Body>
                       </Card>
@@ -264,10 +271,22 @@ class Store extends Component {
                   )}
               </div>
             </Col>
-
           </Row>
 
         </Container>
+
+        {/* add new product modal */}
+        <Modal show={this.state.showModal} onHide={this.closeModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Éxito.</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>El producto <strong>{this.state.productSelected}</strong> ha sido agregado a tu carrito.</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.closeModal}>Cerrar</Button>
+            <Button variant="primary" href="/cart">Ir al carrito <i className="fas fa-shopping-cart ml-2" /></Button>
+          </Modal.Footer>
+        </Modal>
+
       </Layout>
     );
   }

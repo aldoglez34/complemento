@@ -24,6 +24,10 @@ export default {
 
   getProductDetails: function (productId) {
     return axios.get("/api/product/details/" + productId);
+  },
+
+  getIngredients: function (productId) {
+    return axios.get("/api/product/details/ingredients/" + productId);
   }
 
 };

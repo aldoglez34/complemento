@@ -16,13 +16,14 @@ class Product extends Component {
         dose: null,
         photo: null,
         price: null,
-        aditionalInfo: null
+        aditionalInfo: null,
+        scientificIngredients: [],
+        commonIngredients: []
     }
 
     getProductDetails = () => {
         API.getProductDetails(this.props.routeProps.match.params.productId)
             .then(res => {
-                // console.log(res.data);
                 this.setState({
                     name: res.data.name,
                     content: res.data.content,
@@ -36,8 +37,20 @@ class Product extends Component {
             .catch(err => { console.log(err) });
     }
 
+    getIngredients = () => {
+        API.getIngredients(this.props.routeProps.match.params.productId)
+            .then(res => {
+                this.setState({
+                    scientificIngredients: res.data.scientificIngredients,
+                    commonIngredients: res.data.commonIngredients
+                });
+            })
+            .catch(err => { console.log(err) });
+    }
+
     componentDidMount() {
         this.getProductDetails();
+        this.getIngredients();
     }
 
     render() {
@@ -46,8 +59,8 @@ class Product extends Component {
             <Layout>
 
                 {/* regresar */}
-                <div className="bg-light p-2">
-                    <a href="/store" className="ml-2"><i className="fas fa-arrow-circle-left mr-2"></i>Regresa a la Tienda</a>
+                <div className="bg-white p-2">
+                    <a href="/store" className="ml-2"><i className="fas fa-arrow-circle-left mr-2"></i>Regresa a la tienda</a>
                 </div>
 
                 <Container>
@@ -55,21 +68,24 @@ class Product extends Component {
                     {/* first row */}
                     <Row className="my-4">
                         {/* image column */}
-                        <Col md={4} className="text-center">
-                            <img src={"../images/products/" + this.state.photo} className="img-fluid" alt="product" />
+                        <Col sm={{ span: 3, offset: 3 }} className="d-flex align-items-center justify-content-center">
+                            {(this.state.photo) ?
+                                (<img src={"../images/products/" + this.state.photo} className="img-fluid rounded-lg shadow-sm" alt="product" />) :
+                                (<img src="../images/products/placeholder.jpg" className="img-fluid rounded-lg shadow-sm" alt="product" />)}
                         </Col>
                         {/* name column */}
-                        <Col md={8} className="text-center">
+                        <Col sm={5} className="text-center">
                             <h2 className="text-dark mt-5 mb-2"><strong>{this.state.name}</strong></h2>
                             <p className="lead my-3 text-dark">{this.state.content}</p>
-                            <h3 className="mb-3 text-dark">{this.state.price}</h3>
-                            <Button variant="outline-primary">
+                            <h3 className="mb-3 text-dark">{"$" + this.state.price + " MXN"}</h3>
+                            <Button size="lg" variant="outline-primary">
                                 <i className="fas fa-shopping-cart mr-2" />Agregar
                           </Button>
                         </Col>
                     </Row>
 
-                    <Accordion className="mb-4" defaultActiveKey="0">
+                    {/* second row - product details */}
+                    <Accordion className="mb-4 shadow-sm">
                         <Card>
                             <Card.Header>
                                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
@@ -77,7 +93,28 @@ class Product extends Component {
                                     </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse eventKey="0">
-                                <Card.Body>Aquí se muestran los ingredientes</Card.Body>
+                                <Card.Body>
+                                    {(this.state.scientificIngredients.length) ?
+                                        (
+                                            <ul className="list-unstyled">
+                                                <li>Nombre científico<ul>
+                                                    {this.state.scientificIngredients.map(ing => <li key={ing}>{ing}</li>)}
+                                                </ul>
+                                                </li>
+                                            </ul>
+                                        ) :
+                                        (null)}
+                                    {(this.state.commonIngredients.length) ?
+                                        (
+                                            <ul className="list-unstyled">
+                                                <li>Nombre común<ul>
+                                                    {this.state.commonIngredients.map(ing => <li key={ing}>{ing}</li>)}
+                                                </ul>
+                                                </li>
+                                            </ul>
+                                        ) :
+                                        (null)}
+                                </Card.Body>
                             </Accordion.Collapse>
                         </Card>
                         <Card>
@@ -87,7 +124,11 @@ class Product extends Component {
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse eventKey="1">
-                                <Card.Body className="text-justify">{this.state.description}</Card.Body>
+                                <Card.Body className="text-justify">
+                                    {(this.state.description) ?
+                                        (this.state.description) :
+                                        (<span>No hay descripción disponible.</span>)}
+                                </Card.Body>
                             </Accordion.Collapse>
                         </Card>
                         <Card>
@@ -97,7 +138,11 @@ class Product extends Component {
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse eventKey="2">
-                                <Card.Body>{this.state.dose}</Card.Body>
+                                <Card.Body>
+                                    {(this.state.dose) ?
+                                        (this.state.dose) :
+                                        (<span>No hay dosis disponible.</span>)}
+                                </Card.Body>
                             </Accordion.Collapse>
                         </Card>
                         <Card>
@@ -107,13 +152,17 @@ class Product extends Component {
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse eventKey="3">
-                                <Card.Body>{this.state.aditionalInfo}</Card.Body>
+                                <Card.Body>
+                                    {(this.state.aditionalInfo) ?
+                                        (this.state.aditionalInfo) :
+                                        (<span>No hay información adicional disponible.</span>)}
+                                </Card.Body>
                             </Accordion.Collapse>
                         </Card>
                     </Accordion>
 
                 </Container>
-            </Layout>
+            </Layout >
 
         );
     }

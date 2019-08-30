@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
 import Image from "react-bootstrap/Image";
 import Form from "react-bootstrap/Form";
 import Badge from "react-bootstrap/Badge";
@@ -10,41 +9,27 @@ import Button from "react-bootstrap/Button";
 function MyNavbar() {
   return (
 
-    <Navbar bg="light" expand="md">
+    <Navbar bg="white" expand="md">
 
       {/* logo */}
-      <Navbar.Brand href="/home">
+      <Navbar.Brand className="mr-auto" href="/home">
         <Image src="/images/logo.png" alt="logo" fluid />
       </Navbar.Brand>
+
+      {/* navbar toggle */}
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
 
-        {/* menu */}
-        <Nav className="mr-auto">
+        {/* login dropdown and cart button */}
+        <Form className="ml-auto" inline>
 
-          {/* store */}
-          {/* <Nav.Link href="/store">
-            <strong>Tienda</strong>
-          </Nav.Link> */}
-
-          {/* caret */}
-          {/* <Form inline>
-            <Button variant="outline-success">
-              <strong>Carrito</strong>
-              <i className="fas fa-shopping-cart ml-2"></i>
-              <Badge variant="success" className="ml-2">0</Badge>
-            </Button>
-          </Form> */}
-
-        </Nav>
-
-        <Form inline>
-
-          {/* login dropdown */}
+          {/* begins dropdown */}
           <Dropdown>
+            {/* toggle */}
             <Dropdown.Toggle className="mr-2" variant="primary" id="dropdown-basic">
-              Iniciar Sesión
+              Iniciar Sesión<i className="fas fa-user ml-2"></i>
             </Dropdown.Toggle>
+            {/* login form */}
             <Dropdown.Menu className="bg-light">
               <div className="px-4 py-3">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -56,18 +41,21 @@ function MyNavbar() {
                   <Form.Control type="password" placeholder="Contraseña" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicChecbox">
-                  <Form.Check type="checkbox" label="Recuérdame" />
                 </Form.Group>
                 <Button variant="primary" type="submit">Entrar</Button>
               </div>
+              {/* sign up */}
+              <Dropdown.Divider className="mt-2 mb-3" />
+              <Dropdown.Item>Olvidé mi contraseña</Dropdown.Item>
+              <Dropdown.Item>Regístrate con nosotros</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
 
-          {/* carrito */}
-          <Button variant="outline-primary">
+          {/* cart button */}
+          <Button href="/cart" variant="outline-primary">
             Carrito
             <i className="fas fa-shopping-cart ml-2"></i>
-            <Badge variant="primary" className="ml-2">0</Badge>
+            <Badge variant="primary">0</Badge>
           </Button>
 
         </Form>
