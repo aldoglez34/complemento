@@ -4,5 +4,17 @@ import "./index.css";
 import ReactRouter from "./ReactRouter";
 import registerServiceWorker from "./registerServiceWorker";
 
-ReactDOM.render(<ReactRouter />, document.getElementById("root"));
+// redux stuff
+import { createStore } from "redux";
+import allReducers from "./reducers";
+import { Provider } from "react-redux";
+const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+ReactDOM.render(
+    <Provider store={store}>
+        <ReactRouter />
+    </Provider>
+    , document.getElementById("root")
+);
+
 registerServiceWorker();

@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "react-bootstrap/Image";
 import Form from "react-bootstrap/Form";
@@ -7,22 +8,21 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 
 function MyNavbar() {
+
+  const counter = useSelector(state => state.cart);
+
   return (
 
     <Navbar bg="white" expand="md">
-
       {/* logo */}
       <Navbar.Brand className="mr-auto" href="/home">
         <Image src="/images/logo.png" alt="logo" fluid />
       </Navbar.Brand>
-
       {/* navbar toggle */}
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-
         {/* login dropdown and cart button */}
         <Form className="ml-auto" inline>
-
           {/* begins dropdown */}
           <Dropdown>
             {/* toggle */}
@@ -50,16 +50,13 @@ function MyNavbar() {
               <Dropdown.Item>Regístrate con nosotros</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-
           {/* cart button */}
           <Button href="/cart" variant="outline-primary">
             Carrito
             <i className="fas fa-shopping-cart ml-2"></i>
-            <Badge variant="primary">0</Badge>
+            <Badge variant="primary">{counter}</Badge>
           </Button>
-
         </Form>
-
       </Navbar.Collapse>
     </Navbar>
 

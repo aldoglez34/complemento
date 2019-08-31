@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { useSelector, useDispatch } from "reat-redux";
+import { increment, decrement } from "./actions";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
 import Row from "react-bootstrap/Row";
@@ -25,8 +27,6 @@ const styles = {
 
 class Store extends Component {
   state = {
-    // breadcrum
-    items: [{ item: "Inicio", link: "/store" }],
     // categories
     categories: [],
     selectedCategoryId: 1,
@@ -36,8 +36,19 @@ class Store extends Component {
     // products
     products: [],
     // modal
-    showModal: false
+    showModal: false,
+    // cart
+    cartCounter: 0
   };
+
+  getCartCounter = () => {
+    let counter = localStorage.getItem("cn_counter");
+    if (!counter) {
+      localStorage.setItem("cn_counter", 0);
+    } else {
+      this.setState({ cartCounter: localStorage.getItem("cn_counter") });
+    }
+  }
 
   loadCategories = () => {
     API.loadCategories()
@@ -56,6 +67,7 @@ class Store extends Component {
   };
 
   componentDidMount() {
+    this.getCartCounter();
     this.loadCategories();
     this.sufferingsByCategory(this.state.selectedCategoryId);
     let data = {};
@@ -107,6 +119,20 @@ class Store extends Component {
       this.getProducts(data);
     });
   };
+
+  handleAddToCart = data => {
+    // show modal with the name of the product selected
+    this.showModal(data.productName);
+    // get the counter and increase it
+    let counter = localStorage.getItem("cn_counter");
+    counter++;
+    // save the new item
+    localStorage.setItem("cn_item" + counter, data.productId);
+    // set the increased counter back in the local storage
+    localStorage.setItem("cn_counter", counter);
+    // update the counter in the state
+    this.setState({ cartCounter: counter });
+  }
 
   showModal = name => this.setState({ productSelected: name }, () => this.setState({ showModal: true }));
   closeModal = () => this.setState({ showModal: false });
@@ -259,7 +285,12 @@ class Store extends Component {
                           {/* <Card.Title>Card Title</Card.Title> */}
                           <Card.Text><strong>{"$" + product.price + " MXN"}</strong></Card.Text>
                           <Card.Text>{product.content}</Card.Text>
-                          <Button variant="outline-primary" onClick={() => this.showModal(product.name)}>
+                          <Button variant="outline-primary" onClick={() => {
+                            let data = {};
+                            data.productName = product.name;
+                            data.productId = product.productId;
+                            this.handleAddToCart(data)
+                          }}>
                             Agregar<i className="fas fa-shopping-cart ml-2" />
                           </Button>
                         </Card.Body>
@@ -280,7 +311,7 @@ class Store extends Component {
           <Modal.Header closeButton>
             <Modal.Title>Éxito.</Modal.Title>
           </Modal.Header>
-          <Modal.Body>El producto <strong>{this.state.productSelected}</strong> ha sido agregado a tu carrito.</Modal.Body>
+          <Modal.Body>El producto <strong>{this.state.productSelected}</strong> ha sido agregado exitosamente a tu carrito.</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.closeModal}>Cerrar</Button>
             <Button variant="primary" href="/cart">Ir al carrito <i className="fas fa-shopping-cart ml-2" /></Button>
@@ -290,7 +321,7 @@ class Store extends Component {
       </Layout>
     );
   }
+
 }
 
 export default Store;
-
