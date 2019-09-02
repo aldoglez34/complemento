@@ -49,11 +49,20 @@ class Product extends Component {
     }
 
     componentDidMount() {
+        console.log("component mounted");
         this.getProductDetails();
         this.getIngredients();
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        console.log("component updated");
+        // console.log(prevProps, prevState);
+    }
+
     render() {
+
+        console.log("rendering component");
+
         return (
 
             <Layout>

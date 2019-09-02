@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { useSelector, useDispatch } from "reat-redux";
-import { increment, decrement } from "./actions";
+// import { useSelector, useDispatch } from "react-redux";
+// import { addProducts } from "./actions";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
 import Row from "react-bootstrap/Row";
@@ -67,6 +67,7 @@ class Store extends Component {
   };
 
   componentDidMount() {
+    console.log("component mounted");
     this.getCartCounter();
     this.loadCategories();
     this.sufferingsByCategory(this.state.selectedCategoryId);
@@ -74,6 +75,11 @@ class Store extends Component {
     data.catId = this.state.selectedCategoryId;
     data.suff = this.state.selectedSuffering;
     this.getProducts(data);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("component updated");
+    // console.log(prevProps, prevState);
   }
 
   getProducts = data => {
@@ -138,6 +144,9 @@ class Store extends Component {
   closeModal = () => this.setState({ showModal: false });
 
   render() {
+
+    console.log("rendering component");
+
     return (
       <Layout>
 

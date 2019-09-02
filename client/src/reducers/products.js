@@ -1,10 +1,10 @@
 
-const productsReducer = (state = null, action) => {
+const productsReducer = (state = 10, action) => {
 
     switch (action.type) {
 
         case "ADD_PRODUCTS":
-            return action.payload;
+            return state - 1;
 
         default:
             return state;
