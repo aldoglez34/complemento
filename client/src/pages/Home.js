@@ -2,7 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../components/Layout";
 
 const styles = {
   header: {
@@ -100,6 +100,7 @@ const Home = () => {
         </Row>
 
       </Container>
+
     </Layout>
 
   );

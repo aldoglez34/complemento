@@ -5,10 +5,10 @@ import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Layout from "../../components/Layout/Layout";
-import API from "../../utils/API";
+import Layout from "../components/Layout";
+import API from "../utils/API";
 
-class Product extends Component {
+class ProductDetails extends Component {
     state = {
         name: null,
         content: null,
@@ -178,4 +178,4 @@ class Product extends Component {
 
 };
 
-export default Product;
+export default ProductDetails;
