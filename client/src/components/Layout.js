@@ -1,6 +1,6 @@
 import React from "react";
-import MyNavbar from "../MyNavbar/MyNavbar";
-import MyFooter from "../MyFooter/MyFooter";
+import MyNavbar from "./MyNavbar";
+import MyFooter from "./MyFooter";
 
 const Layout = (props) => (
 

@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../components/Layout";
 
 class Cart extends Component {
     state = {
