@@ -9,6 +9,7 @@ import Layout from "../components/Layout";
 import API from "../utils/API";
 
 class ProductDetails extends Component {
+
     state = {
         name: null,
         content: null,
@@ -49,19 +50,17 @@ class ProductDetails extends Component {
     }
 
     componentDidMount() {
-        console.log("component mounted");
+        console.log("component mounted - productdetails");
         this.getProductDetails();
         this.getIngredients();
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log("component updated");
+        console.log("component updated - productdetails");
         // console.log(prevProps, prevState);
     }
 
     render() {
-
-        console.log("rendering component");
 
         return (
 
