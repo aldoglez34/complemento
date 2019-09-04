@@ -18,6 +18,8 @@ const storeRoutes = require("./routes/storeRoutes");
 app.use("/api/store", storeRoutes);
 const productRoutes = require("./routes/productRoutes");
 app.use("/api/product", productRoutes);
+const homeRoutes = require("./routes/homeRoutes");
+app.use("/api/home", homeRoutes);
 
 // Send every other request to the React app
 // Define any API routes before this runs

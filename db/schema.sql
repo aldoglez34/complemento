@@ -61,6 +61,9 @@ DROP TABLE IF EXISTS complement_db.onSale;
 CREATE TABLE discounts (
   discountId INT NOT NULL AUTO_INCREMENT,
   productId INT NOT NULL,
+  name VARCHAR(250) NOT NULL,
+  photo VARCHAR(250) NULL,
+  content VARCHAR(250) NULL,
   price DECIMAL(10,2) NOT NULL,
   percentage INT NULL,
   newPrice DECIMAL(10,2) NOT NULL,

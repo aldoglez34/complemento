@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const model = require("../models");
 
-
 // get product
 // matches with /api/product/details/:productId
 router.get("/details/:productId", function (req, res) {
@@ -9,9 +8,13 @@ router.get("/details/:productId", function (req, res) {
         where: {
             productId: req.params.productId
         }
-    }).then(function (data) {
-        res.json(data);
-    });
+    })
+        .then(function (data) {
+            res.json(data);
+        })
+        .catch(function (err) {
+            res.send(err);
+        });
 });
 
 // get ingredients
@@ -22,20 +25,24 @@ router.get("/details/ingredients/:productId", function (req, res) {
         where: {
             productId: req.params.productId
         }
-    }).then(function (data) {
-        let scientificIngredients = [];
-        let commonIngredients = [];
-        data.forEach(function (ing) {
-            if (ing.commonName)
-                commonIngredients.push(ing.commonName);
-            if (ing.scientificName)
-                scientificIngredients.push(ing.scientificName);
+    })
+        .then(function (data) {
+            let scientificIngredients = [];
+            let commonIngredients = [];
+            data.forEach(function (ing) {
+                if (ing.commonName)
+                    commonIngredients.push(ing.commonName);
+                if (ing.scientificName)
+                    scientificIngredients.push(ing.scientificName);
+            });
+            let toFront = {};
+            toFront.scientificIngredients = scientificIngredients;
+            toFront.commonIngredients = commonIngredients;
+            res.json(toFront);
+        })
+        .catch(function (err) {
+            res.send(err);
         });
-        let toFront = {};
-        toFront.scientificIngredients = scientificIngredients;
-        toFront.commonIngredients = commonIngredients;
-        res.json(toFront);
-    });
 });
 
 
