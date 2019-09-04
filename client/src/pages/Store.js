@@ -26,7 +26,6 @@ const styles = {
 };
 
 class Store extends Component {
-
   state = {
     // categories
     categories: [],

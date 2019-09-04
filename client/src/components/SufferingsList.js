@@ -40,13 +40,16 @@ function SufferingsList(props) {
                                         key={suff.name}
                                         className="list-group-item list-group-item-action border-0 rounded-0"
                                         onClick={() => props.handleChangeSuffering(suff.name)}>
-                                        {suff.name} <span className="badge badge-secondary ml-2">{suff.qty}</span>
+                                        {suff.name} <span className="badge badge-primary ml-2">{suff.qty}</span>
                                     </button>
                                 );
                             }
                         })
                     ) : (
-                            <Spinner animation="border" role="status" variant="success" />
+                            <div className="text-center">
+                                <Spinner className="my-3" animation="border" role="status" variant="success" />
+                            </div>
+
                         )}
                 </div>
             </Card.Body>

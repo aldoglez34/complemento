@@ -20,7 +20,7 @@ function ProductsList(props) {
                             style={{ width: "9.7rem" }}
                             key={product.productId}
                             className="shadow-sm mt-2 mb-4 mx-2">
-                            <Card.Header>
+                            <Card.Header className="text-center">
                                 <a href={"/product/" + product.productId}>{product.name}</a>
                             </Card.Header>
                             {product.photo ? (
@@ -40,7 +40,7 @@ function ProductsList(props) {
                             <Card.Body>
                                 <Card.Text><strong>{"$" + product.price + " MXN"}</strong></Card.Text>
                                 <Card.Text>{product.content}</Card.Text>
-                                <Button variant="outline-primary"
+                                <Button variant="outline-primary" block
                                     onClick={() => {
                                         let data = {};
                                         data.productName = product.name;

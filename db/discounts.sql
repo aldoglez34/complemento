@@ -1,0 +1,10 @@
+INSERT INTO complement_db.discounts (discountId, productId, price, percentage, newPrice) VALUES (1, 50, 200, 50, 100);
+INSERT INTO complement_db.discounts (discountId, productId, price, percentage, newPrice) VALUES (2, 55, 230, 50, 115);
+INSERT INTO complement_db.discounts (discountId, productId, price, percentage, newPrice) VALUES (3, 63, 250, 50, 125);
+INSERT INTO complement_db.discounts (discountId, productId, price, percentage, newPrice) VALUES (4, 78, 150, 50, 75);
+INSERT INTO complement_db.discounts (discountId, productId, price, percentage, newPrice) VALUES (5, 111, 350, 50, 175);
+INSERT INTO complement_db.discounts (discountId, productId, price, percentage, newPrice) VALUES (6, 118, 350, 50, 175);
+INSERT INTO complement_db.discounts (discountId, productId, price, percentage, newPrice) VALUES (7, 131, 200, 50, 100);
+INSERT INTO complement_db.discounts (discountId, productId, price, percentage, newPrice) VALUES (8, 149, 1100, 50, 550);
+INSERT INTO complement_db.discounts (discountId, productId, price, percentage, newPrice) VALUES (9, 166, 250, 50, 125);
+INSERT INTO complement_db.discounts (discountId, productId, price, percentage, newPrice) VALUES (10, 177, 320, 50, 160);
