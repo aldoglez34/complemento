@@ -10,12 +10,13 @@ import Layout from "../components/Layout";
 import ProductsList from "../components/ProductsList";
 import CategoriesList from "../components/CategoriesList";
 import SufferingsList from "../components/SufferingsList";
+import ScrollButton from "../components/ScrollButton";
 import API from "../utils/API";
 
 const styles = {
   header: {
     backgroundImage: "url('images/bg-header-store.jpg')",
-    backgroundColor: "gray",
+    // backgroundColor: "gray",
     backgroundSize: "cover",
     backgroundBlendMode: "multiply"
   },
@@ -48,7 +49,7 @@ class Store extends Component {
     } else {
       this.setState({ cartCounter: localStorage.getItem("cn_counter") });
     }
-  }
+  };
 
   loadCategories = () => {
     API.loadCategories()
@@ -97,37 +98,43 @@ class Store extends Component {
   handleChangeCategory = cat => {
     // whenever the category changes
     // first change the cat in the state and set sufferings to ALL
-    this.setState({
-      selectedCategoryId: cat,
-      selectedSuffering: "Todos"
-    }, () => {
-      // then clear the sufferings in the state
-      // and then load all sufferings from the selected cat
-      this.setState({ sufferings: [] },
-        () => { this.sufferingsByCategory(this.state.selectedCategoryId); });
-      // next clear the products
-      // and get all the products from that category and ALL sufferings
-      // (that is because the default when changing a category is Todos)
-      this.setState({ products: [] },
-        () => {
+    this.setState(
+      {
+        selectedCategoryId: cat,
+        selectedSuffering: "Todos"
+      },
+      () => {
+        // then clear the sufferings in the state
+        // and then load all sufferings from the selected cat
+        this.setState({ sufferings: [] }, () => {
+          this.sufferingsByCategory(this.state.selectedCategoryId);
+        });
+        // next clear the products
+        // and get all the products from that category and ALL sufferings
+        // (that is because the default when changing a category is Todos)
+        this.setState({ products: [] }, () => {
           let data = {};
           data.catId = this.state.selectedCategoryId;
           data.suff = "Todos";
           this.getProducts(data);
         });
-    });
+      }
+    );
   };
 
   handleChangeSuffering = suff => {
-    this.setState({
-      selectedSuffering: suff,
-      products: []
-    }, () => {
-      let data = {};
-      data.catId = this.state.selectedCategoryId;
-      data.suff = this.state.selectedSuffering;
-      this.getProducts(data);
-    });
+    this.setState(
+      {
+        selectedSuffering: suff,
+        products: []
+      },
+      () => {
+        let data = {};
+        data.catId = this.state.selectedCategoryId;
+        data.suff = this.state.selectedSuffering;
+        this.getProducts(data);
+      }
+    );
   };
 
   handleAddToCart = data => {
@@ -142,19 +149,21 @@ class Store extends Component {
     localStorage.setItem("cn_counter", counter);
     // update the counter in the state
     this.setState({ cartCounter: counter });
-  }
+  };
 
-  showModal = name => this.setState({ productSelected: name }, () => this.setState({ showModal: true }));
+  showModal = name => {
+    this.setState({ productSelected: name }, () =>
+      this.setState({ showModal: true })
+    );
+  };
+
   closeModal = () => this.setState({ showModal: false });
 
   render() {
-
     console.log("rendering component - store");
 
     return (
-
       <Layout>
-
         <header className="py-5 mb-4" style={styles.header}>
           <div className="container h-100">
             <div className="row h-100 align-items-center">
@@ -174,7 +183,6 @@ class Store extends Component {
         </header>
 
         <Container fluid>
-
           {/* categories row */}
           <Row>
             <Col>
@@ -182,30 +190,32 @@ class Store extends Component {
               <CategoriesList
                 categories={this.state.categories}
                 selectedCategoryId={this.state.selectedCategoryId}
-                handleChangeCategory={this.handleChangeCategory} />
+                handleChangeCategory={this.handleChangeCategory}
+              />
             </Col>
           </Row>
 
           {/* sufferings and products row */}
           <Row className="d-flex flex-row my-4">
-
             {/* left column */}
             <Col xs={12} md={4}>
               {/* sufferings list */}
               <SufferingsList
                 sufferings={this.state.sufferings}
                 selectedSuffering={this.state.selectedSuffering}
-                handleChangeSuffering={this.handleChangeSuffering} />
+                handleChangeSuffering={this.handleChangeSuffering}
+              />
             </Col>
 
             {/* right column */}
             <Col xs={12} md={8}>
               {/* products list */}
-              <ProductsList products={this.state.products} handleAddToCart={this.handleAddToCart} />
+              <ProductsList
+                products={this.state.products}
+                handleAddToCart={this.handleAddToCart}
+              />
             </Col>
-
           </Row>
-
         </Container>
 
         {/* add new product modal */}
@@ -213,18 +223,23 @@ class Store extends Component {
           <Modal.Header closeButton>
             <Modal.Title>Éxito.</Modal.Title>
           </Modal.Header>
-          <Modal.Body>El producto <strong>{this.state.productSelected}</strong> ha sido agregado exitosamente a tu carrito.</Modal.Body>
+          <Modal.Body>
+            El producto <strong>{this.state.productSelected}</strong> ha sido
+            agregado exitosamente a tu carrito.
+          </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={this.closeModal}>Cerrar</Button>
-            <Button variant="primary" href="/cart">Ir al carrito <i className="fas fa-shopping-cart ml-2" /></Button>
+            <Button variant="secondary" onClick={this.closeModal}>
+              Cerrar
+            </Button>
+            <Button variant="primary" href="/cart">
+              Ir al carrito <i className="fas fa-shopping-cart ml-2" />
+            </Button>
           </Modal.Footer>
         </Modal>
-
+        <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
       </Layout>
-
     );
   }
-
 }
 
 export default Store;
