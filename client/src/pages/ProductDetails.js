@@ -86,7 +86,7 @@ class ProductDetails extends Component {
                             <h2 className="text-dark mt-5 mb-2"><strong>{this.state.name}</strong></h2>
                             <p className="lead my-3 text-dark">{this.state.content}</p>
                             <h3 className="mb-3 text-dark">{"$" + this.state.price + " MXN"}</h3>
-                            <Button size="lg" variant="outline-primary">
+                            <Button size="lg" variant="outline-primary" block>
                                 <i className="fas fa-shopping-cart mr-2" />Agregar
                           </Button>
                         </Col>

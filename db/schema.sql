@@ -48,12 +48,26 @@ CREATE TABLE products (
   dose LONGTEXT NULL,
   description LONGTEXT NULL,
   price DECIMAL(10,2) NOT NULL,
+  unitsSold INT NOT NULL,
   aditionalInfo VARCHAR(250) NULL,
   photo VARCHAR(250) NULL,
   createdAt DATE NULL,
   updatedAt DATE NULL,
   PRIMARY KEY (productId),
   FOREIGN KEY (categoryId) REFERENCES categories(categoryId)  
+);
+
+DROP TABLE IF EXISTS complement_db.onSale;
+CREATE TABLE discounts (
+  discountId INT NOT NULL AUTO_INCREMENT,
+  productId INT NOT NULL,
+  price DECIMAL(10,2) NOT NULL,
+  percentage INT NULL,
+  newPrice DECIMAL(10,2) NOT NULL,
+  createdAt DATE NULL,
+  updatedAt DATE NULL,
+  PRIMARY KEY (discountId),
+  FOREIGN KEY (productId) REFERENCES products(productId)
 );
 
 DROP TABLE IF EXISTS complement_db.clientsOrders;

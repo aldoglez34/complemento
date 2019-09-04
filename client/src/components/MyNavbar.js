@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "react-bootstrap/Image";
 import Form from "react-bootstrap/Form";
@@ -7,9 +6,15 @@ import Badge from "react-bootstrap/Badge";
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 
-function MyNavbar() {
+function getCartCounter() {
+  let counter = localStorage.getItem("cn_counter");
+  if (!counter) {
+    localStorage.setItem("cn_counter", 0);
+  }
+  return (<span>{counter}</span>);
+}
 
-  const counter = useSelector(state => state.cart);
+function MyNavbar() {
 
   return (
 
@@ -52,9 +57,8 @@ function MyNavbar() {
           </Dropdown>
           {/* cart button */}
           <Button href="/cart" variant="outline-primary">
-            Carrito
-            <i className="fas fa-shopping-cart ml-2"></i>
-            <Badge variant="primary">{counter}</Badge>
+            Mi Carrito<i className="fas fa-shopping-cart ml-2" />
+            <Badge variant="warning">{getCartCounter()}</Badge>
           </Button>
         </Form>
       </Navbar.Collapse>
