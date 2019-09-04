@@ -15,7 +15,7 @@ function CategoriesList(props) {
 
         <Card className="my-2 shadow-sm">
 
-            <Card.Header className="text-success" as="h5">
+            <Card.Header className="text-primary" as="h5">
                 <strong>Categorías</strong>
             </Card.Header>
 

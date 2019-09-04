@@ -15,7 +15,7 @@ function SufferingsList(props) {
 
         <Card className="my-2 shadow-sm">
 
-            <Card.Header className="text-success" as="h5">
+            <Card.Header className="text-primary" as="h5">
                 <strong>Padecimientos</strong>
             </Card.Header>
 
