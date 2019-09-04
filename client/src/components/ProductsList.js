@@ -10,8 +10,8 @@ ProductsList.propTypes = {
 }
 
 function ProductsList(props) {
-
     return (
+
         <div className="d-flex flex-wrap justify-content-center">
             {props.products.length ? (
                 props.products.map(product => {
@@ -34,8 +34,7 @@ function ProductsList(props) {
                                         variant="top"
                                         height="250"
                                         className="rounded-0"
-                                        src={"/images/products/placeholder.jpg"}
-                                    />
+                                        src={"/images/products/placeholder.jpg"} />
                                 )}
                             <Card.Body>
                                 <Card.Text><strong>{"$" + product.price + " MXN"}</strong></Card.Text>
@@ -55,8 +54,8 @@ function ProductsList(props) {
                     <Spinner className="text-center" animation="border" role="status" variant="success" />
                 )}
         </div>
-    );
 
+    );
 }
 
 export default ProductsList;

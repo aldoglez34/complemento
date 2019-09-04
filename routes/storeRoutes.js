@@ -59,11 +59,15 @@ router.get("/sufferings/:categoryId", function (req, res) {
     plain: false,
     where: { categoryId: req.params.categoryId },
     order: ["name"]
-  }).then(function (data) {
-    let uniqueSufferings = deleteDuplicates(data);
-    let toFront = countAppearances(uniqueSufferings, data);
-    res.json(toFront);
-  });
+  })
+    .then(function (data) {
+      let uniqueSufferings = deleteDuplicates(data);
+      let toFront = countAppearances(uniqueSufferings, data);
+      res.json(toFront);
+    })
+    .catch(function (err) {
+      res.send(err);
+    });
 });
 
 // ------------------------------------------------------------
@@ -80,9 +84,13 @@ router.get("/products/:categoryId/:suffering", function (req, res) {
       where: {
         categoryId: req.params.categoryId
       }
-    }).then(function (data) {
-      res.json(data);
-    });
+    })
+      .then(function (data) {
+        res.json(data);
+      })
+      .catch(function (err) {
+        res.send(err);
+      });
   } else {
     // first create an association
     model.Product.hasMany(model.Suffering, { foreignKey: "productId" });
@@ -95,9 +103,13 @@ router.get("/products/:categoryId/:suffering", function (req, res) {
           categoryId: req.params.categoryId
         }
       }]
-    }).then(function (data) {
-      res.json(data);
-    });
+    })
+      .then(function (data) {
+        res.json(data);
+      })
+      .catch(function (err) {
+        res.send(err);
+      });
   }
 
 });
