@@ -45,5 +45,4 @@ router.get("/details/ingredients/:productId", function (req, res) {
         });
 });
 
-
 module.exports = router;

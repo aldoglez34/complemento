@@ -19,15 +19,19 @@ function MyNavbar() {
   return (
 
     <Navbar bg="white" expand="md">
+
       {/* logo */}
       <Navbar.Brand className="mr-auto" href="/home">
         <Image src="/images/logo.png" alt="logo" fluid />
       </Navbar.Brand>
+
       {/* navbar toggle */}
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
+      <Navbar.Toggle aria-controls="top-navbar" />
+
+      <Navbar.Collapse id="top-navbar">
+
         {/* login dropdown and cart button */}
-        <Form className="ml-auto" inline>
+        <Form className="d-flex justify-content-center ml-md-auto pt-3 pt-md-0" inline>
           {/* begins dropdown */}
           <Dropdown>
             {/* toggle */}
@@ -55,13 +59,17 @@ function MyNavbar() {
               <Dropdown.Item>Regístrate con nosotros</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
+
           {/* cart button */}
           <Button href="/cart" variant="outline-primary">
             Mi Carrito<i className="fas fa-shopping-cart ml-2" />
             <Badge variant="warning">{getCartCounter()}</Badge>
           </Button>
+
         </Form>
+
       </Navbar.Collapse>
+
     </Navbar>
 
   );

@@ -4,15 +4,14 @@ import Spinner from "react-bootstrap/Spinner";
 import ProductCard from "./ProductCard";
 
 ProductsList.propTypes = {
-  products: PropTypes.array.isRequired,
-  handleAddToCart: PropTypes.func.isRequired
+  productsArr: PropTypes.array.isRequired
 };
 
 function ProductsList(props) {
   return (
     <div className="d-flex flex-wrap justify-content-center">
-      {props.products.length ? (
-        props.products.map(product => {
+      {props.productsArr.length ? (
+        props.productsArr.map(product => {
           return <ProductCard key={product.productId} product={product} />;
         })
       ) : (
