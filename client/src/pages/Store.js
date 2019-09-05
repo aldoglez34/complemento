@@ -3,9 +3,7 @@ import React, { Component } from "react";
 // import { addProducts } from "./actions";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
-import Modal from "react-bootstrap/Modal";
 import Layout from "../components/Layout";
 import ProductsList from "../components/ProductsList";
 import CategoriesList from "../components/CategoriesList";
@@ -35,20 +33,7 @@ class Store extends Component {
     sufferings: [],
     selectedSuffering: "Todos",
     // products
-    products: [],
-    // modal
-    showModal: false,
-    // cart
-    cartCounter: 0
-  };
-
-  getCartCounter = () => {
-    let counter = localStorage.getItem("cn_counter");
-    if (!counter) {
-      localStorage.setItem("cn_counter", 0);
-    } else {
-      this.setState({ cartCounter: localStorage.getItem("cn_counter") });
-    }
+    products: []
   };
 
   loadCategories = () => {
@@ -68,8 +53,7 @@ class Store extends Component {
   };
 
   componentDidMount() {
-    console.log("component mounted - store");
-    this.getCartCounter();
+    console.log("component mounted")
     this.loadCategories();
     this.sufferingsByCategory(this.state.selectedCategoryId);
     let data = {};
@@ -79,12 +63,7 @@ class Store extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("component updated - store");
-    // console.log(prevProps, prevState);
-  }
-
-  componentWillUnmount() {
-    console.log("component unmounted - store");
+    console.log("component updated");
   }
 
   getProducts = data => {
@@ -93,7 +72,7 @@ class Store extends Component {
         this.setState({ products: res.data });
       })
       .catch(err => console.log(err));
-  };
+  }
 
   handleChangeCategory = cat => {
     // whenever the category changes
@@ -120,7 +99,7 @@ class Store extends Component {
         });
       }
     );
-  };
+  }
 
   handleChangeSuffering = suff => {
     this.setState(
@@ -135,33 +114,10 @@ class Store extends Component {
         this.getProducts(data);
       }
     );
-  };
-
-  handleAddToCart = data => {
-    // show modal with the name of the product selected
-    this.showModal(data.productName);
-    // get the counter and increase it
-    let counter = localStorage.getItem("cn_counter");
-    counter++;
-    // save the new item
-    localStorage.setItem("cn_item" + counter, data.productId);
-    // set the increased counter back in the local storage
-    localStorage.setItem("cn_counter", counter);
-    // update the counter in the state
-    this.setState({ cartCounter: counter });
-  };
-
-  showModal = name => {
-    this.setState({ productSelected: name }, () =>
-      this.setState({ showModal: true })
-    );
-  };
-
-  closeModal = () => this.setState({ showModal: false });
+  }
 
   render() {
-    console.log("rendering component - store");
-
+    console.log("rendering component")
     return (
       <Layout>
         <header className="py-5 mb-4" style={styles.header}>
@@ -211,35 +167,17 @@ class Store extends Component {
             <Col xs={12} md={8}>
               {/* products list */}
               <ProductsList
-                products={this.state.products}
-                handleAddToCart={this.handleAddToCart}
-              />
+                productsArr={this.state.products} />
             </Col>
           </Row>
         </Container>
 
-        {/* add new product modal */}
-        <Modal show={this.state.showModal} onHide={this.closeModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Éxito.</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            El producto <strong>{this.state.productSelected}</strong> ha sido
-            agregado exitosamente a tu carrito.
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.closeModal}>
-              Cerrar
-            </Button>
-            <Button variant="primary" href="/cart">
-              Ir al carrito <i className="fas fa-shopping-cart ml-2" />
-            </Button>
-          </Modal.Footer>
-        </Modal>
         <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
+
       </Layout>
     );
   }
+
 }
 
 export default Store;

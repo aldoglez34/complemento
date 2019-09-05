@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Layout from "../components/Layout";
 import API from "../utils/API";
 import ProductCard from "../components/ProductCard";
+import ScrollButton from "../components/ScrollButton";
 
 const styles = {
   header: {
@@ -23,9 +24,10 @@ class Home extends Component {
   };
 
   getDiscounts = () => {
+    console.log("getdiscounts started")
     API.getDiscounts()
       .then(res => {
-        this.setState({ discounts: res.data });
+        this.setState({ discounts: res.data }, () => console.log("getdiscounts finished"));
       })
       .catch(err => {
         console.log(err);
@@ -33,9 +35,10 @@ class Home extends Component {
   };
 
   getBestSellers = () => {
+    console.log("getbestsellers started")
     API.getBestSellers()
       .then(res => {
-        this.setState({ bestSellers: res.data });
+        this.setState({ bestSellers: res.data }, () => console.log("getbestsellers finished"));
       })
       .catch(err => {
         console.log(err);
@@ -43,19 +46,16 @@ class Home extends Component {
   };
 
   componentDidMount() {
+    console.log("component mounted");
     this.getDiscounts();
     this.getBestSellers();
-    console.log("component mounted - home");
-  }
-
-  componentDidUpdate() {
-    console.log("component updated - home");
   }
 
   render() {
-    console.log("rendering component - home");
+    console.log("rendering component");
     return (
       <Layout>
+
         <header className="py-5 mb-5" style={styles.header}>
           <div className="container h-100">
             <div className="row h-100 align-items-center">
@@ -136,14 +136,14 @@ class Home extends Component {
                     );
                   })
                 ) : (
-                  <div className="text-center my-3">
-                    <Spinner
-                      animation="border"
-                      role="status"
-                      variant="success"
-                    />
-                  </div>
-                )}
+                    <div className="text-center my-3">
+                      <Spinner
+                        animation="border"
+                        role="status"
+                        variant="success"
+                      />
+                    </div>
+                  )}
               </div>
             </Col>
           </Row>
@@ -158,18 +158,22 @@ class Home extends Component {
                     return <ProductCard key={bs.productId} product={bs} />;
                   })
                 ) : (
-                  <div className="text-center my-3">
-                    <Spinner
-                      animation="border"
-                      role="status"
-                      variant="success"
-                    />
-                  </div>
-                )}
+                    <div className="text-center my-3">
+                      <Spinner
+                        animation="border"
+                        role="status"
+                        variant="success"
+                      />
+                    </div>
+                  )}
               </div>
             </Col>
           </Row>
+
         </Container>
+
+        <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
+
       </Layout>
     );
   }

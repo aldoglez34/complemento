@@ -20,8 +20,7 @@ const itemExists = (productId, arr) => {
 
 class Cart extends Component {
     state = {
-        cart: [],
-        showOptions: false
+        cart: []
     }
 
     buildCart = () => {
@@ -47,7 +46,7 @@ class Cart extends Component {
                 obj.productId = productId;
                 obj.qty = 1;
 
-                // insert the productId and wty in the fullCart array
+                // insert the productId and qty in the fullCart array
                 // and if it already exists, add 1 to it
                 if (itemExists(productId, fullCart)) {
                     // if this returns true, it means it exists
@@ -66,48 +65,28 @@ class Cart extends Component {
 
         });
 
-        // build the cart
-        // wrap the whole proccess in a Promise
-        let tempCart = [];
-
-        let process = new Promise((resolve, reject) => {
-            fullCart.forEach((value, index, array) => {
-
-                // console.log(value);
-                API.getProductDetails(value.productId)
-                    .then(res => {
-                        let product = {};
-                        product.productId = res.data.productId;
-                        product.name = res.data.name;
-                        product.content = res.data.content;
-                        product.qty = value.qty;
-                        product.price = res.data.price;
-                        product.total = parseFloat(res.data.price) * value.qty;
-                        tempCart.push(product);
-                    })
-                    .catch(err => console.log(err));
-
-                if (index === array.length - 1) resolve();
-
-            });
-        });
-
-        // wait for the Promise to complete
-        process.then(() => {
-            // console.log(tempCart);
-            this.setState({ cart: tempCart });
-        });
-
+        // get the details of each item in the cart and push them into the state
+        fullCart.forEach(item => {
+            API.getProductDetails(item.productId)
+                .then(res => {
+                    let product = res.data;
+                    product.qty = item.qty;
+                    product.subtotal = parseFloat(parseFloat(product.price) * item.qty).toFixed(2);
+                    let tempArr = this.state.cart;
+                    tempArr.push(product);
+                    this.setState({ cart: tempArr });
+                })
+        })
 
     }
 
     componentDidMount() {
-        console.log("component mounted - cart")
+        console.log("component mounted")
         this.buildCart();
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log("component updated - cart")
+        console.log("component updated")
         // console.log(prevProps, prevState);
     }
 
@@ -122,61 +101,64 @@ class Cart extends Component {
                 </div>
 
                 <Container className="text-center my-4">
-                    <h2 className="text-center mb-3">-Mi Carrito-</h2>
+                    <h2 className="text-center mb-3">- Mi Carrito -</h2>
                     <Row>
-                        <Col md={{ span: 6, offset: 3 }}>
+                        <Col md={{ span: 8, offset: 2 }}>
 
-                            {/* cart */}
-                            <Table responsive>
-
-                                {/* headers */}
-                                <thead>
-                                    <tr>
-                                        <th>Producto</th>
-                                        <th>Contenido</th>
-                                        <th>Cantidad</th>
-                                        <th>Precio Unitario</th>
-                                        <th>Subtotal</th>
-                                    </tr>
-                                </thead>
-
-                                {/* products */}
-                                <tbody>
-
-                                    {(this.state.cart) ? (
-                                        this.state.cart.map(product => {
-                                            return (
-                                                <tr key={product.productId}>
-                                                    <td>{product.name}</td>
-                                                    <td>{product.content}</td>
-                                                    <td>{product.qty}</td>
-                                                    <td>{product.price}</td>
-                                                    <td>{product.total}</td>
-                                                </tr>
-                                            );
-                                        })
-                                    ) : (
+                            {(this.state.cart.length) ? (
+                                <div>
+                                    <Table className="table-striped" responsive>
+                                        <thead>
                                             <tr>
-                                                <td colSpan="5">No hay productos en tu carrito</td>
+                                                <th>Producto</th>
+                                                <th>Contenido</th>
+                                                <th>Cantidad</th>
+                                                <th>Precio Unitario</th>
+                                                <th>Subtotal</th>
                                             </tr>
-                                        )}
-
-                                </tbody>
-                            </Table>
+                                        </thead>
+                                        <tbody>
+                                            {this.state.cart.map(product => {
+                                                return (
+                                                    <tr key={product.productId}>
+                                                        <td className="text-left">{product.name}</td>
+                                                        <td className="text-left">{product.content}</td>
+                                                        <td>{product.qty}</td>
+                                                        <td className="text-right">{product.price}</td>
+                                                        <td className="text-right">{product.subtotal}</td>
+                                                    </tr>
+                                                );
+                                            })}
+                                        </tbody>
+                                    </Table>
+                                    <div>
+                                        <Button block variant="danger"><i className="fas fa-dollar-sign mr-2"></i>PAGAR</Button>
+                                    </div>
+                                    <div className="text-right">
+                                        <Button variant="link">Limpiar carrito</Button>
+                                    </div>
+                                </div>
+                            ) : (
+                                    <Table responsive>
+                                        <thead>
+                                            <tr>
+                                                <th>Producto</th>
+                                                <th>Contenido</th>
+                                                <th>Cantidad</th>
+                                                <th>Precio Unitario</th>
+                                                <th>Subtotal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td className="text-muted" colSpan="5"><em>Tu carrito está vacío</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </Table>
+                                )}
 
                         </Col>
                     </Row>
-
-                    {this.state.showOptions ? (
-                        <div>
-                            <Button variant="danger">Proceder con el pago <i className="fas fa-money-bill-wave ml-2"></i></Button>
-                            <div className="text-right">
-                                <Button variant="link">Limpiar carrito</Button>
-                            </div>
-                        </div>
-                    ) : (
-                            null
-                        )}
 
                 </Container>
             </Layout >
