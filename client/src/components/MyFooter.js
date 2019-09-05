@@ -36,8 +36,8 @@ function MyFooter() {
         </Row>
       </Container>
 
-      <Container className="mt-4">
-        <span className="text-white">Complemento Natural, 2019</span>
+      <Container className="py-2 mt-4">
+        <span className="text-white lead">Complemento Natural, 2019</span>
       </Container>
 
     </footer >

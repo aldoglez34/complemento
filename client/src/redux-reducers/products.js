@@ -1,23 +1,17 @@
+// reducers
 
-const productsReducer = (state = 10, action) => {
-
+const productsReducer = (state = [], action) => {
     switch (action.type) {
-
         case "SAVE_PRODUCTS":
-            return Object.assign({}, state, {
-                products: [
-                    ...state.products,
-                    {
-                        text: action.text,
-                        completed: false
-                    }
-                ]
-            })
+            return [
+                ...state,
+                {
+                    productList: action.productList
+                }
+            ]
         default:
             return state;
-
     };
-
 };
 
 export default productsReducer;

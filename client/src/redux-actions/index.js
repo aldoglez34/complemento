@@ -1,7 +1,8 @@
+// my actions for redux
 
-export const addProducts = (products) => {
+export const saveProducts = productList => {
     return {
-        type: "ADD_PRODUCTS",
-        products
+        type: "SAVE_PRODUCTS",
+        productList
     };
 };

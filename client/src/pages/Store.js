@@ -30,7 +30,7 @@ class Store extends Component {
     selectedSuffering: "Todos",
     // products
     products: []
-  };
+  }
 
   loadCategories = () => {
     API.loadCategories()
@@ -38,7 +38,7 @@ class Store extends Component {
         this.setState({ categories: res.data });
       })
       .catch(err => console.log(err));
-  };
+  }
 
   sufferingsByCategory = cat => {
     API.sufferingsByCategory(cat)
@@ -46,20 +46,15 @@ class Store extends Component {
         this.setState({ sufferings: res.data });
       })
       .catch(err => console.log(err));
-  };
+  }
 
   componentDidMount() {
-    console.log("component mounted")
     this.loadCategories();
     this.sufferingsByCategory(this.state.selectedCategoryId);
     let data = {};
     data.catId = this.state.selectedCategoryId;
     data.suff = this.state.selectedSuffering;
     this.getProducts(data);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log("component updated");
   }
 
   getProducts = data => {
@@ -113,9 +108,9 @@ class Store extends Component {
   }
 
   render() {
-    console.log("rendering component")
     return (
       <Layout>
+
         <header className="py-5 mb-4" style={styles.header}>
           <div className="container h-100">
             <div className="row h-100 align-items-center">
@@ -135,6 +130,7 @@ class Store extends Component {
         </header>
 
         <Container fluid>
+
           {/* categories row */}
           <Row>
             <Col>
@@ -155,8 +151,7 @@ class Store extends Component {
               <SufferingsList
                 sufferings={this.state.sufferings}
                 selectedSuffering={this.state.selectedSuffering}
-                handleChangeSuffering={this.handleChangeSuffering}
-              />
+                handleChangeSuffering={this.handleChangeSuffering} />
             </Col>
 
             {/* right column */}
@@ -173,7 +168,6 @@ class Store extends Component {
       </Layout>
     );
   }
-
 }
 
 export default Store;
