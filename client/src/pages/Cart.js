@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
+import { Container, Row, Col, Table, Button } from "react-bootstrap";
 import Layout from "../components/Layout";
 import API from "../utils/API";
 
