@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Container, Spinner, Row, Col } from "react-bootstrap";
+import { connect } from "react-redux";
+import { saveProducts } from "../redux-actions";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
 import ScrollButton from "../components/ScrollButton";
@@ -18,7 +20,7 @@ class Home extends Component {
   state = {
     discounts: [],
     bestSellers: []
-  };
+  }
 
   getDiscounts = () => {
     API.getDiscounts()
@@ -42,7 +44,9 @@ class Home extends Component {
 
   buildSearchBar() {
     API.getAllProducts()
-      .then(res => { console.log(res.data) })
+      .then(res => {
+        console.log(res.data)
+      })
       .catch(err => { console.log(err) });
   }
 
@@ -149,7 +153,7 @@ class Home extends Component {
             </Col>
           </Row>
           {/* row 3 best sellers */}
-          <Row>
+          <Row className="mb-5">
             <Col>
               <h2>Los más vendidos</h2>
               <hr />

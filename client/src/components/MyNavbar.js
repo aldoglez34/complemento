@@ -46,12 +46,12 @@ function MyNavbar() {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicChecbox">
                 </Form.Group>
-                <Button variant="primary" type="submit">Entrar</Button>
+                <Button className="mt-2" variant="primary" type="submit">Entrar</Button>
               </div>
               {/* sign up */}
               <Dropdown.Divider className="mt-2 mb-3" />
               <Dropdown.Item>Olvidé mi contraseña</Dropdown.Item>
-              <Dropdown.Item>Regístrate con nosotros</Dropdown.Item>
+              <Dropdown.Item href="signup">Regístrate con nosotros</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
 
