@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import Container from "react-bootstrap/Container";
-import Spinner from "react-bootstrap/Spinner";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Container, Spinner, Row, Col } from "react-bootstrap";
 import Layout from "../components/Layout";
-import API from "../utils/API";
 import ProductCard from "../components/ProductCard";
 import ScrollButton from "../components/ScrollButton";
+import API from "../utils/API";
 
 const styles = {
   header: {
@@ -24,35 +21,38 @@ class Home extends Component {
   };
 
   getDiscounts = () => {
-    console.log("getdiscounts started")
     API.getDiscounts()
       .then(res => {
-        this.setState({ discounts: res.data }, () => console.log("getdiscounts finished"));
+        this.setState({ discounts: res.data });
       })
       .catch(err => {
         console.log(err);
       });
-  };
+  }
 
   getBestSellers = () => {
-    console.log("getbestsellers started")
     API.getBestSellers()
       .then(res => {
-        this.setState({ bestSellers: res.data }, () => console.log("getbestsellers finished"));
+        this.setState({ bestSellers: res.data });
       })
       .catch(err => {
         console.log(err);
       });
-  };
+  }
+
+  buildSearchBar() {
+    API.getAllProducts()
+      .then(res => { console.log(res.data) })
+      .catch(err => { console.log(err) });
+  }
 
   componentDidMount() {
-    console.log("component mounted");
     this.getDiscounts();
     this.getBestSellers();
+    this.buildSearchBar();
   }
 
   render() {
-    console.log("rendering component");
     return (
       <Layout>
 
@@ -60,8 +60,8 @@ class Home extends Component {
           <div className="container h-100">
             <div className="row h-100 align-items-center">
               <div className="col-lg-12">
-                <h1 className="display-4 text-white mt-5 mb-2">
-                  Bienvenido a Complemento Natural
+                <h1 className="display-4 text-light mt-5 mb-2">
+                  Bienvenido a <em className="text-white">Complemento Natural</em>
                 </h1>
                 <p className="lead mb-4 text-light">
                   Somos una tienda en línea de medicina complementaria. Contamos
@@ -81,6 +81,7 @@ class Home extends Component {
         </header>
 
         <Container>
+          {/* row 1 about and contact info */}
           <Row>
             <Col md={8} className="mb-5">
               <h2>¿Quiénes Somos?</h2>
@@ -120,7 +121,7 @@ class Home extends Component {
               </address>
             </Col>
           </Row>
-
+          {/* row 2 latest discounts */}
           <Row className="mb-5">
             <Col>
               <h2>Últimas ofertas</h2>
@@ -147,7 +148,7 @@ class Home extends Component {
               </div>
             </Col>
           </Row>
-
+          {/* row 3 best sellers */}
           <Row>
             <Col>
               <h2>Los más vendidos</h2>
@@ -169,7 +170,6 @@ class Home extends Component {
               </div>
             </Col>
           </Row>
-
         </Container>
 
         <ScrollButton scrollStepInPx="50" delayInMs="16.66" />

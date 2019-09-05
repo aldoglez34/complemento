@@ -6,6 +6,10 @@ export default {
   // HOME
   // ---------------------------------------------------------------------------
 
+  getAllProducts: function () {
+    return axios.get("/api/home/products");
+  },
+
   getDiscounts: function () {
     return axios.get("/api/home/discounts");
   },

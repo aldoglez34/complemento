@@ -1,10 +1,5 @@
 import React from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Image from "react-bootstrap/Image";
-import Form from "react-bootstrap/Form";
-import Badge from "react-bootstrap/Badge";
-import Dropdown from "react-bootstrap/Dropdown";
-import Button from "react-bootstrap/Button";
+import { Navbar, Image, Form, Badge, Dropdown, Button } from "react-bootstrap";
 
 function getCartCounter() {
   let counter = localStorage.getItem("cn_counter");

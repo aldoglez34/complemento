@@ -3,9 +3,16 @@ const productsReducer = (state = 10, action) => {
 
     switch (action.type) {
 
-        case "ADD_PRODUCTS":
-            return state - 1;
-
+        case "SAVE_PRODUCTS":
+            return Object.assign({}, state, {
+                products: [
+                    ...state.products,
+                    {
+                        text: action.text,
+                        completed: false
+                    }
+                ]
+            })
         default:
             return state;
 

@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-// import { useSelector, useDispatch } from "react-redux";
-// import { addProducts } from "./actions";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Container, Row, Col } from "react-bootstrap";
 import Layout from "../components/Layout";
 import ProductsList from "../components/ProductsList";
 import CategoriesList from "../components/CategoriesList";

@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Accordion from "react-bootstrap/Accordion";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
+import { Container, Row, Col, Accordion, Card, Button } from "react-bootstrap";
 import Layout from "../components/Layout";
 import API from "../utils/API";
 
