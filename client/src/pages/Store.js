@@ -87,7 +87,7 @@ class Store extends Component {
           let data = {};
           data.catId = this.state.selectedCategoryId;
           data.suff = "Todos";
-          this.getProducts(data);
+          this.getStoreProducts(data);
         });
       }
     );
@@ -103,7 +103,7 @@ class Store extends Component {
         let data = {};
         data.catId = this.state.selectedCategoryId;
         data.suff = this.state.selectedSuffering;
-        this.getProducts(data);
+        this.getStoreProducts(data);
       }
     );
   };

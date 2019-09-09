@@ -6,6 +6,7 @@ import Cart from "./pages/Cart";
 import SignUp from "./pages/SignUp";
 import NoMatch from "./pages/NoMatch";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Questions from "./pages/help/Questions";
 
 const ReactRouter = () => (
 	<Router>
@@ -16,6 +17,8 @@ const ReactRouter = () => (
 			<Route exact path="/cart" component={Cart} />
 			<Route exact path="/signup" component={SignUp} />
 			<Route exact path="/product/:productId" render={props => (<ProductDetails routeProps={props} />)} />
+
+			<Route exact path="/questions" component={Questions} />
 
 			<Route component={NoMatch} />
 		</Switch>

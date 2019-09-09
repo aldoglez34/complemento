@@ -19,7 +19,7 @@ function MyFooter() {
           <Col md={6} className="mt-3">
             <h5><strong className="text-white">Ayuda</strong></h5>
             <div>
-              <p className="mb-0"><a href="/home" className="text-light">Preguntas Frecuentes</a></p>
+              <p className="mb-0"><a href="/questions" className="text-light">Preguntas Frecuentes</a></p>
               <p className="mb-0"><a href="/home" className="text-light">Devoluciones</a></p>
               <p className="mb-0"><a href="/home" className="text-light">Quejas y sugerencias</a></p>
               <p className="mb-0"><a href="/home" className="text-light">Formas de pago</a></p>

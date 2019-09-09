@@ -19,6 +19,19 @@ class Cart extends Component {
         cart: []
     }
 
+    clearCart = () => {
+        // get all the items in the local storage and sort it in descending order
+        let ls = Object.keys(localStorage);
+        ls.forEach(item => {
+            if (item.substring(0, 7) === "cn_item") {
+                localStorage.removeItem(item)
+
+            }
+        })
+        localStorage.setItem("cn_counter", 0)
+        this.setState({ cart: [] })
+    }
+
     buildCart = () => {
 
         let fullCart = [];
@@ -94,9 +107,9 @@ class Cart extends Component {
     sumGrandTotal = () => {
         let sum = 0;
         this.state.cart.forEach(item => {
-            sum += parseFloat(item.subtotal)
+            sum += parseFloat(item.subtotal);
         })
-        return (<span>{sum}</span>)
+        return (<span>{parseFloat(sum).toFixed(2)}</span>)
     }
 
     componentDidMount() {
@@ -175,7 +188,7 @@ class Cart extends Component {
                                             <i className="fas fa-angle-double-right ml-2"></i></Button>
                                     </div>
                                     <div className="text-right">
-                                        <Button variant="link"><em>Limpiar carrito</em></Button>
+                                        <Button variant="link" onClick={() => this.clearCart()}><em>Limpiar carrito</em></Button>
                                     </div>
                                 </div>
                             ) : (
