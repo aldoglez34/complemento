@@ -15,13 +15,13 @@ function ProductsList(props) {
           return <ProductCard key={product.productId} product={product} />;
         })
       ) : (
-          <Spinner
-            className="text-center"
-            animation="border"
-            role="status"
-            variant="success"
-          />
-        )}
+        <Spinner
+          className="text-center"
+          animation="border"
+          role="status"
+          variant="success"
+        />
+      )}
     </div>
   );
 }

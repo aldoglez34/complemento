@@ -1,5 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
-
+module.exports = function(sequelize, DataTypes) {
   const Product = sequelize.define("Product", {
     productId: {
       type: DataTypes.INTEGER,
@@ -52,9 +51,15 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  Product.associate = function (models) {
+  Product.associate = function(models) {
     Product.hasOne(models.Category, {
       foreignKey: "categoryId"
+    });
+    Product.hasMany(models.Suffering, {
+      foreignKey: "productId"
+    });
+    Product.hasOne(models.Discount, {
+      foreignKey: "productId"
     });
   };
 

@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Define API routes here
+// api routes
 const storeRoutes = require("./routes/storeRoutes");
 app.use("/api/store", storeRoutes);
 const productRoutes = require("./routes/productRoutes");
@@ -27,7 +27,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-db.sequelize.sync().then(function () {
+db.sequelize.sync().then(function() {
   app.listen(PORT, () => {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
   });

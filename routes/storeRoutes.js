@@ -4,15 +4,15 @@ const model = require("../models");
 // ------------------------------------------------------------
 // get all categories
 // matches with /api/store/category/all
-router.get("/category/all", function (req, res) {
+router.get("/category/all", function(req, res) {
   model.Category.findAll({
     attributes: ["categoryId", "name"],
     order: ["categoryId"]
   })
-    .then(function (data) {
+    .then(function(data) {
       res.json(data);
     })
-    .catch(function (err) {
+    .catch(function(err) {
       res.send(err);
     });
 });
@@ -20,8 +20,7 @@ router.get("/category/all", function (req, res) {
 // ------------------------------------------------------------
 // get unique sufferings from determined category
 // matches with /api/store/sufferings/:categoryId
-
-let deleteDuplicates = function (array) {
+let deleteDuplicates = function(array) {
   let tempArray = [];
   array.forEach(element => {
     tempArray.push(element.name);
@@ -30,7 +29,7 @@ let deleteDuplicates = function (array) {
   return uniqueArray;
 };
 
-let countAppearances = function (uniqueArray, data) {
+let countAppearances = function(uniqueArray, data) {
   let finalArray = [];
   // handle all the sufferings
   let todos = {};
@@ -53,19 +52,19 @@ let countAppearances = function (uniqueArray, data) {
   return finalArray;
 };
 
-router.get("/sufferings/:categoryId", function (req, res) {
+router.get("/sufferings/:categoryId", function(req, res) {
   model.Suffering.findAll({
     attributes: ["name"],
     plain: false,
     where: { categoryId: req.params.categoryId },
     order: ["name"]
   })
-    .then(function (data) {
+    .then(function(data) {
       let uniqueSufferings = deleteDuplicates(data);
       let toFront = countAppearances(uniqueSufferings, data);
       res.json(toFront);
     })
-    .catch(function (err) {
+    .catch(function(err) {
       res.send(err);
     });
 });
@@ -73,45 +72,51 @@ router.get("/sufferings/:categoryId", function (req, res) {
 // ------------------------------------------------------------
 // get products by a category and a suffering
 // matches with /api/store/products/:categoryId/:suffering
-router.get("/products/:categoryId/:suffering", function (req, res) {
-
+router.get("/products/:categoryId/:suffering", function(req, res) {
   let suffering = req.params.suffering;
 
   if (suffering === "Todos") {
     // load all products without taking account of the suffering
-    // simple consult of select *
+    // simple consult of select * from
     model.Product.findAll({
       where: {
         categoryId: req.params.categoryId
-      }
+      },
+      include: [
+        {
+          model: model.Discount
+        }
+      ]
     })
-      .then(function (data) {
+      .then(function(data) {
         res.json(data);
       })
-      .catch(function (err) {
+      .catch(function(err) {
         res.send(err);
       });
   } else {
-    // first create an association
-    model.Product.hasMany(model.Suffering, { foreignKey: "productId" });
     // this is like a join
     model.Product.findAll({
-      include: [{
-        model: model.Suffering,
-        where: {
-          name: req.params.suffering,
-          categoryId: req.params.categoryId
+      include: [
+        {
+          model: model.Suffering,
+          where: {
+            name: req.params.suffering,
+            categoryId: req.params.categoryId
+          }
+        },
+        {
+          model: model.Discount
         }
-      }]
+      ]
     })
-      .then(function (data) {
+      .then(function(data) {
         res.json(data);
       })
-      .catch(function (err) {
+      .catch(function(err) {
         res.send(err);
       });
   }
-
 });
 
 module.exports = router;

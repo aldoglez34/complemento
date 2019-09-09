@@ -30,7 +30,7 @@ class Store extends Component {
     selectedSuffering: "Todos",
     // products
     products: []
-  }
+  };
 
   loadCategories = () => {
     API.loadCategories()
@@ -38,7 +38,7 @@ class Store extends Component {
         this.setState({ categories: res.data });
       })
       .catch(err => console.log(err));
-  }
+  };
 
   sufferingsByCategory = cat => {
     API.sufferingsByCategory(cat)
@@ -46,7 +46,7 @@ class Store extends Component {
         this.setState({ sufferings: res.data });
       })
       .catch(err => console.log(err));
-  }
+  };
 
   componentDidMount() {
     this.loadCategories();
@@ -54,16 +54,17 @@ class Store extends Component {
     let data = {};
     data.catId = this.state.selectedCategoryId;
     data.suff = this.state.selectedSuffering;
-    this.getProducts(data);
+    this.getStoreProducts(data);
   }
 
-  getProducts = data => {
-    API.getProducts(data)
+  getStoreProducts = data => {
+    API.getStoreProducts(data)
       .then(res => {
+        console.log(res.data);
         this.setState({ products: res.data });
       })
       .catch(err => console.log(err));
-  }
+  };
 
   handleChangeCategory = cat => {
     // whenever the category changes
@@ -90,7 +91,7 @@ class Store extends Component {
         });
       }
     );
-  }
+  };
 
   handleChangeSuffering = suff => {
     this.setState(
@@ -105,12 +106,11 @@ class Store extends Component {
         this.getProducts(data);
       }
     );
-  }
+  };
 
   render() {
     return (
       <Layout>
-
         <header className="py-5 mb-4" style={styles.header}>
           <div className="container h-100">
             <div className="row h-100 align-items-center">
@@ -130,7 +130,6 @@ class Store extends Component {
         </header>
 
         <Container fluid>
-
           {/* categories row */}
           <Row>
             <Col>
@@ -151,20 +150,19 @@ class Store extends Component {
               <SufferingsList
                 sufferings={this.state.sufferings}
                 selectedSuffering={this.state.selectedSuffering}
-                handleChangeSuffering={this.handleChangeSuffering} />
+                handleChangeSuffering={this.handleChangeSuffering}
+              />
             </Col>
 
             {/* right column */}
             <Col xs={12} md={8}>
               {/* products list */}
-              <ProductsList
-                productsArr={this.state.products} />
+              <ProductsList productsArr={this.state.products} />
             </Col>
           </Row>
         </Container>
 
         <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
-
       </Layout>
     );
   }
