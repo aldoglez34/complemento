@@ -10,22 +10,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    price: {
-      type: DataTypes.FLOAT,
-      allowNull: false
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    photo: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    content: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
     percentage: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -45,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Discount.associate = function(models) {
-    Discount.hasOne(models.Product, {
+    Discount.belongsTo(models.Product, {
       foreignKey: "productId"
     });
   };

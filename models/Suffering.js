@@ -27,10 +27,10 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Suffering.associate = function (models) {
-    Suffering.hasOne(models.Category, {
+    Suffering.belongsTo(models.Category, {
       foreignKey: "categoryId"
     });
-    Suffering.hasOne(models.Product, {
+    Suffering.belongsTo(models.Product, {
       foreignKey: "productId"
     });
   };

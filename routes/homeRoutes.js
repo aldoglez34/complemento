@@ -1,47 +1,49 @@
 const router = require("express").Router();
+const Sequelize = require("sequelize");
 const model = require("../models");
 
-// get all discounts
-// matches with /api/home/products
-router.get("/products", function (req, res) {
-  model.Product.findAll({
-    attributes: ["name"],
-    order: [["name", "ASC"]]
-  })
-    .then(function (data) {
-      res.json(data);
-    })
-    .catch(function (err) {
-      res.send(err);
-    });
-});
-
-// get discounts
+// get top 6 latest discounts
 // matches with /api/home/discounts
-router.get("/discounts", function (req, res) {
-  model.Discount.findAll({
+// kinda like an inner join discount as discount where discount.newPrice is not null
+router.get("/discounts", function(req, res) {
+  model.Product.findAll({
     order: ["createdAt"],
-    limit: 6
+    limit: 6,
+    include: [
+      {
+        model: model.Discount,
+        where: {
+          newPrice: {
+            [Sequelize.Op.ne]: null
+          }
+        }
+      }
+    ]
   })
-    .then(function (data) {
+    .then(function(data) {
       res.json(data);
     })
-    .catch(function (err) {
+    .catch(function(err) {
       res.send(err);
     });
 });
 
-// get best sellers
+// get top 6 best sellers
 // matches with /api/home/bestsellers
-router.get("/bestsellers", function (req, res) {
+router.get("/bestsellers", function(req, res) {
   model.Product.findAll({
     order: [["unitsSold", "DESC"]],
-    limit: 6
+    limit: 6,
+    include: [
+      {
+        model: model.Discount
+      }
+    ]
   })
-    .then(function (data) {
+    .then(function(data) {
       res.json(data);
     })
-    .catch(function (err) {
+    .catch(function(err) {
       res.send(err);
     });
 });

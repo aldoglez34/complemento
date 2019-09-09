@@ -20,17 +20,17 @@ class Home extends Component {
   state = {
     discounts: [],
     bestSellers: []
-  }
+  };
 
-  getDiscounts = () => {
-    API.getDiscounts()
+  getProductsWithDiscount = () => {
+    API.getProductsWithDiscount()
       .then(res => {
         this.setState({ discounts: res.data });
       })
       .catch(err => {
         console.log(err);
       });
-  }
+  };
 
   getBestSellers = () => {
     API.getBestSellers()
@@ -40,32 +40,23 @@ class Home extends Component {
       .catch(err => {
         console.log(err);
       });
-  }
-
-  buildSearchBar() {
-    API.getAllProducts()
-      .then(res => {
-        console.log(res.data)
-      })
-      .catch(err => { console.log(err) });
-  }
+  };
 
   componentDidMount() {
-    this.getDiscounts();
+    this.getProductsWithDiscount();
     this.getBestSellers();
-    this.buildSearchBar();
   }
 
   render() {
     return (
       <Layout>
-
         <header className="py-5 mb-5" style={styles.header}>
           <div className="container h-100">
             <div className="row h-100 align-items-center">
               <div className="col-lg-12">
                 <h1 className="display-4 text-light mt-5 mb-2">
-                  Bienvenido a <em className="text-white">Complemento Natural</em>
+                  Bienvenido a{" "}
+                  <em className="text-white">Complemento Natural</em>
                 </h1>
                 <p className="lead mb-4 text-light">
                   Somos una tienda en línea de medicina complementaria. Contamos
@@ -141,14 +132,14 @@ class Home extends Component {
                     );
                   })
                 ) : (
-                    <div className="text-center my-3">
-                      <Spinner
-                        animation="border"
-                        role="status"
-                        variant="success"
-                      />
-                    </div>
-                  )}
+                  <div className="text-center my-3">
+                    <Spinner
+                      animation="border"
+                      role="status"
+                      variant="success"
+                    />
+                  </div>
+                )}
               </div>
             </Col>
           </Row>
@@ -163,21 +154,20 @@ class Home extends Component {
                     return <ProductCard key={bs.productId} product={bs} />;
                   })
                 ) : (
-                    <div className="text-center my-3">
-                      <Spinner
-                        animation="border"
-                        role="status"
-                        variant="success"
-                      />
-                    </div>
-                  )}
+                  <div className="text-center my-3">
+                    <Spinner
+                      animation="border"
+                      role="status"
+                      variant="success"
+                    />
+                  </div>
+                )}
               </div>
             </Col>
           </Row>
         </Container>
 
         <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
-
       </Layout>
     );
   }
