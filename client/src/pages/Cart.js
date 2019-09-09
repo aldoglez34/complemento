@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Table, Button } from "react-bootstrap";
+import { Container, Row, Col, Table, Button, Badge } from "react-bootstrap";
 import Layout from "../components/Layout";
 import API from "../utils/API";
 
@@ -65,9 +65,16 @@ class Cart extends Component {
         fullCart.forEach(item => {
             API.getProductDetails(item.productId)
                 .then(res => {
+                    // since there's no such thing as pushing directly into the state arr, 
+                    // i have to keep setting the cart in the state for every product
+                    // might come back to fix the performance here
                     let product = res.data;
                     product.qty = item.qty;
-                    product.subtotal = parseFloat(parseFloat(product.price) * item.qty).toFixed(2);
+                    if (!product.Discount) {
+                        product.subtotal = parseFloat(parseFloat(product.price) * item.qty).toFixed(2);
+                    } else {
+                        product.subtotal = parseFloat(parseFloat(product.Discount.newPrice) * item.qty).toFixed(2);
+                    }
                     let tempArr = this.state.cart;
                     tempArr.push(product);
                     this.setState({ cart: tempArr });
@@ -76,14 +83,24 @@ class Cart extends Component {
 
     }
 
-    componentDidMount() {
-        console.log("component mounted")
-        this.buildCart();
+    sumQty = () => {
+        let counter = 0;
+        this.state.cart.forEach(item => {
+            counter += item.qty
+        })
+        return (<span>{counter}</span>)
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        console.log("component updated")
-        // console.log(prevProps, prevState);
+    sumGrandTotal = () => {
+        let sum = 0;
+        this.state.cart.forEach(item => {
+            sum += parseFloat(item.subtotal)
+        })
+        return (<span>{sum}</span>)
+    }
+
+    componentDidMount() {
+        this.buildCart();
     }
 
     render() {
@@ -97,7 +114,9 @@ class Cart extends Component {
                 </div>
 
                 <Container className="text-center my-4">
-                    <h2 className="text-center mb-3">- Mi Carrito -</h2>
+
+                    <h2 className="text-center text-dark mb-3">Mi Carrito<i className="fas fa-shopping-cart ml-2"></i></h2>
+
                     <Row>
                         <Col md={{ span: 8, offset: 2 }}>
 
@@ -114,24 +133,49 @@ class Cart extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {/* products */}
                                             {this.state.cart.map(product => {
                                                 return (
                                                     <tr key={product.productId}>
-                                                        <td className="text-left">{product.name}</td>
+                                                        {(product.Discount) ?
+                                                            (
+                                                                <td className="text-left">
+                                                                    {product.name}
+                                                                    <Badge pill className="ml-2" variant="warning">
+                                                                        {product.Discount.percentage}%
+                                                                    </Badge>
+                                                                </td>
+                                                            ) : (
+                                                                <td className="text-left">{product.name}</td>
+                                                            )}
                                                         <td className="text-left">{product.content}</td>
                                                         <td>{product.qty}</td>
-                                                        <td className="text-right">{product.price}</td>
+                                                        {(product.Discount) ?
+                                                            (
+                                                                <td className="text-right">{product.Discount.newPrice}</td>
+                                                            ) : (
+                                                                <td className="text-right">{product.price}</td>
+                                                            )}
                                                         <td className="text-right">{product.subtotal}</td>
                                                     </tr>
                                                 );
                                             })}
+                                            {/* grand total */}
+                                            <tr>
+                                                <td className="text-right" colSpan="2"><strong>CANTIDAD:</strong></td>
+                                                <td className="text-center">{this.sumQty()}</td>
+                                                <td className="text-right"><strong>GRAN TOTAL:</strong></td>
+                                                <td className="text-right">{this.sumGrandTotal()}</td>
+                                            </tr>
                                         </tbody>
                                     </Table>
                                     <div>
-                                        <Button block variant="danger"><i className="fas fa-dollar-sign mr-2"></i>PAGAR</Button>
+                                        <Button block variant="danger">
+                                            <strong>P A G A R</strong>
+                                            <i className="fas fa-angle-double-right ml-2"></i></Button>
                                     </div>
                                     <div className="text-right">
-                                        <Button variant="link">Limpiar carrito</Button>
+                                        <Button variant="link"><em>Limpiar carrito</em></Button>
                                     </div>
                                 </div>
                             ) : (

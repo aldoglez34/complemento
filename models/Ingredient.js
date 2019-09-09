@@ -29,7 +29,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Ingredient.associate = function (models) {
-        Ingredient.hasOne(models.Product, {
+        Ingredient.belongsTo(models.Product, {
             foreignKey: "productId"
         });
     };
