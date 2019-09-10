@@ -27,7 +27,7 @@ function SufferingsList(props) {
                                     <button
                                         type="button"
                                         key={suff.name}
-                                        className="list-group-item list-group-item-action border-0 rounded-0 active"
+                                        className="list-group-item list-group-item-action d-flex justify-content-between align-items-center border-0 rounded-0 active"
                                         onClick={() => props.handleChangeSuffering(suff.name)}>
                                         {suff.name} <span className="badge badge-light ml-2">{suff.qty}</span>
                                     </button>
@@ -37,7 +37,7 @@ function SufferingsList(props) {
                                     <button
                                         type="button"
                                         key={suff.name}
-                                        className="list-group-item list-group-item-action border-0 rounded-0"
+                                        className="list-group-item list-group-item-action d-flex justify-content-between align-items-center border-0 rounded-0"
                                         onClick={() => props.handleChangeSuffering(suff.name)}>
                                         {suff.name} <span className="badge badge-primary ml-2">{suff.qty}</span>
                                     </button>

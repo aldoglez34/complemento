@@ -96,14 +96,6 @@ class Cart extends Component {
 
     }
 
-    sumQty = () => {
-        let counter = 0;
-        this.state.cart.forEach(item => {
-            counter += item.qty
-        })
-        return (<span>{counter}</span>)
-    }
-
     sumGrandTotal = () => {
         let sum = 0;
         this.state.cart.forEach(item => {
@@ -175,9 +167,7 @@ class Cart extends Component {
                                             })}
                                             {/* grand total */}
                                             <tr>
-                                                <td className="text-right" colSpan="2"><strong>CANTIDAD:</strong></td>
-                                                <td className="text-center">{this.sumQty()}</td>
-                                                <td className="text-right"><strong>GRAN TOTAL:</strong></td>
+                                                <td className="text-right" colSpan="4"><strong>GRAN TOTAL:</strong></td>
                                                 <td className="text-right">{this.sumGrandTotal()}</td>
                                             </tr>
                                         </tbody>

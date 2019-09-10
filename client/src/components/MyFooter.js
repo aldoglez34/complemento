@@ -20,17 +20,16 @@ function MyFooter() {
             <h5><strong className="text-white">Ayuda</strong></h5>
             <div>
               <p className="mb-0"><a href="/questions" className="text-light">Preguntas Frecuentes</a></p>
-              <p className="mb-0"><a href="/home" className="text-light">Devoluciones</a></p>
-              <p className="mb-0"><a href="/home" className="text-light">Quejas y sugerencias</a></p>
-              <p className="mb-0"><a href="/home" className="text-light">Formas de pago</a></p>
+              <p className="mb-0"><a href="/complaints" className="text-light">Quejas y sugerencias</a></p>
+              <p className="mb-0"><a href="/payment" className="text-light">Formas de pago</a></p>
             </div>
           </Col>
           <Col md={6} className="mt-3">
             <h5><strong className="text-white">Nosotros</strong></h5>
             <div>
-              <p className="mb-0"><a href="/home" className="text-light">¿Quiénes somos?</a></p>
-              <p className="mb-0"><a href="/home" className="text-light">Contáctanos</a></p>
-              <p className="mb-0"><a href="/home" className="text-light">Ubicación</a></p>
+              <p className="mb-0"><a href="/about" className="text-light">¿Quiénes somos?</a></p>
+              <p className="mb-0"><a href="/contact" className="text-light">Contáctanos</a></p>
+              <p className="mb-0"><a href="/location" className="text-light">Ubicación</a></p>
             </div>
           </Col>
         </Row>
