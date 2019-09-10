@@ -21,16 +21,20 @@ function Complaints() {
 
                         <Form className="py-3">
                             <Form.Group>
-                                <Form.Label>Tu nombre</Form.Label>
-                                <Form.Control type="text" />
+                                <Form.Label>Nombre</Form.Label>
+                                <Form.Control type="text" placeholder="Nombre completo" />
                             </Form.Group>
                             <Form.Group>
-                                <Form.Label>Tu correo</Form.Label>
-                                <Form.Control type="email" />
+                                <Form.Label>Correo electrónico</Form.Label>
+                                <Form.Control type="email" placeholder="Correo electrónico" />
                             </Form.Group>
                             <Form.Group>
-                                <Form.Label>Tu queja</Form.Label>
-                                <Form.Control as="textarea" rows="3" />
+                                <Form.Label>Tema</Form.Label>
+                                <Form.Control type="text" placeholder="Queja o sugerencia" />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Queja</Form.Label>
+                                <Form.Control as="textarea" rows="3" placeholder="Descripción de la queja o sugerencia" />
                             </Form.Group>
                             <div className="text-center">
                                 <Button variant="primary" type="submit">Enviar</Button>

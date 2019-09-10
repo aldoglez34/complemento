@@ -5,6 +5,9 @@ const styles = {
   footer: {
     backgroundColor: "dimgray",
     marginTop: "auto",
+  },
+  logo: {
+    color: "white"
   }
 };
 
@@ -19,9 +22,10 @@ function MyFooter() {
           <Col md={6} className="mt-3">
             <h5><strong className="text-white">Ayuda</strong></h5>
             <div>
-              <p className="mb-0"><a href="/questions" className="text-light">Preguntas Frecuentes</a></p>
+              <p className="mb-0"><a href="/questions" className="text-light">Preguntas frecuentes</a></p>
               <p className="mb-0"><a href="/complaints" className="text-light">Quejas y sugerencias</a></p>
               <p className="mb-0"><a href="/payment" className="text-light">Formas de pago</a></p>
+              <p className="mb-0"><a href="/home" className="text-light">Envíos</a></p>
             </div>
           </Col>
           <Col md={6} className="mt-3">
@@ -36,7 +40,7 @@ function MyFooter() {
       </Container>
 
       <Container className="py-2 mt-4">
-        <span className="text-white lead">Complemento Natural, 2019</span>
+        <span className="lead" style={styles.logo}>Complemento Natural, 2019</span>
       </Container>
 
     </footer >

@@ -25,7 +25,7 @@ function Contact() {
 
                         <Form className="py-3">
                             <Form.Group>
-                                <Form.Label>Tu nombre</Form.Label>
+                                <Form.Label>Nombre</Form.Label>
                                 <Form.Control type="text" placeholder="Nombre completo" />
                             </Form.Group>
                             <Form.Group>
