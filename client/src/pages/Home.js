@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Spinner, Row, Col } from "react-bootstrap";
-import { connect } from "react-redux";
-import { saveProducts } from "../redux-actions";
+// import { connect } from "react-redux";
+// import { saveProducts } from "../redux-actions";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
 import ScrollButton from "../components/ScrollButton";
@@ -10,9 +10,7 @@ import API from "../utils/API";
 const styles = {
   header: {
     backgroundImage: "url('images/bg-header-home.jpg')",
-    // backgroundColor: "gray",
-    backgroundSize: "cover",
-    backgroundBlendMode: "multiply"
+    backgroundSize: "cover"
   }
 };
 
@@ -132,14 +130,14 @@ class Home extends Component {
                     );
                   })
                 ) : (
-                  <div className="text-center my-3">
-                    <Spinner
-                      animation="border"
-                      role="status"
-                      variant="success"
-                    />
-                  </div>
-                )}
+                    <div className="text-center my-3">
+                      <Spinner
+                        animation="border"
+                        role="status"
+                        variant="success"
+                      />
+                    </div>
+                  )}
               </div>
             </Col>
           </Row>
@@ -154,14 +152,14 @@ class Home extends Component {
                     return <ProductCard key={bs.productId} product={bs} />;
                   })
                 ) : (
-                  <div className="text-center my-3">
-                    <Spinner
-                      animation="border"
-                      role="status"
-                      variant="success"
-                    />
-                  </div>
-                )}
+                    <div className="text-center my-3">
+                      <Spinner
+                        animation="border"
+                        role="status"
+                        variant="success"
+                      />
+                    </div>
+                  )}
               </div>
             </Col>
           </Row>
