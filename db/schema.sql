@@ -5,15 +5,17 @@ USE complement_db;
 
 DROP TABLE IF EXISTS complement_db.clients;
 CREATE TABLE clients (
-  clientId INT NOT NULL AUTO_INCREMENT,
+  clientId VARCHAR(60) NOT NULL,
+  password VARCHAR(30) NOT NULL,
   firstName VARCHAR(100) NOT NULL,
-  lastName	 VARCHAR(100) NOT NULL,
-  country VARCHAR(100) NOT NULL,
-  state VARCHAR(100) NOT NULL,
+  lastName VARCHAR(150) NOT NULL,
+  phoneNumber VARCHAR(10) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  street VARCHAR(250) NOT NULL,
   city VARCHAR(50) NOT NULL,
-  address VARCHAR(250) NOT NULL,
+  state VARCHAR(100) NOT NULL,
   zipCode VARCHAR(10) NOT NULL,
-  phoneNumber VARCHAR(250) NOT NULL,
+  comments VARCHAR(200) NOT NULL,
   createdAt DATE NULL,
   updatedAt DATE NULL,
   PRIMARY KEY (clientId)
@@ -22,7 +24,7 @@ CREATE TABLE clients (
 DROP TABLE IF EXISTS complement_db.orders;
 CREATE TABLE orders (
   orderId INT NOT NULL AUTO_INCREMENT,
-  clientId INT NOT NULL,
+  clientId VARCHAR(60) NOT NULL,
   grandTotal DECIMAL(10,2) NOT NULL,
   createdAt DATE NULL,
   updatedAt DATE NULL,

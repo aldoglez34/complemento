@@ -23,8 +23,8 @@ function SignUp() {
                             <Form.Control placeholder="Nombre(s)" />
                         </Form.Group>
                         <Form.Group as={Col} md={6}>
-                            <Form.Label className="text-muted">Apellido(s)</Form.Label>
-                            <Form.Control placeholder="Apellido(s)" />
+                            <Form.Label className="text-muted">Apellidos</Form.Label>
+                            <Form.Control placeholder="Apellidos" />
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
