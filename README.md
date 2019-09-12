@@ -2,4 +2,4 @@
 
 ## About
 
-E-commerce site under development
+Under development

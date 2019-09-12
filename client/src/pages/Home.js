@@ -18,7 +18,7 @@ class Home extends Component {
   state = {
     discounts: [],
     bestSellers: []
-  };
+  }
 
   getProductsWithDiscount = () => {
     API.getProductsWithDiscount()
@@ -28,7 +28,7 @@ class Home extends Component {
       .catch(err => {
         console.log(err);
       });
-  };
+  }
 
   getBestSellers = () => {
     API.getBestSellers()
@@ -38,7 +38,7 @@ class Home extends Component {
       .catch(err => {
         console.log(err);
       });
-  };
+  }
 
   componentDidMount() {
     this.getProductsWithDiscount();
