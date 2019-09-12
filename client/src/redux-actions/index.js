@@ -4,3 +4,9 @@ export const saveLoggedClient = client => {
         client
     };
 };
+
+export const deleteLoggedClient = () => {
+    return {
+        type: "DELETE_LOGGED_CLIENT"
+    };
+};

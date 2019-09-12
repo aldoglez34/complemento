@@ -8,8 +8,15 @@ const clientReducers = (state = [], action) => {
                     loggedClient: action.client
                 }
             ]
+        case "DELETE_LOGGED_CLIENT":
+            return [
+                ...state,
+                {
+                    loggedClient: {}
+                }
+            ]
         default:
-            return state;
+            return state
     };
 
 };

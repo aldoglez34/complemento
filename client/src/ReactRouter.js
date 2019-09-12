@@ -18,6 +18,7 @@ import { connect } from "react-redux";
 import { saveLoggedClient } from "./redux-actions";
 
 class ReactRouter extends Component {
+
 	state = {
 		user: {}
 	}
@@ -27,8 +28,10 @@ class ReactRouter extends Component {
 			if (user) {
 				// if the user logged in then save it into the state and send it to redux
 				this.setState({ user: user }, () => this.getClientAndSendItToRedux(this.state.user.uid));
+				// this.getClientAndSendItToRedux(this.state.user.uid)
 			} else {
 				this.setState({ user: null });
+				// this.props.saveLoggedClient(null)
 			}
 		});
 	}
@@ -38,13 +41,14 @@ class ReactRouter extends Component {
 		API.getClientInfo(uid)
 			.then(res => {
 				// dispatch saveLoggedClient action
+				console.log(res.data[0])
 				this.props.saveLoggedClient(res.data[0])
 			})
 			.catch(err => console.log(err))
 	}
 
 	componentDidMount() {
-		this.authListener();
+		this.authListener()
 	}
 
 	render() {
@@ -74,8 +78,14 @@ class ReactRouter extends Component {
 
 }
 
+const mapStateToProps = (state) => {
+	return {
+		loggedClient: state.loggedClient
+	}
+}
+
 const mapDispatchToProps = {
 	saveLoggedClient
 }
 
-export default connect(null, mapDispatchToProps)(ReactRouter);
+export default connect(mapStateToProps, mapDispatchToProps)(ReactRouter);
