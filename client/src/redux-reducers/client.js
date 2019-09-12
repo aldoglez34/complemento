@@ -1,17 +1,17 @@
-// reducers
+const clientReducers = (state = [], action) => {
 
-const productsReducer = (state = [], action) => {
     switch (action.type) {
-        case "SAVE_PRODUCTS":
+        case "SAVE_LOGGED_CLIENT":
             return [
                 ...state,
                 {
-                    productList: action.productList
+                    loggedClient: action.client
                 }
             ]
         default:
             return state;
     };
+
 };
 
-export default productsReducer;
+export default clientReducers;

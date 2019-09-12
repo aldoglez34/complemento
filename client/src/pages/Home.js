@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Container, Spinner, Row, Col } from "react-bootstrap";
-// import { connect } from "react-redux";
-// import { saveProducts } from "../redux-actions";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
 import ScrollButton from "../components/ScrollButton";
@@ -49,12 +47,11 @@ class Home extends Component {
     return (
       <Layout>
         <header className="py-5 mb-5" style={styles.header}>
-          <div className="container h-100">
+          <div className="container">
             <div className="row h-100 align-items-center">
               <div className="col-lg-12">
                 <h1 className="display-4 text-light mt-5 mb-2">
-                  Bienvenido a{" "}
-                  <em className="text-white">Complemento Natural</em>
+                  Bienvenido a <em className="text-white">Complemento Natural</em>
                 </h1>
                 <p className="lead mb-4 text-light">
                   Somos una tienda en línea de medicina complementaria. Contamos
@@ -169,6 +166,7 @@ class Home extends Component {
       </Layout>
     );
   }
+
 }
 
 export default Home;

@@ -20,6 +20,8 @@ const productRoutes = require("./routes/productRoutes");
 app.use("/api/product", productRoutes);
 const homeRoutes = require("./routes/homeRoutes");
 app.use("/api/home", homeRoutes);
+const clientRoutes = require("./routes/clientRoutes");
+app.use("/api/client", clientRoutes);
 
 // Send every other request to the React app
 // Define any API routes before this runs
@@ -27,7 +29,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-db.sequelize.sync().then(function() {
+db.sequelize.sync().then(function () {
   app.listen(PORT, () => {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
   });

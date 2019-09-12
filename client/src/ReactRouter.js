@@ -13,8 +13,12 @@ import Payment from "./pages/help/Payment";
 import About from "./pages/about/About";
 import Contact from "./pages/about/Contact";
 import Location from "./pages/about/Location";
+import API from "./utils/API";
+import { connect } from "react-redux";
+import { saveLoggedClient } from "./redux-actions";
 
 class ReactRouter extends Component {
+
 	state = {
 		user: {}
 	}
@@ -23,13 +27,25 @@ class ReactRouter extends Component {
 	authListener() {
 		firebase.auth().onAuthStateChanged(user => {
 			if (user) {
-				this.setState({ user });
+				// if user logged in, save it into the state and into redux
+				this.setState({ user }, () => this.getClientAndSaveItToRedux(this.state.user.uid));
 				// localStorage.setItem("user", user.uid);
 			} else {
+				// else set null
 				this.setState({ user: null });
 				// localStorage.removeItem("user");
 			}
 		});
+	}
+
+	getClientAndSaveItToRedux = uid => {
+		// get the client info from the db and save it to redux
+		API.getClientInfo(uid)
+			.then(res => {
+				// dispatch an action
+				this.props.saveLoggedClient(res.data[0])
+			})
+			.catch(err => console.log(err))
 	}
 
 	componentDidMount() {
@@ -63,5 +79,15 @@ class ReactRouter extends Component {
 
 }
 
+const mapStateToProps = (state) => {
+	return {
+		user: state.user
+	}
+}
 
-export default ReactRouter;
+const mapDispatchToProps = {
+	saveLoggedClient
+}
+
+// export default ReactRouter;
+export default connect(mapStateToProps, mapDispatchToProps)(ReactRouter);

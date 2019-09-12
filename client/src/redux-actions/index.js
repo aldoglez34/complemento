@@ -1,8 +1,6 @@
-// my actions for redux
-
-export const saveProducts = productList => {
+export const saveLoggedClient = client => {
     return {
-        type: "SAVE_PRODUCTS",
-        productList
+        type: "SAVE_LOGGED_CLIENT",
+        client
     };
 };

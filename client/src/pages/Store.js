@@ -13,11 +13,12 @@ const styles = {
     // backgroundColor: "gray",
     backgroundSize: "cover",
     backgroundBlendMode: "multiply"
-  },
-  container: {
-    marginLeft: 115,
-    marginRight: 115
   }
+  // ,
+  // container: {
+  //   marginLeft: 115,
+  //   marginRight: 115
+  // }
 };
 
 class Store extends Component {
@@ -112,7 +113,7 @@ class Store extends Component {
     return (
       <Layout>
         <header className="py-5 mb-4" style={styles.header}>
-          <div className="container h-100">
+          <div className="container">
             <div className="row h-100 align-items-center">
               <div className="col-lg-12">
                 <h1 className="display-4 text-white mt-5 mb-2">
