@@ -18,31 +18,26 @@ import { connect } from "react-redux";
 import { saveLoggedClient } from "./redux-actions";
 
 class ReactRouter extends Component {
-
 	state = {
 		user: {}
 	}
 
-	// listening if the user signs in
 	authListener() {
 		firebase.auth().onAuthStateChanged(user => {
 			if (user) {
-				// if user logged in, save it into the state and into redux
-				this.setState({ user }, () => this.getClientAndSaveItToRedux(this.state.user.uid));
-				// localStorage.setItem("user", user.uid);
+				// if the user logged in then save it into the state and send it to redux
+				this.setState({ user: user }, () => this.getClientAndSendItToRedux(this.state.user.uid));
 			} else {
-				// else set null
 				this.setState({ user: null });
-				// localStorage.removeItem("user");
 			}
 		});
 	}
 
-	getClientAndSaveItToRedux = uid => {
-		// get the client info from the db and save it to redux
+	getClientAndSendItToRedux = uid => {
+		// get the logged client info from the db and save it to redux
 		API.getClientInfo(uid)
 			.then(res => {
-				// dispatch an action
+				// dispatch saveLoggedClient action
 				this.props.saveLoggedClient(res.data[0])
 			})
 			.catch(err => console.log(err))
@@ -79,15 +74,8 @@ class ReactRouter extends Component {
 
 }
 
-const mapStateToProps = (state) => {
-	return {
-		user: state.user
-	}
-}
-
 const mapDispatchToProps = {
 	saveLoggedClient
 }
 
-// export default ReactRouter;
-export default connect(mapStateToProps, mapDispatchToProps)(ReactRouter);
+export default connect(null, mapDispatchToProps)(ReactRouter);
