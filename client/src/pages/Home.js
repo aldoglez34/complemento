@@ -51,7 +51,7 @@ class Home extends Component {
             <div className="row h-100 align-items-center">
               <div className="col-lg-12">
                 <h1 className="display-4 text-light mt-5 mb-2">
-                  Bienvenido a <em className="text-white">Complemento Natural</em>
+                  Bienvenido a Complemento Natural
                 </h1>
                 <p className="lead mb-4 text-light">
                   Somos una tienda en línea de medicina complementaria. Contamos

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import firebase from "./firebase/Fire";
 import Home from "./pages/Home";
 import Store from "./pages/Store";
 import ProductDetails from "./pages/ProductDetails";
@@ -13,43 +12,8 @@ import Payment from "./pages/help/Payment";
 import About from "./pages/about/About";
 import Contact from "./pages/about/Contact";
 import Location from "./pages/about/Location";
-import API from "./utils/API";
-import { connect } from "react-redux";
-import { saveLoggedClient } from "./redux-actions";
 
 class ReactRouter extends Component {
-
-	state = {
-		user: {}
-	}
-
-	authListener() {
-		firebase.auth().onAuthStateChanged(user => {
-			if (user) {
-				// if the user logged in then save it into the state and send it to redux
-				this.setState({ user: user }, () => this.getClientAndSendItToRedux(this.state.user.uid));
-				// this.getClientAndSendItToRedux(this.state.user.uid)
-			} else {
-				this.setState({ user: null });
-				// this.props.saveLoggedClient(null)
-			}
-		});
-	}
-
-	getClientAndSendItToRedux = uid => {
-		// get the logged client info from the db and save it to redux
-		API.getClientInfo(uid)
-			.then(res => {
-				// dispatch saveLoggedClient action
-				console.log(res.data[0])
-				this.props.saveLoggedClient(res.data[0])
-			})
-			.catch(err => console.log(err))
-	}
-
-	componentDidMount() {
-		this.authListener()
-	}
 
 	render() {
 		return (
@@ -78,14 +42,4 @@ class ReactRouter extends Component {
 
 }
 
-const mapStateToProps = (state) => {
-	return {
-		loggedClient: state.loggedClient
-	}
-}
-
-const mapDispatchToProps = {
-	saveLoggedClient
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ReactRouter);
+export default ReactRouter;

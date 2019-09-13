@@ -15,7 +15,7 @@ function MyFooter() {
 
   return (
 
-    <footer className="mt-auto py-4 text-center text-light" style={styles.footer} >
+    <footer className="mt-auto py-2 text-center text-light" style={styles.footer} >
 
       <Container>
         <Row>
@@ -39,8 +39,8 @@ function MyFooter() {
         </Row>
       </Container>
 
-      <Container className="py-2 mt-4">
-        <span className="lead" style={styles.logo}>Complemento Natural, 2019</span>
+      <Container className="py-1 mt-4">
+        <span style={styles.logo}>Complemento Natural</span>
       </Container>
 
     </footer >
