@@ -8,6 +8,12 @@ import { saveLoggedClient } from "../redux-actions";
 
 function MyNavbar() {
 
+  const styles = {
+    dropdownMenu: {
+      width: 380
+    }
+  }
+
   const loggedClient = useSelector(state => state.loggedClient);
   const dispatch = useDispatch();
 
@@ -102,13 +108,13 @@ function MyNavbar() {
                     Iniciar Sesión<i className="fas fa-user ml-2"></i>
                   </Dropdown.Toggle>
                   {/* dropdown */}
-                  <Dropdown.Menu className="bg-light">
+                  <Dropdown.Menu alignRight className="bg-light" style={styles.dropdownMenu}>
                     {/* form */}
                     <Form
                       // noValidate
                       // validated={validated}
                       // onSubmit={handleSubmit}
-                      className="px-4 py-3">
+                      className="p-4">
                       {/* email */}
                       <Form.Row className="mb-2">
                         <Form.Group as={Col} controlId="validationFormik01">
