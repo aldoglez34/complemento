@@ -4,7 +4,11 @@ import Layout from "../components/Layout";
 function NoMatch() {
   return (
     <Layout>
-      <h1>404 - La página que estás buscando no existe</h1>
+      <div className="text-center p-4">
+        <h1 className="display-2">404</h1>
+        <h1>Error</h1>
+        <p className="lead">La página que estás buscando no existe</p>
+      </div>
     </Layout>
   );
 }

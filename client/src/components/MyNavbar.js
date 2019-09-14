@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import fire from "../firebase/Fire";
 import { Navbar, Image, Form, Badge, Dropdown, Button, Modal, Col } from "react-bootstrap";
 import { Formik } from "formik";
 import API from "../utils/API";
 import { useSelector, useDispatch } from "react-redux";
-import { saveLoggedClient } from "../redux-actions";
+import { saveLoggedClient, deleteLoggedClient } from "../redux-actions";
 
 function MyNavbar() {
 
@@ -55,7 +55,7 @@ function MyNavbar() {
         <Dropdown>
           {/* toggle */}
           <Dropdown.Toggle className="mr-2" variant="success">
-            {loggedClient.firstName}
+            {loggedClient[0].loggedClient.firstName}
             <i className="fas fa-user ml-2"></i>
           </Dropdown.Toggle>
           {/* client menu */}
@@ -63,7 +63,7 @@ function MyNavbar() {
             <Dropdown.Item>Mis datos</Dropdown.Item>
             <Dropdown.Item>Mis compras</Dropdown.Item>
             <Dropdown.Divider className="mt-1 mb-2" />
-            <Dropdown.Item>Cerrar sesión</Dropdown.Item>
+            <Dropdown.Item onClick={() => dispatch(deleteLoggedClient(null))}>Cerrar sesión</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </>
@@ -74,7 +74,9 @@ function MyNavbar() {
     return (
       <>
         <Formik
+          // initial values
           initialValues={{ email: "", password: "" }}
+          // validations
           validate={values => {
             let errors = {};
             if (!values.email) {
@@ -86,12 +88,25 @@ function MyNavbar() {
             }
             return errors;
           }}
+          // onSubmit
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
+              // firebase auth
+              fire.auth().signInWithEmailAndPassword(values.email, values.password)
+                .then((u) => {
+                  // get the logged client info from the db and save it to redux
+                  API.getClientInfo(u.user.uid)
+                    .then(res => {
+                      // dispatch saveLoggedClient action
+                      dispatch(saveLoggedClient(res.data[0]))
+                    })
+                    .catch(err => console.log(err))
+                })
+                .catch((error) => this.handleShowModal(error.message))
               setSubmitting(false);
             }, 400);
           }}>
+          {/* aditonal stuff */}
           {({
             values,
             errors,
@@ -111,10 +126,8 @@ function MyNavbar() {
                   <Dropdown.Menu alignRight className="bg-light" style={styles.dropdownMenu}>
                     {/* form */}
                     <Form
-                      // noValidate
-                      // validated={validated}
-                      // onSubmit={handleSubmit}
-                      className="p-4">
+                      onSubmit={handleSubmit}
+                      className="pt-3 pl-3 pr-3 pb-1">
                       {/* email */}
                       <Form.Row className="mb-2">
                         <Form.Group as={Col} controlId="validationFormik01">
@@ -148,6 +161,7 @@ function MyNavbar() {
                       <Form.Row>
                         <Form.Group as={Col}>
                           <Button variant="primary" type="submit" disabled={isSubmitting}>Entrar</Button>
+                          <MyModal onClick={handleSubmit} type="submit" />
                         </Form.Group>
                       </Form.Row>
                     </Form>

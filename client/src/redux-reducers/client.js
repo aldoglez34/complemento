@@ -12,7 +12,7 @@ const clientReducers = (state = [], action) => {
             return [
                 ...state,
                 {
-                    loggedClient: {}
+                    loggedClient: action.client
                 }
             ]
         default:
