@@ -1,174 +1,189 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import fire from "../firebase/Fire";
-import { Navbar, Image, Form, Badge, Dropdown, Button, Modal } from "react-bootstrap";
+import { Navbar, Image, Form, Badge, Dropdown, Button, Modal, Col } from "react-bootstrap";
+import { Formik } from "formik";
 import API from "../utils/API";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { saveLoggedClient } from "../redux-actions";
 
-class MyNavbar extends Component {
+function MyNavbar() {
 
-  state = {
-    email: "",
-    password: "",
-    modalShow: false,
-    modalMsg: ""
-  }
+  const loggedClient = useSelector(state => state.loggedClient);
+  const dispatch = useDispatch();
 
-  getCartCounter = () => {
-    let counter = localStorage.getItem("cn_counter");
-    if (!counter) {
+  const CartCounter = () => {
+    if (!localStorage.getItem("cn_counter")) {
       localStorage.setItem("cn_counter", 0);
     }
-    return (<span>{counter}</span>);
+    let counter = localStorage.getItem("cn_counter");
+    return (
+      <Badge className="ml-1" variant="warning">{counter}</Badge>
+    );
   }
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  }
+  const MyModal = () => {
 
-  handleLoginSubmit = event => {
-    event.preventDefault();
-    // firebase email authentication
-    fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then((u) => {
-        // get the logged client info from the db and save it to redux
-        API.getClientInfo(u.user.uid)
-          .then(res => {
-            // dispatch saveLoggedClient action
-            this.props.saveLoggedClient(res.data[0])
-          })
-          .catch(err => console.log(err))
-      })
-      .catch((error) => this.handleShowModal(error.message))
-  }
+    const [show, setShow] = useState(false)
+    const handleClose = () => setShow(false)
+    const handleShow = () => setShow(true)
 
-  // modal stuff
-  handleShowModal = msg => {
-    this.setState({ modalShow: true, modalMsg: msg })
-  }
-  handleCloseModal = () => {
-    this.setState({ modalShow: false })
-  }
-
-  render() {
     return (
       <>
-        {/* navbar */}
-        <Navbar bg="white" expand="md">
-          {/* logo */}
-          <Navbar.Brand className="mr-auto" href="/home">
-            <Image src="/images/logo.png" alt="logo" fluid />
-          </Navbar.Brand>
-
-          {(this.props.loggedClient.length) ? (
-            <>
-              <Navbar.Toggle aria-controls="top-navbar" />
-              <Navbar.Collapse id="top-navbar">
-                {/* login dropdown and cart button */}
-                <Form className="d-flex justify-content-center ml-md-auto pt-3 pt-md-0" inline>
-                  {/* begins dropdown */}
-                  <Dropdown>
-                    {/* toggle */}
-                    <Dropdown.Toggle className="mr-2" variant="success">
-                      {this.props.loggedClient[0].loggedClient.firstName}
-                      <i className="fas fa-user ml-2"></i>
-                    </Dropdown.Toggle>
-                    {/* client menu */}
-                    <Dropdown.Menu className="bg-light">
-                      <Dropdown.Item>Mis datos</Dropdown.Item>
-                      <Dropdown.Item>Mis compras</Dropdown.Item>
-                      <Dropdown.Divider className="mt-1 mb-2" />
-                      <Dropdown.Item>Cerrar sesión</Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                  {/* cart button */}
-                  <Button href="/cart" variant="outline-primary">
-                    Mi Carrito<i className="fas fa-shopping-cart ml-2" />
-                    <Badge variant="warning">{this.getCartCounter()}</Badge>
-                  </Button>
-                </Form>
-              </Navbar.Collapse>
-            </>
-          ) : (
-              <>
-                <Navbar.Toggle aria-controls="top-navbar" />
-                <Navbar.Collapse id="top-navbar">
-                  {/* login dropdown and cart button */}
-                  <Form className="d-flex justify-content-center ml-md-auto pt-3 pt-md-0" inline>
-                    {/* begins dropdown */}
-                    <Dropdown>
-                      {/* toggle */}
-                      <Dropdown.Toggle className="mr-2" variant="primary">
-                        Iniciar Sesión<i className="fas fa-user ml-2"></i>
-                      </Dropdown.Toggle>
-                      {/* login form */}
-                      <Dropdown.Menu className="bg-light">
-                        <div className="px-4 py-3">
-                          <Form.Group className="mb-3">
-                            <Form.Label>Correo Electrónico</Form.Label>
-                            <Form.Control
-                              type="email"
-                              placeholder="Correo Electrónico"
-                              name="email"
-                              value={this.state.email}
-                              onChange={this.handleInputChange} />
-                          </Form.Group>
-                          <Form.Group>
-                            <Form.Label>Contraseña</Form.Label>
-                            <Form.Control
-                              type="password"
-                              placeholder="Contraseña"
-                              name="password"
-                              value={this.state.password}
-                              onChange={this.handleInputChange} />
-                          </Form.Group>
-                          <Form.Group className="mb-3" controlId="formBasicChecbox">
-                          </Form.Group>
-                          <Button variant="primary" onClick={this.handleLoginSubmit}>Entrar</Button>
-                        </div>
-                        {/* sign up */}
-                        <Dropdown.Divider className="mt-1 mb-2" />
-                        <Dropdown.Item>Olvidé mi contraseña</Dropdown.Item>
-                        <Dropdown.Item href="signup">Regístrate con nosotros</Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
-                    {/* cart button */}
-                    <Button href="/cart" variant="outline-primary">
-                      Mi Carrito<i className="fas fa-shopping-cart ml-2" />
-                      <Badge variant="warning">{this.getCartCounter()}</Badge>
-                    </Button>
-                  </Form>
-                </Navbar.Collapse>
-              </>
-            )}
-
-        </Navbar>
-
-        {/* modal for errors */}
-        <Modal show={this.state.modalShow} onHide={this.handleCloseModal}>
+        <Button variant="primary" onClick={handleShow}>Modal</Button>
+        <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Hubo un error</Modal.Title>
           </Modal.Header>
-          <Modal.Body>{this.state.modalMsg}</Modal.Body>
+          <Modal.Body>Error</Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" onClick={this.handleCloseModal}>Aceptar</Button>
+            <Button variant="primary" onClick={handleClose}>Aceptar</Button>
           </Modal.Footer>
         </Modal>
       </>
     )
   }
 
-}
-
-const mapStateToProps = (state) => {
-  return {
-    loggedClient: state.loggedClient
+  const ClientDropdown = () => {
+    return (
+      <>
+        <Dropdown>
+          {/* toggle */}
+          <Dropdown.Toggle className="mr-2" variant="success">
+            {loggedClient.firstName}
+            <i className="fas fa-user ml-2"></i>
+          </Dropdown.Toggle>
+          {/* client menu */}
+          <Dropdown.Menu className="bg-light">
+            <Dropdown.Item>Mis datos</Dropdown.Item>
+            <Dropdown.Item>Mis compras</Dropdown.Item>
+            <Dropdown.Divider className="mt-1 mb-2" />
+            <Dropdown.Item>Cerrar sesión</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </>
+    )
   }
+
+  const LoginDropdown = () => {
+    return (
+      <>
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validate={values => {
+            let errors = {};
+            if (!values.email) {
+              errors.email = "Required";
+            } else if (
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+            ) {
+              errors.email = "Correo inválido";
+            }
+            return errors;
+          }}
+          onSubmit={(values, { setSubmitting }) => {
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2));
+              setSubmitting(false);
+            }, 400);
+          }}>
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting
+          }) => (
+              <>
+                <Dropdown>
+                  {/* toggle */}
+                  <Dropdown.Toggle className="mr-2" variant="primary">
+                    Iniciar Sesión<i className="fas fa-user ml-2"></i>
+                  </Dropdown.Toggle>
+                  {/* dropdown */}
+                  <Dropdown.Menu className="bg-light">
+                    {/* form */}
+                    <Form
+                      // noValidate
+                      // validated={validated}
+                      // onSubmit={handleSubmit}
+                      className="px-4 py-3">
+                      {/* email */}
+                      <Form.Row className="mb-2">
+                        <Form.Group as={Col} controlId="validationFormik01">
+                          <Form.Label>Correo electrónico</Form.Label>
+                          <Form.Control
+                            placeholder="Correo electrónico"
+                            type="email"
+                            name="email"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.email}
+                            isValid={touched.email && !errors.email} />
+                          <Form.Control.Feedback>Correcto</Form.Control.Feedback>
+                        </Form.Group>
+                      </Form.Row>
+                      {/* password */}
+                      <Form.Row className="mb-3">
+                        <Form.Group as={Col} controlId="validationFormik02">
+                          <Form.Label>Contraseña</Form.Label>
+                          <Form.Control
+                            placeholder="Contraseña"
+                            type="password"
+                            name="password"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.password}
+                            isValid={touched.password && !errors.password} />
+                        </Form.Group>
+                      </Form.Row>
+                      {/* submit form bttn */}
+                      <Form.Row>
+                        <Form.Group as={Col}>
+                          <Button variant="primary" type="submit" disabled={isSubmitting}>Entrar</Button>
+                        </Form.Group>
+                      </Form.Row>
+                    </Form>
+                    {/* extra */}
+                    <Dropdown.Divider />
+                    <Dropdown.Item>Olvidé mi contraseña</Dropdown.Item>
+                    <Dropdown.Item href="signup">Regístrate con nosotros</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </>
+            )}
+        </Formik>
+      </>
+    )
+  }
+
+  return (
+    <>
+      <Navbar bg="white" expand="md">
+        {/* logo */}
+        <Navbar.Brand className="mr-auto" href="/home">
+          <Image src="/images/logo.png" alt="logo" fluid />
+        </Navbar.Brand>
+        {/* collapse */}
+        <Navbar.Toggle aria-controls="top-navbar" />
+        <Navbar.Collapse id="top-navbar">
+          {/* login dropdown and cart button */}
+          <div className="d-flex justify-content-center ml-md-auto pt-3 pt-md-0">
+            {/* ternary operator */}
+            {(loggedClient.length) ? (<ClientDropdown />) : (<LoginDropdown />)}
+            {/* cart button */}
+            <Button href="/cart" variant="outline-primary">
+              Mi Carrito<i className="fas fa-shopping-cart ml-2" /><CartCounter />
+            </Button>
+          </div>
+        </Navbar.Collapse>
+      </Navbar>
+      {/* modal */}
+      <MyModal />
+    </>
+  )
+
 }
 
-const mapDispatchToProps = {
-  saveLoggedClient
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MyNavbar);
+export default MyNavbar;

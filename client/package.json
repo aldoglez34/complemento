@@ -9,6 +9,7 @@
     "boostrap": "^2.0.0",
     "dotenv": "^8.1.0",
     "firebase": "^6.6.0",
+    "formik": "^1.5.8",
     "prop-types": "^15.7.2",
     "react": "^16.6.3",
     "react-bootstrap": "^1.0.0-beta.10",
