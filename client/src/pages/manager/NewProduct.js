@@ -39,6 +39,7 @@ function NewProduct() {
                     >
                         {({ isSubmitting }) => (
                             <Form>
+                                {/* product category */}
                                 <Form.Row>
                                     <Form.Group as={Col}>
                                         <Form.Label>Categoría<strong className="text-danger">*</strong></Form.Label>
@@ -54,12 +55,24 @@ function NewProduct() {
                                         <ErrorMessage name="category" component="div" />
                                     </Form.Group>
                                 </Form.Row>
+                                {/* product name */}
                                 <Form.Row>
                                     <Form.Group as={Col}>
                                         <Form.Label>Nombre</Form.Label>
                                         <Form.Control
                                             type="text"
-                                            placeholder="Nombre del producto" />
+                                            placeholder="Nombre del producto"
+                                            name="name" />
+                                    </Form.Group>
+                                </Form.Row>
+                                {/* product content */}
+                                <Form.Row>
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Contenido</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            placeholder="Nombre del producto"
+                                            name="content" />
                                     </Form.Group>
                                 </Form.Row>
 
