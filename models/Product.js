@@ -4,26 +4,31 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     categoryId: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     content: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
     dose: {
-      type: DataTypes.STRING,
-      allowNull: true
+      type: DataTypes.STRING(1234),
+      allowNull: false,
+      defaultValue: "No hay dosis disponible."
     },
     description: {
-      type: DataTypes.STRING,
-      allowNull: true
+      type: DataTypes.STRING(1234),
+      allowNull: false,
+      defaultValue: "No hay descripción disponible."
     },
     price: {
       type: DataTypes.FLOAT,
@@ -33,21 +38,20 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
     aditionalInfo: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false,
+      defaultValue: "No hay información adicional disponible."
     },
     photo: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    createdAt: {
       type: DataTypes.STRING,
-      allowNull: true
-    },
-    updatedAt: {
-      type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false,
+      defaultValue: "placeholder.jpg"
     }
   });
 

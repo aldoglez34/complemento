@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   const Suffering = sequelize.define("Suffering", {
     sufferingId: {
       type: DataTypes.INTEGER,
@@ -7,26 +7,20 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     },
     categoryId: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     productId: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    createdAt: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    updatedAt: {
-      type: DataTypes.STRING,
-      allowNull: true
     }
   });
 
-  Suffering.associate = function (models) {
+  Suffering.associate = function(models) {
     Suffering.belongsTo(models.Category, {
       foreignKey: "categoryId"
     });

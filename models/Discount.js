@@ -4,7 +4,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     productId: {
       type: DataTypes.INTEGER,
@@ -12,19 +13,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     percentage: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        min: 10,
+        max: 80
+      }
     },
     newPrice: {
       type: DataTypes.FLOAT,
       allowNull: false
-    },
-    createdAt: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    updatedAt: {
-      type: DataTypes.STRING,
-      allowNull: true
     }
   });
 

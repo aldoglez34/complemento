@@ -2,21 +2,21 @@
   "development": {
     "username": "root",
     "password": "123456",
-    "database": "complement_db",
+    "database": "complemento_db_dev",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "123456",
-    "database": "complement_db",
+    "database": "complemento_db_test",
     "host": "localhost",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": "123456",
-    "database": "complement_db",
+    "database": "complemento_db_prod",
     "host": "localhost",
     "dialect": "mysql"
   }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Spinner, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
 import ScrollButton from "../components/ScrollButton";
@@ -16,17 +16,18 @@ class Home extends Component {
   state = {
     discounts: [],
     bestSellers: []
-  }
+  };
 
   getProductsWithDiscount = () => {
     API.getProductsWithDiscount()
       .then(res => {
+        console.log(res.data);
         this.setState({ discounts: res.data });
       })
       .catch(err => {
         console.log(err);
       });
-  }
+  };
 
   getBestSellers = () => {
     API.getBestSellers()
@@ -36,7 +37,7 @@ class Home extends Component {
       .catch(err => {
         console.log(err);
       });
-  }
+  };
 
   componentDidMount() {
     this.getProductsWithDiscount();
@@ -46,13 +47,18 @@ class Home extends Component {
   render() {
     return (
       <Layout>
-        <header className="py-5 mb-5" style={styles.header}>
-          <div className="container">
-            <div className="row h-100 align-items-center">
-              <div className="col-lg-12">
-                <h1 className="display-4 text-light mt-5 mb-2">
-                  Bienvenido a Complemento Natural
+        {/* header */}
+        <Container className="py-4 mb-5" style={styles.header} fluid>
+          <Container className="py-4">
+            <Row>
+              <Col>
+                <h1 className="text-light mt-0 mb-2">
+                  Bienvenido a <strong>Complemento Natural</strong>
                 </h1>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
                 <p className="lead mb-4 text-light">
                   Somos una tienda en línea de medicina complementaria. Contamos
                   con un selecto catálogo de productos naturistas, remedios
@@ -60,15 +66,19 @@ class Home extends Component {
                   precios de laboratorio, hechos a base de plantas, raíces y
                   hierbas.
                 </p>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
                 <a className="btn btn-success btn-lg" href="/store">
                   Descubre la tienda
                   <i className="fas fa-store-alt mx-2"></i>
                   <i className="fas fa-angle-double-right"></i>
                 </a>
-              </div>
-            </div>
-          </div>
-        </header>
+              </Col>
+            </Row>
+          </Container>
+        </Container>
 
         <Container>
           {/* row 1 about and contact info */}
@@ -127,14 +137,14 @@ class Home extends Component {
                     );
                   })
                 ) : (
-                    <div className="text-center my-3">
-                      <Spinner
-                        animation="border"
-                        role="status"
-                        variant="success"
-                      />
-                    </div>
-                  )}
+                  <div className="text-center my-3">
+                    <Spinner
+                      animation="border"
+                      role="status"
+                      variant="success"
+                    />
+                  </div>
+                )}
               </div>
             </Col>
           </Row>
@@ -149,14 +159,14 @@ class Home extends Component {
                     return <ProductCard key={bs.productId} product={bs} />;
                   })
                 ) : (
-                    <div className="text-center my-3">
-                      <Spinner
-                        animation="border"
-                        role="status"
-                        variant="success"
-                      />
-                    </div>
-                  )}
+                  <div className="text-center my-3">
+                    <Spinner
+                      animation="border"
+                      role="status"
+                      variant="success"
+                    />
+                  </div>
+                )}
               </div>
             </Col>
           </Row>
@@ -166,7 +176,6 @@ class Home extends Component {
       </Layout>
     );
   }
-
 }
 
 export default Home;

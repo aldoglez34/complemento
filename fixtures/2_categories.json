@@ -1,0 +1,44 @@
+[
+  {
+    "model": "Category",
+    "data": { "categoryId": 1, "name": "Alimentos Terapéuticos" }
+  },
+  { "model": "Category", "data": { "categoryId": 2, "name": "Dermatología" } },
+  { "model": "Category", "data": { "categoryId": 3, "name": "Estimulantes" } },
+  {
+    "model": "Category",
+    "data": { "categoryId": 4, "name": "Sistema Circulatorio" }
+  },
+  {
+    "model": "Category",
+    "data": { "categoryId": 5, "name": "Sistema Digestivo" }
+  },
+  {
+    "model": "Category",
+    "data": { "categoryId": 6, "name": "Sistema Genitourinario" }
+  },
+  {
+    "model": "Category",
+    "data": { "categoryId": 7, "name": "Sistema Glandular" }
+  },
+  {
+    "model": "Category",
+    "data": { "categoryId": 8, "name": "Sistema Inmunológico" }
+  },
+  {
+    "model": "Category",
+    "data": { "categoryId": 9, "name": "Sistema Músculo Esquelético" }
+  },
+  {
+    "model": "Category",
+    "data": { "categoryId": 10, "name": "Sistema Nervioso Central" }
+  },
+  {
+    "model": "Category",
+    "data": { "categoryId": 11, "name": "Sistema Nutricional" }
+  },
+  {
+    "model": "Category",
+    "data": { "categoryId": 12, "name": "Sistema Respiratorio" }
+  }
+]

@@ -1,13 +1,20 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Accordion, Card, Button } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Accordion,
+  Card,
+  Button,
+  Image
+} from "react-bootstrap";
 import Layout from "../components/Layout";
 import API from "../utils/API";
 
 class ProductDetails extends Component {
   state = {
     productDetails: {},
-    scientificIngredients: [],
-    commonIngredients: []
+    ingredients: []
   };
 
   getProductDetails = () => {
@@ -24,8 +31,7 @@ class ProductDetails extends Component {
     API.getIngredients(this.props.routeProps.match.params.productId)
       .then(res => {
         this.setState({
-          scientificIngredients: res.data.scientificIngredients,
-          commonIngredients: res.data.commonIngredients
+          ingredients: res.data
         });
       })
       .catch(err => {
@@ -56,26 +62,20 @@ class ProductDetails extends Component {
               sm={{ span: 3, offset: 3 }}
               className="d-flex align-items-center justify-content-center"
             >
-              {this.state.productDetails.photo ? (
-                <img
-                  src={"../images/products/" + this.state.productDetails.photo}
-                  className="img-fluid rounded-lg shadow-sm"
-                  alt="product"
-                />
-              ) : (
-                <img
-                  src="../images/products/placeholder.jpg"
-                  className="img-fluid rounded-lg shadow-sm"
-                  alt="product"
-                />
-              )}
+              <Image
+                src={"../images/products/" + this.state.productDetails.photo}
+                className="img-fluid rounded-lg shadow-sm"
+                alt="product"
+              />
             </Col>
             {/* name column */}
             <Col sm={5} className="text-center">
               <h2 className="text-dark mt-5 mb-2">
                 <strong>{this.state.productDetails.name}</strong>
               </h2>
-              <p className="lead my-3 text-dark">{this.state.content}</p>
+              <p className="lead my-3 text-dark">
+                {this.state.productDetails.content}
+              </p>
 
               {this.state.productDetails.Discount ? (
                 <>
@@ -91,10 +91,6 @@ class ProductDetails extends Component {
                   {"$" + this.state.productDetails.price + " MXN"}
                 </h3>
               )}
-
-              {/* <h3 className="mb-3 text-dark">
-                {"$" + this.state.productDetails.price + " MXN"}
-              </h3> */}
 
               <Button size="lg" variant="outline-primary" block>
                 <i className="fas fa-shopping-cart mr-2" />
@@ -113,30 +109,20 @@ class ProductDetails extends Component {
               </Card.Header>
               <Accordion.Collapse eventKey="0">
                 <Card.Body>
-                  {this.state.scientificIngredients.length ? (
+                  {this.state.ingredients.length ? (
                     <ul className="list-unstyled">
                       <li>
-                        Nombre científico
+                        Nombre
                         <ul>
-                          {this.state.scientificIngredients.map(ing => (
+                          {this.state.ingredients.map(ing => (
                             <li key={ing}>{ing}</li>
                           ))}
                         </ul>
                       </li>
                     </ul>
-                  ) : null}
-                  {this.state.commonIngredients.length ? (
-                    <ul className="list-unstyled">
-                      <li>
-                        Nombre común
-                        <ul>
-                          {this.state.commonIngredients.map(ing => (
-                            <li key={ing}>{ing}</li>
-                          ))}
-                        </ul>
-                      </li>
-                    </ul>
-                  ) : null}
+                  ) : (
+                    <span>No hay ingredientes disponibles.</span>
+                  )}
                 </Card.Body>
               </Accordion.Collapse>
             </Card>

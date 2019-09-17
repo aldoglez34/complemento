@@ -112,23 +112,26 @@ class Store extends Component {
   render() {
     return (
       <Layout>
-        <header className="py-5 mb-4" style={styles.header}>
-          <div className="container">
-            <div className="row h-100 align-items-center">
-              <div className="col-lg-12">
-                <h1 className="display-4 text-white mt-5 mb-2">
-                  Nuestra Tienda
-                </h1>
-                <p className="lead mb-5 text-light">
+        {/* header */}
+        <Container className="py-4 mb-5" style={styles.header} fluid>
+          <Container className="py-4">
+            <Row>
+              <Col>
+                <h1 className="text-light mt-0 mb-2">Nuestra tienda</h1>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <p className="lead mb-4 text-light">
                   Contamos con un selecto catálogo de productos naturistas,
                   remedios herbolarios, suplementos alimenticios y medicina
                   alternativa a precios de laboratorio, hechos a base de
                   plantas, raíces y hierbas.
                 </p>
-              </div>
-            </div>
-          </div>
-        </header>
+              </Col>
+            </Row>
+          </Container>
+        </Container>
 
         <Container fluid>
           {/* categories row */}
