@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Image, Form, Button } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
+import * as yup from "yup";
 import fire from "../../firebase/Fire";
 
 const styles = {
@@ -22,8 +23,21 @@ const handleLoginSubmit = data => {
 };
 
 function Login() {
+  const loginSchema = yup.object({
+    email: yup
+      .string()
+      .email()
+      .required(),
+    password: yup
+      .string()
+      .min(6)
+      .max(15)
+      .required()
+  });
+
   return (
     <Container>
+      {/* logo */}
       <Row>
         <Col className="text-center">
           <Image
@@ -32,24 +46,17 @@ function Login() {
             style={styles.logo}
             fluid
           />
-          <h3 className="my-4 text-muted">Iniciar Sesión</h3>
+          <h3 className="my-4">
+            <strong>- Panel de administrador -</strong>
+          </h3>
         </Col>
       </Row>
+      {/* form */}
       <Row>
         <Col>
           <Formik
             initialValues={{ email: "", password: "" }}
-            validate={values => {
-              let errors = {};
-              if (!values.email) {
-                errors.email = "Requerido";
-              } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-              ) {
-                errors.email = "Correo inválido";
-              }
-              return errors;
-            }}
+            validationSchema={loginSchema}
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
                 // alert(JSON.stringify(values, null, 2));
@@ -67,18 +74,18 @@ function Login() {
               handleSubmit,
               isSubmitting
             }) => (
-              <Form onSubmit={handleSubmit}>
+              <Form noValidate onSubmit={handleSubmit}>
                 <Form.Row>
                   <Form.Group as={Col} md={{ span: 6, offset: 3 }}>
-                    <Form.Label className="text-muted">
-                      Correo electrónico
-                    </Form.Label>
+                    <Form.Label>Correo electrónico</Form.Label>
                     <Form.Control
+                      placeholder="Correo electrónico de administrador"
                       type="email"
                       name="email"
+                      value={values.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.email}
+                      isValid={touched.email && !errors.email}
                     />
                     <ErrorMessage
                       className="text-danger"
@@ -89,13 +96,15 @@ function Login() {
                 </Form.Row>
                 <Form.Row>
                   <Form.Group as={Col} md={{ span: 6, offset: 3 }}>
-                    <Form.Label className="text-muted">Contraseña</Form.Label>
+                    <Form.Label>Contraseña</Form.Label>
                     <Form.Control
+                      placeholder="Contraseña de administrador"
                       type="password"
                       name="password"
+                      value={values.password}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.password}
+                      isValid={touched.password && !errors.password}
                     />
                     <ErrorMessage
                       className="text-danger"
@@ -104,20 +113,16 @@ function Login() {
                     />
                   </Form.Group>
                 </Form.Row>
-                <Form.Row>
-                  <Form.Group as={Col} md={{ span: 6, offset: 3 }}>
-                    <Button
-                      size="lg"
-                      block
-                      variant="success"
-                      className="mt-3"
-                      type="submit"
-                      disabled={isSubmitting}
-                    >
-                      Entrar
-                    </Button>
-                  </Form.Group>
-                </Form.Row>
+                <Button
+                  size="lg"
+                  block
+                  variant="success"
+                  className="mt-3"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  Entrar<i className="fas fa-angle-double-right ml-1"></i>
+                </Button>
               </Form>
             )}
           </Formik>

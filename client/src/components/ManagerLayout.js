@@ -23,9 +23,9 @@ function ManagerLayout(props) {
       <Row>
         <Col>
           <Image src="/images/biglogo.png" alt="logo" fluid />
-          <h2 className="text-dark" style={styles.title}>
+          <h3 className="text-dark" style={styles.title}>
             <strong>PANEL DE ADMINISTRADOR</strong>
-          </h2>
+          </h3>
         </Col>
       </Row>
       <Row>
@@ -36,7 +36,8 @@ function ManagerLayout(props) {
       <Row className="mt-2">
         <Col>
           <Button onClick={logout} variant="danger">
-            Cerrar sesión
+            <i className="fas fa-angle-double-left mr-1" />
+            Salir
           </Button>
         </Col>
       </Row>

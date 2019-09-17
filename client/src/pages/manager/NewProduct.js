@@ -30,7 +30,7 @@ class NewProduct extends Component {
 
   NewCategoryBttn = () => {
     const categorySchema = yup.object({
-      catName: yup.string().required()
+      name: yup.string().required()
     });
 
     const [show, setShow] = useState(false);
@@ -50,7 +50,7 @@ class NewProduct extends Component {
           </Modal.Header>
           {/* begins form */}
           <Formik
-            initialValues={{ catName: "" }}
+            initialValues={{ name: "" }}
             validationSchema={categorySchema}
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
@@ -74,18 +74,21 @@ class NewProduct extends Component {
                   <Form.Group as={Col}>
                     <Form.Label>Nombre</Form.Label>
                     <Form.Control
-                      placeholder="Ingresa el nombre de la categoría"
+                      placeholder="Nombre de la categoría"
                       type="text"
-                      name="catName"
-                      value={values.catName}
+                      name="name"
+                      value={values.name}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      isValid={touched.catName && !errors.catName}
+                      isValid={touched.name && !errors.name}
                     />
-                    <Form.Control.Feedback>Todo bien</Form.Control.Feedback>
+                    <ErrorMessage
+                      className="text-danger"
+                      name="name"
+                      component="div"
+                    />
                   </Form.Group>
                 </Form.Row>
-                {/* modal footer */}
                 <Modal.Footer>
                   <Button variant="secondary" onClick={handleClose}>
                     Cancelar
@@ -107,6 +110,23 @@ class NewProduct extends Component {
   }
 
   render() {
+    const productSchema = yup.object({
+      category: yup.string().required(),
+      name: yup
+        .string()
+        .min(3)
+        .max(50)
+        .required(),
+      price: yup
+        .number()
+        .positive()
+        .moreThan(1)
+        .required(),
+      content: yup.string().required(),
+      dose: yup.string(),
+      description: yup.string()
+    });
+
     return (
       <ManagerLayout email={this.props.manager.email}>
         {/* title */}
@@ -124,36 +144,49 @@ class NewProduct extends Component {
           <Col>
             <Formik
               initialValues={{
-                email: "",
-                password: ""
+                category: "",
+                name: "",
+                price: "",
+                content: "",
+                dose: "",
+                description: ""
               }}
-              validate={values => {
-                let errors = {};
-                if (!values.email) {
-                  errors.email = "Required";
-                } else if (
-                  !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                ) {
-                  errors.email = "Correo electrónico no válido";
-                }
-                return errors;
-              }}
+              validationSchema={productSchema}
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
                   alert(JSON.stringify(values, null, 2));
+                  // handleLoginSubmit(values);
                   setSubmitting(false);
                 }, 400);
               }}
             >
-              {({ isSubmitting }) => (
-                <Form>
+              {({
+                values,
+                errors,
+                touched,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                isSubmitting
+              }) => (
+                <Form noValidate onSubmit={handleSubmit}>
                   {/* product category */}
                   <Form.Row>
                     <Form.Group as={Col}>
                       <Form.Label>
-                        Categoría<strong className="text-danger">*</strong>
+                        Categoría<span className="text-danger">*</span>
                       </Form.Label>
-                      <Form.Control as="select" type="text" name="category">
+                      <Form.Control
+                        as="select"
+                        type="text"
+                        name="category"
+                        value={values.category}
+                        // defaultValue="Elige..."
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isValid={touched.category && !errors.category}
+                        isInvalid={!!errors.category}
+                      >
                         <option disabled>Elige...</option>
                         {this.state.categories
                           ? this.state.categories.map(cat => {
@@ -163,6 +196,14 @@ class NewProduct extends Component {
                             })
                           : null}
                       </Form.Control>
+                      {/* <Form.Control.Feedback type="invalid">
+                        {errors.category}
+                      </Form.Control.Feedback> */}
+                      <ErrorMessage
+                        className="text-danger"
+                        name="category"
+                        component="div"
+                      />
                       <this.NewCategoryBttn />
                     </Form.Group>
                   </Form.Row>
@@ -170,19 +211,28 @@ class NewProduct extends Component {
                   <Form.Row>
                     <Form.Group as={Col} md={8}>
                       <Form.Label>
-                        Nombre<strong className="text-danger">*</strong>
+                        Nombre
+                        <span className="text-danger">*</span>
                       </Form.Label>
                       <Form.Control
-                        type="text"
                         placeholder="Nombre"
+                        type="text"
                         name="name"
+                        value={values.name}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isValid={touched.name && !errors.name}
                       />
-                      <ErrorMessage name="name" component="div" />
+                      <ErrorMessage
+                        className="text-danger"
+                        name="name"
+                        component="div"
+                      />
                     </Form.Group>
                     {/* price */}
                     <Form.Group as={Col} md={4}>
                       <Form.Label>
-                        Precio<strong className="text-danger">*</strong>
+                        Precio<span className="text-danger">*</span>
                       </Form.Label>
                       <InputGroup>
                         <InputGroup.Prepend>
@@ -191,12 +241,20 @@ class NewProduct extends Component {
                           </InputGroup.Text>
                         </InputGroup.Prepend>
                         <Form.Control
-                          type="text"
                           placeholder="0.00"
+                          type="text"
                           name="price"
+                          value={values.price}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          isValid={touched.price && !errors.price}
                         />
                       </InputGroup>
-                      <ErrorMessage name="price" component="div" />
+                      <ErrorMessage
+                        className="text-danger"
+                        name="price"
+                        component="div"
+                      />
                     </Form.Group>
                   </Form.Row>
                   {/* product content */}
@@ -204,11 +262,19 @@ class NewProduct extends Component {
                     <Form.Group as={Col}>
                       <Form.Label>Contenido</Form.Label>
                       <Form.Control
-                        type="text"
                         placeholder="Contenido"
+                        type="text"
                         name="content"
+                        value={values.content}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isValid={touched.content && !errors.content}
                       />
-                      <ErrorMessage name="content" component="div" />
+                      <ErrorMessage
+                        className="text-danger"
+                        name="content"
+                        component="div"
+                      />
                     </Form.Group>
                   </Form.Row>
                   {/* dose */}
@@ -216,11 +282,19 @@ class NewProduct extends Component {
                     <Form.Group as={Col}>
                       <Form.Label>Dosis</Form.Label>
                       <Form.Control
-                        type="text"
                         placeholder="Dosis"
+                        type="text"
                         name="dose"
+                        value={values.dose}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isValid={touched.dose && !errors.dose}
                       />
-                      <ErrorMessage name="dose" component="div" />
+                      <ErrorMessage
+                        className="text-danger"
+                        name="dose"
+                        component="div"
+                      />
                     </Form.Group>
                   </Form.Row>
                   {/* description */}
@@ -232,44 +306,37 @@ class NewProduct extends Component {
                         rows="3"
                         placeholder="Descripción"
                         name="description"
+                        value={values.description}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isValid={touched.description && !errors.description}
                       />
-                      <ErrorMessage name="description" component="div" />
+                      <ErrorMessage
+                        className="text-danger"
+                        name="dose"
+                        component="div"
+                      />
                     </Form.Group>
                   </Form.Row>
                   {/* ingredients */}
                   <Form.Row>
-                    <Form.Group as={Col} md>
-                      <Form.Label>
-                        Ingredientes (nombres científicos)
-                      </Form.Label>
+                    <Form.Group as={Col}>
+                      <Form.Label>Ingredientes (1x1)</Form.Label>
                       <Form.Control
-                        type="text"
                         placeholder="Ingredientes"
-                        name="scientific"
-                      />
-                      <div>
-                        <Button variant="link" className="m-0 p-0">
-                          <i className="fas fa-plus-square mr-1" />
-                          Nuevo ingrediente
-                        </Button>
-                      </div>
-                    </Form.Group>
-                    <Form.Group as={Col} md>
-                      <Form.Label>Ingredientes (nombres comunes)</Form.Label>
-                      <Form.Control
                         type="text"
-                        placeholder="Ingredientes"
-                        name="common"
+                        name="ingredient"
+                        value={values.ingredient}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isValid={touched.ingredient && !errors.ingredient}
                       />
-                      <div>
-                        <Button variant="link" className="m-0 p-0">
-                          <i className="fas fa-plus-square mr-1" />
-                          Nuevo ingrediente
-                        </Button>
-                      </div>
+                      <Button variant="link" className="m-0 p-0">
+                        <i className="fas fa-plus-square mr-1" />
+                        Nuevo ingrediente
+                      </Button>
                     </Form.Group>
                   </Form.Row>
-
                   {/* create button */}
                   <div className="text-right">
                     <Button type="submit" disabled={isSubmitting}>
