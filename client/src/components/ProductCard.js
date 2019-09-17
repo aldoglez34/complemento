@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Card, Button, Overlay, Modal } from "react-bootstrap";
+import { Card, Button, OverlayTrigger, Modal, Tooltip } from "react-bootstrap";
 
 ProductCard.propTypes = {
   product: PropTypes.object.isRequired
@@ -8,42 +8,17 @@ ProductCard.propTypes = {
 
 function ProductCard(props) {
   const BttnNoStock = () => {
-    const [show, setShow] = useState(false);
-    const target = useRef(null);
-
     return (
       <>
-        <Button
-          variant="outline-danger"
-          ref={target}
-          onClick={() => setShow(!show)}
-        >
-          Agregar
-          <i className="fas fa-shopping-cart ml-1" />
-        </Button>
-        <Overlay target={target.current} show={show} placement="right">
-          {({
-            placement,
-            scheduleUpdate,
-            arrowProps,
-            outOfBoundaries,
-            show: _show,
-            ...props
-          }) => (
-            <div
-              {...props}
-              style={{
-                backgroundColor: "rgba(255, 100, 100, 0.85)",
-                padding: "2px 10px",
-                color: "white",
-                borderRadius: 3,
-                ...props.style
-              }}
-            >
-              Fuera de stock.
-            </div>
-          )}
-        </Overlay>
+        <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">
+          No hay existencias disponibles.
+        </Tooltip>}>
+          <span className="d-inline-block">
+            <Button disabled variant="outline-danger" style={{ pointerEvents: "none" }}>
+              Agregar<i className="fas fa-shopping-cart ml-1" />
+            </Button>
+          </span>
+        </OverlayTrigger>
       </>
     );
   };
@@ -121,8 +96,8 @@ function ProductCard(props) {
               </strong>
             </>
           ) : (
-            <strong>{"$" + props.product.price + " MXN"}</strong>
-          )}
+              <strong>{"$" + props.product.price + " MXN"}</strong>
+            )}
         </Card.Text>
         {/* content */}
         <Card.Text>{props.product.content}</Card.Text>
@@ -131,8 +106,8 @@ function ProductCard(props) {
         {props.product.stock > 0 ? (
           <AddToCartButton product={props.product} />
         ) : (
-          <BttnNoStock />
-        )}
+            <BttnNoStock />
+          )}
       </Card.Body>
     </Card>
   );

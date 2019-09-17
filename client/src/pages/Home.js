@@ -21,7 +21,6 @@ class Home extends Component {
   getProductsWithDiscount = () => {
     API.getProductsWithDiscount()
       .then(res => {
-        console.log(res.data);
         this.setState({ discounts: res.data });
       })
       .catch(err => {

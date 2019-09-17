@@ -1,6 +1,6 @@
 .scroll {
-  opacity: 0.3;
-  background-color: yellowgreen;
+  opacity: 0.7;
+  background-color: rgb(40, 167, 69);
   width: 40px;
   height: 40px;
   position: fixed;

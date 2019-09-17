@@ -87,10 +87,10 @@ class ProductDetails extends Component {
                   </h3>
                 </>
               ) : (
-                <h3 className="mb-3 text-dark">
-                  {"$" + this.state.productDetails.price + " MXN"}
-                </h3>
-              )}
+                  <h3 className="mb-3 text-dark">
+                    {"$" + this.state.productDetails.price + " MXN"}
+                  </h3>
+                )}
 
               <Button size="lg" variant="outline-primary" block>
                 <i className="fas fa-shopping-cart mr-2" />
@@ -121,8 +121,8 @@ class ProductDetails extends Component {
                       </li>
                     </ul>
                   ) : (
-                    <span>No hay ingredientes disponibles.</span>
-                  )}
+                      <span>No hay ingredientes disponibles.</span>
+                    )}
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
@@ -137,8 +137,8 @@ class ProductDetails extends Component {
                   {this.state.productDetails.description ? (
                     this.state.productDetails.description
                   ) : (
-                    <span>No hay descripción disponible.</span>
-                  )}
+                      <span>No hay descripción disponible.</span>
+                    )}
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
@@ -153,8 +153,8 @@ class ProductDetails extends Component {
                   {this.state.productDetails.dose ? (
                     this.state.productDetails.dose
                   ) : (
-                    <span>No hay dosis disponible.</span>
-                  )}
+                      <span>No hay dosis disponible.</span>
+                    )}
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
@@ -170,8 +170,8 @@ class ProductDetails extends Component {
                   {this.state.productDetails.aditionalInfo ? (
                     this.state.productDetails.aditionalInfo
                   ) : (
-                    <span>No hay información adicional disponible.</span>
-                  )}
+                      <span>No hay información adicional disponible.</span>
+                    )}
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
