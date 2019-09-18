@@ -2,94 +2,85 @@ module.exports = function(sequelize, DataTypes) {
   const Client = sequelize.define("Client", {
     clientId: {
       type: DataTypes.STRING,
-      primaryKey: true,
-      allowNull: false,
-      unique: true
+      primaryKey: true
     },
     password: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(15),
       allowNull: false,
       validate: {
-        len: [6, 15]
+        len: {
+          args: [6, 15]
+        }
       }
     },
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      is: ["^[a-z]+$", "i"]
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      is: ["^[a-z]+$", "i", " "]
-    },
-    phoneNumber: {
-      type: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING(100),
       allowNull: false,
       validate: {
-        len: [10]
+        is: {
+          args: ["[a-zA-Z Á-Úá-ú][^1234567890]+$"]
+        }
+      }
+    },
+    firstSurname: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+      validate: {
+        is: {
+          args: ["[a-zA-Z Á-Úá-ú][^1234567890]+$"]
+        }
+      }
+    },
+    secondSurname: {
+      type: DataTypes.STRING(100),
+      validate: {
+        is: {
+          args: ["[a-zA-Z Á-Úá-ú][^1234567890]+$"]
+        }
+      }
+    },
+    phone: {
+      type: DataTypes.STRING(10),
+      allowNull: false,
+      validate: {
+        not: {
+          args: ["[a-z]", "i"]
+        }
       }
     },
     email: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false,
-      unique: true,
-      isEmail: true
+      isEmail: true,
+      validate: {
+        unique: {
+          msg: "Ya existe un correo así registrado."
+        }
+      }
     },
     street: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(150),
       allowNull: false
     },
     city: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(150),
       allowNull: false
     },
     state: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      isIn: [
-        [
-          "Aguascalientes",
-          "Baja California",
-          "Baja California Sur",
-          "Campeche",
-          "Chiapas",
-          "Chihuahua",
-          "Ciudad de México",
-          "Coahuila",
-          "Colima",
-          "Durango",
-          "Estado de México",
-          "Guanajuato",
-          "Guerrero",
-          "Hidalgo",
-          "Jalisco",
-          "Michoacán",
-          "Morelos",
-          "Nayarit",
-          "Nuevo León",
-          "Oaxaca",
-          "Puebla",
-          "Querétaro",
-          "Quintana Roo",
-          "San Luis Potosí",
-          "Sinaloa",
-          "Sonora",
-          "Tabasco",
-          "Tamaulipas",
-          "Tlaxcala",
-          "Veracruz",
-          "Yucatán",
-          "Zacatecas"
-        ]
-      ]
-    },
-    zipCode: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(25),
       allowNull: false
     },
+    zipCode: {
+      type: DataTypes.STRING(5),
+      allowNull: false,
+      validate: {
+        not: {
+          args: ["[a-z]", "i"]
+        }
+      }
+    },
     comments: {
-      type: DataTypes.STRING(1234),
+      type: DataTypes.STRING(255),
       allowNull: true
     }
   });

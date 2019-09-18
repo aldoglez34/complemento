@@ -17,7 +17,7 @@ function Panel(props) {
               <i className="fas fa-pen-square mr-2" />
               Editar producto
             </ListGroup.Item>
-            <ListGroup.Item action disabled href="/home">
+            <ListGroup.Item action href="/home">
               <i className="fas fa-caret-square-up mr-2" />
               Aumentar existencia
             </ListGroup.Item>

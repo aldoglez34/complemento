@@ -4,9 +4,10 @@
     "data": {
       "clientId": "C7kTH27i1aSqbHgcgQwrtFuF3FO2",
       "password": "123456",
-      "firstName": "Aldo",
-      "lastName": "Solano González",
-      "phoneNumber": "2281112031",
+      "name": "Aldo",
+      "firstSurname": "Solano",
+	  "secondSurname": "González",
+      "phone": "2281112031",
       "email": "aldoglez34@gmail.com",
       "street": "88 Canterbury St.",
       "city": "Richardson",

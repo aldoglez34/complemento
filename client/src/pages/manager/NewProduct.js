@@ -21,24 +21,13 @@ class NewProduct extends Component {
       });
   };
 
-  saveCategory = values => {
-    managerAPI
-      .saveCategory(values)
-      .then(res => {
-        // when it finishes creating the new cat
-        // load the cats again so the component renders
-        this.getCategories();
-      })
-      .catch(err => console.log(err));
-  };
-
   NewCategoryBttn = () => {
     const categorySchema = yup.object({
       name: yup
         .string()
         .min(4, "Demasiado corto")
         .max(254, "Demasiado largo")
-        .required()
+        .required("Requerido")
     });
 
     const [show, setShow] = useState(false);
@@ -63,13 +52,8 @@ class NewProduct extends Component {
             initialValues={{ name: "" }}
             validationSchema={categorySchema}
             onSubmit={(values, { setSubmitting }) => {
-              // alert(JSON.stringify(values, null, 2));
               this.saveCategory(values);
               setSubmitting(false);
-              // close modal
-              handleClose();
-              // reload page so formik doesn't show error msgs on all the form controls
-              window.location.reload();
             }}
           >
             {({
@@ -116,6 +100,24 @@ class NewProduct extends Component {
         </Modal>
       </div>
     );
+  };
+
+  saveCategory = values => {
+    managerAPI
+      .saveCategory(values)
+      .then(res => {
+        // if res.data.errors is undefined, it means there's no msg from the backend
+        // go on and save the new cat and reload the window
+        if (typeof res.data.errors == "undefined") {
+          // reload the page so formik doesn't show error msgs on all the form controls
+          this.getCategories();
+          window.location.reload();
+        } else {
+          // it's not undefined then just show the msg coming from the backend
+          alert(res.data.errors[0].message);
+        }
+      })
+      .catch(err => console.log(err));
   };
 
   componentDidMount() {
