@@ -38,10 +38,10 @@ const models = require("./models");
 // sync db
 // when in dev force: true
 // when in prod force: false
-db.sequelize.sync({ force: false }).then(function () {
+db.sequelize.sync({ force: false }).then(function() {
   // load fixtures files into the db
   // it's important that the process is finished in order
-  sequelize_fixtures.loadFile("fixtures/*.json", models).then(function () {
+  sequelize_fixtures.loadFile("fixtures/*.json", models).then(function() {
     console.log("\n\ndev data loaded successfully\n\n");
   });
 

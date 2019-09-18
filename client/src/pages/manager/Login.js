@@ -26,13 +26,13 @@ function Login() {
   const loginSchema = yup.object({
     email: yup
       .string()
-      .email()
-      .required(),
+      .email("Correo inválido")
+      .required("Requerido"),
     password: yup
       .string()
-      .min(6)
-      .max(15)
-      .required()
+      .min(6, "Longitud incorrecta")
+      .max(15, "Longitud incorrecta")
+      .required("Requerido")
   });
 
   return (
@@ -113,16 +113,20 @@ function Login() {
                     />
                   </Form.Group>
                 </Form.Row>
-                <Button
-                  size="lg"
-                  block
-                  variant="success"
-                  className="mt-3"
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  Entrar<i className="fas fa-angle-double-right ml-1"></i>
-                </Button>
+                <Form.Row>
+                  <Form.Group as={Col} md={{ span: 6, offset: 3 }}>
+                    <Button
+                      size="lg"
+                      block
+                      variant="success"
+                      className="mt-3"
+                      type="submit"
+                      disabled={isSubmitting}
+                    >
+                      Entrar<i className="fas fa-angle-double-right ml-1"></i>
+                    </Button>
+                  </Form.Group>
+                </Form.Row>
               </Form>
             )}
           </Formik>

@@ -81,11 +81,7 @@ class NewProduct extends Component {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       isValid={touched.name && !errors.name}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="name"
-                      component="div"
+                      isInvalid={touched.name && !!errors.name}
                     />
                   </Form.Group>
                 </Form.Row>
@@ -111,20 +107,27 @@ class NewProduct extends Component {
 
   render() {
     const productSchema = yup.object({
-      category: yup.string().required(),
+      category: yup
+        .mixed()
+        .notOneOf(["Elige..."], "Requerido")
+        .required("Requerido"),
       name: yup
         .string()
         .min(3)
-        .max(50)
-        .required(),
+        .max(254, "No puede exceder los 254 caracteres")
+        .required("Requerido"),
       price: yup
         .number()
-        .positive()
-        .moreThan(1)
-        .required(),
-      content: yup.string().required(),
-      dose: yup.string(),
-      description: yup.string()
+        .moreThan(1, "Debe ser mayor a $1")
+        .required("Requerido"),
+      content: yup
+        .string()
+        .max(254, "No puede exceder los 254 caracteres")
+        .required("Requerido"),
+      dose: yup.string().max(1000, "No puede exceder los 1000 caracteres"),
+      description: yup
+        .string()
+        .max(1000, "No puede exceder los 1000 caracteres")
     });
 
     return (
@@ -133,8 +136,8 @@ class NewProduct extends Component {
         <Row className="mb-2">
           <Col>
             <a href="/manager/panel">
-              <i className="fas fa-arrow-alt-circle-left mr-1"></i>Regresar al
-              panel
+              <i className="fas fa-arrow-alt-circle-left mr-1"></i>
+              Regresar al panel
             </a>
             <h3 className="mt-2">Nuevo producto</h3>
           </Col>
@@ -144,7 +147,7 @@ class NewProduct extends Component {
           <Col>
             <Formik
               initialValues={{
-                category: "",
+                category: "Elige...",
                 name: "",
                 price: "",
                 content: "",
@@ -153,11 +156,26 @@ class NewProduct extends Component {
               }}
               validationSchema={productSchema}
               onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
-                  // handleLoginSubmit(values);
-                  setSubmitting(false);
-                }, 400);
+                // getting the catid
+                const sel = document.getElementById("categoryControl");
+                const opt = sel.options[sel.selectedIndex];
+                let catId = opt.getAttribute("catId");
+                values.categoryId = catId;
+                setSubmitting(false);
+                alert(JSON.stringify(values, null, 2));
+
+                // setTimeout(() => {
+                //   const sel = document.getElementById("categoryControl");
+                //   console.log(sel);
+                //   const opt = sel.options[sel.selectedIndex];
+                //   console.log(opt);
+                //   let cat = opt.getAttribute("key");
+                //   console.log(cat);
+                //   alert(cat);
+                //   // alert(JSON.stringify(values, null, 2));
+                //   // handleLoginSubmit(values);
+                //   setSubmitting(false);
+                // }, 400);
               }}
             >
               {({
@@ -177,28 +195,30 @@ class NewProduct extends Component {
                         Categoría<span className="text-danger">*</span>
                       </Form.Label>
                       <Form.Control
+                        id="categoryControl"
                         as="select"
                         type="text"
                         name="category"
                         value={values.category}
-                        // defaultValue="Elige..."
                         onChange={handleChange}
                         onBlur={handleBlur}
                         isValid={touched.category && !errors.category}
-                        isInvalid={!!errors.category}
+                        isInvalid={touched.category && !!errors.category}
                       >
                         <option disabled>Elige...</option>
                         {this.state.categories
                           ? this.state.categories.map(cat => {
                               return (
-                                <option key={cat.categoryId}>{cat.name}</option>
+                                <option
+                                  catid={cat.categoryId}
+                                  key={cat.categoryId}
+                                >
+                                  {cat.name}
+                                </option>
                               );
                             })
                           : null}
                       </Form.Control>
-                      {/* <Form.Control.Feedback type="invalid">
-                        {errors.category}
-                      </Form.Control.Feedback> */}
                       <ErrorMessage
                         className="text-danger"
                         name="category"
@@ -222,6 +242,7 @@ class NewProduct extends Component {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         isValid={touched.name && !errors.name}
+                        isInvalid={touched.name && !!errors.name}
                       />
                       <ErrorMessage
                         className="text-danger"
@@ -248,6 +269,7 @@ class NewProduct extends Component {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           isValid={touched.price && !errors.price}
+                          isInvalid={touched.price && !!errors.price}
                         />
                       </InputGroup>
                       <ErrorMessage
@@ -260,7 +282,9 @@ class NewProduct extends Component {
                   {/* product content */}
                   <Form.Row>
                     <Form.Group as={Col}>
-                      <Form.Label>Contenido</Form.Label>
+                      <Form.Label>
+                        Contenido<span className="text-danger">*</span>
+                      </Form.Label>
                       <Form.Control
                         placeholder="Contenido"
                         type="text"
@@ -269,6 +293,7 @@ class NewProduct extends Component {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         isValid={touched.content && !errors.content}
+                        isInvalid={touched.content && !!errors.content}
                       />
                       <ErrorMessage
                         className="text-danger"
@@ -289,6 +314,7 @@ class NewProduct extends Component {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         isValid={touched.dose && !errors.dose}
+                        isInvalid={touched.dose && !!errors.dose}
                       />
                       <ErrorMessage
                         className="text-danger"
@@ -310,10 +336,11 @@ class NewProduct extends Component {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         isValid={touched.description && !errors.description}
+                        isInvalid={touched.description && !!errors.description}
                       />
                       <ErrorMessage
                         className="text-danger"
-                        name="dose"
+                        name="description"
                         component="div"
                       />
                     </Form.Group>
@@ -323,13 +350,19 @@ class NewProduct extends Component {
                     <Form.Group as={Col}>
                       <Form.Label>Ingredientes (1x1)</Form.Label>
                       <Form.Control
-                        placeholder="Ingredientes"
+                        placeholder="Ingrediente"
                         type="text"
                         name="ingredient"
                         value={values.ingredient}
                         onChange={handleChange}
                         onBlur={handleBlur}
                         isValid={touched.ingredient && !errors.ingredient}
+                        isInvalid={touched.ingredient && !!errors.ingredient}
+                      />
+                      <ErrorMessage
+                        className="text-danger"
+                        name="ingredient"
+                        component="div"
                       />
                       <Button variant="link" className="m-0 p-0">
                         <i className="fas fa-plus-square mr-1" />
