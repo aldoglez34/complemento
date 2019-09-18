@@ -21,9 +21,9 @@ router.get("/category/all", function(req, res) {
 // save new category
 // matches with /api/manager/category/new
 router.post("/category/new", function(req, res) {
-  console.log(req.body.catName);
+  // console.log(req.body.catName);
   model.Category.create({
-    name: req.body.catName
+    name: req.body.name
   })
     .then(function(res) {
       res.json(res);

@@ -24,13 +24,21 @@ class NewProduct extends Component {
   saveCategory = values => {
     managerAPI
       .saveCategory(values)
-      .then(res => console.log(res.data))
+      .then(res => {
+        // when it finishes creating the new cat
+        // load the cats again so the component renders
+        this.getCategories();
+      })
       .catch(err => console.log(err));
   };
 
   NewCategoryBttn = () => {
     const categorySchema = yup.object({
-      name: yup.string().required()
+      name: yup
+        .string()
+        .min(4, "Demasiado corto")
+        .max(254, "Demasiado largo")
+        .required()
     });
 
     const [show, setShow] = useState(false);
@@ -40,10 +48,12 @@ class NewProduct extends Component {
 
     return (
       <div>
+        {/* button */}
         <Button variant="link" onClick={handleShow} className="m-0 p-0">
           <i className="fas fa-plus-square mr-1"></i>
           Nueva categoría
         </Button>
+        {/* modal */}
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Nueva categoría</Modal.Title>
@@ -53,28 +63,30 @@ class NewProduct extends Component {
             initialValues={{ name: "" }}
             validationSchema={categorySchema}
             onSubmit={(values, { setSubmitting }) => {
-              setTimeout(() => {
-                this.saveCategory(values);
-                // alert(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-              }, 400);
+              // alert(JSON.stringify(values, null, 2));
+              this.saveCategory(values);
+              setSubmitting(false);
+              // close modal
+              handleClose();
+              // reload page so formik doesn't show error msgs on all the form controls
+              window.location.reload();
             }}
           >
             {({
-              handleSubmit,
+              values,
+              errors,
+              touched,
               handleChange,
               handleBlur,
-              values,
-              touched,
-              isValid,
-              errors
+              handleSubmit,
+              isSubmitting
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
                 <Form.Row className="p-4 mb-3">
                   <Form.Group as={Col}>
                     <Form.Label>Nombre</Form.Label>
                     <Form.Control
-                      placeholder="Nombre de la categoría"
+                      placeholder="Ingresa el nombre de la nueva categoría"
                       type="text"
                       name="name"
                       value={values.name}
@@ -83,13 +95,18 @@ class NewProduct extends Component {
                       isValid={touched.name && !errors.name}
                       isInvalid={touched.name && !!errors.name}
                     />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="name"
+                      component="div"
+                    />
                   </Form.Group>
                 </Form.Row>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={handleClose}>
                     Cancelar
                   </Button>
-                  <Button type="submit" variant="primary">
+                  <Button type="submit" disabled={isSubmitting}>
                     Guardar
                   </Button>
                 </Modal.Footer>
@@ -114,20 +131,19 @@ class NewProduct extends Component {
       name: yup
         .string()
         .min(3)
-        .max(254, "No puede exceder los 254 caracteres")
+        .max(254, "Demasiado largo")
         .required("Requerido"),
       price: yup
         .number()
+        .typeError("Debe ser un número")
         .moreThan(1, "Debe ser mayor a $1")
         .required("Requerido"),
       content: yup
         .string()
-        .max(254, "No puede exceder los 254 caracteres")
+        .max(254, "Demasiado largo")
         .required("Requerido"),
-      dose: yup.string().max(1000, "No puede exceder los 1000 caracteres"),
-      description: yup
-        .string()
-        .max(1000, "No puede exceder los 1000 caracteres")
+      dose: yup.string().max(1000, "Demasiado largo"),
+      description: yup.string().max(1000, "Demasiado largo")
     });
 
     return (
@@ -152,7 +168,8 @@ class NewProduct extends Component {
                 price: "",
                 content: "",
                 dose: "",
-                description: ""
+                description: "",
+                ingredients: ""
               }}
               validationSchema={productSchema}
               onSubmit={(values, { setSubmitting }) => {
@@ -160,8 +177,10 @@ class NewProduct extends Component {
                 const sel = document.getElementById("categoryControl");
                 const opt = sel.options[sel.selectedIndex];
                 let catId = opt.getAttribute("catId");
+                // push it to the values array
                 values.categoryId = catId;
                 setSubmitting(false);
+                // handle adding the new product
                 alert(JSON.stringify(values, null, 2));
 
                 // setTimeout(() => {
@@ -352,16 +371,16 @@ class NewProduct extends Component {
                       <Form.Control
                         placeholder="Ingrediente"
                         type="text"
-                        name="ingredient"
+                        name="ingredients"
                         value={values.ingredient}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        isValid={touched.ingredient && !errors.ingredient}
-                        isInvalid={touched.ingredient && !!errors.ingredient}
+                        isValid={touched.ingredients && !errors.ingredients}
+                        isInvalid={touched.ingredients && !!errors.ingredients}
                       />
                       <ErrorMessage
                         className="text-danger"
-                        name="ingredient"
+                        name="ingredients"
                         component="div"
                       />
                       <Button variant="link" className="m-0 p-0">
