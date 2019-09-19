@@ -14,7 +14,15 @@ const styles = {
 };
 
 function logout() {
-  fire.auth().signOut();
+  fire
+    .auth()
+    .signOut()
+    .then(function() {
+      window.location.href = "/manager";
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
 }
 
 function ManagerLayout(props) {

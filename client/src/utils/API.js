@@ -1,16 +1,15 @@
 import axios from "axios";
 
 export default {
-
   // ---------------------------------------------------------------------------
   // HOME
   // ---------------------------------------------------------------------------
 
-  getProductsWithDiscount: function () {
+  getProductsWithDiscount: function() {
     return axios.get("/api/home/discounts");
   },
 
-  getBestSellers: function () {
+  getBestSellers: function() {
     return axios.get("/api/home/bestsellers");
   },
 
@@ -18,15 +17,15 @@ export default {
   // STORE
   // ---------------------------------------------------------------------------
 
-  loadCategories: function () {
+  loadCategories: function() {
     return axios.get("/api/store/category/all");
   },
 
-  sufferingsByCategory: function (categoryId) {
+  sufferingsByCategory: function(categoryId) {
     return axios.get("/api/store/sufferings/" + categoryId);
   },
 
-  getStoreProducts: function (data) {
+  getStoreProducts: function(data) {
     return axios.get("/api/store/products/" + data.catId + "/" + data.suff);
   },
 
@@ -34,11 +33,11 @@ export default {
   // PRODUCT DETAILS
   // ---------------------------------------------------------------------------
 
-  getProductDetails: function (productId) {
+  getProductDetails: function(productId) {
     return axios.get("/api/product/details/" + productId);
   },
 
-  getIngredients: function (productId) {
+  getIngredients: function(productId) {
     return axios.get("/api/product/details/ingredients/" + productId);
   },
 
@@ -46,8 +45,15 @@ export default {
   // CLIENT DETAILS
   // ---------------------------------------------------------------------------
 
-  getClientInfo: function (uid) {
+  getClientInfo: function(uid) {
     return axios.get("/api/client/" + uid);
-  }
+  },
 
+  // ---------------------------------------------------------------------------
+  // MANAGER
+  // ---------------------------------------------------------------------------
+
+  saveCategory: function(values) {
+    return axios.post("/api/manager/category/new", values);
+  }
 };

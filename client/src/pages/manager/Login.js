@@ -14,8 +14,10 @@ const handleLoginSubmit = data => {
   fire
     .auth()
     .signInWithEmailAndPassword(data.email, data.password)
-    .then(u => {
-      // alert("yay!");
+    .then(res => {
+      // console.log(res)
+      // window.location.href = "/manager/panel";
+      // using react router, redirect to the panel
     })
     .catch(error => {
       alert(error.message);
@@ -58,11 +60,8 @@ function Login() {
             initialValues={{ email: "", password: "" }}
             validationSchema={loginSchema}
             onSubmit={(values, { setSubmitting }) => {
-              setTimeout(() => {
-                // alert(JSON.stringify(values, null, 2));
-                handleLoginSubmit(values);
-                setSubmitting(false);
-              }, 400);
+              handleLoginSubmit(values);
+              setSubmitting(true);
             }}
           >
             {({

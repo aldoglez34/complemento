@@ -24,15 +24,20 @@ import firebase from "./firebase/Fire";
 
 class ReactRouter extends Component {
   state = {
-    manager: {}
+    manager: null,
+    isManagerLogged: false
   };
 
   authListener() {
     firebase.auth().onAuthStateChanged(manager => {
       if (manager) {
-        this.setState({ manager });
+        console.log("state changes -> setting manager info");
+        console.log("");
+        this.setState({ manager: manager, isManagerLogged: true });
       } else {
-        this.setState({ manager: null });
+        console.log("state changes ->  setting manager null");
+        console.log("");
+        this.setState({ manager: null, isManagerLogged: false });
       }
     });
   }
@@ -41,78 +46,69 @@ class ReactRouter extends Component {
     this.authListener();
   }
 
+  ClientRoutes = () => {
+    // this will only run when the manager is null
+    return (
+      <Switch>
+        {console.log("entering CLIENT routes")}
+        {console.log("")}
+        <Route exact path="/" component={Home} />
+        <Route exact path="/store" component={Store} />
+        <Route exact path="/cart" component={Cart} />
+        <Route exact path="/signup" component={SignUp} />
+        <Route
+          exact
+          path="/product/:productId"
+          render={props => <ProductDetails routeProps={props} />}
+        />
+        <Route exact path="/questions" component={Questions} />
+        <Route exact path="/complaints" component={Complaints} />
+        <Route exact path="/payment" component={Payment} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/contact" component={Contact} />
+        <Route exact path="/location" component={Location} />
+
+        <Route exact path="/manager" component={Login} />
+        <Redirect from="/manager/" to="/manager" />
+        <Route component={NoMatch} />
+      </Switch>
+    );
+  };
+
+  ManagerRoutes = () => {
+    // this will only run when the manager is NOT null
+    return (
+      <Switch>
+        {console.log("entering MANAGER routes")}
+        {console.log("")}
+        <Route
+          exact
+          path="/manager/panel"
+          render={() => <Panel manager={this.state.manager} />}
+        />
+        <Route
+          exact
+          path="/manager/newproduct"
+          render={() => <NewProduct manager={this.state.manager} />}
+        />
+        <Redirect from="/manager" to="/manager/panel" />
+        <Route component={NoMatch} />
+      </Switch>
+    );
+  };
+
   render() {
+    console.log(this.state);
+    console.log("");
     return (
       <Router>
-        {/* if there's a manager logged in */}
-        {this.state.manager ? (
-          <Switch>
-            {/* client pages */}
-            <Route exact path="/" component={Home} />
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/store" component={Store} />
-            <Route exact path="/cart" component={Cart} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route
-              exact
-              path="/product/:productId"
-              render={props => <ProductDetails routeProps={props} />}
-            />
-            <Route exact path="/questions" component={Questions} />
-            <Route exact path="/complaints" component={Complaints} />
-            <Route exact path="/payment" component={Payment} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/contact" component={Contact} />
-            <Route exact path="/location" component={Location} />
-
-            {/* manager pages */}
-            <Route
-              exact
-              path="/manager/panel"
-              render={() => <Panel manager={this.state.manager} />}
-            />
-            <Route
-              exact
-              path="/manager/newproduct"
-              render={() => <NewProduct manager={this.state.manager} />}
-            />
-            {/* redirect manager to panel */}
-            <Redirect from="/manager" to="/manager/panel" />
-
-            {/* no match */}
-            <Route component={NoMatch} />
-          </Switch>
-        ) : (
-          // if there's no manager logged in
-          <Switch>
-            {/* client pages */}
-            <Route exact path="/" component={Home} />
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/store" component={Store} />
-            <Route exact path="/cart" component={Cart} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route
-              exact
-              path="/product/:productId"
-              render={props => <ProductDetails routeProps={props} />}
-            />
-            <Route exact path="/questions" component={Questions} />
-            <Route exact path="/complaints" component={Complaints} />
-            <Route exact path="/payment" component={Payment} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/contact" component={Contact} />
-            <Route exact path="/location" component={Location} />
-
-            {/* manager login window */}
-            <Route exact path="/manager" component={Login} />
-            {/* redirect everything from the manager panel to the login */}
-            <Redirect from="/manager/panel" to="/manager" />
-            <Redirect from="/manager/newproduct" to="/manager" />
-
-            {/* no match */}
-            <Route component={NoMatch} />
-          </Switch>
-        )}
+        <Switch>
+          {!this.state.isManagerLogged ? (
+            <this.ClientRoutes />
+          ) : (
+            <this.ManagerRoutes />
+          )}
+        </Switch>
       </Router>
     );
   }

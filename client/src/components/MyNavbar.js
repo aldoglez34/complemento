@@ -212,7 +212,7 @@ function MyNavbar() {
     <>
       <Navbar bg="white" expand="md">
         {/* logo */}
-        <Navbar.Brand className="mr-auto" href="/home">
+        <Navbar.Brand className="mr-auto" href="/">
           <Image src="/images/logo.png" alt="logo" fluid />
         </Navbar.Brand>
         {/* collapse */}

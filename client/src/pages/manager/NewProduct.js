@@ -3,7 +3,7 @@ import ManagerLayout from "../../components/ManagerLayout";
 import { Row, Col, Button, Form, InputGroup, Modal } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-import managerAPI from "../../utils/managerAPI";
+import API from "../../utils/API";
 
 class NewProduct extends Component {
   state = {
@@ -11,8 +11,7 @@ class NewProduct extends Component {
   };
 
   getCategories = () => {
-    managerAPI
-      .loadCategories()
+    API.loadCategories()
       .then(res => {
         this.setState({ categories: res.data });
       })
@@ -103,8 +102,7 @@ class NewProduct extends Component {
   };
 
   saveCategory = values => {
-    managerAPI
-      .saveCategory(values)
+    API.saveCategory(values)
       .then(res => {
         // if res.data.errors is undefined, it means there's no msg from the backend
         // go on and save the new cat and reload the window
