@@ -5,23 +5,21 @@ export const loginManager = data => {
   };
 };
 
-export const logoutManager = bool => {
+export const logoutManager = () => {
   return {
-    type: "LOGOUT_MANAGER",
-    bool
+    type: "LOGOUT_MANAGER"
   };
 };
 
-export const saveLoggedClient = client => {
+export const loginClient = data => {
   return {
-    type: "SAVE_LOGGED_CLIENT",
-    client
+    type: "LOGIN_CLIENT",
+    data
   };
 };
 
-export const deleteLoggedClient = client => {
+export const logoutClient = () => {
   return {
-    type: "DELETE_LOGGED_CLIENT",
-    client
+    type: "LOGOUT_CLIENT"
   };
 };

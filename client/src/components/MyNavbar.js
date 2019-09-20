@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import fire from "../firebase/Fire";
 import {
   Navbar,
@@ -10,20 +10,23 @@ import {
   Modal,
   Col
 } from "react-bootstrap";
-import { Formik } from "formik";
+import { Formik, ErrorMessage } from "formik";
 import API from "../utils/API";
-// import { useSelector, useDispatch } from "react-redux";
-// import { saveLoggedClient, deleteLoggedClient } from "../redux-actions";
+import * as yup from "yup";
+import { useSelector, useDispatch } from "react-redux";
+import { loginClient, logoutClient } from "../redux-actions";
 
 function MyNavbar() {
+  // redux dispatcher
+  const dispatch = useDispatch();
+  // my stlyes
   const styles = {
     dropdownMenu: {
       width: 380
     }
   };
-
-  // const loggedClient = useSelector(state => state.loggedClient);
-  // const dispatch = useDispatch();
+  // logged client
+  const client = useSelector(state => state.client);
 
   const CartCounter = () => {
     if (!localStorage.getItem("cn_counter")) {
@@ -37,94 +40,60 @@ function MyNavbar() {
     );
   };
 
-  const MyModal = () => {
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    return (
-      <>
-        <Button variant="primary" onClick={handleShow}>
-          Modal
-        </Button>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Hubo un error</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Error</Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={handleClose}>
-              Aceptar
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </>
-    );
+  const logout = () => {
+    fire
+      .auth()
+      .signOut()
+      .then(function() {
+        dispatch(logoutClient());
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
-  const ClientDropdown = () => {
-    return (
-      <>
-        <Dropdown>
-          {/* toggle */}
-          <Dropdown.Toggle className="mr-2" variant="success">
-            {/* {loggedClient[0].loggedClient.firstName} */}
-            <i className="fas fa-user ml-1"></i>
-          </Dropdown.Toggle>
-          {/* client menu */}
-          <Dropdown.Menu className="bg-light">
-            <Dropdown.Item>Mis datos</Dropdown.Item>
-            <Dropdown.Item>Mis compras</Dropdown.Item>
-            <Dropdown.Divider className="mt-1 mb-2" />
-            {/* <Dropdown.Item onClick={() => dispatch(deleteLoggedClient(null))}>
-              Cerrar sesión
-            </Dropdown.Item> */}
-          </Dropdown.Menu>
-        </Dropdown>
-      </>
-    );
-  };
+  // yup schema
+  const loginSchema = yup.object({
+    email: yup
+      .string()
+      .email("Correo inválido")
+      .required("Requerido"),
+    password: yup
+      .string()
+      .min(6, "Longitud incorrecta")
+      .max(15, "Longitud incorrecta")
+      .required("Requerido")
+  });
 
   const LoginDropdown = () => {
     return (
       <>
         <Formik
-          // initial values
           initialValues={{ email: "", password: "" }}
-          // validations
-          validate={values => {
-            let errors = {};
-            if (!values.email) {
-              errors.email = "Required";
-            } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
-              errors.email = "Correo inválido";
-            }
-            return errors;
-          }}
-          // onSubmit
+          validationSchema={loginSchema}
           onSubmit={(values, { setSubmitting }) => {
-            // setTimeout(() => {
-            //   // firebase auth
-            //   fire
-            //     .auth()
-            //     .signInWithEmailAndPassword(values.email, values.password)
-            //     .then(u => {
-            //       // get the logged client info from the db and save it to redux
-            //       API.getClientInfo(u.user.uid)
-            //         .then(res => {
-            //           // dispatch saveLoggedClient action
-            //           dispatch(saveLoggedClient(res.data[0]));
-            //         })
-            //         .catch(err => console.log(err));
-            //     })
-            //     .catch(error => this.handleShowModal(error.message));
-            //   setSubmitting(false);
-            // }, 400);
+            setSubmitting(true);
+            fire
+              .auth()
+              .signInWithEmailAndPassword(values.email, values.password)
+              .then(res => {
+                let uid = res.user.uid;
+                API.getClientInfo(uid)
+                  .then(res => {
+                    let client = res.data[0];
+                    dispatch(loginClient(client));
+                  })
+                  .catch(err => {
+                    console.log(err);
+                    setSubmitting(false);
+                  });
+              })
+              .catch(error => {
+                alert(error.message);
+                setSubmitting(false);
+              });
           }}
         >
-          {/* aditonal stuff */}
           {({
             values,
             errors,
@@ -136,7 +105,6 @@ function MyNavbar() {
           }) => (
             <>
               <Dropdown>
-                {/* toggle */}
                 <Dropdown.Toggle className="mr-2" variant="primary">
                   Iniciar Sesión<i className="fas fa-user ml-1"></i>
                 </Dropdown.Toggle>
@@ -147,39 +115,49 @@ function MyNavbar() {
                   style={styles.dropdownMenu}
                 >
                   {/* form */}
-                  <Form onSubmit={handleSubmit} className="pt-3 pl-3 pr-3 pb-1">
-                    {/* email */}
+                  <Form
+                    noValidate
+                    onSubmit={handleSubmit}
+                    className="pt-3 pl-3 pr-3 pb-1"
+                  >
                     <Form.Row className="mb-2">
-                      <Form.Group as={Col} controlId="validationFormik01">
+                      <Form.Group as={Col}>
                         <Form.Label>Correo electrónico</Form.Label>
                         <Form.Control
                           placeholder="Correo electrónico"
                           type="email"
                           name="email"
+                          value={values.email}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          value={values.email}
                           isValid={touched.email && !errors.email}
                         />
-                        <Form.Control.Feedback>Correcto</Form.Control.Feedback>
+                        <ErrorMessage
+                          className="text-danger"
+                          name="email"
+                          component="div"
+                        />
                       </Form.Group>
                     </Form.Row>
-                    {/* password */}
                     <Form.Row className="mb-3">
-                      <Form.Group as={Col} controlId="validationFormik02">
+                      <Form.Group as={Col}>
                         <Form.Label>Contraseña</Form.Label>
                         <Form.Control
                           placeholder="Contraseña"
                           type="password"
                           name="password"
+                          value={values.password}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          value={values.password}
                           isValid={touched.password && !errors.password}
+                        />
+                        <ErrorMessage
+                          className="text-danger"
+                          name="password"
+                          component="div"
                         />
                       </Form.Group>
                     </Form.Row>
-                    {/* submit form bttn */}
                     <Form.Row>
                       <Form.Group as={Col}>
                         <Button
@@ -189,14 +167,12 @@ function MyNavbar() {
                         >
                           Entrar
                         </Button>
-                        <MyModal onClick={handleSubmit} type="submit" />
                       </Form.Group>
                     </Form.Row>
                   </Form>
-                  {/* extra */}
                   <Dropdown.Divider />
                   <Dropdown.Item>Olvidé mi contraseña</Dropdown.Item>
-                  <Dropdown.Item href="signup">
+                  <Dropdown.Item href="/signup">
                     Regístrate con nosotros
                   </Dropdown.Item>
                 </Dropdown.Menu>
@@ -204,6 +180,27 @@ function MyNavbar() {
             </>
           )}
         </Formik>
+      </>
+    );
+  };
+
+  const ClientDropdown = () => {
+    return (
+      <>
+        <Dropdown>
+          {/* toggle */}
+          <Dropdown.Toggle className="mr-2" variant="success">
+            {client.name}
+            <i className="fas fa-user ml-1"></i>
+          </Dropdown.Toggle>
+          {/* client menu */}
+          <Dropdown.Menu className="bg-light">
+            <Dropdown.Item>Mis datos</Dropdown.Item>
+            <Dropdown.Item>Mis compras</Dropdown.Item>
+            <Dropdown.Divider className="mt-1 mb-2" />
+            <Dropdown.Item onClick={logout}>Cerrar sesión</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </>
     );
   };
@@ -220,8 +217,7 @@ function MyNavbar() {
         <Navbar.Collapse id="top-navbar">
           {/* login dropdown and cart button */}
           <div className="d-flex justify-content-center ml-md-auto pt-3 pt-md-0">
-            {/* ternary operator */}
-            {/* {loggedClient.length ? <ClientDropdown /> : <LoginDropdown />} */}
+            {client.isLogged ? <ClientDropdown /> : <LoginDropdown />}
             {/* cart button */}
             <Button href="/cart" variant="outline-primary">
               Mi Carrito

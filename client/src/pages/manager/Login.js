@@ -56,12 +56,12 @@ function Login() {
                 .auth()
                 .signInWithEmailAndPassword(values.email, values.password)
                 .then(res => {
-                  console.log("USUARIO CORRECTO");
                   let manager = res.user.email;
                   dispatch(loginManager(manager));
                 })
                 .catch(error => {
                   alert(error.message);
+                  setSubmitting(false);
                 });
             }}
           >

@@ -1,26 +1,26 @@
-const managerState = {
-  manager: {},
-  isManagerLogged: false
+const managerInitState = {
+  isLogged: false,
+  email: null
 };
 
-const managerReducers = (state = managerState, action) => {
+const managerReducers = (state = [], action) => {
   switch (action.type) {
     case "LOGIN_MANAGER":
-      return [
-        ...state,
+      return (
+        // ...state,
         {
-          manager: action.manager,
-          isManagerLogged: true
+          isLogged: true,
+          email: action.data
         }
-      ];
+      );
     case "LOGOUT_MANAGER":
-      return [
-        ...state,
+      return (
+        // ...state,
         {
-          manager: action.manager,
-          isManagerLogged: false
+          isLogged: false,
+          email: null
         }
-      ];
+      );
     default:
       return state;
   }

@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import fire from "../firebase/Fire";
+import { logoutManager } from "../redux-actions";
 
 ManagerLayout.propTypes = {
   children: PropTypes.node.isRequired
@@ -13,19 +15,23 @@ const styles = {
   }
 };
 
-function logout() {
-  // fire
-  //   .auth()
-  //   .signOut()
-  //   .then(function() {
-  //     window.location.href = "/manager";
-  //   })
-  //   .catch(function(error) {
-  //     console.log(error);
-  //   });
-}
-
 function ManagerLayout(props) {
+  // getting the value of manager from the store
+  const manager = useSelector(state => state.manager);
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    fire
+      .auth()
+      .signOut()
+      .then(function() {
+        dispatch(logoutManager());
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+
   return (
     <Container className="py-4">
       <Row>
@@ -38,7 +44,7 @@ function ManagerLayout(props) {
       </Row>
       <Row>
         <Col>
-          Bienvenido, <strong>{props.email}</strong>
+          Bienvenido, <strong>{manager.email}</strong>
         </Col>
       </Row>
       <Row className="mt-2">

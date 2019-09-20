@@ -4,9 +4,7 @@ import ManagerLayout from "../../components/ManagerLayout";
 
 function Panel(props) {
   return (
-    <ManagerLayout 
-    email={props.manager.email}
-    >
+    <ManagerLayout>
       <Row className="mt-0 pt-0">
         <Col md className="mt-4">
           <h3 className="text-center">-Productos-</h3>

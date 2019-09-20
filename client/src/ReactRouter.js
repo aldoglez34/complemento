@@ -24,7 +24,7 @@ import { connect } from "react-redux";
 
 class ReactRouter extends Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props.manager);
     return (
       <Router>
         <Switch>
@@ -45,20 +45,20 @@ class ReactRouter extends Component {
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/location" component={Location} />
 
-          {!this.isManagerLogged ? (
+          {this.props.manager.isLogged ? (
             <Switch>
-              {console.log("entering routes where manager is NOT logged")}
+              {console.log("manager is logged YAY!!!!!!!!!!!")}
               {console.log("")}
-              <Route exact path="/manager" component={Login} />
-              <Redirect from="/manager/" to="/manager" />
+              <Route exact path="/manager/panel" component={Panel} />
+              <Route exact path="/manager/newproduct" component={NewProduct} />
+              <Redirect from="/manager" to="/manager/panel" />
               <Route component={NoMatch} />
             </Switch>
           ) : (
             <Switch>
-              {console.log("manager is logged YAY!!!!!!!!!!!")}
+              {console.log("entering routes where manager is NOT logged")}
               {console.log("")}
               <Route exact path="/manager" component={Login} />
-              {/* aquí poner las demás rutas */}
               <Redirect from="/manager/" to="/manager" />
               <Route component={NoMatch} />
             </Switch>
