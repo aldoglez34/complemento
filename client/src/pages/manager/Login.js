@@ -3,6 +3,8 @@ import { Container, Row, Col, Image, Form, Button } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import fire from "../../firebase/Fire";
+import { useDispatch } from "react-redux";
+import { loginManager } from "../../redux-actions";
 
 const styles = {
   logo: {
@@ -10,21 +12,10 @@ const styles = {
   }
 };
 
-const handleLoginSubmit = data => {
-  fire
-    .auth()
-    .signInWithEmailAndPassword(data.email, data.password)
-    .then(res => {
-      // console.log(res)
-      // window.location.href = "/manager/panel";
-      // using react router, redirect to the panel
-    })
-    .catch(error => {
-      alert(error.message);
-    });
-};
-
 function Login() {
+  // redux dispatcher
+  const dispatch = useDispatch();
+  // yup schema
   const loginSchema = yup.object({
     email: yup
       .string()
@@ -60,8 +51,18 @@ function Login() {
             initialValues={{ email: "", password: "" }}
             validationSchema={loginSchema}
             onSubmit={(values, { setSubmitting }) => {
-              handleLoginSubmit(values);
               setSubmitting(true);
+              fire
+                .auth()
+                .signInWithEmailAndPassword(values.email, values.password)
+                .then(res => {
+                  console.log("USUARIO CORRECTO");
+                  let manager = res.user.email;
+                  dispatch(loginManager(manager));
+                })
+                .catch(error => {
+                  alert(error.message);
+                });
             }}
           >
             {({

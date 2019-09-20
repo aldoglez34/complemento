@@ -12,8 +12,8 @@ import {
 } from "react-bootstrap";
 import { Formik } from "formik";
 import API from "../utils/API";
-import { useSelector, useDispatch } from "react-redux";
-import { saveLoggedClient, deleteLoggedClient } from "../redux-actions";
+// import { useSelector, useDispatch } from "react-redux";
+// import { saveLoggedClient, deleteLoggedClient } from "../redux-actions";
 
 function MyNavbar() {
   const styles = {
@@ -22,8 +22,8 @@ function MyNavbar() {
     }
   };
 
-  const loggedClient = useSelector(state => state.loggedClient);
-  const dispatch = useDispatch();
+  // const loggedClient = useSelector(state => state.loggedClient);
+  // const dispatch = useDispatch();
 
   const CartCounter = () => {
     if (!localStorage.getItem("cn_counter")) {
@@ -68,7 +68,7 @@ function MyNavbar() {
         <Dropdown>
           {/* toggle */}
           <Dropdown.Toggle className="mr-2" variant="success">
-            {loggedClient[0].loggedClient.firstName}
+            {/* {loggedClient[0].loggedClient.firstName} */}
             <i className="fas fa-user ml-1"></i>
           </Dropdown.Toggle>
           {/* client menu */}
@@ -76,9 +76,9 @@ function MyNavbar() {
             <Dropdown.Item>Mis datos</Dropdown.Item>
             <Dropdown.Item>Mis compras</Dropdown.Item>
             <Dropdown.Divider className="mt-1 mb-2" />
-            <Dropdown.Item onClick={() => dispatch(deleteLoggedClient(null))}>
+            {/* <Dropdown.Item onClick={() => dispatch(deleteLoggedClient(null))}>
               Cerrar sesión
-            </Dropdown.Item>
+            </Dropdown.Item> */}
           </Dropdown.Menu>
         </Dropdown>
       </>
@@ -105,23 +105,23 @@ function MyNavbar() {
           }}
           // onSubmit
           onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              // firebase auth
-              fire
-                .auth()
-                .signInWithEmailAndPassword(values.email, values.password)
-                .then(u => {
-                  // get the logged client info from the db and save it to redux
-                  API.getClientInfo(u.user.uid)
-                    .then(res => {
-                      // dispatch saveLoggedClient action
-                      dispatch(saveLoggedClient(res.data[0]));
-                    })
-                    .catch(err => console.log(err));
-                })
-                .catch(error => this.handleShowModal(error.message));
-              setSubmitting(false);
-            }, 400);
+            // setTimeout(() => {
+            //   // firebase auth
+            //   fire
+            //     .auth()
+            //     .signInWithEmailAndPassword(values.email, values.password)
+            //     .then(u => {
+            //       // get the logged client info from the db and save it to redux
+            //       API.getClientInfo(u.user.uid)
+            //         .then(res => {
+            //           // dispatch saveLoggedClient action
+            //           dispatch(saveLoggedClient(res.data[0]));
+            //         })
+            //         .catch(err => console.log(err));
+            //     })
+            //     .catch(error => this.handleShowModal(error.message));
+            //   setSubmitting(false);
+            // }, 400);
           }}
         >
           {/* aditonal stuff */}
@@ -221,7 +221,7 @@ function MyNavbar() {
           {/* login dropdown and cart button */}
           <div className="d-flex justify-content-center ml-md-auto pt-3 pt-md-0">
             {/* ternary operator */}
-            {loggedClient.length ? <ClientDropdown /> : <LoginDropdown />}
+            {/* {loggedClient.length ? <ClientDropdown /> : <LoginDropdown />} */}
             {/* cart button */}
             <Button href="/cart" variant="outline-primary">
               Mi Carrito
