@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
-import ScrollButton from "../components/ScrollButton";
+import HelpButton from "../components/HelpButton";
 import API from "../utils/API";
 
 const styles = {
@@ -171,7 +171,7 @@ class Home extends Component {
           </Row>
         </Container>
 
-        <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
+        <HelpButton scrollStepInPx="50" delayInMs="16.66" />
       </Layout>
     );
   }

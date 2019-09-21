@@ -25,7 +25,7 @@ app.use("/api/client", clientRoutes);
 const managerRoutes = require("./routes/managerRoutes");
 app.use("/api/manager", managerRoutes);
 
-// rend every other request to the React app
+// send every other request to the React app
 // define any API routes before this runs
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));

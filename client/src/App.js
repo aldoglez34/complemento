@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Home from "./pages/Home";
 import Store from "./pages/Store";
 import ProductDetails from "./pages/ProductDetails";
@@ -20,9 +21,8 @@ import Location from "./pages/about/Location";
 import Login from "./pages/manager/Login";
 import Panel from "./pages/manager/Panel";
 import NewProduct from "./pages/manager/NewProduct";
-import { connect } from "react-redux";
 
-class ReactRouter extends Component {
+class App extends Component {
   render() {
     // console.log(this.props.manager);
     return (
@@ -75,4 +75,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ReactRouter);
+export default connect(mapStateToProps)(App);

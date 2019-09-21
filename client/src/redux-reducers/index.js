@@ -2,9 +2,9 @@ import { combineReducers } from "redux";
 import clientReducers from "./client";
 import managerReducers from "./manager";
 
-const allReducers = combineReducers({
+const rootReducer = combineReducers({
   client: clientReducers,
   manager: managerReducers
 });
 
-export default allReducers;
+export default rootReducer;

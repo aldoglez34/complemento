@@ -1,20 +1,36 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import ReactRouter from "./ReactRouter";
+import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
-
-// redux stuff
 import { createStore } from "redux";
-import allReducers from "./redux-reducers";
 import { Provider } from "react-redux";
-const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+import { persistStore, persistReducer } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import rootReducer from "./redux-reducers";
+
+const persistConfig = {
+  key: "primary",
+  storage
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = createStore(
+  persistedReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+const persistor = persistStore(store);
 
 ReactDOM.render(
-    <Provider store={store}>
-        <ReactRouter />
-    </Provider>
-    , document.getElementById("root")
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
+  </Provider>,
+  document.getElementById("root")
 );
 
 registerServiceWorker();

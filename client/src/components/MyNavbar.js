@@ -7,7 +7,6 @@ import {
   Badge,
   Dropdown,
   Button,
-  Modal,
   Col
 } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
@@ -22,7 +21,7 @@ function MyNavbar() {
   // my stlyes
   const styles = {
     dropdownMenu: {
-      width: 380
+      width: 290
     }
   };
   // logged client
@@ -106,15 +105,13 @@ function MyNavbar() {
             <>
               <Dropdown>
                 <Dropdown.Toggle className="mr-2" variant="primary">
-                  Iniciar Sesión<i className="fas fa-user ml-1"></i>
+                  Iniciar Sesión
                 </Dropdown.Toggle>
-                {/* dropdown */}
                 <Dropdown.Menu
-                  alignRight
-                  className="bg-light"
+                  data-display="static"
+                  className="bg-light dropdown-menu-xs-left dropdown-menu-md-right"
                   style={styles.dropdownMenu}
                 >
-                  {/* form */}
                   <Form
                     noValidate
                     onSubmit={handleSubmit}
@@ -139,7 +136,7 @@ function MyNavbar() {
                         />
                       </Form.Group>
                     </Form.Row>
-                    <Form.Row className="mb-3">
+                    <Form.Row className="mb-2">
                       <Form.Group as={Col}>
                         <Form.Label>Contraseña</Form.Label>
                         <Form.Control
@@ -170,7 +167,7 @@ function MyNavbar() {
                       </Form.Group>
                     </Form.Row>
                   </Form>
-                  <Dropdown.Divider />
+                  <Dropdown.Divider className="my-0" />
                   <Dropdown.Item>Olvidé mi contraseña</Dropdown.Item>
                   <Dropdown.Item href="/signup">
                     Regístrate con nosotros
@@ -190,8 +187,8 @@ function MyNavbar() {
         <Dropdown>
           {/* toggle */}
           <Dropdown.Toggle className="mr-2" variant="success">
-            {client.name}
-            <i className="fas fa-user ml-1"></i>
+            <i className="fas fa-user mr-2" />
+            {client.name + " " + client.firstSurname}
           </Dropdown.Toggle>
           {/* client menu */}
           <Dropdown.Menu className="bg-light">
@@ -220,7 +217,7 @@ function MyNavbar() {
             {client.isLogged ? <ClientDropdown /> : <LoginDropdown />}
             {/* cart button */}
             <Button href="/cart" variant="outline-primary">
-              Mi Carrito
+              Carrito
               <i className="fas fa-shopping-cart ml-1" />
               <CartCounter />
             </Button>

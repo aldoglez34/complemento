@@ -1,0 +1,15 @@
+.helpbttn {
+  opacity: 0.5;
+  background-color: deeppink;
+  width: 55px;
+  height: 65px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.helpbttn:hover {
+  opacity: 1;
+}

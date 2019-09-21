@@ -13,7 +13,7 @@ function ProductCard(props) {
         <OverlayTrigger
           overlay={
             <Tooltip id="tooltip-disabled">
-              Producto no disponible por el momento.
+              No disponible por el momento.
             </Tooltip>
           }
         >

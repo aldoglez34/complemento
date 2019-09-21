@@ -3,7 +3,7 @@ const managerInitState = {
   email: null
 };
 
-const managerReducers = (state = [], action) => {
+const managerReducers = (state = managerInitState, action) => {
   switch (action.type) {
     case "LOGIN_MANAGER":
       return (
