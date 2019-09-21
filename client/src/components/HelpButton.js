@@ -12,10 +12,10 @@ function HelpButton() {
     <>
       <button
         title="Ayuda"
-        className="helpbttn d-flex justify-content-center align-items-center p-0"
+        className="d-flex justify-content-center align-items-center p-0 shadow helpbttn"
         onClick={handleShow}
       >
-        <i className="arrow fas fa-question text-white h2 p-0 m-0" />
+        <i className="fas fa-question h2 p-0 m-0 text-light" />
       </button>
 
       <Modal show={show} onHide={handleClose}>
@@ -24,8 +24,8 @@ function HelpButton() {
         </Modal.Header>
         <Modal.Body>Body, links, stuff</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Salir
+          <Button variant="secondary" onClick={handleClose}>
+            Cerrar
           </Button>
         </Modal.Footer>
       </Modal>

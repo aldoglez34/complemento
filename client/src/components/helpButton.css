@@ -1,11 +1,11 @@
 .helpbttn {
-  opacity: 0.5;
+  opacity: 0.6;
   background-color: deeppink;
   width: 55px;
-  height: 65px;
+  height: 55px;
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  bottom: 25px;
+  right: 25px;
   border-radius: 5px;
   border: none;
 }
