@@ -15,7 +15,7 @@ function HelpButton() {
         className="d-flex justify-content-center align-items-center p-0 shadow helpbttn"
         onClick={handleShow}
       >
-        <i className="fas fa-question h2 p-0 m-0 text-light" />
+        <i className="fas fa-question-circle h1 p-0 m-0 text-light" />
       </button>
 
       <Modal show={show} onHide={handleClose}>
@@ -24,8 +24,8 @@ function HelpButton() {
         </Modal.Header>
         <Modal.Body>Body, links, stuff</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
+          <Button variant="primary" onClick={handleClose}>
+            Aceptar
           </Button>
         </Modal.Footer>
       </Modal>

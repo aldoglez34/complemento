@@ -1,13 +1,31 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Spinner, Carousel } from "react-bootstrap";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
 import HelpButton from "../components/HelpButton";
 import API from "../utils/API";
 
 const styles = {
-  header: {
-    backgroundImage: "url('images/bg-header-home.jpg')",
+  carouselItem1: {
+    height: 380,
+    backgroundImage: "url('images/carousel1.jpg')",
+    backgroundSize: "cover"
+  },
+  carouselItem2: {
+    height: 380,
+    backgroundImage: "url('images/carousel2.jpg')",
+    backgroundSize: "cover"
+  },
+  carouselItem3: {
+    height: 380,
+    backgroundImage: "url('images/carousel3.jpg')",
+    backgroundSize: "cover",
+    mixBlendMode: "darken",
+    backgroundBlendMode: "darken"
+  },
+  carouselItem4: {
+    height: 380,
+    backgroundImage: "url('images/carousel4.jpg')",
     backgroundSize: "cover"
   }
 };
@@ -43,42 +61,48 @@ class Home extends Component {
     this.getBestSellers();
   }
 
+  MyCarousel = () => {
+    return (
+      <Carousel className="p-0 m-0 mb-5" interval={5000}>
+        <Carousel.Item style={styles.carouselItem1}>
+          {/* <Carousel.Caption>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption> */}
+        </Carousel.Item>
+        <Carousel.Item style={styles.carouselItem2}>
+          {/* <Carousel.Caption>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption> */}
+        </Carousel.Item>
+        <Carousel.Item style={styles.carouselItem3}>
+          {/* <Carousel.Caption>
+            <h3>Third slide label</h3>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
+          </Carousel.Caption> */}
+        </Carousel.Item>
+        <Carousel.Item style={styles.carouselItem4}>
+          {/* <Carousel.Caption>
+            <h3>Third slide label</h3>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
+          </Carousel.Caption> */}
+        </Carousel.Item>
+      </Carousel>
+    );
+  };
+
   render() {
     return (
       <Layout>
-        {/* header */}
-        <Container className="py-4 mb-5" style={styles.header} fluid>
-          <Container className="py-4">
-            <Row>
-              <Col>
-                <h1 className="text-light mt-0 mb-2">
-                  Bienvenido a <strong>Complemento Natural</strong>
-                </h1>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <p className="lead mb-4 text-light">
-                  Somos una tienda en línea de medicina complementaria. Contamos
-                  con un selecto catálogo de productos naturistas, remedios
-                  herbolarios, suplementos alimenticios y medicina alternativa a
-                  precios de laboratorio, hechos a base de plantas, raíces y
-                  hierbas.
-                </p>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <a className="btn btn-success btn-lg" href="/store">
-                  Descubre la tienda
-                  <i className="fas fa-store-alt mx-2"></i>
-                  <i className="fas fa-angle-double-right"></i>
-                </a>
-              </Col>
-            </Row>
-          </Container>
-        </Container>
+        {/* carousel */}
+        <this.MyCarousel />
 
+        {/* page content */}
         <Container>
           {/* row 1 about and contact info */}
           <Row>
@@ -86,16 +110,17 @@ class Home extends Component {
               <h2>¿Quiénes Somos?</h2>
               <hr />
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                deserunt neque tempore recusandae animi soluta quasi? Asperiores
-                rem dolore eaque vel, porro, soluta unde debitis aliquam
-                laboriosam. Repellat explicabo, maiores!
+                Somos una tienda en línea de medicina complementaria. Contamos
+                con un selecto catálogo de productos naturistas, remedios
+                herbolarios, suplementos alimenticios y medicina alternativa a
+                precios de laboratorio, hechos a base de plantas, raíces y
+                hierbas.
               </p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis
-                optio neque consectetur consequatur magni in nisi, natus beatae
-                quidem quam odit commodi ducimus totam eum, alias, adipisci
-                nesciunt voluptate. Voluptatum.
+                Contamos con un selecto catálogo de productos naturistas,
+                remedios herbolarios, suplementos alimenticios y medicina
+                alternativa a precios de laboratorio, hechos a base de plantas,
+                raíces y hierbas.
               </p>
             </Col>
             <Col md={4} className="mb-5">
@@ -171,6 +196,7 @@ class Home extends Component {
           </Row>
         </Container>
 
+        {/* help button flaoting */}
         <HelpButton scrollStepInPx="50" delayInMs="16.66" />
       </Layout>
     );

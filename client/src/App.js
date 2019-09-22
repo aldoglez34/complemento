@@ -47,8 +47,8 @@ class App extends Component {
 
           {this.props.manager.isLogged ? (
             <Switch>
-              {console.log("manager is logged YAY!!!!!!!!!!!")}
-              {console.log("")}
+              {/* {console.log("manager is logged YAY!!!!!!!!!!!")}
+              {console.log("")} */}
               <Route exact path="/manager/panel" component={Panel} />
               <Route exact path="/manager/newproduct" component={NewProduct} />
               <Redirect from="/manager" to="/manager/panel" />
@@ -56,8 +56,8 @@ class App extends Component {
             </Switch>
           ) : (
             <Switch>
-              {console.log("entering routes where manager is NOT logged")}
-              {console.log("")}
+              {/* {console.log("entering routes where manager is NOT logged")}
+              {console.log("")} */}
               <Route exact path="/manager" component={Login} />
               <Redirect from="/manager/" to="/manager" />
               <Route component={NoMatch} />

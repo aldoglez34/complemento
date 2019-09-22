@@ -7,7 +7,8 @@ import {
   Badge,
   Dropdown,
   Button,
-  Col
+  Col,
+  Nav
 } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import API from "../utils/API";
@@ -16,15 +17,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { loginClient, logoutClient } from "../redux-actions";
 
 function MyNavbar() {
-  // redux dispatcher
   const dispatch = useDispatch();
-  // my stlyes
+
   const styles = {
     dropdownMenu: {
       width: 290
     }
   };
-  // logged client
+
   const client = useSelector(state => state.client);
 
   const CartCounter = () => {
@@ -51,7 +51,6 @@ function MyNavbar() {
       });
   };
 
-  // yup schema
   const loginSchema = yup.object({
     email: yup
       .string()
@@ -212,6 +211,9 @@ function MyNavbar() {
         {/* collapse */}
         <Navbar.Toggle aria-controls="top-navbar" />
         <Navbar.Collapse id="top-navbar">
+          <Nav className="mr-md-auto">
+            <Nav.Link href="/store">Tienda</Nav.Link>
+          </Nav>
           {/* login dropdown and cart button */}
           <div className="d-flex justify-content-center ml-md-auto pt-3 pt-md-0">
             {client.isLogged ? <ClientDropdown /> : <LoginDropdown />}
@@ -224,8 +226,6 @@ function MyNavbar() {
           </div>
         </Navbar.Collapse>
       </Navbar>
-      {/* modal */}
-      {/* <MyModal /> */}
     </>
   );
 }
