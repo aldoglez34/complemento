@@ -63,7 +63,7 @@ class Home extends Component {
 
   MyCarousel = () => {
     return (
-      <Carousel className="p-0 m-0 mb-5" interval={5000}>
+      <Carousel className="p-0 m-0 mb-5" interval={5000} indicators={false}>
         <Carousel.Item style={styles.carouselItem1}>
           {/* <Carousel.Caption>
             <h3>Second slide label</h3>

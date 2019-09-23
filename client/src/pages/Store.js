@@ -4,22 +4,17 @@ import Layout from "../components/Layout";
 import ProductsList from "../components/ProductsList";
 import CategoriesList from "../components/CategoriesList";
 import SufferingsList from "../components/SufferingsList";
-import ScrollButton from "../components/ScrollButton";
+import HelpButton from "../components/HelpButton";
+import CustomDropdown from "../components/CustomDropdown";
 import API from "../utils/API";
 
-const styles = {
-  header: {
-    backgroundImage: "url('images/bg-header-store.jpg')",
-    // backgroundColor: "gray",
-    backgroundSize: "cover",
-    backgroundBlendMode: "multiply"
-  }
-  // ,
-  // container: {
-  //   marginLeft: 115,
-  //   marginRight: 115
-  // }
-};
+// const styles = {
+//   header: {
+//     backgroundImage: "url('images/bg-header-store.jpg')",
+//     backgroundSize: "cover",
+//     backgroundBlendMode: "multiply"
+//   }
+// };
 
 class Store extends Component {
   state = {
@@ -49,19 +44,9 @@ class Store extends Component {
       .catch(err => console.log(err));
   };
 
-  componentDidMount() {
-    this.loadCategories();
-    this.sufferingsByCategory(this.state.selectedCategoryId);
-    let data = {};
-    data.catId = this.state.selectedCategoryId;
-    data.suff = this.state.selectedSuffering;
-    this.getStoreProducts(data);
-  }
-
   getStoreProducts = data => {
     API.getStoreProducts(data)
       .then(res => {
-        console.log(res.data);
         this.setState({ products: res.data });
       })
       .catch(err => console.log(err));
@@ -109,28 +94,43 @@ class Store extends Component {
     );
   };
 
+  componentDidMount() {
+    this.loadCategories();
+    this.sufferingsByCategory(this.state.selectedCategoryId);
+    let data = {};
+    data.catId = this.state.selectedCategoryId;
+    data.suff = this.state.selectedSuffering;
+    this.getStoreProducts(data);
+  }
+
   render() {
     return (
       <Layout>
-        {/* header */}
-        <Container className="py-4 mb-5" style={styles.header} fluid>
-          <Container className="py-4">
-            <Row>
-              <Col>
-                <h1 className="text-light mt-0 mb-2">Nuestra tienda</h1>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <p className="lead mb-4 text-light">
-                  Contamos con un selecto catálogo de productos naturistas,
-                  remedios herbolarios, suplementos alimenticios y medicina
-                  alternativa a precios de laboratorio, hechos a base de
-                  plantas, raíces y hierbas.
-                </p>
-              </Col>
-            </Row>
-          </Container>
+        <Container>
+          <Row className="mt-4">
+            <Col md={6}>
+              <Row>
+                <CustomDropdown
+                  title="Categorías"
+                  items={this.state.categories}
+                  activeItem="Alimentos Terapéuticos"
+                />
+              </Row>
+              <Row>
+                <CustomDropdown
+                  title="Padecimientos"
+                  items={this.state.sufferings}
+                  activeItem="Todos"
+                />
+              </Row>
+            </Col>
+            <Col
+              md={6}
+              className="d-flex align-items-center justify-content-center"
+            >
+              pagination...
+            </Col>
+          </Row>
         </Container>
 
         <Container fluid>
@@ -166,7 +166,7 @@ class Store extends Component {
           </Row>
         </Container>
 
-        <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
+        <HelpButton />
       </Layout>
     );
   }

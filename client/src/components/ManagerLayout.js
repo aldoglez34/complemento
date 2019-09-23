@@ -48,14 +48,21 @@ function ManagerLayout(props) {
         </Col>
       </Row>
       <Row className="mt-2">
-        <Col>
-          <Button onClick={logout} variant="danger">
+        <Col className="d-flex align-items-center justify-content-start m-0">
+          <Button onClick={logout} variant="danger" className="m-0">
             <i className="fas fa-angle-double-left mr-1" />
             Salir
           </Button>
         </Col>
+        <Col className="d-flex align-items-center justify-content-end m-0">
+          <Button variant="transparent" className="m-0">
+            <i className="fas fa-user text-dark h2" />
+          </Button>
+          <Button variant="transparent" className="m-0">
+            <i className="fas fa-cog text-dark h2" />
+          </Button>
+        </Col>
       </Row>
-      <hr />
       {props.children}
     </Container>
   );

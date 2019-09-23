@@ -147,17 +147,18 @@ class NewProduct extends Component {
     });
 
     return (
-      <ManagerLayout email={this.props.manager.email}>
+      <ManagerLayout>
         {/* title */}
-        <Row className="mb-2">
+        <Row className="mb-2 mt-2">
           <Col>
-            <a href="/manager/panel">
+            <a href="/manager/panel" className="text-dark">
               <i className="fas fa-arrow-alt-circle-left mr-1"></i>
               Regresar al panel
             </a>
-            <h3 className="mt-2">Nuevo producto</h3>
+            <hr />
           </Col>
         </Row>
+        <h3 className="mt-2">Nuevo producto</h3>
         {/* form */}
         <Row>
           <Col>
