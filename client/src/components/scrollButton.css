@@ -1,11 +1,12 @@
 .scroll {
   opacity: 0.7;
-  background-color: rgb(40, 167, 69);
+  /* background-color: rgb(40, 167, 69); */
+  background-color: transparent;
   width: 40px;
-  height: 40px;
+  height: 35px;
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  bottom: 15px;
+  right: 25px;
   border-radius: 5px;
   border: none;
 }
@@ -15,10 +16,15 @@
 }
 
 .arrow-up {
-  color: white;
+  color: rgb(40, 167, 69);
   position: absolute;
-  top: 45%;
+  font-size: 35px;
+  font-weight: 650;
+  position: fixed;
+  bottom: 15px;
+  right: 27px;
+  /* top: 45%;
   left: 45%;
   margin-top: -9px;
-  margin-left: -5px;
+  margin-left: -5px; */
 }

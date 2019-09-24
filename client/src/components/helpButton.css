@@ -1,13 +1,16 @@
 .helpbttn {
-  opacity: 0.6;
+  opacity: 0.7;
   background-color: deeppink;
-  width: 55px;
-  height: 60px;
+  color: whitesmoke;
+  width: 85px;
+  height: 35px;
   position: fixed;
   bottom: 15px;
-  right: 25px;
+  right: 70px;
   border-radius: 5px;
   border: none;
+  font-size: 16px;
+  font-weight: 550;
 }
 
 .helpbttn:hover {

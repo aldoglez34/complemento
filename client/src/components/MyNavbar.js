@@ -212,7 +212,9 @@ function MyNavbar() {
         <Navbar.Toggle aria-controls="top-navbar" />
         <Navbar.Collapse id="top-navbar">
           <Nav className="mr-md-auto">
-            <Nav.Link href="/store">Tienda</Nav.Link>
+            <Nav.Link href="/store" className="pb-0">
+              Tienda
+            </Nav.Link>
           </Nav>
           {/* login dropdown and cart button */}
           <div className="d-flex justify-content-center ml-md-auto pt-3 pt-md-0">

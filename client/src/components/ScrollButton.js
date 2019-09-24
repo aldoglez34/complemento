@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./scrollButton.css";
 
 class ScrollButton extends Component {
@@ -30,12 +31,15 @@ class ScrollButton extends Component {
           this.scrollToTop();
         }}
       >
-        <span className="arrow-up">
-          <i className="fas fa-arrow-up"></i>
-        </span>
+        <i className="fas fa-arrow-alt-circle-up p-0 m-0 arrow-up" />
       </button>
     );
   }
 }
+
+ScrollButton.propTypes = {
+  scrollStepInPx: PropTypes.number.isRequired,
+  delayInMs: PropTypes.number.isRequired
+};
 
 export default ScrollButton;

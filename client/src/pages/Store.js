@@ -1,20 +1,15 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Layout from "../components/Layout";
-import ProductsList from "../components/ProductsList";
 import CategoriesList from "../components/CategoriesList";
-import SufferingsList from "../components/SufferingsList";
+import ProductsList from "../components/ProductsList";
+// import SufferingsList from "../components/SufferingsList";
 import HelpButton from "../components/HelpButton";
-import CustomDropdown from "../components/CustomDropdown";
+import ScrollButton from "../components/ScrollButton";
+import MyBreadcrumb from "../components/MyBreadcrumb";
+import SearchBar from "../components/SearchBar";
+import MyPagination from "../components/MyPagination";
 import API from "../utils/API";
-
-// const styles = {
-//   header: {
-//     backgroundImage: "url('images/bg-header-store.jpg')",
-//     backgroundSize: "cover",
-//     backgroundBlendMode: "multiply"
-//   }
-// };
 
 class Store extends Component {
   state = {
@@ -106,67 +101,59 @@ class Store extends Component {
   render() {
     return (
       <Layout>
-        <Container>
-          <Row className="mt-4">
-            <Col md={6}>
-              <Row>
-                <CustomDropdown
-                  title="Categorías"
-                  items={this.state.categories}
-                  activeItem="Alimentos Terapéuticos"
-                />
-              </Row>
-              <Row>
-                <CustomDropdown
-                  title="Padecimientos"
-                  items={this.state.sufferings}
-                  activeItem="Todos"
-                />
-              </Row>
-            </Col>
-            <Col
-              md={6}
-              className="d-flex align-items-center justify-content-center"
-            >
-              pagination...
-            </Col>
-          </Row>
-        </Container>
+        <MyBreadcrumb />
 
-        <Container fluid>
-          {/* categories row */}
+        <Container fluid className="mb-3">
           <Row>
-            <Col>
-              {/* categories list */}
-              <CategoriesList
-                categories={this.state.categories}
-                selectedCategoryId={this.state.selectedCategoryId}
-                handleChangeCategory={this.handleChangeCategory}
-              />
+            {/* categories column */}
+            <Col md={3} className="mt-2">
+              <Row>
+                <Col>
+                  <h5 className="my-3 text-light">Categorías</h5>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <CategoriesList
+                    categories={this.state.categories}
+                    selectedCategoryId={this.state.selectedCategoryId}
+                    handleChangeCategory={this.handleChangeCategory}
+                  />
+                </Col>
+              </Row>
             </Col>
-          </Row>
-
-          {/* sufferings and products row */}
-          <Row className="d-flex flex-row my-4">
-            {/* left column */}
-            <Col xs={12} md={4}>
-              {/* sufferings list */}
-              <SufferingsList
-                sufferings={this.state.sufferings}
-                selectedSuffering={this.state.selectedSuffering}
-                handleChangeSuffering={this.handleChangeSuffering}
-              />
-            </Col>
-
-            {/* right column */}
-            <Col xs={12} md={8}>
-              {/* products list */}
-              <ProductsList productsArr={this.state.products} />
+            {/* products, filters, sufferings column */}
+            <Col md={9} className="my-3 bg-transaparent">
+              <Row>
+                <Col>
+                  <SearchBar />
+                </Col>
+              </Row>
+              <Row>
+                <Col md={6} className="d-flex align-items-center py-2">
+                  <span className="text-muted">Filtros de categoría</span>
+                </Col>
+                <Col
+                  md={6}
+                  className="d-flex align-items-center justify-content-md-end justify-content-sm-center py-2"
+                >
+                  <span className="text-muted mr-4">
+                    <em>5 productos</em>
+                  </span>
+                  <MyPagination />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <ProductsList productsArr={this.state.products} />
+                </Col>
+              </Row>
             </Col>
           </Row>
         </Container>
 
         <HelpButton />
+        <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
       </Layout>
     );
   }

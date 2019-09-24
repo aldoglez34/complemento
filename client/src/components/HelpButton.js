@@ -15,7 +15,8 @@ function HelpButton() {
         className="d-flex justify-content-center align-items-center p-0 shadow helpbttn"
         onClick={handleShow}
       >
-        <i className="fas fa-question-circle h1 p-0 m-0 text-light" />
+        ¿Ayuda?
+        {/* <i className="fas fa-question-circle h1 p-0 m-0 text-light" /> */}
       </button>
 
       <Modal show={show} onHide={handleClose}>

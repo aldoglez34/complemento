@@ -25,12 +25,12 @@ function MyFooter() {
             </h5>
             <div>
               <p className="mb-0">
-                <a href="/home" className="text-light">
+                <a href="/" className="text-light">
                   Términos y condiciones
                 </a>
               </p>
               <p className="mb-0">
-                <a href="/home" className="text-light">
+                <a href="/" className="text-light">
                   Quejas y sugerencias
                 </a>
               </p>
@@ -42,12 +42,12 @@ function MyFooter() {
             </h5>
             <div>
               <p className="mb-0">
-                <a href="/home" className="text-light">
+                <a href="/" className="text-light">
                   ¿Quiénes somos?
                 </a>
               </p>
               <p className="mb-0">
-                <a href="/home" className="text-light">
+                <a href="/" className="text-light">
                   Contáctanos
                 </a>
               </p>
@@ -59,12 +59,12 @@ function MyFooter() {
             </h5>
             <div>
               <p className="mb-0">
-                <a href="/home" className="text-light">
+                <a href="/" className="text-light">
                   Formas de pago
                 </a>
               </p>
               <p className="mb-0">
-                <a href="/home" className="text-light">
+                <a href="/" className="text-light">
                   Rastreador de pedidos
                 </a>
               </p>
