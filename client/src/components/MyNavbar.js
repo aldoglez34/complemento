@@ -21,7 +21,7 @@ function MyNavbar() {
 
   const styles = {
     dropdownMenu: {
-      width: 290
+      width: "18.125rem"
     }
   };
 

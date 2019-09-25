@@ -10,17 +10,17 @@ const styles = {
     backgroundBlendMode: "multiply"
   },
   container: {
-    height: 360,
+    height: "22.5rem",
     textAlign: "center"
   },
   welcomeMsg: {
-    fontSize: 45,
+    fontSize: "2.8125rem",
     opacity: 0.8,
     color: "whitesmoke"
   },
   welcomeMsg2: {
     color: "white",
-    fontSize: 50
+    fontSize: "3.125rem"
   }
 };
 

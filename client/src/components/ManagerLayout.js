@@ -11,7 +11,7 @@ ManagerLayout.propTypes = {
 
 const styles = {
   title: {
-    marginTop: 25
+    marginTop: "1.5625rem"
   }
 };
 

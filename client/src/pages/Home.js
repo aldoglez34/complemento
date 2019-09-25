@@ -50,17 +50,20 @@ class Home extends Component {
               <h2>¿Quiénes Somos?</h2>
               <hr />
               <p>
-                Somos una tienda en línea de medicina complementaria. Contamos
-                con un selecto catálogo de productos naturistas, remedios
-                herbolarios, suplementos alimenticios y medicina alternativa a
-                precios de laboratorio, hechos a base de plantas, raíces y
-                hierbas.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                cursus arcu vitae nunc commodo viverra. Nunc malesuada rutrum
+                tortor ac fringilla. Nam malesuada felis lectus, in tempus velit
+                ullamcorper a. Praesent interdum erat ac leo dictum aliquet.
+                Curabitur bibendum facilisis leo sit amet ornare. Sed aliquet
+                justo ac nunc euismod imperdiet.
               </p>
               <p>
-                Contamos con un selecto catálogo de productos naturistas,
-                remedios herbolarios, suplementos alimenticios y medicina
-                alternativa a precios de laboratorio, hechos a base de plantas,
-                raíces y hierbas.
+                Sed sollicitudin viverra urna in molestie. Vivamus bibendum
+                tristique nisi non maximus. Fusce sit amet lacinia orci. Nam
+                viverra fringilla urna vitae bibendum. Morbi interdum porttitor
+                augue, a tincidunt quam feugiat et. Cras velit felis, faucibus
+                sagittis nunc ac, efficitur tempor metus. Nullam ut eros a
+                libero scelerisque porttitor.
               </p>
             </Col>
             <Col md={4} className="mt-5">

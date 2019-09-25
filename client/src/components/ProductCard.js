@@ -84,7 +84,10 @@ function ProductCard(props) {
   return (
     <>
       <Card style={{ width: "9.7rem" }} className="shadow-sm mt-2 mb-4 mx-1">
-        <a className="text-primary" href={"/product/" + props.product.productId}>
+        <a
+          className="text-primary"
+          href={"/product/" + props.product.productId}
+        >
           <Card.Header className="text-center">
             <span>{props.product.name}</span>
           </Card.Header>
@@ -95,7 +98,7 @@ function ProductCard(props) {
             src={"/images/products/" + props.product.photo}
           />
         </a>
-        <Card.Body className="d-flex align-items-end flex-column ">
+        <Card.Body className="d-flex align-items-end flex-column">
           {props.product.Discount ? (
             <>
               <p className="mb-0">
@@ -110,7 +113,7 @@ function ProductCard(props) {
               </p>
             </>
           ) : (
-            <p clasName="text-center">
+            <p>
               <strong>{"$" + props.product.price + " MXN"}</strong>
             </p>
           )}
