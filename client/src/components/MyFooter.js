@@ -55,7 +55,7 @@ function MyFooter() {
           </Col>
           <Col md={4} className="mt-3">
             <h5>
-              <strong className="text-white">Tienda</strong>
+              <strong className="text-white">Envíos</strong>
             </h5>
             <div>
               <p className="mb-0">

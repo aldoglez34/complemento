@@ -9,6 +9,7 @@ import ScrollButton from "../components/ScrollButton";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 import SearchBar from "../components/SearchBar";
 import MyPagination from "../components/MyPagination";
+import SufferingsDropdown from "../components/SufferingsDropdown";
 import API from "../utils/API";
 
 class Store extends Component {
@@ -109,7 +110,10 @@ class Store extends Component {
             <Col md={3} className="mt-2">
               <Row>
                 <Col>
-                  <h5 className="my-3 text-light">Categorías</h5>
+                  <h5 className="my-3 text-dark">
+                    <strong>Categorías</strong>
+                  </h5>
+                  <hr />
                 </Col>
               </Row>
               <Row>
@@ -131,7 +135,12 @@ class Store extends Component {
               </Row>
               <Row>
                 <Col md={6} className="d-flex align-items-center py-2">
-                  <span className="text-muted">Filtros de categoría</span>
+                  {/* <span className="text-muted">Filtros de categoría</span> */}
+                  <SufferingsDropdown
+                    sufferings={this.state.sufferings}
+                    selectedSuffering={this.state.selectedSuffering}
+                    handleChangeSuffering={this.handleChangeSuffering}
+                  />
                 </Col>
                 <Col
                   md={6}

@@ -82,48 +82,51 @@ function ProductCard(props) {
   };
 
   return (
-    <Card style={{ width: "9.7rem" }} className="shadow-sm mt-2 mb-4 mx-1">
-      {/* header */}
-      <Card.Header className="text-center">
-        <a href={"/product/" + props.product.productId}>{props.product.name}</a>
-      </Card.Header>
-
-      {/* show photo */}
-      <Card.Img
-        variant="top"
-        height="250"
-        className="rounded-0"
-        src={"/images/products/" + props.product.photo}
-      />
-
-      {/* body */}
-      <Card.Body>
-        {/* price */}
-        <Card.Text className="d-flex flex-column">
+    <>
+      <Card style={{ width: "9.7rem" }} className="shadow-sm mt-2 mb-4 mx-1">
+        <a className="text-primary" href={"/product/" + props.product.productId}>
+          <Card.Header className="text-center">
+            <span>{props.product.name}</span>
+          </Card.Header>
+          <Card.Img
+            variant="top"
+            height="250"
+            className="rounded-0"
+            src={"/images/products/" + props.product.photo}
+          />
+        </a>
+        <Card.Body className="d-flex align-items-end flex-column ">
           {props.product.Discount ? (
             <>
-              <strong>
-                <del>{"$" + props.product.price + " MXN"}</del>
-              </strong>
-              <strong className="text-danger">
-                {"$" + props.product.Discount.newPrice + " MXN"}
-              </strong>
+              <p className="mb-0">
+                <strong>
+                  <del>{"$" + props.product.price + " MXN"}</del>
+                </strong>
+              </p>
+              <p>
+                <strong className="text-danger">
+                  {"$" + props.product.Discount.newPrice + " MXN"}
+                </strong>
+              </p>
             </>
           ) : (
-            <strong>{"$" + props.product.price + " MXN"}</strong>
+            <p clasName="text-center">
+              <strong>{"$" + props.product.price + " MXN"}</strong>
+            </p>
           )}
-        </Card.Text>
-        {/* content */}
-        <Card.Text>{props.product.content}</Card.Text>
-
-        {/* modal add to cart button */}
-        {props.product.stock > 0 ? (
-          <AddToCartButton product={props.product} />
-        ) : (
-          <BttnNoStock />
-        )}
-      </Card.Body>
-    </Card>
+          <p>
+            <em>{props.product.content}</em>
+          </p>
+          <div className="mt-auto mt-2 pt-3">
+            {props.product.stock > 0 ? (
+              <AddToCartButton product={props.product} />
+            ) : (
+              <BttnNoStock />
+            )}
+          </div>
+        </Card.Body>
+      </Card>
+    </>
   );
 }
 

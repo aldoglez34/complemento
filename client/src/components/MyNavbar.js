@@ -203,7 +203,7 @@ function MyNavbar() {
 
   return (
     <>
-      <Navbar bg="white" expand="md">
+      <Navbar expand="md" style={styles.navbar} className="py-3 bg-light">
         {/* logo */}
         <Navbar.Brand className="mr-auto" href="/">
           <Image src="/images/logo.png" alt="logo" fluid />
