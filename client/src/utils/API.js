@@ -17,15 +17,15 @@ export default {
   // STORE
   // ---------------------------------------------------------------------------
 
-  loadCategories: function() {
+  fecthCategories: function() {
     return axios.get("/api/store/category/all");
   },
 
-  sufferingsByCategory: function(categoryId) {
+  fetchSufferingsByCategory: function(categoryId) {
     return axios.get("/api/store/sufferings/" + categoryId);
   },
 
-  getStoreProducts: function(data) {
+  fetchStoreProducts: function(data) {
     return axios.get("/api/store/products/" + data.catId + "/" + data.suff);
   },
 
