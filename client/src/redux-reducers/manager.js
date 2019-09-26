@@ -5,7 +5,7 @@ const managerInitState = {
 
 const managerReducers = (state = managerInitState, action) => {
   switch (action.type) {
-    case "LOGIN_MANAGER":
+    case "manager/login":
       return (
         // ...state,
         {
@@ -13,7 +13,7 @@ const managerReducers = (state = managerInitState, action) => {
           email: action.data
         }
       );
-    case "LOGOUT_MANAGER":
+    case "manager/logout":
       return (
         // ...state,
         {

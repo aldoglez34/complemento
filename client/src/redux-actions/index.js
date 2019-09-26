@@ -1,25 +1,52 @@
+// breadcrumb actions
+
+export const setCategory = cat => {
+  return {
+    type: "breadcrumb/setCategory",
+    cat
+  };
+};
+
+export const setSuffering = suff => {
+  return {
+    type: "breadcrumb/setSuffering",
+    suff
+  };
+};
+
+export const setProduct = product => {
+  return {
+    type: "breadcrumb/setProduct",
+    product
+  };
+};
+
+// manager actions
+
 export const loginManager = data => {
   return {
-    type: "LOGIN_MANAGER",
+    type: "manager/ogin",
     data
   };
 };
 
 export const logoutManager = () => {
   return {
-    type: "LOGOUT_MANAGER"
+    type: "manager/logout"
   };
 };
 
+// client actions
+
 export const loginClient = data => {
   return {
-    type: "LOGIN_CLIENT",
+    type: "client/login",
     data
   };
 };
 
 export const logoutClient = () => {
   return {
-    type: "LOGOUT_CLIENT"
+    type: "client/logout"
   };
 };

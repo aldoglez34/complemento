@@ -20,7 +20,7 @@ function ProductCard(props) {
           <span className="d-inline-block">
             <Button
               disabled
-              variant="outline-danger"
+              variant="outline-secondary"
               style={{ pointerEvents: "none" }}
             >
               Agregar
@@ -54,7 +54,12 @@ function ProductCard(props) {
 
     return (
       <>
-        <Button variant="outline-primary" block onClick={handleShow}>
+        <Button
+          variant="outline-primary"
+          block
+          onClick={handleShow}
+          title="Guardar en tu carrito"
+        >
           Agregar
           <i className="fas fa-shopping-cart ml-1" />
         </Button>
@@ -82,7 +87,7 @@ function ProductCard(props) {
   };
 
   return (
-    <Card style={{ width: "9.7rem" }} className="mt-2 mb-4 mx-1 shadow">
+    <Card style={{ width: "12.7rem" }} className="mt-2 mb-4 mx-1 shadow-sm">
       <a className="text-primary" href={"/product/" + props.product.productId}>
         <Card.Header className="text-center">
           <span>{props.product.name}</span>
@@ -118,9 +123,27 @@ function ProductCard(props) {
         </div>
         <div className="mt-auto pt-2 text-center">
           {props.product.stock > 0 ? (
-            <AddToCartButton product={props.product} />
+            <div className="d-flex inline">
+              <AddToCartButton product={props.product} />
+              <Button
+                variant="outline-danger"
+                className="ml-2"
+                title="Guardar en favoritos"
+              >
+                <i className="fas fa-heart" />
+              </Button>
+            </div>
           ) : (
-            <BttnNoStock />
+            <div className="d-flex inline">
+              <BttnNoStock />
+              <Button
+                variant="outline-danger"
+                className="ml-2"
+                title="Guardar en favoritos"
+              >
+                <i className="fas fa-heart" />
+              </Button>
+            </div>
           )}
         </div>
       </Card.Body>

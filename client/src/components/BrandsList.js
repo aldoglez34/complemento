@@ -5,11 +5,11 @@ function BrandsList() {
   return (
     <Nav className="flex-column">
       <Form>
-        <Form.Check label="Marca" />
-        <Form.Check label="Marca" />
-        <Form.Check label="Marca" />
-        <Form.Check label="Marca" />
-        <Form.Check label="Marca" />
+        <Form.Check label="Pronamed" className="text-dark pb-1" />
+        <Form.Check label="Pronamed" className="text-dark pb-1" />
+        <Form.Check label="Pronamed" className="text-dark pb-1" />
+        <Form.Check label="Pronamed" className="text-dark pb-1" />
+        <Form.Check label="Pronamed" className="text-dark pb-1" />
       </Form>
     </Nav>
   );

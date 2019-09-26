@@ -15,7 +15,7 @@ const clientInitState = {
 
 const clientReducers = (state = clientInitState, action) => {
   switch (action.type) {
-    case "LOGIN_CLIENT":
+    case "client/login":
       return (
         // ...state,
         {
@@ -33,7 +33,7 @@ const clientReducers = (state = clientInitState, action) => {
           comments: action.data.comments
         }
       );
-    case "LOGOUT_CLIENT":
+    case "client/logout":
       return (
         // ...state,
         {

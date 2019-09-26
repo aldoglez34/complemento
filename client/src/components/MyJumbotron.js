@@ -24,11 +24,14 @@ function MyJumbotron() {
           className="d-flex justify-items-center flex-column text-center"
           style={styles.container}
         >
-          <p className="h1 text-light mb-0">Bienvenido a</p>
-          <p className="h1 text-white" style={{ fontWeight: 900 }}>
+          <p className="display-4 text-light mb-0" style={{ opacity: 0.7 }}>Bienvenido a</p>
+          <p
+            className="display-3 text-white"
+            style={{ fontWeight: 700, opacity: 0.9 }}
+          >
             <strong>Complemento Natural</strong>
           </p>
-          <p className="h4 text-light">Tienda naturista en línea</p>
+          {/* <p className="h3 text-light" style={{ opacity: 0.7 }}>Tienda naturista en línea</p> */}
           <hr className="text-light bg-light" />
           {/* <h1 style={styles.welcomeMsg}>
             Bienvenido a{" "}
@@ -36,7 +39,7 @@ function MyJumbotron() {
           </h1>
           <hr className="text-light bg-light" />
           <h3 className="text-light">Tienda naturista en línea</h3> */}
-          <div className="my-2">
+          <div className="mb-2">
             <WelcomeButton />
           </div>
           <div className="mt-auto">

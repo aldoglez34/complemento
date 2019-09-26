@@ -11,6 +11,8 @@ import SearchBar from "../components/SearchBar";
 import MyPagination from "../components/MyPagination";
 import SufferingsDropdown from "../components/SufferingsDropdown";
 import API from "../utils/API";
+import { connect } from "react-redux";
+import { setCategory } from "../redux-actions";
 
 class Store extends Component {
   state = {
@@ -31,7 +33,12 @@ class Store extends Component {
       .then(res => {
         this.setState({ categories: res.data }, () =>
           // set the name of the first category in the state, for the breadcrumb to use
-          this.setState({ selectedCategoryName: this.state.categories[0].name })
+          {
+            this.props.setCategory(this.state.categories[0].name);
+            this.setState({
+              selectedCategoryName: this.state.categories[0].name
+            });
+          }
         );
       })
       .catch(err => console.log(err));
@@ -198,4 +205,15 @@ class Store extends Component {
   }
 }
 
-export default Store;
+// const mapStateToProps = state => {
+//   return {};
+// };
+
+const mapDispatchToProps = {
+  setCategory
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Store);
