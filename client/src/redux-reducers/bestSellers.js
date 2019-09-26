@@ -1,6 +1,6 @@
 const bestSellersReducers = (state = {}, action) => {
   switch (action.type) {
-    case "bestSellers/setBestSellers":
+    case "home/setBestSellers":
       return action.bestSellers;
     default:
       return state;

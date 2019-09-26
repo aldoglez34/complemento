@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import fire from "../firebase/Fire";
-import { logoutManager } from "../redux-actions";
+import * as managerActions from "../redux-actions/manager";
 
 ManagerLayout.propTypes = {
   children: PropTypes.node.isRequired
@@ -25,7 +25,7 @@ function ManagerLayout(props) {
       .auth()
       .signOut()
       .then(function() {
-        dispatch(logoutManager());
+        dispatch(managerActions.logoutManager());
       })
       .catch(function(error) {
         console.log(error);

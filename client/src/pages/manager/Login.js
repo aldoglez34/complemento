@@ -4,7 +4,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import fire from "../../firebase/Fire";
 import { useDispatch } from "react-redux";
-import { loginManager } from "../../redux-actions";
+import * as managerActions from "../../redux-actions/manager";
 
 const styles = {
   logo: {
@@ -57,7 +57,7 @@ function Login() {
                 .signInWithEmailAndPassword(values.email, values.password)
                 .then(res => {
                   let manager = res.user.email;
-                  dispatch(loginManager(manager));
+                  dispatch(managerActions.loginManager(manager));
                 })
                 .catch(error => {
                   alert(error.message);

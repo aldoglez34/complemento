@@ -1,9 +1,3 @@
-// const breadcrumbInitState = {
-//   cat: null,
-//   suff: null,
-//   product: null
-// };
-
 const breadcrumbReducers = (state = {}, action) => {
   let temp = state;
 

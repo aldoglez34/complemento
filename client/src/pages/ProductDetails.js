@@ -9,6 +9,7 @@ import {
   Image
 } from "react-bootstrap";
 import Layout from "../components/Layout";
+import MyBreadcrumb from "../components/MyBreadcrumb";
 import API from "../utils/API";
 
 class ProductDetails extends Component {
@@ -47,12 +48,7 @@ class ProductDetails extends Component {
   render() {
     return (
       <Layout>
-        {/* regresar */}
-        <div className="bg-white p-2">
-          <a href="/store" className="ml-2">
-            <i className="fas fa-arrow-circle-left mr-2"></i>Regresa a la tienda
-          </a>
-        </div>
+        <MyBreadcrumb />
 
         <Container>
           {/* first row */}

@@ -17,7 +17,7 @@ export default {
   // STORE
   // ---------------------------------------------------------------------------
 
-  fecthCategories: function() {
+  fetchCategories: function() {
     return axios.get("/api/store/category/all");
   },
 

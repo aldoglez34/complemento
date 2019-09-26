@@ -1,6 +1,6 @@
 const discountsReducers = (state = {}, action) => {
   switch (action.type) {
-    case "discounts/setDiscounts":
+    case "home/setDiscounts":
       return action.discounts;
     default:
       return state;

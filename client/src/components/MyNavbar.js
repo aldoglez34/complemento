@@ -14,7 +14,7 @@ import { Formik, ErrorMessage } from "formik";
 import API from "../utils/API";
 import * as yup from "yup";
 import { useSelector, useDispatch } from "react-redux";
-import { loginClient, logoutClient } from "../redux-actions";
+import * as clientActions from "../redux-actions/client";
 
 function MyNavbar() {
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ function MyNavbar() {
       .auth()
       .signOut()
       .then(function() {
-        dispatch(logoutClient());
+        dispatch(clientActions.logoutClient());
       })
       .catch(function(error) {
         console.log(error);
@@ -79,7 +79,7 @@ function MyNavbar() {
                 API.getClientInfo(uid)
                   .then(res => {
                     let client = res.data[0];
-                    dispatch(loginClient(client));
+                    dispatch(clientActions.loginClient(client));
                   })
                   .catch(err => {
                     console.log(err);
