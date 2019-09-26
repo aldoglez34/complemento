@@ -5,11 +5,11 @@ export default {
   // HOME
   // ---------------------------------------------------------------------------
 
-  getProductsWithDiscount: function() {
+  fetchProductsWithDiscount: function() {
     return axios.get("/api/home/discounts");
   },
 
-  getBestSellers: function() {
+  fetchBestSellers: function() {
     return axios.get("/api/home/bestsellers");
   },
 

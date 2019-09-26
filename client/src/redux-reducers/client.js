@@ -1,19 +1,19 @@
-const clientInitState = {
-  isLogged: false,
-  uid: null,
-  name: null,
-  firstSurname: null,
-  secondSurname: null,
-  phone: null,
-  email: null,
-  street: null,
-  city: null,
-  state: null,
-  zipCode: null,
-  comments: null
-};
+// const clientInitState = {
+//   isLogged: false,
+//   uid: null,
+//   name: null,
+//   firstSurname: null,
+//   secondSurname: null,
+//   phone: null,
+//   email: null,
+//   street: null,
+//   city: null,
+//   state: null,
+//   zipCode: null,
+//   comments: null
+// };
 
-const clientReducers = (state = clientInitState, action) => {
+const clientReducers = (state = { isLogged: false }, action) => {
   switch (action.type) {
     case "client/login":
       return (

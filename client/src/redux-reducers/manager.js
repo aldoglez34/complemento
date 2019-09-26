@@ -1,9 +1,9 @@
-const managerInitState = {
-  isLogged: false,
-  email: null
-};
+// const managerInitState = {
+//   isLogged: false,
+//   email: null
+// };
 
-const managerReducers = (state = managerInitState, action) => {
+const managerReducers = (state = { isLogged: false }, action) => {
   switch (action.type) {
     case "manager/login":
       return (

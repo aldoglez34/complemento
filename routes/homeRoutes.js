@@ -8,7 +8,7 @@ const model = require("../models");
 router.get("/discounts", function(req, res) {
   model.Product.findAll({
     order: ["createdAt"],
-    limit: 6,
+    limit: 10,
     include: [
       {
         model: model.Discount,
@@ -33,7 +33,7 @@ router.get("/discounts", function(req, res) {
 router.get("/bestsellers", function(req, res) {
   model.Product.findAll({
     order: [["unitsSold", "DESC"]],
-    limit: 6,
+    limit: 10,
     include: [
       {
         model: model.Discount

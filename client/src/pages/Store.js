@@ -12,7 +12,7 @@ import MyPagination from "../components/MyPagination";
 import SufferingsDropdown from "../components/SufferingsDropdown";
 import API from "../utils/API";
 import { connect } from "react-redux";
-import { setCategory } from "../redux-actions";
+import { setCategory, setSuffering } from "../redux-actions";
 
 class Store extends Component {
   state = {
@@ -35,6 +35,7 @@ class Store extends Component {
           // set the name of the first category in the state, for the breadcrumb to use
           {
             this.props.setCategory(this.state.categories[0].name);
+            this.props.setSuffering("Todos");
             this.setState({
               selectedCategoryName: this.state.categories[0].name
             });
@@ -72,6 +73,9 @@ class Store extends Component {
         selectedSuffering: "Todos"
       },
       () => {
+        // redux
+        this.props.setCategory(this.state.selectedCategoryName);
+        this.props.setSuffering("Todos");
         // clear the sufferings in the state
         // and then load all sufferings from the selected cat
         this.setState({ sufferings: [] }, () => {
@@ -210,7 +214,7 @@ class Store extends Component {
 // };
 
 const mapDispatchToProps = {
-  setCategory
+  setCategory, setSuffering
 };
 
 export default connect(

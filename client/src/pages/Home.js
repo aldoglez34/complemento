@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setDiscounts, setBestSellers } from "../redux-actions";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
@@ -7,44 +9,49 @@ import ScrollButton from "../components/ScrollButton";
 import MyJumbotron from "../components/MyJumbotron";
 import API from "../utils/API";
 
-class Home extends Component {
-  state = {
-    discounts: [],
-    bestSellers: []
-  };
+function Home() {
+  const dispatch = useDispatch();
 
-  getProductsWithDiscount = () => {
-    API.getProductsWithDiscount()
+  function fetchProductsWithDiscount() {
+    API.fetchProductsWithDiscount()
       .then(res => {
-        this.setState({ discounts: res.data });
+        console.log("fetchProductsWithDiscount");
+        console.log(res.data);
+        dispatch(setDiscounts(res.data));
       })
       .catch(err => {
         console.log(err);
       });
-  };
-
-  getBestSellers = () => {
-    API.getBestSellers()
-      .then(res => {
-        this.setState({ bestSellers: res.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  componentDidMount() {
-    this.getProductsWithDiscount();
-    this.getBestSellers();
   }
 
-  render() {
-    return (
+  function fetchBestSellers() {
+    API.fetchBestSellers()
+      .then(res => {
+        console.log("fetchBestSellers");
+        console.log(res.data);
+        dispatch(setBestSellers(res.data));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+    console.log("entreing use effect");
+    fetchProductsWithDiscount();
+    fetchBestSellers();
+  }, []);
+
+  const discounts = useSelector(state => state.discounts);
+  const bestSellers = useSelector(state => state.bestSellers);
+
+  return (
+    <>
+      {console.log("rendering...")}
       <Layout>
         <MyJumbotron />
 
         <Container className="mb-3">
-          {/* row 1 about and contact info */}
           <Row>
             <Col md={8} className="mt-5">
               <h2 className="text-dark">¿Quiénes Somos?</h2>
@@ -88,23 +95,17 @@ class Home extends Component {
               </address>
             </Col>
           </Row>
-          {/* row 2 latest discounts */}
           <Row className="mt-5">
             <Col>
               <h2 className="text-dark">Últimas ofertas</h2>
               <hr />
               <div className="d-flex flex-wrap justify-content-center">
-                {this.state.discounts.length ? (
-                  this.state.discounts.map(discount => {
-                    return (
-                      <ProductCard
-                        key={discount.productId}
-                        product={discount}
-                      />
-                    );
+                {discounts.length ? (
+                  discounts.map(d => {
+                    return <ProductCard key={d.productId} product={d} />;
                   })
                 ) : (
-                  <div className="text-center my-3">
+                  <div className="text-center mt-4">
                     <Spinner
                       animation="border"
                       role="status"
@@ -121,12 +122,12 @@ class Home extends Component {
               <h2 className="text-dark">Productos destacados</h2>
               <hr />
               <div className="d-flex flex-wrap justify-content-center">
-                {this.state.bestSellers.length ? (
-                  this.state.bestSellers.map(bs => {
-                    return <ProductCard key={bs.productId} product={bs} />;
+                {bestSellers.length ? (
+                  bestSellers.map(d => {
+                    return <ProductCard key={d.productId} product={d} />;
                   })
                 ) : (
-                  <div className="text-center my-3">
+                  <div className="text-center mt-4">
                     <Spinner
                       animation="border"
                       role="status"
@@ -142,8 +143,8 @@ class Home extends Component {
         <HelpButton />
         <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
       </Layout>
-    );
-  }
+    </>
+  );
 }
 
 export default Home;

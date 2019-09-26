@@ -1,10 +1,10 @@
-const breadcrumbInitState = {
-  cat: null,
-  suff: null,
-  product: null
-};
+// const breadcrumbInitState = {
+//   cat: null,
+//   suff: null,
+//   product: null
+// };
 
-const breadcrumbReducers = (state = breadcrumbInitState, action) => {
+const breadcrumbReducers = (state = {}, action) => {
   let temp = state;
 
   switch (action.type) {

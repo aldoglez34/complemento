@@ -1,21 +1,27 @@
 import React from "react";
 import { Breadcrumb } from "react-bootstrap";
-import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
-MyBreadcrumb.propTypes = {
-  category: PropTypes.string.isRequired,
-  suffering: PropTypes.string
-};
+function MyBreadcrumb() {
+  const category = useSelector(state => state.breadcrumb.cat);
+  const suffering = useSelector(state => state.breadcrumb.suff);
+  const product = useSelector(state => state.breadcrumb.product);
 
-function MyBreadcrumb(props) {
   return (
     <Breadcrumb className="d-none d-md-block">
       <Breadcrumb.Item href="/">Inicio</Breadcrumb.Item>
       <Breadcrumb.Item href="/store">Tienda</Breadcrumb.Item>
-      <Breadcrumb.Item active>{props.category}</Breadcrumb.Item>
-      {props.suffering !== "Todos" ? (
+
+      {/* with redux */}
+      {category ? <Breadcrumb.Item active>{category}</Breadcrumb.Item> : null}
+      {suffering ? <Breadcrumb.Item active>{suffering}</Breadcrumb.Item> : null}
+      {product ? <Breadcrumb.Item active>{product}</Breadcrumb.Item> : null}
+
+      {/* with props */}
+      {/* <Breadcrumb.Item active>{props.category}</Breadcrumb.Item> */}
+      {/* {props.suffering !== "Todos" ? (
         <Breadcrumb.Item active>{props.suffering}</Breadcrumb.Item>
-      ) : null}
+      ) : null} */}
     </Breadcrumb>
   );
 }
