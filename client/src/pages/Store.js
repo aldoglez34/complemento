@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Layout from "../components/Layout";
 import CategoriesList from "../components/CategoriesList";
+import BrandsList from "../components/BrandsList";
 import ProductsList from "../components/ProductsList";
-// import SufferingsList from "../components/SufferingsList";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
 import MyBreadcrumb from "../components/MyBreadcrumb";
@@ -17,17 +17,22 @@ class Store extends Component {
     // categories
     categories: [],
     selectedCategoryId: 1,
+    selectedCategoryName: "",
     // sufferings
     sufferings: [],
     selectedSuffering: "Todos",
     // products
-    products: []
+    products: [],
+    productCounter: 0
   };
 
   loadCategories = () => {
     API.loadCategories()
       .then(res => {
-        this.setState({ categories: res.data });
+        this.setState({ categories: res.data }, () =>
+          // set the name of the first category in the state, for the breadcrumb to use
+          this.setState({ selectedCategoryName: this.state.categories[0].name })
+        );
       })
       .catch(err => console.log(err));
   };
@@ -43,28 +48,31 @@ class Store extends Component {
   getStoreProducts = data => {
     API.getStoreProducts(data)
       .then(res => {
-        this.setState({ products: res.data });
+        this.setState({
+          products: res.data.products,
+          productCounter: res.data.productsCounter
+        });
       })
       .catch(err => console.log(err));
   };
 
   handleChangeCategory = cat => {
-    // whenever the category changes
-    // first change the cat in the state and set sufferings to ALL
+    // change the cat in the state and set sufferings to ALL
     this.setState(
       {
-        selectedCategoryId: cat,
+        selectedCategoryId: cat.catId,
+        selectedCategoryName: cat.catName,
         selectedSuffering: "Todos"
       },
       () => {
-        // then clear the sufferings in the state
+        // clear the sufferings in the state
         // and then load all sufferings from the selected cat
         this.setState({ sufferings: [] }, () => {
           this.sufferingsByCategory(this.state.selectedCategoryId);
         });
         // next clear the products
         // and get all the products from that category and ALL sufferings
-        // (that is because the default when changing a category is Todos)
+        // (that is because the default when changing a category is "Todos")
         this.setState({ products: [] }, () => {
           let data = {};
           data.catId = this.state.selectedCategoryId;
@@ -102,7 +110,10 @@ class Store extends Component {
   render() {
     return (
       <Layout>
-        <MyBreadcrumb />
+        <MyBreadcrumb
+          category={this.state.selectedCategoryName}
+          suffering={this.state.selectedSuffering}
+        />
 
         <Container fluid className="mb-3">
           <Row>
@@ -123,6 +134,19 @@ class Store extends Component {
                     selectedCategoryId={this.state.selectedCategoryId}
                     handleChangeCategory={this.handleChangeCategory}
                   />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h5 className="my-3 text-dark">
+                    <strong>Marcas</strong>
+                  </h5>
+                  <hr />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <BrandsList />
                 </Col>
               </Row>
             </Col>
@@ -147,7 +171,13 @@ class Store extends Component {
                   className="d-flex align-items-center justify-content-md-end justify-content-sm-center py-2"
                 >
                   <span className="text-muted mr-4">
-                    <em>5 productos</em>
+                    <em>
+                      {this.state.productCounter === 1 ? (
+                        <span>{this.state.productCounter + " producto"}</span>
+                      ) : (
+                        <span>{this.state.productCounter + " productos"}</span>
+                      )}
+                    </em>
                   </span>
                   <MyPagination />
                 </Col>

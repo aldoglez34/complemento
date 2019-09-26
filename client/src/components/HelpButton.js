@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
-import "./helpButton.css";
+import "./helpButton.scss";
 
 function HelpButton() {
   const [show, setShow] = useState(false);

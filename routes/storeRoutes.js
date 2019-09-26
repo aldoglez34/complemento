@@ -89,7 +89,10 @@ router.get("/products/:categoryId/:suffering", function(req, res) {
       ]
     })
       .then(function(data) {
-        res.json(data);
+        let toFront = {};
+        toFront.products = data;
+        toFront.productsCounter = data.length;
+        res.send(toFront);
       })
       .catch(function(err) {
         res.send(err);
@@ -111,7 +114,10 @@ router.get("/products/:categoryId/:suffering", function(req, res) {
       ]
     })
       .then(function(data) {
-        res.json(data);
+        let toFront = {};
+        toFront.products = data;
+        toFront.productsCounter = data.length;
+        res.send(toFront);
       })
       .catch(function(err) {
         res.send(err);

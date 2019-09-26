@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import "./scrollButton.css";
+import "./scrollButton.scss";
 
 class ScrollButton extends Component {
   state = {

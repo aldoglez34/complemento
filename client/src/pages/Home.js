@@ -47,7 +47,7 @@ class Home extends Component {
           {/* row 1 about and contact info */}
           <Row>
             <Col md={8} className="mt-5">
-              <h2>¿Quiénes Somos?</h2>
+              <h2 className="text-dark">¿Quiénes Somos?</h2>
               <hr />
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
@@ -67,7 +67,7 @@ class Home extends Component {
               </p>
             </Col>
             <Col md={4} className="mt-5">
-              <h2>Contáctanos</h2>
+              <h2 className="text-dark">Contáctanos</h2>
               <hr />
               <address>
                 <strong>Dirección</strong>
@@ -91,7 +91,7 @@ class Home extends Component {
           {/* row 2 latest discounts */}
           <Row className="mt-5">
             <Col>
-              <h2>Últimas ofertas</h2>
+              <h2 className="text-dark">Últimas ofertas</h2>
               <hr />
               <div className="d-flex flex-wrap justify-content-center">
                 {this.state.discounts.length ? (
@@ -118,7 +118,7 @@ class Home extends Component {
           {/* row 3 best sellers */}
           <Row className="mt-5">
             <Col>
-              <h2>Los más vendidos</h2>
+              <h2 className="text-dark">Productos destacados</h2>
               <hr />
               <div className="d-flex flex-wrap justify-content-center">
                 {this.state.bestSellers.length ? (

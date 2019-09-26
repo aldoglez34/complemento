@@ -1,21 +1,21 @@
 import React from "react";
 import { Breadcrumb } from "react-bootstrap";
+import PropTypes from "prop-types";
 
-const styles = {
-  breadcrumb: {
-    color: "white !important"
-  }
+MyBreadcrumb.propTypes = {
+  category: PropTypes.string.isRequired,
+  suffering: PropTypes.string
 };
 
-function MyBreadcrumb() {
+function MyBreadcrumb(props) {
   return (
-    <Breadcrumb
-      style={styles.breadcrumb}
-      className="d-none d-md-block"
-    >
+    <Breadcrumb className="d-none d-md-block">
       <Breadcrumb.Item href="/">Inicio</Breadcrumb.Item>
       <Breadcrumb.Item href="/store">Tienda</Breadcrumb.Item>
-      <Breadcrumb.Item active>Alimentos Terapéuticos</Breadcrumb.Item>
+      <Breadcrumb.Item active>{props.category}</Breadcrumb.Item>
+      {props.suffering !== "Todos" ? (
+        <Breadcrumb.Item active>{props.suffering}</Breadcrumb.Item>
+      ) : null}
     </Breadcrumb>
   );
 }

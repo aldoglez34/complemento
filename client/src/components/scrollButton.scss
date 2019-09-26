@@ -9,10 +9,9 @@
   border-radius: 0.3125rem;
   border: none;
   outline: none !important;
-}
-
-.scroll:hover {
-  opacity: 1;
+  :hover {
+    opacity: 1;
+  }
 }
 
 .arrow-up {

@@ -82,54 +82,49 @@ function ProductCard(props) {
   };
 
   return (
-    <>
-      <Card style={{ width: "9.7rem" }} className="shadow-sm mt-2 mb-4 mx-1">
-        <a
-          className="text-primary"
-          href={"/product/" + props.product.productId}
-        >
-          <Card.Header className="text-center">
-            <span>{props.product.name}</span>
-          </Card.Header>
-          <Card.Img
-            variant="top"
-            height="250"
-            className="rounded-0"
-            src={"/images/products/" + props.product.photo}
-          />
-        </a>
-        <Card.Body className="d-flex align-items-end flex-column">
-          {props.product.Discount ? (
-            <>
-              <p className="mb-0">
-                <strong>
-                  <del>{"$" + props.product.price + " MXN"}</del>
-                </strong>
-              </p>
-              <p>
-                <strong className="text-danger">
-                  {"$" + props.product.Discount.newPrice + " MXN"}
-                </strong>
-              </p>
-            </>
-          ) : (
-            <p>
-              <strong>{"$" + props.product.price + " MXN"}</strong>
+    <Card style={{ width: "9.7rem" }} className="mt-2 mb-4 mx-1 shadow">
+      <a className="text-primary" href={"/product/" + props.product.productId}>
+        <Card.Header className="text-center">
+          <span>{props.product.name}</span>
+        </Card.Header>
+        <Card.Img
+          variant="top"
+          height="250"
+          className="rounded-0"
+          src={"/images/products/" + props.product.photo}
+        />
+      </a>
+      <Card.Body className="d-flex justify-items-center flex-column">
+        {props.product.Discount ? (
+          <div className="text-center">
+            <p className="mb-0">
+              <strong>
+                <del>{"$" + props.product.price + " MXN"}</del>
+              </strong>
             </p>
-          )}
-          <p>
-            <em>{props.product.content}</em>
-          </p>
-          <div className="mt-auto mt-2 pt-3">
-            {props.product.stock > 0 ? (
-              <AddToCartButton product={props.product} />
-            ) : (
-              <BttnNoStock />
-            )}
+            <p>
+              <strong className="text-danger">
+                {"$" + props.product.Discount.newPrice + " MXN"}
+              </strong>
+            </p>
           </div>
-        </Card.Body>
-      </Card>
-    </>
+        ) : (
+          <div className="text-center">
+            <strong>{"$" + props.product.price + " MXN"}</strong>
+          </div>
+        )}
+        <div className="text-center pb-4">
+          <em>{props.product.content}</em>
+        </div>
+        <div className="mt-auto pt-2 text-center">
+          {props.product.stock > 0 ? (
+            <AddToCartButton product={props.product} />
+          ) : (
+            <BttnNoStock />
+          )}
+        </div>
+      </Card.Body>
+    </Card>
   );
 }
 
