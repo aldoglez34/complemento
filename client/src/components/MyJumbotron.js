@@ -1,7 +1,6 @@
 import React from "react";
-import { Container, Jumbotron } from "react-bootstrap";
+import { Container, Row, Col, Jumbotron, Button } from "react-bootstrap";
 import SearchBar from "./SearchBar";
-import WelcomeButton from "./WelcomeButton";
 
 const styles = {
   jumbotron: {
@@ -11,8 +10,7 @@ const styles = {
     backgroundBlendMode: "multiply"
   },
   container: {
-    height: "22.5rem"
-    // background: "fuchsia"
+    height: "19rem"
   }
 };
 
@@ -24,27 +22,31 @@ function MyJumbotron() {
           className="d-flex justify-items-center flex-column text-center"
           style={styles.container}
         >
-          <p className="display-4 text-light mb-0" style={{ opacity: 0.7 }}>Bienvenido a</p>
-          <p
-            className="display-3 text-white"
-            style={{ fontWeight: 700, opacity: 0.9 }}
-          >
+          <h4 className="text-light">Bienvenido a...</h4>
+          <h1 className="text-white mb-0">
             <strong>Complemento Natural</strong>
-          </p>
-          {/* <p className="h3 text-light" style={{ opacity: 0.7 }}>Tienda naturista en línea</p> */}
-          <hr className="text-light bg-light" />
-          {/* <h1 style={styles.welcomeMsg}>
-            Bienvenido a{" "}
-            <strong style={styles.welcomeMsg2}>Complemento Natural</strong>
           </h1>
-          <hr className="text-light bg-light" />
-          <h3 className="text-light">Tienda naturista en línea</h3> */}
-          <div className="mb-2">
-            <WelcomeButton />
+          <p className="lead text-light">Tu solución naturista</p>
+          <div>
+            <Button
+              variant="success"
+              size="lg"
+              href="/store"
+              className="shadow"
+            >
+              Explora la tienda
+              <i className="fas fa-store-alt ml-2" />
+              <i className="fas fa-angle-double-right ml-2" />
+            </Button>
           </div>
-          <div className="mt-auto">
+          {/* <div className="mt-auto">
             <SearchBar />
-          </div>
+          </div> */}
+          <Row className="mt-auto">
+            <Col md={{ span: 8, offset: 2 }}>
+              <SearchBar />
+            </Col>
+          </Row>
         </Container>
       </Jumbotron>
     </>

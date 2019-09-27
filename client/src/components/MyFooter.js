@@ -5,9 +5,6 @@ const styles = {
   footer: {
     backgroundColor: "dimgray",
     marginTop: "auto"
-  },
-  logo: {
-    color: "white"
   }
 };
 
@@ -20,9 +17,7 @@ function MyFooter() {
       <Container>
         <Row>
           <Col md={4} className="mt-3">
-            <h5>
-              <strong className="text-white">Ayuda</strong>
-            </h5>
+            <h4>Ayuda</h4>
             <div>
               <p className="mb-0">
                 <a href="/" className="text-light">
@@ -37,9 +32,7 @@ function MyFooter() {
             </div>
           </Col>
           <Col md={4} className="mt-3">
-            <h5>
-              <strong className="text-white">Nosotros</strong>
-            </h5>
+            <h4>Nosotros</h4>
             <div>
               <p className="mb-0">
                 <a href="/" className="text-light">
@@ -54,9 +47,7 @@ function MyFooter() {
             </div>
           </Col>
           <Col md={4} className="mt-3">
-            <h5>
-              <strong className="text-white">Envíos</strong>
-            </h5>
+            <h4>Envíos</h4>
             <div>
               <p className="mb-0">
                 <a href="/" className="text-light">
@@ -73,8 +64,10 @@ function MyFooter() {
         </Row>
       </Container>
 
-      <Container className="py-1 mt-4">
-        <span style={styles.logo}>© Complemento Natural, 2019</span>
+      <Container className="py-1 mt-4 text-light">
+        <h5>
+          <small>© Complemento Natural, 2019</small>
+        </h5>
       </Container>
     </footer>
   );

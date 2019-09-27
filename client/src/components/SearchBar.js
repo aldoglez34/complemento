@@ -2,7 +2,7 @@ import React from "react";
 
 const styles = {
   div: {
-    height: 57,
+    height: 50,
     backgroundColor: "white"
   },
   input: {
@@ -20,7 +20,7 @@ function SearchBar() {
       <div className="d-flex rounded-pill p-2" style={styles.div}>
         <input
           className="d-flex align-items-center w-100 border-0 bg-transparent ml-2 mr-1"
-          placeholder="Buscar en la tienda..."
+          placeholder="¿Qué estás buscando?"
           type="text"
           style={styles.input}
           autoFocus

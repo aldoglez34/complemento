@@ -58,7 +58,7 @@ function ProductCard(props) {
           variant="outline-primary"
           block
           onClick={handleShow}
-          title="Guardar en tu carrito"
+          title="Agregar a tu carrito"
         >
           Agregar
           <i className="fas fa-shopping-cart ml-1" />
@@ -101,26 +101,30 @@ function ProductCard(props) {
       </a>
       <Card.Body className="d-flex justify-items-center flex-column">
         {props.product.Discount ? (
-          <div className="text-center">
-            <p className="mb-0">
+          <div className="text-center mb-3">
+            <h4 className="mb-0 text-muted">
               <strong>
                 <del>{"$" + props.product.price + " MXN"}</del>
               </strong>
-            </p>
-            <p>
+            </h4>
+            <h4>
               <strong className="text-danger">
                 {"$" + props.product.Discount.newPrice + " MXN"}
               </strong>
-            </p>
+            </h4>
           </div>
         ) : (
-          <div className="text-center">
-            <strong>{"$" + props.product.price + " MXN"}</strong>
+          <div className="text-center text-dark mb-3">
+            <h4>
+              <strong>{"$" + props.product.price + " MXN"}</strong>
+            </h4>
           </div>
         )}
-        <div className="text-center pb-4">
-          <em>{props.product.content}</em>
+        <div className="text-center pb-2">
+          <p className="lead">PRONAMED</p>
+          <span className="pb-4">{props.product.content}</span>
         </div>
+
         <div className="mt-auto pt-2 text-center">
           {props.product.stock > 0 ? (
             <div className="d-flex inline">

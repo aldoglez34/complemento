@@ -82,7 +82,7 @@ class Store extends Component {
         selectedSuffering: "Todos"
       },
       () => {
-        // redux
+        // breadcrumb
         this.props.setCategory(this.state.selectedCategoryName);
         this.props.setSuffering("Todos");
         // clear the sufferings in the state

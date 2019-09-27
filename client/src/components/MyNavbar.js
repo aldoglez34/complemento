@@ -8,7 +8,8 @@ import {
   Dropdown,
   Button,
   Col,
-  Nav
+  Nav,
+  NavDropdown
 } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import API from "../utils/API";
@@ -22,6 +23,9 @@ function MyNavbar() {
   const styles = {
     dropdownMenu: {
       width: "18.125rem"
+    },
+    navbar: {
+      backgroundColor: "ghostwhite"
     }
   };
 
@@ -104,7 +108,7 @@ function MyNavbar() {
             <>
               <Dropdown>
                 <Dropdown.Toggle className="mr-2" variant="primary">
-                  Iniciar Sesión
+                  Iniciar sesión
                 </Dropdown.Toggle>
                 <Dropdown.Menu
                   data-display="static"
@@ -166,7 +170,7 @@ function MyNavbar() {
                       </Form.Group>
                     </Form.Row>
                   </Form>
-                  <Dropdown.Divider className="my-0" />
+                  <Dropdown.Divider />
                   <Dropdown.Item>Olvidé mi contraseña</Dropdown.Item>
                   <Dropdown.Item href="/signup">
                     Regístrate con nosotros
@@ -203,7 +207,7 @@ function MyNavbar() {
 
   return (
     <>
-      <Navbar expand="md" style={styles.navbar} className="py-3 bg-light">
+      <Navbar expand="md" style={styles.navbar} className="py-3">
         {/* logo */}
         <Navbar.Brand className="mr-auto" href="/">
           <Image src="/images/logo.png" alt="logo" fluid />
@@ -212,9 +216,10 @@ function MyNavbar() {
         <Navbar.Toggle aria-controls="top-navbar" />
         <Navbar.Collapse id="top-navbar">
           <Nav className="mr-md-auto">
-            <Nav.Link href="/store" className="pb-0">
-              Tienda
-            </Nav.Link>
+            <Nav.Link href="/store">Tienda</Nav.Link>
+            <NavDropdown title="Pedidos">
+              <NavDropdown.Item>Rastrear mi pedido</NavDropdown.Item>
+            </NavDropdown>
           </Nav>
           {/* login dropdown and cart button */}
           <div className="d-flex justify-content-center ml-md-auto pt-3 pt-md-0">

@@ -17,18 +17,7 @@ const clientReducers = (state = { isLogged: false }, action) => {
       };
     case "client/logout":
       return {
-        isLogged: false,
-        uid: null,
-        name: null,
-        firstSurname: null,
-        secondSurname: null,
-        phone: null,
-        email: null,
-        street: null,
-        city: null,
-        state: null,
-        zipCode: null,
-        comments: null
+        isLogged: false
       };
     default:
       return state;
