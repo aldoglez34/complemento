@@ -14,7 +14,9 @@ function MyBreadcrumb() {
 
       {/* with redux */}
       {category ? <Breadcrumb.Item active>{category}</Breadcrumb.Item> : null}
-      {suffering ? <Breadcrumb.Item active>{suffering}</Breadcrumb.Item> : null}
+      {suffering && suffering !== "Todos" ? (
+        <Breadcrumb.Item active>{suffering}</Breadcrumb.Item>
+      ) : null}
       {product ? <Breadcrumb.Item active>{product}</Breadcrumb.Item> : null}
 
       {/* with props */}

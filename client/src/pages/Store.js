@@ -18,28 +18,30 @@ class Store extends Component {
   state = {
     // categories
     categories: [],
-    selectedCategoryId: 1,
-    selectedCategoryName: "",
+    // selCatId: 1,
+    // selCatName: "",
     // sufferings
     sufferings: [],
-    selectedSuffering: "Todos",
+    // selSuff: "Todos",
     // products
     products: [],
-    productCounter: 0
+    pCounter: 0
   };
 
   fetchCategories = () => {
     API.fetchCategories()
       .then(res => {
-        this.setState({ categories: res.data }, () =>
-          // set the name of the first category in the state, for the breadcrumb to use
-          {
-            this.props.setCategory(this.state.categories[0].name);
-            this.props.setSuffering("Todos");
-            this.setState({
-              selectedCategoryName: this.state.categories[0].name
-            });
-          }
+        this.setState(
+          { categories: res.data }
+          // , () =>
+          // // set the name of the first category in the state, for the breadcrumb to use
+          // {
+          //   // this.props.setCategory(this.state.categories[0].name);
+          //   // this.props.setSuffering("Todos");
+          //   // this.setState({
+          //   //   selCatName: this.state.categories[0].name
+          //   // });
+          // }
         );
       })
       .catch(err => console.log(err));
@@ -53,67 +55,72 @@ class Store extends Component {
       .catch(err => console.log(err));
   };
 
-  fetchStoreProducts = data => {
-    API.fetchStoreProducts(data)
+  fetchProducts = () => {
+    let filters = {
+      cat: this.props.routeProps.match.params.cat,
+      suff: this.props.routeProps.match.params.suff
+    };
+    API.fetchProducts(filters)
       .then(res => {
         this.setState({
           products: res.data.products,
-          productCounter: res.data.productsCounter
+          pCounter: res.data.productsCounter
         });
       })
       .catch(err => console.log(err));
   };
 
   componentDidMount() {
+    console.log(this.props.routeProps.match.params.cat);
     this.fetchCategories();
-    this.fetchSufferingsByCategory(this.state.selectedCategoryId);
-    let data = {};
-    data.catId = this.state.selectedCategoryId;
-    data.suff = this.state.selectedSuffering;
-    this.fetchStoreProducts(data);
+    // this.fetchSufferingsByCategory(this.state.selCatId);
+    // let data = {};
+    // data.catId = this.state.selCatId;
+    // data.suff = this.state.selSuff;
+    // this.fetchProducts(data);
   }
 
-  handleChangeCategory = cat => {
+  handleChangeCat = cat => {
     // change the cat in the state and set sufferings to ALL
     this.setState(
       {
-        selectedCategoryId: cat.catId,
-        selectedCategoryName: cat.catName,
-        selectedSuffering: "Todos"
+        selCatId: cat.catId,
+        selCatName: cat.catName,
+        selSuff: "Todos"
       },
       () => {
         // breadcrumb
-        this.props.setCategory(this.state.selectedCategoryName);
+        this.props.setCategory(this.state.selCatName);
         this.props.setSuffering("Todos");
         // clear the sufferings in the state
         // and then load all sufferings from the selected cat
         this.setState({ sufferings: [] }, () => {
-          this.fetchSufferingsByCategory(this.state.selectedCategoryId);
+          this.fetchSufferingsByCategory(this.state.selCatId);
         });
         // next clear the products
         // and get all the products from that category and ALL sufferings
         // (that is because the default when changing a category is "Todos")
         this.setState({ products: [] }, () => {
           let data = {};
-          data.catId = this.state.selectedCategoryId;
+          data.catId = this.state.selCatId;
           data.suff = "Todos";
-          this.fetchStoreProducts(data);
+          this.fetchProducts(data);
         });
       }
     );
   };
 
-  handleChangeSuffering = suff => {
+  handleChangeSuff = suff => {
     this.setState(
       {
-        selectedSuffering: suff,
+        selSuff: suff,
         products: []
       },
       () => {
         let data = {};
-        data.catId = this.state.selectedCategoryId;
-        data.suff = this.state.selectedSuffering;
-        this.fetchStoreProducts(data);
+        data.catId = this.state.selCatId;
+        data.suff = this.state.selSuff;
+        this.fetchProducts(data);
       }
     );
   };
@@ -121,11 +128,7 @@ class Store extends Component {
   render() {
     return (
       <Layout>
-        <MyBreadcrumb
-        // category={this.state.selectedCategoryName}
-        // suffering={this.state.selectedSuffering}
-        />
-
+        <MyBreadcrumb />
         <Container fluid className="mb-3">
           <Row>
             {/* categories column */}
@@ -142,8 +145,8 @@ class Store extends Component {
                 <Col>
                   <CategoriesList
                     categories={this.state.categories}
-                    selectedCategoryId={this.state.selectedCategoryId}
-                    handleChangeCategory={this.handleChangeCategory}
+                    selectedCategoryId={this.state.selCatId}
+                    handleChangeCategory={this.handleChangeCat}
                   />
                 </Col>
               </Row>
@@ -173,8 +176,8 @@ class Store extends Component {
                   {/* <span className="text-muted">Filtros de categoría</span> */}
                   <SufferingsDropdown
                     sufferings={this.state.sufferings}
-                    selectedSuffering={this.state.selectedSuffering}
-                    handleChangeSuffering={this.handleChangeSuffering}
+                    selectedSuffering={this.state.selSuff}
+                    handleChangeSuffering={this.handleChangeSuff}
                   />
                 </Col>
                 <Col
@@ -183,10 +186,10 @@ class Store extends Component {
                 >
                   <span className="text-muted mr-4">
                     <em>
-                      {this.state.productCounter === 1 ? (
-                        <span>{this.state.productCounter + " producto"}</span>
+                      {this.state.pCounter === 1 ? (
+                        <span>{this.state.pCounter + " producto"}</span>
                       ) : (
-                        <span>{this.state.productCounter + " productos"}</span>
+                        <span>{this.state.pCounter + " productos"}</span>
                       )}
                     </em>
                   </span>

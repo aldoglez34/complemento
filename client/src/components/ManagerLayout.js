@@ -38,13 +38,13 @@ function ManagerLayout(props) {
         <Col>
           <Image src="/images/biglogo.png" alt="logo" fluid />
           <h3 className="text-dark" style={styles.title}>
-            <strong>PANEL DE ADMINISTRADOR</strong>
+            <strong>Panel de administrador</strong>
           </h3>
         </Col>
       </Row>
-      <Row>
+      <Row className="text-dark">
         <Col>
-          Bienvenido, <strong>{manager.email}</strong>
+          Bienvenid@, <strong>{manager.email}</strong>
         </Col>
       </Row>
       <Row className="mt-2">

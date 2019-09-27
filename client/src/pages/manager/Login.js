@@ -39,8 +39,8 @@ function Login() {
             style={styles.logo}
             fluid
           />
-          <h3 className="my-4">
-            <strong>- Panel de administrador -</strong>
+          <h3 className="my-4 text-dark">
+            <strong>Panel de administrador</strong>
           </h3>
         </Col>
       </Row>

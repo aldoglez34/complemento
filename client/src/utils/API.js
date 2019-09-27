@@ -21,23 +21,23 @@ export default {
     return axios.get("/api/store/category/all");
   },
 
-  fetchSufferingsByCategory: function(categoryId) {
-    return axios.get("/api/store/sufferings/" + categoryId);
+  fetchSufferingsByCategory: function(catId) {
+    return axios.get("/api/store/sufferings/" + catId);
   },
 
-  fetchStoreProducts: function(data) {
-    return axios.get("/api/store/products/" + data.catId + "/" + data.suff);
+  fetchProducts: function(filters) {
+    return axios.get("/api/store/products/" + filters.catId + "/" + filters.suff);
   },
 
   // ---------------------------------------------------------------------------
   // PRODUCT DETAILS
   // ---------------------------------------------------------------------------
 
-  getProductDetails: function(productId) {
+  fetchProductDetails: function(productId) {
     return axios.get("/api/product/details/" + productId);
   },
 
-  getIngredients: function(productId) {
+  fetchIngredients: function(productId) {
     return axios.get("/api/product/details/ingredients/" + productId);
   },
 

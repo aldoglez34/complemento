@@ -197,6 +197,7 @@ function MyNavbar() {
           <Dropdown.Menu className="bg-light">
             <Dropdown.Item>Mis datos</Dropdown.Item>
             <Dropdown.Item>Mis pedidos</Dropdown.Item>
+            <Dropdown.Item>Mis favoritos</Dropdown.Item>
             <Dropdown.Divider className="mt-1 mb-2" />
             <Dropdown.Item onClick={logout}>Cerrar sesión</Dropdown.Item>
           </Dropdown.Menu>

@@ -11,7 +11,7 @@ class NewProduct extends Component {
   };
 
   getCategories = () => {
-    API.loadCategories()
+    API.fetchCategories()
       .then(res => {
         this.setState({ categories: res.data });
       })

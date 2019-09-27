@@ -18,8 +18,8 @@ class ProductDetails extends Component {
     ingredients: []
   };
 
-  getProductDetails = () => {
-    API.getProductDetails(this.props.routeProps.match.params.productId)
+  fetchProductDetails = () => {
+    API.fetchProductDetails(this.props.routeProps.match.params.productId)
       .then(res => {
         this.setState({ productDetails: res.data });
       })
@@ -28,8 +28,8 @@ class ProductDetails extends Component {
       });
   };
 
-  getIngredients = () => {
-    API.getIngredients(this.props.routeProps.match.params.productId)
+  fetchIngredients = () => {
+    API.fetchIngredients(this.props.routeProps.match.params.productId)
       .then(res => {
         this.setState({
           ingredients: res.data
@@ -41,8 +41,8 @@ class ProductDetails extends Component {
   };
 
   componentDidMount() {
-    this.getProductDetails();
-    this.getIngredients();
+    this.fetchProductDetails();
+    this.fetchIngredients();
   }
 
   render() {

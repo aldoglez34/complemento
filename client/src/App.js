@@ -18,13 +18,16 @@ import NewProduct from "./pages/manager/NewProduct";
 
 class App extends Component {
   render() {
-    // console.log(this.props.manager);
     return (
       <Router>
         <Switch>
           {/* client routes */}
           <Route exact path="/" component={Home} />
-          <Route exact path="/store" component={Store} />
+          <Route
+            exact
+            path="/store/:cat"
+            render={props => <Store routeProps={props} />}
+          />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/signup" component={SignUp} />
           <Route
@@ -32,11 +35,8 @@ class App extends Component {
             path="/product/:productId"
             render={props => <ProductDetails routeProps={props} />}
           />
-
           {this.props.manager.isLogged ? (
             <Switch>
-              {/* {console.log("manager is logged YAY!!!!!!!!!!!")}
-              {console.log("")} */}
               <Route exact path="/manager/panel" component={Panel} />
               <Route exact path="/manager/newproduct" component={NewProduct} />
               <Redirect from="/manager" to="/manager/panel" />
@@ -44,8 +44,6 @@ class App extends Component {
             </Switch>
           ) : (
             <Switch>
-              {/* {console.log("entering routes where manager is NOT logged")}
-              {console.log("")} */}
               <Route exact path="/manager" component={Login} />
               <Redirect from="/manager/" to="/manager" />
               <Route component={NoMatch} />
