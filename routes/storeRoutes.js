@@ -70,58 +70,54 @@ router.get("/sufferings/:categoryId", function(req, res) {
 });
 
 // ------------------------------------------------------------
-// get products by a category and a suffering
-// matches with /api/store/products/:categoryId/:suffering
-router.get("/products/:categoryId/:suffering", function(req, res) {
-  let suffering = req.params.suffering;
+// get products with or without filters
+// matches with /api/store/products/:cat/:suff
+router.get("/products/:cat/:suff", function(req, res) {
+  // check the 3 possible outcomes
+  // 1 both cat and suff are null
+  // 2 only suff is null
+  // 3 none are null
 
-  if (suffering === "Todos") {
-    // load all products without taking account of the suffering
-    // simple consult of select * from
+  let cat = req.params.cat;
+  let suff = req.params.suff;
+
+  if (cat === "null" && suff === "null") {
+    // send all products
     model.Product.findAll({
-      where: {
-        categoryId: req.params.categoryId
-      },
       include: [
         {
           model: model.Discount
         }
       ]
-    })
-      .then(function(data) {
-        let toFront = {};
-        toFront.products = data;
-        toFront.productsCounter = data.length;
-        res.send(toFront);
-      })
-      .catch(function(err) {
-        res.send(err);
-      });
-  } else {
-    // this is like a join
+    }).then(function(data) {
+      let toFront = {};
+      toFront.products = data;
+      toFront.productsCounter = data.length;
+      toFront.pages = Math.ceil(data.length / 20);
+      res.send(toFront);
+    });
+  }
+  if (cat !== "null" && suff === "null") {
+    // send products filtered by cat
     model.Product.findAll({
       include: [
         {
-          model: model.Suffering,
+          model: model.Category,
           where: {
-            name: req.params.suffering,
-            categoryId: req.params.categoryId
+            name: cat
           }
-        },
-        {
-          model: model.Discount
         }
       ]
-    })
-      .then(function(data) {
-        let toFront = {};
-        toFront.products = data;
-        toFront.productsCounter = data.length;
-        res.send(toFront);
-      })
-      .catch(function(err) {
-        res.send(err);
-      });
+    }).then(function(data) {
+      let toFront = {};
+      toFront.products = data;
+      toFront.productsCounter = data.length;
+      toFront.pages = Math.ceil(data.length / 20);
+      res.send(toFront);
+    });
+  }
+  if (cat !== "null" && suff !== "null") {
+    // send products filtered by cat and suff
   }
 });
 

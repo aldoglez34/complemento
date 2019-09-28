@@ -21,12 +21,12 @@ export default {
     return axios.get("/api/store/category/all");
   },
 
-  fetchSufferingsByCategory: function(catId) {
+  fetchSufferings: function(catId) {
     return axios.get("/api/store/sufferings/" + catId);
   },
 
   fetchProducts: function(filters) {
-    return axios.get("/api/store/products/" + filters.catId + "/" + filters.suff);
+    return axios.get("/api/store/products/" + filters.cat + "/" + filters.suff);
   },
 
   // ---------------------------------------------------------------------------

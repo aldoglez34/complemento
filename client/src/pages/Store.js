@@ -11,119 +11,81 @@ import ScrollButton from "../components/ScrollButton";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 import SearchBar from "../components/SearchBar";
 import MyPagination from "../components/MyPagination";
-import SufferingsDropdown from "../components/SufferingsDropdown";
+// import SufferingsDropdown from "../components/SufferingsDropdown";
 import API from "../utils/API";
 
 class Store extends Component {
   state = {
-    // categories
     categories: [],
-    // selCatId: 1,
-    // selCatName: "",
-    // sufferings
+    catFilter: null,
     sufferings: [],
-    // selSuff: "Todos",
-    // products
+    suffFilter: null,
     products: [],
-    pCounter: 0
+    pCounter: 0,
+    pages: 0,
+    activeP: 1
   };
 
   fetchCategories = () => {
     API.fetchCategories()
       .then(res => {
-        this.setState(
-          { categories: res.data }
-          // , () =>
-          // // set the name of the first category in the state, for the breadcrumb to use
-          // {
-          //   // this.props.setCategory(this.state.categories[0].name);
-          //   // this.props.setSuffering("Todos");
-          //   // this.setState({
-          //   //   selCatName: this.state.categories[0].name
-          //   // });
-          // }
-        );
-      })
-      .catch(err => console.log(err));
-  };
-
-  fetchSufferingsByCategory = cat => {
-    API.fetchSufferingsByCategory(cat)
-      .then(res => {
-        this.setState({ sufferings: res.data });
+        this.setState({ categories: res.data });
       })
       .catch(err => console.log(err));
   };
 
   fetchProducts = () => {
-    let filters = {
-      cat: this.props.routeProps.match.params.cat,
-      suff: this.props.routeProps.match.params.suff
-    };
+    let filters = {};
+    // there are 3 possible scenarios here
+    // 1 /store means there are no filters so fetch all the products
+    // 2 /store/cat means there is a filter of category
+    // 3 /store/cat/suff means there are two filters
+    if (this.props.routeProps === undefined) {
+      // 1 - no filters
+      filters.cat = null;
+      filters.suff = null;
+    } else {
+      if (
+        this.props.routeProps.match.params.cat &&
+        !this.props.routeProps.match.params.suff
+      ) {
+        // 2 - cat filter
+        filters.cat = this.props.routeProps.match.params.cat;
+        filters.suff = null;
+        this.setState({ catFilter: this.props.routeProps.match.params.cat });
+      }
+      if (
+        this.props.routeProps.match.params.cat &&
+        this.props.routeProps.match.params.suff
+      ) {
+        // 3 - cat and suff filters
+        filters.cat = this.props.routeProps.match.params.cat;
+        filters.suff = this.props.routeProps.match.params.suff;
+        this.setState({ catFilter: this.props.routeProps.match.params.cat });
+        this.setState({ suffFilter: this.props.routeProps.match.params.suff });
+      }
+    }
     API.fetchProducts(filters)
       .then(res => {
+        console.log(res.data);
         this.setState({
           products: res.data.products,
-          pCounter: res.data.productsCounter
+          pCounter: res.data.productsCounter,
+          pages: res.data.pages
         });
       })
       .catch(err => console.log(err));
   };
 
   componentDidMount() {
-    console.log(this.props.routeProps.match.params.cat);
     this.fetchCategories();
-    // this.fetchSufferingsByCategory(this.state.selCatId);
+    this.fetchProducts();
+    // this.fetchSufferings(this.state.selCatId);
     // let data = {};
     // data.catId = this.state.selCatId;
     // data.suff = this.state.selSuff;
     // this.fetchProducts(data);
   }
-
-  handleChangeCat = cat => {
-    // change the cat in the state and set sufferings to ALL
-    this.setState(
-      {
-        selCatId: cat.catId,
-        selCatName: cat.catName,
-        selSuff: "Todos"
-      },
-      () => {
-        // breadcrumb
-        this.props.setCategory(this.state.selCatName);
-        this.props.setSuffering("Todos");
-        // clear the sufferings in the state
-        // and then load all sufferings from the selected cat
-        this.setState({ sufferings: [] }, () => {
-          this.fetchSufferingsByCategory(this.state.selCatId);
-        });
-        // next clear the products
-        // and get all the products from that category and ALL sufferings
-        // (that is because the default when changing a category is "Todos")
-        this.setState({ products: [] }, () => {
-          let data = {};
-          data.catId = this.state.selCatId;
-          data.suff = "Todos";
-          this.fetchProducts(data);
-        });
-      }
-    );
-  };
-
-  handleChangeSuff = suff => {
-    this.setState(
-      {
-        selSuff: suff,
-        products: []
-      },
-      () => {
-        let data = {};
-        data.catId = this.state.selCatId;
-        data.suff = this.state.selSuff;
-        this.fetchProducts(data);
-      }
-    );
-  };
 
   render() {
     return (
@@ -145,8 +107,7 @@ class Store extends Component {
                 <Col>
                   <CategoriesList
                     categories={this.state.categories}
-                    selectedCategoryId={this.state.selCatId}
-                    handleChangeCategory={this.handleChangeCat}
+                    selected={this.state.catFilter}
                   />
                 </Col>
               </Row>
@@ -174,17 +135,21 @@ class Store extends Component {
               <Row>
                 <Col md={6} className="d-flex align-items-center py-2">
                   {/* <span className="text-muted">Filtros de categoría</span> */}
-                  <SufferingsDropdown
+                  {/* <SufferingsDropdown
                     sufferings={this.state.sufferings}
                     selectedSuffering={this.state.selSuff}
                     handleChangeSuffering={this.handleChangeSuff}
-                  />
+                  /> */}
                 </Col>
                 <Col
                   md={6}
                   className="d-flex align-items-center justify-content-md-end justify-content-sm-center py-2"
                 >
-                  <span className="text-muted mr-4">
+                  <MyPagination
+                    pages={this.state.pages}
+                    activeP={this.state.activeP}
+                  />
+                  <span className="text-muted ml-4">
                     <em>
                       {this.state.pCounter === 1 ? (
                         <span>{this.state.pCounter + " producto"}</span>
@@ -193,13 +158,20 @@ class Store extends Component {
                       )}
                     </em>
                   </span>
-                  <MyPagination />
                 </Col>
               </Row>
               <Row>
                 <Col>
                   <ProductsList productsArr={this.state.products} />
                 </Col>
+              </Row>
+              <Row>
+                <Container>
+                  <MyPagination
+                    pages={this.state.pages}
+                    activeP={this.state.activeP}
+                  />
+                </Container>
               </Row>
             </Col>
           </Row>

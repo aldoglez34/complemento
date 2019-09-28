@@ -1,6 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Jumbotron, Button } from "react-bootstrap";
-import SearchBar from "./SearchBar";
+import { Container, Jumbotron, Button } from "react-bootstrap";
 
 const styles = {
   jumbotron: {
@@ -22,17 +21,24 @@ function MyJumbotron() {
           className="d-flex justify-items-center flex-column text-center"
           style={styles.container}
         >
-          <h4 className="text-light">Bienvenido a...</h4>
-          <h1 className="text-white mb-0">
+          <h3 className="text-light" style={{ fontFamily: "Josefin Sans" }}>
+            Bienvenido a...
+          </h3>
+          <h1 className="text-white" style={{ fontFamily: "Josefin Sans" }}>
             <strong>Complemento Natural</strong>
+            <i className="fab fa-pagelines ml-2" />
           </h1>
-          <p className="lead text-light">Tu solución naturista</p>
-          <div>
+          {/* <Image src="/images/whitelogo.png" fluid /> */}
+          <h3 className="text-light" style={{ fontFamily: "Josefin Sans" }}>
+            Tu solución naturista
+          </h3>
+          <div className="mt-auto">
             <Button
               variant="success"
               size="lg"
               href="/store"
-              className="shadow"
+              className="shadow pt-3 pb-3 px-4"
+              style={{ backgroundColor: "mediumseagreen" }}
             >
               Explora la tienda
               <i className="fas fa-store-alt ml-2" />
@@ -42,11 +48,11 @@ function MyJumbotron() {
           {/* <div className="mt-auto">
             <SearchBar />
           </div> */}
-          <Row className="mt-auto">
+          {/* <Row className="mt-auto">
             <Col md={{ span: 8, offset: 2 }}>
               <SearchBar />
             </Col>
-          </Row>
+          </Row> */}
         </Container>
       </Jumbotron>
     </>

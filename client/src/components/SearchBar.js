@@ -10,7 +10,8 @@ const styles = {
   },
   searchIcon: {
     paddingLeft: 12,
-    paddingRight: 12
+    paddingRight: 12,
+    backgroundColor: "mediumseagreen"
   }
 };
 
@@ -26,7 +27,7 @@ function SearchBar() {
           autoFocus
         />
         <div
-          className="d-flex align-items-center flex-shrink-1 border-0 bg-success text-light rounded-circle"
+          className="d-flex align-items-center flex-shrink-1 border-0 text-light rounded-circle"
           style={styles.searchIcon}
         >
           <i className="fas fa-search" />

@@ -23,9 +23,15 @@ class App extends Component {
         <Switch>
           {/* client routes */}
           <Route exact path="/" component={Home} />
+          <Route exact path="/store" component={Store} />
           <Route
             exact
             path="/store/:cat"
+            render={props => <Store routeProps={props} />}
+          />
+          <Route
+            exact
+            path="/store/:cat/:suff"
             render={props => <Store routeProps={props} />}
           />
           <Route exact path="/cart" component={Cart} />

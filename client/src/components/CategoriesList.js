@@ -4,8 +4,7 @@ import { Spinner, Nav } from "react-bootstrap";
 
 CategoriesList.propTypes = {
   categories: PropTypes.array.isRequired,
-  selectedCategoryId: PropTypes.number.isRequired,
-  handleChangeCategory: PropTypes.func.isRequired
+  selected: PropTypes.string
 };
 
 function CategoriesList(props) {
@@ -13,17 +12,12 @@ function CategoriesList(props) {
     <Nav className="flex-column">
       {props.categories.length ? (
         props.categories.map(category => {
-          if (category.categoryId === props.selectedCategoryId) {
+          if (category.name === props.selected) {
             return (
               <Nav.Link
                 className="px-0 py-1"
                 key={category.categoryId}
-                onClick={() => {
-                  let cat = {};
-                  cat.catId = category.categoryId;
-                  cat.catName = category.name;
-                  props.handleChangeCategory(cat);
-                }}
+                href={"/store/" + category.name}
               >
                 <i className="fas fa-check mr-1" />
                 <strong>{category.name}</strong>
@@ -34,12 +28,7 @@ function CategoriesList(props) {
               <Nav.Link
                 className="text-dark px-0 py-1"
                 key={category.categoryId}
-                onClick={() => {
-                  let cat = {};
-                  cat.catId = category.categoryId;
-                  cat.catName = category.name;
-                  props.handleChangeCategory(cat);
-                }}
+                href={"/store/" + category.name}
               >
                 {category.name}
               </Nav.Link>
