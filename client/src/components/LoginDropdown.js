@@ -62,8 +62,8 @@ function LoginDropdown() {
           <>
             <Dropdown>
               <Dropdown.Toggle
-                className="mr-2 bg-transparent text-light border-0"
-                // variant="transparent text-light"
+                className="mr-2 border-0 bg-transparent"
+                variant="primary"
               >
                 Iniciar sesión
               </Dropdown.Toggle>
@@ -118,7 +118,7 @@ function LoginDropdown() {
                   <Form.Row>
                     <Form.Group as={Col}>
                       <Button
-                        variant="primary"
+                        variant="dark"
                         type="submit"
                         disabled={isSubmitting}
                       >

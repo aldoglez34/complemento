@@ -88,8 +88,11 @@ function ProductCard(props) {
 
   return (
     <Card style={{ width: "12.7rem" }} className="mt-2 mb-4 mx-1 shadow-sm">
-      <a className="text-primary" href={"/product/" + props.product.productId}>
-        <Card.Header className="text-center">
+      <a className="text-light" href={"/product/" + props.product.productId}>
+        <Card.Header
+          className="text-center"
+          style={{ backgroundColor: "mediumseagreen" }}
+        >
           <span>{props.product.name}</span>
         </Card.Header>
         <Card.Img
@@ -100,31 +103,32 @@ function ProductCard(props) {
         />
       </a>
       <Card.Body className="d-flex justify-items-center flex-column">
-        {props.product.Discount ? (
-          <div className="text-center mb-3">
-            <h4 className="mb-0 text-muted">
-              <strong>
-                <del>{"$" + props.product.price + " MXN"}</del>
-              </strong>
-            </h4>
-            <h4>
-              <strong className="text-danger">
-                {"$" + props.product.Discount.newPrice + " MXN"}
-              </strong>
-            </h4>
-          </div>
-        ) : (
-          <div className="text-center text-dark mb-3">
-            <h4>
-              <strong>{"$" + props.product.price + " MXN"}</strong>
-            </h4>
-          </div>
-        )}
-        <div className="text-center pb-2">
-          <p className="lead">PRONAMED</p>
-          <span className="pb-4">{props.product.content}</span>
+        {/* price */}
+        <div className="lead text-center mb-3">
+          {props.product.Discount ? (
+            <>
+              <p className="text-muted mb-0">
+                <strong>
+                  <del>{"$ " + props.product.price + " MXN"}</del>
+                </strong>
+              </p>
+              <p className="text-danger mb-0">
+                <strong>
+                  {"$ " + props.product.Discount.newPrice + " MXN"}
+                </strong>
+              </p>
+            </>
+          ) : (
+            <p className="text-dark mb-0">
+              <strong>{"$ " + props.product.price + " MXN"}</strong>
+            </p>
+          )}
         </div>
-
+        {/* brand */}
+        <p className="mb-0">PRONAMED</p>
+        {/* content */}
+        <p>{props.product.content}</p>
+        {/* buttons */}
         <div className="mt-auto pt-2 text-center">
           {props.product.stock > 0 ? (
             <div className="d-flex inline">

@@ -9,9 +9,8 @@ import ProductsList from "../components/ProductsList";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
 import MyBreadcrumb from "../components/MyBreadcrumb";
-import SearchBar from "../components/SearchBar";
 import MyPagination from "../components/MyPagination";
-// import SufferingsDropdown from "../components/SufferingsDropdown";
+import SufferingsDropdown from "../components/SufferingsDropdown";
 import API from "../utils/API";
 
 class Store extends Component {
@@ -126,41 +125,30 @@ class Store extends Component {
               </Row>
             </Col>
             {/* products, filters, sufferings column */}
-            <Col md={9} className="my-3 bg-transaparent">
-              <Row>
-                <Col>
-                  <SearchBar />
-                </Col>
-              </Row>
+            <Col md={9} className="mt-2">
               <Row>
                 <Col md={6} className="d-flex align-items-center py-2">
-                  {/* <span className="text-muted">Filtros de categoría</span> */}
-                  {/* <SufferingsDropdown
-                    sufferings={this.state.sufferings}
-                    selectedSuffering={this.state.selSuff}
-                    handleChangeSuffering={this.handleChangeSuff}
-                  /> */}
+                  <em>
+                    {this.state.pCounter === 1 ? (
+                      <>{this.state.pCounter + " producto"}</>
+                    ) : (
+                      <>{this.state.pCounter + " productos"}</>
+                    )}
+                  </em>
                 </Col>
                 <Col
                   md={6}
                   className="d-flex align-items-center justify-content-md-end justify-content-sm-center py-2"
                 >
-                  <MyPagination
+                  {/* <SufferingsDropdown /> */}
+                  Sufferings dropdown
+                  {/* <MyPagination
                     pages={this.state.pages}
                     activeP={this.state.activeP}
-                  />
-                  <span className="text-muted ml-4">
-                    <em>
-                      {this.state.pCounter === 1 ? (
-                        <span>{this.state.pCounter + " producto"}</span>
-                      ) : (
-                        <span>{this.state.pCounter + " productos"}</span>
-                      )}
-                    </em>
-                  </span>
+                  /> */}
                 </Col>
               </Row>
-              <Row>
+              <Row className="my-2">
                 <Col>
                   <ProductsList productsArr={this.state.products} />
                 </Col>

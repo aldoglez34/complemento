@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar";
 import ClientDropdown from "./ClientDropdown";
 import LoginDropdown from "./LoginDropdown";
 import { useSelector } from "react-redux";
+import CartButton from "./CartButton";
 
 function MyNavbar() {
   const client = useSelector(state => state.client);
@@ -17,25 +18,25 @@ function MyNavbar() {
       >
         {/* logo (medium to large) */}
         <Navbar.Brand
-          className="mr-auto d-none d-sm-none d-md-none d-lg-block"
+          className="mr-4 d-none d-sm-none d-md-none d-lg-block"
           href="/"
-          style={{ fontFamily: "Josefin Sans" }}
+          style={{ fontFamily: "Josefin Sans", color: "white" }}
         >
-          <h3 className="text-white my-0 brandFont">
+          <h2 className="my-0 brandFont">
             <strong>Complemento Natural</strong>
             <i className="fab fa-pagelines ml-2" />
-          </h3>
+          </h2>
         </Navbar.Brand>
         {/* logo (medium to small) */}
         <Navbar.Brand
           className="mr-auto d-lg-none"
           href="/"
-          style={{ fontFamily: "Josefin Sans" }}
+          style={{ fontFamily: "Josefin Sans", color: "white" }}
         >
-          <h3 className="text-white my-0 brandFont">
+          <h1 className="my-0 brandFont">
             <strong>CN</strong>
             <i className="fab fa-pagelines ml-2" />
-          </h3>
+          </h1>
         </Navbar.Brand>
         {/* collapse */}
         <Navbar.Toggle aria-controls="top-navbar" className="bg-light" />
@@ -43,12 +44,12 @@ function MyNavbar() {
           {/* nav */}
           <Container fluid>
             <Row>
-              <Col className="mt-3 mt-md-0 mt-lg-0 mt-xl-0">
+              <Col className="mt-3">
                 <SearchBar />
               </Col>
             </Row>
             <Row>
-              <Col className="mt-2">
+              <Col className="mt-3">
                 <Nav className="mr-auto">
                   <Nav.Item>
                     <Nav.Link href="/store" className="text-light">
@@ -61,8 +62,11 @@ function MyNavbar() {
                     </Nav.Link>
                   </Nav.Item>
                   {/* right */}
-                  <Nav.Item className="ml-auto">
+                  <Nav.Item className="ml-md-auto">
                     {client.isLogged ? <ClientDropdown /> : <LoginDropdown />}
+                  </Nav.Item>
+                  <Nav.Item>
+                    <CartButton />
                   </Nav.Item>
                 </Nav>
               </Col>

@@ -8,7 +8,7 @@ function CartButton() {
     }
     let counter = localStorage.getItem("cn_counter");
     return (
-      <Badge className="ml-1" variant="warning">
+      <Badge className="ml-1" variant="warning" style={{ fontFamily: "arial" }}>
         {counter}
       </Badge>
     );

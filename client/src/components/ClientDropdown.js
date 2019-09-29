@@ -22,7 +22,7 @@ function ClientDropdown() {
 
   return (
     <Dropdown>
-      <Dropdown.Toggle className="mr-2 bg-transparent text-light border-0">
+      <Dropdown.Toggle className="mr-2 p-2 border-0" variant="dark">
         <i className="fas fa-user mr-2" />
         {client.name + " " + client.firstSurname}
       </Dropdown.Toggle>
@@ -31,7 +31,7 @@ function ClientDropdown() {
         <Dropdown.Item href="/">Mis pedidos</Dropdown.Item>
         <Dropdown.Item href="/">Mis favoritos</Dropdown.Item>
         <Dropdown.Divider className="mt-1 mb-2" />
-        <Dropdown.Item onClick={logout}>Mis favoritos</Dropdown.Item>
+        <Dropdown.Item onClick={logout}>Cerrar sesión</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
