@@ -10,7 +10,7 @@ import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 import MyPagination from "../components/MyPagination";
-import SufferingsDropdown from "../components/SufferingsDropdown";
+// import SufferingsDropdown from "../components/SufferingsDropdown";
 import API from "../utils/API";
 
 class Store extends Component {
@@ -21,6 +21,7 @@ class Store extends Component {
     suffFilter: null,
     products: [],
     pCounter: 0,
+    pPerPage: 20,
     pages: 0,
     activeP: 1
   };
@@ -64,13 +65,14 @@ class Store extends Component {
         this.setState({ suffFilter: this.props.routeProps.match.params.suff });
       }
     }
+    // fetch products
     API.fetchProducts(filters)
       .then(res => {
-        console.log(res.data);
+        let pPerPage = this.state.pPerPage;
         this.setState({
-          products: res.data.products,
-          pCounter: res.data.productsCounter,
-          pages: res.data.pages
+          products: res.data,
+          pCounter: res.data.length,
+          pages: Math.ceil(res.data.length / pPerPage)
         });
       })
       .catch(err => console.log(err));
@@ -85,6 +87,10 @@ class Store extends Component {
     // data.suff = this.state.selSuff;
     // this.fetchProducts(data);
   }
+
+  handleChangePage = page => {
+    this.setState({ activeP: page });
+  };
 
   render() {
     return (
@@ -126,7 +132,7 @@ class Store extends Component {
             </Col>
             {/* products, filters, sufferings column */}
             <Col md={9} className="mt-2">
-              <Row>
+              <Row className="mb-2">
                 <Col md={6} className="d-flex align-items-center py-2">
                   <em>
                     {this.state.pCounter === 1 ? (
@@ -140,24 +146,24 @@ class Store extends Component {
                   md={6}
                   className="d-flex align-items-center justify-content-md-end justify-content-sm-center py-2"
                 >
-                  {/* <SufferingsDropdown /> */}
                   Sufferings dropdown
-                  {/* <MyPagination
-                    pages={this.state.pages}
-                    activeP={this.state.activeP}
-                  /> */}
                 </Col>
               </Row>
-              <Row className="my-2">
+              <Row className="mb-2">
                 <Col>
-                  <ProductsList productsArr={this.state.products} />
+                  <ProductsList
+                    productsArr={this.state.products}
+                    activeP={this.state.activeP}
+                    productsPerPage={this.state.pPerPage}
+                  />
                 </Col>
               </Row>
-              <Row>
+              <Row className="mb-2">
                 <Container>
                   <MyPagination
                     pages={this.state.pages}
                     activeP={this.state.activeP}
+                    handleChangePage={this.handleChangePage}
                   />
                 </Container>
               </Row>

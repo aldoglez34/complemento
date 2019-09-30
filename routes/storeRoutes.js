@@ -90,11 +90,7 @@ router.get("/products/:cat/:suff", function(req, res) {
         }
       ]
     }).then(function(data) {
-      let toFront = {};
-      toFront.products = data;
-      toFront.productsCounter = data.length;
-      toFront.pages = Math.ceil(data.length / 20);
-      res.send(toFront);
+      res.send(data);
     });
   }
   if (cat !== "null" && suff === "null") {
@@ -109,11 +105,7 @@ router.get("/products/:cat/:suff", function(req, res) {
         }
       ]
     }).then(function(data) {
-      let toFront = {};
-      toFront.products = data;
-      toFront.productsCounter = data.length;
-      toFront.pages = Math.ceil(data.length / 20);
-      res.send(toFront);
+      res.send(data);
     });
   }
   if (cat !== "null" && suff !== "null") {

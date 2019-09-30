@@ -4,13 +4,14 @@ import PropTypes from "prop-types";
 
 MyPagination.propTypes = {
   pages: PropTypes.number.isRequired,
-  activeP: PropTypes.number.isRequired
+  activeP: PropTypes.number.isRequired,
+  handleChangePage: PropTypes.func.isRequired
 };
 
 const generatePages = props => {
   let pagination = [];
 
-  // handle the first page
+  // handle prev bttn
   if (props.activeP === 1) {
     pagination.push(<Pagination.Prev key="prev" disabled />);
   } else {
@@ -28,11 +29,15 @@ const generatePages = props => {
       );
     } else {
       // handle rest of the pages
-      pagination.push(<Pagination.Item key={i}>{i}</Pagination.Item>);
+      pagination.push(
+        <Pagination.Item key={i} onClick={() => props.handleChangePage(i)}>
+          {i}
+        </Pagination.Item>
+      );
     }
   }
 
-  // handle last page
+  // handle next bttn
   if (props.activeP === props.pages) {
     pagination.push(<Pagination.Next key="next" disabled />);
   } else {
