@@ -5,6 +5,10 @@ export default {
   // HOME
   // ---------------------------------------------------------------------------
 
+  fetchPrioritized: function() {
+    return axios.get("/api/home/prioritized");
+  },
+
   fetchProductsWithDiscount: function() {
     return axios.get("/api/home/discounts");
   },

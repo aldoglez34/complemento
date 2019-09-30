@@ -24,16 +24,18 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     dose: {
-      type: DataTypes.STRING(1234),
-      allowNull: false,
-      defaultValue: "No hay dosis disponible."
+      type: DataTypes.STRING(1000),
+      allowNull: true
     },
     description: {
       type: DataTypes.STRING(1234),
-      allowNull: false,
-      defaultValue: "No hay descripción disponible."
+      allowNull: true
     },
-    price: {
+    purchasePrice: {
+      type: DataTypes.FLOAT,
+      allowNull: false
+    },
+    salePrice: {
       type: DataTypes.FLOAT,
       allowNull: false
     },
@@ -43,18 +45,25 @@ module.exports = function(sequelize, DataTypes) {
     },
     stock: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0
-    },
-    aditionalInfo: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: "No hay información adicional disponible."
+      allowNull: false
     },
     photo: {
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: "placeholder.jpg"
+    },
+    brand: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    provider: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    priority: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     }
   });
 

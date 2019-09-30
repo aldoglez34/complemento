@@ -15,6 +15,7 @@ import API from "../utils/API";
 
 class Store extends Component {
   state = {
+    intervalId: 0,
     categories: [],
     catFilter: null,
     sufferings: [],
@@ -88,8 +89,20 @@ class Store extends Component {
     // this.fetchProducts(data);
   }
 
+  scrollStep() {
+    if (window.pageYOffset === 0) {
+      clearInterval(this.state.intervalId);
+    }
+    window.scroll(0, window.pageYOffset - 50);
+  }
+
+  scrollToTop() {
+    let intervalId = setInterval(this.scrollStep.bind(this), 16.66);
+    this.setState({ intervalId: intervalId });
+  }
+
   handleChangePage = page => {
-    this.setState({ activeP: page });
+    this.setState({ activeP: page }, () => this.scrollToTop());
   };
 
   render() {

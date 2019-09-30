@@ -22,7 +22,7 @@ function ClientDropdown() {
 
   return (
     <Dropdown>
-      <Dropdown.Toggle className="mr-2 p-2 border-0" variant="dark">
+      <Dropdown.Toggle className="mr-2 p-2 border-0" variant="light">
         <i className="fas fa-user mr-2" />
         {client.name + " " + client.firstSurname}
       </Dropdown.Toggle>

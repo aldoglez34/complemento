@@ -38,7 +38,6 @@ function MyJumbotron() {
               size="lg"
               href="/store"
               className="shadow pt-3 pb-3 px-4"
-              style={{ backgroundColor: "mediumseagreen" }}
             >
               Explora la tienda
               <i className="fas fa-store-alt ml-2" />

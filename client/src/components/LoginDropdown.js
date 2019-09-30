@@ -118,7 +118,7 @@ function LoginDropdown() {
                   <Form.Row>
                     <Form.Group as={Col}>
                       <Button
-                        variant="dark"
+                        variant="success"
                         type="submit"
                         disabled={isSubmitting}
                       >

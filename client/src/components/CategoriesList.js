@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Spinner, Nav } from "react-bootstrap";
+import { Navbar, Nav, Spinner } from "react-bootstrap";
 
 CategoriesList.propTypes = {
   categories: PropTypes.array.isRequired,
@@ -9,38 +9,46 @@ CategoriesList.propTypes = {
 
 function CategoriesList(props) {
   return (
-    <Nav className="flex-column">
-      {props.categories.length ? (
-        props.categories.map(category => {
-          if (category.name === props.selected) {
-            return (
-              <Nav.Link
-                className="px-0 py-1"
-                key={category.categoryId}
-                href={"/store/" + category.name}
-              >
-                <i className="fas fa-check mr-1" />
-                <strong>{category.name}</strong>
-              </Nav.Link>
-            );
-          } else {
-            return (
-              <Nav.Link
-                className="text-dark px-0 py-1"
-                key={category.categoryId}
-                href={"/store/" + category.name}
-              >
-                {category.name}
-              </Nav.Link>
-            );
-          }
-        })
-      ) : (
-        <div className="text-center py-3">
-          <Spinner animation="border" role="status" variant="success" />
-        </div>
-      )}
-    </Nav>
+    <Navbar bg="transparent" variant="light" expand="md">
+      <Navbar.Toggle aria-controls="categoriesdropdown">
+        Selecciona una categoría
+        <i className="fas fa-chevron-down ml-1" />
+      </Navbar.Toggle>
+      <Navbar.Collapse id="categoriesdropdown">
+        <Nav className="flex-column">
+          {props.categories.length ? (
+            props.categories.map(category => {
+              if (category.name === props.selected) {
+                return (
+                  <Nav.Link
+                    className="px-0 py-1"
+                    key={category.categoryId}
+                    href={"/store/" + category.name}
+                  >
+                    <i className="fas fa-check mr-1" />
+                    <strong>{category.name}</strong>
+                  </Nav.Link>
+                );
+              } else {
+                return (
+                  <Nav.Link
+                    className="px-0 py-1"
+                    key={category.categoryId}
+                    href={"/store/" + category.name}
+                  >
+                    {category.name}
+                  </Nav.Link>
+                );
+              }
+            })
+          ) : (
+            <div className="text-center py-3">
+              <Spinner animation="border" role="status" variant="success" />
+            </div>
+          )}
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
 

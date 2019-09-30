@@ -32,13 +32,26 @@ function Home() {
       });
   }
 
+  function fetchPrioritized() {
+    API.fetchPrioritized()
+      .then(res => {
+        console.log(res.data)
+        dispatch(homeActions.setPrioritized(res.data));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   useEffect(() => {
     fetchProductsWithDiscount();
     fetchBestSellers();
+    fetchPrioritized();
   }, []);
 
   const discounts = useSelector(state => state.discounts);
   const bestSellers = useSelector(state => state.bestSellers);
+  const prioritized = useSelector(state => state.prioritized);
 
   return (
     <Layout>
@@ -90,6 +103,23 @@ function Home() {
         </Row>
         <Row className="mt-5">
           <Col>
+            <h2 className="text-dark">Destacados</h2>
+            <hr />
+            <div className="d-flex flex-wrap justify-content-center">
+              {prioritized.length ? (
+                prioritized.map(p => {
+                  return <ProductCard key={p.productId} product={p} />;
+                })
+              ) : (
+                <div className="text-center mt-4">
+                  <Spinner animation="border" role="status" variant="success" />
+                </div>
+              )}
+            </div>
+          </Col>
+        </Row>
+        <Row className="mt-5">
+          <Col>
             <h2 className="text-dark">Últimas ofertas</h2>
             <hr />
             <div className="d-flex flex-wrap justify-content-center">
@@ -107,12 +137,12 @@ function Home() {
         </Row>
         <Row className="mt-5">
           <Col>
-            <h2 className="text-dark">Productos destacados</h2>
+            <h2 className="text-dark">Más vendidos</h2>
             <hr />
             <div className="d-flex flex-wrap justify-content-center">
               {bestSellers.length ? (
-                bestSellers.map(d => {
-                  return <ProductCard key={d.productId} product={d} />;
+                bestSellers.map(b => {
+                  return <ProductCard key={b.productId} product={b} />;
                 })
               ) : (
                 <div className="text-center mt-4">

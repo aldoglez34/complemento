@@ -13,7 +13,7 @@ const generatePages = props => {
 
   // handle prev bttn
   if (props.activeP === 1) {
-    pagination.push(<Pagination.Prev key="prev" disabled />);
+    pagination.push(null);
   } else {
     pagination.push(<Pagination.Prev key="prev" />);
   }
@@ -39,7 +39,7 @@ const generatePages = props => {
 
   // handle next bttn
   if (props.activeP === props.pages) {
-    pagination.push(<Pagination.Next key="next" disabled />);
+    pagination.push(null);
   } else {
     pagination.push(<Pagination.Next key="next" />);
   }
