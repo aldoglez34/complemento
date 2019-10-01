@@ -58,6 +58,8 @@ class ProductDetails extends Component {
                 <Image
                   src={"../images/products/" + this.state.productDetails.photo}
                   className="img-fluid rounded-lg shadow-sm"
+                  width="200"
+                  height="290"
                   alt="product"
                   fluid
                 />
