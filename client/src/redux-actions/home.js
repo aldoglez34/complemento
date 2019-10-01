@@ -1,7 +1,7 @@
-export const setPrioritized = discounts => {
+export const setPrioritized = prioritized => {
   return {
     type: "home/setPrioritized",
-    discounts
+    prioritized
   };
 };
 

@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Sequelize = require("sequelize");
 const model = require("../models");
+const Op = Sequelize.Op;
 
 // get oustanding
 // matches with /api/home/prioritized
@@ -17,21 +18,19 @@ router.get("/prioritized", function(req, res) {
       "salePrice",
       "stock",
       "photo",
-      "brand"
+      "brand",
+      "priority"
     ],
     where: {
-      priority: true
+      priority: {
+        [Op.is]: true
+      }
     },
     order: ["createdAt"],
     limit: 5,
     include: [
       {
-        model: model.Discount,
-        where: {
-          newPrice: {
-            [Sequelize.Op.ne]: null
-          }
-        }
+        model: model.Discount
       }
     ]
   })

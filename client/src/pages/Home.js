@@ -35,7 +35,6 @@ function Home() {
   function fetchPrioritized() {
     API.fetchPrioritized()
       .then(res => {
-        console.log(res.data)
         dispatch(homeActions.setPrioritized(res.data));
       })
       .catch(err => {
