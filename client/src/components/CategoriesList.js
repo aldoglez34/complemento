@@ -25,7 +25,7 @@ function CategoriesList(props) {
                     key={category.categoryId}
                     href={"/store/" + category.name}
                   >
-                    <i className="fas fa-check mr-1" />
+                    <i className="fas fa-caret-right mr-1" />
                     <strong>{category.name}</strong>
                   </Nav.Link>
                 );

@@ -18,6 +18,7 @@ class Store extends Component {
     intervalId: 0,
     categories: [],
     catFilter: null,
+    brands: [],
     sufferings: [],
     suffFilter: null,
     products: [],
@@ -79,9 +80,18 @@ class Store extends Component {
       .catch(err => console.log(err));
   };
 
+  fetchBrands = () => {
+    API.fetchBrands()
+      .then(res => {
+        this.setState({ brands: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
   componentDidMount() {
     this.fetchCategories();
     this.fetchProducts();
+    this.fetchBrands();
     // this.fetchSufferings(this.state.selCatId);
     // let data = {};
     // data.catId = this.state.selCatId;
@@ -139,7 +149,7 @@ class Store extends Component {
               </Row>
               <Row>
                 <Col>
-                  <BrandsList />
+                  <BrandsList brands={this.state.brands} />
                 </Col>
               </Row>
             </Col>

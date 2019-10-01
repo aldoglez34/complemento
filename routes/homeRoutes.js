@@ -18,8 +18,7 @@ router.get("/prioritized", function(req, res) {
       "salePrice",
       "stock",
       "photo",
-      "brand",
-      "priority"
+      "brand"
     ],
     where: {
       priority: {

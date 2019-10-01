@@ -1,16 +1,11 @@
 import React, { Component } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Accordion,
-  Card,
-  Button,
-  Image
-} from "react-bootstrap";
+import { Container, Row, Col, Image, Spinner } from "react-bootstrap";
 import Layout from "../components/Layout";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 import API from "../utils/API";
+import HelpButton from "../components/HelpButton";
+import ScrollButton from "../components/ScrollButton";
+import AddToCartButton from "../components/AddToCartButton";
 
 class ProductDetails extends Component {
   state = {
@@ -21,6 +16,7 @@ class ProductDetails extends Component {
   fetchProductDetails = () => {
     API.fetchProductDetails(this.props.routeProps.match.params.productId)
       .then(res => {
+        console.log(res.data);
         this.setState({ productDetails: res.data });
       })
       .catch(err => {
@@ -50,63 +46,100 @@ class ProductDetails extends Component {
       <Layout>
         <MyBreadcrumb />
 
-        <Container>
-          {/* first row */}
-          <Row className="my-4">
-            {/* image column */}
+        <Container className="mb-3">
+          {/* main details */}
+          <Row className="bg-white py-4 border rounded shadow-sm mt-md-4">
+            {/* left column */}
             <Col
-              sm={{ span: 3, offset: 3 }}
+              md={{ span: 3, offset: 2 }}
               className="d-flex align-items-center justify-content-center"
             >
-              <Image
-                src={"../images/products/" + this.state.productDetails.photo}
-                className="img-fluid rounded-lg shadow-sm"
-                alt="product"
-              />
-            </Col>
-            {/* name column */}
-            <Col sm={5} className="text-center">
-              <h2 className="text-dark mt-5 mb-2">
-                <strong>{this.state.productDetails.name}</strong>
-              </h2>
-              <p className="lead my-3 text-dark">
-                {this.state.productDetails.content}
-              </p>
-
-              {this.state.productDetails.Discount ? (
-                <>
-                  <h3 className="mb-3 text-dark">
-                    <del>{"$" + this.state.productDetails.price + " MXN"}</del>
-                  </h3>
-                  <h3 className="mb-3 text-danger">
-                    {"$" + this.state.productDetails.Discount.newPrice + " MXN"}
-                  </h3>
-                </>
+              {this.state.productDetails.photo ? (
+                <Image
+                  src={"../images/products/" + this.state.productDetails.photo}
+                  className="img-fluid rounded-lg shadow-sm"
+                  alt="product"
+                  fluid
+                />
               ) : (
-                <h3 className="mb-3 text-dark">
-                  {"$" + this.state.productDetails.price + " MXN"}
-                </h3>
+                <Spinner animation="grow" variant="success" />
               )}
+            </Col>
+            {/* right column */}
+            <Col md={5}>
+              {/* name */}
+              <Row className="text-center">
+                <Col>
+                  <h2 className="text-dark mt-5 mb-2">
+                    {this.state.productDetails.name}
+                  </h2>
+                </Col>
+              </Row>
+              <hr />
+              {/* price */}
+              <Row>
+                <Col>
+                  {this.state.productDetails.Discount ? (
+                    <>
+                      <p className="h3 mt-2 mb-0 text-muted">
+                        <del>
+                          <small className="mr-1">$</small>
+                          <small>{this.state.productDetails.salePrice}</small>
+                          <small className="ml-1">MXN</small>
+                        </del>
+                      </p>
+                      <p className="h3 mb-2 mt-0 text-danger">
+                        <small className="mr-1">$</small>
+                        {this.state.productDetails.Discount.newPrice}
+                        <small className="ml-1">MXN</small>
+                      </p>
+                    </>
+                  ) : (
+                    <p className="h3 my-4 text-dark">
+                      <small className="mr-1">$</small>
+                      {this.state.productDetails.salePrice}
+                      <small className="ml-1">MXN</small>
+                    </p>
+                  )}
+                </Col>
+              </Row>
+              {/* brand */}
+              <Row>
+                <Col className="mt-3">
+                  <p
+                    className="lead mb-0 text-dark"
+                    style={{ textTransform: "uppercase" }}
+                  >
+                    {this.state.productDetails.brand}
+                  </p>
+                </Col>
+              </Row>
+              {/* content */}
+              <Row>
+                <Col>
+                  <p className="lead mb-0 text-dark">
+                    {this.state.productDetails.content}
+                  </p>
+                </Col>
+              </Row>
 
-              <Button size="lg" variant="outline-primary" block>
-                <i className="fas fa-shopping-cart mr-2" />
-                Agregar
-              </Button>
+              {/* buttons */}
+              <Row>
+                <Col className="my-4" md={{ span: 5 }}>
+                  <AddToCartButton product={this.state.productDetails} />
+                </Col>
+              </Row>
             </Col>
           </Row>
 
-          {/* second row - product details */}
-          <Accordion className="mb-4 shadow-sm">
-            <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                  <i className="fas fa-chevron-down mr-2"></i>Ingredientes
-                </Accordion.Toggle>
-              </Card.Header>
-              <Accordion.Collapse eventKey="0">
-                <Card.Body>
+          {/* more details */}
+          <Row className="mt-4">
+            <Col>
+              <Row>
+                <Col>
+                  <h4 className="text-dark">Ingredientes</h4>
                   {this.state.ingredients.length ? (
-                    <ul className="list-unstyled">
+                    <ul className="lead list-unstyled">
                       <li>
                         <ul>
                           {this.state.ingredients.map(ing => (
@@ -116,62 +149,42 @@ class ProductDetails extends Component {
                       </li>
                     </ul>
                   ) : (
-                    <span>No hay ingredientes disponibles.</span>
+                    <span className="lead">
+                      No hay ingredientes disponibles.
+                    </span>
                   )}
-                </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-            <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                  <i className="fas fa-chevron-down mr-2"></i>Descripción
-                </Accordion.Toggle>
-              </Card.Header>
-              <Accordion.Collapse eventKey="1">
-                <Card.Body className="text-justify">
-                  {this.state.productDetails.description ? (
-                    this.state.productDetails.description
-                  ) : (
-                    <span>No hay descripción disponible.</span>
-                  )}
-                </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-            <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="2">
-                  <i className="fas fa-chevron-down mr-2"></i>Dosis
-                </Accordion.Toggle>
-              </Card.Header>
-              <Accordion.Collapse eventKey="2">
-                <Card.Body>
-                  {this.state.productDetails.dose ? (
-                    this.state.productDetails.dose
-                  ) : (
-                    <span>No hay dosis disponible.</span>
-                  )}
-                </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-            <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="3">
-                  <i className="fas fa-chevron-down mr-2"></i>Información
-                  Adicional
-                </Accordion.Toggle>
-              </Card.Header>
-              <Accordion.Collapse eventKey="3">
-                <Card.Body>
-                  {this.state.productDetails.aditionalInfo ? (
-                    this.state.productDetails.aditionalInfo
-                  ) : (
-                    <span>No hay información adicional disponible.</span>
-                  )}
-                </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-          </Accordion>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h4 className="text-dark">Descripción</h4>
+                  <p className="lead">
+                    {this.state.productDetails.description ? (
+                      this.state.productDetails.description
+                    ) : (
+                      <span>No hay descripción disponible.</span>
+                    )}
+                  </p>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h4 className="text-dark">Dosis recomendada</h4>
+                  <p className="lead">
+                    {this.state.productDetails.dose ? (
+                      this.state.productDetails.dose
+                    ) : (
+                      <span>No hay dosis disponible.</span>
+                    )}
+                  </p>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
         </Container>
+
+        <HelpButton />
+        <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
       </Layout>
     );
   }

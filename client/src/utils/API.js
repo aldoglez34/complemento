@@ -25,6 +25,10 @@ export default {
     return axios.get("/api/store/category/all");
   },
 
+  fetchBrands: function() {
+    return axios.get("/api/store/brands");
+  },
+
   fetchSufferings: function(catId) {
     return axios.get("/api/store/sufferings/" + catId);
   },

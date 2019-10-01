@@ -5,6 +5,18 @@ const model = require("../models");
 // matches with /api/product/details/:productId
 router.get("/details/:productId", function(req, res) {
   model.Product.findOne({
+    attributes: [
+      "productId",
+      "categoryId",
+      "name",
+      "content",
+      "dose",
+      "description",
+      "salePrice",
+      "stock",
+      "photo",
+      "brand"
+    ],
     where: {
       productId: req.params.productId
     },

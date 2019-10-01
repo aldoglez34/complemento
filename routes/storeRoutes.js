@@ -52,6 +52,16 @@ let countAppearances = function(uniqueArray, data) {
   return finalArray;
 };
 
+router.get("/brands", function(req, res) {
+  model.Product.aggregate("brand", "DISTINCT", { plain: false })
+    .then(function(data) {
+      res.json(data);
+    })
+    .catch(function(err) {
+      res.send(err);
+    });
+});
+
 router.get("/sufferings/:categoryId", function(req, res) {
   model.Suffering.findAll({
     attributes: ["name"],
