@@ -1,25 +1,28 @@
 import React from "react";
-import { Badge, Button } from "react-bootstrap";
+import { Button, Badge } from "react-bootstrap";
+import "./cartbutton.scss";
 
 function CartButton() {
-  const CartCounter = () => {
-    if (!localStorage.getItem("cn_counter")) {
-      localStorage.setItem("cn_counter", 0);
-    }
-    let counter = localStorage.getItem("cn_counter");
-    return (
-      <Badge className="ml-1" variant="warning" style={{ fontFamily: "arial" }}>
-        {counter}
-      </Badge>
-    );
-  };
+  if (!localStorage.getItem("cn_counter")) {
+    localStorage.setItem("cn_counter", 0);
+  }
+  let counter = localStorage.getItem("cn_counter");
 
   return (
-    <Button href="/cart" variant="outline-light">
-      Carrito
-      <i className="fas fa-shopping-cart ml-1" />
-      <CartCounter />
-    </Button>
+    <>
+      <Button
+        href="/cart"
+        variant="transparent"
+        title="Mis compras"
+        className="d-none d-md-block p-1 ml-2"
+        id="bagBttn"
+      >
+        <i className="fas fa-shopping-bag" id="shoppingBag" />
+        <Badge id="bagBadge">
+          <span>{counter}</span>
+        </Badge>
+      </Button>
+    </>
   );
 }
 

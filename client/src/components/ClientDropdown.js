@@ -1,5 +1,5 @@
 import React from "react";
-import { Dropdown } from "react-bootstrap";
+import { Dropdown, Nav, NavItem } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import fire from "../firebase/Fire";
 import * as clientActions from "../redux-actions/client";
@@ -21,12 +21,16 @@ function ClientDropdown() {
   };
 
   return (
-    <Dropdown>
-      <Dropdown.Toggle className="mr-2 p-2 border-0" variant="light">
-        <i className="fas fa-user mr-2" />
-        {client.name + " " + client.firstSurname}
+    <Dropdown as={NavItem}>
+      <Dropdown.Toggle as={Nav.Link} style={{ color: "yellow" }}>
+        <strong>{client.name + " " + client.firstSurname}</strong>
+        <i className="fas fa-user ml-1" />
       </Dropdown.Toggle>
-      <Dropdown.Menu>
+      <Dropdown.Menu
+        data-display="static"
+        className="bg-light dropdown-menu-xs-left dropdown-menu-md-right"
+        // style={{ width: "18.125rem" }}
+      >
         <Dropdown.Item href="/">Mis datos</Dropdown.Item>
         <Dropdown.Item href="/">Mis pedidos</Dropdown.Item>
         <Dropdown.Item href="/">Mis favoritos</Dropdown.Item>

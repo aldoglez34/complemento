@@ -64,10 +64,22 @@ function MyFooter() {
         </Row>
       </Container>
 
-      <Container className="py-1 mt-4 text-light">
+      <Container className="d-flex flex-row justify-content-center py-1 mt-4 text-light">
         <h5>
           <small>© Complemento Natural, 2019</small>
         </h5>
+        <span className="mx-2">{"//"}</span>
+        <div>
+          <a href="/" className="text-light" title="Twitter">
+            <i className="fab fa-twitter mr-2" />
+          </a>
+          <a href="/" className="text-light" title="Facebook">
+            <i className="fab fa-facebook-square mr-2" />
+          </a>
+          <a href="/" className="text-light" title="Instagram">
+            <i className="fab fa-instagram" />
+          </a>
+        </div>
       </Container>
     </footer>
   );

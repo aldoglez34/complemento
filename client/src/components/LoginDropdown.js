@@ -1,5 +1,5 @@
 import React from "react";
-import { Dropdown, Form, Col, Button } from "react-bootstrap";
+import { Dropdown, Form, Col, Button, Nav, NavItem } from "react-bootstrap";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
 import API from "../utils/API";
@@ -60,12 +60,10 @@ function LoginDropdown() {
           isSubmitting
         }) => (
           <>
-            <Dropdown>
-              <Dropdown.Toggle
-                className="mr-2 border-0 bg-transparent"
-                variant="primary"
-              >
+            <Dropdown as={NavItem}>
+              <Dropdown.Toggle as={Nav.Link} className="text-light">
                 Iniciar sesión
+                <i className="fas fa-user ml-1" />
               </Dropdown.Toggle>
               <Dropdown.Menu
                 data-display="static"

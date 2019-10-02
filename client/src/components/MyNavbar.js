@@ -5,6 +5,7 @@ import ClientDropdown from "./ClientDropdown";
 import LoginDropdown from "./LoginDropdown";
 import { useSelector } from "react-redux";
 import CartButton from "./CartButton";
+import TrackShipment from "./TrackShipment";
 
 function MyNavbar() {
   const client = useSelector(state => state.client);
@@ -18,7 +19,7 @@ function MyNavbar() {
       >
         {/* logo (medium to large) */}
         <Navbar.Brand
-          className="mr-4 d-none d-sm-none d-md-none d-lg-block"
+          className="mr-4 d-none d-md-block"
           href="/"
           style={{ fontFamily: "Josefin Sans", color: "white" }}
         >
@@ -29,7 +30,7 @@ function MyNavbar() {
         </Navbar.Brand>
         {/* logo (medium to small) */}
         <Navbar.Brand
-          className="mr-auto d-lg-none"
+          className="mr-auto d-md-none"
           href="/"
           style={{ fontFamily: "Josefin Sans", color: "white" }}
         >
@@ -43,31 +44,29 @@ function MyNavbar() {
         <Navbar.Collapse id="top-navbar">
           {/* nav */}
           <Container fluid>
-            <Row>
-              <Col className="mt-3">
+            <Row className="d-flex px-3 align-items-center">
+              <div className="flex-grow-1">
                 <SearchBar />
-              </Col>
+              </div>
+              <div>
+                <CartButton />
+              </div>
             </Row>
             <Row>
               <Col className="mt-3">
                 <Nav className="mr-auto">
                   <Nav.Item>
-                    <Nav.Link href="/store" className="text-light">
+                    <Nav.Link href="/store" className="text-light mr-md-2">
                       Tienda
+                      <i className="fas fa-store-alt ml-1" />
                     </Nav.Link>
                   </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link href="/store" className="text-light">
-                      Rastrear pedido
-                    </Nav.Link>
-                  </Nav.Item>
+                  <TrackShipment />
                   {/* right */}
                   <Nav.Item className="ml-md-auto">
                     {client.isLogged ? <ClientDropdown /> : <LoginDropdown />}
                   </Nav.Item>
-                  <Nav.Item>
-                    <CartButton />
-                  </Nav.Item>
+                  <Nav.Item>{/* <CartButton /> */}</Nav.Item>
                 </Nav>
               </Col>
             </Row>
