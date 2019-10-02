@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Badge } from "react-bootstrap";
-import "./cartbutton.scss";
+import "./shoppingbag.scss";
 
-function CartButton() {
+function ShoppingBag() {
   if (!localStorage.getItem("cn_counter")) {
     localStorage.setItem("cn_counter", 0);
   }
@@ -26,4 +26,4 @@ function CartButton() {
   );
 }
 
-export default CartButton;
+export default ShoppingBag;

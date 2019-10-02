@@ -2,15 +2,15 @@ import React from "react";
 
 const styles = {
   div: {
-    height: 50,
+    height: 45,
     backgroundColor: "white"
   },
   input: {
     outline: 0
   },
   searchIcon: {
-    paddingLeft: 12,
-    paddingRight: 12,
+    paddingLeft: 8,
+    paddingRight: 8,
     backgroundColor: "mediumseagreen"
   }
 };

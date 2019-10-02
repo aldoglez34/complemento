@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import ClientDropdown from "./ClientDropdown";
 import LoginDropdown from "./LoginDropdown";
 import { useSelector } from "react-redux";
-import CartButton from "./CartButton";
+import ShoppingBag from "./ShoppingBag";
 import TrackShipment from "./TrackShipment";
 
 function MyNavbar() {
@@ -49,7 +49,7 @@ function MyNavbar() {
                 <SearchBar />
               </div>
               <div>
-                <CartButton />
+                <ShoppingBag />
               </div>
             </Row>
             <Row>
@@ -66,7 +66,6 @@ function MyNavbar() {
                   <Nav.Item className="ml-md-auto">
                     {client.isLogged ? <ClientDropdown /> : <LoginDropdown />}
                   </Nav.Item>
-                  <Nav.Item>{/* <CartButton /> */}</Nav.Item>
                 </Nav>
               </Col>
             </Row>
