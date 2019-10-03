@@ -10,7 +10,6 @@ import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 import MyPagination from "../components/MyPagination";
-// import SufferingsDropdown from "../components/SufferingsDropdown";
 import API from "../utils/API";
 
 class Store extends Component {
@@ -118,9 +117,9 @@ class Store extends Component {
   render() {
     return (
       <Layout>
-        <MyBreadcrumb />
-        <Container fluid className="mb-3">
-          <Row>
+        {/* <MyBreadcrumb /> */}
+        <Container fluid className="mb-3 mt-md-3">
+          <Row className="mt-md-3">
             {/* categories column */}
             <Col md={3} className="mt-2">
               <Row>
@@ -128,7 +127,7 @@ class Store extends Component {
                   <h5 className="my-3">
                     <strong style={{ color: "#0c2c2c" }}>Categorías</strong>
                   </h5>
-                  <hr />
+                  <hr className="mb-1" />
                 </Col>
               </Row>
               <Row>
@@ -144,7 +143,7 @@ class Store extends Component {
                   <h5 className="my-3">
                     <strong style={{ color: "#0c2c2c" }}>Marcas</strong>
                   </h5>
-                  <hr />
+                  <hr className="mb-1" />
                 </Col>
               </Row>
               <Row>
@@ -156,45 +155,53 @@ class Store extends Component {
             {/* products, filters, sufferings column */}
             <Col md={9} className="mt-2">
               <Container>
+                <Row>
+                  <Col>
+                    <MyBreadcrumb />
+                  </Col>
+                </Row>
                 <Row className="mb-2">
                   <Col md={6} className="d-flex align-items-center py-2">
                     <span>
                       {this.state.pCounter === 1 ? (
-                        <>{this.state.pCounter + " producto"}</>
+                        <>{"Mostrando " + this.state.pCounter + " producto"}</>
                       ) : (
-                        <>{this.state.pCounter + " productos"}</>
+                        <>{"Mostrando " + this.state.pCounter + " productos"}</>
                       )}
-                    </span>
-                    <span className="px-2">{"//"}</span>
-                    <span>
-                      Página {this.state.activeP + " de " + this.state.pages}
                     </span>
                   </Col>
                   <Col
                     md={6}
                     className="d-flex align-items-center justify-content-md-end justify-content-sm-center py-2"
                   >
-                    Sufferings dropdown
+                    <span>
+                      Página {this.state.activeP + " de " + this.state.pages}
+                    </span>
                   </Col>
                 </Row>
-                <Row className="mb-2">
-                  <Col>
-                    <ProductsList
-                      productsArr={this.state.products}
-                      activeP={this.state.activeP}
-                      productsPerPage={this.state.pPerPage}
-                    />
-                  </Col>
-                </Row>
-                <Row className="mb-2">
-                  <Col>
-                    <MyPagination
-                      pages={this.state.pages}
-                      activeP={this.state.activeP}
-                      handleChangePage={this.handleChangePage}
-                    />
-                  </Col>
-                </Row>
+                {/* BEGINS what is supposed to change */}
+                <div className="bg-info">
+                  <h1>{this.state.catFilter}</h1>
+                  <Row className="mb-2">
+                    <Col>
+                      <ProductsList
+                        productsArr={this.state.products}
+                        activeP={this.state.activeP}
+                        productsPerPage={this.state.pPerPage}
+                      />
+                    </Col>
+                  </Row>
+                  <Row className="mb-2">
+                    <Col className="d-flex justify-content-center">
+                      <MyPagination
+                        pages={this.state.pages}
+                        activeP={this.state.activeP}
+                        handleChangePage={this.handleChangePage}
+                      />
+                    </Col>
+                  </Row>
+                </div>
+                {/* ENDS what is supposed to change */}
               </Container>
             </Col>
           </Row>

@@ -67,7 +67,7 @@ function ProductCard(props) {
         <Card.Header
           className="text-center"
           height="48"
-          style={{ backgroundColor: "#59a49a" }}
+          style={{ backgroundColor: "#264341" }}
         >
           <span>{props.product.name}</span>
         </Card.Header>

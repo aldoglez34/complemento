@@ -22,6 +22,7 @@ function BrandsList(props) {
                   className="px-0 py-1 text-dark"
                   key={brand.DISTINCT}
                   href={"/store/" + brand.DISTINCT}
+                  style={{ textTransform: "uppercase" }}
                 >
                   {brand.DISTINCT}
                 </Nav.Link>

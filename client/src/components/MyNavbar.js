@@ -14,7 +14,7 @@ function MyNavbar() {
     <>
       <Navbar
         expand="md"
-        className="py-3 shadow-sm"
+        className="py-3 shadow"
         style={{ backgroundColor: "#264341" }}
       >
         {/* logo (medium to large) */}

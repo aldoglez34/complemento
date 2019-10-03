@@ -8,7 +8,7 @@ function MyBreadcrumb() {
   const product = useSelector(state => state.breadcrumb.product);
 
   return (
-    <Breadcrumb className="d-none d-md-block" id="mybreadcrumb">
+    <Breadcrumb className="d-none d-md-block">
       <Breadcrumb.Item href="/">Inicio</Breadcrumb.Item>
       <Breadcrumb.Item href="/store">Tienda</Breadcrumb.Item>
 

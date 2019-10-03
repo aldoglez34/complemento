@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as homeActions from "../redux-actions/home";
-import { Container, Row, Col, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
-import MyJumbotron from "../components/MyJumbotron";
+import MyCarousel from "../components/MyCarousel";
 import API from "../utils/API";
 
 function Home() {
@@ -54,8 +54,7 @@ function Home() {
 
   return (
     <Layout>
-      <MyJumbotron />
-
+      <MyCarousel />
       <Container className="mb-3">
         <Row>
           <Col md={8} className="mt-5">
@@ -77,6 +76,16 @@ function Home() {
               sagittis nunc ac, efficitur tempor metus. Nullam ut eros a libero
               scelerisque porttitor.
             </p>
+            <Button
+              variant="success"
+              size="lg"
+              href="/store"
+              className="shadow p-3 mt-3"
+            >
+              Explora la tienda
+              <i className="fas fa-store-alt ml-2" />
+              <i className="fas fa-angle-double-right ml-2" />
+            </Button>
           </Col>
           <Col md={4} className="mt-5">
             <h2 className="text-dark">Contáctanos</h2>

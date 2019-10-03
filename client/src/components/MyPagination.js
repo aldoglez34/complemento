@@ -49,7 +49,7 @@ const generatePages = props => {
 
 function MyPagination(props) {
   return (
-    <Pagination size="md" className="p-0 m-0 justify-content-end">
+    <Pagination size="md" className="p-0 m-0">
       {generatePages(props)}
     </Pagination>
   );
