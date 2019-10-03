@@ -19,7 +19,7 @@ function BrandsList(props) {
             props.brands.map(brand => {
               return (
                 <Nav.Link
-                  className="px-0 py-1"
+                  className="px-0 py-1 text-dark"
                   key={brand.DISTINCT}
                   href={"/store/" + brand.DISTINCT}
                 >

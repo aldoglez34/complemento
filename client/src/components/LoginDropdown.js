@@ -6,6 +6,7 @@ import API from "../utils/API";
 import * as clientActions from "../redux-actions/client";
 import { useDispatch } from "react-redux";
 import fire from "../firebase/Fire";
+const firebase = require("firebase/app");
 
 function LoginDropdown() {
   const dispatch = useDispatch();
@@ -19,35 +20,76 @@ function LoginDropdown() {
       .string()
       .min(6, "Longitud incorrecta")
       .max(15, "Longitud incorrecta")
-      .required("Requerido")
+      .required("Requerido"),
+    rememberme: yup.boolean()
   });
 
   return (
     <>
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ email: "", password: "", rememberme: false }}
         validationSchema={loginSchema}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          fire
-            .auth()
-            .signInWithEmailAndPassword(values.email, values.password)
-            .then(res => {
-              let uid = res.user.uid;
-              API.getClientInfo(uid)
-                .then(res => {
-                  let client = res.data[0];
-                  dispatch(clientActions.loginClient(client));
-                })
-                .catch(err => {
-                  console.log(err);
-                  setSubmitting(false);
-                });
-            })
-            .catch(error => {
-              alert(error.message);
-              setSubmitting(false);
-            });
+          if (values.rememberme) {
+            fire
+              .auth()
+              .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+              .then(function() {
+                return fire
+                  .auth()
+                  .signInWithEmailAndPassword(values.email, values.password)
+                  .then(res => {
+                    let uid = res.user.uid;
+                    API.getClientInfo(uid)
+                      .then(res => {
+                        let client = res.data[0];
+                        dispatch(clientActions.loginClient(client));
+                      })
+                      .catch(err => {
+                        console.log(err);
+                        setSubmitting(false);
+                      });
+                  })
+                  .catch(error => {
+                    alert(error.message);
+                    setSubmitting(false);
+                  });
+              })
+              .catch(function(error) {
+                alert(error);
+              });
+          } else {
+            fire
+              .auth()
+              .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+              .then(function() {
+                return fire
+                  .auth()
+                  .signInWithEmailAndPassword(values.email, values.password)
+                  .then(res => {
+                    let uid = res.user.uid;
+                    API.getClientInfo(uid)
+                      .then(res => {
+                        let client = res.data[0];
+                        dispatch(clientActions.loginClient(client));
+                      })
+                      .catch(err => {
+                        console.log(err);
+                        setSubmitting(false);
+                      });
+                  })
+                  .catch(error => {
+                    alert(error);
+                  });
+              })
+              .catch(function(error) {
+                var errorCode = error.code;
+                console.log(errorCode);
+                var errorMessage = error.message;
+                console.log(errorMessage);
+              });
+          }
         }}
       >
         {({
@@ -86,6 +128,7 @@ function LoginDropdown() {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         isValid={touched.email && !errors.email}
+                        id="test"
                       />
                       <ErrorMessage
                         className="text-danger"
@@ -94,7 +137,7 @@ function LoginDropdown() {
                       />
                     </Form.Group>
                   </Form.Row>
-                  <Form.Row className="mb-2">
+                  <Form.Row className="mb-0">
                     <Form.Group as={Col}>
                       <Form.Label>Contraseña</Form.Label>
                       <Form.Control
@@ -110,6 +153,16 @@ function LoginDropdown() {
                         className="text-danger"
                         name="password"
                         component="div"
+                      />
+                    </Form.Group>
+                  </Form.Row>
+                  <Form.Row className="mb-2">
+                    <Form.Group as={Col}>
+                      <Form.Check
+                        type="checkbox"
+                        name="rememberme"
+                        onChange={handleChange}
+                        label="Recuérdame"
                       />
                     </Form.Group>
                   </Form.Row>

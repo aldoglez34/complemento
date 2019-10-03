@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { Card, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
-import AddToCartButton from "./AddToCartButton";
+import AddToShoppingBadBttn from "./AddToShoppingBadBttn";
 
 ProductCard.propTypes = {
   product: PropTypes.object.isRequired
@@ -62,12 +62,12 @@ function ProductCard(props) {
   const isClientLogged = useSelector(state => state.client.isLogged);
 
   return (
-    <Card style={{ width: "12.7rem" }} className="mt-2 mb-4 mx-1 shadow-sm">
+    <Card style={{ width: "12.7rem" }} className="mt-2 mb-4 mx-1 shadow-sm border-0">
       <a className="text-light" href={"/product/" + props.product.productId}>
         <Card.Header
           className="text-center"
           height="48"
-          style={{ backgroundColor: "darkgoldenrod" }}
+          style={{ backgroundColor: "#59a49a" }}
         >
           <span>{props.product.name}</span>
         </Card.Header>
@@ -81,7 +81,7 @@ function ProductCard(props) {
       </a>
       <Card.Body
         className="d-flex justify-items-center flex-column"
-        style={{ backgroundColor: "white" }}
+        style={{ backgroundColor: "snowwhite" }}
       >
         {/* price */}
         <div className="lead text-center mb-3">
@@ -116,7 +116,7 @@ function ProductCard(props) {
         <div className="mt-auto pt-2 text-center">
           <div className="d-flex inline">
             {props.product.stock > 0 ? (
-              <AddToCartButton product={props.product} />
+              <AddToShoppingBadBttn product={props.product} />
             ) : (
               <BttnNoStock />
             )}

@@ -2,8 +2,8 @@ import React from "react";
 
 const styles = {
   div: {
-    height: 45,
-    backgroundColor: "white"
+    height: 40,
+    backgroundColor: "ghostwhite"
   },
   input: {
     outline: 0
@@ -11,7 +11,10 @@ const styles = {
   searchIcon: {
     paddingLeft: 8,
     paddingRight: 8,
-    backgroundColor: "mediumseagreen"
+    backgroundColor: "transparent"
+  },
+  magnifyingGlass: {
+    color: "#264341"
   }
 };
 
@@ -24,13 +27,14 @@ function SearchBar() {
           placeholder="¿Qué estás buscando?"
           type="text"
           style={styles.input}
+          maxLength="110"
           autoFocus
         />
         <div
           className="d-flex align-items-center flex-shrink-1 border-0 text-light rounded-circle"
           style={styles.searchIcon}
         >
-          <i className="fas fa-search" />
+          <i className="fas fa-search" style={styles.magnifyingGlass} />
         </div>
       </div>
     </>

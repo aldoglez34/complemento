@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import fire from "./firebase/Fire";
+import { logoutClient } from "./redux-actions/client";
 import Home from "./pages/Home";
 import Store from "./pages/Store";
 import ProductDetails from "./pages/ProductDetails";
@@ -17,6 +19,18 @@ import Panel from "./pages/manager/Panel";
 import NewProduct from "./pages/manager/NewProduct";
 
 class App extends Component {
+  componentDidMount() {
+    this.authListener();
+  }
+
+  authListener() {
+    fire.auth().onAuthStateChanged(user => {
+      if (!user) {
+        this.props.logoutClient();
+      }
+    });
+  }
+
   render() {
     return (
       <Router>
@@ -67,4 +81,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = {
+  logoutClient
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

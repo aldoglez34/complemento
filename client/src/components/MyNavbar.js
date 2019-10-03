@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Container, Row, Col, Nav } from "react-bootstrap";
+import { Navbar, Container, Row, Col, Nav, Image } from "react-bootstrap";
 import SearchBar from "./SearchBar";
 import ClientDropdown from "./ClientDropdown";
 import LoginDropdown from "./LoginDropdown";
@@ -15,40 +15,46 @@ function MyNavbar() {
       <Navbar
         expand="md"
         className="py-3 shadow-sm"
-        style={{ backgroundColor: "mediumseagreen" }}
+        style={{ backgroundColor: "#264341" }}
       >
         {/* logo (medium to large) */}
         <Navbar.Brand
           className="mr-4 d-none d-md-block"
           href="/"
-          style={{ fontFamily: "Josefin Sans", color: "white" }}
+          style={{ fontFamily: "Josefin Sans", color: "#f3d084" }}
         >
-          <h2 className="my-0 brandFont">
-            <strong>Complemento Natural</strong>
-            <i className="fab fa-pagelines ml-2" />
-          </h2>
+          <Image
+            src={"/images/biglogo.png"}
+            className="pl-4 m-0"
+            width="200"
+            height="50"
+            fluid
+          />
         </Navbar.Brand>
         {/* logo (medium to small) */}
         <Navbar.Brand
           className="mr-auto d-md-none"
           href="/"
-          style={{ fontFamily: "Josefin Sans", color: "white" }}
+          style={{ fontFamily: "Josefin Sans", color: "#f3d084" }}
         >
-          <h1 className="my-0 brandFont">
-            <strong>CN</strong>
-            <i className="fab fa-pagelines ml-2" />
-          </h1>
+          <Image
+            src={"/images/smalllogo.png"}
+            className="p-0 m-0"
+            width="115"
+            height="63"
+            fluid
+          />
         </Navbar.Brand>
         {/* collapse */}
         <Navbar.Toggle aria-controls="top-navbar" className="bg-light" />
         <Navbar.Collapse id="top-navbar">
           {/* nav */}
           <Container fluid>
-            <Row className="d-flex px-3 align-items-center">
+            <Row className="d-flex px-3 pt-2 align-items-center mt-4 mt-md-0">
               <div className="flex-grow-1">
                 <SearchBar />
               </div>
-              <div>
+              <div className="mr-2">
                 <ShoppingBag />
               </div>
             </Row>

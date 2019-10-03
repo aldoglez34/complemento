@@ -1,19 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-AddToCartButton.propTypes = {
+AddToShoppingBadBttn.propTypes = {
   product: PropTypes.object.isRequired
 };
 
-function AddToCartButton(props) {
+function AddToShoppingBadBttn(props) {
+  // state used by the modal
   const [show, setShow] = useState(false);
+
+  // closing modal
   const handleClose = () => {
     // close modal
     setShow(false);
-    // refresh page so the cart counter updates
+    // steps to refresh the page
+    // save the position of the window in the localstorage
+    localStorage.setItem("last-ypos", window.pageYOffset);
+    // refresh the window
     window.location.reload();
   };
+
+  // showing modal
   const handleShow = () => {
     // get the counter and increase it
     let counter = localStorage.getItem("cn_counter");
@@ -26,16 +34,28 @@ function AddToCartButton(props) {
     setShow(true);
   };
 
+  const scrollTopIfNeeded = () => {
+    let ypos = localStorage.getItem("last-ypos");
+    if (ypos) {
+      window.scrollTo(0, ypos);
+      localStorage.removeItem("last-ypos");
+    }
+  };
+
+  useEffect(() => {
+    scrollTopIfNeeded();
+  }, []);
+
   return (
     <>
       <Button
         variant="outline-success"
         block
         onClick={handleShow}
-        title="Agregar a tu carrito"
+        title="Agregar a tu bolsa de compras"
       >
         Agregar
-        <i className="fas fa-shopping-cart ml-1" />
+        <i className="fas fa-shopping-bag ml-1" />
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -44,15 +64,16 @@ function AddToCartButton(props) {
         </Modal.Header>
         <Modal.Body>
           El producto <strong>{props.product.name}</strong> ha sido agregado
-          exitosamente a tu carrito.
+          exitosamente a tu bolsa de compras.
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="primary" href="/cart">
-            Ir al carrito
-            <i className="fas fa-shopping-cart ml-1" />
+          <Button variant="success" href="/cart">
+            Ir a mis compras
+            <i className="fas fa-shopping-bag ml-1" />
+            <i className="fas fa-angle-double-right ml-1" />
           </Button>
         </Modal.Footer>
       </Modal>
@@ -60,4 +81,4 @@ function AddToCartButton(props) {
   );
 }
 
-export default AddToCartButton;
+export default AddToShoppingBadBttn;

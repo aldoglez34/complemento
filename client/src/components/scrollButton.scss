@@ -1,10 +1,10 @@
 .scroll {
-  opacity: 0.7;
-  background-color: red;
+  opacity: 0.8;
+  background-color: #264341;
   width: 2.5rem;
   height: 2.5rem;
   position: fixed;
-  right: .9rem;
+  right: 0.9rem;
   bottom: 3.8em;
   border-radius: 0.3125rem;
   border: none;
@@ -15,8 +15,9 @@
 }
 
 .arrow-up {
-  color: ghostwhite;
+  color: #edcb58;
   font-size: 1.6rem;
   margin: 0rem;
   padding: 0rem;
+  padding-top: 3px;
 }

@@ -5,7 +5,7 @@ import MyBreadcrumb from "../components/MyBreadcrumb";
 import API from "../utils/API";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
-import AddToCartButton from "../components/AddToCartButton";
+import AddToShoppingBadBttn from "../components/AddToShoppingBadBttn";
 
 class ProductDetails extends Component {
   state = {
@@ -16,7 +16,6 @@ class ProductDetails extends Component {
   fetchProductDetails = () => {
     API.fetchProductDetails(this.props.routeProps.match.params.productId)
       .then(res => {
-        console.log(res.data);
         this.setState({ productDetails: res.data });
       })
       .catch(err => {
@@ -128,7 +127,7 @@ class ProductDetails extends Component {
               {/* buttons */}
               <Row>
                 <Col className="my-4" md={{ span: 5 }}>
-                  <AddToCartButton product={this.state.productDetails} />
+                  <AddToShoppingBadBttn product={this.state.productDetails} />
                 </Col>
               </Row>
             </Col>

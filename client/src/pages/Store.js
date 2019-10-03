@@ -125,8 +125,8 @@ class Store extends Component {
             <Col md={3} className="mt-2">
               <Row>
                 <Col>
-                  <h5 className="my-3 text-dark">
-                    <strong>Categorías</strong>
+                  <h5 className="my-3">
+                    <strong style={{ color: "#0c2c2c" }}>Categorías</strong>
                   </h5>
                   <hr />
                 </Col>
@@ -141,8 +141,8 @@ class Store extends Component {
               </Row>
               <Row>
                 <Col>
-                  <h5 className="my-3 text-dark">
-                    <strong>Marcas</strong>
+                  <h5 className="my-3">
+                    <strong style={{ color: "#0c2c2c" }}>Marcas</strong>
                   </h5>
                   <hr />
                 </Col>
@@ -155,41 +155,47 @@ class Store extends Component {
             </Col>
             {/* products, filters, sufferings column */}
             <Col md={9} className="mt-2">
-              <Row className="mb-2">
-                <Col md={6} className="d-flex align-items-center py-2">
-                  <em>
-                    {this.state.pCounter === 1 ? (
-                      <>{this.state.pCounter + " producto"}</>
-                    ) : (
-                      <>{this.state.pCounter + " productos"}</>
-                    )}
-                  </em>
-                </Col>
-                <Col
-                  md={6}
-                  className="d-flex align-items-center justify-content-md-end justify-content-sm-center py-2"
-                >
-                  Sufferings dropdown
-                </Col>
-              </Row>
-              <Row className="mb-2">
-                <Col>
-                  <ProductsList
-                    productsArr={this.state.products}
-                    activeP={this.state.activeP}
-                    productsPerPage={this.state.pPerPage}
-                  />
-                </Col>
-              </Row>
-              <Row className="mb-2">
-                <Container>
-                  <MyPagination
-                    pages={this.state.pages}
-                    activeP={this.state.activeP}
-                    handleChangePage={this.handleChangePage}
-                  />
-                </Container>
-              </Row>
+              <Container>
+                <Row className="mb-2">
+                  <Col md={6} className="d-flex align-items-center py-2">
+                    <span>
+                      {this.state.pCounter === 1 ? (
+                        <>{this.state.pCounter + " producto"}</>
+                      ) : (
+                        <>{this.state.pCounter + " productos"}</>
+                      )}
+                    </span>
+                    <span className="px-2">{"//"}</span>
+                    <span>
+                      Página {this.state.activeP + " de " + this.state.pages}
+                    </span>
+                  </Col>
+                  <Col
+                    md={6}
+                    className="d-flex align-items-center justify-content-md-end justify-content-sm-center py-2"
+                  >
+                    Sufferings dropdown
+                  </Col>
+                </Row>
+                <Row className="mb-2">
+                  <Col>
+                    <ProductsList
+                      productsArr={this.state.products}
+                      activeP={this.state.activeP}
+                      productsPerPage={this.state.pPerPage}
+                    />
+                  </Col>
+                </Row>
+                <Row className="mb-2">
+                  <Col>
+                    <MyPagination
+                      pages={this.state.pages}
+                      activeP={this.state.activeP}
+                      handleChangePage={this.handleChangePage}
+                    />
+                  </Col>
+                </Row>
+              </Container>
             </Col>
           </Row>
         </Container>

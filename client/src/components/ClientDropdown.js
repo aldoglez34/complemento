@@ -22,13 +22,13 @@ function ClientDropdown() {
 
   return (
     <Dropdown as={NavItem}>
-      <Dropdown.Toggle as={Nav.Link} style={{ color: "yellow" }}>
-        <strong>{client.name + " " + client.firstSurname}</strong>
-        <i className="fas fa-user ml-1" />
+      <Dropdown.Toggle as={Nav.Link} style={{ color: "#edcb58" }}>
+        {client.name + " " + client.firstSurname}
+        <i className="fas fa-user-check ml-1" />
       </Dropdown.Toggle>
       <Dropdown.Menu
         data-display="static"
-        className="bg-light dropdown-menu-xs-left dropdown-menu-md-right"
+        className="dropdown-menu-xs-left dropdown-menu-md-right"
         // style={{ width: "18.125rem" }}
       >
         <Dropdown.Item href="/">Mis datos</Dropdown.Item>

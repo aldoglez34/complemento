@@ -21,7 +21,7 @@ function CategoriesList(props) {
               if (category.name === props.selected) {
                 return (
                   <Nav.Link
-                    className="px-0 py-1"
+                    className="px-0 py-1 text-dark"
                     key={category.categoryId}
                     href={"/store/" + category.name}
                   >
@@ -32,7 +32,7 @@ function CategoriesList(props) {
               } else {
                 return (
                   <Nav.Link
-                    className="px-0 py-1"
+                    className="px-0 py-1 text-dark"
                     key={category.categoryId}
                     href={"/store/" + category.name}
                   >
