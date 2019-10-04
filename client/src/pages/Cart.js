@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Table, Button, Badge } from "react-bootstrap";
-import Layout from "../components/Layout";
+import Layout from "./Layout";
 import API from "../utils/API";
 
 // checks if a given id is inside an array

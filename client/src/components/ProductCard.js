@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { Card, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
-import AddToShoppingBadBttn from "./AddToShoppingBadBttn";
+import AddToShoppingBadBttn from "./AddToShoppingBagBttn";
 
 ProductCard.propTypes = {
   product: PropTypes.object.isRequired
@@ -63,11 +63,11 @@ function ProductCard(props) {
 
   return (
     <Card style={{ width: "12.7rem" }} className="mt-2 mb-4 mx-1 shadow-sm border-0">
-      <a className="text-light" href={"/product/" + props.product.productId}>
+      <a className="text-light" href={"/store/product/" + props.product.productId}>
         <Card.Header
           className="text-center"
           height="48"
-          style={{ backgroundColor: "#264341" }}
+          style={{ backgroundColor: "#59a49a" }}
         >
           <span>{props.product.name}</span>
         </Card.Header>

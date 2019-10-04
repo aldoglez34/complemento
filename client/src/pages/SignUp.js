@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Col, Form, Button } from "react-bootstrap";
-import Layout from "../components/Layout";
+import Layout from "./Layout";
 
 function SignUp() {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, ListGroup } from "react-bootstrap";
-import ManagerLayout from "../../components/ManagerLayout";
+import ManagerLayout from "./ManagerLayout";
 
 function Panel() {
   return (

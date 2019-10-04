@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import ManagerLayout from "../../components/ManagerLayout";
+import ManagerLayout from "./ManagerLayout";
 import { Row, Col, Button, Form, InputGroup, Modal } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";

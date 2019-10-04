@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as homeActions from "../redux-actions/home";
 import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
-import Layout from "../components/Layout";
+import Layout from "./Layout";
 import ProductCard from "../components/ProductCard";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
@@ -58,7 +58,7 @@ function Home() {
       <Container className="mb-3">
         <Row>
           <Col md={8} className="mt-5">
-            <h2 className="text-dark">¿Quiénes Somos?</h2>
+            <h2>¿Quiénes Somos?</h2>
             <hr />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
@@ -88,7 +88,7 @@ function Home() {
             </Button>
           </Col>
           <Col md={4} className="mt-5">
-            <h2 className="text-dark">Contáctanos</h2>
+            <h2>Contáctanos</h2>
             <hr />
             <address>
               <strong>Dirección</strong>
@@ -111,7 +111,7 @@ function Home() {
         </Row>
         <Row className="mt-5">
           <Col>
-            <h2 className="text-dark">Destacados</h2>
+            <h2>Destacados</h2>
             <hr />
             <div className="d-flex flex-wrap justify-content-center">
               {prioritized.length ? (
@@ -128,7 +128,7 @@ function Home() {
         </Row>
         <Row className="mt-5">
           <Col>
-            <h2 className="text-dark">Últimas ofertas</h2>
+            <h2>Últimas ofertas</h2>
             <hr />
             <div className="d-flex flex-wrap justify-content-center">
               {discounts.length ? (
@@ -145,7 +145,7 @@ function Home() {
         </Row>
         <Row className="mt-5">
           <Col>
-            <h2 className="text-dark">Más vendidos</h2>
+            <h2>Más vendidos</h2>
             <hr />
             <div className="d-flex flex-wrap justify-content-center">
               {bestSellers.length ? (

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-AddToShoppingBadBttn.propTypes = {
+AddToShoppingBagBttn.propTypes = {
   product: PropTypes.object.isRequired
 };
 
-function AddToShoppingBadBttn(props) {
+function AddToShoppingBagBttn(props) {
   // state used by the modal
   const [show, setShow] = useState(false);
 
@@ -81,4 +81,4 @@ function AddToShoppingBadBttn(props) {
   );
 }
 
-export default AddToShoppingBadBttn;
+export default AddToShoppingBagBttn;

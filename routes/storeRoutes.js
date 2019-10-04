@@ -81,17 +81,15 @@ router.get("/sufferings/:categoryId", function(req, res) {
 
 // ------------------------------------------------------------
 // get products with or without filters
-// matches with /api/store/products/:cat/:suff
-router.get("/products/:cat/:suff", function(req, res) {
-  // check the 3 possible outcomes
-  // 1 both cat and suff are null
-  // 2 only suff is null
-  // 3 none are null
+// matches with /api/store/products/:cat
+router.get("/products/:cat", function(req, res) {
+  // check the 2 possible outcomes
+  // 1 cat is null
+  // 2 cat is NOT null
 
   let cat = req.params.cat;
-  let suff = req.params.suff;
 
-  if (cat === "null" && suff === "null") {
+  if (cat === "null") {
     // send all products
     model.Product.findAll({
       include: [
@@ -103,7 +101,7 @@ router.get("/products/:cat/:suff", function(req, res) {
       res.send(data);
     });
   }
-  if (cat !== "null" && suff === "null") {
+  if (cat !== "null") {
     // send products filtered by cat
     model.Product.findAll({
       include: [
@@ -117,9 +115,6 @@ router.get("/products/:cat/:suff", function(req, res) {
     }).then(function(data) {
       res.send(data);
     });
-  }
-  if (cat !== "null" && suff !== "null") {
-    // send products filtered by cat and suff
   }
 });
 

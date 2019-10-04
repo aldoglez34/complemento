@@ -33,8 +33,8 @@ export default {
     return axios.get("/api/store/sufferings/" + catId);
   },
 
-  fetchProducts: function(filters) {
-    return axios.get("/api/store/products/" + filters.cat + "/" + filters.suff);
+  fetchProducts: function(cat) {
+    return axios.get("/api/store/products/" + cat);
   },
 
   // ---------------------------------------------------------------------------

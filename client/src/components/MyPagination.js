@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 MyPagination.propTypes = {
   pages: PropTypes.number.isRequired,
-  activeP: PropTypes.number.isRequired,
+  activePage: PropTypes.number.isRequired,
   handleChangePage: PropTypes.func.isRequired
 };
 
@@ -12,7 +12,7 @@ const generatePages = props => {
   let pagination = [];
 
   // handle prev bttn
-  if (props.activeP === 1) {
+  if (props.activePage === 1) {
     pagination.push(null);
   } else {
     pagination.push(<Pagination.Prev key="prev" />);
@@ -21,7 +21,7 @@ const generatePages = props => {
   // handle pages
   for (let i = 1; i <= props.pages; i++) {
     // handle active page
-    if (i === props.activeP) {
+    if (i === props.activePage) {
       pagination.push(
         <Pagination.Item key={i} active>
           {i}
@@ -38,7 +38,7 @@ const generatePages = props => {
   }
 
   // handle next bttn
-  if (props.activeP === props.pages) {
+  if (props.activePage === props.pages) {
     pagination.push(null);
   } else {
     pagination.push(<Pagination.Next key="next" />);

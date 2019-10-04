@@ -4,7 +4,7 @@ import fire from "./firebase/Fire";
 import { logoutClient } from "./redux-actions/client";
 import Home from "./pages/Home";
 import Store from "./pages/Store";
-import ProductDetails from "./pages/ProductDetails";
+// import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import SignUp from "./pages/SignUp";
 import NoMatch from "./pages/NoMatch";
@@ -35,8 +35,10 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          {/* client routes */}
+          {/* CLIENT ROUTES */}
           <Route exact path="/" component={Home} />
+          {/* these next 3 point to store */}
+          {/* the store page will handle them with another router */}
           <Route exact path="/store" component={Store} />
           <Route
             exact
@@ -45,16 +47,11 @@ class App extends Component {
           />
           <Route
             exact
-            path="/store/:cat/:suff"
+            path="/store/product/:productId"
             render={props => <Store routeProps={props} />}
           />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/signup" component={SignUp} />
-          <Route
-            exact
-            path="/product/:productId"
-            render={props => <ProductDetails routeProps={props} />}
-          />
           {this.props.manager.isLogged ? (
             <Switch>
               <Route exact path="/manager/panel" component={Panel} />

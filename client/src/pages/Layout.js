@@ -1,6 +1,6 @@
 import React from "react";
-import MyNavbar from "./MyNavbar";
-import MyFooter from "./MyFooter";
+import MyNavbar from "../components/MyNavbar";
+import MyFooter from "../components/MyFooter";
 import PropTypes from "prop-types";
 
 Layout.propTypes = {

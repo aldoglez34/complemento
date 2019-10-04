@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Image, Spinner } from "react-bootstrap";
-import Layout from "../components/Layout";
+import Layout from "./Layout";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 import API from "../utils/API";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
-import AddToShoppingBadBttn from "../components/AddToShoppingBadBttn";
+import AddToShoppingBadBttn from "../components/AddToShoppingBagBttn";
 
 class ProductDetails extends Component {
   state = {
@@ -42,11 +42,12 @@ class ProductDetails extends Component {
 
   render() {
     return (
-      <Layout>
-        <MyBreadcrumb />
 
-        <Container className="mb-3">
-          {/* main details */}
+
+      <Row>
+        <Col></Col>
+      </Row>
+
           <Row className="bg-white py-4 border rounded shadow-sm mt-md-4">
             {/* left column */}
             <Col
