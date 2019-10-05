@@ -29,10 +29,6 @@ export default {
     return axios.get("/api/store/brands");
   },
 
-  fetchSufferings: function(catId) {
-    return axios.get("/api/store/sufferings/" + catId);
-  },
-
   fetchProducts: function(cat) {
     return axios.get("/api/store/products/" + cat);
   },
@@ -43,6 +39,10 @@ export default {
 
   fetchProductDetails: function(productId) {
     return axios.get("/api/product/details/" + productId);
+  },
+
+  fetchSufferings: function(productId){
+    return axios.get("/api/product/sufferings/" + productId);
   },
 
   fetchIngredients: function(productId) {

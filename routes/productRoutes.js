@@ -34,6 +34,19 @@ router.get("/details/:productId", function(req, res) {
     });
 });
 
+// ------------------------------------------------------------
+// get unique sufferings from determined product
+// matches with /api/product/sufferings/:productId
+router.get("/sufferings/:categoryId", function(req, res) {
+  model.Suffering.findAll({})
+    .then(function(data) {
+      // res.json(data);
+    })
+    .catch(function(err) {
+      res.send(err);
+    });
+});
+
 // get ingredients
 // matches with /api/product/details/ingredients/:productId
 router.get("/details/ingredients/:productId", function(req, res) {

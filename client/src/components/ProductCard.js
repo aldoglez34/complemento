@@ -1,80 +1,38 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import { Card, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
-import AddToShoppingBadBttn from "./AddToShoppingBagBttn";
+import { Card, Button } from "react-bootstrap";
+import AddToShoppingBagBttn from "./AddToShoppingBagBttn";
+import BttnNoFav from "./BttnNoFav";
+import BttnNoStock from "./BttnNoStock";
 
 ProductCard.propTypes = {
   product: PropTypes.object.isRequired
 };
 
 function ProductCard(props) {
-  const BttnNoStock = () => {
-    return (
-      <>
-        <OverlayTrigger
-          overlay={
-            <Tooltip id="tooltip-disabled">
-              No disponible por el momento.
-            </Tooltip>
-          }
-        >
-          <span className="d-inline-block">
-            <Button
-              disabled
-              variant="outline-secondary"
-              style={{ pointerEvents: "none" }}
-            >
-              Agregar
-              <i className="fas fa-shopping-cart ml-1" />
-            </Button>
-          </span>
-        </OverlayTrigger>
-      </>
-    );
-  };
-
-  const BttnNoFavs = () => {
-    return (
-      <>
-        <OverlayTrigger
-          overlay={
-            <Tooltip id="tooltip-disabled">
-              Inicia sesión para guardar en tus favoritos.
-            </Tooltip>
-          }
-        >
-          <span className="d-inline-block">
-            <Button
-              disabled
-              variant="outline-secondary"
-              className="ml-1"
-              style={{ pointerEvents: "none" }}
-            >
-              <i className="fas fa-heart-broken" />
-            </Button>
-          </span>
-        </OverlayTrigger>
-      </>
-    );
-  };
-
   const isClientLogged = useSelector(state => state.client.isLogged);
 
   return (
-    <Card style={{ width: "12.7rem" }} className="mt-2 mb-4 mx-1 shadow-sm border-0">
-      <a className="text-light" href={"/store/product/" + props.product.productId}>
+    <Card
+      style={{ width: "12.7rem" }}
+      className="mt-2 mb-4 mx-1 shadow-sm border-0"
+    >
+      <a
+        className="text-light"
+        href={"/product/details/" + props.product.productId}
+      >
         <Card.Header
           className="text-center"
           height="48"
-          style={{ backgroundColor: "#59a49a" }}
+          style={{ backgroundColor: "#264341" }}
         >
           <span>{props.product.name}</span>
         </Card.Header>
         <Card.Img
           variant="top"
-          height="250"
-          width="150"
+          height={250}
+          width={150}
           className="rounded-0"
           src={"/images/products/" + props.product.photo}
         />
@@ -116,20 +74,20 @@ function ProductCard(props) {
         <div className="mt-auto pt-2 text-center">
           <div className="d-flex inline">
             {props.product.stock > 0 ? (
-              <AddToShoppingBadBttn product={props.product} />
+              <AddToShoppingBagBttn product={props.product} />
             ) : (
               <BttnNoStock />
             )}
             {isClientLogged ? (
               <Button
-                variant="outline-danger"
-                className="ml-1"
+                variant="danger"
+                className="ml-1 shadow-sm"
                 title="Guardar en favoritos"
               >
-                <i className="fas fa-heart" />
+                <i className="fa fa-heart" />
               </Button>
             ) : (
-              <BttnNoFavs />
+              <BttnNoFav />
             )}
           </div>
         </div>

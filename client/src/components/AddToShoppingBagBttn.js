@@ -49,7 +49,8 @@ function AddToShoppingBagBttn(props) {
   return (
     <>
       <Button
-        variant="outline-success"
+        variant="success"
+        className="shadow-sm"
         block
         onClick={handleShow}
         title="Agregar a tu bolsa de compras"

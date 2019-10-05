@@ -1,13 +1,27 @@
 const router = require("express").Router();
 const model = require("../models");
+const Sequelize = require("sequelize");
 
 // ------------------------------------------------------------
 // get all categories
 // matches with /api/store/category/all
 router.get("/category/all", function(req, res) {
   model.Category.findAll({
-    attributes: ["categoryId", "name"],
-    order: ["categoryId"]
+    attributes: {
+      include: [
+        [
+          Sequelize.fn("COUNT", Sequelize.col("products.productId")),
+          "productCount"
+        ]
+      ]
+    },
+    include: [
+      {
+        model: model.Product,
+        attributes: []
+      }
+    ],
+    group: ["categoryId"]
   })
     .then(function(data) {
       res.json(data);
@@ -18,61 +32,12 @@ router.get("/category/all", function(req, res) {
 });
 
 // ------------------------------------------------------------
-// get unique sufferings from determined category
-// matches with /api/store/sufferings/:categoryId
-let deleteDuplicates = function(array) {
-  let tempArray = [];
-  array.forEach(element => {
-    tempArray.push(element.name);
-  });
-  let uniqueArray = [...new Set(tempArray)];
-  return uniqueArray;
-};
-
-let countAppearances = function(uniqueArray, data) {
-  let finalArray = [];
-  // handle all the sufferings
-  let todos = {};
-  todos.name = "Todos";
-  todos.qty = data.length;
-  finalArray.push(todos);
-  // start looping
-  uniqueArray.forEach(item => {
-    let count = 0;
-    for (let i = 0; i < data.length; i++) {
-      if (item === data[i].dataValues.name) {
-        count++;
-      }
-    }
-    let obj = {};
-    obj.name = item;
-    obj.qty = count;
-    finalArray.push(obj);
-  });
-  return finalArray;
-};
-
+// get all brands
+// matches with /api/store/brands
 router.get("/brands", function(req, res) {
   model.Product.aggregate("brand", "DISTINCT", { plain: false })
     .then(function(data) {
       res.json(data);
-    })
-    .catch(function(err) {
-      res.send(err);
-    });
-});
-
-router.get("/sufferings/:categoryId", function(req, res) {
-  model.Suffering.findAll({
-    attributes: ["name"],
-    plain: false,
-    where: { categoryId: req.params.categoryId },
-    order: ["name"]
-  })
-    .then(function(data) {
-      let uniqueSufferings = deleteDuplicates(data);
-      let toFront = countAppearances(uniqueSufferings, data);
-      res.json(toFront);
     })
     .catch(function(err) {
       res.send(err);

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, Nav, Spinner } from "react-bootstrap";
+import { Navbar, Nav, Spinner, Badge } from "react-bootstrap";
 import API from "../utils/API";
 
 class CategoriesList extends Component {
@@ -30,22 +30,32 @@ class CategoriesList extends Component {
               if (category.name === this.state.selectedCat) {
                 return (
                   <Nav.Link
-                    className="px-0 py-1 text-danger"
+                    className="lead px-0 py-1 text-danger"
                     key={category.categoryId}
                     href={"/store/" + category.name}
                   >
                     <i className="fas fa-caret-right mr-1" />
                     <strong>{category.name}</strong>
+                    <Badge variant="danger" pill className="ml-1">
+                      {category.productCount}
+                    </Badge>
                   </Nav.Link>
                 );
               } else {
                 return (
                   <Nav.Link
-                    className="px-0 py-1 text-dark"
+                    className="lead px-0 py-1 text-dark"
                     key={category.categoryId}
                     href={"/store/" + category.name}
                   >
                     {category.name}
+                    <Badge
+                      style={{ backgroundColor: "#f3d084" }}
+                      pill
+                      className="ml-1"
+                    >
+                      {category.productCount}
+                    </Badge>
                   </Nav.Link>
                 );
               }

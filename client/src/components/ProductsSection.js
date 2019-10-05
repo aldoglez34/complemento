@@ -36,10 +36,10 @@ class ProductsSection extends Component {
     // there are 2 possible scenarios here
     // 1 /store means there are no filters so fetch all the products
     // 2 /store/:cat means there is a filter of category
-    if (this.props.routeProps === undefined) {
+    if (this.props.routeProps.match.params.cat === undefined) {
       // 1 - no filters
       cat = null;
-    } else if (this.props.routeProps.match.params.cat) {
+    } else if (this.props.routeProps.match.params.cat !== undefined) {
       // 2 - category filter
       cat = this.props.routeProps.match.params.cat;
     }

@@ -1,18 +1,11 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-const styles = {
-  footer: {
-    backgroundColor: "#0c2c2c",
-    marginTop: "auto"
-  }
-};
-
 function MyFooter() {
   return (
     <footer
       className="mt-auto py-2 text-center text-light"
-      style={styles.footer}
+      style={{ backgroundColor: "#0c2c2c", marginTop: "auto" }}
     >
       <Container className="text-light">
         <Row>
@@ -47,7 +40,7 @@ function MyFooter() {
             </div>
           </Col>
           <Col md={4} className="mt-3">
-            <h4 style={{ color: "#f3d084" }}>Envíos</h4>
+            <h4 style={{ color: "#f3d084" }}>Pedidos</h4>
             <div>
               <p className="mb-0">
                 <a href="/" className="text-light">

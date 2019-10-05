@@ -4,7 +4,7 @@ import fire from "./firebase/Fire";
 import { logoutClient } from "./redux-actions/client";
 import Home from "./pages/Home";
 import Store from "./pages/Store";
-// import ProductDetails from "./pages/ProductDetails";
+import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import SignUp from "./pages/SignUp";
 import NoMatch from "./pages/NoMatch";
@@ -37,8 +37,7 @@ class App extends Component {
         <Switch>
           {/* CLIENT ROUTES */}
           <Route exact path="/" component={Home} />
-          {/* these next 3 point to store */}
-          {/* the store page will handle them with another router */}
+          {/* note that it's path only, this covers both options, with and without filters */}
           <Route exact path="/store" component={Store} />
           <Route
             exact
@@ -47,8 +46,8 @@ class App extends Component {
           />
           <Route
             exact
-            path="/store/product/:productId"
-            render={props => <Store routeProps={props} />}
+            path="/product/details/:productId"
+            render={props => <ProductDetails routeProps={props} />}
           />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/signup" component={SignUp} />
