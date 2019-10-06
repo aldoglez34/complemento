@@ -20,7 +20,10 @@ class CategoriesList extends Component {
   render() {
     return this.state.categories.length ? (
       <Navbar bg="transparent" variant="light" expand="md">
-        <Navbar.Toggle aria-controls="categoriesdropdown">
+        <Navbar.Toggle
+          className="mt-3 border-0 w-100 py-2"
+          aria-controls="categoriesdropdown"
+        >
           Selecciona una categoría
           <i className="fas fa-chevron-down ml-1" />
         </Navbar.Toggle>

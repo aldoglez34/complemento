@@ -54,7 +54,7 @@ class ProductDetails extends Component {
     return (
       <Layout>
         <MyBreadcrumb />
-        <Container className="mt-2 mb-3 p-3">
+        <Container className="my-4 p-3">
           <Row>
             <Col className="text-center text-md-left">
               <strong className="h2">{this.state.productDetails.name}</strong>

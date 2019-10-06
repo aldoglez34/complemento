@@ -1,0 +1,22 @@
+#breadcrumbStyle {
+  background-color: #59a49a;
+  padding: 11px 20px;
+}
+
+.breadcrumbItem {
+  color: ghostwhite;
+  padding: 0px 10px;
+  font-size: 17px;
+  text-decoration: none;
+  &:hover {
+    color: #edcb58;
+    text-decoration: none;
+  }
+  &.active {
+    color: gainsboro;
+  }
+}
+
+.breadcrumbArrow {
+  color: #c8c0b0;
+}

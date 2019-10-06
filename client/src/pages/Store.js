@@ -13,15 +13,15 @@ function Store() {
   return (
     <Layout>
       <MyBreadcrumb />
-      <Container fluid className="mb-3">
+      <Container fluid className="my-3">
         <Row>
           {/* left column */}
           <Col md={3} className="mt-2">
             <Row>
               <Col>
-                <h5 className="my-3">
+                <h4 className="my-3">
                   <strong>Categorías</strong>
-                </h5>
+                </h4>
                 <hr className="mb-1" />
               </Col>
             </Row>
@@ -35,9 +35,9 @@ function Store() {
             </Row>
             <Row>
               <Col>
-                <h5 className="my-3">
+                <h4 className="my-3">
                   <strong>Marcas</strong>
-                </h5>
+                </h4>
                 <hr className="mb-1" />
               </Col>
             </Row>
@@ -51,9 +51,9 @@ function Store() {
           <Col md={9} className="mt-2">
             <Row>
               <Col>
-                <h5 className="my-3">
+                <h4 className="my-3">
                   <strong>Productos</strong>
-                </h5>
+                </h4>
                 <hr className="mb-3" />
               </Col>
             </Row>

@@ -18,11 +18,14 @@ class BrandsList extends Component {
   render() {
     return (
       <Navbar bg="transparent" variant="light" expand="md">
-        <Navbar.Toggle aria-controls="categoriesdropdown">
+        <Navbar.Toggle
+          className="mt-3 border-0 w-100 py-2"
+          aria-controls="brandsdropdown"
+        >
           Filtra por marca
           <i className="fas fa-chevron-down ml-1" />
         </Navbar.Toggle>
-        <Navbar.Collapse id="categoriesdropdown">
+        <Navbar.Collapse id="brandsdropdown">
           <Nav className="flex-column">
             {this.state.brands.length ? (
               this.state.brands.map(brand => {

@@ -82,8 +82,8 @@ class ProductsSection extends Component {
     return (
       <>
         {/* first row */}
-        <Row className="mb-2">
-          <Col md={6} className="d-flex align-items-center py-2">
+        <Row className="mb-2 py-1">
+          <Col md={6}>
             <span>
               {this.state.productCounter === 1 ? (
                 <>{"Mostrando " + this.state.productCounter + " producto"}</>
@@ -92,10 +92,7 @@ class ProductsSection extends Component {
               )}
             </span>
           </Col>
-          <Col
-            md={6}
-            className="d-flex align-items-center justify-content-md-end justify-content-sm-center py-2"
-          >
+          <Col md={6} className="d-flex justify-content-md-end">
             <span>
               Página {this.state.activePage + " de " + this.state.pages}
             </span>

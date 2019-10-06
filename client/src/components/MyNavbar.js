@@ -25,7 +25,7 @@ function MyNavbar() {
         >
           <Image
             src={"/images/biglogo.png"}
-            className="pl-4 m-0"
+            className="pl-3 m-0"
             width="200"
             height="50"
             fluid
@@ -50,7 +50,7 @@ function MyNavbar() {
         <Navbar.Collapse id="top-navbar">
           {/* nav */}
           <Container fluid>
-            <Row className="d-flex px-3 pt-2 align-items-center mt-4 mt-md-0">
+            <Row className="d-flex pl-3 pr-2 pt-2 align-items-center mt-4 mt-md-0">
               <div className="flex-grow-1">
                 <SearchBar />
               </div>

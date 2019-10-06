@@ -22,7 +22,7 @@ function ClientDropdown() {
 
   return (
     <Dropdown as={NavItem}>
-      <Dropdown.Toggle as={Nav.Link} style={{ color: "#edcb58" }}>
+      <Dropdown.Toggle as={Nav.Link} style={{ color: "#f3d084" }}>
         {client.name + " " + client.firstSurname}
         <i className="fas fa-user-check ml-1" />
       </Dropdown.Toggle>
