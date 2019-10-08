@@ -4,24 +4,15 @@ const Sequelize = require("sequelize");
 
 // ------------------------------------------------------------
 // get all categories
-// matches with /api/store/category/all
-router.get("/category/all", function(req, res) {
-  model.Category.findAll({
-    attributes: {
-      include: [
-        [
-          Sequelize.fn("COUNT", Sequelize.col("products.productId")),
-          "productCount"
-        ]
-      ]
-    },
-    include: [
-      {
-        model: model.Product,
-        attributes: []
-      }
+// matches with /api/store/categories
+router.get("/categories", function(req, res) {
+  model.Product.findAll({
+    attributes: [
+      ["category", "name"],
+      [Sequelize.fn("COUNT", Sequelize.col("category")), "productCount"]
     ],
-    group: ["categoryId"]
+    group: ["category"],
+    order: [["category", "ASC"]]
   })
     .then(function(data) {
       res.json(data);
@@ -35,7 +26,10 @@ router.get("/category/all", function(req, res) {
 // get all brands
 // matches with /api/store/brands
 router.get("/brands", function(req, res) {
-  model.Product.aggregate("brand", "DISTINCT", { plain: false })
+  model.Product.findAll({
+    attributes: [[Sequelize.fn("DISTINCT", Sequelize.col("brand")), "name"]],
+    order: [["brand", "ASC"]]
+  })
     .then(function(data) {
       res.json(data);
     })
@@ -57,6 +51,18 @@ router.get("/products/:cat", function(req, res) {
   if (cat === "null") {
     // send all products
     model.Product.findAll({
+      attributes: [
+        "productId",
+        "category",
+        "name",
+        "content",
+        "description",
+        "salePrice",
+        "stock",
+        "photo",
+        "brand",
+        "priority"
+      ],
       include: [
         {
           model: model.Discount
@@ -69,14 +75,21 @@ router.get("/products/:cat", function(req, res) {
   if (cat !== "null") {
     // send products filtered by cat
     model.Product.findAll({
-      include: [
-        {
-          model: model.Category,
-          where: {
-            name: cat
-          }
-        }
-      ]
+      attributes: [
+        "productId",
+        "category",
+        "name",
+        "content",
+        "description",
+        "salePrice",
+        "stock",
+        "photo",
+        "brand",
+        "priority"
+      ],
+      where: {
+        category: cat
+      }
     }).then(function(data) {
       res.send(data);
     });

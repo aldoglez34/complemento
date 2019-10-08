@@ -40,7 +40,9 @@ class ProductDetails extends Component {
 
   fetchSufferings() {
     API.fetchSufferings(this.props.routeProps.match.params.productId)
-      .then(res => this.setState({ sufferings: res.data }))
+      .then(res => {
+        this.setState({ sufferings: res.data });
+      })
       .catch(err => console.log(err));
   }
 
@@ -51,9 +53,18 @@ class ProductDetails extends Component {
   }
 
   render() {
+    const breadcrumbRoutes = [
+      { name: "Inicio", to: "/" },
+      { name: "Tienda", to: "/store" },
+      {
+        name: this.state.productDetails.category,
+        to: "/store/" + this.state.productDetails.category
+      },
+      { name: this.state.productDetails.name, to: "active" }
+    ];
     return (
       <Layout>
-        <MyBreadcrumb />
+        <MyBreadcrumb routes={breadcrumbRoutes} />
         <Container className="my-4 p-3">
           <Row>
             <Col className="text-center text-md-left">
@@ -69,8 +80,6 @@ class ProductDetails extends Component {
             >
               {this.state.productDetails.photo ? (
                 <Image
-                  // src={require("../images/products/" +
-                  //   this.state.productDetails.photo)}
                   src={require("../images/products/placeholder.jpg")}
                   className="rounded-lg"
                   fluid
@@ -146,18 +155,18 @@ class ProductDetails extends Component {
             {/* column 3 */}
             <Col md={3} className="mt-3 mt-md-0">
               <p className="lead mb-1 text-dark">Útil para</p>
-              {this.state.ingredients.length ? (
+              {this.state.sufferings.length ? (
                 <ul className="list-unstyled">
                   <li>
                     <ul>
-                      {this.state.ingredients.map(ing => (
-                        <li key={ing.name}>{ing.name}</li>
+                      {this.state.sufferings.map(suff => (
+                        <li key={suff.name}>{suff.name}</li>
                       ))}
                     </ul>
                   </li>
                 </ul>
               ) : (
-                <span className="lead">No hay ingredientes disponibles.</span>
+                <span className="lead">No hay información disponibles.</span>
               )}
             </Col>
             {/* column 4 */}
@@ -174,7 +183,7 @@ class ProductDetails extends Component {
                   </li>
                 </ul>
               ) : (
-                <span className="lead">No hay ingredientes disponibles.</span>
+                <span className="lead">No hay información disponible.</span>
               )}
             </Col>
           </Row>

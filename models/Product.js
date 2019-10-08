@@ -7,28 +7,21 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       unique: true
     },
-    categoryId: {
-      type: DataTypes.INTEGER,
+    category: {
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false,
-      unique: true,
-      validate: {
-        len: [3, 50]
-      }
+      unique: true
     },
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false
     },
-    dose: {
-      type: DataTypes.STRING(1000),
-      allowNull: true
-    },
     description: {
-      type: DataTypes.STRING(1234),
+      type: DataTypes.STRING(1000),
       allowNull: true
     },
     purchasePrice: {
@@ -48,16 +41,16 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     photo: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false,
       defaultValue: "placeholder.jpg"
     },
     brand: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false
     },
-    provider: {
-      type: DataTypes.STRING,
+    providerId: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     priority: {
@@ -68,8 +61,8 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Product.associate = function(models) {
-    Product.belongsTo(models.Category, {
-      foreignKey: "categoryId"
+    Product.belongsTo(models.Provider, {
+      foreignKey: "providerId"
     });
     Product.hasMany(models.Suffering, {
       foreignKey: "productId"

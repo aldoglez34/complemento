@@ -7,10 +7,9 @@ router.get("/details/:productId", function(req, res) {
   model.Product.findOne({
     attributes: [
       "productId",
-      "categoryId",
+      "category",
       "name",
       "content",
-      "dose",
       "description",
       "salePrice",
       "stock",
@@ -35,12 +34,16 @@ router.get("/details/:productId", function(req, res) {
 });
 
 // ------------------------------------------------------------
-// get unique sufferings from determined product
 // matches with /api/product/sufferings/:productId
-router.get("/sufferings/:categoryId", function(req, res) {
-  model.Suffering.findAll({})
+router.get("/sufferings/:productId", function(req, res) {
+  model.Suffering.findAll({
+    attributes: ["name"],
+    where: {
+      productId: req.params.productId
+    }
+  })
     .then(function(data) {
-      // res.json(data);
+      res.json(data);
     })
     .catch(function(err) {
       res.send(err);

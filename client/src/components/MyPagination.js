@@ -11,20 +11,6 @@ MyPagination.propTypes = {
 const generatePages = props => {
   let pagination = [];
 
-  // switch (props.activePage) {
-  //   case 1:
-  //     // handle first page
-  //     pagination.push(
-  //       <Pagination.Item key={i} active>
-  //         {i}
-  //       </Pagination.Item>
-  //     );
-  //     break;
-  //   case y:
-  //     // hadnle last page
-  //     break;
-  // }
-
   // handle prev bttn
   if (props.activePage === 1) {
     pagination.push(null);

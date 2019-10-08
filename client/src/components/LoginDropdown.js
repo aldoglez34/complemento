@@ -128,7 +128,6 @@ function LoginDropdown() {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         isValid={touched.email && !errors.email}
-                        id="test"
                       />
                       <ErrorMessage
                         className="text-danger"

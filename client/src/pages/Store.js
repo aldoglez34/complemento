@@ -9,10 +9,27 @@ import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 
-function Store() {
+function Store(props) {
+  const breadcrumbRoute = () => {
+    let cat = props.routeProps.match.params.cat;
+    if (cat === undefined) {
+      return [
+        { name: "Inicio", to: "/" },
+        { name: "Tienda", to: "/store" },
+        { name: "Todas las categorías", to: "active" }
+      ];
+    } else {
+      return [
+        { name: "Inicio", to: "/" },
+        { name: "Tienda", to: "/store" },
+        { name: cat, to: "active" }
+      ];
+    }
+  };
+
   return (
     <Layout>
-      <MyBreadcrumb />
+      <MyBreadcrumb routes={breadcrumbRoute()} />
       <Container fluid className="my-3">
         <Row>
           {/* left column */}

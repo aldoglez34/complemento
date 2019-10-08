@@ -37,8 +37,11 @@ class App extends Component {
         <Switch>
           {/* CLIENT ROUTES */}
           <Route exact path="/" component={Home} />
-          {/* note that it's path only, this covers both options, with and without filters */}
-          <Route exact path="/store" component={Store} />
+          <Route
+            exact
+            path="/store"
+            render={props => <Store routeProps={props} />}
+          />
           <Route
             exact
             path="/store/:cat"

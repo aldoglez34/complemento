@@ -42,7 +42,7 @@ db.sequelize.sync({ force: false }).then(function() {
   // load fixtures files into the db
   // it's important that the process is finished in order
   sequelize_fixtures.loadFile("fixtures/*.json", models).then(function() {
-    console.log("\n\ndev data loaded successfully\n\n");
+    console.log("dev data loaded successfully");
   });
 
   // start server

@@ -22,7 +22,7 @@ export default {
   // ---------------------------------------------------------------------------
 
   fetchCategories: function() {
-    return axios.get("/api/store/category/all");
+    return axios.get("/api/store/categories");
   },
 
   fetchBrands: function() {

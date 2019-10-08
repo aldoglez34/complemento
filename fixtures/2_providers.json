@@ -1,0 +1,13 @@
+[
+  {
+    "model": "Provider",
+    "data": {
+      "providerId": 1,
+      "name": "Pronamed",
+      "address": "515 Hanover St. Stuart, FL 34997",
+      "rfc": "AAAAAAAAAAAA",
+      "email": "test@test.com",
+      "phone": "2281112031"
+    }
+  }
+]

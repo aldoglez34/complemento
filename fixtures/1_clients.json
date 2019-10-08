@@ -3,16 +3,16 @@
     "model": "Client",
     "data": {
       "clientId": "C7kTH27i1aSqbHgcgQwrtFuF3FO2",
-      "password": "123456",
       "name": "Aldo",
       "firstSurname": "Solano",
       "secondSurname": "González",
       "phone": "2281112031",
       "email": "aldoglez34@gmail.com",
+      "password": "123456",
       "street": "88 Canterbury St.",
       "city": "Richardson",
       "state": "Veracruz",
-      "zipCode": 75080,
+      "zipCode": "75080",
       "comments": null
     }
   }

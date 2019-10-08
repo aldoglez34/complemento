@@ -6,59 +6,30 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         primaryKey: true
       },
-      password: {
-        type: DataTypes.STRING(15),
-        allowNull: false,
-        validate: {
-          len: {
-            args: [6, 15]
-          }
-        }
-      },
       name: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-        validate: {
-          is: {
-            args: ["[a-zA-Z Á-Úá-ú][^1234567890]+$"]
-          }
-        }
+        type: DataTypes.STRING(30),
+        allowNull: false
       },
       firstSurname: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-        validate: {
-          is: {
-            args: ["[a-zA-Z Á-Úá-ú][^1234567890]+$"]
-          }
-        }
+        type: DataTypes.STRING(50),
+        allowNull: false
       },
       secondSurname: {
-        type: DataTypes.STRING(100),
-        validate: {
-          is: {
-            args: ["[a-zA-Z Á-Úá-ú][^1234567890]+$"]
-          }
-        }
+        type: DataTypes.STRING(50),
+        allowNull: false
       },
       phone: {
         type: DataTypes.STRING(10),
-        allowNull: false,
-        validate: {
-          not: {
-            args: ["[a-z]", "i"]
-          }
-        }
+        allowNull: false
       },
       email: {
         type: DataTypes.STRING(50),
         allowNull: false,
         isEmail: true
-        // validate: {
-        //   unique: {
-        //     msg: "Ya existe un correo así registrado."
-        //   }
-        // }
+      },
+      password: {
+        type: DataTypes.STRING(15),
+        allowNull: false
       },
       street: {
         type: DataTypes.STRING(150),
@@ -74,12 +45,7 @@ module.exports = function(sequelize, DataTypes) {
       },
       zipCode: {
         type: DataTypes.STRING(5),
-        allowNull: false,
-        validate: {
-          not: {
-            args: ["[a-z]", "i"]
-          }
-        }
+        allowNull: false
       },
       comments: {
         type: DataTypes.STRING(255),
@@ -91,7 +57,7 @@ module.exports = function(sequelize, DataTypes) {
         {
           unique: true,
           fields: ["email"],
-          msg: "Ya este email."
+          msg: "Este email ya se encuentra registrado."
         }
       ]
     }

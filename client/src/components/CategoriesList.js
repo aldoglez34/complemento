@@ -34,7 +34,7 @@ class CategoriesList extends Component {
                 return (
                   <Nav.Link
                     className="lead px-0 py-1 text-danger"
-                    key={category.categoryId}
+                    key={category.name}
                     href={"/store/" + category.name}
                   >
                     <i className="fas fa-caret-right mr-1" />
@@ -48,7 +48,7 @@ class CategoriesList extends Component {
                 return (
                   <Nav.Link
                     className="lead px-0 py-1 text-dark"
-                    key={category.categoryId}
+                    key={category.name}
                     href={"/store/" + category.name}
                   >
                     {category.name}

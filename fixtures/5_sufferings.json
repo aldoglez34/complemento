@@ -2,8 +2,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 1,
-      "categoryId": 10,
       "productId": 1,
       "name": "Depresión Reactiva"
     }
@@ -11,8 +9,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 2,
-      "categoryId": 10,
       "productId": 1,
       "name": "Depresión Unipolar Y Bipolar"
     }
@@ -20,8 +16,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 3,
-      "categoryId": 10,
       "productId": 2,
       "name": "Depresión Reactiva"
     }
@@ -29,8 +23,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 4,
-      "categoryId": 10,
       "productId": 2,
       "name": "Depresión Unipolar Y Bipolar"
     }
@@ -38,8 +30,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 5,
-      "categoryId": 10,
       "productId": 3,
       "name": "Parkinson"
     }
@@ -47,8 +37,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 6,
-      "categoryId": 10,
       "productId": 4,
       "name": "Jaquecas"
     }
@@ -56,8 +44,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 7,
-      "categoryId": 10,
       "productId": 4,
       "name": "Migraña"
     }
@@ -65,8 +51,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 8,
-      "categoryId": 10,
       "productId": 5,
       "name": "Ansiedad"
     }
@@ -74,8 +58,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 9,
-      "categoryId": 10,
       "productId": 5,
       "name": "Depresión Reactiva"
     }
@@ -83,8 +65,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 10,
-      "categoryId": 10,
       "productId": 5,
       "name": "Depresión Unipolar Y Bipolar"
     }
@@ -92,8 +72,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 11,
-      "categoryId": 10,
       "productId": 5,
       "name": "Estrés"
     }
@@ -101,8 +79,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 12,
-      "categoryId": 10,
       "productId": 5,
       "name": "Gastritis"
     }
@@ -110,8 +86,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 13,
-      "categoryId": 10,
       "productId": 5,
       "name": "Insomnio"
     }
@@ -119,8 +93,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 14,
-      "categoryId": 10,
       "productId": 5,
       "name": "Jaquecas"
     }
@@ -128,8 +100,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 15,
-      "categoryId": 10,
       "productId": 5,
       "name": "Nervios"
     }
@@ -137,8 +107,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 16,
-      "categoryId": 10,
       "productId": 6,
       "name": "Ansiedad"
     }
@@ -146,8 +114,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 17,
-      "categoryId": 10,
       "productId": 6,
       "name": "Astenia"
     }
@@ -155,8 +121,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 18,
-      "categoryId": 10,
       "productId": 6,
       "name": "Concentración Mental"
     }
@@ -164,8 +128,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 19,
-      "categoryId": 10,
       "productId": 6,
       "name": "Depresión Reactiva"
     }
@@ -173,8 +135,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 20,
-      "categoryId": 10,
       "productId": 6,
       "name": "Depresión Unipolar Y Bipolar"
     }
@@ -182,8 +142,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 21,
-      "categoryId": 10,
       "productId": 6,
       "name": "Estrés"
     }
@@ -191,8 +149,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 22,
-      "categoryId": 10,
       "productId": 7,
       "name": "Insomnio"
     }
@@ -200,8 +156,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 23,
-      "categoryId": 10,
       "productId": 8,
       "name": "Epilepsia"
     }
@@ -209,8 +163,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 24,
-      "categoryId": 10,
       "productId": 9,
       "name": "Jaquecas"
     }
@@ -218,8 +170,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 25,
-      "categoryId": 10,
       "productId": 9,
       "name": "Migraña"
     }
@@ -227,8 +177,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 26,
-      "categoryId": 10,
       "productId": 10,
       "name": "Ansiedad"
     }
@@ -236,8 +184,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 27,
-      "categoryId": 10,
       "productId": 10,
       "name": "Estrés"
     }
@@ -245,8 +191,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 28,
-      "categoryId": 10,
       "productId": 10,
       "name": "Insomnio"
     }
@@ -254,8 +198,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 29,
-      "categoryId": 10,
       "productId": 10,
       "name": "Nervios"
     }
@@ -263,8 +205,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 30,
-      "categoryId": 10,
       "productId": 11,
       "name": "Jaquecas"
     }
@@ -272,8 +212,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 31,
-      "categoryId": 10,
       "productId": 11,
       "name": "Migraña"
     }
@@ -281,8 +219,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 32,
-      "categoryId": 10,
       "productId": 12,
       "name": "Parkinson"
     }
@@ -290,8 +226,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 33,
-      "categoryId": 7,
       "productId": 13,
       "name": "Diabetes"
     }
@@ -299,8 +233,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 34,
-      "categoryId": 7,
       "productId": 14,
       "name": "Geriatría"
     }
@@ -308,8 +240,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 35,
-      "categoryId": 7,
       "productId": 14,
       "name": "Impotencia Sexual"
     }
@@ -317,8 +247,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 36,
-      "categoryId": 7,
       "productId": 14,
       "name": "Senilidad"
     }
@@ -326,8 +254,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 37,
-      "categoryId": 7,
       "productId": 15,
       "name": "Diabetes"
     }
@@ -335,8 +261,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 38,
-      "categoryId": 7,
       "productId": 15,
       "name": "Geriatría"
     }
@@ -344,8 +268,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 39,
-      "categoryId": 7,
       "productId": 15,
       "name": "Hígado"
     }
@@ -353,8 +275,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 40,
-      "categoryId": 7,
       "productId": 15,
       "name": "Insuficiencia Hepática"
     }
@@ -362,8 +282,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 41,
-      "categoryId": 7,
       "productId": 15,
       "name": "Insuficiencia Renal"
     }
@@ -371,8 +289,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 42,
-      "categoryId": 7,
       "productId": 15,
       "name": "Pre Menopausia"
     }
@@ -380,8 +296,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 43,
-      "categoryId": 7,
       "productId": 15,
       "name": "Próstata"
     }
@@ -389,8 +303,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 44,
-      "categoryId": 7,
       "productId": 15,
       "name": "Tiroides"
     }
@@ -398,8 +310,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 45,
-      "categoryId": 7,
       "productId": 15,
       "name": "Vesícula"
     }
@@ -407,8 +317,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 46,
-      "categoryId": 7,
       "productId": 15,
       "name": "Vitíligo"
     }
@@ -416,8 +324,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 47,
-      "categoryId": 7,
       "productId": 16,
       "name": "Glándulas Suprarrenales"
     }
@@ -425,8 +331,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 48,
-      "categoryId": 7,
       "productId": 16,
       "name": "Vitíligo"
     }
@@ -434,8 +338,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 49,
-      "categoryId": 2,
       "productId": 17,
       "name": "Psoriasis"
     }
@@ -443,8 +345,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 50,
-      "categoryId": 7,
       "productId": 18,
       "name": "Diabetes"
     }
@@ -452,8 +352,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 51,
-      "categoryId": 2,
       "productId": 19,
       "name": "Acné"
     }
@@ -461,8 +359,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 52,
-      "categoryId": 2,
       "productId": 20,
       "name": "Alopecia"
     }
@@ -470,8 +366,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 53,
-      "categoryId": 2,
       "productId": 21,
       "name": "Blefaritis"
     }
@@ -479,8 +373,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 54,
-      "categoryId": 2,
       "productId": 21,
       "name": "Conjuntivitis"
     }
@@ -488,8 +380,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 55,
-      "categoryId": 2,
       "productId": 22,
       "name": "Alergias"
     }
@@ -497,8 +387,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 56,
-      "categoryId": 2,
       "productId": 22,
       "name": "Eczemas"
     }
@@ -506,8 +394,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 57,
-      "categoryId": 2,
       "productId": 22,
       "name": "Eritemas"
     }
@@ -515,8 +401,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 58,
-      "categoryId": 2,
       "productId": 22,
       "name": "Escozor"
     }
@@ -524,8 +408,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 59,
-      "categoryId": 2,
       "productId": 22,
       "name": "Prurito"
     }
@@ -533,8 +415,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 60,
-      "categoryId": 2,
       "productId": 23,
       "name": "Dermatosis"
     }
@@ -542,8 +422,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 61,
-      "categoryId": 2,
       "productId": 23,
       "name": "Eczemas"
     }
@@ -551,8 +429,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 62,
-      "categoryId": 2,
       "productId": 23,
       "name": "Eritemas"
     }
@@ -560,8 +436,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 63,
-      "categoryId": 2,
       "productId": 23,
       "name": "Prurito"
     }
@@ -569,8 +443,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 64,
-      "categoryId": 2,
       "productId": 23,
       "name": "Psoriasis"
     }
@@ -578,8 +450,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 65,
-      "categoryId": 2,
       "productId": 24,
       "name": "Herpes Genital"
     }
@@ -587,8 +457,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 66,
-      "categoryId": 2,
       "productId": 24,
       "name": "Herpes Zoster"
     }
@@ -596,8 +464,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 67,
-      "categoryId": 2,
       "productId": 25,
       "name": "Blanqueadora De Cutis"
     }
@@ -605,8 +471,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 68,
-      "categoryId": 2,
       "productId": 26,
       "name": "Manchas En El Cutis"
     }
@@ -614,8 +478,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 69,
-      "categoryId": 2,
       "productId": 27,
       "name": "Repelente"
     }
@@ -623,8 +485,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 70,
-      "categoryId": 2,
       "productId": 28,
       "name": "Vitíligo"
     }
@@ -632,8 +492,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 71,
-      "categoryId": 2,
       "productId": 29,
       "name": "Dermatofitosis"
     }
@@ -641,8 +499,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 72,
-      "categoryId": 12,
       "productId": 30,
       "name": "Asma"
     }
@@ -650,8 +506,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 75,
-      "categoryId": 12,
       "productId": 31,
       "name": "Congestión Respiratoria"
     }
@@ -659,8 +513,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 76,
-      "categoryId": 12,
       "productId": 31,
       "name": "Estimulante De La Respiracion"
     }
@@ -668,8 +520,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 77,
-      "categoryId": 12,
       "productId": 31,
       "name": "Inhalaciones"
     }
@@ -677,8 +527,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 78,
-      "categoryId": 12,
       "productId": 32,
       "name": "Bronconeumonía"
     }
@@ -686,8 +534,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 79,
-      "categoryId": 12,
       "productId": 32,
       "name": "Bronquitis"
     }
@@ -695,8 +541,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 80,
-      "categoryId": 12,
       "productId": 32,
       "name": "Enfisema Pulmonar"
     }
@@ -704,8 +548,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 81,
-      "categoryId": 12,
       "productId": 32,
       "name": "Laringitis"
     }
@@ -713,8 +555,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 82,
-      "categoryId": 12,
       "productId": 32,
       "name": "Sinusitis"
     }
@@ -722,8 +562,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 83,
-      "categoryId": 12,
       "productId": 32,
       "name": "Tos"
     }
@@ -731,8 +569,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 84,
-      "categoryId": 12,
       "productId": 33,
       "name": "Asma Bronquial"
     }
@@ -740,8 +576,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 85,
-      "categoryId": 12,
       "productId": 33,
       "name": "Bronconeumonía"
     }
@@ -749,8 +583,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 86,
-      "categoryId": 12,
       "productId": 33,
       "name": "Bronquitis"
     }
@@ -758,8 +590,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 87,
-      "categoryId": 12,
       "productId": 33,
       "name": "Enfisema Pulmonar"
     }
@@ -767,8 +597,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 88,
-      "categoryId": 12,
       "productId": 33,
       "name": "Laringitis"
     }
@@ -776,8 +604,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 89,
-      "categoryId": 12,
       "productId": 33,
       "name": "Sinusitis"
     }
@@ -785,8 +611,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 90,
-      "categoryId": 12,
       "productId": 33,
       "name": "Tos"
     }
@@ -794,8 +618,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 91,
-      "categoryId": 12,
       "productId": 33,
       "name": "Tos Ferina"
     }
@@ -803,8 +625,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 92,
-      "categoryId": 12,
       "productId": 34,
       "name": "Fiebre"
     }
@@ -812,8 +632,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 93,
-      "categoryId": 12,
       "productId": 34,
       "name": "Sudorífico"
     }
@@ -821,8 +639,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 94,
-      "categoryId": 12,
       "productId": 35,
       "name": "Amigdalitis"
     }
@@ -830,8 +646,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 95,
-      "categoryId": 12,
       "productId": 35,
       "name": "Faringitis"
     }
@@ -839,8 +653,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 96,
-      "categoryId": 12,
       "productId": 35,
       "name": "Infecciones Respiratorias"
     }
@@ -848,8 +660,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 97,
-      "categoryId": 12,
       "productId": 35,
       "name": "Laringitis"
     }
@@ -857,8 +667,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 98,
-      "categoryId": 12,
       "productId": 36,
       "name": "Amigdalitis"
     }
@@ -866,8 +674,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 99,
-      "categoryId": 12,
       "productId": 36,
       "name": "Faringitis"
     }
@@ -875,8 +681,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 100,
-      "categoryId": 12,
       "productId": 36,
       "name": "Gingivitis"
     }
@@ -884,8 +688,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 101,
-      "categoryId": 12,
       "productId": 36,
       "name": "Infecciones Respiratorias"
     }
@@ -893,8 +695,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 102,
-      "categoryId": 12,
       "productId": 36,
       "name": "Laringitis"
     }
@@ -902,8 +702,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 103,
-      "categoryId": 12,
       "productId": 37,
       "name": "Asma Bronquial"
     }
@@ -911,8 +709,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 104,
-      "categoryId": 12,
       "productId": 37,
       "name": "Bronconeumonía"
     }
@@ -920,8 +716,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 105,
-      "categoryId": 12,
       "productId": 37,
       "name": "Congestión Respiratoria"
     }
@@ -929,8 +723,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 106,
-      "categoryId": 12,
       "productId": 37,
       "name": "Enfisema Pulmonar"
     }
@@ -938,8 +730,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 107,
-      "categoryId": 12,
       "productId": 37,
       "name": "Faringitis"
     }
@@ -947,8 +737,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 108,
-      "categoryId": 12,
       "productId": 37,
       "name": "Infecciones Respiratorias"
     }
@@ -956,8 +744,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 109,
-      "categoryId": 12,
       "productId": 37,
       "name": "Laringitis"
     }
@@ -965,8 +751,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 110,
-      "categoryId": 12,
       "productId": 37,
       "name": "Sinusitis"
     }
@@ -974,8 +758,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 111,
-      "categoryId": 12,
       "productId": 38,
       "name": "Tos"
     }
@@ -983,8 +765,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 112,
-      "categoryId": 12,
       "productId": 38,
       "name": "Tos Ferina"
     }
@@ -992,8 +772,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 113,
-      "categoryId": 12,
       "productId": 39,
       "name": "Congestión Respiratoria"
     }
@@ -1001,8 +779,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 114,
-      "categoryId": 12,
       "productId": 39,
       "name": "Disnea"
     }
@@ -1010,8 +786,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 115,
-      "categoryId": 12,
       "productId": 39,
       "name": "Inhalaciones"
     }
@@ -1019,8 +793,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 116,
-      "categoryId": 12,
       "productId": 40,
       "name": "Asma Bronquial"
     }
@@ -1028,8 +800,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 117,
-      "categoryId": 12,
       "productId": 40,
       "name": "Tos"
     }
@@ -1037,8 +807,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 118,
-      "categoryId": 12,
       "productId": 41,
       "name": "Fiebre"
     }
@@ -1046,8 +814,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 119,
-      "categoryId": 12,
       "productId": 42,
       "name": "Amigdalitis"
     }
@@ -1055,8 +821,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 120,
-      "categoryId": 12,
       "productId": 42,
       "name": "Faringitis"
     }
@@ -1064,8 +828,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 121,
-      "categoryId": 12,
       "productId": 42,
       "name": "Laringitis"
     }
@@ -1073,8 +835,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 122,
-      "categoryId": 12,
       "productId": 43,
       "name": "Congestión Respiratoria"
     }
@@ -1082,8 +842,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 123,
-      "categoryId": 12,
       "productId": 43,
       "name": "Mucolítico"
     }
@@ -1091,8 +849,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 124,
-      "categoryId": 12,
       "productId": 43,
       "name": "Sinusitis"
     }
@@ -1100,8 +856,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 125,
-      "categoryId": 12,
       "productId": 44,
       "name": "Bronquitis"
     }
@@ -1109,8 +863,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 126,
-      "categoryId": 12,
       "productId": 44,
       "name": "Congestión Respiratoria"
     }
@@ -1118,8 +870,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 127,
-      "categoryId": 12,
       "productId": 44,
       "name": "Tos"
     }
@@ -1127,8 +877,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 128,
-      "categoryId": 12,
       "productId": 45,
       "name": "Catarro Común"
     }
@@ -1136,8 +884,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 129,
-      "categoryId": 12,
       "productId": 45,
       "name": "Congestión Respiratoria"
     }
@@ -1145,8 +891,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 130,
-      "categoryId": 12,
       "productId": 46,
       "name": "Bronconeumonía"
     }
@@ -1154,8 +898,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 131,
-      "categoryId": 12,
       "productId": 46,
       "name": "Bronquitis"
     }
@@ -1163,8 +905,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 132,
-      "categoryId": 12,
       "productId": 46,
       "name": "Tos"
     }
@@ -1172,8 +912,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 133,
-      "categoryId": 12,
       "productId": 47,
       "name": "Bronquitis"
     }
@@ -1181,8 +919,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 134,
-      "categoryId": 12,
       "productId": 47,
       "name": "Mucolítico"
     }
@@ -1190,8 +926,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 135,
-      "categoryId": 12,
       "productId": 47,
       "name": "Sinusitis"
     }
@@ -1199,8 +933,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 136,
-      "categoryId": 12,
       "productId": 47,
       "name": "Tos Ferina"
     }
@@ -1208,8 +940,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 137,
-      "categoryId": 12,
       "productId": 48,
       "name": "Tos"
     }
@@ -1217,8 +947,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 138,
-      "categoryId": 12,
       "productId": 49,
       "name": "Alergias"
     }
@@ -1226,8 +954,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 139,
-      "categoryId": 12,
       "productId": 49,
       "name": "Asma"
     }
@@ -1235,8 +961,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 140,
-      "categoryId": 12,
       "productId": 49,
       "name": "Asma Bronquial"
     }
@@ -1244,8 +968,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 141,
-      "categoryId": 4,
       "productId": 50,
       "name": "Hipertensión"
     }
@@ -1253,8 +975,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 142,
-      "categoryId": 4,
       "productId": 51,
       "name": "Hipertensión"
     }
@@ -1262,8 +982,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 143,
-      "categoryId": 4,
       "productId": 52,
       "name": "Astenia Neurocirculatoria"
     }
@@ -1271,8 +989,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 144,
-      "categoryId": 4,
       "productId": 52,
       "name": "Dolor Precordial"
     }
@@ -1280,8 +996,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 145,
-      "categoryId": 4,
       "productId": 52,
       "name": "Neurotonia Cardíaca"
     }
@@ -1289,8 +1003,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 146,
-      "categoryId": 4,
       "productId": 52,
       "name": "Palpitaciones cardíacas"
     }
@@ -1298,8 +1010,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 147,
-      "categoryId": 4,
       "productId": 52,
       "name": "Taquicardia"
     }
@@ -1307,8 +1017,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 148,
-      "categoryId": 4,
       "productId": 53,
       "name": "Cicatrizante"
     }
@@ -1316,8 +1024,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 149,
-      "categoryId": 4,
       "productId": 53,
       "name": "Dermatosis"
     }
@@ -1325,8 +1031,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 150,
-      "categoryId": 4,
       "productId": 53,
       "name": "Hemostático"
     }
@@ -1334,8 +1038,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 151,
-      "categoryId": 4,
       "productId": 54,
       "name": "Astenia Neurocirculatoria"
     }
@@ -1343,8 +1045,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 152,
-      "categoryId": 4,
       "productId": 54,
       "name": "Ateroma"
     }
@@ -1352,8 +1052,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 153,
-      "categoryId": 4,
       "productId": 54,
       "name": "Hemorroides"
     }
@@ -1361,8 +1059,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 154,
-      "categoryId": 4,
       "productId": 54,
       "name": "Insuficiencia Vascular Cerebral"
     }
@@ -1370,8 +1066,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 155,
-      "categoryId": 4,
       "productId": 54,
       "name": "Isquemia"
     }
@@ -1379,8 +1073,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 156,
-      "categoryId": 4,
       "productId": 54,
       "name": "Trombosis"
     }
@@ -1388,8 +1080,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 157,
-      "categoryId": 4,
       "productId": 54,
       "name": "Úlceras Varicosas"
     }
@@ -1397,8 +1087,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 158,
-      "categoryId": 4,
       "productId": 54,
       "name": "Varices"
     }
@@ -1406,8 +1094,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 159,
-      "categoryId": 4,
       "productId": 55,
       "name": "Hipotensión"
     }
@@ -1415,8 +1101,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 160,
-      "categoryId": 4,
       "productId": 56,
       "name": "Arterioesclerosis"
     }
@@ -1424,8 +1108,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 161,
-      "categoryId": 4,
       "productId": 56,
       "name": "Colesterol"
     }
@@ -1433,8 +1115,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 162,
-      "categoryId": 4,
       "productId": 56,
       "name": "Hipercolesterolemia"
     }
@@ -1442,8 +1122,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 163,
-      "categoryId": 4,
       "productId": 56,
       "name": "Obesidad"
     }
@@ -1451,8 +1129,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 164,
-      "categoryId": 4,
       "productId": 57,
       "name": "Hemostático"
     }
@@ -1460,8 +1136,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 165,
-      "categoryId": 4,
       "productId": 58,
       "name": "Hemostático"
     }
@@ -1469,8 +1143,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 166,
-      "categoryId": 4,
       "productId": 58,
       "name": "Metrorragia"
     }
@@ -1478,8 +1150,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 167,
-      "categoryId": 4,
       "productId": 59,
       "name": "Hemorroides"
     }
@@ -1487,8 +1157,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 168,
-      "categoryId": 4,
       "productId": 60,
       "name": "Hemorroides"
     }
@@ -1496,8 +1164,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 169,
-      "categoryId": 4,
       "productId": 61,
       "name": "Alzheimer"
     }
@@ -1505,8 +1171,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 170,
-      "categoryId": 4,
       "productId": 61,
       "name": "Concentración Mental"
     }
@@ -1514,8 +1178,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 171,
-      "categoryId": 4,
       "productId": 61,
       "name": "Insuficiencia Vascular Cerebral"
     }
@@ -1523,8 +1185,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 172,
-      "categoryId": 4,
       "productId": 61,
       "name": "Mareos"
     }
@@ -1532,8 +1192,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 173,
-      "categoryId": 4,
       "productId": 61,
       "name": "Neurastenia"
     }
@@ -1541,8 +1199,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 174,
-      "categoryId": 4,
       "productId": 62,
       "name": "Arterioesclerosis"
     }
@@ -1550,8 +1206,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 175,
-      "categoryId": 4,
       "productId": 62,
       "name": "Concentración Mental"
     }
@@ -1559,8 +1213,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 176,
-      "categoryId": 4,
       "productId": 62,
       "name": "Impotencia Sexual"
     }
@@ -1568,8 +1220,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 177,
-      "categoryId": 4,
       "productId": 62,
       "name": "Insuficiencia Vascular Cerebral"
     }
@@ -1577,8 +1227,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 178,
-      "categoryId": 4,
       "productId": 62,
       "name": "Migraña"
     }
@@ -1586,8 +1234,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 179,
-      "categoryId": 4,
       "productId": 62,
       "name": "Neurastenia"
     }
@@ -1595,8 +1241,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 180,
-      "categoryId": 4,
       "productId": 63,
       "name": "Arterioesclerosis"
     }
@@ -1604,8 +1248,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 181,
-      "categoryId": 4,
       "productId": 63,
       "name": "Ateroma"
     }
@@ -1613,8 +1255,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 182,
-      "categoryId": 4,
       "productId": 63,
       "name": "Colesterol"
     }
@@ -1622,8 +1262,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 183,
-      "categoryId": 4,
       "productId": 63,
       "name": "Hipercolesterolemia"
     }
@@ -1631,8 +1269,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 184,
-      "categoryId": 4,
       "productId": 63,
       "name": "Insuficiencia Vascular Cerebral"
     }
@@ -1640,8 +1276,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 185,
-      "categoryId": 4,
       "productId": 63,
       "name": "Isquemia"
     }
@@ -1649,8 +1283,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 186,
-      "categoryId": 4,
       "productId": 64,
       "name": "Hipertensión"
     }
@@ -1658,8 +1290,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 187,
-      "categoryId": 4,
       "productId": 65,
       "name": "Infecciones Intestinales"
     }
@@ -1667,8 +1297,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 188,
-      "categoryId": 4,
       "productId": 65,
       "name": "Parasitosis"
     }
@@ -1676,8 +1304,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 189,
-      "categoryId": 4,
       "productId": 65,
       "name": "Salmonelosis"
     }
@@ -1685,8 +1311,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 190,
-      "categoryId": 4,
       "productId": 65,
       "name": "Tifoidea"
     }
@@ -1694,8 +1318,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 191,
-      "categoryId": 4,
       "productId": 66,
       "name": "Isquemia"
     }
@@ -1703,8 +1325,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 192,
-      "categoryId": 4,
       "productId": 66,
       "name": "Úlceras Varicosas"
     }
@@ -1712,8 +1332,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 193,
-      "categoryId": 4,
       "productId": 66,
       "name": "Varices"
     }
@@ -1721,8 +1339,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 194,
-      "categoryId": 4,
       "productId": 67,
       "name": "Cicatrizante"
     }
@@ -1730,8 +1346,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 195,
-      "categoryId": 4,
       "productId": 67,
       "name": "Úlceras Varicosas"
     }
@@ -1739,8 +1353,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 196,
-      "categoryId": 4,
       "productId": 68,
       "name": "Varices"
     }
@@ -1748,8 +1360,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 197,
-      "categoryId": 4,
       "productId": 69,
       "name": "Arterioesclerosis"
     }
@@ -1757,8 +1367,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 198,
-      "categoryId": 4,
       "productId": 69,
       "name": "Colesterol"
     }
@@ -1766,8 +1374,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 199,
-      "categoryId": 4,
       "productId": 69,
       "name": "Hipercolesterolemia"
     }
@@ -1775,8 +1381,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 203,
-      "categoryId": 4,
       "productId": 70,
       "name": "Ateroma"
     }
@@ -1784,8 +1388,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 204,
-      "categoryId": 4,
       "productId": 70,
       "name": "Isquemia"
     }
@@ -1793,8 +1395,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 205,
-      "categoryId": 4,
       "productId": 70,
       "name": "Úlceras Varicosas"
     }
@@ -1802,8 +1402,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 206,
-      "categoryId": 4,
       "productId": 70,
       "name": "Varices"
     }
@@ -1811,8 +1409,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 207,
-      "categoryId": 4,
       "productId": 71,
       "name": "Arterioesclerosis"
     }
@@ -1820,8 +1416,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 208,
-      "categoryId": 4,
       "productId": 71,
       "name": "Colesterol"
     }
@@ -1829,8 +1423,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 209,
-      "categoryId": 4,
       "productId": 71,
       "name": "Hígado"
     }
@@ -1838,8 +1430,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 210,
-      "categoryId": 4,
       "productId": 71,
       "name": "Hipercolesterolemia"
     }
@@ -1847,8 +1437,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 211,
-      "categoryId": 4,
       "productId": 72,
       "name": "Hipertensión"
     }
@@ -1856,8 +1444,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 212,
-      "categoryId": 5,
       "productId": 73,
       "name": "Acné"
     }
@@ -1865,8 +1451,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 213,
-      "categoryId": 5,
       "productId": 73,
       "name": "Cálculos Biliares"
     }
@@ -1874,8 +1458,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 214,
-      "categoryId": 5,
       "productId": 73,
       "name": "Colesterol"
     }
@@ -1883,8 +1465,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 215,
-      "categoryId": 5,
       "productId": 73,
       "name": "Hígado"
     }
@@ -1892,8 +1472,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 216,
-      "categoryId": 5,
       "productId": 73,
       "name": "Insuficiencia Hepática"
     }
@@ -1901,8 +1479,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 217,
-      "categoryId": 5,
       "productId": 74,
       "name": "Colitis"
     }
@@ -1910,8 +1486,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 218,
-      "categoryId": 5,
       "productId": 75,
       "name": "Digestión"
     }
@@ -1919,8 +1493,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 219,
-      "categoryId": 5,
       "productId": 75,
       "name": "Flatulencias"
     }
@@ -1928,8 +1500,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 220,
-      "categoryId": 5,
       "productId": 75,
       "name": "Halitosis"
     }
@@ -1937,8 +1507,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 221,
-      "categoryId": 5,
       "productId": 75,
       "name": "Hipermotilidad Intestinal"
     }
@@ -1946,8 +1514,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 222,
-      "categoryId": 5,
       "productId": 75,
       "name": "Indigestión"
     }
@@ -1955,8 +1521,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 223,
-      "categoryId": 5,
       "productId": 76,
       "name": "Mareos"
     }
@@ -1964,8 +1528,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 224,
-      "categoryId": 5,
       "productId": 76,
       "name": "Náuseas"
     }
@@ -1973,8 +1535,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 225,
-      "categoryId": 5,
       "productId": 77,
       "name": "Mareos"
     }
@@ -1982,8 +1542,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 226,
-      "categoryId": 5,
       "productId": 77,
       "name": "Náuseas"
     }
@@ -1991,8 +1549,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 227,
-      "categoryId": 5,
       "productId": 78,
       "name": "Colitis"
     }
@@ -2000,8 +1556,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 228,
-      "categoryId": 5,
       "productId": 78,
       "name": "Diarrea"
     }
@@ -2009,8 +1563,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 229,
-      "categoryId": 5,
       "productId": 78,
       "name": "Infecciones Intestinales"
     }
@@ -2018,8 +1570,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 230,
-      "categoryId": 5,
       "productId": 78,
       "name": "Parasitosis"
     }
@@ -2027,8 +1577,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 231,
-      "categoryId": 5,
       "productId": 78,
       "name": "Salmonelosis"
     }
@@ -2036,8 +1584,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 232,
-      "categoryId": 5,
       "productId": 78,
       "name": "Tifoidea"
     }
@@ -2045,8 +1591,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 233,
-      "categoryId": 5,
       "productId": 79,
       "name": "Diarrea"
     }
@@ -2054,8 +1598,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 234,
-      "categoryId": 5,
       "productId": 79,
       "name": "Parasitosis"
     }
@@ -2063,8 +1605,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 235,
-      "categoryId": 5,
       "productId": 80,
       "name": "Hipermotilidad Intestinal"
     }
@@ -2072,8 +1612,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 236,
-      "categoryId": 5,
       "productId": 80,
       "name": "Indigestión"
     }
@@ -2081,8 +1619,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 237,
-      "categoryId": 5,
       "productId": 80,
       "name": "Moderador Estomacal"
     }
@@ -2090,8 +1626,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 238,
-      "categoryId": 5,
       "productId": 81,
       "name": "Colitis"
     }
@@ -2099,8 +1633,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 239,
-      "categoryId": 5,
       "productId": 81,
       "name": "Flatulencias"
     }
@@ -2108,8 +1640,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 240,
-      "categoryId": 5,
       "productId": 82,
       "name": "Acidosis"
     }
@@ -2117,8 +1647,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 241,
-      "categoryId": 5,
       "productId": 82,
       "name": "Gastritis"
     }
@@ -2126,8 +1654,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 242,
-      "categoryId": 5,
       "productId": 82,
       "name": "Hernia Hiatal"
     }
@@ -2135,8 +1661,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 243,
-      "categoryId": 5,
       "productId": 82,
       "name": "Hiper Acidez Gástrica"
     }
@@ -2144,8 +1668,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 244,
-      "categoryId": 5,
       "productId": 82,
       "name": "Úlceras Pépticas"
     }
@@ -2153,8 +1675,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 245,
-      "categoryId": 5,
       "productId": 83,
       "name": "Hernia Hiatal"
     }
@@ -2162,8 +1682,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 246,
-      "categoryId": 5,
       "productId": 83,
       "name": "Úlceras Pépticas"
     }
@@ -2171,8 +1689,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 247,
-      "categoryId": 5,
       "productId": 84,
       "name": "Hernia Hiatal"
     }
@@ -2180,8 +1696,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 248,
-      "categoryId": 5,
       "productId": 85,
       "name": "Amigdalitis"
     }
@@ -2189,8 +1703,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 249,
-      "categoryId": 5,
       "productId": 85,
       "name": "Digestión"
     }
@@ -2198,8 +1710,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 250,
-      "categoryId": 5,
       "productId": 85,
       "name": "Faringitis"
     }
@@ -2207,8 +1717,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 251,
-      "categoryId": 5,
       "productId": 85,
       "name": "Gingivitis"
     }
@@ -2216,8 +1724,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 252,
-      "categoryId": 5,
       "productId": 85,
       "name": "Halitosis"
     }
@@ -2225,8 +1731,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 253,
-      "categoryId": 5,
       "productId": 85,
       "name": "Laringitis"
     }
@@ -2234,8 +1738,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 254,
-      "categoryId": 5,
       "productId": 86,
       "name": "Estreñimiento"
     }
@@ -2243,8 +1745,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 255,
-      "categoryId": 5,
       "productId": 87,
       "name": "Estreñimiento"
     }
@@ -2252,8 +1752,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 256,
-      "categoryId": 5,
       "productId": 88,
       "name": "Colitis"
     }
@@ -2261,8 +1759,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 257,
-      "categoryId": 5,
       "productId": 88,
       "name": "Digestión"
     }
@@ -2270,8 +1766,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 258,
-      "categoryId": 5,
       "productId": 88,
       "name": "Estreñimiento"
     }
@@ -2279,8 +1773,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 259,
-      "categoryId": 5,
       "productId": 88,
       "name": "Flatulencias"
     }
@@ -2288,8 +1780,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 260,
-      "categoryId": 5,
       "productId": 88,
       "name": "Gastritis"
     }
@@ -2297,8 +1787,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 261,
-      "categoryId": 5,
       "productId": 88,
       "name": "Hemorroides"
     }
@@ -2306,8 +1794,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 262,
-      "categoryId": 5,
       "productId": 88,
       "name": "Peso (Reductor)"
     }
@@ -2315,8 +1801,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 263,
-      "categoryId": 5,
       "productId": 88,
       "name": "Úlceras Pépticas"
     }
@@ -2324,8 +1808,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 264,
-      "categoryId": 5,
       "productId": 89,
       "name": "Acné"
     }
@@ -2333,8 +1815,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 265,
-      "categoryId": 5,
       "productId": 89,
       "name": "Eczemas"
     }
@@ -2342,8 +1822,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 266,
-      "categoryId": 5,
       "productId": 89,
       "name": "Hígado"
     }
@@ -2351,8 +1829,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 267,
-      "categoryId": 5,
       "productId": 89,
       "name": "Insuficiencia Hepática"
     }
@@ -2360,8 +1836,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 268,
-      "categoryId": 5,
       "productId": 89,
       "name": "Insuficiencia Renal"
     }
@@ -2369,8 +1843,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 269,
-      "categoryId": 5,
       "productId": 89,
       "name": "Purificación Sanguínea"
     }
@@ -2378,8 +1850,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 270,
-      "categoryId": 5,
       "productId": 90,
       "name": "Anticolinérgico"
     }
@@ -2387,8 +1857,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 271,
-      "categoryId": 5,
       "productId": 90,
       "name": "Antiespasmódico"
     }
@@ -2396,8 +1864,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 272,
-      "categoryId": 5,
       "productId": 90,
       "name": "Diarrea"
     }
@@ -2405,8 +1871,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 273,
-      "categoryId": 5,
       "productId": 91,
       "name": "Diarrea"
     }
@@ -2414,8 +1878,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 274,
-      "categoryId": 5,
       "productId": 91,
       "name": "Hipermotilidad Intestinal"
     }
@@ -2423,8 +1885,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 275,
-      "categoryId": 5,
       "productId": 92,
       "name": "Diarrea"
     }
@@ -2432,8 +1892,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 276,
-      "categoryId": 5,
       "productId": 92,
       "name": "Hipermotilidad Intestinal"
     }
@@ -2441,8 +1899,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 277,
-      "categoryId": 5,
       "productId": 93,
       "name": "Cálculos Biliares"
     }
@@ -2450,8 +1906,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 278,
-      "categoryId": 5,
       "productId": 93,
       "name": "Colagogo"
     }
@@ -2459,8 +1913,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 279,
-      "categoryId": 5,
       "productId": 93,
       "name": "Hígado"
     }
@@ -2468,8 +1920,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 280,
-      "categoryId": 5,
       "productId": 93,
       "name": "Vesícula"
     }
@@ -2477,8 +1927,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 281,
-      "categoryId": 5,
       "productId": 94,
       "name": "Diarrea"
     }
@@ -2486,8 +1934,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 282,
-      "categoryId": 5,
       "productId": 94,
       "name": "Parasitosis"
     }
@@ -2495,8 +1941,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 283,
-      "categoryId": 5,
       "productId": 95,
       "name": "Colagogo"
     }
@@ -2504,8 +1948,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 284,
-      "categoryId": 5,
       "productId": 95,
       "name": "Hígado"
     }
@@ -2513,8 +1955,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 285,
-      "categoryId": 5,
       "productId": 95,
       "name": "Vesícula"
     }
@@ -2522,8 +1962,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 286,
-      "categoryId": 5,
       "productId": 96,
       "name": "Hígado"
     }
@@ -2531,8 +1969,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 287,
-      "categoryId": 5,
       "productId": 96,
       "name": "Insuficiencia Hepática"
     }
@@ -2540,8 +1976,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 288,
-      "categoryId": 5,
       "productId": 96,
       "name": "Purificación Sanguínea"
     }
@@ -2549,8 +1983,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 289,
-      "categoryId": 11,
       "productId": 97,
       "name": "Alimentación"
     }
@@ -2558,8 +1990,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 290,
-      "categoryId": 11,
       "productId": 97,
       "name": "Anemias"
     }
@@ -2567,8 +1997,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 291,
-      "categoryId": 11,
       "productId": 97,
       "name": "Energético"
     }
@@ -2576,8 +2004,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 292,
-      "categoryId": 11,
       "productId": 97,
       "name": "Vigorizante"
     }
@@ -2585,8 +2011,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 293,
-      "categoryId": 11,
       "productId": 98,
       "name": "Anorexia"
     }
@@ -2594,8 +2018,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 294,
-      "categoryId": 11,
       "productId": 98,
       "name": "Inapetencia"
     }
@@ -2603,8 +2025,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 295,
-      "categoryId": 11,
       "productId": 99,
       "name": "Anemias"
     }
@@ -2612,8 +2032,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 296,
-      "categoryId": 11,
       "productId": 99,
       "name": "Deficiencias Vitamínicas"
     }
@@ -2621,8 +2039,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 297,
-      "categoryId": 11,
       "productId": 99,
       "name": "Eritropoyetico"
     }
@@ -2630,8 +2046,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 298,
-      "categoryId": 11,
       "productId": 100,
       "name": "Anemias"
     }
@@ -2639,8 +2053,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 299,
-      "categoryId": 11,
       "productId": 100,
       "name": "Avitaminosis"
     }
@@ -2648,8 +2060,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 300,
-      "categoryId": 11,
       "productId": 100,
       "name": "Deficiencias Vitamínicas"
     }
@@ -2657,8 +2067,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 301,
-      "categoryId": 11,
       "productId": 100,
       "name": "Desnutrición"
     }
@@ -2666,8 +2074,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 302,
-      "categoryId": 11,
       "productId": 101,
       "name": "Obesidad"
     }
@@ -2675,8 +2081,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 303,
-      "categoryId": 11,
       "productId": 101,
       "name": "Peso (Reductor)"
     }
@@ -2684,8 +2088,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 304,
-      "categoryId": 11,
       "productId": 102,
       "name": "Alimentación"
     }
@@ -2693,8 +2095,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 305,
-      "categoryId": 11,
       "productId": 102,
       "name": "Astenia"
     }
@@ -2702,8 +2102,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 306,
-      "categoryId": 11,
       "productId": 102,
       "name": "Desnutrición"
     }
@@ -2711,8 +2109,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 307,
-      "categoryId": 11,
       "productId": 102,
       "name": "Impotencia Sexual"
     }
@@ -2720,8 +2116,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 308,
-      "categoryId": 11,
       "productId": 103,
       "name": "Concentración Mental"
     }
@@ -2729,8 +2123,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 309,
-      "categoryId": 11,
       "productId": 103,
       "name": "Hemorroides"
     }
@@ -2738,8 +2130,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 310,
-      "categoryId": 11,
       "productId": 103,
       "name": "Impotencia Sexual"
     }
@@ -2747,8 +2137,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 311,
-      "categoryId": 11,
       "productId": 103,
       "name": "Neurastenia"
     }
@@ -2756,8 +2144,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 312,
-      "categoryId": 11,
       "productId": 103,
       "name": "Senilidad"
     }
@@ -2765,8 +2151,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 313,
-      "categoryId": 11,
       "productId": 103,
       "name": "Varices"
     }
@@ -2774,8 +2158,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 314,
-      "categoryId": 11,
       "productId": 104,
       "name": "Antioxidante"
     }
@@ -2783,8 +2165,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 315,
-      "categoryId": 11,
       "productId": 104,
       "name": "Baja Inmunidad"
     }
@@ -2792,8 +2172,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 316,
-      "categoryId": 11,
       "productId": 105,
       "name": "Alimentación"
     }
@@ -2801,8 +2179,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 317,
-      "categoryId": 11,
       "productId": 105,
       "name": "Astenia"
     }
@@ -2810,8 +2186,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 318,
-      "categoryId": 11,
       "productId": 106,
       "name": "Avitaminosis"
     }
@@ -2819,8 +2193,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 319,
-      "categoryId": 11,
       "productId": 106,
       "name": "Deficiencias Vitamínicas"
     }
@@ -2828,8 +2200,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 320,
-      "categoryId": 11,
       "productId": 106,
       "name": "Energético"
     }
@@ -2837,8 +2207,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 321,
-      "categoryId": 11,
       "productId": 106,
       "name": "Vigorizante"
     }
@@ -2846,8 +2214,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 322,
-      "categoryId": 11,
       "productId": 107,
       "name": "Astenia"
     }
@@ -2855,8 +2221,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 323,
-      "categoryId": 11,
       "productId": 107,
       "name": "Deficiencias Vitamínicas"
     }
@@ -2864,8 +2228,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 324,
-      "categoryId": 11,
       "productId": 107,
       "name": "Inapetencia"
     }
@@ -2873,8 +2235,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 325,
-      "categoryId": 11,
       "productId": 107,
       "name": "Vigorizante"
     }
@@ -2882,8 +2242,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 326,
-      "categoryId": 11,
       "productId": 108,
       "name": "Avitaminosis"
     }
@@ -2891,8 +2249,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 327,
-      "categoryId": 8,
       "productId": 109,
       "name": "Cáncer De Mama"
     }
@@ -2900,8 +2256,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 328,
-      "categoryId": 8,
       "productId": 109,
       "name": "Neoplasia"
     }
@@ -2909,8 +2263,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 329,
-      "categoryId": 8,
       "productId": 109,
       "name": "Neuroblastoma"
     }
@@ -2918,8 +2270,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 330,
-      "categoryId": 8,
       "productId": 109,
       "name": "Próstata"
     }
@@ -2927,8 +2277,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 331,
-      "categoryId": 8,
       "productId": 109,
       "name": "Quistes En El Pecho"
     }
@@ -2936,8 +2284,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 332,
-      "categoryId": 8,
       "productId": 109,
       "name": "Quistes Ováricos"
     }
@@ -2945,8 +2291,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 333,
-      "categoryId": 8,
       "productId": 109,
       "name": "Sarcomas"
     }
@@ -2954,8 +2298,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 334,
-      "categoryId": 8,
       "productId": 109,
       "name": "Vejiga"
     }
@@ -2963,8 +2305,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 335,
-      "categoryId": 8,
       "productId": 110,
       "name": "Antioxidante"
     }
@@ -2972,8 +2312,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 336,
-      "categoryId": 8,
       "productId": 110,
       "name": "Baja Inmunidad"
     }
@@ -2981,8 +2319,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 337,
-      "categoryId": 8,
       "productId": 110,
       "name": "Digestión"
     }
@@ -2990,8 +2326,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 338,
-      "categoryId": 8,
       "productId": 110,
       "name": "Halitosis"
     }
@@ -2999,8 +2333,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 339,
-      "categoryId": 8,
       "productId": 110,
       "name": "Inmunodeficiencia"
     }
@@ -3008,8 +2340,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 340,
-      "categoryId": 8,
       "productId": 111,
       "name": "Infecciones Intestinales"
     }
@@ -3017,8 +2347,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 341,
-      "categoryId": 8,
       "productId": 111,
       "name": "Inmunodeficiencia"
     }
@@ -3026,8 +2354,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 342,
-      "categoryId": 8,
       "productId": 111,
       "name": "Laringitis"
     }
@@ -3035,8 +2361,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 343,
-      "categoryId": 8,
       "productId": 111,
       "name": "Tifoidea"
     }
@@ -3044,8 +2368,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 344,
-      "categoryId": 8,
       "productId": 111,
       "name": "Tos Ferina"
     }
@@ -3053,8 +2375,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 345,
-      "categoryId": 8,
       "productId": 112,
       "name": "Oxidación"
     }
@@ -3062,8 +2382,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 346,
-      "categoryId": 8,
       "productId": 113,
       "name": "Baja Inmunidad"
     }
@@ -3071,8 +2389,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 347,
-      "categoryId": 8,
       "productId": 113,
       "name": "Inmunodeficiencia"
     }
@@ -3080,8 +2396,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 348,
-      "categoryId": 8,
       "productId": 114,
       "name": "Quistes En El Pecho"
     }
@@ -3089,8 +2403,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 349,
-      "categoryId": 8,
       "productId": 114,
       "name": "Tumores En Crecimiento"
     }
@@ -3098,8 +2410,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 350,
-      "categoryId": 8,
       "productId": 115,
       "name": "Quistes Ováricos"
     }
@@ -3107,8 +2417,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 351,
-      "categoryId": 8,
       "productId": 115,
       "name": "Tumores En Crecimiento"
     }
@@ -3116,8 +2424,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 352,
-      "categoryId": 8,
       "productId": 116,
       "name": "Cáncer De Mama"
     }
@@ -3125,8 +2431,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 353,
-      "categoryId": 8,
       "productId": 116,
       "name": "Inmunodeficiencia"
     }
@@ -3134,8 +2438,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 354,
-      "categoryId": 8,
       "productId": 116,
       "name": "Neoplasia"
     }
@@ -3143,8 +2445,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 355,
-      "categoryId": 8,
       "productId": 116,
       "name": "Próstata"
     }
@@ -3152,8 +2452,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 356,
-      "categoryId": 8,
       "productId": 116,
       "name": "Purificación Sanguínea"
     }
@@ -3161,8 +2459,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 357,
-      "categoryId": 8,
       "productId": 116,
       "name": "Quistes En El Pecho"
     }
@@ -3170,8 +2466,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 358,
-      "categoryId": 8,
       "productId": 116,
       "name": "Sarcomas"
     }
@@ -3179,8 +2473,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 359,
-      "categoryId": 8,
       "productId": 117,
       "name": "Cáncer De Mama"
     }
@@ -3188,8 +2480,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 360,
-      "categoryId": 8,
       "productId": 117,
       "name": "Próstata"
     }
@@ -3197,8 +2487,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 361,
-      "categoryId": 8,
       "productId": 117,
       "name": "Quistes En El Pecho"
     }
@@ -3206,8 +2494,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 362,
-      "categoryId": 8,
       "productId": 117,
       "name": "Sarcomas"
     }
@@ -3215,8 +2501,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 363,
-      "categoryId": 8,
       "productId": 117,
       "name": "Tumores En Crecimiento"
     }
@@ -3224,8 +2508,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 364,
-      "categoryId": 8,
       "productId": 118,
       "name": "Herpes Zoster"
     }
@@ -3233,8 +2515,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 365,
-      "categoryId": 8,
       "productId": 118,
       "name": "Infecciones Intestinales"
     }
@@ -3242,8 +2522,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 366,
-      "categoryId": 8,
       "productId": 118,
       "name": "Salmonelosis"
     }
@@ -3251,8 +2529,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 367,
-      "categoryId": 8,
       "productId": 118,
       "name": "Tifoidea"
     }
@@ -3260,8 +2536,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 368,
-      "categoryId": 8,
       "productId": 119,
       "name": "Infecciones Respiratorias"
     }
@@ -3269,8 +2543,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 369,
-      "categoryId": 8,
       "productId": 120,
       "name": "Infecciones Dérmicas"
     }
@@ -3278,8 +2550,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 370,
-      "categoryId": 8,
       "productId": 121,
       "name": "Baja Inmunidad"
     }
@@ -3287,8 +2557,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 371,
-      "categoryId": 8,
       "productId": 121,
       "name": "Inmunodeficiencia"
     }
@@ -3296,8 +2564,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 372,
-      "categoryId": 6,
       "productId": 122,
       "name": "Adenosarcoma De Ovario"
     }
@@ -3305,8 +2571,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 373,
-      "categoryId": 6,
       "productId": 122,
       "name": "Amenorrea"
     }
@@ -3314,8 +2578,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 374,
-      "categoryId": 6,
       "productId": 122,
       "name": "Dismenorrea"
     }
@@ -3323,8 +2585,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 375,
-      "categoryId": 6,
       "productId": 122,
       "name": "Menstruación"
     }
@@ -3332,8 +2592,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 376,
-      "categoryId": 6,
       "productId": 122,
       "name": "Metrorragia"
     }
@@ -3341,8 +2599,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 377,
-      "categoryId": 6,
       "productId": 122,
       "name": "Síndrome Pre Menstrual"
     }
@@ -3350,8 +2606,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 378,
-      "categoryId": 6,
       "productId": 123,
       "name": "Impotencia Sexual"
     }
@@ -3359,8 +2613,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 379,
-      "categoryId": 6,
       "productId": 124,
       "name": "Impotencia Sexual"
     }
@@ -3368,8 +2620,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 380,
-      "categoryId": 6,
       "productId": 124,
       "name": "Senilidad"
     }
@@ -3377,8 +2627,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 381,
-      "categoryId": 6,
       "productId": 125,
       "name": "Amenorrea"
     }
@@ -3386,8 +2634,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 382,
-      "categoryId": 6,
       "productId": 125,
       "name": "Menstruación"
     }
@@ -3395,8 +2641,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 383,
-      "categoryId": 6,
       "productId": 126,
       "name": "Cálculos Renales"
     }
@@ -3404,8 +2648,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 384,
-      "categoryId": 6,
       "productId": 126,
       "name": "Próstata"
     }
@@ -3413,8 +2655,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 385,
-      "categoryId": 6,
       "productId": 126,
       "name": "Uretritis"
     }
@@ -3422,8 +2662,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 386,
-      "categoryId": 6,
       "productId": 127,
       "name": "Insuficiencia Renal"
     }
@@ -3431,8 +2669,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 387,
-      "categoryId": 6,
       "productId": 127,
       "name": "Pielonefritis"
     }
@@ -3440,8 +2676,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 388,
-      "categoryId": 6,
       "productId": 127,
       "name": "Uretritis"
     }
@@ -3449,8 +2683,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 389,
-      "categoryId": 6,
       "productId": 127,
       "name": "Vaginitis"
     }
@@ -3458,8 +2690,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 390,
-      "categoryId": 6,
       "productId": 128,
       "name": "Ácido Úrico"
     }
@@ -3467,8 +2697,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 391,
-      "categoryId": 6,
       "productId": 128,
       "name": "Edema"
     }
@@ -3476,8 +2704,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 392,
-      "categoryId": 6,
       "productId": 128,
       "name": "Gota"
     }
@@ -3485,8 +2711,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 393,
-      "categoryId": 6,
       "productId": 128,
       "name": "Hidropesía"
     }
@@ -3494,8 +2718,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 394,
-      "categoryId": 6,
       "productId": 128,
       "name": "Insuficiencia Renal"
     }
@@ -3503,8 +2725,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 395,
-      "categoryId": 6,
       "productId": 129,
       "name": "Cálculos Biliares"
     }
@@ -3512,8 +2732,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 396,
-      "categoryId": 6,
       "productId": 129,
       "name": "Cálculos Renales"
     }
@@ -3521,8 +2739,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 397,
-      "categoryId": 6,
       "productId": 129,
       "name": "Insuficiencia Renal"
     }
@@ -3530,8 +2746,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 398,
-      "categoryId": 6,
       "productId": 129,
       "name": "Pielonefritis"
     }
@@ -3539,8 +2753,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 399,
-      "categoryId": 6,
       "productId": 129,
       "name": "Próstata"
     }
@@ -3548,8 +2760,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 400,
-      "categoryId": 6,
       "productId": 129,
       "name": "Uretritis"
     }
@@ -3557,8 +2767,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 401,
-      "categoryId": 6,
       "productId": 130,
       "name": "Cálculos Biliares"
     }
@@ -3566,8 +2774,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 402,
-      "categoryId": 6,
       "productId": 130,
       "name": "Cálculos Renales"
     }
@@ -3575,8 +2781,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 403,
-      "categoryId": 6,
       "productId": 130,
       "name": "Insuficiencia Renal"
     }
@@ -3584,8 +2788,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 404,
-      "categoryId": 6,
       "productId": 130,
       "name": "Pielonefritis"
     }
@@ -3593,8 +2795,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 405,
-      "categoryId": 6,
       "productId": 130,
       "name": "Próstata"
     }
@@ -3602,8 +2802,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 406,
-      "categoryId": 6,
       "productId": 130,
       "name": "Uretritis"
     }
@@ -3611,8 +2809,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 407,
-      "categoryId": 6,
       "productId": 131,
       "name": "Uretritis"
     }
@@ -3620,8 +2816,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 408,
-      "categoryId": 6,
       "productId": 131,
       "name": "Vaginitis"
     }
@@ -3629,8 +2823,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 409,
-      "categoryId": 6,
       "productId": 132,
       "name": "Impotencia Sexual"
     }
@@ -3638,8 +2830,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 410,
-      "categoryId": 9,
       "productId": 133,
       "name": "Ciática"
     }
@@ -3647,8 +2837,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 411,
-      "categoryId": 9,
       "productId": 133,
       "name": "Contusiones"
     }
@@ -3656,8 +2844,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 412,
-      "categoryId": 9,
       "productId": 133,
       "name": "Fracturas"
     }
@@ -3665,8 +2851,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 413,
-      "categoryId": 9,
       "productId": 133,
       "name": "Inflamación"
     }
@@ -3674,8 +2858,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 414,
-      "categoryId": 9,
       "productId": 133,
       "name": "Tonosinovitis"
     }
@@ -3683,8 +2865,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 415,
-      "categoryId": 9,
       "productId": 134,
       "name": "Artritis"
     }
@@ -3692,8 +2872,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 416,
-      "categoryId": 9,
       "productId": 134,
       "name": "Artrosis"
     }
@@ -3701,8 +2879,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 417,
-      "categoryId": 9,
       "productId": 134,
       "name": "Reumatismo"
     }
@@ -3710,8 +2886,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 418,
-      "categoryId": 9,
       "productId": 134,
       "name": "Reumatismo Crónico Deformante"
     }
@@ -3719,8 +2893,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 419,
-      "categoryId": 9,
       "productId": 135,
       "name": "Artritis"
     }
@@ -3728,8 +2900,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 420,
-      "categoryId": 9,
       "productId": 135,
       "name": "Artrosis"
     }
@@ -3737,8 +2907,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 421,
-      "categoryId": 9,
       "productId": 135,
       "name": "Ciática"
     }
@@ -3746,8 +2914,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 422,
-      "categoryId": 9,
       "productId": 135,
       "name": "Contusiones"
     }
@@ -3755,8 +2921,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 423,
-      "categoryId": 9,
       "productId": 135,
       "name": "Distenciones Musculares"
     }
@@ -3764,8 +2928,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 424,
-      "categoryId": 9,
       "productId": 135,
       "name": "Esguinces"
     }
@@ -3773,8 +2935,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 425,
-      "categoryId": 9,
       "productId": 135,
       "name": "Fracturas"
     }
@@ -3782,8 +2942,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 426,
-      "categoryId": 9,
       "productId": 135,
       "name": "Inflamación"
     }
@@ -3791,8 +2949,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 427,
-      "categoryId": 9,
       "productId": 135,
       "name": "Lumbago"
     }
@@ -3800,8 +2956,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 428,
-      "categoryId": 9,
       "productId": 135,
       "name": "Reumatismo Crónico Deformante"
     }
@@ -3809,8 +2963,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 429,
-      "categoryId": 9,
       "productId": 136,
       "name": "Ácido Úrico"
     }
@@ -3818,8 +2970,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 430,
-      "categoryId": 9,
       "productId": 136,
       "name": "Artritis"
     }
@@ -3827,8 +2977,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 431,
-      "categoryId": 9,
       "productId": 136,
       "name": "Artrosis"
     }
@@ -3836,8 +2984,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 432,
-      "categoryId": 9,
       "productId": 136,
       "name": "Bursitis"
     }
@@ -3845,8 +2991,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 433,
-      "categoryId": 9,
       "productId": 136,
       "name": "Lumbago"
     }
@@ -3854,8 +2998,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 434,
-      "categoryId": 9,
       "productId": 136,
       "name": "Mialgias"
     }
@@ -3863,8 +3005,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 435,
-      "categoryId": 9,
       "productId": 136,
       "name": "Reumatismo Crónico Deformante"
     }
@@ -3872,8 +3012,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 436,
-      "categoryId": 9,
       "productId": 137,
       "name": "Contusiones"
     }
@@ -3881,8 +3019,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 437,
-      "categoryId": 9,
       "productId": 137,
       "name": "Esguinces"
     }
@@ -3890,8 +3026,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 438,
-      "categoryId": 9,
       "productId": 137,
       "name": "Gota"
     }
@@ -3899,8 +3033,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 439,
-      "categoryId": 9,
       "productId": 137,
       "name": "Lumbago"
     }
@@ -3908,8 +3040,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 440,
-      "categoryId": 9,
       "productId": 137,
       "name": "Mialgias"
     }
@@ -3917,8 +3047,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 441,
-      "categoryId": 9,
       "productId": 137,
       "name": "Tonosinovitis"
     }
@@ -3926,8 +3054,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 442,
-      "categoryId": 9,
       "productId": 138,
       "name": "Artritis"
     }
@@ -3935,8 +3061,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 443,
-      "categoryId": 9,
       "productId": 138,
       "name": "Contusiones"
     }
@@ -3944,8 +3068,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 444,
-      "categoryId": 9,
       "productId": 138,
       "name": "Distenciones Musculares"
     }
@@ -3953,8 +3075,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 445,
-      "categoryId": 9,
       "productId": 138,
       "name": "Esguinces"
     }
@@ -3962,8 +3082,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 446,
-      "categoryId": 9,
       "productId": 138,
       "name": "Reumatismo Crónico Deformante"
     }
@@ -3971,8 +3089,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 447,
-      "categoryId": 9,
       "productId": 139,
       "name": "Fracturas"
     }
@@ -3980,8 +3096,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 448,
-      "categoryId": 9,
       "productId": 139,
       "name": "Osteoporosis"
     }
@@ -3989,8 +3103,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 449,
-      "categoryId": 9,
       "productId": 140,
       "name": "Contusiones"
     }
@@ -3998,8 +3110,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 450,
-      "categoryId": 9,
       "productId": 140,
       "name": "Distenciones Musculares"
     }
@@ -4007,8 +3117,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 451,
-      "categoryId": 9,
       "productId": 140,
       "name": "Esguinces"
     }
@@ -4016,8 +3124,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 452,
-      "categoryId": 9,
       "productId": 140,
       "name": "Lumbago"
     }
@@ -4025,8 +3131,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 453,
-      "categoryId": 9,
       "productId": 140,
       "name": "Tonosinovitis"
     }
@@ -4034,8 +3138,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 454,
-      "categoryId": 9,
       "productId": 141,
       "name": "Ácido Úrico"
     }
@@ -4043,8 +3145,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 455,
-      "categoryId": 9,
       "productId": 141,
       "name": "Gota"
     }
@@ -4052,8 +3152,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 456,
-      "categoryId": 9,
       "productId": 141,
       "name": "Reumatismo"
     }
@@ -4061,8 +3159,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 457,
-      "categoryId": 9,
       "productId": 141,
       "name": "Reumatismo Crónico Deformante"
     }
@@ -4070,8 +3166,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 458,
-      "categoryId": 9,
       "productId": 142,
       "name": "Artritis"
     }
@@ -4079,8 +3173,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 459,
-      "categoryId": 9,
       "productId": 142,
       "name": "Reumatismo"
     }
@@ -4088,8 +3180,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 460,
-      "categoryId": 9,
       "productId": 143,
       "name": "Artrosis"
     }
@@ -4097,8 +3187,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 461,
-      "categoryId": 9,
       "productId": 143,
       "name": "Reumatismo Crónico Deformante"
     }
@@ -4106,8 +3194,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 462,
-      "categoryId": 9,
       "productId": 144,
       "name": "Astenia"
     }
@@ -4115,8 +3201,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 463,
-      "categoryId": 9,
       "productId": 144,
       "name": "Celulitis"
     }
@@ -4124,8 +3208,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 464,
-      "categoryId": 9,
       "productId": 144,
       "name": "Deficiencias Vitamínicas"
     }
@@ -4133,8 +3215,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 465,
-      "categoryId": 9,
       "productId": 144,
       "name": "Desnutrición"
     }
@@ -4142,8 +3222,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 466,
-      "categoryId": 9,
       "productId": 144,
       "name": "Eritropoyetico"
     }
@@ -4151,8 +3229,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 467,
-      "categoryId": 9,
       "productId": 144,
       "name": "Fibromialgia"
     }
@@ -4160,8 +3236,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 468,
-      "categoryId": 9,
       "productId": 144,
       "name": "Fracturas"
     }
@@ -4169,8 +3243,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 469,
-      "categoryId": 9,
       "productId": 144,
       "name": "Hernia Discal"
     }
@@ -4178,8 +3250,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 470,
-      "categoryId": 9,
       "productId": 144,
       "name": "Hiper Acidez Gástrica"
     }
@@ -4187,8 +3257,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 471,
-      "categoryId": 9,
       "productId": 144,
       "name": "Peso (Reductor)"
     }
@@ -4196,8 +3264,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 472,
-      "categoryId": 9,
       "productId": 144,
       "name": "Senilidad"
     }
@@ -4205,8 +3271,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 473,
-      "categoryId": 3,
       "productId": 145,
       "name": "Astenia"
     }
@@ -4214,8 +3278,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 474,
-      "categoryId": 3,
       "productId": 145,
       "name": "Depresión Reactiva"
     }
@@ -4223,8 +3285,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 475,
-      "categoryId": 3,
       "productId": 145,
       "name": "Depresión Unipolar Y Bipolar"
     }
@@ -4232,8 +3292,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 476,
-      "categoryId": 3,
       "productId": 145,
       "name": "Estimulante Funcional"
     }
@@ -4241,8 +3299,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 477,
-      "categoryId": 3,
       "productId": 146,
       "name": "Depresión Reactiva"
     }
@@ -4250,8 +3306,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 478,
-      "categoryId": 3,
       "productId": 146,
       "name": "Depresión Unipolar Y Bipolar"
     }
@@ -4259,8 +3313,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 479,
-      "categoryId": 3,
       "productId": 146,
       "name": "Energético"
     }
@@ -4268,8 +3320,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 480,
-      "categoryId": 3,
       "productId": 146,
       "name": "Estimulante Funcional"
     }
@@ -4277,8 +3327,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 481,
-      "categoryId": 3,
       "productId": 147,
       "name": "Alopecia"
     }
@@ -4286,8 +3334,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 482,
-      "categoryId": 3,
       "productId": 147,
       "name": "Astenia"
     }
@@ -4295,8 +3341,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 483,
-      "categoryId": 3,
       "productId": 147,
       "name": "Neurastenia"
     }
@@ -4304,8 +3348,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 484,
-      "categoryId": 3,
       "productId": 147,
       "name": "Senilidad"
     }
@@ -4313,8 +3355,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 485,
-      "categoryId": 3,
       "productId": 147,
       "name": "Timo"
     }
@@ -4322,8 +3362,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 486,
-      "categoryId": 3,
       "productId": 147,
       "name": "Vigorizante"
     }
@@ -4331,8 +3369,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 487,
-      "categoryId": 3,
       "productId": 148,
       "name": "Concentración Mental"
     }
@@ -4340,8 +3376,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 488,
-      "categoryId": 3,
       "productId": 148,
       "name": "Depresión Reactiva"
     }
@@ -4349,8 +3383,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 489,
-      "categoryId": 3,
       "productId": 148,
       "name": "Depresión Unipolar Y Bipolar"
     }
@@ -4358,8 +3390,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 490,
-      "categoryId": 3,
       "productId": 148,
       "name": "Estimulante Físico-Mental"
     }
@@ -4367,8 +3397,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 491,
-      "categoryId": 3,
       "productId": 148,
       "name": "Estrés"
     }
@@ -4376,8 +3404,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 492,
-      "categoryId": 3,
       "productId": 149,
       "name": "Astenia"
     }
@@ -4385,8 +3411,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 493,
-      "categoryId": 3,
       "productId": 149,
       "name": "Energético"
     }
@@ -4394,8 +3418,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 494,
-      "categoryId": 3,
       "productId": 149,
       "name": "Estimulante Funcional"
     }
@@ -4403,8 +3425,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 495,
-      "categoryId": 3,
       "productId": 149,
       "name": "Vigorizante"
     }
@@ -4412,8 +3432,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 496,
-      "categoryId": 3,
       "productId": 150,
       "name": "Depresión Reactiva"
     }
@@ -4421,8 +3439,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 497,
-      "categoryId": 3,
       "productId": 150,
       "name": "Depresión Unipolar Y Bipolar"
     }
@@ -4430,8 +3446,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 498,
-      "categoryId": 3,
       "productId": 150,
       "name": "Energético"
     }
@@ -4439,8 +3453,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 499,
-      "categoryId": 3,
       "productId": 150,
       "name": "Estimulante Funcional"
     }
@@ -4448,8 +3460,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 500,
-      "categoryId": 3,
       "productId": 150,
       "name": "Vigorizante"
     }
@@ -4457,8 +3467,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 501,
-      "categoryId": 1,
       "productId": 151,
       "name": "Anemias"
     }
@@ -4466,8 +3474,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 502,
-      "categoryId": 1,
       "productId": 151,
       "name": "Avitaminosis"
     }
@@ -4475,8 +3481,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 503,
-      "categoryId": 1,
       "productId": 152,
       "name": "Estreñimiento"
     }
@@ -4484,8 +3488,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 504,
-      "categoryId": 1,
       "productId": 152,
       "name": "Gastritis"
     }
@@ -4493,8 +3495,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 505,
-      "categoryId": 1,
       "productId": 153,
       "name": "Menopausia"
     }
@@ -4502,8 +3502,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 506,
-      "categoryId": 1,
       "productId": 153,
       "name": "Osteoporosis"
     }
@@ -4511,8 +3509,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 507,
-      "categoryId": 1,
       "productId": 153,
       "name": "Pre Menopausia"
     }
@@ -4520,8 +3516,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 508,
-      "categoryId": 1,
       "productId": 153,
       "name": "Quistes Ováricos"
     }
@@ -4529,8 +3523,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 509,
-      "categoryId": 1,
       "productId": 153,
       "name": "Síndrome Pre Menstrual"
     }
@@ -4538,8 +3530,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 510,
-      "categoryId": 1,
       "productId": 154,
       "name": "Antioxidante"
     }
@@ -4547,8 +3537,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 511,
-      "categoryId": 1,
       "productId": 154,
       "name": "Baja Inmunidad"
     }
@@ -4556,8 +3544,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 512,
-      "categoryId": 1,
       "productId": 155,
       "name": "Impotencia Sexual"
     }
@@ -4565,8 +3551,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 513,
-      "categoryId": 1,
       "productId": 156,
       "name": "Inmunodeficiencia"
     }
@@ -4574,8 +3558,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 514,
-      "categoryId": 1,
       "productId": 157,
       "name": "Inmunodeficiencia"
     }
@@ -4583,8 +3565,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 515,
-      "categoryId": 1,
       "productId": 158,
       "name": "Desnutrición"
     }
@@ -4592,8 +3572,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 516,
-      "categoryId": 1,
       "productId": 158,
       "name": "Herpes Zoster"
     }
@@ -4601,8 +3579,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 517,
-      "categoryId": 1,
       "productId": 159,
       "name": "Desnutrición"
     }
@@ -4610,8 +3586,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 518,
-      "categoryId": 1,
       "productId": 160,
       "name": "Menopausia"
     }
@@ -4619,8 +3593,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 519,
-      "categoryId": 1,
       "productId": 160,
       "name": "Osteoporosis"
     }
@@ -4628,8 +3600,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 520,
-      "categoryId": 1,
       "productId": 160,
       "name": "Pre Menopausia"
     }
@@ -4637,8 +3607,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 521,
-      "categoryId": 1,
       "productId": 160,
       "name": "Quistes Ováricos"
     }
@@ -4646,8 +3614,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 522,
-      "categoryId": 1,
       "productId": 160,
       "name": "Síndrome Pre Menstrual"
     }
@@ -4655,8 +3621,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 523,
-      "categoryId": 1,
       "productId": 160,
       "name": "Tumores En Crecimiento"
     }
@@ -4664,8 +3628,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 524,
-      "categoryId": 8,
       "productId": 161,
       "name": "Bursitis"
     }
@@ -4673,8 +3635,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 525,
-      "categoryId": 8,
       "productId": 161,
       "name": "Contusiones"
     }
@@ -4682,8 +3642,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 526,
-      "categoryId": 8,
       "productId": 161,
       "name": "Distenciones Musculares"
     }
@@ -4691,8 +3649,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 527,
-      "categoryId": 8,
       "productId": 161,
       "name": "Dolor Precordial"
     }
@@ -4700,8 +3656,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 528,
-      "categoryId": 8,
       "productId": 161,
       "name": "Esguinces"
     }
@@ -4709,8 +3663,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 529,
-      "categoryId": 8,
       "productId": 161,
       "name": "Lumbago"
     }
@@ -4718,8 +3670,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 530,
-      "categoryId": 8,
       "productId": 161,
       "name": "Mialgias"
     }
@@ -4727,8 +3677,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 531,
-      "categoryId": 8,
       "productId": 161,
       "name": "Reumatismo"
     }
@@ -4736,8 +3684,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 532,
-      "categoryId": 12,
       "productId": 162,
       "name": "Amigdalitis"
     }
@@ -4745,8 +3691,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 533,
-      "categoryId": 12,
       "productId": 162,
       "name": "Bronconeumonía"
     }
@@ -4754,8 +3698,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 534,
-      "categoryId": 12,
       "productId": 162,
       "name": "Faringitis"
     }
@@ -4763,8 +3705,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 535,
-      "categoryId": 12,
       "productId": 162,
       "name": "Infecciones Intestinales"
     }
@@ -4772,8 +3712,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 536,
-      "categoryId": 12,
       "productId": 162,
       "name": "Laringitis"
     }
@@ -4781,8 +3719,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 537,
-      "categoryId": 12,
       "productId": 162,
       "name": "Salmonelosis"
     }
@@ -4790,8 +3726,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 538,
-      "categoryId": 12,
       "productId": 162,
       "name": "Tifoidea"
     }
@@ -4799,8 +3733,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 539,
-      "categoryId": 12,
       "productId": 163,
       "name": "Amigdalitis"
     }
@@ -4808,8 +3740,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 540,
-      "categoryId": 12,
       "productId": 163,
       "name": "Bronconeumonía"
     }
@@ -4817,8 +3747,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 541,
-      "categoryId": 12,
       "productId": 163,
       "name": "Faringitis"
     }
@@ -4826,8 +3754,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 542,
-      "categoryId": 12,
       "productId": 163,
       "name": "Infecciones Intestinales"
     }
@@ -4835,8 +3761,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 543,
-      "categoryId": 12,
       "productId": 163,
       "name": "Laringitis"
     }
@@ -4844,8 +3768,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 544,
-      "categoryId": 12,
       "productId": 163,
       "name": "Salmonelosis"
     }
@@ -4853,8 +3775,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 545,
-      "categoryId": 12,
       "productId": 163,
       "name": "Tifoidea"
     }
@@ -4862,8 +3782,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 546,
-      "categoryId": 9,
       "productId": 164,
       "name": "Artritis"
     }
@@ -4871,8 +3789,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 547,
-      "categoryId": 9,
       "productId": 164,
       "name": "Distenciones Musculares"
     }
@@ -4880,8 +3796,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 548,
-      "categoryId": 9,
       "productId": 164,
       "name": "Fracturas"
     }
@@ -4889,8 +3803,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 549,
-      "categoryId": 9,
       "productId": 164,
       "name": "Golpes"
     }
@@ -4898,8 +3810,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 550,
-      "categoryId": 12,
       "productId": 165,
       "name": "Enfisema Pulmonar"
     }
@@ -4907,8 +3817,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 551,
-      "categoryId": 8,
       "productId": 166,
       "name": "Depresión Reactiva"
     }
@@ -4916,8 +3824,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 552,
-      "categoryId": 8,
       "productId": 166,
       "name": "Depresión Unipolar Y Bipolar"
     }
@@ -4925,8 +3831,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 553,
-      "categoryId": 8,
       "productId": 166,
       "name": "Insomnio"
     }
@@ -4934,8 +3838,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 554,
-      "categoryId": 4,
       "productId": 167,
       "name": "Ateroma"
     }
@@ -4943,8 +3845,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 555,
-      "categoryId": 4,
       "productId": 167,
       "name": "Náuseas"
     }
@@ -4952,8 +3852,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 556,
-      "categoryId": 4,
       "productId": 167,
       "name": "Sinusitis"
     }
@@ -4961,8 +3859,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 557,
-      "categoryId": 4,
       "productId": 167,
       "name": "Trombosis"
     }
@@ -4970,8 +3866,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 558,
-      "categoryId": 7,
       "productId": 168,
       "name": "Diabetes"
     }
@@ -4979,8 +3873,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 559,
-      "categoryId": 8,
       "productId": 169,
       "name": "Artritis"
     }
@@ -4988,8 +3880,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 560,
-      "categoryId": 8,
       "productId": 169,
       "name": "Asma Bronquial"
     }
@@ -4997,8 +3887,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 561,
-      "categoryId": 8,
       "productId": 169,
       "name": "Dermatitis"
     }
@@ -5006,8 +3894,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 562,
-      "categoryId": 8,
       "productId": 169,
       "name": "Diabetes"
     }
@@ -5015,8 +3901,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 563,
-      "categoryId": 8,
       "productId": 169,
       "name": "Diarrea"
     }
@@ -5024,8 +3908,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 564,
-      "categoryId": 8,
       "productId": 169,
       "name": "Dismenorrea"
     }
@@ -5033,8 +3915,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 565,
-      "categoryId": 8,
       "productId": 169,
       "name": "Eczemas"
     }
@@ -5042,8 +3922,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 566,
-      "categoryId": 8,
       "productId": 169,
       "name": "Esguinces"
     }
@@ -5051,8 +3929,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 567,
-      "categoryId": 8,
       "productId": 169,
       "name": "Gastritis"
     }
@@ -5060,8 +3936,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 568,
-      "categoryId": 8,
       "productId": 169,
       "name": "Próstata"
     }
@@ -5069,8 +3943,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 569,
-      "categoryId": 8,
       "productId": 169,
       "name": "Tifoidea"
     }
@@ -5078,8 +3950,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 570,
-      "categoryId": 4,
       "productId": 170,
       "name": "Anemias"
     }
@@ -5087,8 +3957,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 571,
-      "categoryId": 4,
       "productId": 170,
       "name": "Anorexia"
     }
@@ -5096,8 +3964,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 572,
-      "categoryId": 4,
       "productId": 170,
       "name": "Ansiedad"
     }
@@ -5105,8 +3971,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 573,
-      "categoryId": 4,
       "productId": 170,
       "name": "Arterioesclerosis"
     }
@@ -5114,8 +3978,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 574,
-      "categoryId": 4,
       "productId": 170,
       "name": "Astenia Neurocirculatoria"
     }
@@ -5123,8 +3985,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 575,
-      "categoryId": 4,
       "productId": 170,
       "name": "Avitaminosis"
     }
@@ -5132,8 +3992,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 576,
-      "categoryId": 4,
       "productId": 170,
       "name": "Hipertensión"
     }
@@ -5141,8 +3999,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 577,
-      "categoryId": 4,
       "productId": 170,
       "name": "Impotencia Sexual"
     }
@@ -5150,8 +4006,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 578,
-      "categoryId": 4,
       "productId": 170,
       "name": "Inapetencia"
     }
@@ -5159,8 +4013,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 579,
-      "categoryId": 4,
       "productId": 170,
       "name": "Neurastenia"
     }
@@ -5168,8 +4020,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 580,
-      "categoryId": 4,
       "productId": 170,
       "name": "Senilidad"
     }
@@ -5177,8 +4027,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 581,
-      "categoryId": 4,
       "productId": 170,
       "name": "Uretritis"
     }
@@ -5186,8 +4034,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 582,
-      "categoryId": 4,
       "productId": 171,
       "name": "Anemias"
     }
@@ -5195,8 +4041,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 583,
-      "categoryId": 4,
       "productId": 171,
       "name": "Anorexia"
     }
@@ -5204,8 +4048,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 584,
-      "categoryId": 4,
       "productId": 171,
       "name": "Ansiedad"
     }
@@ -5213,8 +4055,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 585,
-      "categoryId": 4,
       "productId": 171,
       "name": "Arterioesclerosis"
     }
@@ -5222,8 +4062,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 586,
-      "categoryId": 4,
       "productId": 171,
       "name": "Astenia Neurocirculatoria"
     }
@@ -5231,8 +4069,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 587,
-      "categoryId": 4,
       "productId": 171,
       "name": "Avitaminosis"
     }
@@ -5240,8 +4076,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 588,
-      "categoryId": 4,
       "productId": 171,
       "name": "Hipertensión"
     }
@@ -5249,8 +4083,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 589,
-      "categoryId": 4,
       "productId": 171,
       "name": "Impotencia Sexual"
     }
@@ -5258,8 +4090,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 590,
-      "categoryId": 4,
       "productId": 171,
       "name": "Inapetencia"
     }
@@ -5267,8 +4097,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 591,
-      "categoryId": 4,
       "productId": 171,
       "name": "Neurastenia"
     }
@@ -5276,8 +4104,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 592,
-      "categoryId": 4,
       "productId": 171,
       "name": "Senilidad"
     }
@@ -5285,8 +4111,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 593,
-      "categoryId": 4,
       "productId": 171,
       "name": "Uretritis"
     }
@@ -5294,8 +4118,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 594,
-      "categoryId": 4,
       "productId": 172,
       "name": "Alzheimer"
     }
@@ -5303,8 +4125,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 595,
-      "categoryId": 4,
       "productId": 173,
       "name": "Cáncer De Mama"
     }
@@ -5312,8 +4132,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 596,
-      "categoryId": 4,
       "productId": 173,
       "name": "Colesterol"
     }
@@ -5321,8 +4139,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 597,
-      "categoryId": 4,
       "productId": 173,
       "name": "Geriatría"
     }
@@ -5330,8 +4146,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 598,
-      "categoryId": 4,
       "productId": 173,
       "name": "Hígado"
     }
@@ -5339,8 +4153,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 599,
-      "categoryId": 4,
       "productId": 173,
       "name": "Próstata"
     }
@@ -5348,8 +4160,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 600,
-      "categoryId": 4,
       "productId": 173,
       "name": "Taquicardia"
     }
@@ -5357,8 +4167,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 601,
-      "categoryId": 4,
       "productId": 173,
       "name": "Trombosis"
     }
@@ -5366,8 +4174,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 602,
-      "categoryId": 9,
       "productId": 174,
       "name": "Artritis"
     }
@@ -5375,8 +4181,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 603,
-      "categoryId": 9,
       "productId": 174,
       "name": "Artrosis"
     }
@@ -5384,8 +4188,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 604,
-      "categoryId": 9,
       "productId": 174,
       "name": "Bursitis"
     }
@@ -5393,8 +4195,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 605,
-      "categoryId": 9,
       "productId": 174,
       "name": "Ciática"
     }
@@ -5402,8 +4202,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 606,
-      "categoryId": 9,
       "productId": 174,
       "name": "Distenciones Musculares"
     }
@@ -5411,8 +4209,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 607,
-      "categoryId": 9,
       "productId": 174,
       "name": "Esguinces"
     }
@@ -5420,8 +4216,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 608,
-      "categoryId": 9,
       "productId": 174,
       "name": "Gota"
     }
@@ -5429,8 +4223,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 609,
-      "categoryId": 9,
       "productId": 174,
       "name": "Hernia Discal"
     }
@@ -5438,8 +4230,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 610,
-      "categoryId": 9,
       "productId": 174,
       "name": "Reumatismo"
     }
@@ -5447,8 +4237,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 611,
-      "categoryId": 9,
       "productId": 175,
       "name": "Artritis"
     }
@@ -5456,8 +4244,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 612,
-      "categoryId": 9,
       "productId": 175,
       "name": "Artrosis"
     }
@@ -5465,8 +4251,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 613,
-      "categoryId": 9,
       "productId": 175,
       "name": "Bursitis"
     }
@@ -5474,8 +4258,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 614,
-      "categoryId": 9,
       "productId": 175,
       "name": "Ciática"
     }
@@ -5483,8 +4265,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 615,
-      "categoryId": 9,
       "productId": 175,
       "name": "Distenciones Musculares"
     }
@@ -5492,8 +4272,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 616,
-      "categoryId": 9,
       "productId": 175,
       "name": "Esguinces"
     }
@@ -5501,8 +4279,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 617,
-      "categoryId": 9,
       "productId": 175,
       "name": "Gota"
     }
@@ -5510,8 +4286,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 618,
-      "categoryId": 9,
       "productId": 175,
       "name": "Hernia Discal"
     }
@@ -5519,8 +4293,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 619,
-      "categoryId": 9,
       "productId": 175,
       "name": "Reumatismo"
     }
@@ -5528,8 +4300,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 620,
-      "categoryId": 4,
       "productId": 176,
       "name": "Eritropoyetico"
     }
@@ -5537,8 +4307,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 621,
-      "categoryId": 4,
       "productId": 176,
       "name": "Hígado"
     }
@@ -5546,8 +4314,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 622,
-      "categoryId": 4,
       "productId": 176,
       "name": "Obesidad"
     }
@@ -5555,8 +4321,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 623,
-      "categoryId": 4,
       "productId": 176,
       "name": "Senilidad"
     }
@@ -5564,8 +4328,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 624,
-      "categoryId": 9,
       "productId": 177,
       "name": "Fibromialgia"
     }
@@ -5573,8 +4335,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 625,
-      "categoryId": 8,
       "productId": 178,
       "name": "Acidosis"
     }
@@ -5582,8 +4342,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 626,
-      "categoryId": 8,
       "productId": 178,
       "name": "Acné"
     }
@@ -5591,8 +4349,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 627,
-      "categoryId": 8,
       "productId": 178,
       "name": "Baja Inmunidad"
     }
@@ -5600,8 +4356,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 628,
-      "categoryId": 8,
       "productId": 178,
       "name": "Halitosis"
     }
@@ -5609,8 +4363,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 629,
-      "categoryId": 8,
       "productId": 178,
       "name": "Hernia Hiatal"
     }
@@ -5618,8 +4370,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 630,
-      "categoryId": 8,
       "productId": 178,
       "name": "Hiper Acidez Gástrica"
     }
@@ -5627,8 +4377,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 631,
-      "categoryId": 8,
       "productId": 178,
       "name": "Insuficiencia Hepática"
     }
@@ -5636,8 +4384,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 632,
-      "categoryId": 8,
       "productId": 178,
       "name": "Insuficiencia Renal"
     }
@@ -5645,8 +4391,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 633,
-      "categoryId": 8,
       "productId": 178,
       "name": "Pielonefritis"
     }
@@ -5654,8 +4398,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 634,
-      "categoryId": 8,
       "productId": 178,
       "name": "Úlceras Pépticas"
     }
@@ -5663,8 +4405,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 635,
-      "categoryId": 8,
       "productId": 178,
       "name": "Úlceras Varicosas"
     }
@@ -5672,8 +4412,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 636,
-      "categoryId": 8,
       "productId": 179,
       "name": "Cáncer De Mama"
     }
@@ -5681,8 +4419,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 637,
-      "categoryId": 8,
       "productId": 179,
       "name": "Neoplasia"
     }
@@ -5690,8 +4426,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 638,
-      "categoryId": 8,
       "productId": 179,
       "name": "Próstata"
     }
@@ -5699,8 +4433,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 639,
-      "categoryId": 8,
       "productId": 179,
       "name": "Quistes En El Pecho"
     }
@@ -5708,8 +4440,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 640,
-      "categoryId": 8,
       "productId": 179,
       "name": "Quistes Ováricos"
     }
@@ -5717,8 +4447,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 641,
-      "categoryId": 8,
       "productId": 179,
       "name": "Vejiga"
     }
@@ -5726,8 +4454,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 642,
-      "categoryId": 4,
       "productId": 180,
       "name": "Obesidad"
     }
@@ -5735,8 +4461,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 643,
-      "categoryId": 4,
       "productId": 180,
       "name": "Peso (Reductor)"
     }
@@ -5744,8 +4468,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 644,
-      "categoryId": 8,
       "productId": 181,
       "name": "Baja Inmunidad"
     }
@@ -5753,8 +4475,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 645,
-      "categoryId": 8,
       "productId": 181,
       "name": "Inmunodeficiencia"
     }
@@ -5762,8 +4482,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 646,
-      "categoryId": 8,
       "productId": 182,
       "name": "Baja Inmunidad"
     }
@@ -5771,8 +4489,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 647,
-      "categoryId": 8,
       "productId": 182,
       "name": "Inmunodeficiencia"
     }
@@ -5780,8 +4496,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 648,
-      "categoryId": 1,
       "productId": 183,
       "name": "Anorexia"
     }
@@ -5789,8 +4503,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 649,
-      "categoryId": 1,
       "productId": 183,
       "name": "Deficiencias Vitamínicas"
     }
@@ -5798,8 +4510,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 650,
-      "categoryId": 1,
       "productId": 183,
       "name": "Eritropoyetico"
     }
@@ -5807,8 +4517,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 651,
-      "categoryId": 1,
       "productId": 183,
       "name": "Hígado"
     }
@@ -5816,8 +4524,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 652,
-      "categoryId": 1,
       "productId": 183,
       "name": "Inapetencia"
     }
@@ -5825,8 +4531,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 653,
-      "categoryId": 1,
       "productId": 183,
       "name": "Nervios"
     }
@@ -5834,8 +4538,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 654,
-      "categoryId": 1,
       "productId": 183,
       "name": "Tiroides"
     }
@@ -5843,8 +4545,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 655,
-      "categoryId": 1,
       "productId": 183,
       "name": "Vesícula"
     }
@@ -5852,8 +4552,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 656,
-      "categoryId": 1,
       "productId": 183,
       "name": "Vigorizante"
     }
@@ -5861,8 +4559,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 657,
-      "categoryId": 8,
       "productId": 184,
       "name": "Adenosarcoma De Ovario"
     }
@@ -5870,8 +4566,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 658,
-      "categoryId": 8,
       "productId": 184,
       "name": "Cáncer De Mama"
     }
@@ -5879,8 +4573,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 659,
-      "categoryId": 8,
       "productId": 184,
       "name": "Linfosarcomas"
     }
@@ -5888,8 +4580,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 660,
-      "categoryId": 8,
       "productId": 184,
       "name": "Neuroblastoma"
     }
@@ -5897,8 +4587,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 661,
-      "categoryId": 8,
       "productId": 184,
       "name": "Próstata"
     }
@@ -5906,8 +4594,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 662,
-      "categoryId": 8,
       "productId": 184,
       "name": "Quistes En El Pecho"
     }
@@ -5915,8 +4601,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 663,
-      "categoryId": 7,
       "productId": 185,
       "name": "Diabetes"
     }
@@ -5924,8 +4608,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 664,
-      "categoryId": 4,
       "productId": 186,
       "name": "Alzheimer"
     }
@@ -5933,8 +4615,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 665,
-      "categoryId": 4,
       "productId": 186,
       "name": "Diabetes Tipo 2"
     }
@@ -5942,8 +4622,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 666,
-      "categoryId": 4,
       "productId": 186,
       "name": "Obesidad"
     }
@@ -5951,8 +4629,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 667,
-      "categoryId": 4,
       "productId": 186,
       "name": "Presión Arterial Alta"
     }
@@ -5960,8 +4636,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 668,
-      "categoryId": 1,
       "productId": 187,
       "name": "Menopausia"
     }
@@ -5969,8 +4643,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 669,
-      "categoryId": 6,
       "productId": 188,
       "name": "Desarreglos Intestinales"
     }
@@ -5978,8 +4650,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 670,
-      "categoryId": 6,
       "productId": 188,
       "name": "Diarrea"
     }
@@ -5987,8 +4657,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 671,
-      "categoryId": 6,
       "productId": 188,
       "name": "Dolores Lumbares"
     }
@@ -5996,8 +4664,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 672,
-      "categoryId": 6,
       "productId": 188,
       "name": "Endometriosis"
     }
@@ -6005,8 +4671,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 673,
-      "categoryId": 6,
       "productId": 188,
       "name": "Estreñimiento"
     }
@@ -6014,8 +4678,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 674,
-      "categoryId": 6,
       "productId": 188,
       "name": "Sensibilidad En Senos"
     }
@@ -6023,8 +4685,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 675,
-      "categoryId": 10,
       "productId": 189,
       "name": "Mononeuropatía"
     }
@@ -6032,8 +4692,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 676,
-      "categoryId": 10,
       "productId": 189,
       "name": "Mononeuropatía Múltiple O Multifocal"
     }
@@ -6041,8 +4699,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 677,
-      "categoryId": 10,
       "productId": 189,
       "name": "Neuropatía Diabética"
     }
@@ -6050,8 +4706,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 678,
-      "categoryId": 10,
       "productId": 189,
       "name": "Polineuropatía"
     }
@@ -6059,8 +4713,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 679,
-      "categoryId": 2,
       "productId": 190,
       "name": "Afectación En El Metabolismo Celular"
     }
@@ -6068,8 +4720,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 680,
-      "categoryId": 2,
       "productId": 190,
       "name": "Vejez Prematura"
     }
@@ -6077,8 +4727,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 681,
-      "categoryId": 4,
       "productId": 191,
       "name": "Bradicardia"
     }
@@ -6086,8 +4734,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 682,
-      "categoryId": 4,
       "productId": 191,
       "name": "Taquicardia"
     }
@@ -6095,8 +4741,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 683,
-      "categoryId": 5,
       "productId": 192,
       "name": "Coledocolitiasis"
     }
@@ -6104,8 +4748,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 684,
-      "categoryId": 5,
       "productId": 192,
       "name": "Colelitiasis"
     }
@@ -6113,8 +4755,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 685,
-      "categoryId": 6,
       "productId": 193,
       "name": "Insuficiencia Intrarrenal U Orgánica"
     }
@@ -6122,8 +4762,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 686,
-      "categoryId": 6,
       "productId": 193,
       "name": "Insuficiencia Postrrenal U Obstructiva"
     }
@@ -6131,8 +4769,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 687,
-      "categoryId": 6,
       "productId": 193,
       "name": "Insuficiencia Renal, Prerrenal O Funcional"
     }
@@ -6140,8 +4776,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 688,
-      "categoryId": 10,
       "productId": 194,
       "name": "Déficit De Melatonina"
     }
@@ -6149,8 +4783,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 689,
-      "categoryId": 10,
       "productId": 194,
       "name": "Depresión Severa"
     }
@@ -6158,8 +4790,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 690,
-      "categoryId": 10,
       "productId": 194,
       "name": "Insomnio"
     }
@@ -6167,8 +4797,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 691,
-      "categoryId": 1,
       "productId": 195,
       "name": "Anorexia"
     }
@@ -6176,8 +4804,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 692,
-      "categoryId": 1,
       "productId": 195,
       "name": "Apatía Sexual"
     }
@@ -6185,8 +4811,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 693,
-      "categoryId": 1,
       "productId": 195,
       "name": "Bajo Tono Muscular"
     }
@@ -6194,8 +4818,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 694,
-      "categoryId": 1,
       "productId": 195,
       "name": "Deficiencia En La Producción Hormonal"
     }
@@ -6203,8 +4825,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 695,
-      "categoryId": 1,
       "productId": 195,
       "name": "Déficit De Atención"
     }
@@ -6212,8 +4832,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 696,
-      "categoryId": 1,
       "productId": 195,
       "name": "Dilatación De Próstata"
     }
@@ -6221,8 +4839,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 697,
-      "categoryId": 1,
       "productId": 195,
       "name": "Nictalopía"
     }
@@ -6230,8 +4846,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 698,
-      "categoryId": 1,
       "productId": 195,
       "name": "Testosterona Y Progesterona"
     }
@@ -6239,8 +4853,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 699,
-      "categoryId": 1,
       "productId": 196,
       "name": "Artritis"
     }
@@ -6248,8 +4860,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 700,
-      "categoryId": 1,
       "productId": 196,
       "name": "Estreñimiento"
     }
@@ -6257,8 +4867,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 701,
-      "categoryId": 1,
       "productId": 196,
       "name": "Hipertensión"
     }
@@ -6266,8 +4874,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 702,
-      "categoryId": 1,
       "productId": 196,
       "name": "Neuropatía Diabética"
     }
@@ -6275,8 +4881,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 703,
-      "categoryId": 1,
       "productId": 196,
       "name": "Problemas Metabólicos"
     }
@@ -6284,8 +4888,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 704,
-      "categoryId": 1,
       "productId": 196,
       "name": "Resfriados"
     }
@@ -6293,8 +4895,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 705,
-      "categoryId": 4,
       "productId": 197,
       "name": "Neuropatía Diabética"
     }
@@ -6302,8 +4902,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 706,
-      "categoryId": 2,
       "productId": 198,
       "name": "Acné"
     }
@@ -6311,8 +4909,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 707,
-      "categoryId": 2,
       "productId": 198,
       "name": "Alergias"
     }
@@ -6320,8 +4916,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 708,
-      "categoryId": 2,
       "productId": 198,
       "name": "Alopecia"
     }
@@ -6329,8 +4923,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 709,
-      "categoryId": 2,
       "productId": 198,
       "name": "Artritis"
     }
@@ -6338,8 +4930,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 710,
-      "categoryId": 2,
       "productId": 198,
       "name": "Caspa"
     }
@@ -6347,8 +4937,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 711,
-      "categoryId": 2,
       "productId": 198,
       "name": "Dolor De Cuello"
     }
@@ -6356,8 +4944,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 712,
-      "categoryId": 2,
       "productId": 198,
       "name": "Dolores Musculares"
     }
@@ -6365,8 +4951,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 713,
-      "categoryId": 2,
       "productId": 198,
       "name": "Eczemas"
     }
@@ -6374,8 +4958,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 714,
-      "categoryId": 2,
       "productId": 198,
       "name": "Hemorroides"
     }
@@ -6383,8 +4965,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 715,
-      "categoryId": 2,
       "productId": 198,
       "name": "Infecciones Dérmicas"
     }
@@ -6392,8 +4972,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 716,
-      "categoryId": 2,
       "productId": 198,
       "name": "Infecciones Vaginales"
     }
@@ -6401,8 +4979,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 717,
-      "categoryId": 2,
       "productId": 198,
       "name": "Nervios Dolorosos"
     }
@@ -6410,8 +4986,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 718,
-      "categoryId": 2,
       "productId": 198,
       "name": "Paperas"
     }
@@ -6419,8 +4993,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 719,
-      "categoryId": 2,
       "productId": 198,
       "name": "Picaduras De Insectos"
     }
@@ -6428,8 +5000,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 720,
-      "categoryId": 2,
       "productId": 198,
       "name": "Pie De Atleta"
     }
@@ -6437,8 +5007,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 721,
-      "categoryId": 2,
       "productId": 198,
       "name": "Psoriasis"
     }
@@ -6446,8 +5014,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 722,
-      "categoryId": 2,
       "productId": 198,
       "name": "Quemaduras"
     }
@@ -6455,8 +5021,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 723,
-      "categoryId": 2,
       "productId": 198,
       "name": "Varices"
     }
@@ -6464,8 +5028,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 724,
-      "categoryId": 4,
       "productId": 199,
       "name": "Anemias"
     }
@@ -6473,8 +5035,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 725,
-      "categoryId": 4,
       "productId": 199,
       "name": "Arterioesclerosis"
     }
@@ -6482,8 +5042,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 726,
-      "categoryId": 4,
       "productId": 199,
       "name": "Celiaquía"
     }
@@ -6491,8 +5049,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 727,
-      "categoryId": 4,
       "productId": 199,
       "name": "Colitis"
     }
@@ -6500,8 +5056,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 728,
-      "categoryId": 4,
       "productId": 199,
       "name": "Debilidad Inmunológica"
     }
@@ -6509,8 +5063,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 729,
-      "categoryId": 4,
       "productId": 199,
       "name": "Diabetes"
     }
@@ -6518,8 +5070,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 730,
-      "categoryId": 4,
       "productId": 199,
       "name": "Dispepsia"
     }
@@ -6527,8 +5077,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 731,
-      "categoryId": 4,
       "productId": 199,
       "name": "Diverticulosis"
     }
@@ -6536,8 +5084,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 732,
-      "categoryId": 4,
       "productId": 199,
       "name": "Estreñimiento"
     }
@@ -6545,8 +5091,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 733,
-      "categoryId": 4,
       "productId": 199,
       "name": "Gastritis"
     }
@@ -6554,8 +5098,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 734,
-      "categoryId": 4,
       "productId": 199,
       "name": "Hipertensión Arterial"
     }
@@ -6563,8 +5105,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 735,
-      "categoryId": 4,
       "productId": 199,
       "name": "Obesidad"
     }
@@ -6572,8 +5112,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 736,
-      "categoryId": 4,
       "productId": 199,
       "name": "Obstrucción Intestinal"
     }
@@ -6581,8 +5119,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 737,
-      "categoryId": 4,
       "productId": 199,
       "name": "Plaquetas"
     }
@@ -6590,8 +5126,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 738,
-      "categoryId": 4,
       "productId": 199,
       "name": "Pólipos Intestinales"
     }
@@ -6599,8 +5133,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 739,
-      "categoryId": 4,
       "productId": 199,
       "name": "Tonificante Cardíaco"
     }
@@ -6608,8 +5140,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 740,
-      "categoryId": 4,
       "productId": 199,
       "name": "Úlceras Pépticas"
     }
@@ -6617,8 +5147,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 741,
-      "categoryId": 4,
       "productId": 200,
       "name": "Colitis"
     }
@@ -6626,8 +5154,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 742,
-      "categoryId": 4,
       "productId": 200,
       "name": "Demencia"
     }
@@ -6635,8 +5161,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 743,
-      "categoryId": 4,
       "productId": 200,
       "name": "Diabetes Tipo 2"
     }
@@ -6644,8 +5168,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 744,
-      "categoryId": 4,
       "productId": 200,
       "name": "Enfermedad De Crohn"
     }
@@ -6653,8 +5175,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 745,
-      "categoryId": 4,
       "productId": 200,
       "name": "Enfermedades Cardiovasculares"
     }
@@ -6662,8 +5182,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 746,
-      "categoryId": 4,
       "productId": 200,
       "name": "Esquizofrenia"
     }
@@ -6671,8 +5189,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 747,
-      "categoryId": 4,
       "productId": 200,
       "name": "Fibrosis Quística"
     }
@@ -6680,8 +5196,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 748,
-      "categoryId": 4,
       "productId": 200,
       "name": "Trastorno Bipolar"
     }
@@ -6689,8 +5203,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 749,
-      "categoryId": 6,
       "productId": 201,
       "name": "Cáncer Colorrectal"
     }
@@ -6698,8 +5210,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 750,
-      "categoryId": 6,
       "productId": 201,
       "name": "Cáncer De Próstata"
     }
@@ -6707,8 +5217,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 751,
-      "categoryId": 6,
       "productId": 201,
       "name": "Diverticulosis"
     }
@@ -6716,8 +5224,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 752,
-      "categoryId": 6,
       "productId": 201,
       "name": "Endometriosis"
     }
@@ -6725,8 +5231,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 753,
-      "categoryId": 6,
       "productId": 201,
       "name": "Enfermedad Pélvica Inflamatoria"
     }
@@ -6734,8 +5238,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 754,
-      "categoryId": 6,
       "productId": 201,
       "name": "Fibromas Uterinos"
     }
@@ -6743,8 +5245,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 755,
-      "categoryId": 6,
       "productId": 201,
       "name": "Hernia Intestinal"
     }
@@ -6752,8 +5252,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 756,
-      "categoryId": 6,
       "productId": 201,
       "name": "Inflamación De La Próstata"
     }
@@ -6761,8 +5259,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 757,
-      "categoryId": 6,
       "productId": 201,
       "name": "Inflamación Intestinal"
     }
@@ -6770,8 +5266,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 758,
-      "categoryId": 6,
       "productId": 201,
       "name": "Metástasis"
     }
@@ -6779,8 +5273,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 759,
-      "categoryId": 6,
       "productId": 201,
       "name": "Uretritis"
     }
@@ -6788,8 +5280,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 782,
-      "categoryId": 7,
       "productId": 202,
       "name": "Desequilibrio Hormonal"
     }
@@ -6797,8 +5287,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 783,
-      "categoryId": 7,
       "productId": 202,
       "name": "Menstruación"
     }
@@ -6806,8 +5294,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 784,
-      "categoryId": 7,
       "productId": 203,
       "name": "Desequilibrio Hormonal"
     }
@@ -6815,8 +5301,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 785,
-      "categoryId": 12,
       "productId": 204,
       "name": "Asma Bronquial"
     }
@@ -6824,8 +5308,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 786,
-      "categoryId": 12,
       "productId": 204,
       "name": "Bronconeumonía"
     }
@@ -6833,8 +5315,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 787,
-      "categoryId": 12,
       "productId": 204,
       "name": "Gripa"
     }
@@ -6842,8 +5322,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 788,
-      "categoryId": 12,
       "productId": 204,
       "name": "Trastornos Respiratorios"
     }
@@ -6851,8 +5329,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 789,
-      "categoryId": 10,
       "productId": 205,
       "name": "Epilepsia Idiopática"
     }
@@ -6860,8 +5336,6 @@
   {
     "model": "Suffering",
     "data": {
-      "sufferingId": 790,
-      "categoryId": 10,
       "productId": 205,
       "name": "Epilepsia Sintomática"
     }

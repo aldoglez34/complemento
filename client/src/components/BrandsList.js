@@ -32,11 +32,11 @@ class BrandsList extends Component {
                 return (
                   <Nav.Link
                     className="lead px-0 py-1 text-dark"
-                    key={brand.DISTINCT}
-                    href={"/store/" + brand.DISTINCT}
+                    key={brand.name}
+                    href={"/store/" + brand.name}
                     style={{ textTransform: "uppercase" }}
                   >
-                    {brand.DISTINCT}
+                    {brand.name}
                   </Nav.Link>
                 );
               })
