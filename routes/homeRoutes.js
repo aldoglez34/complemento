@@ -10,10 +10,9 @@ router.get("/prioritized", function(req, res) {
   model.Product.findAll({
     attributes: [
       "productId",
-      "categoryId",
+      "category",
       "name",
       "content",
-      "dose",
       "description",
       "salePrice",
       "stock",
@@ -48,10 +47,9 @@ router.get("/discounts", function(req, res) {
   model.Product.findAll({
     attributes: [
       "productId",
-      "categoryId",
+      "category",
       "name",
       "content",
-      "dose",
       "description",
       "salePrice",
       "stock",
@@ -85,10 +83,9 @@ router.get("/bestsellers", function(req, res) {
   model.Product.findAll({
     attributes: [
       "productId",
-      "categoryId",
+      "category",
       "name",
       "content",
-      "dose",
       "description",
       "salePrice",
       "stock",
