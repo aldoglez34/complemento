@@ -53,12 +53,16 @@ export default {
   // CLIENTS
   // ---------------------------------------------------------------------------
 
-  getClientInfo: function(uid) {
+  fetchClientInfo: function(uid) {
     return axios.get("/api/client/" + uid);
   },
 
   fetchEmails: function() {
     return axios.get("/api/client/email/all");
+  },
+
+  saveNewClient: function(newClient) {
+    return axios.post("/api/client/new", newClient);
   },
 
   // ---------------------------------------------------------------------------

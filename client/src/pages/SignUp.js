@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import * as clientActions from "../redux-actions/client";
 import { Container, Col, Form, Button } from "react-bootstrap";
 import Layout from "./Layout";
 import MyBreadcrumb from "../components/MyBreadcrumb";
@@ -7,12 +9,15 @@ import { Formik, ErrorMessage } from "formik";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
 import API from "../utils/API";
+import fire from "../firebase/Fire";
 
 function SignUp() {
   const breadcrumbRoutes = [
     { name: "Inicio", to: "/" },
     { name: "Regístrate con nosotros", to: "active" }
   ];
+
+  const dispatch = useDispatch();
 
   const [emails, setEmails] = useState({
     emails: []
@@ -31,38 +36,31 @@ function SignUp() {
   const signupSchema = yup.object({
     clientName: yup
       .string()
+      .min(2, "Debe ser más largo que 2 letras")
       .matches(
-        /^[a-zA-Z-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ ]+$/,
+        /^[a-zA-Z-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñÑ ]+$/,
         "Sólo letras"
       )
-      .trim()
-      .min(2, "Mínimo 2 letras")
-      .max(30, "Máximo 30 letras")
       .required("Requerido"),
     firstSurname: yup
       .string()
-      .trim()
+      .min(2, "Debe ser más largo que 2 letras")
       .matches(
-        /^[a-zA-Z-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ ]+$/,
+        /^[a-zA-Z-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñÑ ]+$/,
         "Sólo letras"
       )
-      .min(2, "Mínimo 2 letras")
-      .max(50, "Máximo 56 letras")
       .required("Requerido"),
     secondSurname: yup
       .string()
-      .trim()
+      .min(2, "Debe ser más largo que 2 letras")
       .matches(
-        /^[a-zA-Z-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ ]+$/,
+        /^[a-zA-Z-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñÑ ]+$/,
         "Sólo letras"
       )
-      .min(2, "Mínimo 2 letras")
-      .max(50, "Máximo 50 letras")
       .required("Requerido"),
     email: yup
       .string()
       .email("Formato de email incorrecto")
-      .max(50, "Máximo 50 letras")
       .notOneOf(emails.emails, "Este correo ya se encuentra dado de alta")
       .required("Requerido"),
     phone: yup
@@ -72,12 +70,21 @@ function SignUp() {
       .required("Requerido"),
     password: yup
       .string()
-      .min(5, "Mínimo 5 caracteres")
-      .max(30, "Máximo 30 caracteres")
+      .min(5, "Entre 5 y 30 caracteres")
       .required("Requerido"),
     passwordConfirm: yup
       .string()
       .oneOf([yup.ref("password")], "Las contraseñas no coinciden")
+      .required("Requerido"),
+    street: yup.string().required("Requerido"),
+    neighborhood: yup.string().required("Requerido"),
+    municipality: yup.string().required("Requerido"),
+    city: yup.string().required("Requerido"),
+    state: yup.string().required("Requerido"),
+    zipCode: yup
+      .string()
+      .matches(/^[0-9]*$/, "Sólo números")
+      .length(5, "La longitud exacta debe ser 5 dígitos")
       .required("Requerido")
   });
 
@@ -98,15 +105,67 @@ function SignUp() {
             password: "",
             passwordConfirm: "",
             street: "",
+            neighborhood: "",
+            municipality: "",
             city: "",
             state: "",
-            zipCode: "",
-            comments: ""
+            zipCode: ""
           }}
           validationSchema={signupSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            console.log(values);
+            // this is necessary since the trim() function from yup is not working
+            let trimmedValues = {};
+            trimmedValues.clientName = values.clientName.trim();
+            trimmedValues.firstSurname = values.firstSurname.trim();
+            trimmedValues.secondSurname = values.secondSurname.trim();
+            trimmedValues.email = values.email.trim();
+            trimmedValues.phone = values.phone;
+            trimmedValues.password = values.password;
+            trimmedValues.street = values.street.trim();
+            trimmedValues.neighborhood = values.neighborhood.trim();
+            trimmedValues.municipality = values.municipality.trim();
+            trimmedValues.city = values.city.trim();
+            trimmedValues.state = values.state;
+            trimmedValues.zipCode = values.zipCode;
+            // after trimming all the values manually, sign up
+            fire
+              .auth()
+              .createUserWithEmailAndPassword(
+                trimmedValues.email,
+                trimmedValues.password
+              )
+              .then(function(res) {
+                console.log(res);
+                trimmedValues.clientId = res.user.uid;
+                // if the client signed up successfully
+                // save info in the db
+                API.saveNewClient(trimmedValues)
+                  .then(() => {
+                    // after saving the new client info
+                    // the fetch the newly created info
+                    // login this client and send him/her to the home page
+                    API.fetchClientInfo(trimmedValues.clientId)
+                      .then(res => {
+                        let client = res.data[0];
+                        dispatch(clientActions.loginClient(client));
+                        window.location.replace("/");
+                      })
+                      .catch(err => {
+                        console.log(err);
+                        setSubmitting(false);
+                      });
+                  })
+                  .catch(err => {
+                    console.log(err);
+                  });
+              })
+              .catch(function(error) {
+                let errorCode = error.code;
+                let errorMessage = error.message;
+                console.log(errorCode);
+                console.log(errorMessage);
+              });
           }}
         >
           {({
@@ -128,7 +187,7 @@ function SignUp() {
                       Nombre(s)<strong className="ml-1 text-danger">*</strong>
                     </Form.Label>
                     <Form.Control
-                      maxLength="100"
+                      maxLength="50"
                       placeholder="Nombre(s)"
                       type="text"
                       name="clientName"
@@ -149,7 +208,7 @@ function SignUp() {
                       <strong className="ml-1 text-danger">*</strong>
                     </Form.Label>
                     <Form.Control
-                      maxLength="100"
+                      maxLength="50"
                       placeholder="Apellido paterno"
                       type="text"
                       name="firstSurname"
@@ -170,7 +229,7 @@ function SignUp() {
                       <strong className="ml-1 text-danger">*</strong>
                     </Form.Label>
                     <Form.Control
-                      maxLength="100"
+                      maxLength="50"
                       placeholder="Apellido materno"
                       type="text"
                       name="secondSurname"
@@ -193,7 +252,7 @@ function SignUp() {
                       <strong className="ml-1 text-danger">*</strong>
                     </Form.Label>
                     <Form.Control
-                      maxLength="100"
+                      maxLength="50"
                       placeholder="Correo electrónico"
                       type="email"
                       name="email"
@@ -214,7 +273,7 @@ function SignUp() {
                       <strong className="ml-1 text-danger">*</strong>
                     </Form.Label>
                     <Form.Control
-                      maxLength="100"
+                      maxLength="10"
                       placeholder="Teléfono celular"
                       type="text"
                       name="phone"
@@ -239,7 +298,7 @@ function SignUp() {
                       <strong className="ml-1 text-danger">*</strong>
                     </Form.Label>
                     <Form.Control
-                      maxLength="100"
+                      maxLength="30"
                       placeholder="Contraseña"
                       type="password"
                       name="password"
@@ -260,7 +319,7 @@ function SignUp() {
                       <strong className="ml-1 text-danger">*</strong>
                     </Form.Label>
                     <Form.Control
-                      maxLength="100"
+                      maxLength="30"
                       placeholder="Repetir contraseña"
                       type="password"
                       name="passwordConfirm"
@@ -281,13 +340,14 @@ function SignUp() {
                 <h5 className="my-3">Datos de entrega</h5>
                 <hr />
                 <Form.Row>
-                  <Form.Group as={Col}>
+                  <Form.Group as={Col} md={6}>
                     <Form.Label>
-                      Calle<strong className="ml-1 text-danger">*</strong>
+                      Calle con número
+                      <strong className="ml-1 text-danger">*</strong>
                     </Form.Label>
                     <Form.Control
                       maxLength="100"
-                      placeholder="Calle"
+                      placeholder="Calle con número"
                       type="text"
                       name="street"
                       value={values.street}
@@ -298,6 +358,46 @@ function SignUp() {
                     <ErrorMessage
                       className="text-danger"
                       name="street"
+                      component="div"
+                    />
+                  </Form.Group>
+                  <Form.Group as={Col} md={3}>
+                    <Form.Label>
+                      Municipio<strong className="ml-1 text-danger">*</strong>
+                    </Form.Label>
+                    <Form.Control
+                      maxLength="100"
+                      placeholder="Municipio"
+                      type="text"
+                      name="municipality"
+                      value={values.municipality}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.municipality && !errors.municipality}
+                    />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="municipality"
+                      component="div"
+                    />
+                  </Form.Group>
+                  <Form.Group as={Col} md={3}>
+                    <Form.Label>
+                      Colonia<strong className="ml-1 text-danger">*</strong>
+                    </Form.Label>
+                    <Form.Control
+                      maxLength="100"
+                      placeholder="Colonia"
+                      type="text"
+                      name="neighborhood"
+                      value={values.neighborhood}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.neighborhood && !errors.neighborhood}
+                    />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="neighborhood"
                       component="div"
                     />
                   </Form.Group>
@@ -323,11 +423,19 @@ function SignUp() {
                       component="div"
                     />
                   </Form.Group>
-                  <Form.Group as={Col} md={4}>
+                  <Form.Group as={Col} md={3}>
                     <Form.Label>
                       Estado<strong className="ml-1 text-danger">*</strong>
                     </Form.Label>
-                    <Form.Control as="select" defaultValue={"DEFAULT"}>
+                    <Form.Control
+                      name="state"
+                      // value={values.state}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.state && !errors.state}
+                      as="select"
+                      defaultValue={"DEFAULT"}
+                    >
                       <option value="DEFAULT" disabled>
                         Elige...
                       </option>
@@ -365,13 +473,13 @@ function SignUp() {
                       <option>Zacatecas</option>
                     </Form.Control>
                   </Form.Group>
-                  <Form.Group as={Col} md={2}>
+                  <Form.Group as={Col} md={3}>
                     <Form.Label>
                       Código postal
                       <strong className="ml-1 text-danger">*</strong>
                     </Form.Label>
                     <Form.Control
-                      maxLength="100"
+                      maxLength="5"
                       placeholder="Código postal"
                       type="text"
                       name="zipCode"
@@ -383,28 +491,6 @@ function SignUp() {
                     <ErrorMessage
                       className="text-danger"
                       name="zipCode"
-                      component="div"
-                    />
-                  </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>Comentarios</Form.Label>
-                    <Form.Control
-                      maxLength="200"
-                      as="textarea"
-                      rows="3"
-                      placeholder="Comentarios adicionales con respecto a tu dirección o a la entrega de productos"
-                      type="text"
-                      name="comments"
-                      value={values.comments}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.comments && !errors.comments}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="comments"
                       component="div"
                     />
                   </Form.Group>

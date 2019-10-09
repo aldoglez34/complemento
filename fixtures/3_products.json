@@ -3688,5 +3688,515 @@
       "providerId": 1,
       "priority": false
     }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 206,
+      "category": "Sistema Circulatorio",
+      "name": "Wereque",
+      "content": "75 mililitros",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz. Producto no tóxico.",
+      "purchasePrice": 0.0,
+      "salePrice": 52.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Cohonasa",
+      "providerId": 2,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 207,
+      "category": "Sistema Circulatorio",
+      "name": "Varifleban",
+      "content": "60 comprimidos",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz. Producto no tóxico.",
+      "purchasePrice": 0.0,
+      "salePrice": 120.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Cohonasa",
+      "providerId": 2,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 208,
+      "category": "Sistema Nervioso Central",
+      "name": "Redutex Plus",
+      "content": "75 mililitros",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 40.5,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Cohonasa",
+      "providerId": 2,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 209,
+      "category": "Sistema Genitourinario",
+      "name": "Passiflora",
+      "content": "100 chochos",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 60.5,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Cohonasa",
+      "providerId": 2,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 210,
+      "category": "Sistema Glandular",
+      "name": "Klerovit",
+      "content": "60 cápsulas",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 163.5,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Cohonasa",
+      "providerId": 2,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 211,
+      "category": "Alimentos Terapéuticos",
+      "name": "Nopalinaza Plus",
+      "content": "470 gramos",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 68.5,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "El Eden",
+      "providerId": 2,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 212,
+      "category": "Dermatología",
+      "name": "Bronceador",
+      "content": "50 mililitros",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 34.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Cosmetobelleza I.M.",
+      "providerId": 2,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 213,
+      "category": "Alimentos Terapéuticos",
+      "name": "Vitamina E",
+      "content": "30 cápsulas",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 150.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Gel-Caps",
+      "providerId": 2,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 214,
+      "category": "Alimentos Terapéuticos",
+      "name": "Higado de Bacalao",
+      "content": "100 perlas",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 85.5,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Gel-Caps",
+      "providerId": 2,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 215,
+      "category": "Sistema Inmunológico",
+      "name": "Henna Natural",
+      "content": "100 gramos",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 30.3,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Gn+Vida",
+      "providerId": 2,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 216,
+      "category": "Alimentos Terapéuticos",
+      "name": "Piñalinaza Plus",
+      "content": "492 gramos",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 50.7,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "El Eden",
+      "providerId": 3,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 217,
+      "category": "Alimentos Terapéuticos",
+      "name": "Spirulina",
+      "content": "100 perlas",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 68.5,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Gel-Caps",
+      "providerId": 3,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 218,
+      "category": "Alimentos Terapéuticos",
+      "name": "Alcachofa",
+      "content": "Caja con 30 sobres",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 62.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Gn+Vida",
+      "providerId": 3,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 219,
+      "category": "Sistema Nutricional",
+      "name": "Fibra Enzyl",
+      "content": "400 gramos",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 220.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Cohonasa",
+      "providerId": 3,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 220,
+      "category": "Sistema Nutricional",
+      "name": "Damiana de California",
+      "content": "75 mililitros",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 56.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Cohonasa",
+      "providerId": 3,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 221,
+      "category": "Sistema Nutricional",
+      "name": "Biorenal",
+      "content": "75 mililitros",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 46.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Cohonasa",
+      "providerId": 3,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 222,
+      "category": "Sistema Nutricional",
+      "name": "Litiodisol Yumel",
+      "content": "60 cápsulas",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 104.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Cohonasa",
+      "providerId": 3,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 223,
+      "category": "Sistema Nutricional",
+      "name": "Zaragaxol",
+      "content": "75 mililitros",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 66.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Cohonasa",
+      "providerId": 4,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 224,
+      "category": "Sistema Nutricional",
+      "name": "Ginkgo Forte",
+      "content": "60 cápsulas",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 120.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Cohonasa",
+      "providerId": 4,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 225,
+      "category": "Alimentos Terapéuticos",
+      "name": "Aceite de Coco",
+      "content": "120 mililitros",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 20.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "El Roble",
+      "providerId": 4,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 226,
+      "category": "Alimentos Terapéuticos",
+      "name": "Aceite de Menta",
+      "content": "120 mililitros",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 20.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "El Roble",
+      "providerId": 4,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 227,
+      "category": "Alimentos Terapéuticos",
+      "name": "Aceite de Poleo",
+      "content": "120 mililitros",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 20.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "El Roble",
+      "providerId": 4,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 228,
+      "category": "Alimentos Terapéuticos",
+      "name": "Lecitina de Soya",
+      "content": "150 cápsulas",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 220.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Gel-Caps",
+      "providerId": 4,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 229,
+      "category": "Alimentos Terapéuticos",
+      "name": "Lecikelp",
+      "content": "200 cápsulas",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 137.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Gel-Caps",
+      "providerId": 4,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 230,
+      "category": "Alimentos Terapéuticos",
+      "name": "Alcachofa",
+      "content": "30 cápsulas",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 166.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Gn+Vida",
+      "providerId": 4,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 231,
+      "category": "Alimentos Terapéuticos",
+      "name": "Aceite de Lavanda",
+      "content": "120 mililitros",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 20.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "El Roble",
+      "providerId": 5,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 232,
+      "category": "Dermatología",
+      "name": "Arcilla Natural",
+      "content": "75 gramos",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 20.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Gn+Vida",
+      "providerId": 5,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 233,
+      "category": "Dermatología",
+      "name": "Jabón Miel y Avena",
+      "content": "130 gramos",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 56.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Mandumed",
+      "providerId": 5,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 234,
+      "category": "Dermatología",
+      "name": "Jabón Neutro",
+      "content": "130 gramos",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 56.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Mandumed",
+      "providerId": 5,
+      "priority": false
+    }
+  },
+  {
+    "model": "Product",
+    "data": {
+      "productId": 235,
+      "category": "Dermatología",
+      "name": "Kalmyadol",
+      "content": "120 gramos",
+      "description": "El tratamiento consiste principalmente en el control de las crisis y su acción es sumamente eficaz.",
+      "purchasePrice": 0.0,
+      "salePrice": 76.0,
+      "unitsSold": 10,
+      "stock": 20,
+      "brand": "Cohonasa",
+      "providerId": 5,
+      "priority": false
+    }
   }
 ]

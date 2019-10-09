@@ -41,7 +41,7 @@ function LoginDropdown() {
                   .signInWithEmailAndPassword(values.email, values.password)
                   .then(res => {
                     let uid = res.user.uid;
-                    API.getClientInfo(uid)
+                    API.fetchClientInfo(uid)
                       .then(res => {
                         let client = res.data[0];
                         dispatch(clientActions.loginClient(client));
@@ -69,7 +69,7 @@ function LoginDropdown() {
                   .signInWithEmailAndPassword(values.email, values.password)
                   .then(res => {
                     let uid = res.user.uid;
-                    API.getClientInfo(uid)
+                    API.fetchClientInfo(uid)
                       .then(res => {
                         let client = res.data[0];
                         dispatch(clientActions.loginClient(client));

@@ -166,7 +166,7 @@ class ProductDetails extends Component {
                   </li>
                 </ul>
               ) : (
-                <span className="lead">No hay información disponibles.</span>
+                <span>No hay información disponible</span>
               )}
             </Col>
             {/* column 4 */}
@@ -183,7 +183,7 @@ class ProductDetails extends Component {
                   </li>
                 </ul>
               ) : (
-                <span className="lead">No hay información disponible.</span>
+                <span>No hay información disponible</span>
               )}
             </Col>
           </Row>

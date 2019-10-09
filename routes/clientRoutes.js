@@ -38,4 +38,31 @@ router.get("/email/all", function(req, res) {
     });
 });
 
+// ------------------------------------------------------------
+// save new client
+// matches with /api/client/new
+router.post("/new", function(req, res) {
+  model.Client.create({
+    clientId: req.body.clientId,
+    name: req.body.clientName,
+    firstSurname: req.body.firstSurname,
+    secondSurname: req.body.secondSurname,
+    email: req.body.email,
+    phone: req.body.phone,
+    password: req.body.password,
+    street: req.body.street,
+    neighborhood: req.body.neighborhood,
+    municipality: req.body.municipality,
+    city: req.body.city,
+    state: req.body.state,
+    zipCode: req.body.zipCode
+  })
+    .then(function(res) {
+      res.json(res);
+    })
+    .catch(function(err) {
+      res.send(err);
+    });
+});
+
 module.exports = router;

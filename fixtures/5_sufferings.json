@@ -5339,5 +5339,215 @@
       "productId": 205,
       "name": "Epilepsia Sintomática"
     }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 206,
+      "name": "Sobrepeso"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 207,
+      "name": "Varices"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 208,
+      "name": "Sobrepeso"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 209,
+      "name": "Trastorno Bipolar"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 210,
+      "name": "Anemia"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 211,
+      "name": "Demencia"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 212,
+      "name": "Palidez"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 213,
+      "name": "Deficiencias Vitamínicas"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 214,
+      "name": "Deficiencias Vitamínicas"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 215,
+      "name": "Enfermedades Cardiovasculares"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 216,
+      "name": "Inapetencia"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 217,
+      "name": "Indigestión"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 218,
+      "name": "Infecciones Intestinales"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 219,
+      "name": "Sobrepeso"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 220,
+      "name": "Lumbago"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 221,
+      "name": "Colitis"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 222,
+      "name": "Salmonelosis"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 223,
+      "name": "Fiebre"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 224,
+      "name": "Isquemia"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 225,
+      "name": "Deficiencias Vitamínicas"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 226,
+      "name": "Vejez Prematura"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 227,
+      "name": "Deficiencias Vitamínicas"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 228,
+      "name": "Deficiencias Vitamínicas"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 229,
+      "name": "Deficiencias Vitamínicas"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 230,
+      "name": "Deficiencias Vitamínicas"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 231,
+      "name": "Deficiencia En La Producción Hormonal"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 232,
+      "name": "Psoriasis"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 233,
+      "name": "Dermatosis"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 234,
+      "name": "Psoriasis"
+    }
+  },
+  {
+    "model": "Suffering",
+    "data": {
+      "productId": 235,
+      "name": "Dermatitis"
+    }
   }
 ]

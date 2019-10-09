@@ -9,5 +9,49 @@
       "email": "test@test.com",
       "phone": "2281112031"
     }
+  },
+  {
+    "model": "Provider",
+    "data": {
+      "providerId": 2,
+      "name": "Benlaifh",
+      "address": "1324 Mirador, Cintalapa.  Chiapas C.P. 30400. México.",
+      "rfc": "EEEEEEEEEEEE",
+      "email": "benlaifh@test.com",
+      "phone": "3335623158"
+    }
+  },
+  {
+    "model": "Provider",
+    "data": {
+      "providerId": 3,
+      "name": "Alfadelta S.A. DE C.V.",
+      "address": "Valle de Oaxaca No. 27, C.P. 53290. México",
+      "rfc": "IIIIIIIIIIII",
+      "email": "alfadelta@test.com",
+      "phone": "3385214632"
+    }
+  },
+  {
+    "model": "Provider",
+    "data": {
+      "providerId": 4,
+      "name": "Arefil S.A. DE C.V.",
+      "address": "Ave. Monterrey 500-A, Tamaulipas C.P. 89515. México.",
+      "rfc": "OOOOOOOOOOOO",
+      "email": "arefil@test.com",
+      "phone": "3896547123"
+    }
+  },
+  {
+    "model": "Provider",
+    "data": {
+      "providerId": 5,
+      "name": "Productos Naturales",
+      "address": "Juan Escutia Nº 18, Distrito Federal C.P. 09300. México.",
+      "rfc": "UUUUUUUUUUUU",
+      "email": "naturales@test.com",
+      "phone": "3321564789"
+    }
   }
 ]

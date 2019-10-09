@@ -63,6 +63,7 @@ router.get("/products/:cat", function(req, res) {
         "brand",
         "priority"
       ],
+      order: [["name", "ASC"]],
       include: [
         {
           model: model.Discount
@@ -87,6 +88,7 @@ router.get("/products/:cat", function(req, res) {
         "brand",
         "priority"
       ],
+      order: [["name", "ASC"]],
       where: {
         category: cat
       }

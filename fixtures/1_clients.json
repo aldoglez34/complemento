@@ -10,6 +10,8 @@
       "email": "aldoglez34@gmail.com",
       "password": "123456",
       "street": "88 Canterbury St.",
+      "neighborhood": "Neigh",
+      "municipality": "Mun",
       "city": "Richardson",
       "state": "Veracruz",
       "zipCode": "75080",

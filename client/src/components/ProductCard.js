@@ -67,7 +67,9 @@ function ProductCard(props) {
           )}
         </div>
         {/* brand */}
-        <p className="mb-0">PRONAMED</p>
+        <p className="mb-0" style={{ textTransform: "uppercase" }}>
+          {props.product.brand}
+        </p>
         {/* content */}
         <p>{props.product.content}</p>
         {/* add to cart button */}

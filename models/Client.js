@@ -3,11 +3,11 @@ module.exports = function(sequelize, DataTypes) {
     "Client",
     {
       clientId: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(80),
         primaryKey: true
       },
       name: {
-        type: DataTypes.STRING(30),
+        type: DataTypes.STRING(50),
         allowNull: false
       },
       firstSurname: {
@@ -21,7 +21,8 @@ module.exports = function(sequelize, DataTypes) {
       email: {
         type: DataTypes.STRING(50),
         allowNull: false,
-        isEmail: true
+        isEmail: true,
+        unique: true
       },
       phone: {
         type: DataTypes.STRING(10),
@@ -32,6 +33,14 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       },
       street: {
+        type: DataTypes.STRING(100),
+        allowNull: false
+      },
+      neighborhood: {
+        type: DataTypes.STRING(100),
+        allowNull: false
+      },
+      municipality: {
         type: DataTypes.STRING(100),
         allowNull: false
       },
@@ -46,10 +55,6 @@ module.exports = function(sequelize, DataTypes) {
       zipCode: {
         type: DataTypes.STRING(5),
         allowNull: false
-      },
-      comments: {
-        type: DataTypes.STRING(200),
-        allowNull: true
       }
     },
     {
