@@ -8,12 +8,6 @@ import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
 import API from "../utils/API";
 
-function fetchEmails() {
-  API.fetchEmails()
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err));
-}
-
 function SignUp() {
   const breadcrumbRoutes = [
     { name: "Inicio", to: "/" },
@@ -24,8 +18,14 @@ function SignUp() {
     emails: []
   });
 
+  const fetchEmails = () => {
+    API.fetchEmails()
+      .then(res => setEmails(res.data))
+      .catch(err => console.log(err));
+  };
+
   useEffect(() => {
-    setEmails(fetchEmails());
+    fetchEmails();
   }, []);
 
   const signupSchema = yup.object({
@@ -63,7 +63,7 @@ function SignUp() {
       .string()
       .email("Formato de email incorrecto")
       .max(50, "Máximo 50 letras")
-      .notOneOf(emails, "Este correo ya se encuentra dado de alta")
+      .notOneOf(emails.emails, "Este correo ya se encuentra dado de alta")
       .required("Requerido"),
     phone: yup
       .string()
@@ -235,7 +235,8 @@ function SignUp() {
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
                     <Form.Label>
-                      Contraseña<strong className="ml-1 text-danger">*</strong>
+                      Contraseña
+                      <strong className="ml-1 text-danger">*</strong>
                     </Form.Label>
                     <Form.Control
                       maxLength="100"

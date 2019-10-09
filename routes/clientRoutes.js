@@ -25,11 +25,13 @@ router.get("/email/all", function(req, res) {
     order: [["email", "ASC"]]
   })
     .then(function(data) {
-      let toFront = [];
+      let toFrontArr = [];
       data.forEach(item => {
-        toFront.push(item.email);
+        toFrontArr.push(item.email);
       });
-      res.json(toFront);
+      let toFrontObj = {};
+      toFrontObj.emails = toFrontArr;
+      res.json(toFrontObj);
     })
     .catch(function(err) {
       res.send(err);
