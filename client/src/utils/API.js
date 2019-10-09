@@ -41,7 +41,7 @@ export default {
     return axios.get("/api/product/details/" + productId);
   },
 
-  fetchSufferings: function(productId){
+  fetchSufferings: function(productId) {
     return axios.get("/api/product/sufferings/" + productId);
   },
 
@@ -50,11 +50,15 @@ export default {
   },
 
   // ---------------------------------------------------------------------------
-  // CLIENT DETAILS
+  // CLIENTS
   // ---------------------------------------------------------------------------
 
   getClientInfo: function(uid) {
     return axios.get("/api/client/" + uid);
+  },
+
+  fetchEmails: function() {
+    return axios.get("/api/client/email/all");
   },
 
   // ---------------------------------------------------------------------------

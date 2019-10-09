@@ -18,25 +18,25 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING(50),
         allowNull: false
       },
-      phone: {
-        type: DataTypes.STRING(10),
-        allowNull: false
-      },
       email: {
         type: DataTypes.STRING(50),
         allowNull: false,
         isEmail: true
       },
+      phone: {
+        type: DataTypes.STRING(10),
+        allowNull: false
+      },
       password: {
-        type: DataTypes.STRING(15),
+        type: DataTypes.STRING(30),
         allowNull: false
       },
       street: {
-        type: DataTypes.STRING(150),
+        type: DataTypes.STRING(100),
         allowNull: false
       },
       city: {
-        type: DataTypes.STRING(150),
+        type: DataTypes.STRING(100),
         allowNull: false
       },
       state: {
@@ -48,7 +48,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       },
       comments: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING(200),
         allowNull: true
       }
     },
