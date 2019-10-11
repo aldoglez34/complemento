@@ -14,7 +14,8 @@ class ProductsSection extends Component {
     productsPerPage: 20,
     pages: 0,
     activePage: 1,
-    sortBy: "A-Z"
+    sortBy: "A-Z",
+    groupBy: "None"
   };
 
   setOffsetAndLimit() {
@@ -113,6 +114,22 @@ class ProductsSection extends Component {
     });
   };
 
+  handleGrouping = name => {
+    switch (name) {
+      case "none":
+        console.log("grouping by none");
+        break;
+      case "By Brand":
+        console.log("grouping by brand");
+        break;
+      case "By Discounts":
+        console.log("grouping by discounts");
+        break;
+      default:
+        return null;
+    }
+  };
+
   render() {
     return (
       <>
@@ -154,9 +171,27 @@ class ProductsSection extends Component {
               className="ml-2"
               title="Nada"
             >
-              <Dropdown.Item href="#/action-1">Marcas</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Descuentos</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  this.handleGrouping("None");
+                }}
+              >
+                Nada
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  this.handleGrouping("By Brand");
+                }}
+              >
+                Marcas
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  this.handleGrouping("By Discounts");
+                }}
+              >
+                Descuentos
+              </Dropdown.Item>
             </DropdownButton>
           </Col>
           <Col

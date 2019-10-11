@@ -26,12 +26,12 @@ class BrandsList extends Component {
           <i className="fas fa-chevron-down ml-1" />
         </Navbar.Toggle>
         <Navbar.Collapse id="brandsdropdown">
-          <Nav className="flex-column">
+          <Nav className="flex-column w-100">
             {this.state.brands.length ? (
               this.state.brands.map(brand => {
                 return (
                   <Nav.Link
-                    className="px-0 py-1 text-dark"
+                    className="px-0 py-1"
                     key={brand.name}
                     href={"/store/" + brand.name}
                     style={{ textTransform: "uppercase" }}
