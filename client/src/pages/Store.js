@@ -79,11 +79,20 @@ function Store(props) {
             <Row>
               <Col>
                 <Jumbotron
-                  className="rounded-0 mt-3"
-                  // style={{ backgroundImage: "url('../images/jumbo3.jpg')" }}
+                  className="rounded-0 mt-3 text-right"
+                  style={{
+                    backgroundImage: "url('../images/jumbo3.jpg')",
+                    color: "ghostwhite"
+                  }}
                   // style={{ backgroundColor: "#c8c0b0", color: "#264341" }}
                 >
-                  <h1>{title()}</h1>
+                  <h1
+                    style={{
+                      fontFamily: "Josefin Sans"
+                    }}
+                  >
+                    {title()}
+                  </h1>
                   <p>
                     This is a simple hero unit, a simple jumbotron-style
                     component for calling extra attention to featured content or
