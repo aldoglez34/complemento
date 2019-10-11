@@ -27,6 +27,16 @@ function Store(props) {
     }
   };
 
+  const title = () => {
+    let filter;
+    if (props.routeProps.match.params.cat === undefined) {
+      filter = "Todos los productos";
+    } else {
+      filter = props.routeProps.match.params.cat;
+    }
+    return filter;
+  };
+
   return (
     <Layout>
       <MyBreadcrumb routes={breadcrumbRoute()} />
@@ -69,7 +79,7 @@ function Store(props) {
             <Row>
               <Col>
                 <h4 className="my-3">
-                  <strong>Productos</strong>
+                  <strong style={{ color: "#edcb58" }}>{title()}</strong>
                 </h4>
                 <hr className="mb-3" />
               </Col>

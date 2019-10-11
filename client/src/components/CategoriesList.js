@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, Nav, Spinner, Badge } from "react-bootstrap";
 import API from "../utils/API";
+import "./categorieslist.scss";
 
 class CategoriesList extends Component {
   state = {
@@ -28,18 +29,17 @@ class CategoriesList extends Component {
           <i className="fas fa-chevron-down ml-1" />
         </Navbar.Toggle>
         <Navbar.Collapse id="categoriesdropdown">
-          <Nav className="flex-column">
+          <Nav className="flex-column w-100">
             {this.state.categories.map(category => {
               if (category.name === this.state.selectedCat) {
                 return (
                   <Nav.Link
-                    className="lead px-0 py-1 text-danger"
+                    className="p-2 rounded catItem active"
                     key={category.name}
                     href={"/store/" + category.name}
                   >
-                    <i className="fas fa-caret-right mr-1" />
-                    <strong>{category.name}</strong>
-                    <Badge variant="danger" pill className="ml-1">
+                    {category.name}
+                    <Badge pill className="ml-1 catBadge active">
                       {category.productCount}
                     </Badge>
                   </Nav.Link>
@@ -47,16 +47,12 @@ class CategoriesList extends Component {
               } else {
                 return (
                   <Nav.Link
-                    className="lead px-0 py-1 text-dark"
+                    className="p-2 rounded catItem"
                     key={category.name}
                     href={"/store/" + category.name}
                   >
                     {category.name}
-                    <Badge
-                      style={{ backgroundColor: "#f3d084" }}
-                      pill
-                      className="ml-1"
-                    >
+                    <Badge pill className="ml-1 catBadge">
                       {category.productCount}
                     </Badge>
                   </Nav.Link>

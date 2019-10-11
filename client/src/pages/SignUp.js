@@ -147,20 +147,24 @@ function SignUp() {
                     // login this client and send him/her to the home page
                     API.fetchClientInfo(trimmedValues.clientId)
                       .then(res => {
+                        alert("¡Bienvenido!");
                         let client = res.data[0];
                         dispatch(clientActions.loginClient(client));
                         window.location.replace("/");
                       })
                       .catch(err => {
+                        alert("Error");
                         console.log(err);
                         setSubmitting(false);
                       });
                   })
                   .catch(err => {
+                    alert("Error");
                     console.log(err);
                   });
               })
               .catch(function(error) {
+                alert("Error");
                 let errorCode = error.code;
                 let errorMessage = error.message;
                 console.log(errorCode);
@@ -289,7 +293,7 @@ function SignUp() {
                     />
                   </Form.Group>
                 </Form.Row>
-                <h5 className="my-3">Contraseña</h5>
+                <h5 className="my-3">Contraseña (5-30 caracteres)</h5>
                 <hr />
                 <Form.Row>
                   <Form.Group as={Col} md={6}>

@@ -1,0 +1,22 @@
+.catItem {
+  color: #0c2c2c !important;
+  &:hover {
+    background-color: #fce8a7 !important;
+  }
+  &.active {
+    background-color: #edcb58;
+    &:hover {
+      background-color: #edcb58 !important;
+    }
+  }
+}
+
+.catBadge {
+  color: ghostwhite;
+  font-family: Arial;
+  background-color: #59a49a;
+  &.active {
+    background-color: #59a49a;
+    color: ghostwhite;
+  }
+}

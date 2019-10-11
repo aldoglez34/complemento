@@ -43,21 +43,29 @@ function LoginDropdown() {
                     let uid = res.user.uid;
                     API.fetchClientInfo(uid)
                       .then(res => {
+                        alert("¡Bienvenido!");
                         let client = res.data[0];
                         dispatch(clientActions.loginClient(client));
                       })
                       .catch(err => {
+                        alert("Error, este usuario no existe 😞");
                         console.log(err);
                         setSubmitting(false);
                       });
                   })
                   .catch(error => {
-                    alert(error.message);
+                    alert("Error, este usuario no existe 😞");
+                    console.log(error);
                     setSubmitting(false);
                   });
               })
               .catch(function(error) {
-                alert(error);
+                alert("Error");
+                var errorCode = error.code;
+                console.log(errorCode);
+                var errorMessage = error.message;
+                console.log(errorMessage);
+                setSubmitting(false);
               });
           } else {
             fire
@@ -71,23 +79,29 @@ function LoginDropdown() {
                     let uid = res.user.uid;
                     API.fetchClientInfo(uid)
                       .then(res => {
+                        alert("¡Bienvenido!");
                         let client = res.data[0];
                         dispatch(clientActions.loginClient(client));
                       })
                       .catch(err => {
+                        alert("Error, este usuario no existe 😞");
                         console.log(err);
                         setSubmitting(false);
                       });
                   })
                   .catch(error => {
-                    alert(error);
+                    alert("Error, este usuario no existe 😞");
+                    console.log(error);
+                    setSubmitting(false);
                   });
               })
               .catch(function(error) {
+                alert("Error");
                 var errorCode = error.code;
                 console.log(errorCode);
                 var errorMessage = error.message;
                 console.log(errorMessage);
+                setSubmitting(false);
               });
           }
         }}

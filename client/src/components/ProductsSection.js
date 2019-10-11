@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Spinner } from "react-bootstrap";
+import { Row, Col, Spinner, DropdownButton, Dropdown } from "react-bootstrap";
 import ProductCard from "./ProductCard";
 import API from "../utils/API";
 import MyPagination from "../components/MyPagination";
@@ -13,7 +13,8 @@ class ProductsSection extends Component {
     productCounter: 0,
     productsPerPage: 20,
     pages: 0,
-    activePage: 1
+    activePage: 1,
+    sortBy: "A-Z"
   };
 
   setOffsetAndLimit() {
@@ -78,12 +79,90 @@ class ProductsSection extends Component {
     this.setState({ intervalId: intervalId });
   }
 
+  handleSorting = name => {
+    let productsSorted = [];
+    this.setState({ sortBy: name }, () => {
+      switch (name) {
+        case "A-Z":
+          productsSorted = this.state.products.sort((a, b) =>
+            a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+          );
+          this.setState({ products: productsSorted });
+          break;
+        case "Z-A":
+          productsSorted = this.state.products.sort((a, b) =>
+            a.name < b.name ? 1 : b.name < a.name ? -1 : 0
+          );
+          this.setState({ products: productsSorted });
+          break;
+        case "Más barato":
+          productsSorted = this.state.products.sort((a, b) =>
+            a.salePrice > b.salePrice ? 1 : b.salePrice > a.salePrice ? -1 : 0
+          );
+          this.setState({ products: productsSorted });
+          break;
+        case "Más caro":
+          productsSorted = this.state.products.sort((a, b) =>
+            a.salePrice < b.salePrice ? 1 : b.salePrice < a.salePrice ? -1 : 0
+          );
+          this.setState({ products: productsSorted });
+          break;
+        default:
+          return null;
+      }
+    });
+  };
+
   render() {
     return (
       <>
         {/* first row */}
         <Row className="mb-2 py-1">
-          <Col md={6}>
+          <Col
+            md
+            className="d-flex flex-row justify-content-md-center align-items-center mb-2 mb-md-0"
+          >
+            <span>Ordenar por</span>
+            <DropdownButton
+              size="sm"
+              variant="outline-secondary"
+              className="ml-2"
+              title={this.state.sortBy}
+            >
+              <Dropdown.Item onClick={() => this.handleSorting("A-Z")}>
+                A-Z
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => this.handleSorting("Z-A")}>
+                Z-A
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => this.handleSorting("Más barato")}>
+                Más barato
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => this.handleSorting("Más caro")}>
+                Más caro
+              </Dropdown.Item>
+            </DropdownButton>
+          </Col>
+          <Col
+            md
+            className="d-flex flex-row justify-content-md-center align-items-center mb-2 mb-md-0"
+          >
+            <span>Agrupar por</span>
+            <DropdownButton
+              size="sm"
+              variant="outline-secondary"
+              className="ml-2"
+              title="Nada"
+            >
+              <Dropdown.Item href="#/action-1">Marcas</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Descuentos</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            </DropdownButton>
+          </Col>
+          <Col
+            md
+            className="d-flex flex-row justify-content-md-center align-items-center mb-2 mb-md-0"
+          >
             <span>
               {this.state.productCounter === 1 ? (
                 <>{"Mostrando " + this.state.productCounter + " producto"}</>
@@ -92,7 +171,10 @@ class ProductsSection extends Component {
               )}
             </span>
           </Col>
-          <Col md={6} className="d-flex justify-content-md-end">
+          <Col
+            md
+            className="d-flex flex-row justify-content-md-center align-items-center mb-2 mb-md-0"
+          >
             <span>
               Página {this.state.activePage + " de " + this.state.pages}
             </span>

@@ -31,7 +31,7 @@ class BrandsList extends Component {
               this.state.brands.map(brand => {
                 return (
                   <Nav.Link
-                    className="lead px-0 py-1 text-dark"
+                    className="px-0 py-1 text-dark"
                     key={brand.name}
                     href={"/store/" + brand.name}
                     style={{ textTransform: "uppercase" }}

@@ -34,6 +34,7 @@ function TrackShipment() {
               </Dropdown.Toggle>
               <Dropdown.Menu
                 data-display="static"
+                className="bg-light"
                 style={{ width: "18.125rem" }}
               >
                 <Form
