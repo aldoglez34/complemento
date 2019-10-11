@@ -34,7 +34,7 @@ class CategoriesList extends Component {
               if (category.name === this.state.selectedCat) {
                 return (
                   <Nav.Link
-                    className="p-2 rounded catItem active"
+                    className="px-2 py-1 catItem active"
                     key={category.name}
                     href={"/store/" + category.name}
                   >
@@ -47,7 +47,7 @@ class CategoriesList extends Component {
               } else {
                 return (
                   <Nav.Link
-                    className="p-2 rounded catItem"
+                    className="px-2 py-1 catItem"
                     key={category.name}
                     href={"/store/" + category.name}
                   >

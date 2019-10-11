@@ -1,13 +1,16 @@
 .catItem {
   color: #0c2c2c !important;
   &:hover {
-    background-color: #fce8a7 !important;
+    color: #c89f0d !important;
+    // background-color: #fce8a7 !important;
   }
   &.active {
-    background-color: #edcb58;
-    &:hover {
-      background-color: #edcb58 !important;
-    }
+    color: #c89f0d !important;
+    // background-color: #edcb58;
+    font-weight: 700;
+    // &:hover {
+    //   background-color: #edcb58 !important;
+    // }
   }
 }
 
@@ -16,7 +19,7 @@
   font-family: Arial;
   background-color: #59a49a;
   &.active {
-    background-color: #59a49a;
+    background-color: #c89f0d;
     color: ghostwhite;
   }
 }

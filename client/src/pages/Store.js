@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Jumbotron } from "react-bootstrap";
 import { Route } from "react-router-dom";
 import Layout from "./Layout";
 import CategoriesList from "../components/CategoriesList";
@@ -78,10 +78,22 @@ function Store(props) {
           <Col md={9} className="mt-2">
             <Row>
               <Col>
-                <h4 className="my-3">
-                  <strong style={{ color: "#edcb58" }}>{title()}</strong>
+                <Jumbotron
+                  className="rounded-0 mt-3"
+                  // style={{ backgroundImage: "url('../images/jumbo3.jpg')" }}
+                  // style={{ backgroundColor: "#c8c0b0", color: "#264341" }}
+                >
+                  <h1>{title()}</h1>
+                  <p>
+                    This is a simple hero unit, a simple jumbotron-style
+                    component for calling extra attention to featured content or
+                    information.
+                  </p>
+                </Jumbotron>
+                {/* <h4 className="my-3">
+                  <strong style={{ color: "#c89f0d" }}>{title()}</strong>
                 </h4>
-                <hr className="mb-3" />
+                <hr className="mb-3" /> */}
               </Col>
             </Row>
             {/* in order to get the value from the url, it's necessary to declare the component like this */}

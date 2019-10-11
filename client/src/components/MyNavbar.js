@@ -21,7 +21,11 @@ function MyNavbar() {
         <Navbar.Brand
           className="mr-4 d-none d-md-block"
           href="/"
-          style={{ fontFamily: "Josefin Sans", color: "#f3d084" }}
+          style={{
+            fontFamily: "Josefin Sans",
+            color: "#f3d084",
+            opacity: ".9"
+          }}
         >
           <Image
             src={"/images/biglogo.png"}

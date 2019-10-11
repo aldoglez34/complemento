@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Navbar, Nav, Spinner } from "react-bootstrap";
+import { Navbar, Spinner, Form } from "react-bootstrap";
 import API from "../utils/API";
+import "./brandslist.scss";
 
 class BrandsList extends Component {
   state = {
@@ -26,26 +27,28 @@ class BrandsList extends Component {
           <i className="fas fa-chevron-down ml-1" />
         </Navbar.Toggle>
         <Navbar.Collapse id="brandsdropdown">
-          <Nav className="flex-column w-100">
-            {this.state.brands.length ? (
-              this.state.brands.map(brand => {
-                return (
-                  <Nav.Link
-                    className="px-0 py-1"
-                    key={brand.name}
-                    href={"/store/" + brand.name}
-                    style={{ textTransform: "uppercase" }}
-                  >
-                    {brand.name}
-                  </Nav.Link>
-                );
-              })
-            ) : (
-              <div className="text-center py-3">
-                <Spinner animation="border" role="status" variant="success" />
-              </div>
-            )}
-          </Nav>
+          <Form>
+            <div>
+              {this.state.brands.length ? (
+                this.state.brands.map(brand => {
+                  return (
+                    <div key={brand.name} className="py-1">
+                      <Form.Check type="checkbox" id={brand.name}>
+                        <Form.Check.Input type="checkbox" isValid />
+                        <Form.Check.Label className="brandItem">
+                          {brand.name}
+                        </Form.Check.Label>
+                      </Form.Check>
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="text-center py-3">
+                  <Spinner animation="border" role="status" variant="success" />
+                </div>
+              )}
+            </div>
+          </Form>
         </Navbar.Collapse>
       </Navbar>
     );
