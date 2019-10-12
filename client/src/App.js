@@ -17,6 +17,7 @@ import {
 import Login from "./pages/manager/Login";
 import Panel from "./pages/manager/Panel";
 import NewProduct from "./pages/manager/NewProduct";
+import ClientInfo from "./pages/ClientInfo";
 
 class App extends Component {
   componentDidMount() {
@@ -54,6 +55,11 @@ class App extends Component {
           />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/signup" component={SignUp} />
+          <Route
+            exact
+            path="/client/:clientId"
+            render={props => <ClientInfo routeProps={props} />}
+          />
           {this.props.manager.isLogged ? (
             <Switch>
               <Route exact path="/manager/panel" component={Panel} />

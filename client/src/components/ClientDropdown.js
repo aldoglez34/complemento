@@ -31,7 +31,7 @@ function ClientDropdown() {
         className="dropdown-menu-xs-left dropdown-menu-md-right"
         // style={{ width: "18.125rem" }}
       >
-        <Dropdown.Item href="/">Mis datos</Dropdown.Item>
+        <Dropdown.Item href="/client/1">Mis datos</Dropdown.Item>
         <Dropdown.Item href="/">Mis pedidos</Dropdown.Item>
         <Dropdown.Item href="/">Mis favoritos</Dropdown.Item>
         <Dropdown.Divider className="mt-1 mb-2" />
