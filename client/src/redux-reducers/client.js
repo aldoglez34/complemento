@@ -3,7 +3,7 @@ const clientReducers = (state = { isLogged: false }, action) => {
     case "client/login":
       return {
         isLogged: true,
-        uid: action.data.uid,
+        clientId: action.data.clientId,
         name: action.data.name,
         firstSurname: action.data.firstSurname,
         secondSurname: action.data.secondSurname,

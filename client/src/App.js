@@ -55,11 +55,22 @@ class App extends Component {
           />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/signup" component={SignUp} />
-          <Route
-            exact
-            path="/client/:clientId"
-            render={props => <ClientInfo routeProps={props} />}
-          />
+          {this.props.client.isLogged ? (
+            <Switch>
+              <Route
+                exact
+                path="/client/info/:clientId"
+                render={props => <ClientInfo routeProps={props} />}
+              />
+              <Route component={NoMatch} />
+            </Switch>
+          ) : (
+            <Switch>
+              <Redirect from="/client/" to="/" />
+              <Route component={NoMatch} />
+            </Switch>
+          )}
+
           {this.props.manager.isLogged ? (
             <Switch>
               <Route exact path="/manager/panel" component={Panel} />
@@ -82,7 +93,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    manager: state.manager
+    manager: state.manager,
+    client: state.client
   };
 };
 

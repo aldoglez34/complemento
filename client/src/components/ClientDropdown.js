@@ -29,9 +29,10 @@ function ClientDropdown() {
       <Dropdown.Menu
         data-display="static"
         className="dropdown-menu-xs-left dropdown-menu-md-right"
-        // style={{ width: "18.125rem" }}
       >
-        <Dropdown.Item href="/client/1">Mis datos</Dropdown.Item>
+        <Dropdown.Item href={"/client/info/" + client.clientId}>
+          Mis datos
+        </Dropdown.Item>
         <Dropdown.Item href="/">Mis pedidos</Dropdown.Item>
         <Dropdown.Item href="/">Mis favoritos</Dropdown.Item>
         <Dropdown.Divider className="mt-1 mb-2" />
