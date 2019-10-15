@@ -65,6 +65,10 @@ export default {
     return axios.post("/api/client/new", newClient);
   },
 
+  updateClient: function(updatedClient) {
+    return axios.put("/api/client/update", updatedClient);
+  },
+
   // ---------------------------------------------------------------------------
   // MANAGER
   // ---------------------------------------------------------------------------

@@ -18,6 +18,7 @@ import Login from "./pages/manager/Login";
 import Panel from "./pages/manager/Panel";
 import NewProduct from "./pages/manager/NewProduct";
 import ClientInfo from "./pages/ClientInfo";
+import ClientFavorites from "./pages/ClientFavorites";
 
 class App extends Component {
   componentDidMount() {
@@ -36,7 +37,6 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          {/* CLIENT ROUTES */}
           <Route exact path="/" component={Home} />
           <Route
             exact
@@ -56,15 +56,22 @@ class App extends Component {
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/signup" component={SignUp} />
           {this.props.client.isLogged ? (
+            // if the client is logged, he has access to these routes
             <Switch>
               <Route
                 exact
                 path="/client/info/:clientId"
                 render={props => <ClientInfo routeProps={props} />}
               />
+              <Route
+                exact
+                path="/client/favorites/:clientId"
+                render={props => <ClientFavorites routeProps={props} />}
+              />
               <Route component={NoMatch} />
             </Switch>
           ) : (
+            // if not then just redirect him back to home page
             <Switch>
               <Redirect from="/client/" to="/" />
               <Route component={NoMatch} />

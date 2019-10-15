@@ -65,4 +65,34 @@ router.post("/new", function(req, res) {
     });
 });
 
+// update client
+// matches with /api/client/update
+router.put("/update", function(req, res) {
+  model.Client.update(
+    {
+      name: req.body.name,
+      firstSurname: req.body.firstSurname,
+      secondSurname: req.body.secondSurname,
+      phone: req.body.phone,
+      street: req.body.street,
+      neighborhood: req.body.neighborhood,
+      municipality: req.body.municipality,
+      city: req.body.city,
+      state: req.body.state,
+      zipCode: req.body.zipCode
+    },
+    {
+      where: {
+        clientId: req.body.clientId
+      }
+    }
+  )
+    .then(function(data) {
+      res.json(data);
+    })
+    .catch(function(err) {
+      res.send(err);
+    });
+});
+
 module.exports = router;

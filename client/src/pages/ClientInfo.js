@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Form, Col, Button } from "react-bootstrap";
+import { Container, Form, Col, Button, Row, Alert } from "react-bootstrap";
 import API from "../utils/API";
 import Layout from "./Layout";
 import MyBreadcrumb from "../components/MyBreadcrumb";
@@ -7,9 +7,15 @@ import ScrollButton from "../components/ScrollButton";
 import HelpButton from "../components/HelpButton";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
+import * as clientActions from "../redux-actions/client";
+import { useDispatch } from "react-redux";
 
 function ClientInfo(props) {
   const [client, setClient] = useState({ client: null });
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertVariant, setVariant] = useState();
+  const [alertMsg, setMsg] = useState();
+  const dispatch = useDispatch();
 
   function fetchClientInfo() {
     API.fetchClientInfo(props.routeProps.match.params.clientId)
@@ -22,11 +28,30 @@ function ClientInfo(props) {
   }, []);
 
   const breadcrumbRoutes = () => {
-    return [{ name: "Inicio", to: "/" }, { name: "Mis datos", to: "active" }];
+    return [
+      { name: "Inicio", to: "/" },
+      {
+        name: client.email,
+        to: "/client/info/" + client.clientId
+      },
+      { name: "Mis datos", to: "active" }
+    ];
+  };
+
+  const hidePass = pass => {
+    if (pass !== undefined) {
+      let newPass = "";
+      for (let i = 0; i <= pass.length; i++) {
+        newPass = newPass.concat("*");
+      }
+      return newPass;
+    } else {
+      return null;
+    }
   };
 
   const changeInfoSchema = yup.object({
-    clientName: yup
+    name: yup
       .string()
       .min(2, "Debe ser más largo que 2 letras")
       .matches(
@@ -55,14 +80,6 @@ function ClientInfo(props) {
       .matches(/^[0-9]*$/, "Sólo números")
       .length(10, "La longitud exacta debe ser 10 dígitos")
       .required("Requerido"),
-    password: yup
-      .string()
-      .min(5, "Entre 5 y 30 caracteres")
-      .required("Requerido"),
-    passwordConfirm: yup
-      .string()
-      .oneOf([yup.ref("password")], "Las contraseñas no coinciden")
-      .required("Requerido"),
     street: yup.string().required("Requerido"),
     neighborhood: yup.string().required("Requerido"),
     municipality: yup.string().required("Requerido"),
@@ -79,16 +96,40 @@ function ClientInfo(props) {
     <Layout>
       <MyBreadcrumb routes={breadcrumbRoutes()} />
       <Container className="mt-4">
+        <Alert
+          show={showAlert}
+          variant={alertVariant}
+          onClose={() => setShowAlert(false)}
+          dismissible
+        >
+          <p>{alertMsg}</p>
+        </Alert>
         <h2>Mis datos</h2>
+        <hr />
+        <Row>
+          <Col>
+            <h5>Correo</h5>
+            <div className="d-flex flex-row">
+              <p>{client.email}</p>
+              <a className="ml-1" href="/">
+                cambiar
+              </a>
+            </div>
+            <h5>Contraseña</h5>
+            <div className="d-flex flex-row">
+              <p>{hidePass(client.password)}</p>
+              <a className="ml-1" href="/">
+                cambiar
+              </a>
+            </div>
+          </Col>
+        </Row>
         <Formik
           initialValues={{
-            clientName: client.name,
+            name: client.name,
             firstSurname: client.firstSurname,
             secondSurname: client.secondSurname,
-            email: client.email,
             phone: client.phone,
-            password: "",
-            passwordConfirm: "",
             street: client.street,
             neighborhood: client.neighborhood,
             municipality: client.municipality,
@@ -97,7 +138,41 @@ function ClientInfo(props) {
             zipCode: client.zipCode
           }}
           validationSchema={changeInfoSchema}
-          onSubmit={(values, { setSubmitting }) => {}}
+          onSubmit={(values, { setSubmitting }) => {
+            setSubmitting(true);
+            // this is necessary since the trim() function from yup is not working
+            let trimmedValues = {};
+            trimmedValues.clientId = props.routeProps.match.params.clientId;
+            trimmedValues.name = values.name.trim();
+            trimmedValues.firstSurname = values.firstSurname.trim();
+            trimmedValues.secondSurname = values.secondSurname.trim();
+            trimmedValues.phone = values.phone;
+            trimmedValues.street = values.street.trim();
+            trimmedValues.neighborhood = values.neighborhood.trim();
+            trimmedValues.municipality = values.municipality.trim();
+            trimmedValues.city = values.city.trim();
+            trimmedValues.state = values.state;
+            trimmedValues.zipCode = values.zipCode;
+            API.updateClient(trimmedValues)
+              .then(res => {
+                // if the client is updated in the database,
+                // save it to redux and show the alert
+                dispatch(clientActions.updateClient(trimmedValues));
+                setVariant("success");
+                setShowAlert(true);
+                setMsg(
+                  "La información ha sido actualizada de manera satisfactoria"
+                );
+                setSubmitting(false);
+              })
+              .catch(err => {
+                // if not then just show the alert
+                setVariant("sanger");
+                setShowAlert(true);
+                setMsg(err);
+                setSubmitting(false);
+              });
+          }}
         >
           {({
             values,
@@ -121,15 +196,15 @@ function ClientInfo(props) {
                       maxLength="50"
                       placeholder="Nombre(s)"
                       type="text"
-                      name="clientName"
-                      value={values.clientNames}
+                      name="name"
+                      value={values.name}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      isValid={touched.clientName && !errors.clientName}
+                      isValid={touched.name && !errors.name}
                     />
                     <ErrorMessage
                       className="text-danger"
-                      name="clientName"
+                      name="name"
                       component="div"
                     />
                   </Form.Group>
@@ -177,28 +252,7 @@ function ClientInfo(props) {
                   </Form.Group>
                 </Form.Row>
                 <Form.Row>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>
-                      Correo electrónico
-                      <strong className="ml-1 text-danger">*</strong>
-                    </Form.Label>
-                    <Form.Control
-                      maxLength="50"
-                      placeholder="Correo electrónico"
-                      type="email"
-                      name="email"
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.email && !errors.email}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="email"
-                      component="div"
-                    />
-                  </Form.Group>
-                  <Form.Group as={Col} md={6}>
+                  <Form.Group as={Col}>
                     <Form.Label>
                       Teléfono celular
                       <strong className="ml-1 text-danger">*</strong>
@@ -216,54 +270,6 @@ function ClientInfo(props) {
                     <ErrorMessage
                       className="text-danger"
                       name="phone"
-                      component="div"
-                    />
-                  </Form.Group>
-                </Form.Row>
-                <h5 className="my-3">Contraseña (5-30 caracteres)</h5>
-                <hr />
-                <Form.Row>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>
-                      Contraseña
-                      <strong className="ml-1 text-danger">*</strong>
-                    </Form.Label>
-                    <Form.Control
-                      maxLength="30"
-                      placeholder="Contraseña"
-                      type="password"
-                      name="password"
-                      value={values.password}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.password && !errors.password}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="password"
-                      component="div"
-                    />
-                  </Form.Group>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>
-                      Repetir contraseña
-                      <strong className="ml-1 text-danger">*</strong>
-                    </Form.Label>
-                    <Form.Control
-                      maxLength="30"
-                      placeholder="Repetir contraseña"
-                      type="password"
-                      name="passwordConfirm"
-                      value={values.passwordConfirm}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={
-                        touched.passwordConfirm && !errors.passwordConfirm
-                      }
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="passwordConfirm"
                       component="div"
                     />
                   </Form.Group>
@@ -365,43 +371,45 @@ function ClientInfo(props) {
                       onBlur={handleBlur}
                       isValid={touched.state && !errors.state}
                       as="select"
-                      defaultValue={"DEFAULT"}
+                      defaultValue={client.state}
                     >
                       <option value="DEFAULT" disabled>
                         Elige...
                       </option>
-                      <option>Aguascalientes</option>
-                      <option>Baja California</option>
-                      <option>Baja California Sur</option>
-                      <option>Campeche</option>
-                      <option>Chiapas</option>
-                      <option>Chihuahua</option>
-                      <option>Ciudad de México</option>
-                      <option>Coahuila</option>
-                      <option>Colima</option>
-                      <option>Durango</option>
-                      <option>Estado de México</option>
-                      <option>Guanajuato</option>
-                      <option>Guerrero</option>
-                      <option>Hidalgo</option>
-                      <option>Jalisco</option>
-                      <option>Michoacán</option>
-                      <option>Morelos</option>
-                      <option>Nayarit</option>
-                      <option>Nuevo León</option>
-                      <option>Oaxaca</option>
-                      <option>Puebla</option>
-                      <option>Querétaro</option>
-                      <option>Quintana Roo</option>
-                      <option>San Luis Potosí</option>
-                      <option>Sinaloa</option>
-                      <option>Sonora</option>
-                      <option>Tabasco</option>
-                      <option>Tamaulipas</option>
-                      <option>Tlaxcala</option>
-                      <option>Veracruz</option>
-                      <option>Yucatán</option>
-                      <option>Zacatecas</option>
+                      <option value="Aguascalientes">Aguascalientes</option>
+                      <option value="Baja California">Baja California</option>
+                      <option value="Baja California Sur">
+                        Baja California Sur
+                      </option>
+                      <option value="Campeche">Campeche</option>
+                      <option value="Chiapas">Chiapas</option>
+                      <option value="Chihuahua">Chihuahua</option>
+                      <option value="Ciudad de México">Ciudad de México</option>
+                      <option value="Coahuila">Coahuila</option>
+                      <option value="Colima">Colima</option>
+                      <option value="Durango">Durango</option>
+                      <option value="Estado de México">Estado de México</option>
+                      <option value="Guanajuato">Guanajuato</option>
+                      <option value="Guerrero">Guerrero</option>
+                      <option value="Hidalgo">Hidalgo</option>
+                      <option value="Jalisco">Jalisco</option>
+                      <option value="Michoacán">Michoacán</option>
+                      <option value="Morelos">Morelos</option>
+                      <option value="Nayarit">Nayarit</option>
+                      <option value="Nuevo León">Nuevo León</option>
+                      <option value="Oaxaca">Oaxaca</option>
+                      <option value="Puebla">Puebla</option>
+                      <option value="Querétaro">Querétaro</option>
+                      <option value="Quintana Roo">Quintana Roo</option>
+                      <option value="San Luis Potosí">San Luis Potosí</option>
+                      <option value="Sinaloa">Sinaloa</option>
+                      <option value="Sonora">Sonora</option>
+                      <option value="Tabasco">Tabasco</option>
+                      <option value="Tamaulipas">Tamaulipas</option>
+                      <option value="Tlaxcala">Tlaxcala</option>
+                      <option value="Veracruz">Veracruz</option>
+                      <option value="Yucatán">Yucatán</option>
+                      <option value="Zacatecas">Zacatecas</option>
                     </Form.Control>
                   </Form.Group>
                   <Form.Group as={Col} md={3}>
@@ -431,9 +439,10 @@ function ClientInfo(props) {
                     <Button
                       variant="success"
                       type="submit"
+                      className="my-3"
                       disabled={isSubmitting}
                     >
-                      Registrarme
+                      Guardar cambios
                     </Button>
                   </Form.Group>
                 </Form.Row>

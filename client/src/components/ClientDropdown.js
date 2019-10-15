@@ -34,7 +34,9 @@ function ClientDropdown() {
           Mis datos
         </Dropdown.Item>
         <Dropdown.Item href="/">Mis pedidos</Dropdown.Item>
-        <Dropdown.Item href="/">Mis favoritos</Dropdown.Item>
+        <Dropdown.Item href={"/client/favorites/" + client.clientId}>
+          Mis favoritos
+        </Dropdown.Item>
         <Dropdown.Divider className="mt-1 mb-2" />
         <Dropdown.Item onClick={logout}>Cerrar sesión</Dropdown.Item>
       </Dropdown.Menu>
