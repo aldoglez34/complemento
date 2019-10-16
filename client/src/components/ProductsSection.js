@@ -228,12 +228,9 @@ class ProductsSection extends Component {
                     );
                   })
               ) : (
-                <Spinner
-                  className="text-center my-4"
-                  animation="border"
-                  role="status"
-                  variant="success"
-                />
+                <div className="text-center my-4">
+                  <Spinner animation="grow" role="status" variant="success" />
+                </div>
               )}
             </div>
           </Col>

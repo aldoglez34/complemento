@@ -17,7 +17,7 @@ class BrandsList extends Component {
   }
 
   render() {
-    return (
+    return this.state.brands.length ? (
       <Navbar bg="transparent" variant="light" expand="md">
         <Navbar.Toggle
           className="mt-3 border-0 w-100 py-2"
@@ -28,29 +28,25 @@ class BrandsList extends Component {
         </Navbar.Toggle>
         <Navbar.Collapse id="brandsdropdown">
           <Form>
-            <div>
-              {this.state.brands.length ? (
-                this.state.brands.map(brand => {
-                  return (
-                    <div key={brand.name} className="py-1">
-                      <Form.Check type="checkbox" id={brand.name}>
-                        <Form.Check.Input type="checkbox" isValid />
-                        <Form.Check.Label className="brandItem">
-                          {brand.name}
-                        </Form.Check.Label>
-                      </Form.Check>
-                    </div>
-                  );
-                })
-              ) : (
-                <div className="text-center py-3">
-                  <Spinner animation="border" role="status" variant="success" />
+            {this.state.brands.map(brand => {
+              return (
+                <div key={brand.name} className="py-1">
+                  <Form.Check type="checkbox" id={brand.name}>
+                    <Form.Check.Input type="checkbox" isValid />
+                    <Form.Check.Label className="brandItem">
+                      {brand.name}
+                    </Form.Check.Label>
+                  </Form.Check>
                 </div>
-              )}
-            </div>
+              );
+            })}
           </Form>
         </Navbar.Collapse>
       </Navbar>
+    ) : (
+      <div className="text-center my-4">
+        <Spinner animation="grow" role="status" variant="success" />
+      </div>
     );
   }
 }
