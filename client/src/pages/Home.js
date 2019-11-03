@@ -117,12 +117,8 @@ class Home extends Component {
                     return <ProductCard key={p.productId} product={p} />;
                   })
                 ) : (
-                  <div className="text-center mt-4">
-                    <Spinner
-                      animation="border"
-                      role="status"
-                      variant="success"
-                    />
+                  <div className="text-center my-4">
+                    <Spinner animation="grow" role="status" variant="success" />
                   </div>
                 )}
               </div>
@@ -138,12 +134,8 @@ class Home extends Component {
                     return <ProductCard key={d.productId} product={d} />;
                   })
                 ) : (
-                  <div className="text-center mt-4">
-                    <Spinner
-                      animation="border"
-                      role="status"
-                      variant="success"
-                    />
+                  <div className="text-center my-4">
+                    <Spinner animation="grow" role="status" variant="success" />
                   </div>
                 )}
               </div>
@@ -159,12 +151,8 @@ class Home extends Component {
                     return <ProductCard key={b.productId} product={b} />;
                   })
                 ) : (
-                  <div className="text-center mt-4">
-                    <Spinner
-                      animation="border"
-                      role="status"
-                      variant="success"
-                    />
+                  <div className="text-center my-4">
+                    <Spinner animation="grow" role="status" variant="success" />
                   </div>
                 )}
               </div>

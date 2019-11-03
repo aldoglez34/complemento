@@ -1,33 +1,26 @@
-module.exports = function(sequelize, DataTypes) {
-  const Provider = sequelize.define("Provider", {
-    providerId: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false
-    },
-    name: {
-      type: DataTypes.STRING(30),
-      allowNull: false
-    },
-    address: {
-      type: DataTypes.STRING(150),
-      allowNull: false
-    },
-    rfc: {
-      type: DataTypes.STRING(12),
-      allowNull: true
-    },
-    email: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
-      isEmail: true
-    },
-    phone: {
-      type: DataTypes.STRING(10),
-      allowNull: true
-    }
-  });
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-  return Provider;
-};
+const ProviderSchema = new Schema({
+  name: {
+    type: String,
+    unique: true
+  },
+  address: {
+    type: String
+  },
+  rfc: {
+    type: String
+  },
+  email: {
+    type: String,
+    unique: true
+  },
+  phone: {
+    type: String
+  }
+});
+
+const Provider = mongoose.model("Provider", ProviderSchema);
+
+module.exports = Provider;

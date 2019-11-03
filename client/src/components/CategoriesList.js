@@ -63,8 +63,8 @@ class CategoriesList extends Component {
         </Navbar.Collapse>
       </Navbar>
     ) : (
-      <div className="text-center py-3">
-        <Spinner animation="border" role="status" variant="success" />
+      <div className="text-center my-4">
+        <Spinner animation="grow" role="status" variant="success" />
       </div>
     );
   }
