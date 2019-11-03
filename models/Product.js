@@ -3,22 +3,36 @@ const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
   category: {
-    type: String
+    type: String,
+    trim: true,
+    required: "Categoría requerida"
+  },
+  brand: {
+    type: String,
+    trim: true,
+    required: "Marca requerida"
   },
   name: {
-    type: String
+    type: String,
+    trim: true,
+    required: "Nombre requerido"
   },
   content: {
-    type: String
+    type: String,
+    trim: true,
+    required: "Contenido requerido"
   },
   description: {
-    type: String
+    type: String,
+    trim: true
   },
   purchasePrice: {
-    type: Number
+    type: Number,
+    required: "Precio de compra requerido"
   },
   salePrice: {
-    type: Number
+    type: Number,
+    required: "Precio de venta requerido"
   },
   unitsSold: {
     type: Number
@@ -29,32 +43,21 @@ const ProductSchema = new Schema({
   photo: {
     type: String
   },
-  brand: {
-    type: String
-  },
   priority: {
-    type: Boolean
+    type: Boolean,
+    default: false
   },
+  sufferings: [String],
+  ingredients: [String],
+  discount: { percentage: Number, newPrice: Number },
   provider: {
     type: Schema.Types.ObjectId,
     ref: "Provider"
   },
-  sufferings: [
-    {
-      name: String
-    }
-  ],
-  ingredients: [
-    {
-      name: String
-    }
-  ],
-  discounts: [
-    {
-      percentage: Number,
-      newPrice: Number
-    }
-  ]
+  createdAt: {
+    type: Date,
+    default: Date.now()
+  }
 });
 
 const Product = mongoose.model("Product", ProductSchema);
