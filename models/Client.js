@@ -2,34 +2,78 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ClientSchema = new Schema({
-  fullName: {
-    name: String,
-    firstSurname: String,
-    secondSurname: String
+  firebaseUID: {
+    type: String,
+    trim: true,
+    unique: true,
+    required: "UID requerido"
+  },
+  name: {
+    type: String,
+    trim: true,
+    required: "Nombre requerido"
+  },
+  firstSurname: {
+    type: String,
+    trim: true,
+    required: "Apellido paterno requerido"
+  },
+  secondSurname: {
+    type: String,
+    trim: true,
+    required: "Apellido materno requerido"
+  },
+  phone: {
+    type: String,
+    required: "Teléfono requerido",
+    validate: [
+      function(input) {
+        return input.length === 10;
+      },
+      "Formato de teléfono inválido"
+    ]
   },
   email: {
     type: String,
-    unique: true
+    unique: true,
+    required: "Correo requerido",
+    match: [/.+@.+\..+/, "Formato de correo inválido"]
   },
   password: {
-    type: String
+    type: String,
+    required: "Contraseña requerida",
+    validate: [
+      function(input) {
+        return input.length >= 6;
+      },
+      "La contraseña debe ser mayor a 6 caracteres"
+    ]
   },
-  phone: {
-    type: Number
-  },
-  favorites: [
-    {
-      productId: Number
-    }
-  ],
   address: {
     street: String,
     neighborhood: String,
     municipality: String,
     city: String,
     state: String,
-    zipCode: String
-  }
+    zipCode: {
+      type: String,
+      validate: [
+        function(input) {
+          return input.length === 5;
+        },
+        "Formato de código postal inválido"
+      ]
+    }
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now()
+  },
+  favorites: [
+    {
+      productId: Number
+    }
+  ]
 });
 
 const Client = mongoose.model("Client", ClientSchema);

@@ -4,20 +4,44 @@ const Schema = mongoose.Schema;
 const ProviderSchema = new Schema({
   name: {
     type: String,
-    unique: true
+    unique: true,
+    trim: true,
+    required: "Nombre requerido"
   },
   address: {
-    type: String
+    type: String,
+    trim: true
   },
   rfc: {
-    type: String
+    type: String,
+    trim: true,
+    validate: [
+      function(input) {
+        return input.length === 12;
+      },
+      "Fomato de RFC inválido"
+    ]
   },
   email: {
     type: String,
-    unique: true
+    trim: true,
+    unique: true,
+    required: "Correo requerido",
+    match: [/.+@.+\..+/, "Formato de correo inválido"]
   },
   phone: {
-    type: String
+    type: String,
+    trim: true,
+    validate: [
+      function(input) {
+        return input.length === 10;
+      },
+      "Formato de teléfono inválido"
+    ]
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
   }
 });
 

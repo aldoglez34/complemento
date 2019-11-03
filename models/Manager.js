@@ -4,13 +4,28 @@ const Schema = mongoose.Schema;
 const ManagerSchema = new Schema({
   name: {
     type: String,
-    unique: true
+    trim: true,
+    required: "Nombre requerido"
+  },
+  firstSurname: {
+    type: String,
+    trim: true,
+    required: "Apellido paterno requerido"
+  },
+  secondSurname: {
+    type: String,
+    trim: true,
+    required: "Apellido materno requerido"
   },
   email: {
-    type: String
+    type: String,
+    unique: true,
+    required: "Correo requerido",
+    match: [/.+@.+\..+/, "Formato de correo inválido"]
   },
   password: {
-    type: String
+    type: String,
+    required: "Contraseña requerida"
   }
 });
 

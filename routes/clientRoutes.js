@@ -5,37 +5,37 @@ const model = require("../models");
 // get client details
 // matches with /api/client/:uid
 router.get("/:uid", function(req, res) {
-  // db.Client.find({
-  //   clientId: req.params.uid
-  // })
-  //   .then(function(data) {
-  //     res.json(data);
-  //   })
-  //   .catch(function(err) {
-  //     res.json(err);
-  //   });
+  model.Client.find({
+    firebaseUID: req.params.uid
+  })
+    .then(function(data) {
+      res.json(data);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
 });
 
 // ------------------------------------------------------------
 // get client emails
-// matches with /api/client/emails
+// matches with /api/client/email/all
 router.get("/email/all", function(req, res) {
-  // model.Client.findAll({
-  //   attributes: ["email"],
-  //   order: [["email", "ASC"]]
-  // })
-  //   .then(function(data) {
-  //     let toFrontArr = [];
-  //     data.forEach(item => {
-  //       toFrontArr.push(item.email);
-  //     });
-  //     let toFrontObj = {};
-  //     toFrontObj.emails = toFrontArr;
-  //     res.json(toFrontObj);
-  //   })
-  //   .catch(function(err) {
-  //     res.json(err);
-  //   });
+  model.Client.find({})
+    .sort({ email: 1 })
+    .select("email")
+    .then(function(data) {
+      // let toFrontArr = [];
+      // data.forEach(item => {
+      //   toFrontArr.push(item.email);
+      // });
+      // let toFrontObj = {};
+      // toFrontObj.emails = toFrontArr;
+      // res.json(toFrontObj);
+      res.json(data);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
 });
 
 // ------------------------------------------------------------
