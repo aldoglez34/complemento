@@ -4,6 +4,14 @@ const model = require("../models");
 // get product
 // matches with /api/product/details/:productId
 router.get("/details/:productId", function(req, res) {
+  // model.Product.find({ _id: req.params.productId })
+  //   .select(
+  //     "category name content description salePrice stock photo brand discount provider"
+  //   )
+  //   .populate("provider")
+  //   .then(data => res.json(data))
+  //   .then(err => res.json(err));
+
   // model.Product.findOne({
   //   attributes: [
   //     "productId",

@@ -49,10 +49,18 @@ const ProductSchema = new Schema({
   },
   sufferings: [String],
   ingredients: [String],
-  discount: { percentage: Number, newPrice: Number },
+  discount: {
+    hasDiscount: {
+      type: Boolean,
+      required: "Descuento requerido (ya sea falso o verdadero)"
+    },
+    percentage: Number,
+    newPrice: Number
+  },
   provider: {
     type: Schema.Types.ObjectId,
-    ref: "Provider"
+    ref: "Provider",
+    required: "Proveedor inválido"
   },
   createdAt: {
     type: Date,
