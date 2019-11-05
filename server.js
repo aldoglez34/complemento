@@ -50,6 +50,66 @@ mongoose
 // // ====================================================================================================
 // // ====================================================================================================
 
+// models.Client.create({
+//   firebaseUID: "C7kTH27i1aSqbHgcgQwrtFuF3FO2",
+//   name: "Aldo",
+//   firstSurname: "Solano",
+//   secondSurname: "González",
+//   phone: "2281112031",
+//   email: "aldoglez34@gmail.com",
+//   password: "123456",
+//   address: {
+//     street: "5 de Febrero #14",
+//     neighborhood: "Centro",
+//     municipality: "Banderilla",
+//     city: "Xalapa",
+//     state: "Veracruz",
+//     zipCode: "91300"
+//   }
+// });
+
+// models.Product.create({
+//   category: "Sistema Nervioso Central",
+//   brand: "Pronamed",
+//   name: "Eleval",
+//   content: "40 comprimidos",
+//   description:
+//     "La fórmula de Eleval nos evita los tratamientos antidrepesivos excesivamente largos. Inhibe la degradación de los neurotransmisores durante la sinapsis, a la vez que facilita el trabajo de los receptores postsinápticos, elevando los niveles de neurotransmisores como seretonina, fenilalanina y dopamina; involucrados en la conducta y estados de ánimo. Permite el rápido regreso del paciente a un estado normal de aceptación del entorno y de sí mismo; recupera su autoestima y sus aspiraciones. No produce efectos secundarios. Tomar 2 comprimidos 3 veces al día.",
+//   purchasePrice: 56.5,
+//   salePrice: 91.5,
+//   unitsSold: 10,
+//   stock: 20,
+//   photo: "Elevalcomp.jpg",
+//   priority: true,
+//   sufferings: [
+//     "Anemias",
+//     "Avitaminosis",
+//     "Deficiencias Vitamínicas",
+//     "Desnutrición"
+//   ],
+//   ingredients: [
+//     "Avena sativa 100 mg",
+//     "Hordeum vulgare 100 mg",
+//     "Cebada",
+//     "Triticum sativum 100 mg",
+//     "Trigo",
+//     "Oryza sativa 100 mg",
+//     "Arroz",
+//     "Secale cereale 100 mg",
+//     "Centeno",
+//     "Medicago sativa 100 mg",
+//     "Alfalfa",
+//     "Lithospernun officialis 100 mg",
+//     "Mijo"
+//   ],
+//   discount: {
+//     hasDiscount: false
+//   },
+//   provider: "5dc083cc5707e604dc3a3272"
+// })
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err));
+
 // models.Product.create({
 //   category: "Sistema Nervioso Central",
 //   brand: "Pronamed",
