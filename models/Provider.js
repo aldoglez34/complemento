@@ -8,7 +8,7 @@ const ProviderSchema = new Schema({
     trim: true,
     required: "Nombre requerido"
   },
-  address: {
+  fullAddress: {
     type: String,
     trim: true
   },

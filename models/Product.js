@@ -41,7 +41,8 @@ const ProductSchema = new Schema({
     type: Number
   },
   photo: {
-    type: String
+    type: String,
+    default: "placeholder.jpg"
   },
   priority: {
     type: Boolean,

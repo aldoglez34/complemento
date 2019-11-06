@@ -18,10 +18,7 @@ function ProductCard(props) {
       style={{ width: "12.7rem" }}
       className="mt-2 mb-4 mx-1 shadow-sm border-0"
     >
-      <a
-        className="text-light"
-        href={"/product/details/" + props.product.productId}
-      >
+      <a className="text-light" href={"/product/details/" + props.product._id}>
         <Card.Header
           className="text-center"
           height="48"
@@ -43,7 +40,7 @@ function ProductCard(props) {
       >
         {/* price */}
         <div className="lead text-center mb-3">
-          {props.product.Discount ? (
+          {props.product.discount.hasDiscount ? (
             <>
               <p className="text-muted mb-0">
                 <strong>
@@ -54,7 +51,7 @@ function ProductCard(props) {
               </p>
               <p className="text-danger mb-0">
                 <small className="mr-1">$</small>
-                {props.product.Discount.newPrice}
+                {props.product.discount.newPrice}
                 <small className="ml-1">MXN</small>
               </p>
             </>

@@ -54,7 +54,7 @@ function Store(props) {
             </Row>
             <Row>
               <Col>
-                {/* in order to get the value from the url, it's necessary to declare the component like this */}
+                {/* in order to get the value from the url, it's necessary to declare the component like this (as a route) */}
                 <Route
                   render={props => <CategoriesList routeProps={props} />}
                 />

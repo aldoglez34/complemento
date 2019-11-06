@@ -2,6 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ManagerSchema = new Schema({
+  firebaseUID: {
+    type: String,
+    trim: true,
+    unique: true,
+    required: "UID requerido"
+  },
   name: {
     type: String,
     trim: true,

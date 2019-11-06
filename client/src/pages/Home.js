@@ -114,7 +114,7 @@ class Home extends Component {
               <div className="d-flex flex-wrap justify-content-center">
                 {this.state.prioritized.length ? (
                   this.state.prioritized.map(p => {
-                    return <ProductCard key={p.productId} product={p} />;
+                    return <ProductCard key={p._id} product={p} />;
                   })
                 ) : (
                   <div className="text-center my-4">
@@ -131,7 +131,7 @@ class Home extends Component {
               <div className="d-flex flex-wrap justify-content-center">
                 {this.state.discounts.length ? (
                   this.state.discounts.map(d => {
-                    return <ProductCard key={d.productId} product={d} />;
+                    return <ProductCard key={d._id} product={d} />;
                   })
                 ) : (
                   <div className="text-center my-4">
@@ -148,7 +148,7 @@ class Home extends Component {
               <div className="d-flex flex-wrap justify-content-center">
                 {this.state.bestSellers.length ? (
                   this.state.bestSellers.map(b => {
-                    return <ProductCard key={b.productId} product={b} />;
+                    return <ProductCard key={b._id} product={b} />;
                   })
                 ) : (
                   <div className="text-center my-4">
