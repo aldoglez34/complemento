@@ -36,7 +36,7 @@ router.get("/categories", function(req, res) {
     {
       $project: {
         _id: 0,
-        category: "$_id",
+        name: "$_id",
         productCount: 1
       }
     }

@@ -46,6 +46,7 @@ mongoose
   })
   .catch(error => console.log(error));
 
+// =======================================
 // begins loading devdata ================
 // const clients = require("./devdata/clients");
 // models.Client.insertMany(clients)
@@ -67,6 +68,7 @@ mongoose
 //   .then(() => console.log("dev data - products added"))
 //   .catch(err => console.log(err));
 // finish loading devdata ================
+// =======================================
 
 // start server
 app.listen(PORT, () => {

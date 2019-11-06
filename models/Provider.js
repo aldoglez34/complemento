@@ -15,6 +15,7 @@ const ProviderSchema = new Schema({
   rfc: {
     type: String,
     trim: true,
+    unique: true,
     validate: [
       function(input) {
         return input.length === 12;

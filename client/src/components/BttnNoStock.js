@@ -16,7 +16,7 @@ function BttnNoStock() {
             style={{ pointerEvents: "none" }}
           >
             Agregar
-            <i className="fas fa-shopping-cart ml-1" />
+            <i className="fas fa-shopping-bag ml-1" />
           </Button>
         </span>
       </OverlayTrigger>

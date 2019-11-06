@@ -31,7 +31,7 @@ class CategoriesList extends Component {
         <Navbar.Collapse id="categoriesdropdown">
           <Nav className="flex-column w-100">
             {this.state.categories.map(category => {
-              if (category.name === this.state.selectedCat) {
+              if (category.category === this.state.selectedCat) {
                 return (
                   <Nav.Link
                     className="px-2 py-1 catItem active"
