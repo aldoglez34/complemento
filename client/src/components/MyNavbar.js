@@ -6,27 +6,16 @@ import LoginDropdown from "./LoginDropdown";
 import { useSelector } from "react-redux";
 import ShoppingBag from "./ShoppingBag";
 import TrackShipment from "./TrackShipment";
+import "./mynavbar.scss";
 
 function MyNavbar() {
   const client = useSelector(state => state.client);
 
   return (
     <>
-      <Navbar
-        expand="md"
-        className="py-3 shadow"
-        style={{ backgroundColor: "#264341" }}
-      >
+      <Navbar expand="md" className="py-3 shadow navbarStyle">
         {/* logo (medium to large) */}
-        <Navbar.Brand
-          className="mr-4 d-none d-md-block"
-          href="/"
-          style={{
-            fontFamily: "Josefin Sans",
-            color: "#f3d084",
-            opacity: ".9"
-          }}
-        >
+        <Navbar.Brand className="mr-4 d-none d-md-block navbarLogo" href="/">
           <Image
             src={"/images/biglogo.png"}
             className="pl-3 m-0"
@@ -36,11 +25,7 @@ function MyNavbar() {
           />
         </Navbar.Brand>
         {/* logo (medium to small) */}
-        <Navbar.Brand
-          className="mr-auto d-md-none"
-          href="/"
-          style={{ fontFamily: "Josefin Sans", color: "#f3d084" }}
-        >
+        <Navbar.Brand className="mr-auto d-md-none" href="/">
           <Image
             src={"/images/smalllogo.png"}
             className="p-0 m-0"
@@ -50,7 +35,10 @@ function MyNavbar() {
           />
         </Navbar.Brand>
         {/* collapse */}
-        <Navbar.Toggle aria-controls="top-navbar" className="bg-light" />
+        <Navbar.Toggle
+          aria-controls="top-navbar"
+          style={{ backgroundColor: "ghostwhite" }}
+        />
         <Navbar.Collapse id="top-navbar">
           {/* nav */}
           <Container fluid>

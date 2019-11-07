@@ -48,6 +48,7 @@ mongoose
 
 // =======================================
 // begins loading devdata ================
+// =======================================
 // const clients = require("./devdata/clients");
 // models.Client.insertMany(clients)
 //   .then(() => console.log("dev data - clients added"))
@@ -67,6 +68,7 @@ mongoose
 // models.Product.insertMany(products)
 //   .then(() => console.log("dev data - products added"))
 //   .catch(err => console.log(err));
+// =======================================
 // finish loading devdata ================
 // =======================================
 

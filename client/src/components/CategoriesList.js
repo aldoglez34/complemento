@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Navbar, Nav, Spinner, Badge } from "react-bootstrap";
 import API from "../utils/API";
-import "./categorieslist.scss";
 
 class CategoriesList extends Component {
   state = {
@@ -31,7 +30,7 @@ class CategoriesList extends Component {
         <Navbar.Collapse id="categoriesdropdown">
           <Nav className="flex-column w-100">
             {this.state.categories.map(category => {
-              if (category.category === this.state.selectedCat) {
+              if (category.name === this.state.selectedCat) {
                 return (
                   <Nav.Link
                     className="px-2 py-1 catItem active"

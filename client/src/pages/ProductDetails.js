@@ -11,12 +11,10 @@ import BttnNoStock from "../components/BttnNoStock";
 
 class ProductDetails extends Component {
   state = {
-    productDetails: {},
-    ingredients: [],
-    sufferings: []
+    productDetails: {}
   };
 
-  fetchProductDetails = () => {
+  componentDidMount() {
     API.fetchProductDetails(this.props.routeProps.match.params.productId)
       .then(res => {
         this.setState({ productDetails: res.data });
@@ -24,32 +22,6 @@ class ProductDetails extends Component {
       .catch(err => {
         console.log(err);
       });
-  };
-
-  fetchIngredients = () => {
-    API.fetchIngredients(this.props.routeProps.match.params.productId)
-      .then(res => {
-        this.setState({
-          ingredients: res.data
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  fetchSufferings() {
-    API.fetchSufferings(this.props.routeProps.match.params.productId)
-      .then(res => {
-        this.setState({ sufferings: res.data });
-      })
-      .catch(err => console.log(err));
-  }
-
-  componentDidMount() {
-    this.fetchProductDetails();
-    this.fetchIngredients();
-    this.fetchSufferings();
   }
 
   render() {
@@ -62,6 +34,7 @@ class ProductDetails extends Component {
       },
       { name: this.state.productDetails.name, to: "active" }
     ];
+
     return (
       <Layout>
         <MyBreadcrumb routes={breadcrumbRoutes} />
@@ -80,7 +53,8 @@ class ProductDetails extends Component {
             >
               {this.state.productDetails.photo ? (
                 <Image
-                  src={require("../images/products/placeholder.jpg")}
+                  // src={require("../images/products/placeholder.jpg")}
+                  src={this.state.productDetails.photo}
                   className="rounded-lg"
                   fluid
                   alt="product"
@@ -91,28 +65,30 @@ class ProductDetails extends Component {
             </Col>
             {/* column 2 */}
             <Col md={3} className="mt-3 mt-md-0 text-center text-md-left">
-              {this.state.productDetails.Discount ? (
-                <>
-                  <p className="h2 mt-2 mb-0 text-muted">
-                    <del>
+              {this.state.productDetails.discount ? (
+                this.state.productDetails.discount.hasDiscount ? (
+                  <>
+                    <p className="h2 mt-2 mb-0 text-muted">
+                      <del>
+                        <small className="mr-1">$</small>
+                        <small>{this.state.productDetails.salePrice}</small>
+                        <small className="ml-1">MXN</small>
+                      </del>
+                    </p>
+                    <p className="h2 mb-2 mt-0 text-danger">
                       <small className="mr-1">$</small>
-                      <small>{this.state.productDetails.salePrice}</small>
+                      {this.state.productDetails.discount.newPrice}
                       <small className="ml-1">MXN</small>
-                    </del>
-                  </p>
-                  <p className="h2 mb-2 mt-0 text-danger">
+                    </p>
+                  </>
+                ) : (
+                  <p className="h2 my-2 text-dark">
                     <small className="mr-1">$</small>
-                    {this.state.productDetails.Discount.newPrice}
+                    {this.state.productDetails.salePrice}
                     <small className="ml-1">MXN</small>
                   </p>
-                </>
-              ) : (
-                <p className="h2 my-2 text-dark">
-                  <small className="mr-1">$</small>
-                  {this.state.productDetails.salePrice}
-                  <small className="ml-1">MXN</small>
-                </p>
-              )}
+                )
+              ) : null}
               {/* brand */}
               <p
                 className="lead mt-2 mb-0 text-dark"
@@ -155,36 +131,40 @@ class ProductDetails extends Component {
             {/* column 3 */}
             <Col md={3} className="mt-3 mt-md-0">
               <p className="lead mb-1 text-dark">Útil para</p>
-              {this.state.sufferings.length ? (
-                <ul className="list-unstyled">
-                  <li>
-                    <ul>
-                      {this.state.sufferings.map(suff => (
-                        <li key={suff.name}>{suff.name}</li>
-                      ))}
-                    </ul>
-                  </li>
-                </ul>
-              ) : (
-                <span>No hay información disponible</span>
-              )}
+              {this.state.productDetails.sufferings ? (
+                this.state.productDetails.sufferings.length ? (
+                  <ul className="list-unstyled">
+                    <li>
+                      <ul>
+                        {this.state.productDetails.sufferings.map(suff => (
+                          <li key={suff}>{suff}</li>
+                        ))}
+                      </ul>
+                    </li>
+                  </ul>
+                ) : (
+                  <span>No hay información disponible</span>
+                )
+              ) : null}
             </Col>
             {/* column 4 */}
             <Col md={3}>
               <p className="lead mb-1 text-dark">Contiene</p>
-              {this.state.ingredients.length ? (
-                <ul className="list-unstyled">
-                  <li>
-                    <ul>
-                      {this.state.ingredients.map(ing => (
-                        <li key={ing.name}>{ing.name}</li>
-                      ))}
-                    </ul>
-                  </li>
-                </ul>
-              ) : (
-                <span>No hay información disponible</span>
-              )}
+              {this.state.productDetails.ingredients ? (
+                this.state.productDetails.ingredients.length ? (
+                  <ul className="list-unstyled">
+                    <li>
+                      <ul>
+                        {this.state.productDetails.ingredients.map(ing => (
+                          <li key={ing}>{ing}</li>
+                        ))}
+                      </ul>
+                    </li>
+                  </ul>
+                ) : (
+                  <span>No hay información disponible</span>
+                )
+              ) : null}
             </Col>
           </Row>
         </Container>

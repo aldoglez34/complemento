@@ -28,10 +28,11 @@ function ProductCard(props) {
         </Card.Header>
         <Card.Img
           variant="top"
-          height={250}
-          width={150}
+          width={190}
+          height={290}
           className="rounded-0"
-          src={"/images/products/" + props.product.photo}
+          // src={"/images/products/" + props.product.photo}
+          src={props.product.photo}
         />
       </a>
       <Card.Body

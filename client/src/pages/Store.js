@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Jumbotron } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { Route } from "react-router-dom";
 import Layout from "./Layout";
 import CategoriesList from "../components/CategoriesList";
@@ -8,6 +8,7 @@ import ProductsSection from "../components/ProductsSection";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
 import MyBreadcrumb from "../components/MyBreadcrumb";
+import "./store.scss";
 
 function Store(props) {
   const breadcrumbRoute = () => {
@@ -16,7 +17,7 @@ function Store(props) {
       return [
         { name: "Inicio", to: "/" },
         { name: "Tienda", to: "/store" },
-        { name: "Todas las categorías", to: "active" }
+        { name: "Todos los productos", to: "active" }
       ];
     } else {
       return [
@@ -77,32 +78,11 @@ function Store(props) {
           {/* right column */}
           <Col md={9} className="mt-2">
             <Row>
-              <Col>
-                <Jumbotron
-                  className="rounded-0 mt-3 text-right"
-                  style={{
-                    backgroundImage: "url('../images/jumbo3.jpg')",
-                    color: "ghostwhite"
-                  }}
-                  // style={{ backgroundColor: "#c8c0b0", color: "#264341" }}
-                >
-                  <h1
-                    style={{
-                      fontFamily: "Josefin Sans"
-                    }}
-                  >
-                    {title()}
-                  </h1>
-                  <p>
-                    This is a simple hero unit, a simple jumbotron-style
-                    component for calling extra attention to featured content or
-                    information.
-                  </p>
-                </Jumbotron>
-                {/* <h4 className="my-3">
-                  <strong style={{ color: "#c89f0d" }}>{title()}</strong>
+              <Col className="text-center">
+                <h4 className="my-3">
+                  <strong>{title()}</strong>
                 </h4>
-                <hr className="mb-3" /> */}
+                <hr className="mb-3" />
               </Col>
             </Row>
             {/* in order to get the value from the url, it's necessary to declare the component like this */}

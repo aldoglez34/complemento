@@ -12,7 +12,7 @@ class ProductsSection extends Component {
     limit: null,
     productCounter: 0,
     productsPerPage: 20,
-    pages: 0,
+    pageCount: 0,
     activePage: 1,
     sortBy: "A-Z",
     groupBy: "None"
@@ -53,7 +53,7 @@ class ProductsSection extends Component {
           {
             products: res.data,
             productCounter: res.data.length,
-            pages: Math.ceil(res.data.length / productsPerPage)
+            pageCount: Math.ceil(res.data.length / productsPerPage)
           },
           () => this.setOffsetAndLimit()
         );
@@ -194,26 +194,6 @@ class ProductsSection extends Component {
               </Dropdown.Item>
             </DropdownButton>
           </Col>
-          <Col
-            md
-            className="d-flex flex-row justify-content-md-center align-items-center mb-2 mb-md-0"
-          >
-            <span>
-              {this.state.productCounter === 1 ? (
-                <>{"Mostrando " + this.state.productCounter + " producto"}</>
-              ) : (
-                <>{"Mostrando " + this.state.productCounter + " productos"}</>
-              )}
-            </span>
-          </Col>
-          <Col
-            md
-            className="d-flex flex-row justify-content-md-center align-items-center mb-2 mb-md-0"
-          >
-            <span>
-              Página {this.state.activePage + " de " + this.state.pages}
-            </span>
-          </Col>
         </Row>
         {/* second row */}
         <Row>
@@ -223,9 +203,7 @@ class ProductsSection extends Component {
                 this.state.products
                   .slice(this.state.offset, this.state.limit)
                   .map(product => {
-                    return (
-                      <ProductCard key={product.productId} product={product} />
-                    );
+                    return <ProductCard key={product._id} product={product} />;
                   })
               ) : (
                 <div className="text-center my-4">
@@ -239,7 +217,7 @@ class ProductsSection extends Component {
         <Row>
           <Col className="d-flex justify-content-center">
             <MyPagination
-              pages={this.state.pages}
+              pageCount={this.state.pageCount}
               activePage={this.state.activePage}
               handleChangePage={this.handleChangePage}
             />

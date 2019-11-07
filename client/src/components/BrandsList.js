@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Navbar, Spinner, Form } from "react-bootstrap";
 import API from "../utils/API";
-import "./brandslist.scss";
 
 class BrandsList extends Component {
   state = {
@@ -30,11 +29,11 @@ class BrandsList extends Component {
           <Form>
             {this.state.brands.map(brand => {
               return (
-                <div key={brand.name} className="py-1">
-                  <Form.Check type="checkbox" id={brand.name}>
+                <div key={brand} className="py-1">
+                  <Form.Check type="checkbox" id={brand}>
                     <Form.Check.Input type="checkbox" isValid />
                     <Form.Check.Label className="brandItem">
-                      {brand.name}
+                      {brand}
                     </Form.Check.Label>
                   </Form.Check>
                 </div>

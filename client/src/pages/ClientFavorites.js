@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Layout from "./Layout";
 import MyBreadcrumb from "../components/MyBreadcrumb";
+import { Container } from "react-bootstrap";
 
 function ClientFavorites() {
   const breadcrumbRoutes = () => {
@@ -14,9 +16,15 @@ function ClientFavorites() {
     ];
   };
 
+  const [products, setProducts] = useState();
+  const favorites = useSelector(state => state.client.favorites);
+
+  // useEffect(() => {}, []);
+
   return (
     <Layout>
       <MyBreadcrumb routes={breadcrumbRoutes()} />
+      <Container className="mt-4">aquí van los favoritos</Container>
     </Layout>
   );
 }

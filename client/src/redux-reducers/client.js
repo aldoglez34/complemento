@@ -3,16 +3,14 @@ const clientReducers = (state = { isLogged: false }, action) => {
     case "client/login":
       return {
         isLogged: true,
-        clientId: action.data.clientId,
+        firebaseUID: action.data.firebaseUID,
         name: action.data.name,
         firstSurname: action.data.firstSurname,
         secondSurname: action.data.secondSurname,
         phone: action.data.phone,
         email: action.data.email,
-        street: action.data.street,
-        city: action.data.city,
-        state: action.data.state,
-        zipCode: action.data.zipCode
+        address: action.data.address,
+        favorites: action.data.favorites
       };
     case "client/update":
       return {

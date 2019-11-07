@@ -42,7 +42,7 @@ const ProductSchema = new Schema({
   },
   photo: {
     type: String,
-    default: "placeholder.jpg"
+    default: "https://loremflickr.com/190/290"
   },
   priority: {
     type: Boolean,

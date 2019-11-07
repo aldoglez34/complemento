@@ -8,6 +8,9 @@ router.get("/:uid", function(req, res) {
   model.Client.find({
     firebaseUID: req.params.uid
   })
+    .select(
+      "firebaseUID name firstSurname secondSurname phone email address favorites"
+    )
     .then(function(data) {
       res.json(data);
     })

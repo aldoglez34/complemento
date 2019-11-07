@@ -1,0 +1,17 @@
+.itemsStyle {
+  &.page-item {
+    a {
+      color: gray;
+      outline: none;
+      box-shadow: none !important;
+    }
+    &.active {
+      .page-link {
+        // color: #0c2c2c;
+        color: ghostwhite;
+        background-color: #f3d084;
+        border-color: #f3d084;
+      }
+    }
+  }
+}

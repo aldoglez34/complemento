@@ -65,8 +65,8 @@ class App extends Component {
               />
               <Route
                 exact
-                path="/client/favorites/:clientId"
-                render={props => <ClientFavorites routeProps={props} />}
+                path="/client/favorites"
+                component={ClientFavorites}
               />
               <Route component={NoMatch} />
             </Switch>
