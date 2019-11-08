@@ -5,7 +5,7 @@ const model = require("../models");
 // get client details
 // matches with /api/client/:uid
 router.get("/:uid", function(req, res) {
-  model.Client.find({
+  model.Client.findOne({
     firebaseUID: req.params.uid
   })
     .select(

@@ -21,3 +21,16 @@ h5 {
 .dropdown:hover .dropdown-menu {
   display: block;
 } */
+
+// removes blue glow on some elements
+input {
+  outline: none;
+  box-shadow: none !important;
+  border: 1px solid #ccc !important;
+}
+
+button {
+  outline: none;
+  box-shadow: none !important;
+  border: 0px !important;
+}

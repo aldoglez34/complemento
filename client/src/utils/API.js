@@ -41,6 +41,10 @@ export default {
     return axios.get("/api/product/details/" + prod);
   },
 
+  addFavorite: function(data) {
+    return axios.put("/api/product/favorite/new", data);
+  },
+
   // ---------------------------------------------------------------------------
   // CLIENTS
   // ---------------------------------------------------------------------------

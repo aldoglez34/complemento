@@ -1,18 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import { Card, Button } from "react-bootstrap";
-import AddToShoppingBagBttn from "./AddToShoppingBagBttn";
-import BttnNoFav from "./BttnNoFav";
-import BttnNoStock from "./BttnNoStock";
+import { Card } from "react-bootstrap";
+import FavButton from "./FavButton";
+import AddToBagButton from "./AddToBagButton";
 
 ProductCard.propTypes = {
   product: PropTypes.object.isRequired
 };
 
 function ProductCard(props) {
-  const isClientLogged = useSelector(state => state.client.isLogged);
-
   return (
     <Card
       style={{ width: "12.7rem" }}
@@ -43,25 +39,25 @@ function ProductCard(props) {
         <div className="lead text-center mb-3">
           {props.product.discount.hasDiscount ? (
             <>
-              <p className="text-muted mb-0">
+              <span className="text-muted mb-0">
                 <strong>
                   <small className="mr-1">$</small>
                   <del>{props.product.salePrice}</del>
-                  <small className="ml-1">MXN</small>
+                  {/* <small className="ml-1">MXN</small> */}
                 </strong>
-              </p>
-              <p className="text-danger mb-0">
+              </span>
+              <span className="text-danger mb-0 ml-2">
                 <small className="mr-1">$</small>
                 {props.product.discount.newPrice}
-                <small className="ml-1">MXN</small>
-              </p>
+                {/* <small className="ml-1">MXN</small> */}
+              </span>
             </>
           ) : (
-            <p className="text-dark mb-0">
+            <span className="text-dark mb-0">
               <small className="mr-1">$</small>
               {props.product.salePrice}
-              <small className="ml-1">MXN</small>
-            </p>
+              {/* <small className="ml-1">MXN</small> */}
+            </span>
           )}
         </div>
         {/* brand */}
@@ -73,22 +69,8 @@ function ProductCard(props) {
         {/* add to cart button */}
         <div className="mt-auto pt-2 text-center">
           <div className="d-flex inline">
-            {props.product.stock > 0 ? (
-              <AddToShoppingBagBttn product={props.product} />
-            ) : (
-              <BttnNoStock />
-            )}
-            {isClientLogged ? (
-              <Button
-                variant="danger"
-                className="ml-1 shadow-sm"
-                title="Guardar en favoritos"
-              >
-                <i className="fa fa-heart" />
-              </Button>
-            ) : (
-              <BttnNoFav />
-            )}
+            <AddToBagButton product={props.product} />
+            <FavButton product={props.product} />
           </div>
         </div>
       </Card.Body>

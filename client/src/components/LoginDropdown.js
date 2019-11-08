@@ -44,7 +44,7 @@ function LoginDropdown() {
                     API.fetchClientInfo(uid)
                       .then(res => {
                         alert("¡Bienvenido!");
-                        let client = res.data[0];
+                        let client = res.data;
                         dispatch(clientActions.loginClient(client));
                       })
                       .catch(err => {
@@ -80,7 +80,7 @@ function LoginDropdown() {
                     API.fetchClientInfo(uid)
                       .then(res => {
                         alert("¡Bienvenido!");
-                        let client = res.data[0];
+                        let client = res.data;
                         dispatch(clientActions.loginClient(client));
                       })
                       .catch(err => {

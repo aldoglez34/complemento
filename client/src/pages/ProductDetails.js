@@ -6,8 +6,8 @@ import MyBreadcrumb from "../components/MyBreadcrumb";
 import API from "../utils/API";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
-import AddToShoppingBagBttn from "../components/AddToShoppingBagBttn";
-import BttnNoStock from "../components/BttnNoStock";
+// import AddToShoppingBagBttn from "../components/AddToShoppingBagBttn";
+// import BttnNoStock from "../components/BttnNoStock";
 
 class ProductDetails extends Component {
   state = {
@@ -101,11 +101,11 @@ class ProductDetails extends Component {
               </p>
               <Row className="mt-4">
                 <Col md={{ span: 6 }}>
-                  {this.state.productDetails.stock > 0 ? (
+                  {/* {this.state.productDetails.stock > 0 ? (
                     <AddToShoppingBagBttn product={this.state.productDetails} />
                   ) : (
                     <BttnNoStock />
-                  )}
+                  )} */}
                 </Col>
               </Row>
               <Row>

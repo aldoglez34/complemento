@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { OverlayTrigger, Tooltip, Button, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-AddToShoppingBagBttn.propTypes = {
+AddToBagButton.propTypes = {
   product: PropTypes.object.isRequired
 };
 
-function AddToShoppingBagBttn(props) {
+function AddToBagButton(props) {
   // state used by the modal
   const [show, setShow] = useState(false);
 
@@ -27,7 +27,7 @@ function AddToShoppingBagBttn(props) {
     let counter = localStorage.getItem("cn_counter");
     counter++;
     // save the new item
-    localStorage.setItem("cn_item" + counter, props.product.productId);
+    localStorage.setItem("cn_item" + counter, props.product._id);
     // set the increased counter back in the local storage
     localStorage.setItem("cn_counter", counter);
     // show modal
@@ -46,23 +46,14 @@ function AddToShoppingBagBttn(props) {
     scrollTopIfNeeded();
   }, []);
 
-  return (
+  return props.product.stock > 0 ? (
     <>
-      <Button
-        variant="success"
-        className="shadow-sm"
-        block
-        onClick={handleShow}
-        title="Agregar a tu bolsa de compras"
-      >
+      <Button variant="success" block onClick={handleShow}>
         Agregar
         <i className="fas fa-shopping-bag ml-1" />
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Éxito.</Modal.Title>
-        </Modal.Header>
         <Modal.Body>
           El producto <strong>{props.product.name}</strong> ha sido agregado
           exitosamente a tu bolsa de compras.
@@ -79,7 +70,27 @@ function AddToShoppingBagBttn(props) {
         </Modal.Footer>
       </Modal>
     </>
+  ) : (
+    <>
+      <OverlayTrigger
+        overlay={
+          <Tooltip id="tooltip-disabled">No disponible por el momento</Tooltip>
+        }
+      >
+        <span className="w-100">
+          <Button
+            disabled
+            block
+            variant="success"
+            style={{ pointerEvents: "none" }}
+          >
+            Agregar
+            <i className="fas fa-shopping-bag ml-1" />
+          </Button>
+        </span>
+      </OverlayTrigger>
+    </>
   );
 }
 
-export default AddToShoppingBagBttn;
+export default AddToBagButton;
