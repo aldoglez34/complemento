@@ -8,15 +8,39 @@ router.get("/:uid", function(req, res) {
   model.Client.findOne({
     firebaseUID: req.params.uid
   })
-    .select(
-      "firebaseUID name firstSurname secondSurname phone email address favorites"
-    )
+    .select("firebaseUID name firstSurname secondSurname phone email address")
     .then(function(data) {
       res.json(data);
     })
     .catch(function(err) {
       res.json(err);
     });
+});
+
+// ------------------------------------------------------------
+// post new favorite in the logged user
+// matches with /api/client/favorite/new
+router.put("/favorite/new", (req, res) => {
+  let client = req.body.client;
+  let product = req.body.product;
+  model.Client.findByIdAndUpdate(
+    client,
+    { $push: { favorites: product } },
+    { new: true }
+  )
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
+// ------------------------------------------------------------
+// populate favorites
+// matches with /api/client/favorites
+router.get("/favorites/:clientId", (req, res) => {
+  model.Client.findById(req.params.clientId)
+    .populate("favorites") // this will get all the data from the provider collection
+    .select("favorites")
+    .then(data => res.json(data))
+    .then(err => res.json(err));
 });
 
 // ------------------------------------------------------------

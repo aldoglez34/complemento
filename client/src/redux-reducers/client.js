@@ -10,8 +10,7 @@ const clientReducers = (state = { isLogged: false }, action) => {
         secondSurname: action.data.secondSurname,
         phone: action.data.phone,
         email: action.data.email,
-        address: action.data.address,
-        favorites: action.data.favorites
+        address: action.data.address
       };
     case "client/update":
       return {

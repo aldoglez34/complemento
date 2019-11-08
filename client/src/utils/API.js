@@ -41,10 +41,6 @@ export default {
     return axios.get("/api/product/details/" + prod);
   },
 
-  addFavorite: function(data) {
-    return axios.put("/api/product/favorite/new", data);
-  },
-
   // ---------------------------------------------------------------------------
   // CLIENTS
   // ---------------------------------------------------------------------------
@@ -52,6 +48,16 @@ export default {
   fetchClientInfo: function(uid) {
     return axios.get("/api/client/" + uid);
   },
+
+  addFavorite: function(data) {
+    return axios.put("/api/client/favorite/new", data);
+  },
+
+  fetchFavorites: function(clientId) {
+    return axios.get("/api/client/favorites/" + clientId);
+  },
+
+  //
 
   fetchEmails: function() {
     return axios.get("/api/client/email/all");
