@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { OverlayTrigger, Tooltip, Button, Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
 import API from "../utils/API";
 
@@ -30,7 +30,7 @@ function FavButton(props) {
 
   return isClientLogged ? (
     <>
-      <Button variant="danger" className="ml-1" onClick={handleShow}>
+      <Button className="favbuttonstyle" onClick={handleShow}>
         <i className="fa fa-heart" />
       </Button>
 
@@ -43,28 +43,20 @@ function FavButton(props) {
           <Button variant="secondary" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="success" href="/client/favorites">
+          <Button variant="success" href={"/client/favorites/" + clientId}>
             Ir a mis favoritos
           </Button>
         </Modal.Footer>
       </Modal>
     </>
   ) : (
-    <>
-      <OverlayTrigger
-        overlay={
-          <Tooltip id="tooltip-disabled">
-            Inicia sesión para guardar en favoritos
-          </Tooltip>
-        }
-      >
-        <span className="d-inline-block">
-          <Button disabled variant="danger" className="ml-1">
-            <i className="fas fa-heart" />
-          </Button>
-        </span>
-      </OverlayTrigger>
-    </>
+    <Button
+      disabled
+      className="favbuttonstyle"
+      title="Inicia sesión para guardar este producto en tus favoritos"
+    >
+      <i className="fas fa-heart" />
+    </Button>
   );
 }
 

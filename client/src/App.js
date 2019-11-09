@@ -58,11 +58,7 @@ class App extends Component {
           {this.props.client.isLogged ? (
             // if the client is logged, he has access to these routes
             <Switch>
-              <Route
-                exact
-                path="/client/info/:clientId"
-                render={props => <ClientInfo routeProps={props} />}
-              />
+              <Route exact path="/client/info" component={ClientInfo} />
               <Route
                 exact
                 path="/client/favorites"

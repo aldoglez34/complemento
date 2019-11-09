@@ -42,7 +42,7 @@ function Store(props) {
     <Layout>
       <MyBreadcrumb routes={breadcrumbRoute()} />
       <Container fluid className="my-3">
-        <Row>
+        <Row className="px-3">
           {/* left column */}
           <Col md={3} className="mt-2">
             <Row>

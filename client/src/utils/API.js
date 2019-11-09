@@ -45,7 +45,7 @@ export default {
   // CLIENTS
   // ---------------------------------------------------------------------------
 
-  fetchClientInfo: function(uid) {
+  fetchClientByUID: function(uid) {
     return axios.get("/api/client/" + uid);
   },
 

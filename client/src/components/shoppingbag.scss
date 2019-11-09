@@ -1,3 +1,13 @@
+#bagBttn {
+  opacity: 0.9;
+  &:hover {
+    opacity: 1;
+  }
+  outline: none;
+  box-shadow: none !important;
+  border: 0px !important;
+}
+
 #shoppingBag {
   position: absolute;
   color: #59a49a;

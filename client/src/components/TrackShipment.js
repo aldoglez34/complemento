@@ -64,7 +64,7 @@ function TrackShipment() {
                   <Form.Row>
                     <Form.Group as={Col}>
                       <Button
-                        variant="success"
+                        className="globalbttn"
                         type="submit"
                         disabled={isSubmitting}
                       >

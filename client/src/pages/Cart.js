@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Container, Row, Col, Table, Button, Badge } from "react-bootstrap";
 import Layout from "./Layout";
 import API from "../utils/API";
+import MyBreadcrumb from "../components/MyBreadcrumb";
 
-// checks if a given id is inside an array
 const itemExists = (productId, arr) => {
   let exists = false;
   for (let i = 0; i < arr.length; i++) {
@@ -106,18 +106,23 @@ class Cart extends Component {
   }
 
   render() {
+    const breadcrumbRoutes = [
+      { name: "Inicio", to: "/" },
+      { name: "Tienda", to: "/store" },
+      { name: "Mi bolsa de compras", to: "active" }
+    ];
+
     return (
       <Layout>
-        <Container className="text-center my-4">
-          <h2 className="text-center text-dark mb-3">
-            Mi Carrito<i className="fas fa-shopping-cart ml-2"></i>
-          </h2>
-
+        <MyBreadcrumb routes={breadcrumbRoutes} />
+        <Container className="mt-4">
+          <h2>Mi bolsa de compras</h2>
+          <hr />
           <Row>
             <Col md={{ span: 8, offset: 2 }}>
               {this.state.cart.length ? (
                 <div>
-                  <Table className="table-striped" responsive>
+                  <Table striped bordered hover>
                     <thead>
                       <tr>
                         <th>Producto</th>
@@ -128,7 +133,6 @@ class Cart extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {/* products */}
                       {this.state.cart.map(product => {
                         return (
                           <tr key={product.productId}>
@@ -155,7 +159,6 @@ class Cart extends Component {
                           </tr>
                         );
                       })}
-                      {/* grand total */}
                       <tr>
                         <td className="text-right" colSpan="4">
                           <strong>GRAN TOTAL</strong>

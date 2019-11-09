@@ -17,11 +17,8 @@ h4,
 h5 {
   font-family: "Source Serif Pro", serif;
 }
-/* 
-.dropdown:hover .dropdown-menu {
-  display: block;
-} */
 
+// ==============================================================================================================
 // removes blue glow on some elements
 input {
   outline: none;
@@ -33,4 +30,97 @@ button {
   outline: none;
   box-shadow: none !important;
   border: 0px !important;
+}
+
+// ==============================================================================================================
+// client dropdown
+$clientdropdownitem-back: #59a49a;
+.clientDropdownItem {
+  &:active {
+    background-color: $clientdropdownitem-back;
+  }
+}
+
+// ==============================================================================================================
+// spinner
+$spinner-back: #264341;
+.spinner-grow {
+  &:active {
+    background-color: $spinner-back;
+  }
+}
+
+// ==============================================================================================================
+// buttons
+
+// global button
+$globalbttn-back: #264341;
+$globalbttn-back-hover: #59a49a;
+$globalbttn-text: ghostwhite;
+.globalbttn {
+  border: 0;
+  background-color: $globalbttn-back;
+  color: $globalbttn-text;
+  &:hover {
+    border: 0;
+    background-color: $globalbttn-back-hover;
+    transition: 0.5s;
+  }
+  &:disabled {
+    background-color: $globalbttn-back-hover;
+  }
+}
+
+// home button
+$homebttn-back: #264341;
+$homebttn-back-hover: #59a49a;
+$homebttn-text: ghostwhite;
+#homebttn {
+  border: 0;
+  background-color: $homebttn-back;
+  color: $homebttn-text;
+  &:hover {
+    background-color: $homebttn-back-hover;
+    border: 0;
+    transition: 0.5s;
+  }
+}
+
+// addtobagbutton style
+$bagbttn-back: #264341;
+$bagbttn-back-hover: #59a49a;
+$bagbttn-text: ghostwhite;
+$bagbttn-disabled: gray;
+.addtobagbuttonstyle {
+  border: 0;
+  background-color: $bagbttn-back;
+  color: $bagbttn-text;
+  &:hover {
+    border: 0;
+    background-color: $bagbttn-back-hover;
+    transition: 0.5s;
+  }
+  &:disabled {
+    // background-color: #99aab5 !important;
+    background-color: $bagbttn-disabled;
+  }
+}
+
+// favbutton style
+$favbutton-back: #fe4365;
+$favbutton-back-hover: #fc9d9a;
+$favbutton-heart: ghostwhite;
+$favbutton-disabled: gray;
+.favbuttonstyle {
+  border: 0;
+  background-color: $favbutton-back;
+  color: $favbutton-heart;
+  &:hover {
+    border: 0;
+    background-color: $favbutton-back-hover;
+    transition: 0.5s;
+  }
+  &:disabled {
+    background-color: $favbutton-disabled;
+  }
 }

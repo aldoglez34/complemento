@@ -75,10 +75,10 @@ class Home extends Component {
                 libero scelerisque porttitor.
               </p>
               <Button
-                variant="success"
                 size="lg"
                 href="/store"
                 className="shadow p-3 mt-3"
+                id="homebttn"
               >
                 Explora la tienda
                 <i className="fas fa-store-alt ml-2" />
@@ -118,7 +118,7 @@ class Home extends Component {
                   })
                 ) : (
                   <div className="text-center my-4">
-                    <Spinner animation="grow" role="status" variant="success" />
+                    <Spinner animation="grow" role="status" />
                   </div>
                 )}
               </div>
@@ -135,7 +135,7 @@ class Home extends Component {
                   })
                 ) : (
                   <div className="text-center my-4">
-                    <Spinner animation="grow" role="status" variant="success" />
+                    <Spinner animation="grow" role="status" />
                   </div>
                 )}
               </div>
@@ -152,7 +152,7 @@ class Home extends Component {
                   })
                 ) : (
                   <div className="text-center my-4">
-                    <Spinner animation="grow" role="status" variant="success" />
+                    <Spinner animation="grow" role="status" />
                   </div>
                 )}
               </div>

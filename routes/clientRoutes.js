@@ -1,24 +1,16 @@
 const router = require("express").Router();
 const model = require("../models");
 
-// ------------------------------------------------------------
-// get client details
+// fetchClientByUID()
 // matches with /api/client/:uid
 router.get("/:uid", function(req, res) {
-  model.Client.findOne({
-    firebaseUID: req.params.uid
-  })
-    .select("firebaseUID name firstSurname secondSurname phone email address")
-    .then(function(data) {
-      res.json(data);
-    })
-    .catch(function(err) {
-      res.json(err);
-    });
+  model.Client.find({ firebaseUID: req.params.uid })
+    .select("name firstSurname secondSurname phone email address favorites")
+    .then(data => res.json(data[0]))
+    .catch(err => res.json(err));
 });
 
-// ------------------------------------------------------------
-// post new favorite in the logged user
+// addFavorite()
 // matches with /api/client/favorite/new
 router.put("/favorite/new", (req, res) => {
   let client = req.body.client;
@@ -32,18 +24,16 @@ router.put("/favorite/new", (req, res) => {
     .catch(err => res.json(err));
 });
 
-// ------------------------------------------------------------
-// populate favorites
+// fetchFavorites()
 // matches with /api/client/favorites
 router.get("/favorites/:clientId", (req, res) => {
   model.Client.findById(req.params.clientId)
     .populate("favorites") // this will get all the data from the provider collection
     .select("favorites")
     .then(data => res.json(data))
-    .then(err => res.json(err));
+    .catch(err => res.json(err));
 });
 
-// ------------------------------------------------------------
 // get client emails
 // matches with /api/client/email/all
 router.get("/email/all", function(req, res) {
@@ -65,7 +55,6 @@ router.get("/email/all", function(req, res) {
     });
 });
 
-// ------------------------------------------------------------
 // save new client
 // matches with /api/client/new
 router.post("/new", function(req, res) {

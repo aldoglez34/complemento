@@ -1,12 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Button, Badge } from "react-bootstrap";
 import "./shoppingbag.scss";
 
 function ShoppingBag() {
-  if (!localStorage.getItem("cn_counter")) {
-    localStorage.setItem("cn_counter", 0);
-  }
-  let counter = localStorage.getItem("cn_counter");
+  const counter = useSelector(state => state.cart.counter);
 
   return (
     <>

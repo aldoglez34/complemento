@@ -31,79 +31,28 @@ function LoginDropdown() {
         validationSchema={loginSchema}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          if (values.rememberme) {
-            fire
-              .auth()
-              .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-              .then(function() {
-                return fire
-                  .auth()
-                  .signInWithEmailAndPassword(values.email, values.password)
-                  .then(res => {
-                    let uid = res.user.uid;
-                    API.fetchClientInfo(uid)
-                      .then(res => {
-                        alert("¡Bienvenido!");
-                        let client = res.data;
-                        dispatch(clientActions.loginClient(client));
-                      })
-                      .catch(err => {
-                        alert("Error, este usuario no existe 😞");
-                        console.log(err);
-                        setSubmitting(false);
-                      });
-                  })
-                  .catch(error => {
-                    alert("Error, este usuario no existe 😞");
-                    console.log(error);
-                    setSubmitting(false);
-                  });
-              })
-              .catch(function(error) {
-                alert("Error");
-                var errorCode = error.code;
-                console.log(errorCode);
-                var errorMessage = error.message;
-                console.log(errorMessage);
-                setSubmitting(false);
-              });
-          } else {
-            fire
-              .auth()
-              .setPersistence(firebase.auth.Auth.Persistence.SESSION)
-              .then(function() {
-                return fire
-                  .auth()
-                  .signInWithEmailAndPassword(values.email, values.password)
-                  .then(res => {
-                    let uid = res.user.uid;
-                    API.fetchClientInfo(uid)
-                      .then(res => {
-                        alert("¡Bienvenido!");
-                        let client = res.data;
-                        dispatch(clientActions.loginClient(client));
-                      })
-                      .catch(err => {
-                        alert("Error, este usuario no existe 😞");
-                        console.log(err);
-                        setSubmitting(false);
-                      });
-                  })
-                  .catch(error => {
-                    alert("Error, este usuario no existe 😞");
-                    console.log(error);
-                    setSubmitting(false);
-                  });
-              })
-              .catch(function(error) {
-                alert("Error");
-                var errorCode = error.code;
-                console.log(errorCode);
-                var errorMessage = error.message;
-                console.log(errorMessage);
-                setSubmitting(false);
-              });
-          }
+          fire
+            .auth()
+            .signInWithEmailAndPassword(values.email, values.password)
+            .then(res => {
+              let uid = res.user.uid;
+              API.fetchClientByUID(uid)
+                .then(res => {
+                  let client = res.data;
+                  dispatch(clientActions.loginClient(client));
+                  alert("¡Bienvenido!");
+                })
+                .catch(err => {
+                  alert("Error, este usuario no existe 😞");
+                  console.log(err);
+                  setSubmitting(false);
+                });
+            })
+            .catch(error => {
+              alert("Error, este usuario no existe 😞");
+              console.log(error);
+              setSubmitting(false);
+            });
         }}
       >
         {({
@@ -182,7 +131,7 @@ function LoginDropdown() {
                   <Form.Row>
                     <Form.Group as={Col}>
                       <Button
-                        variant="success"
+                        className="globalbttn"
                         type="submit"
                         disabled={isSubmitting}
                       >
@@ -192,7 +141,7 @@ function LoginDropdown() {
                   </Form.Row>
                 </Form>
                 <Dropdown.Divider />
-                <Dropdown.Item>Olvidé mi contraseña</Dropdown.Item>
+                {/* <Dropdown.Item>Olvidé mi contraseña</Dropdown.Item> */}
                 <Dropdown.Item href="/signup">
                   Regístrate con nosotros
                 </Dropdown.Item>

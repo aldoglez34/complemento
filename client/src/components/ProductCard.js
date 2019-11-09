@@ -41,22 +41,16 @@ function ProductCard(props) {
             <>
               <span className="text-muted mb-0">
                 <strong>
-                  <small className="mr-1">$</small>
-                  <del>{props.product.salePrice}</del>
-                  {/* <small className="ml-1">MXN</small> */}
+                  <del>{"$" + props.product.salePrice}</del>
                 </strong>
               </span>
               <span className="text-danger mb-0 ml-2">
-                <small className="mr-1">$</small>
-                {props.product.discount.newPrice}
-                {/* <small className="ml-1">MXN</small> */}
+                {"$" + props.product.discount.newPrice}
               </span>
             </>
           ) : (
             <span className="text-dark mb-0">
-              <small className="mr-1">$</small>
-              {props.product.salePrice}
-              {/* <small className="ml-1">MXN</small> */}
+              {"$" + props.product.salePrice}
             </span>
           )}
         </div>
@@ -70,7 +64,9 @@ function ProductCard(props) {
         <div className="mt-auto pt-2 text-center">
           <div className="d-flex inline">
             <AddToBagButton product={props.product} />
-            <FavButton product={props.product} />
+            <div className="ml-1">
+              <FavButton product={props.product} />
+            </div>
           </div>
         </div>
       </Card.Body>

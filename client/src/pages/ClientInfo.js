@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Container, Form, Col, Button, Row, Alert } from "react-bootstrap";
+import React from "react";
+import { Container, Form, Col, Button } from "react-bootstrap";
 import API from "../utils/API";
 import Layout from "./Layout";
 import MyBreadcrumb from "../components/MyBreadcrumb";
@@ -8,46 +8,29 @@ import HelpButton from "../components/HelpButton";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
 import * as clientActions from "../redux-actions/client";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-function ClientInfo(props) {
-  const [client, setClient] = useState({ client: null });
-  const [showAlert, setShowAlert] = useState(false);
-  const [alertVariant, setVariant] = useState();
-  const [alertMsg, setMsg] = useState();
+function ClientInfo() {
+  const client = useSelector(state => state.client);
   const dispatch = useDispatch();
 
-  function fetchClientInfo() {
-    API.fetchClientInfo(props.routeProps.match.params.clientId)
-      .then(res => setClient(res.data[0]))
-      .catch(err => console.log(err));
-  }
+  // const [client, setClient] = useState({ client: null });
 
-  useEffect(() => {
-    setClient(fetchClientInfo());
-  }, []);
+  // useEffect(() => {
+  //   API.fetchClient(props.routeProps.match.params.clientId)
+  //     .then(res => setClient(res.data))
+  //     .catch(err => console.log(err));
+  // }, []);
 
   const breadcrumbRoutes = () => {
     return [
       { name: "Inicio", to: "/" },
       {
-        name: client.email,
-        to: "/client/info/" + client.clientId
+        name: client.name + " " + client.firstSurname,
+        to: "/client/info/"
       },
       { name: "Mis datos", to: "active" }
     ];
-  };
-
-  const hidePass = pass => {
-    if (pass !== undefined) {
-      let newPass = "";
-      for (let i = 0; i <= pass.length; i++) {
-        newPass = newPass.concat("*");
-      }
-      return newPass;
-    } else {
-      return null;
-    }
   };
 
   const changeInfoSchema = yup.object({
@@ -92,86 +75,52 @@ function ClientInfo(props) {
       .required("Requerido")
   });
 
-  return client ? (
+  return client.isLogged ? (
     <Layout>
       <MyBreadcrumb routes={breadcrumbRoutes()} />
       <Container className="mt-4">
-        <Alert
-          show={showAlert}
-          variant={alertVariant}
-          onClose={() => setShowAlert(false)}
-          dismissible
-        >
-          <p>{alertMsg}</p>
-        </Alert>
         <h2>Mis datos</h2>
         <hr />
-        <Row>
-          <Col>
-            <h5>Correo</h5>
-            <div className="d-flex flex-row">
-              <p>{client.email}</p>
-              <a className="ml-1" href="/">
-                cambiar
-              </a>
-            </div>
-            <h5>Contraseña</h5>
-            <div className="d-flex flex-row">
-              <p>{hidePass(client.password)}</p>
-              <a className="ml-1" href="/">
-                cambiar
-              </a>
-            </div>
-          </Col>
-        </Row>
         <Formik
           initialValues={{
             name: client.name,
             firstSurname: client.firstSurname,
             secondSurname: client.secondSurname,
             phone: client.phone,
-            street: client.street,
-            neighborhood: client.neighborhood,
-            municipality: client.municipality,
-            city: client.city,
-            state: client.state,
-            zipCode: client.zipCode
+            street: client.address.street,
+            neighborhood: client.address.neighborhood,
+            municipality: client.address.municipality,
+            city: client.address.city,
+            state: client.address.state,
+            zipCode: client.address.zipCode
           }}
           validationSchema={changeInfoSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
             // this is necessary since the trim() function from yup is not working
-            let trimmedValues = {};
-            trimmedValues.clientId = props.routeProps.match.params.clientId;
-            trimmedValues.name = values.name.trim();
-            trimmedValues.firstSurname = values.firstSurname.trim();
-            trimmedValues.secondSurname = values.secondSurname.trim();
-            trimmedValues.phone = values.phone;
-            trimmedValues.street = values.street.trim();
-            trimmedValues.neighborhood = values.neighborhood.trim();
-            trimmedValues.municipality = values.municipality.trim();
-            trimmedValues.city = values.city.trim();
-            trimmedValues.state = values.state;
-            trimmedValues.zipCode = values.zipCode;
-            API.updateClient(trimmedValues)
-              .then(res => {
-                // if the client is updated in the database,
-                // save it to redux and show the alert
-                dispatch(clientActions.updateClient(trimmedValues));
-                setVariant("success");
-                setShowAlert(true);
-                setMsg(
-                  "La información ha sido actualizada de manera satisfactoria"
-                );
-                setSubmitting(false);
-              })
-              .catch(err => {
-                // if not then just show the alert
-                setVariant("sanger");
-                setShowAlert(true);
-                setMsg(err);
-                setSubmitting(false);
-              });
+            // let trimmedValues = {};
+            // trimmedValues.clientId = props.routeProps.match.params.clientId;
+            // trimmedValues.name = values.name.trim();
+            // trimmedValues.firstSurname = values.firstSurname.trim();
+            // trimmedValues.secondSurname = values.secondSurname.trim();
+            // trimmedValues.phone = values.phone;
+            // trimmedValues.street = values.street.trim();
+            // trimmedValues.neighborhood = values.neighborhood.trim();
+            // trimmedValues.municipality = values.municipality.trim();
+            // trimmedValues.city = values.city.trim();
+            // trimmedValues.state = values.state;
+            // trimmedValues.zipCode = values.zipCode;
+            // API.updateClient(trimmedValues)
+            //   .then(res => {
+            //     // if the client is updated in the database,
+            //     // save it to redux and show the alert
+            //     dispatch(clientActions.updateClient(trimmedValues));
+            //     setSubmitting(false);
+            //   })
+            //   .catch(err => {
+            //     // if not then just show the alert
+            //     setSubmitting(false);
+            //   });
           }}
         >
           {({
@@ -185,8 +134,8 @@ function ClientInfo(props) {
           }) => (
             <>
               <Form noValidate onSubmit={handleSubmit}>
-                <h5 className="my-3">Datos de usuario</h5>
-                <hr />
+                <h5 className="my-3">Usuario</h5>
+                {/* <hr /> */}
                 <Form.Row>
                   <Form.Group as={Col} md={4}>
                     <Form.Label>
@@ -252,7 +201,7 @@ function ClientInfo(props) {
                   </Form.Group>
                 </Form.Row>
                 <Form.Row>
-                  <Form.Group as={Col}>
+                  <Form.Group as={Col} md={{ span: 4 }}>
                     <Form.Label>
                       Teléfono celular
                       <strong className="ml-1 text-danger">*</strong>
@@ -274,8 +223,8 @@ function ClientInfo(props) {
                     />
                   </Form.Group>
                 </Form.Row>
-                <h5 className="my-3">Datos de entrega</h5>
-                <hr />
+                <h5 className="my-3">Entrega</h5>
+                {/* <hr /> */}
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
                     <Form.Label>
@@ -437,9 +386,8 @@ function ClientInfo(props) {
                 <Form.Row>
                   <Form.Group>
                     <Button
-                      variant="success"
                       type="submit"
-                      className="my-3"
+                      className="my-3 globalbttn"
                       disabled={isSubmitting}
                     >
                       Guardar cambios

@@ -30,13 +30,19 @@ function ClientDropdown() {
         data-display="static"
         className="dropdown-menu-xs-left dropdown-menu-md-right"
       >
-        <Dropdown.Item href={"/client/info/" + client.clientId}>
+        <Dropdown.Item className="clientDropdownItem" href="/client/info">
           Mis datos
         </Dropdown.Item>
-        <Dropdown.Item href="/">Mis pedidos</Dropdown.Item>
-        <Dropdown.Item href="/client/favorites/">Mis favoritos</Dropdown.Item>
+        <Dropdown.Item className="clientDropdownItem" href="/client/shipment">
+          Mis pedidos
+        </Dropdown.Item>
+        <Dropdown.Item className="clientDropdownItem" href="/client/favorites">
+          Mis favoritos
+        </Dropdown.Item>
         <Dropdown.Divider className="mt-1 mb-2" />
-        <Dropdown.Item onClick={logout}>Cerrar sesión</Dropdown.Item>
+        <Dropdown.Item className="clientDropdownItem" onClick={logout}>
+          Cerrar sesión
+        </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
