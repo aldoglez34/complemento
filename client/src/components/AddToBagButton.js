@@ -22,8 +22,7 @@ function AddToBagButton(props) {
   };
 
   const handleShow = () => {
-    console.log(props.product);
-    dispatch(cartActions.addItem(props.product));
+    dispatch(cartActions.addItem(props.product._id));
     // get the counter and increase it
     // let counter = localStorage.getItem("cn_counter");
     // counter++;

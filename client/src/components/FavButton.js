@@ -35,6 +35,9 @@ function FavButton(props) {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Producto agregado</Modal.Title>
+        </Modal.Header>
         <Modal.Body>
           El producto <strong>{props.product.name}</strong> fue agregado a tus
           favoritos
@@ -43,8 +46,10 @@ function FavButton(props) {
           <Button variant="secondary" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="success" href={"/client/favorites/" + clientId}>
+          <Button className="globalbttn" href="/client/favorites/">
             Ir a mis favoritos
+            <i className="fas fa-heart ml-1" />
+            <i className="fas fa-angle-double-right ml-1" />
           </Button>
         </Modal.Footer>
       </Modal>

@@ -37,8 +37,8 @@ export default {
   // PRODUCT DETAILS
   // ---------------------------------------------------------------------------
 
-  fetchProductDetails: function(prod) {
-    return axios.get("/api/product/details/" + prod);
+  fetchProductDetails: function(productId) {
+    return axios.get("/api/product/details/" + productId);
   },
 
   // ---------------------------------------------------------------------------

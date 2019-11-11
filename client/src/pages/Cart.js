@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as cartActions from "../redux-actions/cart";
-import { Container, Row, Col, Table, Button, Badge } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Table,
+  Button,
+  Badge,
+  Spinner
+} from "react-bootstrap";
 import Layout from "./Layout";
 import API from "../utils/API";
 import MyBreadcrumb from "../components/MyBreadcrumb";
@@ -10,8 +18,31 @@ import MyBreadcrumb from "../components/MyBreadcrumb";
 // what if an item changes price while in someone's cart?
 
 function Cart() {
-  const myCart = useSelector(state => state.cart.items);
+  const cartItems = useSelector(state => state.cart.items);
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    // wait for all products
+    let fetchAllProducts = new Promise((resolve, reject) => {
+      cartItems.forEach((value, index, array) => {
+        API.fetchProductDetails(value)
+          .then(res => {
+            console.log(res.data);
+            setProducts(products.concat(res.data));
+            // setProducts(prevProducts => [...prevProducts, res.data]);
+            if (index === array.length - 1) resolve();
+          })
+          .catch(err => console.log(err));
+      });
+    });
+    fetchAllProducts.then(() => {
+      setIsLoading(false);
+      console.log("all done!");
+      console.log(products);
+    });
+  }, []);
 
   const itemExists = (productId, arr) => {
     let exists = false;
@@ -97,7 +128,7 @@ function Cart() {
     });
   };
 
-  sumGrandTotal = () => {
+  const sumGrandTotal = () => {
     // let sum = 0;
     // this.state.cart.forEach(item => {
     //   sum += parseFloat(item.subtotal);
@@ -119,88 +150,17 @@ function Cart() {
         <hr />
         <Row>
           <Col md={{ span: 8, offset: 2 }}>
-            {myCart.length ? (
-              <div>
-                <Table striped bordered hover>
-                  <thead>
-                    <tr>
-                      <th>Producto</th>
-                      <th>Contenido</th>
-                      <th>Cantidad</th>
-                      <th>Precio Unitario</th>
-                      <th>Subtotal</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {myCart.map(product => {
-                      return (
-                        <tr key={product.productId}>
-                          {product.Discount ? (
-                            <td className="text-left">
-                              {product.name}
-                              <Badge pill className="ml-2" variant="warning">
-                                {product.Discount.percentage}%
-                              </Badge>
-                            </td>
-                          ) : (
-                            <td className="text-left">{product.name}</td>
-                          )}
-                          <td className="text-left">{product.content}</td>
-                          <td>{product.qty}</td>
-                          {product.Discount ? (
-                            <td className="text-right">
-                              {product.Discount.newPrice}
-                            </td>
-                          ) : (
-                            <td className="text-right">{product.price}</td>
-                          )}
-                          <td className="text-right">{product.subtotal}</td>
-                        </tr>
-                      );
-                    })}
-                    <tr>
-                      <td className="text-right" colSpan="4">
-                        <strong>GRAN TOTAL</strong>
-                      </td>
-                      <td className="text-right">{sumGrandTotal()}</td>
-                    </tr>
-                  </tbody>
-                </Table>
-                <div>
-                  <Button block variant="danger">
-                    <strong>P A G A R</strong>
-                    <i className="fas fa-angle-double-right ml-2" />
-                  </Button>
-                </div>
-                <div className="text-right">
-                  <Button
-                    variant="link"
-                    onClick={() => dispatch(cartActions.clear)}
-                  >
-                    <em>Limpiar carrito</em>
-                  </Button>
-                </div>
-              </div>
-            ) : (
-              <Table responsive>
-                <thead>
-                  <tr>
-                    <th>Producto</th>
-                    <th>Contenido</th>
-                    <th>Cantidad</th>
-                    <th>Precio Unitario</th>
-                    <th>Subtotal</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="text-muted" colSpan="5">
-                      <em>Tu carrito está vacío</em>
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-            )}
+            <Table striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>Producto</th>
+                  <th>Contenido</th>
+                  <th>Cantidad</th>
+                  <th>Precio Unitario</th>
+                  <th>Subtotal</th>
+                </tr>
+              </thead>
+            </Table>
           </Col>
         </Row>
       </Container>
