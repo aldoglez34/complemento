@@ -57,7 +57,7 @@ export default {
     return axios.get("/api/client/favorites/" + clientId);
   },
 
-  //
+  // OTHER
 
   fetchEmails: function() {
     return axios.get("/api/client/email/all");

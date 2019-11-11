@@ -19,6 +19,17 @@ h5 {
 }
 
 // ==============================================================================================================
+// hr
+.myDivider {
+  margin-top: 0;
+  border: none;
+  height: 0.2rem;
+  width: 4rem;
+  background-color: #59a49a;
+  margin-left: 0;
+}
+
+// ==============================================================================================================
 // removes blue glow on some elements
 input {
   outline: none;
@@ -43,10 +54,10 @@ $clientdropdownitem-back: #59a49a;
 
 // ==============================================================================================================
 // spinner
-$spinner-back: #264341;
-.spinner-grow {
+$spinner-back: #f3d084;
+.spinnerStyle {
   &:active {
-    background-color: $spinner-back;
+    background-color: $spinner-back !important;
   }
 }
 

@@ -47,10 +47,10 @@ function Store(props) {
           <Col md={3} className="mt-2">
             <Row>
               <Col>
-                <h4 className="my-3">
+                <h4 className="mt-3 mb-1">
                   <strong>Categorías</strong>
                 </h4>
-                <hr className="mb-1" />
+                <hr className="myDivider mb-1" />
               </Col>
             </Row>
             <Row>
@@ -63,10 +63,10 @@ function Store(props) {
             </Row>
             <Row>
               <Col>
-                <h4 className="my-3">
+                <h4 className="mt-3 mb-1">
                   <strong>Marcas</strong>
                 </h4>
-                <hr className="mb-1" />
+                <hr className="myDivider mb-1" />
               </Col>
             </Row>
             <Row>
@@ -79,10 +79,13 @@ function Store(props) {
           <Col md={9} className="mt-2">
             <Row>
               <Col className="text-center">
-                <h4 className="my-3">
+                <h4 className="mt-3 mb-1">
                   <strong>{title()}</strong>
                 </h4>
-                <hr className="mb-3" />
+                <hr
+                  className="myDivider mb-1 ml-auto"
+                  style={{ backgroundColor: "#edcb58" }}
+                />
               </Col>
             </Row>
             {/* in order to get the value from the url, it's necessary to declare the component like this */}

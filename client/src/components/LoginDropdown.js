@@ -6,7 +6,7 @@ import API from "../utils/API";
 import * as clientActions from "../redux-actions/client";
 import { useDispatch } from "react-redux";
 import fire from "../firebase/Fire";
-const firebase = require("firebase/app");
+// const firebase = require("firebase/app");
 
 function LoginDropdown() {
   const dispatch = useDispatch();

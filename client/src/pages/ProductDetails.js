@@ -41,7 +41,7 @@ class ProductDetails extends Component {
         <MyBreadcrumb routes={breadcrumbRoutes} />
         {this.state.isLoading ? (
           <Container className="d-flex align-items-center justify-content-center h-100">
-            <Spinner animation="grow" />
+            <Spinner className="spinnerStyle" animation="grow" />
           </Container>
         ) : (
           <Container className="my-4 p-3">

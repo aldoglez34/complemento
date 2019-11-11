@@ -35,12 +35,12 @@ function ClientFavorites() {
     <Layout>
       <MyBreadcrumb routes={breadcrumbRoutes()} />
       <Container className="mt-4">
-        <h2>Mis favoritos</h2>
-        <hr />
+        <h2 className="mb-1">Mis favoritos</h2>
+        <hr className="myDivider mb-1" />
         <div className="d-flex flex-wrap justify-content-center">
           {isLoading ? (
             <div className="text-center my-4">
-              <Spinner animation="grow" role="status" variant="success" />
+              <Spinner className="spinnerStyle" animation="grow" role="status" />
             </div>
           ) : favorites.length ? (
             favorites.map(fav => {

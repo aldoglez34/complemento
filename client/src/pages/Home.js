@@ -56,8 +56,8 @@ class Home extends Component {
         <Container className="mb-3">
           <Row>
             <Col md={8} className="mt-5">
-              <h2>¿Quiénes Somos?</h2>
-              <hr />
+              <h2 className="mb-1">¿Quiénes Somos?</h2>
+              <hr className="myDivider" />
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
                 cursus arcu vitae nunc commodo viverra. Nunc malesuada rutrum
@@ -86,8 +86,8 @@ class Home extends Component {
               </Button>
             </Col>
             <Col md={4} className="mt-5">
-              <h2>Contáctanos</h2>
-              <hr />
+              <h2 className="mb-1">Contáctanos</h2>
+              <hr className="myDivider" />
               <address>
                 <strong>Dirección</strong>
                 <br />
@@ -101,7 +101,10 @@ class Home extends Component {
                 (228) 111-2031
                 <br />
                 <i className="fas fa-envelope mr-2" />
-                <a href="mailto:complemento.natural@gmail.com">
+                <a
+                  href="mailto:complemento.natural@gmail.com"
+                  style={{ color: "#59a49a" }}
+                >
                   complemento.natural@gmail.com
                 </a>
               </address>
@@ -109,8 +112,8 @@ class Home extends Component {
           </Row>
           <Row className="mt-5">
             <Col>
-              <h2>Destacados</h2>
-              <hr />
+              <h2 className="mb-1">Destacados</h2>
+              <hr className="myDivider" />
               <div className="d-flex flex-wrap justify-content-center">
                 {this.state.prioritized.length ? (
                   this.state.prioritized.map(p => {
@@ -118,7 +121,7 @@ class Home extends Component {
                   })
                 ) : (
                   <div className="text-center my-4">
-                    <Spinner animation="grow" role="status" />
+                    <Spinner className="spinnerStyle" animation="grow" role="status" />
                   </div>
                 )}
               </div>
@@ -126,8 +129,8 @@ class Home extends Component {
           </Row>
           <Row className="mt-5">
             <Col>
-              <h2>Últimas ofertas</h2>
-              <hr />
+              <h2 className="mb-1">Últimas ofertas</h2>
+              <hr className="myDivider" />
               <div className="d-flex flex-wrap justify-content-center">
                 {this.state.discounts.length ? (
                   this.state.discounts.map(d => {
@@ -135,7 +138,7 @@ class Home extends Component {
                   })
                 ) : (
                   <div className="text-center my-4">
-                    <Spinner animation="grow" role="status" />
+                    <Spinner className="spinnerStyle" animation="grow" role="status" />
                   </div>
                 )}
               </div>
@@ -143,8 +146,8 @@ class Home extends Component {
           </Row>
           <Row className="mt-5">
             <Col>
-              <h2>Más vendidos</h2>
-              <hr />
+              <h2 className="mb-1">Más vendidos</h2>
+              <hr className="myDivider" />
               <div className="d-flex flex-wrap justify-content-center">
                 {this.state.bestSellers.length ? (
                   this.state.bestSellers.map(b => {
@@ -152,7 +155,7 @@ class Home extends Component {
                   })
                 ) : (
                   <div className="text-center my-4">
-                    <Spinner animation="grow" role="status" />
+                    <Spinner className="spinnerStyle" animation="grow" role="status" />
                   </div>
                 )}
               </div>

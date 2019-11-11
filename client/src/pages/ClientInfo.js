@@ -1,18 +1,18 @@
 import React from "react";
 import { Container, Form, Col, Button } from "react-bootstrap";
-import API from "../utils/API";
+// import API from "../utils/API";
 import Layout from "./Layout";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 import ScrollButton from "../components/ScrollButton";
 import HelpButton from "../components/HelpButton";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
-import * as clientActions from "../redux-actions/client";
-import { useSelector, useDispatch } from "react-redux";
+// import * as clientActions from "../redux-actions/client";
+import { useSelector } from "react-redux";
 
 function ClientInfo() {
   const client = useSelector(state => state.client);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // const [client, setClient] = useState({ client: null });
 
@@ -79,8 +79,8 @@ function ClientInfo() {
     <Layout>
       <MyBreadcrumb routes={breadcrumbRoutes()} />
       <Container className="mt-4">
-        <h2>Mis datos</h2>
-        <hr />
+        <h2 className="mb-1">Mis datos</h2>
+        <hr className="myDivider mb-1" />
         <Formik
           initialValues={{
             name: client.name,

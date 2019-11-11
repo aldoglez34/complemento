@@ -207,7 +207,7 @@ class ProductsSection extends Component {
                   })
               ) : (
                 <div className="text-center my-4">
-                  <Spinner animation="grow" role="status" variant="success" />
+                  <Spinner animation="grow" role="status" className="spinnerStyle" />
                 </div>
               )}
             </div>

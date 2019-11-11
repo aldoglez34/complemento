@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import * as cartActions from "../redux-actions/cart";
+import { useSelector } from "react-redux";
+// import * as cartActions from "../redux-actions/cart";
 import {
   Container,
   Row,
@@ -8,133 +8,63 @@ import {
   Table,
   Button,
   Badge,
-  Spinner
+  Spinner,
+  Card
 } from "react-bootstrap";
 import Layout from "./Layout";
 import API from "../utils/API";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 
-// cart HAS to go fetch the items one by one
-// what if an item changes price while in someone's cart?
-
 function Cart() {
   const cartItems = useSelector(state => state.cart.items);
   const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   useEffect(() => {
-    // wait for all products
+    // fetch all products in the shopping cart, one by one
     let fetchAllProducts = new Promise((resolve, reject) => {
+      // declare a temp array that will hold the products without duplicates
+      let tempArr = [];
+      // start looping each product and fetch its info
       cartItems.forEach((value, index, array) => {
         API.fetchProductDetails(value)
           .then(res => {
-            console.log(res.data);
-            setProducts(products.concat(res.data));
-            // setProducts(prevProducts => [...prevProducts, res.data]);
-            if (index === array.length - 1) resolve();
+            // take only some of the properties of the object
+            let tempProduct = {};
+            tempProduct._id = res.data._id;
+            tempProduct.name = res.data.name;
+            tempProduct.content = res.data.content;
+            tempProduct.salePrice = res.data.salePrice;
+            tempProduct.discount = res.data.discount;
+            // loop tempArr and find if the product exists, if so retrieve the index
+            let indexOfProduct = tempArr.findIndex(
+              p => p._id === tempProduct._id
+            );
+            // if indexOfProduct is -1, it means the product's _id wasn't found
+            if (indexOfProduct === -1) {
+              // set the qty to 1 and the subtotal equals to the salePrice and then push the value
+              tempProduct.qty = 1;
+              tempProduct.subTotal = res.data.salePrice;
+              tempArr.push(tempProduct);
+            }
+            // if indexOfProduct is different than -1, means the product was found
+            // update the qty value of that product and update subTotal
+            else {
+              tempArr[indexOfProduct].qty += 1;
+              tempArr[indexOfProduct].subTotal += res.data.salePrice;
+            }
+            // after its done, "resolve" the promise and send the temp arr as a parameter
+            if (index === array.length - 1) resolve(tempArr);
           })
           .catch(err => console.log(err));
       });
     });
-    fetchAllProducts.then(() => {
-      setIsLoading(false);
-      console.log("all done!");
-      console.log(products);
+    // when its done fetching all products info,
+    fetchAllProducts.then(tempArr => {
+      console.log(tempArr);
+      setProducts(tempArr);
     });
   }, []);
-
-  const itemExists = (productId, arr) => {
-    let exists = false;
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].productId === productId) {
-        exists = true;
-      }
-    }
-    return exists;
-  };
-
-  const clearCart = () => {
-    // get all the items in the local storage and sort it in descending order
-    let ls = Object.keys(localStorage);
-    ls.forEach(item => {
-      if (item.substring(0, 7) === "cn_item") {
-        localStorage.removeItem(item);
-      }
-    });
-    localStorage.setItem("cn_counter", 0);
-    this.setState({ cart: [] });
-  };
-
-  const buildCart = () => {
-    let fullCart = [];
-
-    // get all the items in the local storage and sort it in descending order
-    let ls = Object.keys(localStorage);
-    ls.sort();
-    ls.reverse();
-
-    // for each local storage item
-    ls.forEach(function(i) {
-      // if the local storage item is a cart item
-      if (i.substring(0, 7) === "cn_item") {
-        // get the value (productId) from the local storage
-        let productId = localStorage.getItem(i);
-
-        // create an object with that productId and set qty to 1
-        let obj = {};
-        obj.productId = productId;
-        obj.qty = 1;
-
-        // insert the productId and qty in the fullCart array
-        // and if it already exists, add 1 to it
-        if (itemExists(productId, fullCart)) {
-          // if this returns true, it means it exists
-          // so look for it and add 1
-          for (let i = 0; i < fullCart.length; i++) {
-            if (fullCart[i].productId === productId) {
-              fullCart[i].qty = parseInt(fullCart[i].qty) + 1;
-            }
-          }
-        } else {
-          // if it returns false it means it doesn't exist
-          // so just push the object
-          fullCart.push(obj);
-        }
-      }
-    });
-
-    // get the details of each item in the cart and push them into the state
-    fullCart.forEach(item => {
-      API.getProductDetails(item.productId).then(res => {
-        // since there's no such thing as pushing directly into the state arr,
-        // i have to keep setting the cart in the state for every product
-        // might come back to fix the performance here
-        let product = res.data;
-        product.qty = item.qty;
-        if (!product.Discount) {
-          product.subtotal = parseFloat(
-            parseFloat(product.price) * item.qty
-          ).toFixed(2);
-        } else {
-          product.subtotal = parseFloat(
-            parseFloat(product.Discount.newPrice) * item.qty
-          ).toFixed(2);
-        }
-        let tempArr = this.state.cart;
-        tempArr.push(product);
-        this.setState({ cart: tempArr });
-      });
-    });
-  };
-
-  const sumGrandTotal = () => {
-    // let sum = 0;
-    // this.state.cart.forEach(item => {
-    //   sum += parseFloat(item.subtotal);
-    // });
-    // return <span>{parseFloat(sum).toFixed(2)}</span>;
-  };
 
   const breadcrumbRoutes = [
     { name: "Inicio", to: "/" },
@@ -145,22 +75,88 @@ function Cart() {
   return (
     <Layout>
       <MyBreadcrumb routes={breadcrumbRoutes} />
-      <Container className="mt-4">
-        <h2>Mi bolsa de compras</h2>
-        <hr />
-        <Row>
-          <Col md={{ span: 8, offset: 2 }}>
-            <Table striped bordered hover responsive>
+      <Container className="my-4">
+        <h2 className="mb-1">Mi bolsa de compras</h2>
+        <hr className="myDivider" />
+        <Row className="mt-4">
+          <Col md={8}>
+            <Table responsive size="sm">
               <thead>
                 <tr>
-                  <th>Producto</th>
-                  <th>Contenido</th>
-                  <th>Cantidad</th>
-                  <th>Precio Unitario</th>
-                  <th>Subtotal</th>
+                  <th className="text-center border-top-0">Producto</th>
+                  {/* <th className="text-center border-top-0">Contenido</th> */}
+                  <th className="text-center border-top-0">Cantidad</th>
+                  <th className="text-center border-top-0">Precio</th>
+                  <th className="text-center border-top-0">Subtotal</th>
                 </tr>
               </thead>
+              <tbody>
+                {cartItems.length === 0 ? (
+                  <tr>
+                    <td className="bg-light text-center" colSpan="5">
+                      <em>Tu bolsa de compras está vacía</em>
+                    </td>
+                  </tr>
+                ) : products.length ? (
+                  products.map(p => {
+                    return (
+                      <tr key={p._id}>
+                        {/* name */}
+                        <td className="text-left">
+                          <a
+                            href={"/product/details/" + p._id}
+                            style={{ color: "#59a49a" }}
+                          >
+                            {p.name}
+                          </a>
+                          {p.discount.hasDiscount ? (
+                            <Badge pill className="ml-2" variant="warning">
+                              {p.discount.percentage}%
+                            </Badge>
+                          ) : null}
+                        </td>
+                        {/* content */}
+                        {/* <td className="text-left">{p.content}</td> */}
+                        {/* qty */}
+                        <td className="text-center">{p.qty}</td>
+                        {/* sale price */}
+                        <td className="text-center">
+                          {p.discount.hasDiscount ? (
+                            <>{p.discount.newPrice}</>
+                          ) : (
+                            <>{p.salePrice}</>
+                          )}
+                        </td>
+                        <td className="text-center">{p.subTotal}</td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td className="text-center" colSpan="5">
+                      <Spinner
+                        className="spinnerStyle mt-3"
+                        animation="grow"
+                        role="status"
+                      />
+                    </td>
+                  </tr>
+                )}
+              </tbody>
             </Table>
+          </Col>
+          <Col md={4}>
+            <Card>
+              <Card.Header as="h5">Resumen</Card.Header>
+              <Card.Body>
+                <Card.Title>Special title treatment</Card.Title>
+                <Card.Text>
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
       </Container>

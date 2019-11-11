@@ -2,14 +2,16 @@
 // categories list
 
 .catItem {
-  color: #0c2c2c !important;
+  // color: darkgray !important;
+  font-weight: 600;
   &:hover {
-    color: #c89f0d !important;
+    color: #0c2c2c !important;
     // background-color: #fce8a7 !important;
   }
   &.active {
-    color: #c89f0d !important;
+    // color: #c89f0d !important;
     // background-color: #edcb58;
+    color: #0c2c2c !important;
     font-weight: 700;
     // &:hover {
     //   background-color: #edcb58 !important;
@@ -22,7 +24,7 @@
   font-family: Arial;
   background-color: #59a49a;
   &.active {
-    background-color: #c89f0d;
+    background-color: #0c2c2c;
     color: ghostwhite;
   }
 }

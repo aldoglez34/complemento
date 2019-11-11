@@ -11,7 +11,7 @@ function ShoppingBag() {
       <Button
         href="/cart"
         variant="transparent"
-        title="Mis compras"
+        title="Mi bolsa de compras"
         className="d-none d-md-block p-1 ml-2"
         id="bagBttn"
       >
