@@ -56,9 +56,7 @@ $clientdropdownitem-back: #59a49a;
 // spinner
 $spinner-back: #f3d084;
 .spinnerStyle {
-  &:active {
-    background-color: $spinner-back !important;
-  }
+  background-color: $spinner-back !important;
 }
 
 // ==============================================================================================================
