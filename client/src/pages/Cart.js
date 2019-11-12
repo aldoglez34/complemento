@@ -34,7 +34,11 @@ function Cart() {
             tempProduct._id = res.data._id;
             tempProduct.name = res.data.name;
             tempProduct.content = res.data.content;
-            tempProduct.salePrice = res.data.salePrice;
+            if (res.data.discount.hasDiscount) {
+              tempProduct.salePrice = res.data.discount.newPrice;
+            } else {
+              tempProduct.salePrice = res.data.salePrice;
+            }
             tempProduct.discount = res.data.discount;
             // loop tempArr and find if the product exists, if so retrieve the index
             let indexOfProduct = tempArr.findIndex(
@@ -44,7 +48,11 @@ function Cart() {
             if (indexOfProduct === -1) {
               // set the qty to 1 and the subtotal equals to the salePrice and then push the value
               tempProduct.qty = 1;
-              tempProduct.subTotal = res.data.salePrice;
+              if (res.data.discount.hasDiscount) {
+                tempProduct.salePrice = res.data.discount.newPrice;
+              } else {
+                tempProduct.salePrice = res.data.salePrice;
+              }
               tempArr.push(tempProduct);
             }
             // if indexOfProduct is different than -1, means the product was found
