@@ -40,7 +40,11 @@ function ClientFavorites() {
         <div className="d-flex flex-wrap justify-content-center">
           {isLoading ? (
             <div className="text-center my-4">
-              <Spinner className="spinnerStyle" animation="grow" role="status" />
+              <Spinner
+                className="spinnerStyle"
+                animation="grow"
+                role="status"
+              />
             </div>
           ) : favorites.length ? (
             favorites.map(fav => {

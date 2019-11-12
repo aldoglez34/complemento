@@ -45,12 +45,8 @@ class ProductDetails extends Component {
           </Container>
         ) : (
           <Container className="my-4 p-3">
-            <Row>
-              <Col className="text-center text-md-left">
-                <h2>{this.state.productDetails.name}</h2>
-              </Col>
-            </Row>
-            <hr />
+            <h2 className="mb-1">{this.state.productDetails.name}</h2>
+            <hr className="myDivider" />
             <Row className="mt-4">
               {/* column 1 */}
               <Col md={3} className="text-center">
@@ -70,20 +66,20 @@ class ProductDetails extends Component {
                       <p className="h2 mb-0 text-muted">
                         <del>
                           <small>
-                            {"$" + this.state.productDetails.salePrice + "MXN"}
+                            {"$" + this.state.productDetails.salePrice + " MXN"}
                           </small>
                         </del>
                       </p>
                       <p className="h2 mb-2 mt-0 text-danger">
                         <small>
-                          {"$" + this.state.productDetails.salePrice + "MXN"}
+                          {"$" + this.state.productDetails.salePrice + " MXN"}
                         </small>
                       </p>
                     </>
                   ) : (
                     <p className="h2 my-2 text-dark">
                       <small>
-                        {"$" + this.state.productDetails.salePrice + "MXN"}
+                        {"$" + this.state.productDetails.salePrice + " MXN"}
                       </small>
                     </p>
                   )
@@ -95,16 +91,17 @@ class ProductDetails extends Component {
                 >
                   {this.state.productDetails.brand}
                 </p>
-                <p className="lead mb-0 text-dark">
+                <p className="lead mb-3 text-dark">
                   {this.state.productDetails.content}
                 </p>
-                <div className="d-flex inline my-2">
+                <div className="d-flex inline mt-2 mb-1">
                   <AddToBagButton product={this.state.productDetails} />
                   <div className="ml-1">
                     <FavButton product={this.state.productDetails} />
                   </div>
                 </div>
-                {this.props.isClientLogged ? (
+                {/* <FavButton product={this.state.productDetails} > */}
+                {/* {this.props.isClientLogged ? (
                   <Button
                     variant="danger"
                     block
@@ -118,7 +115,7 @@ class ProductDetails extends Component {
                   <em>
                     Inicia sesión para guardar este producto en tus favoritos
                   </em>
-                )}
+                )} */}
               </Col>
               {/* column 3 */}
               <Col md={3} className="mt-3 mt-md-0">
@@ -172,7 +169,4 @@ const mapStateToProps = state => {
   return { isClientLogged: state.client.isLogged };
 };
 
-export default connect(
-  mapStateToProps,
-  null
-)(ProductDetails);
+export default connect(mapStateToProps, null)(ProductDetails);
