@@ -11,8 +11,9 @@ export const logoutClient = () => {
   };
 };
 
-export const updateClient = () => {
+export const updateClient = data => {
   return {
-    type: "client/update"
+    type: "client/update",
+    data
   };
 };

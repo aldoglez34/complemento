@@ -55,7 +55,7 @@ router.get("/email/all", function(req, res) {
     });
 });
 
-// save new client
+// saveNewClient()
 // matches with /api/client/new
 router.post("/new", function(req, res) {
   model.Client.create({
@@ -83,34 +83,29 @@ router.post("/new", function(req, res) {
     });
 });
 
-// update client
+// updateClient()
 // matches with /api/client/update
 router.put("/update", function(req, res) {
-  // model.Client.update(
-  //   {
-  //     name: req.body.name,
-  //     firstSurname: req.body.firstSurname,
-  //     secondSurname: req.body.secondSurname,
-  //     phone: req.body.phone,
-  //     street: req.body.street,
-  //     neighborhood: req.body.neighborhood,
-  //     municipality: req.body.municipality,
-  //     city: req.body.city,
-  //     state: req.body.state,
-  //     zipCode: req.body.zipCode
-  //   },
-  //   {
-  //     where: {
-  //       clientId: req.body.clientId
-  //     }
-  //   }
-  // )
-  //   .then(function(data) {
-  //     res.json(data);
-  //   })
-  //   .catch(function(err) {
-  //     res.json(err);
-  //   });
+  model.Client.findByIdAndUpdate(req.body._id, {
+    name: req.body.name,
+    firstSurname: req.body.firstSurname,
+    secondSurname: req.body.secondSurname,
+    phone: req.body.phone,
+    address: {
+      street: req.body.street,
+      neighborhood: req.body.neighborhood,
+      municipality: req.body.municipality,
+      city: req.body.city,
+      state: req.body.state,
+      zipCode: req.body.zipCode
+    }
+  })
+    .then(function(data) {
+      res.json(data);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
 });
 
 module.exports = router;

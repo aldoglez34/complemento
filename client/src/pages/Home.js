@@ -56,7 +56,7 @@ class Home extends Component {
         <Container className="mb-3">
           <Row>
             <Col md={8} className="mt-5">
-              <h2 className="mb-1">¿Quiénes Somos?</h2>
+              <h2 className="mb-1">¿Quiénes somos?</h2>
               <hr className="myDivider" />
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec

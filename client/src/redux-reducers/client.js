@@ -14,14 +14,19 @@ const clientReducers = (state = { isLogged: false }, action) => {
       };
     case "client/update":
       return {
+        ...state,
         name: action.data.name,
         firstSurname: action.data.firstSurname,
         secondSurname: action.data.secondSurname,
         phone: action.data.phone,
-        street: action.data.street,
-        city: action.data.city,
-        state: action.data.state,
-        zipCode: action.data.zipCode
+        address: {
+          street: action.data.street,
+          city: action.data.city,
+          state: action.data.state,
+          zipCode: action.data.zipCode,
+          municipality: action.data.municipality,
+          neighborhood: action.data.neighborhood
+        }
       };
     case "client/logout":
       return {

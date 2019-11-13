@@ -1,26 +1,18 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Container, Form, Col, Button } from "react-bootstrap";
-// import API from "../utils/API";
+import API from "../utils/API";
 import Layout from "./Layout";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 import ScrollButton from "../components/ScrollButton";
 import HelpButton from "../components/HelpButton";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
-// import * as clientActions from "../redux-actions/client";
-import { useSelector } from "react-redux";
+import * as clientActions from "../redux-actions/client";
 
 function ClientInfo() {
   const client = useSelector(state => state.client);
-  // const dispatch = useDispatch();
-
-  // const [client, setClient] = useState({ client: null });
-
-  // useEffect(() => {
-  //   API.fetchClient(props.routeProps.match.params.clientId)
-  //     .then(res => setClient(res.data))
-  //     .catch(err => console.log(err));
-  // }, []);
+  const dispatch = useDispatch();
 
   const breadcrumbRoutes = () => {
     return [
@@ -80,7 +72,7 @@ function ClientInfo() {
       <MyBreadcrumb routes={breadcrumbRoutes()} />
       <Container className="mt-4">
         <h2 className="mb-1">Mis datos</h2>
-        <hr className="myDivider mb-1" />
+        <hr className="myDivider mb-4" />
         <Formik
           initialValues={{
             name: client.name,
@@ -98,29 +90,30 @@ function ClientInfo() {
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
             // this is necessary since the trim() function from yup is not working
-            // let trimmedValues = {};
-            // trimmedValues.clientId = props.routeProps.match.params.clientId;
-            // trimmedValues.name = values.name.trim();
-            // trimmedValues.firstSurname = values.firstSurname.trim();
-            // trimmedValues.secondSurname = values.secondSurname.trim();
-            // trimmedValues.phone = values.phone;
-            // trimmedValues.street = values.street.trim();
-            // trimmedValues.neighborhood = values.neighborhood.trim();
-            // trimmedValues.municipality = values.municipality.trim();
-            // trimmedValues.city = values.city.trim();
-            // trimmedValues.state = values.state;
-            // trimmedValues.zipCode = values.zipCode;
-            // API.updateClient(trimmedValues)
-            //   .then(res => {
-            //     // if the client is updated in the database,
-            //     // save it to redux and show the alert
-            //     dispatch(clientActions.updateClient(trimmedValues));
-            //     setSubmitting(false);
-            //   })
-            //   .catch(err => {
-            //     // if not then just show the alert
-            //     setSubmitting(false);
-            //   });
+            let trimmedValues = {
+              _id: client._id,
+              name: values.name.trim(),
+              firstSurname: values.firstSurname.trim(),
+              secondSurname: values.secondSurname.trim(),
+              phone: values.phone,
+              street: values.street.trim(),
+              neighborhood: values.neighborhood.trim(),
+              municipality: values.municipality.trim(),
+              city: values.city.trim(),
+              state: values.state,
+              zipCode: values.zipCode
+            };
+            API.updateClient(trimmedValues)
+              .then(res => {
+                alert("Cliente editado con éxito");
+                dispatch(clientActions.updateClient(trimmedValues));
+                setSubmitting(false);
+                window.location.reload();
+              })
+              .catch(err => {
+                alert(err);
+                setSubmitting(false);
+              });
           }}
         >
           {({
@@ -134,8 +127,6 @@ function ClientInfo() {
           }) => (
             <>
               <Form noValidate onSubmit={handleSubmit}>
-                <h5 className="my-3">Usuario</h5>
-                {/* <hr /> */}
                 <Form.Row>
                   <Form.Group as={Col} md={4}>
                     <Form.Label>
@@ -223,7 +214,7 @@ function ClientInfo() {
                     />
                   </Form.Group>
                 </Form.Row>
-                <h5 className="my-3">Entrega</h5>
+                <h5 className="my-3">Datos de entrega</h5>
                 {/* <hr /> */}
                 <Form.Row>
                   <Form.Group as={Col} md={6}>

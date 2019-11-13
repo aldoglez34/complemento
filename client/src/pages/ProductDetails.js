@@ -155,7 +155,4 @@ const mapStateToProps = state => {
   return { isClientLogged: state.client.isLogged };
 };
 
-export default connect(
-  mapStateToProps,
-  null
-)(ProductDetails);
+export default connect(mapStateToProps, null)(ProductDetails);
