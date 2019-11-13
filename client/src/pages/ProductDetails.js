@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Container, Row, Col, Image, Spinner, Button } from "react-bootstrap";
+import { Container, Row, Col, Image, Spinner } from "react-bootstrap";
 import Layout from "./Layout";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 import API from "../utils/API";
@@ -59,63 +59,49 @@ class ProductDetails extends Component {
                 />
               </Col>
               {/* column 2 */}
-              <Col md={3} className="mt-3 mt-md-0 text-center text-md-left">
-                {this.state.productDetails.discount ? (
-                  this.state.productDetails.discount.hasDiscount ? (
-                    <>
-                      <p className="h2 mb-0 text-muted">
-                        <del>
-                          <small>
-                            {"$" + this.state.productDetails.salePrice + " MXN"}
-                          </small>
-                        </del>
-                      </p>
-                      <p className="h2 mb-2 mt-0 text-danger">
+              <Col md={3} className="mt-2 mt-md-0 text-center text-md-left">
+                {/* <FavButton product={this.state.productDetails} /> */}
+                <div className="my-3">
+                  {this.state.productDetails.discount ? (
+                    this.state.productDetails.discount.hasDiscount ? (
+                      <div className="h2 mt-0 mb-1 text-dark">
                         <small>
-                          {"$" + this.state.productDetails.salePrice + " MXN"}
+                          <del className="text-muted">
+                            {"$" + this.state.productDetails.salePrice + " MXN"}
+                          </del>
                         </small>
-                      </p>
-                    </>
-                  ) : (
-                    <p className="h2 my-2 text-dark">
-                      <small>
-                        {"$" + this.state.productDetails.salePrice + " MXN"}
-                      </small>
-                    </p>
-                  )
-                ) : null}
-                {/* brand */}
-                <p
-                  className="lead mt-2 mb-0 text-dark"
-                  style={{ textTransform: "uppercase" }}
-                >
-                  {this.state.productDetails.brand}
-                </p>
-                <p className="lead mb-3 text-dark">
-                  {this.state.productDetails.content}
-                </p>
-                <div className="d-flex inline mt-2 mb-1">
-                  <AddToBagButton product={this.state.productDetails} />
-                  <div className="ml-1">
-                    <FavButton product={this.state.productDetails} />
+                        <strong className="ml-1">
+                          {"$" +
+                            this.state.productDetails.discount.newPrice +
+                            " MXN"}
+                        </strong>
+                      </div>
+                    ) : (
+                      <div className="h2 mt-0 mb-1 text-dark">
+                        <strong>
+                          {"$" + this.state.productDetails.salePrice + " MXN"}
+                        </strong>
+                      </div>
+                    )
+                  ) : null}
+                  <hr />
+                  <div className="lead mb-0 text-dark">
+                    {this.state.productDetails.content}
+                  </div>
+                  <hr />
+                  <div
+                    className="lead mt-0 mb-0 text-dark"
+                    style={{ textTransform: "uppercase" }}
+                  >
+                    {this.state.productDetails.brand}
                   </div>
                 </div>
-                {/* <FavButton product={this.state.productDetails} > */}
-                {/* {this.props.isClientLogged ? (
-                  <Button
-                    variant="danger"
-                    block
-                    className="shadow-sm"
-                    title="Guardar en favoritos"
-                  >
-                    Favoritos
-                    <i className="fas fa-heart ml-1" />
-                  </Button>
-                ) : (
-                  <em>
-                    Inicia sesión para guardar este producto en tus favoritos
-                  </em>
-                )} */}
+                <div className="mt-2">
+                  <AddToBagButton
+                    product={this.state.productDetails}
+                    size="lg"
+                  />
+                </div>
               </Col>
               {/* column 3 */}
               <Col md={3} className="mt-3 mt-md-0">
@@ -169,4 +155,7 @@ const mapStateToProps = state => {
   return { isClientLogged: state.client.isLogged };
 };
 
-export default connect(mapStateToProps, null)(ProductDetails);
+export default connect(
+  mapStateToProps,
+  null
+)(ProductDetails);

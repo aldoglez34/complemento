@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import * as clientActions from "../redux-actions/client";
 import { Container, Col, Form, Button } from "react-bootstrap";
@@ -18,20 +18,6 @@ function SignUp() {
   ];
 
   const dispatch = useDispatch();
-
-  const [emails, setEmails] = useState({
-    emails: []
-  });
-
-  const fetchEmails = () => {
-    API.fetchEmails()
-      .then(res => setEmails(res.data))
-      .catch(err => console.log(err));
-  };
-
-  useEffect(() => {
-    fetchEmails();
-  }, []);
 
   const signupSchema = yup.object({
     clientName: yup
@@ -61,7 +47,7 @@ function SignUp() {
     email: yup
       .string()
       .email("Formato de email incorrecto")
-      .notOneOf(emails.emails, "Este correo ya se encuentra dado de alta")
+      // .notOneOf(emails.emails, "Este correo ya se encuentra dado de alta")
       .required("Requerido"),
     phone: yup
       .string()
@@ -92,9 +78,8 @@ function SignUp() {
     <Layout>
       <MyBreadcrumb routes={breadcrumbRoutes} />
       <Container className="mt-4 mb-4">
-        <h2 className="pt-4 mb-4">
-          <strong>Regístrate con nosotros</strong>
-        </h2>
+        <h2 className="mb-1">Regístrate con nosotros</h2>
+        <hr className="myDivider" />
         <Formik
           initialValues={{
             clientName: "",
@@ -115,19 +100,20 @@ function SignUp() {
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
             // this is necessary since the trim() function from yup is not working
-            let trimmedValues = {};
-            trimmedValues.clientName = values.clientName.trim();
-            trimmedValues.firstSurname = values.firstSurname.trim();
-            trimmedValues.secondSurname = values.secondSurname.trim();
-            trimmedValues.email = values.email.trim();
-            trimmedValues.phone = values.phone;
-            trimmedValues.password = values.password;
-            trimmedValues.street = values.street.trim();
-            trimmedValues.neighborhood = values.neighborhood.trim();
-            trimmedValues.municipality = values.municipality.trim();
-            trimmedValues.city = values.city.trim();
-            trimmedValues.state = values.state;
-            trimmedValues.zipCode = values.zipCode;
+            let trimmedValues = {
+              clientName: values.clientName.trim(),
+              firstSurname: values.firstSurname.trim(),
+              secondSurname: values.secondSurname.trim(),
+              email: values.email.trim(),
+              phone: values.phone,
+              password: values.password,
+              street: values.street.trim(),
+              neighborhood: values.neighborhood.trim(),
+              municipality: values.municipality.trim(),
+              city: values.city.trim(),
+              state: values.state,
+              zipCode: values.zipCode
+            };
             // after trimming all the values manually, sign up
             fire
               .auth()
@@ -136,39 +122,32 @@ function SignUp() {
                 trimmedValues.password
               )
               .then(function(res) {
-                console.log(res);
-                trimmedValues.clientId = res.user.uid;
+                trimmedValues.firebaseUID = res.user.uid;
                 // if the client signed up successfully
                 // save info in the db
                 API.saveNewClient(trimmedValues)
                   .then(() => {
                     // after saving the new client info
-                    // the fetch the newly created info
+                    // fetch the newly created info
                     // login this client and send him/her to the home page
-                    API.fetchClientInfo(trimmedValues.clientId)
+                    API.fetchClientByUID(trimmedValues.firebaseUID)
                       .then(res => {
-                        alert("¡Bienvenido!");
-                        let client = res.data[0];
+                        let client = res.data;
                         dispatch(clientActions.loginClient(client));
+                        alert("¡Bienvenido!");
                         window.location.replace("/");
                       })
                       .catch(err => {
-                        alert("Error");
-                        console.log(err);
+                        alert(err);
                         setSubmitting(false);
                       });
                   })
                   .catch(err => {
-                    alert("Error");
-                    console.log(err);
+                    alert(err);
                   });
               })
               .catch(function(error) {
-                alert("Error");
-                let errorCode = error.code;
-                let errorMessage = error.message;
-                console.log(errorCode);
-                console.log(errorMessage);
+                alert(error.message);
               });
           }}
         >
@@ -183,8 +162,7 @@ function SignUp() {
           }) => (
             <>
               <Form noValidate onSubmit={handleSubmit}>
-                <h5 className="my-3">Datos de usuario</h5>
-                <hr />
+                <h5 className="mb-3 mt-4">Datos de usuario</h5>
                 <Form.Row>
                   <Form.Group as={Col} md={4}>
                     <Form.Label>
@@ -294,7 +272,6 @@ function SignUp() {
                   </Form.Group>
                 </Form.Row>
                 <h5 className="my-3">Contraseña (5-30 caracteres)</h5>
-                <hr />
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
                     <Form.Label>
@@ -342,7 +319,6 @@ function SignUp() {
                   </Form.Group>
                 </Form.Row>
                 <h5 className="my-3">Datos de entrega</h5>
-                <hr />
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
                     <Form.Label>
@@ -502,7 +478,7 @@ function SignUp() {
                 <Form.Row>
                   <Form.Group>
                     <Button
-                      variant="success"
+                      className="globalbttn"
                       type="submit"
                       disabled={isSubmitting}
                     >

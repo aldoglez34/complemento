@@ -63,7 +63,7 @@ function ProductCard(props) {
         {/* add to cart button */}
         <div className="mt-auto pt-2 text-center">
           <div className="d-flex inline">
-            <AddToBagButton product={props.product} />
+            <AddToBagButton product={props.product} size="md" />
             <div className="ml-1">
               <FavButton product={props.product} />
             </div>

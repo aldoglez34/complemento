@@ -23,14 +23,6 @@ function AddToBagButton(props) {
 
   const handleShow = () => {
     dispatch(cartActions.addItem(props.product._id));
-    // get the counter and increase it
-    // let counter = localStorage.getItem("cn_counter");
-    // counter++;
-    // // save the new item
-    // localStorage.setItem("cn_item" + counter, props.product._id);
-    // // set the increased counter back in the local storage
-    // localStorage.setItem("cn_counter", counter);
-    // show modal
     setShow(true);
   };
 
@@ -45,7 +37,12 @@ function AddToBagButton(props) {
 
   return props.product.stock > 0 ? (
     <>
-      <Button className="addtobagbuttonstyle" block onClick={handleShow}>
+      <Button
+        className="addtobagbuttonstyle"
+        block
+        onClick={handleShow}
+        size={props.size}
+      >
         Agregar
         <i className="fas fa-shopping-bag ml-1" />
       </Button>

@@ -6,7 +6,7 @@ import API from "../utils/API";
 import * as clientActions from "../redux-actions/client";
 import { useDispatch } from "react-redux";
 import fire from "../firebase/Fire";
-// const firebase = require("firebase/app");
+const firebase = require("firebase/app");
 
 function LoginDropdown() {
   const dispatch = useDispatch();
@@ -33,24 +33,37 @@ function LoginDropdown() {
           setSubmitting(true);
           fire
             .auth()
-            .signInWithEmailAndPassword(values.email, values.password)
-            .then(res => {
-              let uid = res.user.uid;
-              API.fetchClientByUID(uid)
+            .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+            .then(function() {
+              return fire
+                .auth()
+                .signInWithEmailAndPassword(values.email, values.password)
                 .then(res => {
-                  let client = res.data;
-                  dispatch(clientActions.loginClient(client));
-                  alert("¡Bienvenido!");
+                  let uid = res.user.uid;
+                  API.fetchClientByUID(uid)
+                    .then(res => {
+                      let client = res.data;
+                      dispatch(clientActions.loginClient(client));
+                      alert("¡Bienvenido!");
+                    })
+                    .catch(err => {
+                      alert("Error, este usuario no existe 😞");
+                      console.log(err);
+                      setSubmitting(false);
+                    });
                 })
-                .catch(err => {
+                .catch(error => {
                   alert("Error, este usuario no existe 😞");
-                  console.log(err);
+                  console.log(error);
                   setSubmitting(false);
                 });
             })
-            .catch(error => {
-              alert("Error, este usuario no existe 😞");
-              console.log(error);
+            .catch(function(error) {
+              alert("Error");
+              var errorCode = error.code;
+              console.log(errorCode);
+              var errorMessage = error.message;
+              console.log(errorMessage);
               setSubmitting(false);
             });
         }}
@@ -141,8 +154,8 @@ function LoginDropdown() {
                   </Form.Row>
                 </Form>
                 <Dropdown.Divider />
-                {/* <Dropdown.Item>Olvidé mi contraseña</Dropdown.Item> */}
-                <Dropdown.Item href="/signup">
+                {/* <Dropdown.Item className="clientDropdownItem">Olvidé mi contraseña</Dropdown.Item> */}
+                <Dropdown.Item className="clientDropdownItem" href="/signup">
                   Regístrate con nosotros
                 </Dropdown.Item>
               </Dropdown.Menu>

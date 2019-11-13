@@ -59,9 +59,9 @@ export default {
 
   // OTHER
 
-  fetchEmails: function() {
-    return axios.get("/api/client/email/all");
-  },
+  // fetchEmails: function() {
+  //   return axios.get("/api/client/email/all");
+  // },
 
   saveNewClient: function(newClient) {
     return axios.post("/api/client/new", newClient);
