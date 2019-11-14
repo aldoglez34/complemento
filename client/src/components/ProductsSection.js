@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { sortByName, sortByPrice } from "../redux-actions/store";
 import { Row, Col, Spinner, DropdownButton, Dropdown } from "react-bootstrap";
 import ProductCard from "./ProductCard";
 import API from "../utils/API";
@@ -13,9 +15,7 @@ class ProductsSection extends Component {
     productCounter: 0,
     productsPerPage: 20,
     pageCount: 0,
-    activePage: 1,
-    sortBy: "A-Z",
-    groupBy: "None"
+    activePage: 1
   };
 
   setOffsetAndLimit() {
@@ -31,34 +31,6 @@ class ProductsSection extends Component {
       limit = offset + this.state.productsPerPage;
       this.setState({ offset, limit });
     }
-  }
-
-  componentDidMount() {
-    let cat;
-    // there are 2 possible scenarios here
-    // 1 /store means there are no filters so fetch all the products
-    // 2 /store/:cat means there is a filter of category
-    if (this.props.routeProps.match.params.cat === undefined) {
-      // 1 - no filters
-      cat = null;
-    } else if (this.props.routeProps.match.params.cat !== undefined) {
-      // 2 - category filter
-      cat = this.props.routeProps.match.params.cat;
-    }
-    // fetch products
-    API.fetchProducts(cat)
-      .then(res => {
-        let productsPerPage = this.state.productsPerPage;
-        this.setState(
-          {
-            products: res.data,
-            productCounter: res.data.length,
-            pageCount: Math.ceil(res.data.length / productsPerPage)
-          },
-          () => this.setOffsetAndLimit()
-        );
-      })
-      .catch(err => console.log(err));
   }
 
   handleChangePage = page => {
@@ -80,17 +52,37 @@ class ProductsSection extends Component {
     this.setState({ intervalId: intervalId });
   }
 
+  componentDidMount() {
+    API.fetchProducts()
+      .then(res => {
+        let productsPerPage = this.state.productsPerPage;
+        this.setState(
+          {
+            products: res.data,
+            productCounter: res.data.length,
+            pageCount: Math.ceil(res.data.length / productsPerPage)
+          },
+          () => this.setOffsetAndLimit()
+        );
+      })
+      .catch(err => console.log(err));
+  }
+
+  handleFilters = filter => {
+
+  }
+
   handleSorting = name => {
     let productsSorted = [];
     this.setState({ sortBy: name }, () => {
       switch (name) {
-        case "A-Z":
+        case "Ascendente":
           productsSorted = this.state.products.sort((a, b) =>
             a.name > b.name ? 1 : b.name > a.name ? -1 : 0
           );
           this.setState({ products: productsSorted });
           break;
-        case "Z-A":
+        case "Descendente":
           productsSorted = this.state.products.sort((a, b) =>
             a.name < b.name ? 1 : b.name < a.name ? -1 : 0
           );
@@ -114,49 +106,27 @@ class ProductsSection extends Component {
     });
   };
 
-  handleGrouping = name => {
-    switch (name) {
-      case "none":
-        console.log("grouping by none");
-        break;
-      case "By Brand":
-        console.log("grouping by brand");
-        break;
-      case "By Discounts":
-        console.log("grouping by discounts");
-        break;
-      default:
-        return null;
-    }
-  };
-
   render() {
     return (
       <>
-        {/* first row */}
-        <Row className="mb-2 py-1">
+        <Row className="mb-1 py-1">
+          {/* sorting */}
           <Col
             md
             className="d-flex flex-row justify-content-md-center align-items-center mb-2 mb-md-0"
           >
-            <span>Ordenar por</span>
+            <span>Ordenar por nombre</span>
             <DropdownButton
               size="sm"
               variant="outline-secondary"
               className="ml-2"
-              title={this.state.sortBy}
+              title={this.props.store.nameSorting}
             >
-              <Dropdown.Item onClick={() => this.handleSorting("A-Z")}>
-                A-Z
+              <Dropdown.Item onClick={() => this.props.sortByName("Ascendente")}>
+                Ascendente
               </Dropdown.Item>
-              <Dropdown.Item onClick={() => this.handleSorting("Z-A")}>
-                Z-A
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => this.handleSorting("Más barato")}>
-                Más barato
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => this.handleSorting("Más caro")}>
-                Más caro
+              <Dropdown.Item onClick={() => this.props.sortByName("Descendente")}>
+                Descendente
               </Dropdown.Item>
             </DropdownButton>
           </Col>
@@ -164,39 +134,27 @@ class ProductsSection extends Component {
             md
             className="d-flex flex-row justify-content-md-center align-items-center mb-2 mb-md-0"
           >
-            <span>Agrupar por</span>
+            <span>Ordenar por precio</span>
             <DropdownButton
               size="sm"
               variant="outline-secondary"
               className="ml-2"
-              title="Nada"
+              title={this.props.store.priceSorting}
             >
-              <Dropdown.Item
-                onClick={() => {
-                  this.handleGrouping("None");
-                }}
-              >
-                Nada
+              <Dropdown.Item onClick={() => this.props.sortByPrice("Más barato")}>
+                Más barato
               </Dropdown.Item>
-              <Dropdown.Item
-                onClick={() => {
-                  this.handleGrouping("By Brand");
-                }}
-              >
-                Marcas
+              <Dropdown.Item onClick={() => this.props.sortByPrice("Más caro")}>
+                Más caro
               </Dropdown.Item>
-              <Dropdown.Item
-                onClick={() => {
-                  this.handleGrouping("By Discounts");
-                }}
-              >
-                Descuentos
+              <Dropdown.Item onClick={() => this.props.sortByPrice("Más caro")}>
+                Con descuento
               </Dropdown.Item>
             </DropdownButton>
           </Col>
         </Row>
-        {/* second row */}
         <Row>
+          {/* products */}
           <Col>
             <div className="d-flex flex-wrap justify-content-center">
               {this.state.products.length ? (
@@ -207,14 +165,18 @@ class ProductsSection extends Component {
                   })
               ) : (
                 <div className="text-center my-4">
-                  <Spinner animation="grow" role="status" className="spinnerStyle" />
+                  <Spinner
+                    animation="grow"
+                    role="status"
+                    className="spinnerStyle"
+                  />
                 </div>
               )}
             </div>
           </Col>
         </Row>
-        {/* third row */}
         <Row>
+          {/* pagination */}
           <Col className="d-flex justify-content-center">
             <MyPagination
               pageCount={this.state.pageCount}
@@ -228,4 +190,15 @@ class ProductsSection extends Component {
   }
 }
 
-export default ProductsSection;
+const mapStateToProps = state => {
+  return {
+    store: state.store
+  };
+};
+
+const mapDispatchToProps = {
+  sortByName,
+  sortByPrice
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsSection);

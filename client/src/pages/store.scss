@@ -1,42 +1,51 @@
 // ====================================
-// categories list
+// filters section
+.filterSection {
+  // background-color: #c8c0b0 !important;
+  // background-color: #edcb58 !important;
+  background-color: whitesmoke !important;
+}
 
-.catItem {
-  // color: darkgray !important;
-  font-weight: 600;
+#clearFiltersBttn {
+  height: 25px;
+  width: 26px;
+  background-color: rgb(220, 53, 69);
+  padding: 0px;
+  padding-right: 1px;
   &:hover {
-    color: #0c2c2c !important;
-    // background-color: #fce8a7 !important;
+    background-color: rgb(241, 67, 84);
+    transition: 0.5s;
   }
-  &.active {
-    // color: #c89f0d !important;
-    // background-color: #edcb58;
-    color: #0c2c2c !important;
-    font-weight: 700;
-    // &:hover {
-    //   background-color: #edcb58 !important;
-    // }
+  &:disabled {
+    background-color: gray;
+    transition: 0.5s;
   }
 }
 
-.catBadge {
+#clearFiltersTimes {
   color: ghostwhite;
-  font-family: Arial;
-  background-color: #59a49a;
+  font-size: 10px;
+}
+
+// ====================================
+// categories list
+.filterItem {
+  font-size: 16px;
+  color: black !important;
+  &:hover {
+    background-color: #f5efe2 !important;
+    color: black;
+  }
   &.active {
-    background-color: #0c2c2c;
-    color: ghostwhite;
+    background-color: #c8c0b0 !important;
+    color: black;
   }
 }
 
 // ====================================
-// brands list
-
-.brandItem {
-  // text-transform: uppercase;
-  color: #0c2c2c !important;
-  cursor: pointer;
-  &:hover {
-    color: #c89f0d !important;
-  }
+// filter badge
+.filterBadge {
+  background-color: #5a5a5a;
+  color: ghostwhite;
+  font-family: Arial;
 }

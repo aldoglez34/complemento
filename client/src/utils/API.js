@@ -29,8 +29,8 @@ export default {
     return axios.get("/api/store/brands");
   },
 
-  fetchProducts: function(cat) {
-    return axios.get("/api/store/products/" + cat);
+  fetchProducts: function() {
+    return axios.get("/api/store/products");
   },
 
   // ---------------------------------------------------------------------------

@@ -44,12 +44,12 @@ function ProductCard(props) {
                   <del>{"$" + props.product.salePrice}</del>
                 </strong>
               </span>
-              <span className="text-danger mb-0 ml-2">
+              <span className="h3 text-danger mb-0 ml-2">
                 {"$" + props.product.discount.newPrice}
               </span>
             </>
           ) : (
-            <span className="text-dark mb-0">
+            <span className="h3 text-dark mb-0">
               {"$" + props.product.salePrice}
             </span>
           )}

@@ -1,5 +1,7 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import * as storeActions from "../redux-actions/store";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { Route } from "react-router-dom";
 import Layout from "./Layout";
 import CategoriesList from "../components/CategoriesList";
@@ -28,59 +30,54 @@ function Store(props) {
     }
   };
 
-  const title = () => {
-    let filter;
-    if (props.routeProps.match.params.cat === undefined) {
-      filter = "Todos los productos";
-    } else {
-      filter = props.routeProps.match.params.cat;
-    }
-    return filter;
-  };
+  const filter = useSelector(state => state.store.filter);
+  const dispatch = useDispatch();
 
   return (
     <Layout>
       <MyBreadcrumb routes={breadcrumbRoute()} />
       <Container fluid className="my-3">
         <Row className="px-3">
-          {/* left column */}
           <Col md={3} className="mt-2">
+            {/* title */}
             <Row>
               <Col>
-                <h4 className="mt-3 mb-1">
-                  <strong>Categorías</strong>
-                </h4>
+                <div className="mt-3 mb-1 d-flex flex-row align-items-center">
+                  <h4 className="mb-0 mr-1">
+                    <strong>Filtros</strong>
+                  </h4>
+                  <Button
+                    id="clearFiltersBttn"
+                    disabled={filter === null ? true : false}
+                    onClick={() => dispatch(storeActions.clearFilter())}
+                  >
+                    <i className="fas fa-times clearFiltersTimes" />
+                  </Button>
+                </div>
                 <hr className="myDivider mb-1" />
               </Col>
             </Row>
+            {/* categories */}
             <Row>
               <Col>
-                {/* in order to get the value from the url, it's necessary to declare the component like this (as a route) */}
-                <Route
-                  render={props => <CategoriesList routeProps={props} />}
-                />
+                <CategoriesList />
               </Col>
             </Row>
-            <Row>
-              <Col>
-                <h4 className="mt-3 mb-1">
-                  <strong>Marcas</strong>
-                </h4>
-                <hr className="myDivider mb-1" />
-              </Col>
-            </Row>
+            {/* brands */}
             <Row>
               <Col>
                 <BrandsList />
               </Col>
             </Row>
           </Col>
-          {/* right column */}
           <Col md={9} className="mt-2">
+            {/* title */}
             <Row>
               <Col className="text-center">
                 <h4 className="mt-3 mb-1">
-                  <strong>{title()}</strong>
+                  <strong>
+                    {filter !== null ? filter : "Todos los productos"}
+                  </strong>
                 </h4>
                 <hr
                   className="myDivider mb-1 ml-auto"
@@ -90,6 +87,7 @@ function Store(props) {
             </Row>
             {/* in order to get the value from the url, it's necessary to declare the component like this */}
             <Route render={props => <ProductsSection routeProps={props} />} />
+            {/* <ProductsSection /> */}
           </Col>
         </Row>
       </Container>
