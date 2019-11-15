@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import * as storeActions from "../redux-actions/store";
+import React from "react";
 import { Navbar, Nav, Spinner, Badge } from "react-bootstrap";
-import API from "../utils/API";
+import PropTypes from "prop-types";
 
-function CategoriesList() {
-  const [categories, setCategories] = useState([]);
+CategoriesList.propTypes = {
+  categories: PropTypes.array.isRequired,
+  filter: PropTypes.string.isRequired,
+  handleFiltering: PropTypes.func.isRequired
+};
 
-  const filter = useSelector(state => state.store.filter);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    API.fetchCategories()
-      .then(res => {
-        setCategories(res.data);
-      })
-      .catch(err => console.log(err));
-  }, []);
-
-  return categories.length ? (
+function CategoriesList(props) {
+  return props.categories.length ? (
     <>
       <h5 className="mt-3">Categorías</h5>
       <Navbar expand="md" className="filterSection shadow-sm">
@@ -31,15 +22,13 @@ function CategoriesList() {
         </Navbar.Toggle>
         <Navbar.Collapse id="categoriesdropdown">
           <Nav variant="pills" className="flex-column w-100">
-            {categories.map(category => {
+            {props.categories.map(category => {
               return (
                 <Nav.Item key={category.name}>
                   <Nav.Link
                     className="py-1 filterItem"
-                    onClick={() =>
-                      dispatch(storeActions.filterProducts(category.name))
-                    }
-                    active={category.name === filter ? true : false}
+                    onClick={() => props.handleFiltering(category.name)}
+                    active={category.name === props.filter ? true : false}
                   >
                     {category.name}
                     <Badge className="ml-1 filterBadge">

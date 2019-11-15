@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import * as storeActions from "../redux-actions/store";
+import React from "react";
 import { Navbar, Nav, Spinner, Badge } from "react-bootstrap";
-import API from "../utils/API";
+import PropTypes from "prop-types";
 
-function BrandsList() {
-  const [brands, setBrands] = useState([]);
+BrandsList.propTypes = {
+  brands: PropTypes.array.isRequired,
+  filter: PropTypes.string.isRequired,
+  handleFiltering: PropTypes.func.isRequired
+};
 
-  const filter = useSelector(state => state.store.filter);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    API.fetchBrands()
-      .then(res => {
-        setBrands(res.data);
-      })
-      .catch(err => console.log(err));
-  }, []);
-
-  return brands.length ? (
+function BrandsList(props) {
+  return props.brands.length ? (
     <>
       <h5 className="mt-3">Marcas</h5>
       <Navbar expand="md" className="filterSection shadow-sm">
@@ -31,15 +22,13 @@ function BrandsList() {
         </Navbar.Toggle>
         <Navbar.Collapse id="brandsdropdown">
           <Nav variant="pills" className="flex-column w-100">
-            {brands.map(brand => {
+            {props.brands.map(brand => {
               return (
                 <Nav.Item key={brand.name}>
                   <Nav.Link
                     className="py-1 filterItem"
-                    onClick={() =>
-                      dispatch(storeActions.filterProducts(brand.name))
-                    }
-                    active={brand.name === filter ? true : false}
+                    onClick={() => props.handleFiltering(brand.name)}
+                    active={brand.name === props.filter ? true : false}
                   >
                     {brand.name}
                     <Badge className="ml-1 filterBadge">

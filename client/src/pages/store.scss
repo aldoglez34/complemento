@@ -1,9 +1,25 @@
 // ====================================
 // filters section
 .filterSection {
-  // background-color: #c8c0b0 !important;
-  // background-color: #edcb58 !important;
   background-color: whitesmoke !important;
+}
+
+.dropdownSort {
+  background-color: gray !important;
+  color: ghostwhite;
+  &:hover {
+    background-color: gray !important;
+    transition: 0.5s;
+  }
+}
+
+.dropdownItemSort {
+  &.active {
+    background-color: #8a6e13 !important;
+  }
+  &:focus {
+    background-color: #6b5611 !important;
+  }
 }
 
 #clearFiltersBttn {

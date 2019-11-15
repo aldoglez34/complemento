@@ -10,6 +10,7 @@ MyPagination.propTypes = {
 };
 
 const generatePages = props => {
+  console.log(props);
   let pagination = [];
   for (let i = 1; i <= props.pageCount; i++) {
     pagination.push(

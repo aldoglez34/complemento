@@ -13,40 +13,20 @@ class Home extends Component {
     bestSellers: [],
     prioritized: []
   };
-  fetchProductsWithDiscount() {
-    API.fetchProductsWithDiscount()
-      .then(res => {
-        this.setState({ discounts: res.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
-
-  fetchBestSellers() {
-    API.fetchBestSellers()
-      .then(res => {
-        this.setState({ bestSellers: res.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
-
-  fetchPrioritized() {
-    API.fetchPrioritized()
-      .then(res => {
-        this.setState({ prioritized: res.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
 
   componentDidMount() {
-    this.fetchProductsWithDiscount();
-    this.fetchBestSellers();
-    this.fetchPrioritized();
+    // fetch products with discount
+    API.fetchProductsWithDiscount()
+      .then(res => this.setState({ discounts: res.data }))
+      .catch(err => console.log(err));
+    // fetch best seller products
+    API.fetchBestSellers()
+      .then(res => this.setState({ bestSellers: res.data }))
+      .catch(err => console.log(err));
+    // fetch prioritized products
+    API.fetchPrioritized()
+      .then(res => this.setState({ prioritized: res.data }))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -121,7 +101,11 @@ class Home extends Component {
                   })
                 ) : (
                   <div className="text-center my-4">
-                    <Spinner className="spinnerStyle" animation="grow" role="status" />
+                    <Spinner
+                      className="spinnerStyle"
+                      animation="grow"
+                      role="status"
+                    />
                   </div>
                 )}
               </div>
@@ -138,7 +122,11 @@ class Home extends Component {
                   })
                 ) : (
                   <div className="text-center my-4">
-                    <Spinner className="spinnerStyle" animation="grow" role="status" />
+                    <Spinner
+                      className="spinnerStyle"
+                      animation="grow"
+                      role="status"
+                    />
                   </div>
                 )}
               </div>
@@ -155,7 +143,11 @@ class Home extends Component {
                   })
                 ) : (
                   <div className="text-center my-4">
-                    <Spinner className="spinnerStyle" animation="grow" role="status" />
+                    <Spinner
+                      className="spinnerStyle"
+                      animation="grow"
+                      role="status"
+                    />
                   </div>
                 )}
               </div>
