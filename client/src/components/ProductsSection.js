@@ -8,20 +8,25 @@ class ProductsSection extends Component {
   state = {
     nameSorting: "Ascendente",
     priceSorting: "Sin orden",
-    productCounter: 0,
     productsPerPage: 20,
     pageCount: 0,
     activePage: 1,
-    intervalId: 0
+    intervalId: 0,
+    offset: 0,
+    limit: 20
   };
 
-  // const [activePage, setActivePage] = useState(1);
-  // const [offset, setOffset] = useState(0);
-  // const [limit, setLimit] = useState(20);
-  // const [pageCount, setPageCount] = useState(0);
+  componentDidUpdate(prevProps) {
+    let productsPerPage = this.state.productsPerPage;
+    if (this.props.products !== prevProps.products) {
+      this.setState(
+        { pageCount: Math.ceil(this.props.products.length / productsPerPage) },
+        () => this.setOffsetAndLimit()
+      );
+    }
+  }
 
   setOffsetAndLimit() {
-    // setting up offset and limit
     let offset;
     let limit;
     if (this.state.activePage === 1) {
@@ -34,6 +39,16 @@ class ProductsSection extends Component {
       this.setState({ offset, limit });
     }
   }
+
+  handleChangeProductsPerPage = number => {
+    let productsPerPage = this.state.productsPerPage;
+    this.setState({ productsPerPage: number, activePage: 1 }, () => {
+      this.setState(
+        { pageCount: Math.ceil(this.props.products.length / productsPerPage) },
+        () => this.setOffsetAndLimit()
+      );
+    });
+  };
 
   handleChangePage = page => {
     this.setState({ activePage: page }, () => {
@@ -52,17 +67,6 @@ class ProductsSection extends Component {
   scrollToTop() {
     let intervalId = setInterval(this.scrollStep.bind(this), 16.66);
     this.setState({ intervalId: intervalId });
-  }
-
-  componentDidMount() {
-    let productsPerPage = this.state.productsPerPage;
-    this.setState(
-      {
-        productCounter: this.props.products.length,
-        pageCount: Math.ceil(this.props.products.length / productsPerPage)
-      },
-      () => this.setOffsetAndLimit()
-    );
   }
 
   render() {
@@ -211,16 +215,14 @@ class ProductsSection extends Component {
                       >
                         Productos por página:
                       </span>
-                      <Dropdown>
+                      <Dropdown alignRight>
                         <Dropdown.Toggle className="dropdownSort" size="sm">
                           {this.state.productsPerPage}
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                           <Dropdown.Item
                             className="dropdownItemSort"
-                            onClick={() =>
-                              this.setState({ productsPerPage: 20 })
-                            }
+                            onClick={() => this.handleChangeProductsPerPage(20)}
                             active={
                               this.state.productsPerPage === 20 ? true : false
                             }
@@ -229,9 +231,7 @@ class ProductsSection extends Component {
                           </Dropdown.Item>
                           <Dropdown.Item
                             className="dropdownItemSort"
-                            onClick={() =>
-                              this.setState({ productsPerPage: 30 })
-                            }
+                            onClick={() => this.handleChangeProductsPerPage(30)}
                             active={
                               this.state.productsPerPage === 30 ? true : false
                             }
@@ -240,9 +240,7 @@ class ProductsSection extends Component {
                           </Dropdown.Item>
                           <Dropdown.Item
                             className="dropdownItemSort"
-                            onClick={() =>
-                              this.setState({ productsPerPage: 40 })
-                            }
+                            onClick={() => this.handleChangeProductsPerPage(40)}
                             active={
                               this.state.productsPerPage === 40 ? true : false
                             }
@@ -289,10 +287,17 @@ class ProductsSection extends Component {
                 </Row>
                 {/* pagination */}
                 <Row>
-                  <Col md={4}>
+                  <Col
+                    md={4}
+                    className="d-flex justify-content-center align-items-center"
+                  >
                     Mostrando {this.props.products.length} productos
                   </Col>
-                  <Col md={8} className="d-flex justify-content-center">
+                  <Col
+                    md={8}
+                    className="d-flex justify-content-end align-items-center"
+                  >
+                    {console.log(this.state)}
                     <MyPagination
                       pageCount={this.state.pageCount}
                       activePage={this.state.activePage}
