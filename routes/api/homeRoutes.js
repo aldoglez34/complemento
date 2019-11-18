@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const model = require("../models");
+const model = require("../../models");
 
 // get prioritized products
 // matches with /api/home/prioritized

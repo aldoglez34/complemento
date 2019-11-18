@@ -5,17 +5,10 @@ import * as yup from "yup";
 import fire from "../../firebase/Fire";
 import { useDispatch } from "react-redux";
 import * as managerActions from "../../redux-actions/manager";
+const firebase = require("firebase/app");
 
-const styles = {
-  logo: {
-    marginTop: 80
-  }
-};
-
-function Login() {
-  // redux dispatcher
+function Login(props) {
   const dispatch = useDispatch();
-  // yup schema
   const loginSchema = yup.object({
     email: yup
       .string()
@@ -31,17 +24,10 @@ function Login() {
   return (
     <Container>
       {/* logo */}
-      <Row>
+      <Row className="mt-4">
         <Col className="text-center">
-          <Image
-            src="/images/biglogo.png"
-            alt="logo"
-            style={styles.logo}
-            fluid
-          />
-          <h3 className="my-4 text-dark">
-            <strong>Panel de administrador</strong>
-          </h3>
+          <Image src="/images/adminlogo.png" alt="logo" fluid />
+          <h3 className="my-4">Panel de administrador</h3>
         </Col>
       </Row>
       {/* form */}
@@ -54,13 +40,21 @@ function Login() {
               setSubmitting(true);
               fire
                 .auth()
-                .signInWithEmailAndPassword(values.email, values.password)
-                .then(res => {
-                  let manager = res.user.email;
-                  dispatch(managerActions.loginManager(manager));
+                .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+                .then(function() {
+                  return fire
+                    .auth()
+                    .signInWithEmailAndPassword(values.email, values.password)
+                    .then(res => {
+                      let manager = res.user.email;
+                      dispatch(managerActions.loginManager(manager));
+                      alert("Bienvenido");
+                      props.history.push("/manager/panel");
+                    });
                 })
-                .catch(error => {
-                  alert(error.message);
+                .catch(function(error) {
+                  alert("Error de Firebase -> " + error.message);
+                  console.log(error.code);
                   setSubmitting(false);
                 });
             }}
@@ -79,7 +73,7 @@ function Login() {
                   <Form.Group as={Col} md={{ span: 6, offset: 3 }}>
                     <Form.Label>Correo electrónico</Form.Label>
                     <Form.Control
-                      placeholder="Correo electrónico de administrador"
+                      placeholder="Correo electrónico"
                       type="email"
                       name="email"
                       value={values.email}
@@ -98,7 +92,7 @@ function Login() {
                   <Form.Group as={Col} md={{ span: 6, offset: 3 }}>
                     <Form.Label>Contraseña</Form.Label>
                     <Form.Control
-                      placeholder="Contraseña de administrador"
+                      placeholder="Contraseña"
                       type="password"
                       name="password"
                       value={values.password}
@@ -113,17 +107,15 @@ function Login() {
                     />
                   </Form.Group>
                 </Form.Row>
-                <Form.Row>
+                <Form.Row className="mt-3">
                   <Form.Group as={Col} md={{ span: 6, offset: 3 }}>
                     <Button
-                      size="lg"
                       block
-                      variant="success"
-                      className="mt-3"
+                      className="globalbttn"
                       type="submit"
                       disabled={isSubmitting}
                     >
-                      Entrar<i className="fas fa-angle-double-right ml-1"></i>
+                      Entrar
                     </Button>
                   </Form.Group>
                 </Form.Row>

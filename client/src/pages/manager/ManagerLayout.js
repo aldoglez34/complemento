@@ -36,7 +36,7 @@ function ManagerLayout(props) {
     <Container className="py-4">
       <Row>
         <Col>
-          <Image src="/images/biglogo.png" alt="logo" fluid />
+          <Image src="/images/adminlogo.png" alt="logo" fluid />
           <h3 className="text-dark" style={styles.title}>
             <strong>Panel de administrador</strong>
           </h3>

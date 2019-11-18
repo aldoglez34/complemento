@@ -30,7 +30,11 @@ function FavButton(props) {
 
   return isClientLogged ? (
     <>
-      <Button className="favbuttonstyle" onClick={handleShow}>
+      <Button
+        className="favbuttonstyle"
+        onClick={handleShow}
+        title="Agregar a mis favoritos"
+      >
         <i className="fa fa-heart" />
       </Button>
 

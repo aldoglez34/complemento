@@ -218,9 +218,7 @@ function Cart() {
                     </div>
                   )
                 ) : (
-                  <div className="text-center">
-                    <em>Tu bolsa de compras está vacía</em>
-                  </div>
+                  <div className="text-center">-</div>
                 )}
               </Card.Body>
             </Card>

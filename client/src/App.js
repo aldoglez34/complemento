@@ -37,6 +37,7 @@ class App extends Component {
     return (
       <Router>
         <Switch>
+          {/* common routes (accessible for everyone) */}
           <Route exact path="/" component={Home} />
           <Route
             exact
@@ -55,39 +56,33 @@ class App extends Component {
           />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/manager" component={Login} />
+
+          {/* client routes */}
           {this.props.client.isLogged ? (
-            // if the client is logged, he has access to these routes
-            <Switch>
+            <>
               <Route exact path="/client/info" component={ClientInfo} />
               <Route
                 exact
                 path="/client/favorites"
                 component={ClientFavorites}
               />
-              <Route component={NoMatch} />
-            </Switch>
-          ) : (
-            // if not then just redirect him back to home page
-            <Switch>
-              <Redirect from="/client/" to="/" />
-              <Route component={NoMatch} />
-            </Switch>
-          )}
+            </>
+          ) : null}
 
+          {/* manager routes */}
           {this.props.manager.isLogged ? (
-            <Switch>
+            <>
               <Route exact path="/manager/panel" component={Panel} />
               <Route exact path="/manager/newproduct" component={NewProduct} />
-              <Redirect from="/manager" to="/manager/panel" />
-              <Route component={NoMatch} />
-            </Switch>
-          ) : (
-            <Switch>
-              <Route exact path="/manager" component={Login} />
-              <Redirect from="/manager/" to="/manager" />
-              <Route component={NoMatch} />
-            </Switch>
-          )}
+              <Redirect from="/manager" to="/manager/panel" component={Panel} />
+            </>
+          ) : null}
+
+          {/* last routes */}
+          <Redirect from="/client/" to="/" />
+          <Redirect from="/manager/" to="/manager" />
+          <Route component={NoMatch} />
         </Switch>
       </Router>
     );
@@ -105,7 +100,4 @@ const mapDispatchToProps = {
   logoutClient
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

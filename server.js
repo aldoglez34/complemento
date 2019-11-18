@@ -2,9 +2,9 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3001;
-const models = require("./models");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+const routes = require("./routes");
 
 // middleware
 // use morgan logger for logging requests
@@ -19,16 +19,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // API routes
-const storeRoutes = require("./routes/storeRoutes");
-app.use("/api/store", storeRoutes);
-const productRoutes = require("./routes/productRoutes");
-app.use("/api/product", productRoutes);
-const homeRoutes = require("./routes/homeRoutes");
-app.use("/api/home", homeRoutes);
-const clientRoutes = require("./routes/clientRoutes");
-app.use("/api/client", clientRoutes);
-const managerRoutes = require("./routes/managerRoutes");
-app.use("/api/manager", managerRoutes);
+app.use(routes);
 
 // send every other request to the React app
 // define any API routes before this runs
@@ -45,32 +36,6 @@ mongoose
     useFindAndModify: false
   })
   .catch(error => console.log(error));
-
-// =======================================
-// begins loading devdata ================
-// =======================================
-// const clients = require("./devdata/clients");
-// models.Client.insertMany(clients)
-//   .then(() => console.log("dev data - clients added"))
-//   .catch(err => console.log(err));
-
-// const managers = require("./devdata/managers");
-// models.Manager.insertMany(managers)
-//   .then(() => console.log("dev data - managers added"))
-//   .catch(err => console.log(err));
-
-// const providers = require("./devdata/providers");
-// models.Provider.insertMany(providers)
-//   .then(() => console.log("dev data - providers added"))
-//   .catch(err => console.log(err));
-
-// const products = require("./devdata/products");
-// models.Product.insertMany(products)
-//   .then(() => console.log("dev data - products added"))
-//   .catch(err => console.log(err));
-// =======================================
-// finish loading devdata ================
-// =======================================
 
 // start server
 app.listen(PORT, () => {

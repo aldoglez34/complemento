@@ -42,6 +42,7 @@ function AddToBagButton(props) {
         block
         onClick={handleShow}
         size={props.size}
+        title="Agregar a mi bolsa de compras"
       >
         Agregar
         <i className="fas fa-shopping-bag ml-1" />
