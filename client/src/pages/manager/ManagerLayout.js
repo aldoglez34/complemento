@@ -1,70 +1,35 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import { Container, Row, Col, Image, Button } from "react-bootstrap";
-import fire from "../../firebase/Fire";
-import * as managerActions from "../../redux-actions/manager";
+import { Container, Row, Col } from "react-bootstrap";
+import LeftNav from "./LeftNav";
+import TopHelperNav from "./TopHelperNav";
+import "./manager.scss";
 
 ManagerLayout.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-const styles = {
-  title: {
-    marginTop: "1.5625rem"
-  }
-};
-
 function ManagerLayout(props) {
-  // getting the value of manager from the store
-  const manager = useSelector(state => state.manager);
-  const dispatch = useDispatch();
-
-  const logout = () => {
-    fire
-      .auth()
-      .signOut()
-      .then(function() {
-        dispatch(managerActions.logoutManager());
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
-
   return (
-    <Container className="py-4">
-      <Row>
-        <Col>
-          <Image src="/images/adminlogo.png" alt="logo" fluid />
-          <h3 className="text-dark" style={styles.title}>
-            <strong>Panel de administrador</strong>
-          </h3>
-        </Col>
-      </Row>
-      <Row className="text-dark">
-        <Col>
-          Bienvenid@, <strong>{manager.email}</strong>
-        </Col>
-      </Row>
-      <Row className="mt-2">
-        <Col className="d-flex align-items-center justify-content-start m-0">
-          <Button onClick={logout} variant="danger" className="m-0">
-            <i className="fas fa-angle-double-left mr-1" />
-            Salir
-          </Button>
-        </Col>
-        <Col className="d-flex align-items-center justify-content-end m-0">
-          <Button variant="transparent" className="m-0">
-            <i className="fas fa-user text-dark h2" />
-          </Button>
-          <Button variant="transparent" className="m-0">
-            <i className="fas fa-cog text-dark h2" />
-          </Button>
-        </Col>
-      </Row>
-      {props.children}
-    </Container>
+    <div className="d-lg-flex flex-row h-100">
+      <LeftNav />
+      <Container id="containerMargin" fluid>
+        <TopHelperNav />
+        <Container
+          style={{
+            paddingTop: "6px",
+            paddingLeft: "24px",
+            paddingRight: "24px",
+            paddingBottom: "24px"
+          }}
+          fluid
+        >
+          <Row>
+            <Col className="pt-2 pb-4">{props.children}</Col>
+          </Row>
+        </Container>
+      </Container>
+    </div>
   );
 }
 

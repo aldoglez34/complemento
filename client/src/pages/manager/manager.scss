@@ -1,0 +1,62 @@
+// colors
+$green1: #0c2c2c;
+$green2: #264341;
+
+// layout
+#containerMargin {
+  margin-left: 247px;
+  padding: 0px;
+}
+
+// vertical nav
+#verticalNavStyle {
+  background-color: $green2 !important;
+  width: 247px;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+}
+
+#verticalNavLogo {
+  background-color: $green1;
+  height: 60px;
+  align-self: center;
+}
+
+.navItemStyle {
+  color: gray;
+  padding-left: 16px;
+  padding-top: 8px;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.navLinkStyle {
+  padding-bottom: 0px;
+  color: #99aab5 !important;
+  &:hover {
+    color: gainsboro !important;
+  }
+  &.active {
+    color: #f4dc64 !important;
+  }
+}
+// top helper nav
+
+#topHelperStyle {
+  background-color: $green1 !important;
+  height: 60px;
+}
+
+.topHelperAuditOpened {
+  color: #7289da;
+  padding: 8px;
+}
+
+.topHelperItem {
+  color: rgba(255, 255, 255, 0.5);
+  padding: 8px;
+}

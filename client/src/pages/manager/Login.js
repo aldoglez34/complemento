@@ -110,7 +110,6 @@ function Login(props) {
                 <Form.Row className="mt-3">
                   <Form.Group as={Col} md={{ span: 6, offset: 3 }}>
                     <Button
-                      block
                       className="globalbttn"
                       type="submit"
                       disabled={isSubmitting}

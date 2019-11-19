@@ -15,7 +15,7 @@ import {
   Redirect
 } from "react-router-dom";
 import Login from "./pages/manager/Login";
-import Panel from "./pages/manager/Panel";
+import Dashboard from "./pages/manager/Dashboard";
 import NewProduct from "./pages/manager/NewProduct";
 import ClientInfo from "./pages/ClientInfo";
 import ClientFavorites from "./pages/ClientFavorites";
@@ -73,9 +73,9 @@ class App extends Component {
           {/* manager routes */}
           {this.props.manager.isLogged ? (
             <>
-              <Route exact path="/manager/panel" component={Panel} />
+              <Route exact path="/manager/dashboard" component={Dashboard} />
               <Route exact path="/manager/newproduct" component={NewProduct} />
-              <Redirect from="/manager" to="/manager/panel" component={Panel} />
+              <Redirect from="/manager" to="/manager/dashboard" />
             </>
           ) : null}
 
