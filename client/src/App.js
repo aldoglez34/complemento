@@ -75,8 +75,8 @@ class App extends Component {
           {this.props.manager.isLogged ? (
             <>
               <Route exact path="/manager/dashboard" component={Dashboard} />
-              <Redirect from="/manager" to="/manager/dashboard" />
               <Route exact path="/manager/newproduct" component={NewProduct} />
+              <Redirect from="/manager" to="/manager/dashboard" />
             </>
           ) : (
             <>
