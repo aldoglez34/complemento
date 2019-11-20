@@ -11,6 +11,13 @@ export const logoutClient = () => {
   };
 };
 
+export const updateFavorites = data => {
+  return {
+    type: "client/updateFavorites",
+    data
+  };
+};
+
 export const updateClient = data => {
   return {
     type: "client/update",

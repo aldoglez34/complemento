@@ -5,20 +5,22 @@
 }
 
 .dropdownSort {
-  background-color: gray !important;
+  background-color: #264341 !important;
   color: white;
   &:hover {
-    background-color: gray !important;
+    background-color: #0c2c2c !important;
     transition: 0.5s;
   }
 }
 
 .dropdownItemSort {
   &.active {
-    background-color: #8a6e13 !important;
+    background-color: #c8c0b0 !important;
+    color: black;
   }
   &:focus {
-    background-color: #6b5611 !important;
+    background-color: "c8c0b0" !important;
+    color: black;
   }
 }
 

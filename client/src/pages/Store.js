@@ -55,6 +55,7 @@ function Store() {
                   <h4 className="mb-0 mr-1">
                     <strong>Filtros</strong>
                   </h4>
+                  <i className="fas fa-filter" />
                   <Button
                     id="clearFiltersBttn"
                     disabled={filter === "" ? true : false}

@@ -25,14 +25,10 @@ function Login(props) {
     <Container>
       {/* logo */}
       <Row className="mt-4">
-        <Col className="text-center">
+        <Col md={{ span: 6, offset: 3 }}>
           <Image src="/images/adminlogo.png" alt="logo" fluid />
-          <h3 className="my-4">Panel de administrador</h3>
-        </Col>
-      </Row>
-      {/* form */}
-      <Row>
-        <Col>
+          <h3 className="my-4 text-center">Panel de administrador</h3>
+          {/* form */}
           <Formik
             initialValues={{ email: "", password: "" }}
             validationSchema={loginSchema}
@@ -49,7 +45,7 @@ function Login(props) {
                       let manager = res.user.email;
                       dispatch(managerActions.loginManager(manager));
                       alert("Bienvenido");
-                      props.history.push("/manager/panel");
+                      props.history.push("/manager/dashboard");
                     });
                 })
                 .catch(function(error) {
@@ -70,7 +66,7 @@ function Login(props) {
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
                 <Form.Row>
-                  <Form.Group as={Col} md={{ span: 6, offset: 3 }}>
+                  <Form.Group as={Col}>
                     <Form.Label>Correo electrónico</Form.Label>
                     <Form.Control
                       placeholder="Correo electrónico"
@@ -89,7 +85,7 @@ function Login(props) {
                   </Form.Group>
                 </Form.Row>
                 <Form.Row>
-                  <Form.Group as={Col} md={{ span: 6, offset: 3 }}>
+                  <Form.Group as={Col}>
                     <Form.Label>Contraseña</Form.Label>
                     <Form.Control
                       placeholder="Contraseña"
@@ -107,17 +103,15 @@ function Login(props) {
                     />
                   </Form.Group>
                 </Form.Row>
-                <Form.Row className="mt-3">
-                  <Form.Group as={Col} md={{ span: 6, offset: 3 }}>
-                    <Button
-                      className="globalbttn"
-                      type="submit"
-                      disabled={isSubmitting}
-                    >
-                      Entrar
-                    </Button>
-                  </Form.Group>
-                </Form.Row>
+                <div className="text-right">
+                  <Button
+                    className="globalbttn"
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    Entrar
+                  </Button>
+                </div>
               </Form>
             )}
           </Formik>

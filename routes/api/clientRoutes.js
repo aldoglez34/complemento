@@ -13,10 +13,10 @@ router.get("/:uid", function(req, res) {
 // addFavorite()
 // matches with /api/client/favorite/new
 router.put("/favorite/new", (req, res) => {
-  let client = req.body.client;
+  let clientId = req.body.clientId;
   let product = req.body.product;
   model.Client.findByIdAndUpdate(
-    client,
+    clientId,
     { $push: { favorites: product } },
     { new: true }
   )

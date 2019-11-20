@@ -6,7 +6,7 @@ import MyBreadcrumb from "../components/MyBreadcrumb";
 import API from "../utils/API";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
-// import FavButton from "../components/FavButton";
+import FavButton from "../components/FavButton";
 import AddToBagButton from "../components/AddToBagButton";
 
 class ProductDetails extends Component {
@@ -100,6 +100,13 @@ class ProductDetails extends Component {
                   <AddToBagButton
                     product={this.state.productDetails}
                     size="lg"
+                  />
+                </div>
+                <div className="mt-2">
+                  <FavButton
+                    block={true}
+                    text={"Favoritos "}
+                    product={this.state.productDetails}
                   />
                 </div>
               </Col>

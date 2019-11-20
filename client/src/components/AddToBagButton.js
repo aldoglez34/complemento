@@ -38,6 +38,7 @@ function AddToBagButton(props) {
   return props.product.stock > 0 ? (
     <>
       <Button
+        // variant="warning"
         className="addtobagbuttonstyle"
         block
         onClick={handleShow}

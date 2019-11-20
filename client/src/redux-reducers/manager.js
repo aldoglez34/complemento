@@ -7,8 +7,12 @@ const managerReducers = (state = { isLogged: false }, action) => {
       };
     case "manager/logout":
       return {
-        isLogged: false,
-        email: null
+        isLogged: false
+      };
+    case "manager/setActive":
+      return {
+        ...state,
+        active: action.data
       };
     default:
       return state;

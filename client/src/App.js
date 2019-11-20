@@ -56,7 +56,6 @@ class App extends Component {
           />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/manager" component={Login} />
 
           {/* client routes */}
           {this.props.client.isLogged ? (
@@ -68,20 +67,25 @@ class App extends Component {
                 component={ClientFavorites}
               />
             </>
-          ) : null}
+          ) : (
+            <Redirect from="/client/" to="/" />
+          )}
 
           {/* manager routes */}
           {this.props.manager.isLogged ? (
             <>
               <Route exact path="/manager/dashboard" component={Dashboard} />
-              <Route exact path="/manager/newproduct" component={NewProduct} />
               <Redirect from="/manager" to="/manager/dashboard" />
+              <Route exact path="/manager/newproduct" component={NewProduct} />
             </>
-          ) : null}
+          ) : (
+            <>
+              <Route exact path="/manager" component={Login} />
+              <Redirect from="/manager/" to="/manager" />
+            </>
+          )}
 
           {/* last routes */}
-          <Redirect from="/client/" to="/" />
-          <Redirect from="/manager/" to="/manager" />
           <Route component={NoMatch} />
         </Switch>
       </Router>

@@ -1,6 +1,7 @@
 // colors
 $green1: #0c2c2c;
 $green2: #264341;
+$green3: #59a49a;
 
 // layout
 #containerMargin {
@@ -41,13 +42,12 @@ $green2: #264341;
     color: gainsboro !important;
   }
   &.active {
-    color: #f4dc64 !important;
+    color: white !important;
   }
 }
 // top helper nav
-
 #topHelperStyle {
-  background-color: $green1 !important;
+  background-color: $green2 !important;
   height: 60px;
 }
 

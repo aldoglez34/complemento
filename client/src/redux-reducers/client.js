@@ -12,6 +12,11 @@ const clientReducers = (state = { isLogged: false }, action) => {
         address: action.data.address,
         favorites: action.data.favorites
       };
+    case "client/updateFavorites":
+      return {
+        ...state,
+        favorites: action.data
+      };
     case "client/update":
       return {
         ...state,

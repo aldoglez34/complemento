@@ -1,16 +1,21 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Button, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
 import API from "../utils/API";
+import * as clientActions from "../redux-actions/client";
 
 FavButton.propTypes = {
+  block: PropTypes.bool.isRequired,
+  text: PropTypes.string,
   product: PropTypes.object.isRequired
 };
 
 function FavButton(props) {
+  const dispatch = useDispatch();
+
   const isClientLogged = useSelector(state => state.client.isLogged);
-  const clientId = useSelector(state => state.client._id);
+  const client = useSelector(state => state.client);
 
   const [show, setShow] = useState(false);
 
@@ -19,13 +24,20 @@ function FavButton(props) {
   };
 
   const handleShow = () => {
-    // show modal
-    setShow(true);
-    // post favorite in the db
-    let data = { client: clientId, product: props.product._id };
-    API.addFavorite(data)
-      .then(res => console.log(res))
-      .catch(err => alert(err));
+    // checks if the product isn't already in the user's favorites
+    if (client.favorites.includes(props.product._id)) {
+      // alerts the user that the products is already in his/her favorites
+      alert(props.product.name + " ya está en tus favoritos");
+    } else {
+      // post favorite in the db
+      API.addFavorite({ clientId: client._id, product: props.product._id })
+        .then(res =>
+          dispatch(clientActions.updateFavorites(res.data.favorites))
+        )
+        .catch(err => alert(err));
+      // show modal
+      setShow(true);
+    }
   };
 
   return isClientLogged ? (
@@ -34,7 +46,9 @@ function FavButton(props) {
         className="favbuttonstyle"
         onClick={handleShow}
         title="Agregar a mis favoritos"
+        block={props.block}
       >
+        {props.text}
         <i className="fa fa-heart" />
       </Button>
 

@@ -94,7 +94,7 @@ class ProductsSection extends Component {
             {this.props.products.length ? (
               <>
                 {/* filters */}
-                <Row className="my-3">
+                <Row className="mt-3 mb-2">
                   <Col md={4}>
                     <div className="d-flex flex-row align-items-center justify-content-center">
                       <span
@@ -297,7 +297,7 @@ class ProductsSection extends Component {
                     md={8}
                     className="d-flex justify-content-end align-items-center"
                   >
-                    {console.log(this.state)}
+                    {/* {console.log(this.state)} */}
                     <MyPagination
                       pageCount={this.state.pageCount}
                       activePage={this.state.activePage}
