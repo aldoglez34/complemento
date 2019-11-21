@@ -47,7 +47,8 @@ $green3: #59a49a;
 }
 // top helper nav
 #topHelperStyle {
-  background-color: $green2 !important;
+  // background-color: $green2 !important;
+  // background-color: $green2 !important;
   height: 60px;
 }
 
@@ -57,6 +58,6 @@ $green3: #59a49a;
 }
 
 .topHelperItem {
-  color: rgba(255, 255, 255, 0.5);
+  color: darkslategray;
   padding: 8px;
 }

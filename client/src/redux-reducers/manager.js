@@ -18,6 +18,11 @@ const managerReducers = (state = { isLogged: false }, action) => {
         ...state,
         active: action.data
       };
+    case "manager/setBackBttn":
+      return {
+        ...state,
+        backBttn: action.data
+      };
     default:
       return state;
   }

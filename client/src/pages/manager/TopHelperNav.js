@@ -13,7 +13,7 @@ function TopHelperNav() {
             <Button
               variant="transparent"
               href={manager.backBttn}
-              className="p-0"
+              // className="p-0"
             >
               <i className="fas fa-chevron-left backArrow" />
             </Button>

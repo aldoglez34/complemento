@@ -12,7 +12,8 @@ function NewProduct() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(managerActions.setActive("Nuevo producto"));
+    dispatch(managerActions.setActive("Productos"));
+    dispatch(managerActions.setBackBttn("/manager/products"));
     API.fetchCategories()
       .then(res => setCategories(res.data))
       .catch(err => console.log(err));

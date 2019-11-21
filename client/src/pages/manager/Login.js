@@ -36,64 +36,91 @@ function Login(props) {
             validationSchema={loginSchema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              // step 1: logout any other session that might be open in firebase
-              // no need to logout from redux, the listener in App handles that
               fb.auth()
-                .signOut()
-                .then(() => {
-                  // step 2: set persistence for the new session in firebase
-                  fb.auth()
-                    .setPersistence(firebase.auth.Auth.Persistence.SESSION)
-                    .then(() => {
-                      // step 3: login manager in firebase
-                      return fb
-                        .auth()
-                        .signInWithEmailAndPassword(
-                          values.email,
-                          values.password
-                        )
-                        .then(res => {
-                          // step 4: if auth successful, fetch manager in the db
-                          API.fetchManagerByUID(res.user.uid)
-                            .then(res => {
-                              // step 5: login manager in redux and send him to dashboard
-                              dispatch(managerActions.loginManager(res.data));
-                              alert("¡Bienvenido!");
-                              props.history.push("/manager/dashboard");
-                            })
-                            .catch(error => {
-                              // if there's a problem fetching info from the db, logout from firebase
-                              fb.auth()
-                                .signOut()
-                                .then()
-                                .catch(error => console.log(error));
-                              // then print error
-                              alert("Error de autenticación, revisa tus datos");
-                              console.log("Error de fetchClientByUID");
-                              console.log(error);
-                              setSubmitting(false);
-                            });
-                        })
-                        .catch(error => {
-                          alert("Error de autenticación, revisa tus datos");
-                          console.log("Error de firebase signIn...");
-                          console.log(error);
-                          setSubmitting(false);
-                        });
+                .signInWithEmailAndPassword(values.email, values.password)
+                .then(res => {
+                  // step 4: if auth successful, fetch manager in the db
+                  API.fetchManagerByUID(res.user.uid)
+                    .then(res => {
+                      // step 5: login manager in redux and send him to dashboard
+                      console.log(res.data);
+                      dispatch(managerActions.loginManager(res.data));
+                      alert("¡Bienvenido!");
+                      props.history.push("/manager/dashboard");
                     })
                     .catch(error => {
-                      alert("Error");
-                      console.log("Error de firebase persistence");
+                      // then print error
+                      alert("Error de autenticación, revisa tus datos");
+                      console.log("Error de fetchClientByUID");
                       console.log(error);
                       setSubmitting(false);
                     });
                 })
                 .catch(error => {
-                  alert("Error");
-                  console.log("Error de firebase logout");
+                  alert("Error de autenticación, revisa tus datos");
+                  console.log("Error de firebase signIn...");
                   console.log(error);
                   setSubmitting(false);
                 });
+
+              // // step 1: logout any other session that might be open in firebase
+              // // no need to logout from redux, the listener in App handles that
+              // fb.auth()
+              //   .signOut()
+              //   .then(() => {
+              //     // step 2: set persistence for the new session in firebase
+              //     fb.auth()
+              //       .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+              //       .then(() => {
+              //         // step 3: login manager in firebase
+              //         return fb
+              //           .auth()
+              //           .signInWithEmailAndPassword(
+              //             values.email,
+              //             values.password
+              //           )
+              //           .then(res => {
+              //             // step 4: if auth successful, fetch manager in the db
+              //             API.fetchManagerByUID(res.user.uid)
+              //               .then(res => {
+              //                 // step 5: login manager in redux and send him to dashboard
+              //                 dispatch(managerActions.loginManager(res.data));
+              //                 alert("¡Bienvenido!");
+              //                 props.history.push("/manager/dashboard");
+              //               })
+              //               .catch(error => {
+              //                 // if there's a problem fetching info from the db, logout from firebase
+              //                 fb.auth()
+              //                   .signOut()
+              //                   .then()
+              //                   .catch(error => console.log(error));
+              //                 // then print error
+              //                 alert("Error de autenticación, revisa tus datos");
+              //                 console.log("Error de fetchClientByUID");
+              //                 console.log(error);
+              //                 setSubmitting(false);
+              //               });
+              //           })
+              //           .catch(error => {
+              //             alert("Error de autenticación, revisa tus datos");
+              //             console.log("Error de firebase signIn...");
+              //             console.log(error);
+              //             setSubmitting(false);
+              //           });
+              //       })
+              //       .catch(error => {
+              //         alert("Error");
+              //         console.log("Error de firebase persistence");
+              //         console.log(error);
+              //         setSubmitting(false);
+              //       });
+              //   })
+              //   .catch(error => {
+              //     alert("Error");
+              //     console.log("Error de firebase logout");
+              //     console.log(error);
+              //     setSubmitting(false);
+              //   });
             }}
           >
             {({

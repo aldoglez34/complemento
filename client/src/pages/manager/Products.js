@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import ManagerLayout from "./ManagerLayout";
 import * as managerActions from "../../redux-actions/manager";
 import API from "../../utils/API";
-import { Table, Spinner } from "react-bootstrap";
+import { Table, Spinner, Row, Col, Button } from "react-bootstrap";
+import ProductRow from "./ProductRow";
 
 function Products() {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ function Products() {
 
   useEffect(() => {
     dispatch(managerActions.setActive("Productos"));
+    dispatch(managerActions.setBackBttn(null));
     // fetch products
     API.fetchProductsManager()
       .then(res => setProducts(res.data))
@@ -20,12 +22,23 @@ function Products() {
 
   return (
     <ManagerLayout>
-      <h3>
-        <strong className="ml-1">Productos</strong>
-      </h3>
-      <hr className="mt-1" />
+      {/* <h3>
+        <strong className="ml-1 text-dark">PRODUCTOS</strong>
+      </h3> */}
+      <Row className="mb-3">
+        <Col md={8} className="d-flex align-items-center">
+          <h3 className="mb-0 text-dark">
+            <strong>PRODUCTOS</strong>
+          </h3>
+        </Col>
+        <Col md={4} className="mt-1 mt-md-0 text-md-right">
+          <Button variant="success" href="/manager/products/new">
+            Nuevo Producto
+          </Button>
+        </Col>
+      </Row>
       {products ? (
-        <Table striped bordered hover>
+        <Table bordered hover size="sm" responsive>
           <thead>
             <tr>
               <th>Nombre</th>
@@ -36,14 +49,7 @@ function Products() {
           </thead>
           <tbody>
             {products.map(p => {
-              return (
-                <tr key={p._id}>
-                  <td>{p.name}</td>
-                  <td>{p.category}</td>
-                  <td>{p.purchasePrice}</td>
-                  <td>{p.salePrice}</td>
-                </tr>
-              );
+              return <ProductRow key={p._id} product={p} />;
             })}
           </tbody>
         </Table>

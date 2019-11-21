@@ -17,3 +17,10 @@ export const setActive = data => {
     data
   };
 };
+
+export const setBackBttn = data => {
+  return {
+    type: "manager/setBackBttn",
+    data
+  };
+};
