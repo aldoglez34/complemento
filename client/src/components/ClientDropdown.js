@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown, Nav, NavItem } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import fire from "../firebase/Fire";
+import fb from "../firebase/fb";
 import * as clientActions from "../redux-actions/client";
 
 function ClientDropdown() {
@@ -9,15 +9,10 @@ function ClientDropdown() {
   const client = useSelector(state => state.client);
 
   const logout = () => {
-    fire
-      .auth()
+    fb.auth()
       .signOut()
-      .then(function() {
-        dispatch(clientActions.logoutClient());
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+      .then(() => dispatch(clientActions.logoutClient()))
+      .catch(error => console.log(error));
   };
 
   return (

@@ -63,8 +63,8 @@ export default {
   //   return axios.get("/api/client/email/all");
   // },
 
-  saveNewClient: function(newClient) {
-    return axios.post("/api/client/new", newClient);
+  newClient: function(client) {
+    return axios.post("/api/client/new", client);
   },
 
   updateClient: function(updatedClient) {
@@ -74,6 +74,14 @@ export default {
   // ---------------------------------------------------------------------------
   // MANAGER
   // ---------------------------------------------------------------------------
+
+  fetchManagerByUID: function(uid) {
+    return axios.get("/api/manager/" + uid);
+  },
+
+  fetchProductsManager: function() {
+    return axios.get("/api/manager/products/all");
+  },
 
   saveCategory: function(values) {
     return axios.post("/api/manager/category/new", values);

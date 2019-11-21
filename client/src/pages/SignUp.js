@@ -9,9 +9,9 @@ import { Formik, ErrorMessage } from "formik";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
 import API from "../utils/API";
-import fire from "../firebase/Fire";
+import fb from "../firebase/fb";
 
-function SignUp() {
+function SignUp(props) {
   const breadcrumbRoutes = [
     { name: "Inicio", to: "/" },
     { name: "Regístrate con nosotros", to: "active" }
@@ -99,55 +99,49 @@ function SignUp() {
           validationSchema={signupSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            // this is necessary since the trim() function from yup is not working
-            let trimmedValues = {
-              clientName: values.clientName.trim(),
-              firstSurname: values.firstSurname.trim(),
-              secondSurname: values.secondSurname.trim(),
-              email: values.email.trim(),
-              phone: values.phone,
-              password: values.password,
-              street: values.street.trim(),
-              neighborhood: values.neighborhood.trim(),
-              municipality: values.municipality.trim(),
-              city: values.city.trim(),
-              state: values.state,
-              zipCode: values.zipCode
-            };
-            // after trimming all the values manually, sign up
-            fire
-              .auth()
-              .createUserWithEmailAndPassword(
-                trimmedValues.email,
-                trimmedValues.password
-              )
-              .then(function(res) {
-                trimmedValues.firebaseUID = res.user.uid;
-                // if the client signed up successfully
-                // save info in the db
-                API.saveNewClient(trimmedValues)
+            // sign up
+            fb.auth()
+              .createUserWithEmailAndPassword(values.email, values.password)
+              .then(res => {
+                // set the uid from the newly created user in firebase in the values object
+                values.firebaseUID = res.user.uid;
+                // save the client info in the db
+                API.newClient(values)
                   .then(() => {
-                    // after saving the new client info
-                    // fetch the newly created info
-                    // login this client and send him/her to the home page
-                    API.fetchClientByUID(trimmedValues.firebaseUID)
+                    // lasly, fetch the recently created client
+                    API.fetchClientByUID(values.firebaseUID)
                       .then(res => {
-                        let client = res.data;
-                        dispatch(clientActions.loginClient(client));
+                        dispatch(clientActions.loginClient(res.data));
                         alert("¡Bienvenido!");
-                        window.location.replace("/");
+                        props.history.push("/");
                       })
                       .catch(err => {
-                        alert(err);
+                        // if there's a problem fetching new client, logout from firebase
+                        fb.auth()
+                          .signOut()
+                          .then()
+                          .catch(error => console.log(error));
+                        // then print error
+                        console.log(err);
                         setSubmitting(false);
                       });
                   })
                   .catch(err => {
-                    alert(err);
+                    // if there's a problem creating new client, logout from firebase
+                    fb.auth()
+                      .signOut()
+                      .then()
+                      .catch(error => console.log(error));
+                    // then print error
+                    console.log(err);
+                    setSubmitting(false);
                   });
               })
-              .catch(function(error) {
-                alert(error.message);
+              .catch(error => {
+                // firebase won't let duplicate emails
+                alert(values.email + " ya está asignado a otra cuenta");
+                setSubmitting(false);
+                console.log(error);
               });
           }}
         >

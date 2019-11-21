@@ -141,7 +141,9 @@ function NewProduct() {
 
   return (
     <ManagerLayout>
-      <h3 className="text-dark">Nuevo producto</h3>
+      <h3>
+        <strong>Nuevo producto</strong>
+      </h3>
       <hr className="mt-1" />
       <Row>
         <Col>
@@ -191,42 +193,6 @@ function NewProduct() {
               isSubmitting
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
-                {/* product category */}
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>
-                      Categoría<span className="text-danger">*</span>
-                    </Form.Label>
-                    <Form.Control
-                      id="categoryControl"
-                      as="select"
-                      type="text"
-                      name="category"
-                      value={values.category}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.category && !errors.category}
-                      isInvalid={touched.category && !!errors.category}
-                    >
-                      <option disabled>Elige...</option>
-                      {categories
-                        ? categories.map(cat => {
-                            return (
-                              <option catid={cat._id} key={cat._id}>
-                                {cat.name}
-                              </option>
-                            );
-                          })
-                        : null}
-                    </Form.Control>
-                    <ErrorMessage
-                      className="text-danger"
-                      name="category"
-                      component="div"
-                    />
-                    <NewCategoryBttn />
-                  </Form.Group>
-                </Form.Row>
                 {/* product name */}
                 <Form.Row>
                   <Form.Group as={Col} md={8}>
@@ -277,6 +243,43 @@ function NewProduct() {
                       name="price"
                       component="div"
                     />
+                  </Form.Group>
+                </Form.Row>
+
+                {/* product category */}
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>
+                      Categoría<span className="text-danger">*</span>
+                    </Form.Label>
+                    <Form.Control
+                      id="categoryControl"
+                      as="select"
+                      type="text"
+                      name="category"
+                      value={values.category}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.category && !errors.category}
+                      isInvalid={touched.category && !!errors.category}
+                    >
+                      <option disabled>Elige...</option>
+                      {categories
+                        ? categories.map(cat => {
+                            return (
+                              <option catid={cat.name} key={cat.name}>
+                                {cat.name}
+                              </option>
+                            );
+                          })
+                        : null}
+                    </Form.Control>
+                    <ErrorMessage
+                      className="text-danger"
+                      name="category"
+                      component="div"
+                    />
+                    <NewCategoryBttn />
                   </Form.Group>
                 </Form.Row>
                 {/* product content */}

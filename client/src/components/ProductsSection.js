@@ -104,7 +104,11 @@ class ProductsSection extends Component {
                         Orden por nombre:
                       </span>
                       <Dropdown>
-                        <Dropdown.Toggle className="dropdownSort" size="sm">
+                        <Dropdown.Toggle
+                          variant="secondary"
+                          // className="dropdownSort"
+                          size="sm"
+                        >
                           {this.state.nameSorting}
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
@@ -147,7 +151,11 @@ class ProductsSection extends Component {
                         Orden por precio:
                       </span>
                       <Dropdown>
-                        <Dropdown.Toggle className="dropdownSort" size="sm">
+                        <Dropdown.Toggle
+                          variant="secondary"
+                          // className="dropdownSort"
+                          size="sm"
+                        >
                           {this.state.priceSorting}
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
@@ -216,7 +224,11 @@ class ProductsSection extends Component {
                         Productos por página:
                       </span>
                       <Dropdown alignRight>
-                        <Dropdown.Toggle className="dropdownSort" size="sm">
+                        <Dropdown.Toggle
+                          variant="secondary"
+                          // className="dropdownSort"
+                          size="sm"
+                        >
                           {this.state.productsPerPage}
                         </Dropdown.Toggle>
                         <Dropdown.Menu>

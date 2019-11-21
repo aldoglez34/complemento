@@ -3,7 +3,11 @@ const managerReducers = (state = { isLogged: false }, action) => {
     case "manager/login":
       return {
         isLogged: true,
-        email: action.data
+        firebaseUID: action.data.firebaseUID,
+        name: action.data.name,
+        firstSurname: action.data.firstSurname,
+        secondSurname: action.data.secondSurname,
+        email: action.data.email
       };
     case "manager/logout":
       return {

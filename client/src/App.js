@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import fire from "./firebase/Fire";
+import fb from "./firebase/fb";
 import { logoutClient } from "./redux-actions/client";
+import { logoutManager } from "./redux-actions/manager";
 import Home from "./pages/Home";
 import Store from "./pages/Store";
 import ProductDetails from "./pages/ProductDetails";
@@ -16,6 +17,7 @@ import {
 } from "react-router-dom";
 import Login from "./pages/manager/Login";
 import Dashboard from "./pages/manager/Dashboard";
+import Products from "./pages/manager/Products";
 import NewProduct from "./pages/manager/NewProduct";
 import ClientInfo from "./pages/ClientInfo";
 import ClientFavorites from "./pages/ClientFavorites";
@@ -26,9 +28,11 @@ class App extends Component {
   }
 
   authListener() {
-    fire.auth().onAuthStateChanged(user => {
+    // if the auth state changes, logout the client or manager
+    fb.auth().onAuthStateChanged(user => {
       if (!user) {
         this.props.logoutClient();
+        // this.props.logoutManager();
       }
     });
   }
@@ -75,8 +79,13 @@ class App extends Component {
           {this.props.manager.isLogged ? (
             <>
               <Route exact path="/manager/dashboard" component={Dashboard} />
-              <Route exact path="/manager/newproduct" component={NewProduct} />
-              <Redirect from="/manager" to="/manager/dashboard" />
+              <Route exact path="/manager/products" component={Products} />
+              <Route
+                exact
+                path="/manager/products/new"
+                component={NewProduct}
+              />
+              {/* <Redirect from="/manager" to="/manager/dashboard" /> */}
             </>
           ) : (
             <>
@@ -101,7 +110,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  logoutClient
+  logoutClient,
+  logoutManager
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

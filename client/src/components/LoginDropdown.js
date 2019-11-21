@@ -5,7 +5,7 @@ import { Formik, ErrorMessage } from "formik";
 import API from "../utils/API";
 import * as clientActions from "../redux-actions/client";
 import { useDispatch } from "react-redux";
-import fire from "../firebase/Fire";
+import fb from "../firebase/fb";
 const firebase = require("firebase/app");
 
 function LoginDropdown() {
@@ -31,39 +31,58 @@ function LoginDropdown() {
         validationSchema={loginSchema}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          fire
-            .auth()
-            .setPersistence(firebase.auth.Auth.Persistence.SESSION)
-            .then(function() {
-              return fire
-                .auth()
-                .signInWithEmailAndPassword(values.email, values.password)
-                .then(res => {
-                  let uid = res.user.uid;
-                  API.fetchClientByUID(uid)
+          // step 1: logout any other session that might be open in firebase (could be from a manager)
+          // no need to logout from redux, the listener in App handles that
+          fb.auth()
+            .signOut()
+            .then(() => {
+              // step 2: set persistence for the new session in firebase
+              fb.auth()
+                .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+                .then(() => {
+                  // step 3: login client in firebase
+                  return fb
+                    .auth()
+                    .signInWithEmailAndPassword(values.email, values.password)
                     .then(res => {
-                      let client = res.data;
-                      dispatch(clientActions.loginClient(client));
-                      alert("¡Bienvenido!");
+                      // step 4: if auth successful, fetch client in the db
+                      API.fetchClientByUID(res.user.uid)
+                        .then(res => {
+                          // step 5: login client in redux
+                          dispatch(clientActions.loginClient(res.data));
+                          alert("¡Bienvenido!");
+                        })
+                        .catch(error => {
+                          // if there's a problem fetching info from the db, logout from firebase
+                          fb.auth()
+                            .signOut()
+                            .then()
+                            .catch(error => console.log(error));
+                          // then print error
+                          alert("Error de autenticación, revisa tus datos");
+                          console.log("Error de fetchClientByUID");
+                          console.log(error);
+                          setSubmitting(false);
+                        });
                     })
-                    .catch(err => {
-                      alert("Error, este usuario no existe 😞");
-                      console.log(err);
+                    .catch(error => {
+                      alert("Error de autenticación, revisa tus datos");
+                      console.log("Error de firebase signIn...");
+                      console.log(error);
                       setSubmitting(false);
                     });
                 })
                 .catch(error => {
-                  alert("Error, este usuario no existe 😞");
+                  alert("Error");
+                  console.log("Error de firebase persistence");
                   console.log(error);
                   setSubmitting(false);
                 });
             })
-            .catch(function(error) {
+            .catch(error => {
               alert("Error");
-              var errorCode = error.code;
-              console.log(errorCode);
-              var errorMessage = error.message;
-              console.log(errorMessage);
+              console.log("Error de firebase logout");
+              console.log(error);
               setSubmitting(false);
             });
         }}

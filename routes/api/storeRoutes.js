@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const model = require("../../models");
 
-// ------------------------------------------------------------
 // fetchCategories()
 // matches with /api/store/categories
 router.get("/categories", function(req, res) {
@@ -27,7 +26,6 @@ router.get("/categories", function(req, res) {
     .catch(err => res.json(err));
 });
 
-// ------------------------------------------------------------
 // fetchBrands()
 // matches with /api/store/brands
 router.get("/brands", function(req, res) {
@@ -53,7 +51,6 @@ router.get("/brands", function(req, res) {
     .catch(err => res.json(err));
 });
 
-// ------------------------------------------------------------
 // fetchProducts()
 // matches with /api/store/products
 router.get("/products", function(req, res) {

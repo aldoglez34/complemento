@@ -12,6 +12,10 @@ const clientReducers = (state = { isLogged: false }, action) => {
         address: action.data.address,
         favorites: action.data.favorites
       };
+    case "client/logout":
+      return {
+        isLogged: false
+      };
     case "client/updateFavorites":
       return {
         ...state,
@@ -32,10 +36,6 @@ const clientReducers = (state = { isLogged: false }, action) => {
           municipality: action.data.municipality,
           neighborhood: action.data.neighborhood
         }
-      };
-    case "client/logout":
-      return {
-        isLogged: false
       };
     default:
       return state;

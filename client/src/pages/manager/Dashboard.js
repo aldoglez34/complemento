@@ -12,7 +12,9 @@ function Dashboard() {
 
   return (
     <ManagerLayout>
-      <h3 className="text-dark">Inicio</h3>
+      <h3>
+        <strong>Inicio</strong>
+      </h3>
       <hr className="mt-1" />
     </ManagerLayout>
   );

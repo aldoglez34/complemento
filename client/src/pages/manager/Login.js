@@ -2,13 +2,15 @@ import React from "react";
 import { Container, Row, Col, Image, Form, Button } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-import fire from "../../firebase/Fire";
+import fb from "../../firebase/fb";
 import { useDispatch } from "react-redux";
 import * as managerActions from "../../redux-actions/manager";
+import API from "../../utils/API";
 const firebase = require("firebase/app");
 
 function Login(props) {
   const dispatch = useDispatch();
+
   const loginSchema = yup.object({
     email: yup
       .string()
@@ -34,23 +36,62 @@ function Login(props) {
             validationSchema={loginSchema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              fire
-                .auth()
-                .setPersistence(firebase.auth.Auth.Persistence.SESSION)
-                .then(function() {
-                  return fire
-                    .auth()
-                    .signInWithEmailAndPassword(values.email, values.password)
-                    .then(res => {
-                      let manager = res.user.email;
-                      dispatch(managerActions.loginManager(manager));
-                      alert("Bienvenido");
-                      props.history.push("/manager/dashboard");
+              // step 1: logout any other session that might be open in firebase
+              // no need to logout from redux, the listener in App handles that
+              fb.auth()
+                .signOut()
+                .then(() => {
+                  // step 2: set persistence for the new session in firebase
+                  fb.auth()
+                    .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+                    .then(() => {
+                      // step 3: login manager in firebase
+                      return fb
+                        .auth()
+                        .signInWithEmailAndPassword(
+                          values.email,
+                          values.password
+                        )
+                        .then(res => {
+                          // step 4: if auth successful, fetch manager in the db
+                          API.fetchManagerByUID(res.user.uid)
+                            .then(res => {
+                              // step 5: login manager in redux and send him to dashboard
+                              dispatch(managerActions.loginManager(res.data));
+                              alert("¡Bienvenido!");
+                              props.history.push("/manager/dashboard");
+                            })
+                            .catch(error => {
+                              // if there's a problem fetching info from the db, logout from firebase
+                              fb.auth()
+                                .signOut()
+                                .then()
+                                .catch(error => console.log(error));
+                              // then print error
+                              alert("Error de autenticación, revisa tus datos");
+                              console.log("Error de fetchClientByUID");
+                              console.log(error);
+                              setSubmitting(false);
+                            });
+                        })
+                        .catch(error => {
+                          alert("Error de autenticación, revisa tus datos");
+                          console.log("Error de firebase signIn...");
+                          console.log(error);
+                          setSubmitting(false);
+                        });
+                    })
+                    .catch(error => {
+                      alert("Error");
+                      console.log("Error de firebase persistence");
+                      console.log(error);
+                      setSubmitting(false);
                     });
                 })
-                .catch(function(error) {
-                  alert("Error de Firebase -> " + error.message);
-                  console.log(error.code);
+                .catch(error => {
+                  alert("Error");
+                  console.log("Error de firebase logout");
+                  console.log(error);
                   setSubmitting(false);
                 });
             }}

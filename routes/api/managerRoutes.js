@@ -1,6 +1,24 @@
 const router = require("express").Router();
 const model = require("../../models");
 
+// fetchManagerByUID()
+// matches with /api/manager/:uid
+router.get("/:uid", function(req, res) {
+  model.Manager.find({ firebaseUID: req.params.uid })
+    .select("firebaseUID name firstSurname secondSurname email")
+    .then(data => res.json(data[0]))
+    .catch(err => res.json(err));
+});
+
+// fetchProductsManager()
+// matches with /api/manager/products/all
+router.get("/products/all", function(req, res) {
+  model.Product.find({})
+    .sort({ name: 1 })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
 // ------------------------------------------------------------
 // get all categories
 // matches with /api/manager/category/all
