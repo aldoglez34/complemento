@@ -142,10 +142,13 @@ function NewProduct() {
 
   return (
     <ManagerLayout>
-      <h3>
-        <strong>Nuevo producto</strong>
-      </h3>
-      <hr className="mt-1" />
+      <Row className="mb-3">
+        <Col>
+          <h3 className="mb-0 text-dark">
+            <strong>Nuevo producto</strong>
+          </h3>
+        </Col>
+      </Row>
       <Row>
         <Col>
           <Formik
@@ -378,7 +381,8 @@ function NewProduct() {
                 <div className="text-right">
                   <Button
                     type="submit"
-                    className="globalbttn"
+                    variant="success"
+                    // className="globalbttn"
                     disabled={isSubmitting}
                   >
                     Crear producto

@@ -67,8 +67,8 @@ export default {
     return axios.post("/api/client/new", client);
   },
 
-  updateClient: function(updatedClient) {
-    return axios.put("/api/client/update", updatedClient);
+  updateClient: function(client) {
+    return axios.put("/api/client/update", client);
   },
 
   // ---------------------------------------------------------------------------
@@ -79,11 +79,27 @@ export default {
     return axios.get("/api/manager/" + uid);
   },
 
+  // categories
+
+  fetchCategoriesManager: function() {
+    return axios.get("/api/manager/categories/all");
+  },
+
+  updateCategory: function(category) {
+    return axios.put("/api/manager/categories/update", category);
+  },
+
+  newCategory: function(data) {
+    return axios.post("/api/manager/categories/new", data);
+  },
+
+  // products
+
   fetchProductsManager: function() {
     return axios.get("/api/manager/products/all");
   },
 
-  saveCategory: function(values) {
-    return axios.post("/api/manager/category/new", values);
+  updateProduct: function(product) {
+    return axios.put("/api/manager/products/update", product);
   }
 };

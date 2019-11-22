@@ -2,20 +2,15 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
-  category: {
+  name: {
     type: String,
     trim: true,
-    required: "Categoría requerida"
+    required: "Nombre requerido"
   },
   brand: {
     type: String,
     trim: true,
     required: "Marca requerida"
-  },
-  name: {
-    type: String,
-    trim: true,
-    required: "Nombre requerido"
   },
   content: {
     type: String,
@@ -62,6 +57,11 @@ const ProductSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Provider",
     required: "Proveedor inválido"
+  },
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: "Category",
+    required: "Categoría inválida"
   },
   createdAt: {
     type: Date,

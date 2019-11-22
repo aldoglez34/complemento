@@ -17,6 +17,8 @@ import {
 } from "react-router-dom";
 import Login from "./pages/manager/Login";
 import Dashboard from "./pages/manager/Dashboard";
+import Categories from "./pages/manager/Categories";
+import Providers from "./pages/manager/Providers";
 import Products from "./pages/manager/Products";
 import NewProduct from "./pages/manager/NewProduct";
 import ClientInfo from "./pages/ClientInfo";
@@ -32,7 +34,7 @@ class App extends Component {
     fb.auth().onAuthStateChanged(user => {
       if (!user) {
         this.props.logoutClient();
-        // this.props.logoutManager();
+        this.props.logoutManager();
       }
     });
   }
@@ -79,6 +81,8 @@ class App extends Component {
           {this.props.manager.isLogged ? (
             <>
               <Route exact path="/manager/dashboard" component={Dashboard} />
+              <Route exact path="/manager/categories" component={Categories} />
+              <Route exact path="/manager/providers" component={Providers} />
               <Route exact path="/manager/products" component={Products} />
               <Route
                 exact

@@ -17,12 +17,11 @@ function LeftNav() {
 
   return (
     <Nav className="d-none d-lg-flex flex-column h-100" id="verticalNavStyle">
-      <div
-        className="w-100 d-flex align-items-center justify-content-center"
-        id="verticalNavLogo"
-      >
-        <Image alt="" src={"/images/smalllogo.png"} width="100" height="30" />
+      <div className="text-center mt-3">
+        <Image alt="" src={"/images/biglogo.png"} width="180" height="80" />
       </div>
+
+      {/* </div> */}
       {/* menu */}
       <Nav.Item className="navItemStyle">Menú</Nav.Item>
       <Nav.Link
@@ -35,6 +34,17 @@ function LeftNav() {
           style={{ width: "26px", textAlign: "center" }}
         />
         <span className="ml-1">Inicio</span>
+      </Nav.Link>
+      <Nav.Link
+        className="navLinkStyle"
+        href="/manager/categories"
+        active={manager.active === "Categorías" ? true : false}
+      >
+        <i
+          className="fas fa-th"
+          style={{ width: "26px", textAlign: "center" }}
+        />
+        <span className="ml-1">Categorías</span>
       </Nav.Link>
       <Nav.Link
         className="navLinkStyle"

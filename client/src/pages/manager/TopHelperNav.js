@@ -13,15 +13,16 @@ function TopHelperNav() {
             <Button
               variant="transparent"
               href={manager.backBttn}
-              // className="p-0"
+              className="p-0"
+              style={{ color: "darkslategray" }}
             >
               <i className="fas fa-chevron-left backArrow" />
             </Button>
           ) : null}
         </Col>
         <Col className="d-flex flex-row justify-content-end">
-          <Nav.Item className="topHelperItem">
-            <i className="fas fa-user mr-2" />
+          <Nav.Item className="topHelperItem p-0">
+            <i className="fas fa-user mr-1" />
             {manager.email}
           </Nav.Item>
         </Col>
