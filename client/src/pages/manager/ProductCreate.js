@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import API from "../../utils/API";
 import * as managerActions from "../../redux-actions/manager";
 
-function NewProduct() {
+function ProductCreate() {
   const [categories, setCategories] = useState();
   const dispatch = useDispatch();
 
@@ -397,4 +397,4 @@ function NewProduct() {
   );
 }
 
-export default NewProduct;
+export default ProductCreate;

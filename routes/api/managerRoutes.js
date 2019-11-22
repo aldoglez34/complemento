@@ -77,4 +77,31 @@ router.put("/products/update", function(req, res) {
     .catch(err => res.json(err));
 });
 
+// =========================================================================
+// =========================================================================
+// providers
+
+// fetchProvidersManager()
+// matches with /api/manager/providers/all
+router.get("/providers/all", function(req, res) {
+  model.Provider.find({})
+    .sort({ name: 1 })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
+// updateProvider()
+// matches with /api/manager/providers/update
+router.put("/providers/update", function(req, res) {
+  model.Provider.findByIdAndUpdate(req.body._id, {
+    name: req.body.name,
+    fullAddress: req.body.fullAddress,
+    rfc: req.body.rfc,
+    email: req.body.email,
+    phone: req.body.phone
+  })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
 module.exports = router;

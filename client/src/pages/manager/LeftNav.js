@@ -21,7 +21,6 @@ function LeftNav() {
         <Image alt="" src={"/images/biglogo.png"} width="180" height="80" />
       </div>
 
-      {/* </div> */}
       {/* menu */}
       <Nav.Item className="navItemStyle">Menú</Nav.Item>
       <Nav.Link
@@ -70,7 +69,7 @@ function LeftNav() {
       </Nav.Link>
       <Nav.Link
         className="navLinkStyle"
-        href="/manager/products"
+        href="/manager/providers"
         active={manager.active === "Proveedores" ? true : false}
       >
         <i

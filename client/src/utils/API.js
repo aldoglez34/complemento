@@ -101,5 +101,19 @@ export default {
 
   updateProduct: function(product) {
     return axios.put("/api/manager/products/update", product);
+  },
+
+  // providers
+
+  fetchProvidersManager: function() {
+    return axios.get("/api/manager/providers/all");
+  },
+
+  updateProvider: function(provider) {
+    return axios.put("/api/manager/providers/update", provider);
+  },
+
+  newProdiver: function(data) {
+    return axios.post("/api/manager/providers/new", data);
   }
 };

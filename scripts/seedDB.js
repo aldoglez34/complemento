@@ -14,7 +14,6 @@ mongoose
 // const managers = require("./devdata/managers");
 // const providers = require("./devdata/providers");
 // const categories = require("./devdata/categories");
-
 // models.Client.insertMany(clients)
 //   .then(() => console.log("dev data - clients added"))
 //   .catch(err => console.log(err));

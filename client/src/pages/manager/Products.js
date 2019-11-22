@@ -29,7 +29,7 @@ function Products() {
           </h2>
         </Col>
         <Col md={4} className="mt-1 mt-md-0 text-md-right">
-          <Button variant="success" href="/manager/products/new">
+          <Button variant="success" href="/manager/products/create">
             Crear
           </Button>
         </Col>
