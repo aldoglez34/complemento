@@ -113,7 +113,7 @@ export default {
     return axios.put("/api/manager/providers/update", provider);
   },
 
-  newProdiver: function(data) {
-    return axios.post("/api/manager/providers/new", data);
+  newProvider: function(provider) {
+    return axios.post("/api/manager/providers/new", provider);
   }
 };

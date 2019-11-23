@@ -104,4 +104,38 @@ router.put("/providers/update", function(req, res) {
     .catch(err => res.json(err));
 });
 
+// newProvider()
+// matches with /api/manager/providers/new
+router.post("/providers/new", async function(req, res) {
+  // try {
+  //   const { name, rfc, email, phone, fullAddress } = req.body;
+
+  //   let provider = await model.Provider.findOne({ name });
+  //   if (provider) return res.status(400).json({ error: "El nombre ya existe" });
+
+  //   provider = await model.Provider.findOne({ rfc });
+  //   if (provider) return res.status(400).send({ error: "El RFC ya existe" });
+
+  //   provider = await model.Provider.findOne({ email });
+  //   if (provider) return res.status(400).send({ error: "El correo ya existe" });
+
+  //   provider = new Provider({ name, rfc, email, phone, fullAddress });
+
+  //   await provider.save();
+
+  //   res.status(201).json({ message: "El proveedor fue creado con éxito" });
+  // } catch (error) {
+  //   res.status(500).json({ error });
+  // }
+  model.Provider.create({
+    name: req.body.name,
+    rfc: req.body.rfc,
+    email: req.body.email,
+    phone: req.body.phone,
+    fullAddress: req.body.fullAddress
+  })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
 module.exports = router;

@@ -1,25 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import ManagerLayout from "./ManagerLayout";
-import { Row, Col, Button, Form, InputGroup, Modal } from "react-bootstrap";
+import { Row, Col, Button, Form } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import API from "../../utils/API";
 import * as managerActions from "../../redux-actions/manager";
 
-function ProvidersCreate() {
+function ProvidersCreate(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(managerActions.setActive("Proveedores"));
-    dispatch(managerActions.setBackBttn("/manager/products"));
+    dispatch(managerActions.setBackBttn("/manager/providers"));
   }, []);
 
   const providerSchema = yup.object({
     name: yup
       .string()
       .min(3)
-      .max(254, "Demasiado largo")
       .required("Requerido")
   });
 
@@ -34,78 +33,128 @@ function ProvidersCreate() {
       </Row>
       <Formik
         initialValues={{
-          clientAbr: "",
-          year: "",
-          description: ""
+          name: "",
+          rfc: "",
+          email: "",
+          phone: "",
+          fullAddress: ""
         }}
-        validationSchema={newAuditSchema}
+        validationSchema={providerSchema}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          console.log(values);
+          API.newProvider(values)
+            .then(res => {
+              if (res.data.errmsg) alert(res.data.errmsg);
+              else {
+                alert("Cliente creado con éxito");
+                props.history.push("/manager/providers");
+              }
+            })
+            .catch(err => console.log(err));
         }}
       >
         {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
           <>
             <Form noValidate onSubmit={handleSubmit}>
-              <Form.Row></Form.Row>
-              <Form.Group>
-                <Form.Label>
-                  Año
-                  <strong className="ml-1 text-danger">*</strong>
-                </Form.Label>
-                <Form.Control
-                  maxLength="4"
-                  placeholder="Año..."
-                  type="text"
-                  name="year"
-                  value={values.year}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                <ErrorMessage
-                  className="text-danger"
-                  name="year"
-                  component="div"
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>
-                  Descripción
-                  <strong className="ml-1 text-danger">*</strong>
-                </Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows="3"
-                  maxLength="250"
-                  placeholder="Descripción..."
-                  type="text"
-                  name="description"
-                  value={values.description}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                <ErrorMessage
-                  className="text-danger"
-                  name="description"
-                  component="div"
-                />
-              </Form.Group>
-              <Form.Group className="text-right">
-                <Button
-                  className="mr-2"
-                  variant="secondary"
-                  onClick={handleClose}
-                >
-                  Cancelar
-                </Button>
-                <Button
-                  className="purplebttn"
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  Crear
-                </Button>
-              </Form.Group>
+              {/* name */}
+              <Form.Row>
+                <Form.Group as={Col}>
+                  <Form.Label>Nombre</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="name"
+                    value={values.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <ErrorMessage
+                    className="text-danger"
+                    name="name"
+                    component="div"
+                  />
+                </Form.Group>
+              </Form.Row>
+              {/* rfc */}
+              <Form.Row>
+                <Form.Group as={Col}>
+                  <Form.Label>RFC</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="rfc"
+                    value={values.rfc}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <ErrorMessage
+                    className="text-danger"
+                    name="rfc"
+                    component="div"
+                  />
+                </Form.Group>
+              </Form.Row>
+              {/* email */}
+              <Form.Row>
+                <Form.Group as={Col}>
+                  <Form.Label>Correo</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="email"
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <ErrorMessage
+                    className="text-danger"
+                    name="email"
+                    component="div"
+                  />
+                </Form.Group>
+              </Form.Row>
+              {/* phone */}
+              <Form.Row>
+                <Form.Group as={Col}>
+                  <Form.Label>Teléfono</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="phone"
+                    value={values.phone}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <ErrorMessage
+                    className="text-danger"
+                    name="phone"
+                    component="div"
+                  />
+                </Form.Group>
+              </Form.Row>
+              {/* fullAddress */}
+              <Form.Row>
+                <Form.Group as={Col}>
+                  <Form.Label>Dirección</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="fullAddress"
+                    value={values.fullAddress}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <ErrorMessage
+                    className="text-danger"
+                    name="fullAddress"
+                    component="div"
+                  />
+                </Form.Group>
+              </Form.Row>
+              {/* create button */}
+              <Button
+                // className="purplebttn"
+                variant="success"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                Crear
+              </Button>
             </Form>
           </>
         )}

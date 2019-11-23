@@ -8,10 +8,6 @@ const ProviderSchema = new Schema({
     trim: true,
     required: "Nombre requerido"
   },
-  fullAddress: {
-    type: String,
-    trim: true
-  },
   rfc: {
     type: String,
     trim: true,
@@ -39,6 +35,10 @@ const ProviderSchema = new Schema({
       },
       "Formato de teléfono inválido"
     ]
+  },
+  fullAddress: {
+    type: String,
+    trim: true
   },
   createdAt: {
     type: Date,
