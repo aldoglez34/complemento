@@ -20,10 +20,11 @@ import ClientFavorites from "./pages/ClientFavorites";
 import Login from "./pages/manager/Login";
 import Dashboard from "./pages/manager/Dashboard";
 import Categories from "./pages/manager/Categories";
+import CategoriesCreate from "./pages/manager/CategoriesCreate";
 import Providers from "./pages/manager/Providers";
 import ProvidersCreate from "./pages/manager/ProvidersCreate";
 import Products from "./pages/manager/Products";
-import ProductCreate from "./pages/manager/ProductCreate";
+import ProductsCreate from "./pages/manager/ProductsCreate";
 
 class App extends Component {
   componentDidMount() {
@@ -83,6 +84,11 @@ class App extends Component {
             <>
               <Route exact path="/manager/dashboard" component={Dashboard} />
               <Route exact path="/manager/categories" component={Categories} />
+              <Route
+                exact
+                path="/manager/categories/create"
+                component={CategoriesCreate}
+              />
               <Route exact path="/manager/providers" component={Providers} />
               <Route
                 exact
@@ -93,7 +99,7 @@ class App extends Component {
               <Route
                 exact
                 path="/manager/products/create"
-                component={ProductCreate}
+                component={ProductsCreate}
               />
               {/* <Redirect from="/manager" to="/manager/dashboard" /> */}
             </>

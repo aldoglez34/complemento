@@ -4,19 +4,19 @@ import ManagerLayout from "./ManagerLayout";
 import * as managerActions from "../../redux-actions/manager";
 import API from "../../utils/API";
 import { Table, Spinner, Row, Col, Button } from "react-bootstrap";
-import ProductRow from "./ProductRow";
+import ProviderRow from "./ProviderRow";
 
-function Products() {
+function Discounts() {
   const dispatch = useDispatch();
 
-  const [products, setProducts] = useState();
+  const [providers, setProviders] = useState();
 
   useEffect(() => {
-    dispatch(managerActions.setActive("Productos"));
+    dispatch(managerActions.setActive("Proveedores"));
     dispatch(managerActions.setBackBttn(null));
     // fetch products
-    API.fetchProductsManager()
-      .then(res => setProducts(res.data))
+    API.fetchProvidersManager()
+      .then(res => setProviders(res.data))
       .catch(err => console.log(err));
   }, []);
 
@@ -25,29 +25,29 @@ function Products() {
       <Row className="mb-3">
         <Col md={8} className="d-flex align-items-center">
           <h2 className="mb-0 text-dark">
-            <strong>Productos</strong>
+            <strong>Proveedores</strong>
           </h2>
         </Col>
         <Col md={4} className="mt-1 mt-md-0 text-md-right">
-          <Button variant="success" href="/manager/products/create">
-            Nuevo producto
+          <Button variant="success" href="/manager/providers/create">
+            Crear
           </Button>
         </Col>
       </Row>
-      {products ? (
+      {providers ? (
         <Table striped bordered hover size="sm" responsive>
           <thead>
             <tr>
               <th>Nombre</th>
-              <th>Categoría</th>
-              <th>Precio de compra</th>
-              <th>Precio de venta</th>
-              <th>Existencia</th>
+              <th>RFC</th>
+              <th>Correo</th>
+              <th>Teléfono</th>
+              <th>Dirección</th>
             </tr>
           </thead>
           <tbody>
-            {products.map(p => {
-              return <ProductRow key={p._id} product={p} />;
+            {providers.map(p => {
+              return <ProviderRow key={p._id} provider={p} />;
             })}
           </tbody>
         </Table>
@@ -60,4 +60,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default Discounts;

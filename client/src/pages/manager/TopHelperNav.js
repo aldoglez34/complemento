@@ -10,12 +10,7 @@ function TopHelperNav() {
       <Navbar id="topHelperStyle">
         <Col className="d-flex justify-content-start">
           {manager.backBttn ? (
-            <Button
-              variant="transparent"
-              href={manager.backBttn}
-              className="p-0"
-              style={{ color: "darkslategray" }}
-            >
+            <Button variant="success" href={manager.backBttn}>
               <i className="fas fa-chevron-left backArrow" />
             </Button>
           ) : null}

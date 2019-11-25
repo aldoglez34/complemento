@@ -3,9 +3,8 @@ import { useDispatch } from "react-redux";
 import ManagerLayout from "./ManagerLayout";
 import * as managerActions from "../../redux-actions/manager";
 import API from "../../utils/API";
-import { Table, Spinner, Row, Col } from "react-bootstrap";
+import { Button, Table, Spinner, Row, Col } from "react-bootstrap";
 import CategoryRow from "./CategoryRow";
-import NewCategory from "./NewCategory";
 
 function Categories() {
   const dispatch = useDispatch();
@@ -30,7 +29,9 @@ function Categories() {
           </h2>
         </Col>
         <Col md={4} className="mt-1 mt-md-0 text-md-right">
-          <NewCategory />
+          <Button variant="success" href="/manager/categories/create">
+            Nueva Categoría
+          </Button>
         </Col>
       </Row>
       {categories ? (
