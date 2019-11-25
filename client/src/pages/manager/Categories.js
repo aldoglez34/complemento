@@ -4,7 +4,7 @@ import ManagerLayout from "./ManagerLayout";
 import * as managerActions from "../../redux-actions/manager";
 import API from "../../utils/API";
 import { Button, Table, Spinner, Row, Col } from "react-bootstrap";
-import CategoryRow from "./CategoryRow";
+import CategoriesRow from "./CategoriesRow";
 
 function Categories() {
   const dispatch = useDispatch();
@@ -14,7 +14,6 @@ function Categories() {
   useEffect(() => {
     dispatch(managerActions.setActive("Categorías"));
     dispatch(managerActions.setBackBttn(null));
-    // fetch products
     API.fetchCategoriesManager()
       .then(res => setCategories(res.data))
       .catch(err => console.log(err));
@@ -30,6 +29,7 @@ function Categories() {
         </Col>
         <Col md={4} className="mt-1 mt-md-0 text-md-right">
           <Button variant="success" href="/manager/categories/create">
+            <i className="fas fa-th mr-2" />
             Nueva Categoría
           </Button>
         </Col>
@@ -44,7 +44,7 @@ function Categories() {
           </thead>
           <tbody>
             {categories.map(c => {
-              return <CategoryRow key={c._id} category={c} />;
+              return <CategoriesRow key={c._id} category={c} />;
             })}
           </tbody>
         </Table>

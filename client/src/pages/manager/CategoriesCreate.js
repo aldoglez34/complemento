@@ -18,7 +18,7 @@ function CategoriesCreate(props) {
   const categorySchema = yup.object({
     name: yup
       .string()
-      .min(3)
+      .min(3, "Nombre demasiado corto")
       .required("Requerido")
   });
 
@@ -33,19 +33,20 @@ function CategoriesCreate(props) {
       </Row>
       <Formik
         initialValues={{
-          name: "",
-          rfc: "",
-          email: "",
-          phone: "",
-          fullAddress: ""
+          name: ""
         }}
         validationSchema={categorySchema}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
           API.newCategory(values)
-            .then(data => {
-              alert("Categoría creada");
-              window.location.reload();
+            .then(res => {
+              if (res.data.errmsg) {
+                alert("ERROR => " + res.data.errmsg);
+                setSubmitting(false);
+              } else {
+                alert("Categoría creada");
+                props.history.push("/manager/categories");
+              }
             })
             .catch(err => console.log(err));
         }}
@@ -58,6 +59,8 @@ function CategoriesCreate(props) {
                 <Form.Group as={Col}>
                   <Form.Label>Nombre</Form.Label>
                   <Form.Control
+                    maxLength="50"
+                    placeholder="Ingresa el nombre de la categoría"
                     type="text"
                     name="name"
                     value={values.name}

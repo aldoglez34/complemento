@@ -7,6 +7,10 @@ const CategorySchema = new Schema({
     unique: true,
     trim: true,
     required: "Nombre requerido"
+  },
+  productCount: {
+    type: Number,
+    default: 0
   }
 });
 

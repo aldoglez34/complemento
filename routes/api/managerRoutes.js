@@ -40,7 +40,9 @@ router.put("/categories/update", function(req, res) {
 // newCategory()
 // matches with /api/manager/categories/new
 router.post("/categories/new", function(req, res) {
-  model.Category.create({ name: req.body.name })
+  model.Category.create({
+    name: req.body.name
+  })
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });

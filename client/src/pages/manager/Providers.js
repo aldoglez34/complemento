@@ -4,7 +4,7 @@ import ManagerLayout from "./ManagerLayout";
 import * as managerActions from "../../redux-actions/manager";
 import API from "../../utils/API";
 import { Table, Spinner, Row, Col, Button } from "react-bootstrap";
-import ProviderRow from "./ProviderRow";
+import ProvidersRow from "./ProvidersRow";
 
 function Providers() {
   const dispatch = useDispatch();
@@ -30,7 +30,8 @@ function Providers() {
         </Col>
         <Col md={4} className="mt-1 mt-md-0 text-md-right">
           <Button variant="success" href="/manager/providers/create">
-            Crear
+            <i className="fas fa-truck-moving mr-2" />
+            Nuevo proveedor
           </Button>
         </Col>
       </Row>
@@ -47,7 +48,7 @@ function Providers() {
           </thead>
           <tbody>
             {providers.map(p => {
-              return <ProviderRow key={p._id} provider={p} />;
+              return <ProvidersRow key={p._id} provider={p} />;
             })}
           </tbody>
         </Table>

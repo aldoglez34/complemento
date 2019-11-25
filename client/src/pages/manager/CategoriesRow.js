@@ -1,29 +1,44 @@
 import React, { useState } from "react";
-import { Button, Modal, Form, Col } from "react-bootstrap";
+import { Button, Modal, Form, Col, Badge } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import API from "../../utils/API";
 
-CategoryRow.propTypes = {
+CategoriesRow.propTypes = {
   category: PropTypes.object.isRequired
 };
 
-function CategoryRow(props) {
+function CategoriesRow(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const categoryValidation = yup.object({
-    name: yup.string().required("Requerido")
+    name: yup
+      .string()
+      .min(3, "Nombre demasiado corto")
+      .required("Requerido")
   });
 
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
-        <td>{props.category.name}</td>
-        <td>0</td>
+        <td>
+          {props.category.name}
+          {props.category.productCount === 0 ? (
+            <Badge
+              pill
+              className="ml-1"
+              variant="danger"
+              style={{ fontFamily: "Arial" }}
+            >
+              Vacía
+            </Badge>
+          ) : null}
+        </td>
+        <td>{props.category.productCount}</td>
       </tr>
 
       <Modal show={show} onHide={handleClose} size="lg">
@@ -34,15 +49,16 @@ function CategoryRow(props) {
           <Formik
             initialValues={{
               _id: props.category._id,
-              name: props.category.name
+              name: props.category.name,
+              productCount: props.category.productCount
             }}
             validationSchema={categoryValidation}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               API.updateCategory(values)
-                .then(data => {
-                  handleClose();
+                .then(() => {
                   alert("Categoría actualizada");
+                  handleClose();
                   window.location.reload();
                 })
                 .catch(err => console.log(err));
@@ -74,6 +90,20 @@ function CategoryRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* productCount */}
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>Productos</Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      name="productCount"
+                      value={values.productCount}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                </Form.Row>
                 {/* buttons */}
                 <Form.Group className="text-right">
                   <Button
@@ -100,4 +130,4 @@ function CategoryRow(props) {
   );
 }
 
-export default CategoryRow;
+export default CategoriesRow;

@@ -17,7 +17,7 @@ function TopHelperNav() {
         </Col>
         <Col className="d-flex flex-row justify-content-end">
           <Nav.Item className="topHelperItem p-0">
-            <i className="fas fa-user mr-1" />
+            <i className="fas fa-user mr-2" />
             {manager.email}
           </Nav.Item>
         </Col>

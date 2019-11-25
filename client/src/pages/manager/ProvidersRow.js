@@ -5,18 +5,29 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import API from "../../utils/API";
 
-ProviderRow.propTypes = {
+ProvidersRow.propTypes = {
   provider: PropTypes.object.isRequired
 };
 
-function ProviderRow(props) {
+function ProvidersRow(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const providerValidation = yup.object({
-    name: yup.string().required("Requerido")
+    name: yup
+      .string()
+      .min(3, "Nombre demasiado corto")
+      .required("Requerido"),
+    rfc: yup
+      .string()
+      .length(10, "Formato incorrecto")
+      .required("Requerido"),
+    email: yup
+      .string()
+      .email("Formato de email incorrecto")
+      .required("Requerido")
   });
 
   return (
@@ -47,7 +58,7 @@ function ProviderRow(props) {
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               API.updateProvider(values)
-                .then(data => {
+                .then(() => {
                   alert("Proveedor actualizado");
                   handleClose();
                   window.location.reload();
@@ -90,6 +101,7 @@ function ProviderRow(props) {
                       value={values.rfc}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      style={{ textTransform: "uppercase" }}
                     />
                     <ErrorMessage
                       className="text-danger"
@@ -175,4 +187,4 @@ function ProviderRow(props) {
   );
 }
 
-export default ProviderRow;
+export default ProvidersRow;
