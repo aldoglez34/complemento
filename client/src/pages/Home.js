@@ -57,8 +57,9 @@ class Home extends Component {
               <Button
                 size="lg"
                 href="/store"
-                className="shadow p-3 mt-3"
-                id="homebttn"
+                className="shadow-sm p-3 mt-3"
+                // id="homebttn"
+                variant="success"
               >
                 Explora la tienda
                 <i className="fas fa-store-alt ml-2" />

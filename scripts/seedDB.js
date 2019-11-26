@@ -27,7 +27,7 @@ mongoose
 //   .then(() => console.log("dev data - categories added"))
 //   .catch(err => console.log(err));
 
-const products = require("./devdata/products");
-models.Product.insertMany(products)
-  .then(() => console.log("dev data - products added"))
-  .catch(err => console.log(err));
+// const products = require("./devdata/products");
+// models.Product.insertMany(products)
+//   .then(() => console.log("dev data - products added"))
+//   .catch(err => console.log(err));
