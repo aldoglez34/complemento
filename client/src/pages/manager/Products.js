@@ -4,7 +4,7 @@ import ManagerLayout from "./ManagerLayout";
 import * as managerActions from "../../redux-actions/manager";
 import API from "../../utils/API";
 import { Table, Spinner, Row, Col, Button } from "react-bootstrap";
-import ProductRow from "./ProductRow";
+import ProductsRow from "./ProductsRow";
 
 function Products() {
   const dispatch = useDispatch();
@@ -38,16 +38,16 @@ function Products() {
         <Table striped bordered hover size="sm" responsive>
           <thead>
             <tr>
-              <th>Nombre</th>
-              <th>Categoría</th>
-              <th>Precio de compra</th>
-              <th>Precio de venta</th>
-              <th>Existencia</th>
+              <th className="text-center">Nombre</th>
+              <th className="text-center">Categoría</th>
+              <th className="text-center">Precio de compra</th>
+              <th className="text-center">Precio de venta</th>
+              <th className="text-center">Existencia</th>
             </tr>
           </thead>
           <tbody>
             {products.map(p => {
-              return <ProductRow key={p._id} product={p} />;
+              return <ProductsRow key={p._id} product={p} />;
             })}
           </tbody>
         </Table>

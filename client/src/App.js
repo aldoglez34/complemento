@@ -21,6 +21,7 @@ import Login from "./pages/manager/Login";
 import Dashboard from "./pages/manager/Dashboard";
 import Categories from "./pages/manager/Categories";
 import CategoriesCreate from "./pages/manager/CategoriesCreate";
+import Discounts from "./pages/manager/Discounts";
 import Providers from "./pages/manager/Providers";
 import ProvidersCreate from "./pages/manager/ProvidersCreate";
 import Products from "./pages/manager/Products";
@@ -83,24 +84,30 @@ class App extends Component {
           {this.props.manager.isLogged ? (
             <>
               <Route exact path="/manager/dashboard" component={Dashboard} />
+              {/* categories */}
               <Route exact path="/manager/categories" component={Categories} />
               <Route
                 exact
                 path="/manager/categories/create"
                 component={CategoriesCreate}
               />
-              <Route exact path="/manager/providers" component={Providers} />
-              <Route
-                exact
-                path="/manager/providers/create"
-                component={ProvidersCreate}
-              />
+              {/* products */}
               <Route exact path="/manager/products" component={Products} />
               <Route
                 exact
                 path="/manager/products/create"
                 component={ProductsCreate}
               />
+              {/* discounts */}
+              <Route exact path="/manager/discounts" component={Discounts} />
+              {/* providers */}
+              <Route exact path="/manager/providers" component={Providers} />
+              <Route
+                exact
+                path="/manager/providers/create"
+                component={ProvidersCreate}
+              />
+
               {/* <Redirect from="/manager" to="/manager/dashboard" /> */}
             </>
           ) : (

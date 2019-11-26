@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Button, Modal, Form, Col, InputGroup } from "react-bootstrap";
+import { Button, Modal, Form, Col, InputGroup, Badge } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import API from "../../utils/API";
 
-ProductRow.propTypes = {
+ProductsRow.propTypes = {
   product: PropTypes.object.isRequired
 };
 
-function ProductRow(props) {
+function ProductsRow(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -28,11 +28,23 @@ function ProductRow(props) {
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
-        <td>{props.product.name}</td>
+        <td>
+          {props.product.name}
+          {props.product.stock === 0 ? (
+            <Badge
+              pill
+              className="ml-1"
+              variant="danger"
+              style={{ fontFamily: "Arial" }}
+            >
+              Sin existencias
+            </Badge>
+          ) : null}
+        </td>
         <td>{props.product.category.name}</td>
-        <td>{props.product.purchasePrice}</td>
-        <td>{props.product.salePrice}</td>
-        <td>{props.product.stock}</td>
+        <td className="text-center">{"$" + props.product.purchasePrice}</td>
+        <td className="text-center">{"$" + props.product.salePrice}</td>
+        <td className="text-center">{props.product.stock}</td>
       </tr>
 
       <Modal show={show} onHide={handleClose} size="lg">
@@ -392,4 +404,4 @@ function ProductRow(props) {
   );
 }
 
-export default ProductRow;
+export default ProductsRow;

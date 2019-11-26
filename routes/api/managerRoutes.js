@@ -81,6 +81,20 @@ router.put("/products/update", function(req, res) {
 
 // =========================================================================
 // =========================================================================
+// discounts
+
+// fetchDiscountsManager()
+// matches with /api/manager/discounts/all
+router.get("/discounts/all", function(req, res) {
+  // model.Product.find({ discount: { hasDiscount: true } })
+  model.Product.find({ "discount.hasDiscount": true })
+    .sort({ name: 1 })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
+// =========================================================================
+// =========================================================================
 // providers
 
 // fetchProvidersManager()

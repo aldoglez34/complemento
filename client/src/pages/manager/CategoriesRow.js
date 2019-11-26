@@ -43,7 +43,7 @@ function CategoriesRow(props) {
 
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Detalle de la categoría</Modal.Title>
+          <Modal.Title>Detalle de la Categoría</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik
@@ -75,7 +75,7 @@ function CategoriesRow(props) {
                 {/* name */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Nombre</Form.Label>
+                    <Form.Label>Nombre de la Categoría</Form.Label>
                     <Form.Control
                       type="text"
                       name="name"
@@ -93,7 +93,7 @@ function CategoriesRow(props) {
                 {/* productCount */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Productos</Form.Label>
+                    <Form.Label>Cantidad de Productos</Form.Label>
                     <Form.Control
                       disabled
                       type="text"

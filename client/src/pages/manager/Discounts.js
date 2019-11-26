@@ -4,19 +4,19 @@ import ManagerLayout from "./ManagerLayout";
 import * as managerActions from "../../redux-actions/manager";
 import API from "../../utils/API";
 import { Table, Spinner, Row, Col, Button } from "react-bootstrap";
-import ProviderRow from "./ProviderRow";
+import DiscountsRow from "./DiscountsRow";
 
 function Discounts() {
   const dispatch = useDispatch();
 
-  const [providers, setProviders] = useState();
+  const [discounts, setDiscounts] = useState();
 
   useEffect(() => {
-    dispatch(managerActions.setActive("Proveedores"));
+    dispatch(managerActions.setActive("Promociones"));
     dispatch(managerActions.setBackBttn(null));
     // fetch products
-    API.fetchProvidersManager()
-      .then(res => setProviders(res.data))
+    API.fetchDiscountsManager()
+      .then(res => setDiscounts(res.data))
       .catch(err => console.log(err));
   }, []);
 
@@ -25,29 +25,30 @@ function Discounts() {
       <Row className="mb-3">
         <Col md={8} className="d-flex align-items-center">
           <h2 className="mb-0 text-dark">
-            <strong>Proveedores</strong>
+            <strong>Promociones</strong>
           </h2>
         </Col>
         <Col md={4} className="mt-1 mt-md-0 text-md-right">
           <Button variant="success" href="/manager/providers/create">
-            Crear
+            <i className="fas fa-tags mr-2" />
+            Nueva promoción
           </Button>
         </Col>
       </Row>
-      {providers ? (
+      {discounts ? (
         <Table striped bordered hover size="sm" responsive>
           <thead>
             <tr>
-              <th>Nombre</th>
-              <th>RFC</th>
-              <th>Correo</th>
-              <th>Teléfono</th>
-              <th>Dirección</th>
+              <th>Producto</th>
+              <th>Precio de compra</th>
+              <th>Precio de venta</th>
+              <th>Descuento</th>
+              <th>Nuevo precio de venta</th>
             </tr>
           </thead>
           <tbody>
-            {providers.map(p => {
-              return <ProviderRow key={p._id} provider={p} />;
+            {discounts.map(d => {
+              return <DiscountsRow key={d._id} discount={d} />;
             })}
           </tbody>
         </Table>

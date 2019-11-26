@@ -39,7 +39,7 @@ function Providers() {
         <Table striped bordered hover size="sm" responsive>
           <thead>
             <tr>
-              <th>Nombre</th>
+              <th>Nombre del Proveedor</th>
               <th>RFC</th>
               <th>Correo</th>
               <th>Teléfono</th>

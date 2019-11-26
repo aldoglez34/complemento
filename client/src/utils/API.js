@@ -103,6 +103,12 @@ export default {
     return axios.put("/api/manager/products/update", product);
   },
 
+  // discounts
+
+  fetchDiscountsManager: function() {
+    return axios.get("/api/manager/discounts/all");
+  },
+
   // providers
 
   fetchProvidersManager: function() {

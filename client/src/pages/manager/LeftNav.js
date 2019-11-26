@@ -58,7 +58,7 @@ function LeftNav() {
       </Nav.Link>
       <Nav.Link
         className="navLinkStyle"
-        href="/manager/products"
+        href="/manager/discounts"
         active={manager.active === "Promociones" ? true : false}
       >
         <i
