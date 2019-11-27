@@ -15,13 +15,6 @@ function DiscountsRow(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const discountValidation = yup.object({
-    name: yup
-      .string()
-      .min(3, "Nombre demasiado corto")
-      .required("Requerido")
-  });
-
   const calculateNewPrice = (oldPrice, percentage) => {
     return oldPrice * (percentage / 100);
   };
@@ -54,7 +47,6 @@ function DiscountsRow(props) {
               percentage: props.discount.discount.percentage,
               newPrice: props.discount.discount.newPrice
             }}
-            validationSchema={discountValidation}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               console.log(values);

@@ -38,8 +38,8 @@ function Categories() {
         <Table striped bordered hover size="sm" responsive>
           <thead>
             <tr>
-              <th>Nombre de la Categoría</th>
-              <th>Cantidad de Productos</th>
+              <th className="text-center">Nombre</th>
+              <th className="text-center">Productos</th>
             </tr>
           </thead>
           <tbody>

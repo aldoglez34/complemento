@@ -39,11 +39,11 @@ function Discounts() {
         <Table striped bordered hover size="sm" responsive>
           <thead>
             <tr>
-              <th>Producto</th>
-              <th>Precio de compra</th>
-              <th>Precio de venta</th>
-              <th>Descuento</th>
-              <th>Nuevo precio de venta</th>
+              <th className="text-center">Producto</th>
+              <th className="text-center">Precio de compra</th>
+              <th className="text-center">Precio de venta</th>
+              <th className="text-center">Descuento</th>
+              <th className="text-center">Nuevo precio de venta</th>
             </tr>
           </thead>
           <tbody>

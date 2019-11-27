@@ -18,8 +18,21 @@ function ProvidersCreate(props) {
   const providerSchema = yup.object({
     name: yup
       .string()
-      .min(3)
-      .required("Requerido")
+      .min(3, "Nombre demasiado corto")
+      .required("Requerido"),
+    rfc: yup
+      .string()
+      .length(12, "Formato incorrecto")
+      .required("Requerido"),
+    email: yup
+      .string()
+      .email("Formato de email incorrecto")
+      .required("Requerido"),
+    phone: yup
+      .string()
+      .matches(/^[0-9]*$/, "Formato incorrecto")
+      .length(10, "Formato incorrecto"),
+    fullAddress: yup.string()
   });
 
   return (
@@ -27,7 +40,7 @@ function ProvidersCreate(props) {
       <Row className="mb-3">
         <Col>
           <h2 className="mb-0 text-dark">
-            <strong>Crear proveedor</strong>
+            <strong>Crear Proveedor</strong>
           </h2>
         </Col>
       </Row>
@@ -58,9 +71,11 @@ function ProvidersCreate(props) {
             <Form noValidate onSubmit={handleSubmit}>
               {/* name */}
               <Form.Row>
-                <Form.Group as={Col}>
+                <Form.Group as={Col} md={6}>
                   <Form.Label>Nombre</Form.Label>
                   <Form.Control
+                    placeholder="Ingresa el nombre"
+                    maxLength="100"
                     type="text"
                     name="name"
                     value={values.name}
@@ -73,12 +88,12 @@ function ProvidersCreate(props) {
                     component="div"
                   />
                 </Form.Group>
-              </Form.Row>
-              {/* rfc */}
-              <Form.Row>
-                <Form.Group as={Col}>
+                {/* rfc */}
+                <Form.Group as={Col} md={6}>
                   <Form.Label>RFC</Form.Label>
                   <Form.Control
+                    placeholder="Ingresa el RFC"
+                    maxLength="12"
                     type="text"
                     name="rfc"
                     value={values.rfc}
@@ -94,9 +109,11 @@ function ProvidersCreate(props) {
               </Form.Row>
               {/* email */}
               <Form.Row>
-                <Form.Group as={Col}>
+                <Form.Group as={Col} md={6}>
                   <Form.Label>Correo</Form.Label>
                   <Form.Control
+                    placeholder="Ingresa el correo"
+                    maxLength="100"
                     type="text"
                     name="email"
                     value={values.email}
@@ -109,12 +126,12 @@ function ProvidersCreate(props) {
                     component="div"
                   />
                 </Form.Group>
-              </Form.Row>
-              {/* phone */}
-              <Form.Row>
-                <Form.Group as={Col}>
+                {/* phone */}
+                <Form.Group as={Col} md={6}>
                   <Form.Label>Teléfono</Form.Label>
                   <Form.Control
+                    placeholder="Ingresa el teléfono"
+                    maxLength="10"
                     type="text"
                     name="phone"
                     value={values.phone}
@@ -133,6 +150,8 @@ function ProvidersCreate(props) {
                 <Form.Group as={Col}>
                   <Form.Label>Dirección</Form.Label>
                   <Form.Control
+                    placeholder="Ingresa la dirección"
+                    maxLength="250"
                     type="text"
                     name="fullAddress"
                     value={values.fullAddress}
@@ -147,12 +166,7 @@ function ProvidersCreate(props) {
                 </Form.Group>
               </Form.Row>
               {/* create button */}
-              <Button
-                // className="purplebttn"
-                variant="success"
-                type="submit"
-                disabled={isSubmitting}
-              >
+              <Button variant="success" type="submit" disabled={isSubmitting}>
                 Crear
               </Button>
             </Form>

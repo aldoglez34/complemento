@@ -15,19 +15,24 @@ function ProvidersRow(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const providerValidation = yup.object({
+  const providerSchema = yup.object({
     name: yup
       .string()
       .min(3, "Nombre demasiado corto")
       .required("Requerido"),
     rfc: yup
       .string()
-      .length(10, "Formato incorrecto")
+      .length(12, "Formato incorrecto")
       .required("Requerido"),
     email: yup
       .string()
       .email("Formato de email incorrecto")
-      .required("Requerido")
+      .required("Requerido"),
+    phone: yup
+      .string()
+      .matches(/^[0-9]*$/, "Formato incorrecto")
+      .length(10, "Formato incorrecto"),
+    fullAddress: yup.string()
   });
 
   return (
@@ -42,7 +47,7 @@ function ProvidersRow(props) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Detalle del proveedor</Modal.Title>
+          <Modal.Title>Detalle del Proveedor</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik
@@ -54,14 +59,19 @@ function ProvidersRow(props) {
               phone: props.provider.phone,
               fullAddress: props.provider.fullAddress
             }}
-            validationSchema={providerValidation}
+            validationSchema={providerSchema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               API.updateProvider(values)
-                .then(() => {
-                  alert("Proveedor actualizado");
-                  handleClose();
-                  window.location.reload();
+                .then(res => {
+                  if (res.data.errmsg) {
+                    alert("ERROR => " + res.data.errmsg);
+                    setSubmitting(false);
+                  } else {
+                    alert("Proveedor actualizada");
+                    handleClose();
+                    window.location.reload();
+                  }
                 })
                 .catch(err => console.log(err));
             }}
@@ -79,6 +89,7 @@ function ProvidersRow(props) {
                   <Form.Group as={Col}>
                     <Form.Label>Nombre</Form.Label>
                     <Form.Control
+                      maxLength="100"
                       type="text"
                       name="name"
                       value={values.name}
@@ -96,6 +107,7 @@ function ProvidersRow(props) {
                   <Form.Group as={Col}>
                     <Form.Label>RFC</Form.Label>
                     <Form.Control
+                      maxLength="12"
                       type="text"
                       name="rfc"
                       value={values.rfc}
@@ -114,6 +126,7 @@ function ProvidersRow(props) {
                   <Form.Group as={Col}>
                     <Form.Label>Correo</Form.Label>
                     <Form.Control
+                      maxLength="100"
                       type="text"
                       name="email"
                       value={values.email}
@@ -131,6 +144,7 @@ function ProvidersRow(props) {
                   <Form.Group as={Col}>
                     <Form.Label>Teléfono</Form.Label>
                     <Form.Control
+                      maxLength="10"
                       type="text"
                       name="phone"
                       value={values.phone}
@@ -148,6 +162,7 @@ function ProvidersRow(props) {
                   <Form.Group as={Col}>
                     <Form.Label>Dirección</Form.Label>
                     <Form.Control
+                      maxLength="250"
                       type="text"
                       name="fullAddress"
                       value={values.fullAddress}

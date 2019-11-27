@@ -38,7 +38,7 @@ function CategoriesRow(props) {
             </Badge>
           ) : null}
         </td>
-        <td>{props.category.productCount}</td>
+        <td className="text-center">{props.category.productCount}</td>
       </tr>
 
       <Modal show={show} onHide={handleClose} size="lg">
@@ -56,10 +56,15 @@ function CategoriesRow(props) {
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               API.updateCategory(values)
-                .then(() => {
-                  alert("Categoría actualizada");
-                  handleClose();
-                  window.location.reload();
+                .then(res => {
+                  if (res.data.errmsg) {
+                    alert("ERROR => " + res.data.errmsg);
+                    setSubmitting(false);
+                  } else {
+                    alert("Categoría actualizada");
+                    handleClose();
+                    window.location.reload();
+                  }
                 })
                 .catch(err => console.log(err));
             }}
@@ -75,7 +80,7 @@ function CategoriesRow(props) {
                 {/* name */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Nombre de la Categoría</Form.Label>
+                    <Form.Label>Nombre</Form.Label>
                     <Form.Control
                       type="text"
                       name="name"
@@ -93,7 +98,7 @@ function CategoriesRow(props) {
                 {/* productCount */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Cantidad de Productos</Form.Label>
+                    <Form.Label>Productos</Form.Label>
                     <Form.Control
                       disabled
                       type="text"

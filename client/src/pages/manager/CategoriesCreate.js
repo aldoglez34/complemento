@@ -27,7 +27,7 @@ function CategoriesCreate(props) {
       <Row className="mb-3">
         <Col>
           <h2 className="mb-0 text-dark">
-            <strong>Crear categoría</strong>
+            <strong>Nueva Categoría</strong>
           </h2>
         </Col>
       </Row>
@@ -60,7 +60,7 @@ function CategoriesCreate(props) {
                   <Form.Label>Nombre</Form.Label>
                   <Form.Control
                     maxLength="50"
-                    placeholder="Ingresa el nombre de la categoría"
+                    placeholder="Ingresa el nombre de la Categoría"
                     type="text"
                     name="name"
                     value={values.name}

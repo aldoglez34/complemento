@@ -14,7 +14,6 @@ function Providers() {
   useEffect(() => {
     dispatch(managerActions.setActive("Proveedores"));
     dispatch(managerActions.setBackBttn(null));
-    // fetch products
     API.fetchProvidersManager()
       .then(res => setProviders(res.data))
       .catch(err => console.log(err));
@@ -31,7 +30,7 @@ function Providers() {
         <Col md={4} className="mt-1 mt-md-0 text-md-right">
           <Button variant="success" href="/manager/providers/create">
             <i className="fas fa-truck-moving mr-2" />
-            Nuevo proveedor
+            Nuevo Proveedor
           </Button>
         </Col>
       </Row>
@@ -39,11 +38,11 @@ function Providers() {
         <Table striped bordered hover size="sm" responsive>
           <thead>
             <tr>
-              <th>Nombre del Proveedor</th>
-              <th>RFC</th>
-              <th>Correo</th>
-              <th>Teléfono</th>
-              <th>Dirección</th>
+              <th className="text-center">Nombre</th>
+              <th className="text-center">RFC</th>
+              <th className="text-center">Correo</th>
+              <th className="text-center">Teléfono</th>
+              <th className="text-center">Dirección</th>
             </tr>
           </thead>
           <tbody>
