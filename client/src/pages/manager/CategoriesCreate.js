@@ -60,7 +60,7 @@ function CategoriesCreate(props) {
                   <Form.Label>Nombre</Form.Label>
                   <Form.Control
                     maxLength="50"
-                    placeholder="Ingresa el nombre de la Categoría"
+                    placeholder="Ingresa el nombre"
                     type="text"
                     name="name"
                     value={values.name}

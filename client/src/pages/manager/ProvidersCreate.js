@@ -40,7 +40,7 @@ function ProvidersCreate(props) {
       <Row className="mb-3">
         <Col>
           <h2 className="mb-0 text-dark">
-            <strong>Crear Proveedor</strong>
+            <strong>Nuevo Proveedor</strong>
           </h2>
         </Col>
       </Row>
@@ -59,7 +59,7 @@ function ProvidersCreate(props) {
             .then(res => {
               if (res.data.errmsg) alert(res.data.errmsg);
               else {
-                alert("Cliente creado con éxito");
+                alert("Proveedor creado con éxito");
                 props.history.push("/manager/providers");
               }
             })

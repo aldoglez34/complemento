@@ -68,7 +68,10 @@ function DiscountsRow(props) {
                       disabled
                       type="text"
                       name="name"
-                      value={values.name}
+                      value={calculateNewPrice(
+                        values.salePrice,
+                        values.percentage
+                      )}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
