@@ -29,9 +29,9 @@ function Discounts() {
           </h2>
         </Col>
         <Col md={4} className="mt-1 mt-md-0 text-md-right">
-          <Button variant="success" href="/manager/providers/create">
+          <Button variant="success" href="/manager/discounts/create">
             <i className="fas fa-tags mr-2" />
-            Nueva promoción
+            Nueva Promoción
           </Button>
         </Col>
       </Row>

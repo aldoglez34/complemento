@@ -145,7 +145,7 @@ function ProductCreate() {
       <Row className="mb-3">
         <Col>
           <h3 className="mb-0 text-dark">
-            <strong>Nuevo producto</strong>
+            <strong>Nuevo Producto</strong>
           </h3>
         </Col>
       </Row>

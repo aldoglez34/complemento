@@ -93,6 +93,16 @@ router.get("/discounts/all", function(req, res) {
     .catch(err => res.json(err));
 });
 
+// fetchNotDiscountsManager()
+// matches with /api/manager/notdiscounts/all
+router.get("/notdiscounts/all", function(req, res) {
+  // model.Product.find({ discount: { hasDiscount: true } })
+  model.Product.find({ "discount.hasDiscount": false })
+    .sort({ name: 1 })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
 // =========================================================================
 // =========================================================================
 // providers
@@ -150,6 +160,20 @@ router.post("/providers/new", async function(req, res) {
     phone: req.body.phone,
     fullAddress: req.body.fullAddress
   })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
+// =========================================================================
+// =========================================================================
+// clients
+
+// fetchClientsManager()
+// matches with /api/manager/clients/all
+router.get("/clients/all", function(req, res) {
+  model.Client.find({})
+    .select("name firstSurname secondSurname phone email address createdAt")
+    .sort({ name: 1 })
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });

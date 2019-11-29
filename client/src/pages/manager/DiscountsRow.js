@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal, Form, Col, InputGroup } from "react-bootstrap";
 import PropTypes from "prop-types";
-import { Formik, ErrorMessage } from "formik";
-import * as yup from "yup";
-import API from "../../utils/API";
+import { Formik } from "formik";
 
 DiscountsRow.propTypes = {
   discount: PropTypes.object.isRequired
@@ -35,7 +33,7 @@ function DiscountsRow(props) {
 
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Detalle</Modal.Title>
+          <Modal.Title>Detalle de Promoción</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik
@@ -118,7 +116,7 @@ function DiscountsRow(props) {
                   <Form.Group as={Col} md={6}>
                     <Form.Label>Descuento</Form.Label>
                     <Form.Control
-                      name="clientAbr"
+                      name="discount"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       as="select"
@@ -157,14 +155,14 @@ function DiscountsRow(props) {
                     onClick={handleClose}
                     className="mr-2"
                   >
-                    Cancelar
+                    Cerrar
                   </Button>
                   <Button
                     variant="success"
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    Guardar cambios
+                    Guardar
                   </Button>
                 </Form.Group>
               </Form>

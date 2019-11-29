@@ -47,7 +47,7 @@ function ProvidersRow(props) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Detalle del Proveedor</Modal.Title>
+          <Modal.Title>Detalle de Proveedor</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik
@@ -183,14 +183,14 @@ function ProvidersRow(props) {
                     onClick={handleClose}
                     className="mr-2"
                   >
-                    Cancelar
+                    Cerrar
                   </Button>
                   <Button
                     variant="success"
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    Guardar cambios
+                    Guardar
                   </Button>
                 </Form.Group>
               </Form>

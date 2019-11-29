@@ -80,7 +80,7 @@ function LeftNav() {
       </Nav.Link>
       <Nav.Link
         className="navLinkStyle"
-        href="/manager/products"
+        href="/manager/clients"
         active={manager.active === "Clientes" ? true : false}
       >
         <i

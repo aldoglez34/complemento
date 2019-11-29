@@ -109,6 +109,10 @@ export default {
     return axios.get("/api/manager/discounts/all");
   },
 
+  fetchNotDiscountsManager: function() {
+    return axios.get("/api/manager/notdiscounts/all");
+  },
+
   // providers
 
   fetchProvidersManager: function() {
@@ -121,5 +125,11 @@ export default {
 
   newProvider: function(provider) {
     return axios.post("/api/manager/providers/new", provider);
+  },
+
+  // clients (read only)
+
+  fetchClientsManager: function() {
+    return axios.get("/api/manager/clients/all");
   }
 };

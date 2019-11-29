@@ -22,8 +22,10 @@ import Dashboard from "./pages/manager/Dashboard";
 import Categories from "./pages/manager/Categories";
 import CategoriesCreate from "./pages/manager/CategoriesCreate";
 import Discounts from "./pages/manager/Discounts";
+import DiscountsCreate from "./pages/manager/DiscountsCreate";
 import Providers from "./pages/manager/Providers";
 import ProvidersCreate from "./pages/manager/ProvidersCreate";
+import Clients from "./pages/manager/Clients";
 import Products from "./pages/manager/Products";
 import ProductsCreate from "./pages/manager/ProductsCreate";
 
@@ -100,6 +102,11 @@ class App extends Component {
               />
               {/* discounts */}
               <Route exact path="/manager/discounts" component={Discounts} />
+              <Route
+                exact
+                path="/manager/discounts/create"
+                component={DiscountsCreate}
+              />
               {/* providers */}
               <Route exact path="/manager/providers" component={Providers} />
               <Route
@@ -107,7 +114,8 @@ class App extends Component {
                 path="/manager/providers/create"
                 component={ProvidersCreate}
               />
-
+              {/* clients */}
+              <Route exact path="/manager/clients" component={Clients} />
               {/* <Redirect from="/manager" to="/manager/dashboard" /> */}
             </>
           ) : (

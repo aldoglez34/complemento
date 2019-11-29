@@ -165,10 +165,12 @@ function ProvidersCreate(props) {
                   />
                 </Form.Group>
               </Form.Row>
-              {/* create button */}
-              <Button variant="success" type="submit" disabled={isSubmitting}>
-                Crear
-              </Button>
+              {/* buttons */}
+              <Form.Group className="text-right">
+                <Button variant="success" type="submit" disabled={isSubmitting}>
+                  Crear
+                </Button>
+              </Form.Group>
             </Form>
           </>
         )}
