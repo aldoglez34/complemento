@@ -15,6 +15,13 @@ function DiscountsCreateRow(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const discountSchema = yup.object({
+    percentage: yup
+      .mixed()
+      .notOneOf(["Elige..."], "Requerido")
+      .required("Requerido")
+  });
+
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
@@ -41,6 +48,7 @@ function DiscountsCreateRow(props) {
               percentage: "Elige...",
               newPrice: 0
             }}
+            validationSchema={discountSchema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               //   API.updateCategory(values)
