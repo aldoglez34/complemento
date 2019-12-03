@@ -5,7 +5,7 @@ import ProductCard from "../components/ProductCard";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
 import MyCarousel from "../components/MyCarousel";
-import API from "../utils/API";
+import API from "../../utils/API";
 
 class Home extends Component {
   state = {

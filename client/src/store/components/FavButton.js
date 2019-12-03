@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
-import API from "../utils/API";
+import API from "../../utils/API";
 import * as clientActions from "../../redux-actions/client";
 
 FavButton.propTypes = {

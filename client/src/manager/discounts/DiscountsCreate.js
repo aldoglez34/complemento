@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ManagerLayout from "../ManagerLayout";
-import { Table, Row, Col, Button, Form, Spinner } from "react-bootstrap";
-import { Formik } from "formik";
+import { Table, Spinner } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import API from "../../../utils/API";
-import * as managerActions from "../../../redux-actions/manager";
+import API from "../../utils/API";
+import * as managerActions from "../../redux-actions/manager";
 import DiscountsCreateRow from "./DiscountsCreateRow";
 
 function DiscountsCreate(props) {
@@ -21,14 +20,7 @@ function DiscountsCreate(props) {
   }, []);
 
   return (
-    <ManagerLayout>
-      <Row className="mb-3">
-        <Col>
-          <h2 className="mb-0 text-dark">
-            <strong>Nueva Promoción</strong>
-          </h2>
-        </Col>
-      </Row>
+    <ManagerLayout title="Nueva promoción" button={null}>
       {notdiscounts ? (
         <Table striped bordered hover size="sm" responsive>
           <thead>

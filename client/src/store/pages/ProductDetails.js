@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Container, Row, Col, Image, Spinner } from "react-bootstrap";
 import Layout from "./Layout";
 import MyBreadcrumb from "../components/MyBreadcrumb";
-import API from "../utils/API";
+import API from "../../utils/API";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
 import FavButton from "../components/FavButton";

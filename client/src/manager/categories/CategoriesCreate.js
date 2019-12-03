@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import ManagerLayout from "../ManagerLayout";
-import { Row, Col, Button, Form } from "react-bootstrap";
+import { Col, Button, Form } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
-import API from "../../../utils/API";
-import * as managerActions from "../../../redux-actions/manager";
+import API from "../../utils/API";
+import * as managerActions from "../../redux-actions/manager";
 
 function CategoriesCreate(props) {
   const dispatch = useDispatch();
@@ -27,15 +27,7 @@ function CategoriesCreate(props) {
   });
 
   return (
-    <ManagerLayout>
-      <Row className="mb-1">
-        <Col>
-          <h1 className="mb-0" style={{ color: "#264341" }}>
-            Nueva Categoría
-          </h1>
-        </Col>
-      </Row>
-      <hr className="myDivider" />
+    <ManagerLayout title="Nueva Categoría" button={null}>
       <Formik
         initialValues={{
           name: ""

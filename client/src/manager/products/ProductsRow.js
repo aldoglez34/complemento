@@ -3,7 +3,7 @@ import { Button, Modal, Form, Col, InputGroup, Badge } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-import API from "../../../utils/API";
+import API from "../../utils/API";
 
 ProductsRow.propTypes = {
   product: PropTypes.object.isRequired

@@ -8,7 +8,7 @@ import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 import "./store.scss";
-import API from "../utils/API";
+import API from "../../utils/API";
 
 function Store() {
   const breadcrumbRoute = () => {

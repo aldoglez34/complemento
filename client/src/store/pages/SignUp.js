@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import * as clientActions from "../redux-actions/client";
+import * as clientActions from "../../redux-actions/client";
 import { Container, Col, Form, Button } from "react-bootstrap";
 import Layout from "./Layout";
 import MyBreadcrumb from "../components/MyBreadcrumb";
@@ -8,7 +8,7 @@ import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
-import API from "../utils/API";
+import API from "../../utils/API";
 import fire from "../../firebase/fire";
 
 function SignUp(props) {

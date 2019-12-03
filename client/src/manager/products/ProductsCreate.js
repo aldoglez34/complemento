@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ManagerLayout from "../ManagerLayout";
-import { Row, Col, Button, Form, InputGroup, Spinner } from "react-bootstrap";
+import { Col, Button, Form, InputGroup, Spinner } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
-import API from "../../../utils/API";
-import * as managerActions from "../../../redux-actions/manager";
+import API from "../../utils/API";
+import * as managerActions from "../../redux-actions/manager";
 
 function ProductCreate() {
   const [categories, setCategories] = useState();
@@ -50,14 +50,7 @@ function ProductCreate() {
   });
 
   return (
-    <ManagerLayout>
-      <Row className="mb-3">
-        <Col>
-          <h3 className="mb-0 text-dark">
-            <strong>Nuevo Producto</strong>
-          </h3>
-        </Col>
-      </Row>
+    <ManagerLayout title="Nuevo Producto" button={null}>
       {categories && providers ? (
         <Formik
           initialValues={{

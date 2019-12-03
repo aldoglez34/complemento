@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { Container, Row, Col, Image, Form, Button } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-import fb from "../../firebase/fb";
+import fb from "../firebase/fire";
 import { useDispatch } from "react-redux";
-import * as managerActions from "../../redux-actions/manager";
-import API from "../../utils/API";
+import * as managerActions from "../redux-actions/manager";
+import API from "../utils/API";
 
 function Login(props) {
   const dispatch = useDispatch();

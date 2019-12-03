@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import ManagerLayout from "../ManagerLayout";
-import * as managerActions from "../../../redux-actions/manager";
-import { Table, Spinner, Row, Col } from "react-bootstrap";
+import * as managerActions from "../../redux-actions/manager";
+import { Table, Spinner } from "react-bootstrap";
 import ClientsRow from "./ClientsRow";
-import API from "../../../utils/API";
+import API from "../../utils/API";
 
 function Clients() {
   const dispatch = useDispatch();
@@ -20,14 +20,7 @@ function Clients() {
   }, []);
 
   return (
-    <ManagerLayout>
-      <Row className="mb-3">
-        <Col md={8} className="d-flex align-items-center">
-          <h2 className="mb-0 text-dark">
-            <strong>Clientes</strong>
-          </h2>
-        </Col>
-      </Row>
+    <ManagerLayout title="Clientes" button={null}>
       {clients ? (
         <Table striped bordered hover size="sm" responsive>
           <thead>

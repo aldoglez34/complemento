@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import ManagerLayout from "../ManagerLayout";
-import * as managerActions from "../../../redux-actions/manager";
-import API from "../../../utils/API";
+import * as managerActions from "../../redux-actions/manager";
+import API from "../../utils/API";
 import { Table, Spinner, Row, Col, Button } from "react-bootstrap";
 import ProvidersRow from "./ProvidersRow";
 
@@ -20,20 +20,10 @@ function Providers() {
   }, []);
 
   return (
-    <ManagerLayout>
-      <Row className="mb-3">
-        <Col md={8} className="d-flex align-items-center">
-          <h2 className="mb-0 text-dark">
-            <strong>Proveedores</strong>
-          </h2>
-        </Col>
-        <Col md={4} className="mt-1 mt-md-0 text-md-right">
-          <Button variant="success" href="/manager/providers/create">
-            <i className="fas fa-truck-moving mr-2" />
-            Nuevo Proveedor
-          </Button>
-        </Col>
-      </Row>
+    <ManagerLayout
+      title="Proveedores"
+      button={{ text: "Nuevo Proveedor", to: "/manager/providers/create" }}
+    >
       {providers ? (
         <Table striped bordered hover size="sm" responsive>
           <thead>

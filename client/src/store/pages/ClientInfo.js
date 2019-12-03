@@ -1,14 +1,14 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Form, Col, Button } from "react-bootstrap";
-import API from "../utils/API";
+import API from "../../utils/API";
 import Layout from "./Layout";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 import ScrollButton from "../components/ScrollButton";
 import HelpButton from "../components/HelpButton";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
-import * as clientActions from "../redux-actions/client";
+import * as clientActions from "../../redux-actions/client";
 
 function ClientInfo() {
   const client = useSelector(state => state.client);

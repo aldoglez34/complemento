@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Layout from "./Layout";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 import { Container, Spinner } from "react-bootstrap";
-import API from "../utils/API";
+import API from "../../utils/API";
 import ProductCard from "../components/ProductCard";
 
 function ClientFavorites() {

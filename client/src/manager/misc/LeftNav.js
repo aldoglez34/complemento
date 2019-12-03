@@ -1,15 +1,15 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Nav, Button, Image } from "react-bootstrap";
-import fb from "../../../firebase/fb";
-import * as managerActions from "../../../redux-actions/manager";
+import fire from "../../firebase/fire";
+import * as managerActions from "../../redux-actions/manager";
 
 function LeftNav() {
   const manager = useSelector(state => state.manager);
   const dispatch = useDispatch();
 
   const logout = () => {
-    fb.auth()
+    fire.auth()
       .signOut()
       .then(() => dispatch(managerActions.logoutManager()))
       .catch(error => console.log(error));

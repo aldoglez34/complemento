@@ -19,17 +19,17 @@ import NoMatch from "./store/pages/NoMatch";
 import ClientInfo from "./store/pages/ClientInfo";
 import ClientFavorites from "./store/pages/ClientFavorites";
 // manager
-import Login from "./store/pages/Login";
-import Dashboard from "./store/pages/Dashboard";
-import Categories from "./store/pages/categories/Categories";
-import CategoriesCreate from "./store/pages/categories/CategoriesCreate";
-import Discounts from "./store/pages/discounts/Discounts";
-import DiscountsCreate from "./store/pages/discounts/DiscountsCreate";
-import Providers from "./store/pages/providers/Providers";
-import ProvidersCreate from "./store/pages/providers/ProvidersCreate";
-import Clients from "./store/pages/clients/Clients";
-import Products from "./store/pages/products/Products";
-import ProductsCreate from "./store/pages/products/ProductsCreate";
+import Login from "./manager/Login";
+import Dashboard from "./manager/Dashboard";
+import Categories from "./manager/categories/Categories";
+import CategoriesCreate from "./manager/categories/CategoriesCreate";
+import Discounts from "./manager/discounts/Discounts";
+import DiscountsCreate from "./manager/discounts/DiscountsCreate";
+import Providers from "./manager/providers/Providers";
+import ProvidersCreate from "./manager/providers/ProvidersCreate";
+import Clients from "./manager/clients/Clients";
+import Products from "./manager/products/Products";
+import ProductsCreate from "./manager/products/ProductsCreate";
 
 function App() {
   const client = useSelector(state => state.client);

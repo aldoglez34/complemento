@@ -12,7 +12,7 @@ import {
   Card
 } from "react-bootstrap";
 import Layout from "./Layout";
-import API from "../utils/API";
+import API from "../../utils/API";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 
 function Cart() {

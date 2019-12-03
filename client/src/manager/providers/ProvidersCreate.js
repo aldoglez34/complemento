@@ -4,8 +4,8 @@ import { Row, Col, Button, Form } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
-import API from "../../../utils/API";
-import * as managerActions from "../../../redux-actions/manager";
+import API from "../../utils/API";
+import * as managerActions from "../../redux-actions/manager";
 
 function ProvidersCreate(props) {
   const dispatch = useDispatch();
@@ -36,14 +36,7 @@ function ProvidersCreate(props) {
   });
 
   return (
-    <ManagerLayout>
-      <Row className="mb-3">
-        <Col>
-          <h2 className="mb-0 text-dark">
-            <strong>Nuevo Proveedor</strong>
-          </h2>
-        </Col>
-      </Row>
+    <ManagerLayout title="Nuevo Proveedor" button={null}>
       <Formik
         initialValues={{
           name: "",
