@@ -9,7 +9,7 @@ import { Formik, ErrorMessage } from "formik";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
 import API from "../utils/API";
-import fb from "../firebase/fb";
+import fire from "../../firebase/fire";
 
 function SignUp(props) {
   const breadcrumbRoutes = [
@@ -100,7 +100,8 @@ function SignUp(props) {
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
             // sign up
-            fb.auth()
+            fire
+              .auth()
               .createUserWithEmailAndPassword(values.email, values.password)
               .then(res => {
                 // set the uid from the newly created user in firebase in the values object
@@ -117,7 +118,7 @@ function SignUp(props) {
                       })
                       .catch(err => {
                         // if there's a problem fetching new client, logout from firebase
-                        fb.auth()
+                        fire.auth()
                           .signOut()
                           .then()
                           .catch(error => console.log(error));
@@ -128,7 +129,7 @@ function SignUp(props) {
                   })
                   .catch(err => {
                     // if there's a problem creating new client, logout from firebase
-                    fb.auth()
+                    fire.auth()
                       .signOut()
                       .then()
                       .catch(error => console.log(error));

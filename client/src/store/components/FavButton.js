@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
 import API from "../utils/API";
-import * as clientActions from "../redux-actions/client";
+import * as clientActions from "../../redux-actions/client";
 
 FavButton.propTypes = {
   block: PropTypes.bool.isRequired,

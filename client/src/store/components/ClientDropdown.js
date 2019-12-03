@@ -1,15 +1,15 @@
 import React from "react";
 import { Dropdown, Nav, NavItem } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import fb from "../firebase/fb";
-import * as clientActions from "../redux-actions/client";
+import fire from "../../firebase/fire";
+import * as clientActions from "../../redux-actions/client";
 
 function ClientDropdown() {
   const dispatch = useDispatch();
   const client = useSelector(state => state.client);
 
   const logout = () => {
-    fb.auth()
+    fire.auth()
       .signOut()
       .then(() => dispatch(clientActions.logoutClient()))
       .catch(error => console.log(error));

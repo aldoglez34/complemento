@@ -39,7 +39,7 @@ function App() {
 
   useEffect(() => {
     // if the auth state changes, logout the client or manager
-    firebase.auth().onAuthStateChanged(user => {
+    fire.auth().onAuthStateChanged(user => {
       if (!user) {
         dispatch(clientActions.logoutClient());
         dispatch(managerActions.logoutManager());

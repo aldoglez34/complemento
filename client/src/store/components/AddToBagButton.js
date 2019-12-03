@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import * as cartActions from "../redux-actions/cart";
+import * as cartActions from "../../redux-actions/cart";
 import { Button, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
 
