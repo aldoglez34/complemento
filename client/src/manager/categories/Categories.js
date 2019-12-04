@@ -25,25 +25,25 @@ function Categories() {
       button={{ text: "Nueva Categoría", to: "/manager/categories/create" }}
     >
       {categories ? (
-        <Table striped hover size="sm" responsive variant="light">
-          <thead>
-            <tr>
-              <th className="text-center border-0">Nombre</th>
-              <th className="text-center border-0">Contador de Productos</th>
-            </tr>
-          </thead>
-          <tbody>
-            {categories.length ? (
-              categories.map(c => {
-                return <CategoriesRow key={c._id} category={c} />;
-              })
-            ) : (
-              <td colSpan="2" className="text-center">
-                <em>No hay nada aquí</em>
-              </td>
-            )}
-          </tbody>
-        </Table>
+        categories.length ? (
+          <>
+            <Table striped hover size="sm" responsive variant="white">
+              <thead>
+                <tr>
+                  <th className="text-center border-0">Nombre</th>
+                  <th className="text-center border-0">Productos</th>
+                </tr>
+              </thead>
+              <tbody>
+                {categories.map(c => {
+                  return <CategoriesRow key={c._id} category={c} />;
+                })}
+              </tbody>
+            </Table>
+          </>
+        ) : (
+          <em>No hay nada aquí</em>
+        )
       ) : (
         <div className="text-center my-4">
           <Spinner animation="grow" role="status" className="spinnerStyle" />

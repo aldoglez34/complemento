@@ -17,7 +17,7 @@ const ProductSchema = new Schema({
     trim: true,
     required: "Contenido requerido"
   },
-  description: {
+  comments: {
     type: String,
     trim: true
   },

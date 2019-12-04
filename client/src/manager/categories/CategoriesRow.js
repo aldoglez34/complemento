@@ -32,12 +32,7 @@ function CategoriesRow(props) {
         <td>
           {props.category.name}
           {props.category.productCount === 0 ? (
-            <Badge
-              pill
-              className="ml-1"
-              variant="danger"
-              style={{ fontFamily: "Arial" }}
-            >
+            <Badge className="ml-1" variant="warning">
               Vacía
             </Badge>
           ) : null}
@@ -86,7 +81,12 @@ function CategoriesRow(props) {
                 {/* name */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Nombre</Form.Label>
+                    <Form.Label>
+                      Nombre
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <Form.Control
                       maxLength="80"
                       type="text"
@@ -108,7 +108,7 @@ function CategoriesRow(props) {
                 {/* productCount */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Contador de Productos</Form.Label>
+                    <Form.Label>Productos</Form.Label>
                     <Form.Control
                       disabled
                       type="text"

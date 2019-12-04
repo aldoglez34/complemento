@@ -15,7 +15,7 @@ function ProvidersRow(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const providerSchema = yup.object({
+  const yupschema = yup.object({
     name: yup
       .string()
       .min(3, "Nombre demasiado corto")
@@ -26,13 +26,13 @@ function ProvidersRow(props) {
       .required("Requerido"),
     email: yup
       .string()
-      .email("Formato de email incorrecto")
+      .email("Formato de correo incorrecto")
       .required("Requerido"),
     phone: yup
       .string()
-      .matches(/^[0-9]*$/, "Formato incorrecto")
+      .matches(/^[0-9]*$/, "Sólo números")
       .length(10, "Formato incorrecto"),
-    fullAddress: yup.string()
+    fullAddress: yup.string().min(3, "Dirección demasiado corta")
   });
 
   return (
@@ -59,7 +59,7 @@ function ProvidersRow(props) {
               phone: props.provider.phone,
               fullAddress: props.provider.fullAddress
             }}
-            validationSchema={providerSchema}
+            validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               API.updateProvider(values)
@@ -68,7 +68,7 @@ function ProvidersRow(props) {
                     alert("ERROR => " + res.data.errmsg);
                     setSubmitting(false);
                   } else {
-                    alert("Proveedor actualizada");
+                    alert("Proveedor actualizado");
                     handleClose();
                     window.location.reload();
                   }
@@ -78,6 +78,8 @@ function ProvidersRow(props) {
           >
             {({
               values,
+              errors,
+              touched,
               handleChange,
               handleBlur,
               handleSubmit,
@@ -89,12 +91,15 @@ function ProvidersRow(props) {
                   <Form.Group as={Col}>
                     <Form.Label>Nombre</Form.Label>
                     <Form.Control
-                      maxLength="100"
+                      maxLength="150"
                       type="text"
+                      placeholder="Ingresa el nombre"
                       name="name"
                       value={values.name}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      isValid={touched.name && !errors.name}
+                      isInvalid={touched.name && !!errors.name}
                     />
                     <ErrorMessage
                       className="text-danger"
@@ -103,17 +108,20 @@ function ProvidersRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* rfc */}
                 <Form.Row>
                   <Form.Group as={Col}>
                     <Form.Label>RFC</Form.Label>
                     <Form.Control
                       maxLength="12"
                       type="text"
+                      placeholder="Ingresa el RFC"
                       name="rfc"
                       value={values.rfc}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      style={{ textTransform: "uppercase" }}
+                      isValid={touched.rfc && !errors.rfc}
+                      isInvalid={touched.rfc && !!errors.rfc}
                     />
                     <ErrorMessage
                       className="text-danger"
@@ -122,16 +130,20 @@ function ProvidersRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* email */}
                 <Form.Row>
                   <Form.Group as={Col}>
                     <Form.Label>Correo</Form.Label>
                     <Form.Control
                       maxLength="100"
                       type="text"
+                      placeholder="Ingresa el correo"
                       name="email"
                       value={values.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      isValid={touched.email && !errors.email}
+                      isInvalid={touched.email && !!errors.email}
                     />
                     <ErrorMessage
                       className="text-danger"
@@ -140,16 +152,20 @@ function ProvidersRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* teléfono */}
                 <Form.Row>
                   <Form.Group as={Col}>
                     <Form.Label>Teléfono</Form.Label>
                     <Form.Control
                       maxLength="10"
                       type="text"
+                      placeholder="Ingresa el teléfono"
                       name="phone"
                       value={values.phone}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      isValid={touched.phone && !errors.phone}
+                      isInvalid={touched.phone && !!errors.phone}
                     />
                     <ErrorMessage
                       className="text-danger"
@@ -158,16 +174,20 @@ function ProvidersRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* dirección */}
                 <Form.Row>
                   <Form.Group as={Col}>
                     <Form.Label>Dirección</Form.Label>
                     <Form.Control
-                      maxLength="250"
+                      maxLength="200"
                       type="text"
+                      placeholder="Ingresa la dirección"
                       name="fullAddress"
                       value={values.fullAddress}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      isValid={touched.fullAddress && !errors.fullAddress}
+                      isInvalid={touched.fullAddress && !!errors.fullAddress}
                     />
                     <ErrorMessage
                       className="text-danger"

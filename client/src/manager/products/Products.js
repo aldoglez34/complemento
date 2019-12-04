@@ -14,7 +14,6 @@ function Products() {
   useEffect(() => {
     dispatch(managerActions.setActive("Productos"));
     dispatch(managerActions.setBackBttn(null));
-    // fetch products
     API.fetchProductsManager()
       .then(res => setProducts(res.data))
       .catch(err => console.log(err));
@@ -26,22 +25,28 @@ function Products() {
       button={{ text: "Nuevo Producto", to: "/manager/products/create" }}
     >
       {products ? (
-        <Table striped bordered hover size="sm" responsive>
-          <thead>
-            <tr>
-              <th className="text-center">Nombre</th>
-              <th className="text-center">Categoría</th>
-              <th className="text-center">Precio de compra</th>
-              <th className="text-center">Precio de venta</th>
-              <th className="text-center">Existencia</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map(p => {
-              return <ProductsRow key={p._id} product={p} />;
-            })}
-          </tbody>
-        </Table>
+        products.length ? (
+          <>
+            <Table striped hover size="sm" responsive variant="white">
+              <thead>
+                <tr>
+                  <th className="text-center border-0">Nombre</th>
+                  <th className="text-center border-0">Categoría</th>
+                  <th className="text-center border-0">Precio de compra</th>
+                  <th className="text-center border-0">Precio de venta</th>
+                  <th className="text-center border-0">Existencia</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map(p => {
+                  return <ProductsRow key={p._id} product={p} />;
+                })}
+              </tbody>
+            </Table>
+          </>
+        ) : (
+          <em>No hay nada aquí</em>
+        )
       ) : (
         <div className="text-center my-4">
           <Spinner animation="grow" role="status" className="spinnerStyle" />

@@ -25,7 +25,9 @@ function ClientsRow(props) {
 
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Detalle de Cliente</Modal.Title>
+          <Modal.Title>
+            Detalle de Cliente <small>(sólo lectura)</small>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik
@@ -38,30 +40,9 @@ function ClientsRow(props) {
               phone: props.client.phone,
               createdAt: props.client.createdAt
             }}
-            onSubmit={(values, { setSubmitting }) => {
-              setSubmitting(true);
-              //   API.updateCategory(values)
-              //     .then(res => {
-              //       if (res.data.errmsg) {
-              //         alert("ERROR => " + res.data.errmsg);
-              //         setSubmitting(false);
-              //       } else {
-              //         alert("Categoría actualizada");
-              //         handleClose();
-              //         window.location.reload();
-              //       }
-              //     })
-              //     .catch(err => console.log(err));
-            }}
           >
-            {({
-              values,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              isSubmitting
-            }) => (
-              <Form noValidate onSubmit={handleSubmit}>
+            {({ values, handleChange, handleBlur, handleSubmit }) => (
+              <Form noValidate>
                 {/* name */}
                 <Form.Row>
                   <Form.Group as={Col} md={4}>

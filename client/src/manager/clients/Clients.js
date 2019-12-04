@@ -22,22 +22,28 @@ function Clients() {
   return (
     <ManagerLayout title="Clientes" button={null}>
       {clients ? (
-        <Table striped bordered hover size="sm" responsive>
-          <thead>
-            <tr>
-              <th className="text-center">Nombre</th>
-              <th className="text-center">Apellido paterno</th>
-              <th className="text-center">Apellido materno</th>
-              <th className="text-center">Email</th>
-              <th className="text-center">Fecha de registro</th>
-            </tr>
-          </thead>
-          <tbody>
-            {clients.map(c => {
-              return <ClientsRow key={c._id} client={c} />;
-            })}
-          </tbody>
-        </Table>
+        clients.length ? (
+          <>
+            <Table striped hover size="sm" responsive variant="white">
+              <thead>
+                <tr>
+                  <th className="text-center border-0">Nombre(s)</th>
+                  <th className="text-center border-0">Apellido paterno</th>
+                  <th className="text-center border-0">Apellido materno</th>
+                  <th className="text-center border-0">Email</th>
+                  <th className="text-center border-0">Fecha de registro</th>
+                </tr>
+              </thead>
+              <tbody>
+                {clients.map(c => {
+                  return <ClientsRow key={c._id} client={c} />;
+                })}
+              </tbody>
+            </Table>
+          </>
+        ) : (
+          <em>No hay nada aquí</em>
+        )
       ) : (
         <div className="text-center my-4">
           <Spinner animation="grow" role="status" className="spinnerStyle" />

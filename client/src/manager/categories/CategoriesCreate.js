@@ -57,38 +57,41 @@ function CategoriesCreate(props) {
           handleSubmit,
           isSubmitting
         }) => (
-          <>
-            <Form noValidate onSubmit={handleSubmit}>
-              {/* name */}
-              <Form.Row>
-                <Form.Group as={Col}>
-                  <Form.Label>Nombre</Form.Label>
-                  <Form.Control
-                    maxLength="80"
-                    placeholder="Ingresa el nombre"
-                    type="text"
-                    name="name"
-                    value={values.name}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isValid={touched.name && !errors.name}
-                    isInvalid={touched.name && !!errors.name}
-                  />
-                  <ErrorMessage
-                    className="text-danger"
-                    name="name"
-                    component="div"
-                  />
-                </Form.Group>
-              </Form.Row>
-              {/* buttons */}
-              <Form.Group className="text-right">
-                <Button variant="success" type="submit" disabled={isSubmitting}>
-                  Crear
-                </Button>
+          <Form noValidate onSubmit={handleSubmit}>
+            {/* name */}
+            <Form.Row>
+              <Form.Group as={Col}>
+                <Form.Label>
+                  Nombre
+                  <span title="Requerido" className="text-danger">
+                    *
+                  </span>
+                </Form.Label>
+                <Form.Control
+                  maxLength="80"
+                  placeholder="Ingresa el nombre"
+                  type="text"
+                  name="name"
+                  value={values.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isValid={touched.name && !errors.name}
+                  isInvalid={touched.name && !!errors.name}
+                />
+                <ErrorMessage
+                  className="text-danger"
+                  name="name"
+                  component="div"
+                />
               </Form.Group>
-            </Form>
-          </>
+            </Form.Row>
+            {/* buttons */}
+            <Form.Group className="text-right">
+              <Button variant="success" type="submit" disabled={isSubmitting}>
+                Crear
+              </Button>
+            </Form.Group>
+          </Form>
         )}
       </Formik>
     </ManagerLayout>

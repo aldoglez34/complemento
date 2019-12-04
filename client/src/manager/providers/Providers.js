@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import ManagerLayout from "../ManagerLayout";
 import * as managerActions from "../../redux-actions/manager";
 import API from "../../utils/API";
-import { Table, Spinner, Row, Col, Button } from "react-bootstrap";
+import { Table, Spinner } from "react-bootstrap";
 import ProvidersRow from "./ProvidersRow";
 
 function Providers() {
@@ -25,22 +25,28 @@ function Providers() {
       button={{ text: "Nuevo Proveedor", to: "/manager/providers/create" }}
     >
       {providers ? (
-        <Table striped bordered hover size="sm" responsive>
-          <thead>
-            <tr>
-              <th className="text-center">Nombre</th>
-              <th className="text-center">RFC</th>
-              <th className="text-center">Correo</th>
-              <th className="text-center">Teléfono</th>
-              <th className="text-center">Dirección</th>
-            </tr>
-          </thead>
-          <tbody>
-            {providers.map(p => {
-              return <ProvidersRow key={p._id} provider={p} />;
-            })}
-          </tbody>
-        </Table>
+        providers.length ? (
+          <>
+            <Table striped hover size="sm" responsive variant="white">
+              <thead>
+                <tr>
+                  <th className="text-center border-0">Nombre</th>
+                  <th className="text-center border-0">RFC</th>
+                  <th className="text-center border-0">Correo</th>
+                  <th className="text-center border-0">Teléfono</th>
+                  <th className="text-center border-0">Dirección</th>
+                </tr>
+              </thead>
+              <tbody>
+                {providers.map(p => {
+                  return <ProvidersRow key={p._id} provider={p} />;
+                })}
+              </tbody>
+            </Table>
+          </>
+        ) : (
+          <em>No hay nada aquí</em>
+        )
       ) : (
         <div className="text-center my-4">
           <Spinner animation="grow" role="status" className="spinnerStyle" />
