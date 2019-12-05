@@ -34,6 +34,8 @@ function Products() {
                   <th className="text-center border-0">Categoría</th>
                   <th className="text-center border-0">Precio de compra</th>
                   <th className="text-center border-0">Precio de venta</th>
+                  <th className="text-center border-0">Utilidad</th>
+                  <th className="text-center border-0">Unidades vendidas</th>
                   <th className="text-center border-0">Existencia</th>
                 </tr>
               </thead>

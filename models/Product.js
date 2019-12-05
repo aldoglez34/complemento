@@ -30,21 +30,23 @@ const ProductSchema = new Schema({
     required: "Precio de venta requerido"
   },
   unitsSold: {
-    type: Number
+    type: Number,
+    default: 0
   },
   stock: {
-    type: Number
+    type: Number,
+    default: 1
   },
   photo: {
     type: String,
-    default: "https://loremflickr.com/190/290"
+    default: "placeholder.jpg"
   },
   priority: {
     type: Boolean,
     default: false
   },
-  sufferings: [String],
-  ingredients: [String],
+  sufferings: [{ type: String, trim: true }],
+  ingredients: [{ type: String, trim: true }],
   discount: {
     hasDiscount: {
       type: Boolean,

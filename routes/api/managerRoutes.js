@@ -79,6 +79,30 @@ router.put("/products/update", function(req, res) {
     .catch(err => res.json(err));
 });
 
+// newProductManager()
+// matches with /api/manager/products/new
+router.post("/products/new", function(req, res) {
+  model.Product.create({
+    name: req.body.name,
+    brand: req.body.brand,
+    content: req.body.content,
+    comments: req.body.comments,
+    purchasePrice: req.body.purchasePrice,
+    salePrice: req.body.salePrice,
+    stock: req.body.initialStock,
+    priority: req.body.priority,
+    sufferings: req.body.sufferings.split(","),
+    ingredients: req.body.ingredients.split(","),
+    discount: {
+      hasDiscount: false
+    },
+    provider: req.body.provider,
+    category: req.body.category
+  })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
 // =========================================================================
 // =========================================================================
 // discounts

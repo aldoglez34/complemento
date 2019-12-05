@@ -25,6 +25,7 @@ const ManagerSchema = new Schema({
   },
   email: {
     type: String,
+    trim: true,
     unique: true,
     required: "Correo requerido",
     match: [/.+@.+\..+/, "Formato de correo inválido"]

@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import API from "../../utils/API";
 import * as managerActions from "../../redux-actions/manager";
 
-function ProductCreate() {
+function ProductCreate(props) {
   const [categories, setCategories] = useState();
   const [providers, setProviders] = useState();
   const dispatch = useDispatch();
@@ -30,12 +30,20 @@ function ProductCreate() {
       .required("Requerido"),
     purchasePrice: yup
       .number()
-      .positive()
+      .positive("Debe ser positivo")
       .required("Requerido"),
     salePrice: yup
       .number()
-      .positive()
+      .positive("Debe ser positivo")
       .moreThan(yup.ref("purchasePrice"), "Debe ser mayor al precio de compra")
+      .required("Requerido"),
+    content: yup
+      .string()
+      .min(3, "Nombre demasiado corto")
+      .required("Requerido"),
+    brand: yup
+      .string()
+      .min(3, "Nombre demasiado corto")
       .required("Requerido"),
     category: yup
       .mixed()
@@ -45,22 +53,15 @@ function ProductCreate() {
       .mixed()
       .notOneOf(["Elige..."], "Requerido")
       .required("Requerido"),
-    brand: yup
-      .string()
-      .min(3, "Nombre demasiado corto")
-      .required("Requerido"),
-    content: yup
-      .string()
-      .min(3, "Nombre demasiado corto")
-      .required("Requerido"),
     ingredients: yup.string(),
     sufferings: yup.string(),
-
-    comments: yup.string().min(3, "Demasiado corto"),
     initialStock: yup
       .number()
-      .positive()
-      .required("Requerido")
+      .positive("Debe ser positivo")
+      .required("Requerido"),
+    photo: yup.string(),
+    priority: yup.string(),
+    comments: yup.string()
   });
 
   return (
@@ -72,22 +73,32 @@ function ProductCreate() {
               name: "",
               purchasePrice: "",
               salePrice: "",
+              content: "",
+              brand: "",
               category: "Elige...",
               provider: "Elige...",
-              brand: "",
-              content: "",
               ingredients: "",
               sufferings: "",
-              comments:
-                "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda",
               initialStock: "1",
-              priority: "No"
+              photo: "",
+              priority: false,
+              comments:
+                "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda."
             }}
             validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
+              API.newProductManager(values)
+                .then(res => {
+                  if (res.data.errmsg) {
+                    alert("ERROR => " + res.data.errmsg);
+                    setSubmitting(false);
+                  } else {
+                    alert("Producto creado");
+                    props.history.push("/manager/products");
+                  }
+                })
+                .catch(err => console.log(err));
             }}
           >
             {({
@@ -205,6 +216,58 @@ function ProductCreate() {
                     </InputGroup>
                   </Form.Group>
                 </Form.Row>
+                {/* content */}
+                <Form.Row>
+                  <Form.Group as={Col} md={6}>
+                    <Form.Label>
+                      Contenido
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
+                    <Form.Control
+                      maxLength="80"
+                      type="text"
+                      placeholder="Ingresa el contenido"
+                      name="content"
+                      value={values.content}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.content && !errors.content}
+                      isInvalid={touched.content && !!errors.content}
+                    />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="content"
+                      component="div"
+                    />
+                  </Form.Group>
+                  {/* brand */}
+                  <Form.Group as={Col} md={6}>
+                    <Form.Label>
+                      Marca
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
+                    <Form.Control
+                      maxLength="80"
+                      type="text"
+                      placeholder="Ingresa la marca"
+                      name="brand"
+                      value={values.brand}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.brand && !errors.brand}
+                      isInvalid={touched.brand && !!errors.brand}
+                    />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="brand"
+                      component="div"
+                    />
+                  </Form.Group>
+                </Form.Row>
                 {/* category */}
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
@@ -272,61 +335,9 @@ function ProductCreate() {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* brand */}
-                <Form.Row>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>
-                      Marca
-                      <span title="Requerido" className="text-danger">
-                        *
-                      </span>
-                    </Form.Label>
-                    <Form.Control
-                      maxLength="80"
-                      type="text"
-                      placeholder="Ingresa la marca"
-                      name="brand"
-                      value={values.brand}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.brand && !errors.brand}
-                      isInvalid={touched.brand && !!errors.brand}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="brand"
-                      component="div"
-                    />
-                  </Form.Group>
-                  {/* content */}
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>
-                      Contenido
-                      <span title="Requerido" className="text-danger">
-                        *
-                      </span>
-                    </Form.Label>
-                    <Form.Control
-                      maxLength="80"
-                      type="text"
-                      placeholder="Ingresa el contenido"
-                      name="content"
-                      value={values.content}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.content && !errors.content}
-                      isInvalid={touched.content && !!errors.content}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="content"
-                      component="div"
-                    />
-                  </Form.Group>
-                </Form.Row>
                 {/* ingredients */}
                 <Form.Row>
-                  <Form.Group as={Col} md={6}>
+                  <Form.Group as={Col}>
                     <Form.Label>
                       Ingredientes
                       <small className="ml-1">(separados por coma)</small>
@@ -348,8 +359,10 @@ function ProductCreate() {
                       component="div"
                     />
                   </Form.Group>
-                  {/* sufferings */}
-                  <Form.Group as={Col} md={6}>
+                </Form.Row>
+                {/* sufferings */}
+                <Form.Row>
+                  <Form.Group as={Col}>
                     <Form.Label>
                       Padecimientos
                       <small className="ml-1">(separados por coma)</small>
@@ -372,14 +385,18 @@ function ProductCreate() {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* comments */}
+                {/* initial stock */}
                 <Form.Row>
-                  {/* initial stock */}
                   <Form.Group as={Col} md={4}>
-                    <Form.Label>Existencia inicial</Form.Label>
+                    <Form.Label>
+                      Existencia inicial
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <Form.Control
                       type="number"
-                      placeholder="0"
+                      placeholder="1"
                       name="initialStock"
                       value={values.initialStock}
                       onChange={handleChange}
@@ -387,13 +404,18 @@ function ProductCreate() {
                       isValid={touched.initialStock && !errors.initialStock}
                       isInvalid={touched.initialStock && !!errors.initialStock}
                     />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="initialStock"
+                      component="div"
+                    />
                   </Form.Group>
-                  {/* initial stock */}
+                  {/* photo */}
                   <Form.Group as={Col} md={4}>
-                    <Form.Label>Fotos</Form.Label>
+                    <Form.Label>Foto</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="0"
+                      placeholder="Ingresa la foto"
                       name="photo"
                       value={values.photo}
                       onChange={handleChange}
@@ -404,7 +426,12 @@ function ProductCreate() {
                   </Form.Group>
                   {/* priority */}
                   <Form.Group as={Col} md={4}>
-                    <Form.Label>Prioridad</Form.Label>
+                    <Form.Label>
+                      Prioridad
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <Form.Control
                       as="select"
                       placeholder="0"
@@ -415,8 +442,8 @@ function ProductCreate() {
                       isValid={touched.priority && !errors.priority}
                       isInvalid={touched.priority && !!errors.priority}
                     >
-                      <option>No</option>
-                      <option>Sí</option>
+                      <option value={false}>No</option>
+                      <option value={true}>Sí</option>
                     </Form.Control>
                   </Form.Group>
                 </Form.Row>

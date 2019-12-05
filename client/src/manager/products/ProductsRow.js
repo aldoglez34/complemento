@@ -15,14 +15,45 @@ function ProductsRow(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const productValidation = yup.object({
-    // clientAbr: yup.string().required("Requerido"),
-    // year: yup
-    //   .string()
-    //   .matches(/^[0-9]*$/, "Formato de año incorrecto")
-    //   .length(4, "Longitud de año incorrecto")
-    //   .required("Requerido"),
-    // description: yup.string().required("Requerido")
+  const yupschema = yup.object({
+    name: yup
+      .string()
+      .min(3, "Demasiado corto")
+      .required("Requerido"),
+    purchasePrice: yup
+      .number()
+      .positive("Debe ser positivo")
+      .required("Requerido"),
+    salePrice: yup
+      .number()
+      .positive("Debe ser positivo")
+      .moreThan(yup.ref("purchasePrice"), "Debe ser mayor al precio de compra")
+      .required("Requerido"),
+    content: yup
+      .string()
+      .min(3, "Nombre demasiado corto")
+      .required("Requerido"),
+    brand: yup
+      .string()
+      .min(3, "Nombre demasiado corto")
+      .required("Requerido"),
+    category: yup
+      .mixed()
+      .notOneOf(["Elige..."], "Requerido")
+      .required("Requerido"),
+    provider: yup
+      .mixed()
+      .notOneOf(["Elige..."], "Requerido")
+      .required("Requerido"),
+    ingredients: yup.string(),
+    sufferings: yup.string(),
+    initialStock: yup
+      .number()
+      .positive("Debe ser positivo")
+      .required("Requerido"),
+    photo: yup.string(),
+    priority: yup.string(),
+    comments: yup.string()
   });
 
   return (
@@ -44,6 +75,11 @@ function ProductsRow(props) {
         <td>{props.product.category.name}</td>
         <td className="text-center">{"$" + props.product.purchasePrice}</td>
         <td className="text-center">{"$" + props.product.salePrice}</td>
+        <td className="text-center">
+          {"$"}
+          {props.product.salePrice - props.product.purchasePrice}
+        </td>
+        <td className="text-center">{props.product.unitsSold}</td>
         <td className="text-center">{props.product.stock}</td>
       </tr>
 
@@ -58,33 +94,40 @@ function ProductsRow(props) {
               name: props.product.name,
               purchasePrice: props.product.purchasePrice,
               salePrice: props.product.salePrice,
-              category: props.product.category.name,
               content: props.product.content,
-              provider: props.product.provider.name,
               brand: props.product.brand,
-              sufferings: JSON.stringify(props.product.sufferings),
-              ingredients: JSON.stringify(props.product.ingredients),
-              description: props.product.description,
-              unitsSold: props.product.unitsSold,
+              category: props.product.category.name,
+              provider: props.product.provider.name,
+              ingredients: props.product.ingredients.toString(),
+              sufferings: props.product.sufferings.toString(),
               stock: props.product.stock,
+              photo: props.product.photo,
               priority: props.product.priority,
-              createdAt: props.product.createdAt,
-              photo: props.product.photo
+              comments: props.product.comments,
+              unitsSold: props.product.unitsSold,
+              createdAt: props.product.createdAt
             }}
-            validationSchema={productValidation}
+            validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               API.updateProduct(values)
-                .then(data => {
-                  handleClose();
-                  alert("Producto actualizado");
-                  window.location.reload();
+                .then(res => {
+                  if (res.data.errmsg) {
+                    alert("ERROR => " + res.data.errmsg);
+                    setSubmitting(false);
+                  } else {
+                    alert("Producto actualizado");
+                    handleClose();
+                    window.location.reload();
+                  }
                 })
                 .catch(err => console.log(err));
             }}
           >
             {({
               values,
+              errors,
+              touched,
               handleChange,
               handleBlur,
               handleSubmit,
@@ -93,15 +136,23 @@ function ProductsRow(props) {
               <Form noValidate onSubmit={handleSubmit}>
                 {/* name */}
                 <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>Nombre</Form.Label>
+                  <Form.Group as={Col} md={6}>
+                    <Form.Label>
+                      Nombre
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <Form.Control
-                      maxLength="50"
+                      maxLength="150"
                       type="text"
+                      placeholder="Ingresa el nombre"
                       name="name"
                       value={values.name}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      isValid={touched.name && !errors.name}
+                      isInvalid={touched.name && !!errors.name}
                     />
                     <ErrorMessage
                       className="text-danger"
@@ -109,58 +160,29 @@ function ProductsRow(props) {
                       component="div"
                     />
                   </Form.Group>
-                </Form.Row>
-                {/* category and content */}
-                <Form.Row>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>Categoría</Form.Label>
-                    <Form.Control
-                      maxLength="50"
-                      type="text"
-                      name="category"
-                      value={values.category}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="category"
-                      component="div"
-                    />
-                  </Form.Group>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>Contenido</Form.Label>
-                    <Form.Control
-                      maxLength="50"
-                      type="text"
-                      name="content"
-                      value={values.content}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="content"
-                      component="div"
-                    />
-                  </Form.Group>
-                </Form.Row>
-                {/* prices */}
-                <Form.Row>
-                  <Form.Group as={Col} md={4}>
-                    <Form.Label>Precio de compra</Form.Label>
+                  {/* purchase price */}
+                  <Form.Group as={Col} md={2}>
+                    <Form.Label>
+                      Precio de compra
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <InputGroup>
                       <InputGroup.Prepend>
-                        <InputGroup.Text id="inputGroupPrepend">
-                          $
-                        </InputGroup.Text>
+                        <InputGroup.Text>$</InputGroup.Text>
                       </InputGroup.Prepend>
                       <Form.Control
-                        type="text"
+                        type="number"
+                        placeholder="0.00"
                         name="purchasePrice"
                         value={values.purchasePrice}
                         onChange={handleChange}
                         onBlur={handleBlur}
+                        isValid={touched.purchasePrice && !errors.purchasePrice}
+                        isInvalid={
+                          touched.purchasePrice && !!errors.purchasePrice
+                        }
                       />
                     </InputGroup>
                     <ErrorMessage
@@ -169,20 +191,27 @@ function ProductsRow(props) {
                       component="div"
                     />
                   </Form.Group>
-                  <Form.Group as={Col} md={4}>
-                    <Form.Label>Precio de venta</Form.Label>
+                  {/* salePrice */}
+                  <Form.Group as={Col} md={2}>
+                    <Form.Label>
+                      Precio de venta
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <InputGroup>
                       <InputGroup.Prepend>
-                        <InputGroup.Text id="inputGroupPrepend">
-                          $
-                        </InputGroup.Text>
+                        <InputGroup.Text>$</InputGroup.Text>
                       </InputGroup.Prepend>
                       <Form.Control
-                        type="text"
+                        type="number"
+                        placeholder="0.00"
                         name="salePrice"
                         value={values.salePrice}
                         onChange={handleChange}
                         onBlur={handleBlur}
+                        isValid={touched.salePrice && !errors.salePrice}
+                        isInvalid={touched.salePrice && !!errors.salePrice}
                       />
                     </InputGroup>
                     <ErrorMessage
@@ -191,28 +220,110 @@ function ProductsRow(props) {
                       component="div"
                     />
                   </Form.Group>
-                  <Form.Group as={Col} md={4}>
+                  {/* salePrice */}
+                  <Form.Group as={Col} md={2}>
                     <Form.Label>Utilidad</Form.Label>
                     <InputGroup>
                       <InputGroup.Prepend>
-                        <InputGroup.Text id="inputGroupPrepend">
-                          $
-                        </InputGroup.Text>
+                        <InputGroup.Text>$</InputGroup.Text>
                       </InputGroup.Prepend>
                       <Form.Control
                         disabled
                         type="text"
-                        value={values.purchasePrice - values.salePrice}
+                        placeholder="0.00"
+                        name="utility"
+                        value={values.salePrice - values.purchasePrice}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
                     </InputGroup>
                   </Form.Group>
                 </Form.Row>
-                {/* provider and brand */}
+                {/* content */}
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
-                    <Form.Label>Proveedor</Form.Label>
+                    <Form.Label>
+                      Contenido
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
+                    <Form.Control
+                      maxLength="80"
+                      type="text"
+                      placeholder="Ingresa el contenido"
+                      name="content"
+                      value={values.content}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.content && !errors.content}
+                      isInvalid={touched.content && !!errors.content}
+                    />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="content"
+                      component="div"
+                    />
+                  </Form.Group>
+                  {/* brand */}
+                  <Form.Group as={Col} md={6}>
+                    <Form.Label>
+                      Marca
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
+                    <Form.Control
+                      maxLength="80"
+                      type="text"
+                      placeholder="Ingresa la marca"
+                      name="brand"
+                      value={values.brand}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.brand && !errors.brand}
+                      isInvalid={touched.brand && !!errors.brand}
+                    />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="brand"
+                      component="div"
+                    />
+                  </Form.Group>
+                </Form.Row>
+                {/* category */}
+                <Form.Row>
+                  <Form.Group as={Col} md={6}>
+                    <Form.Label>
+                      Categoría
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      name="category"
+                      value={values.category}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.category && !errors.category}
+                      isInvalid={touched.category && !!errors.category}
+                    />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="category"
+                      component="div"
+                    />
+                  </Form.Group>
+                  {/* provider */}
+                  <Form.Group as={Col} md={6}>
+                    <Form.Label>
+                      Proveedor
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <Form.Control
                       disabled
                       type="text"
@@ -220,47 +331,12 @@ function ProductsRow(props) {
                       value={values.provider}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      isValid={touched.provider && !errors.provider}
+                      isInvalid={touched.provider && !!errors.provider}
                     />
                     <ErrorMessage
                       className="text-danger"
                       name="provider"
-                      component="div"
-                    />
-                  </Form.Group>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>Marca</Form.Label>
-                    <Form.Control
-                      maxLength="50"
-                      type="text"
-                      name="brand"
-                      value={values.brand}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="brand"
-                      component="div"
-                    />
-                  </Form.Group>
-                </Form.Row>
-                {/* sufferings */}
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>
-                      Padecimientos
-                      <small className="ml-1">(separados por comas)</small>
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="sufferings"
-                      value={values.sufferings}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="sufferings"
                       component="div"
                     />
                   </Form.Group>
@@ -270,14 +346,18 @@ function ProductsRow(props) {
                   <Form.Group as={Col}>
                     <Form.Label>
                       Ingredientes
-                      <small className="ml-1">(separados por comas)</small>
+                      <small className="ml-1">(separados por coma)</small>
                     </Form.Label>
                     <Form.Control
+                      maxLength="250"
                       type="text"
+                      placeholder="Ingresa los ingredientes"
                       name="ingredients"
                       value={values.ingredients}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      isValid={touched.ingredients && !errors.ingredients}
+                      isInvalid={touched.ingredients && !!errors.ingredients}
                     />
                     <ErrorMessage
                       className="text-danger"
@@ -286,27 +366,49 @@ function ProductsRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* unitsSold and stock */}
+                {/* sufferings */}
                 <Form.Row>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>Unidades vendidas</Form.Label>
+                  <Form.Group as={Col}>
+                    <Form.Label>
+                      Padecimientos
+                      <small className="ml-1">(separados por coma)</small>
+                    </Form.Label>
                     <Form.Control
-                      disabled
+                      maxLength="250"
                       type="text"
-                      name="unitsSold"
-                      value={values.unitsSold}
+                      placeholder="Ingresa los padecimientos"
+                      name="sufferings"
+                      value={values.sufferings}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      isValid={touched.sufferings && !errors.sufferings}
+                      isInvalid={touched.sufferings && !!errors.sufferings}
+                    />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="sufferings"
+                      component="div"
                     />
                   </Form.Group>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>Existencia</Form.Label>
+                </Form.Row>
+                {/* stock */}
+                <Form.Row>
+                  <Form.Group as={Col} md={4}>
+                    <Form.Label>
+                      Existencia
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <Form.Control
                       type="number"
+                      placeholder="1"
                       name="stock"
                       value={values.stock}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      isValid={touched.stock && !errors.stock}
+                      isInvalid={touched.initialStstockock && !!errors.stock}
                     />
                     <ErrorMessage
                       className="text-danger"
@@ -314,66 +416,63 @@ function ProductsRow(props) {
                       component="div"
                     />
                   </Form.Group>
-                </Form.Row>
-                {/* priority and createdAt */}
-                <Form.Row>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>Prioridad</Form.Label>
-                    <Form.Control
-                      disabled
-                      type="text"
-                      name="priority"
-                      value={values.priority}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </Form.Group>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>Fecha de creación</Form.Label>
-                    <Form.Control
-                      disabled
-                      name="createdAt"
-                      value={values.createdAt}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="createdAt"
-                      component="div"
-                    />
-                  </Form.Group>
-                </Form.Row>
-                {/* photo */}
-                <Form.Row>
-                  <Form.Group as={Col}>
+                  {/* photo */}
+                  <Form.Group as={Col} md={4}>
                     <Form.Label>Foto</Form.Label>
                     <Form.Control
                       type="text"
+                      placeholder="Ingresa la foto"
                       name="photo"
                       value={values.photo}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      isValid={touched.photo && !errors.photo}
+                      isInvalid={touched.photo && !!errors.photo}
                     />
                   </Form.Group>
+                  {/* priority */}
+                  <Form.Group as={Col} md={4}>
+                    <Form.Label>
+                      Prioridad
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
+                    <Form.Control
+                      as="select"
+                      placeholder="0"
+                      name="priority"
+                      value={values.priority}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.priority && !errors.priority}
+                      isInvalid={touched.priority && !!errors.priority}
+                    >
+                      <option value={false}>No</option>
+                      <option value={true}>Sí</option>
+                    </Form.Control>
+                  </Form.Group>
                 </Form.Row>
-                {/* description */}
+                {/* comments */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Descripción</Form.Label>
+                    <Form.Label>Comentarios</Form.Label>
                     <Form.Control
+                      maxLength="250"
                       as="textarea"
                       rows="3"
                       type="text"
-                      maxLength="250"
-                      name="description"
-                      value={values.description}
+                      placeholder="Ingresa los comentarios"
+                      name="comments"
+                      value={values.comments}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      isValid={touched.comments && !errors.comments}
+                      isInvalid={touched.comments && !!errors.comments}
                     />
                     <ErrorMessage
                       className="text-danger"
-                      name="description"
+                      name="comments"
                       component="div"
                     />
                   </Form.Group>
@@ -381,18 +480,11 @@ function ProductsRow(props) {
                 {/* buttons */}
                 <Form.Group className="text-right">
                   <Button
-                    variant="secondary"
-                    onClick={handleClose}
-                    className="mr-2"
-                  >
-                    Cancelar
-                  </Button>
-                  <Button
                     variant="success"
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    Guardar cambios
+                    Crear
                   </Button>
                 </Form.Group>
               </Form>
