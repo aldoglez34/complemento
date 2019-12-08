@@ -36,7 +36,7 @@ class Home extends Component {
         <Container className="mb-3">
           <Row>
             <Col md={8} className="mt-5">
-              <h2 className="mb-1">¿Quiénes somos?</h2>
+              <h1 className="mb-1">¿Quiénes somos?</h1>
               <hr className="myDivider" />
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
@@ -67,7 +67,7 @@ class Home extends Component {
               </Button>
             </Col>
             <Col md={4} className="mt-5">
-              <h2 className="mb-1">Contáctanos</h2>
+              <h1 className="mb-1">Contáctanos</h1>
               <hr className="myDivider" />
               <address>
                 <strong>Dirección</strong>
@@ -82,10 +82,7 @@ class Home extends Component {
                 (228) 111-2031
                 <br />
                 <i className="fas fa-envelope mr-2" />
-                <a
-                  href="mailto:complemento.natural@gmail.com"
-                  style={{ color: "#59a49a" }}
-                >
+                <a href="mailto:complemento.natural@gmail.com">
                   complemento.natural@gmail.com
                 </a>
               </address>
@@ -93,7 +90,7 @@ class Home extends Component {
           </Row>
           <Row className="mt-5">
             <Col>
-              <h2 className="mb-1">Destacados</h2>
+              <h1 className="mb-1">Destacados</h1>
               <hr className="myDivider" />
               <div className="d-flex flex-wrap justify-content-center">
                 {this.state.prioritized.length ? (
@@ -114,7 +111,7 @@ class Home extends Component {
           </Row>
           <Row className="mt-5">
             <Col>
-              <h2 className="mb-1">Últimas ofertas</h2>
+              <h1 className="mb-1">Últimas ofertas</h1>
               <hr className="myDivider" />
               <div className="d-flex flex-wrap justify-content-center">
                 {this.state.discounts.length ? (
@@ -135,7 +132,7 @@ class Home extends Component {
           </Row>
           <Row className="mt-5">
             <Col>
-              <h2 className="mb-1">Más vendidos</h2>
+              <h1 className="mb-1">Más vendidos</h1>
               <hr className="myDivider" />
               <div className="d-flex flex-wrap justify-content-center">
                 {this.state.bestSellers.length ? (

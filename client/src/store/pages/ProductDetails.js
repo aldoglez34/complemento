@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Image, Spinner } from "react-bootstrap";
 import Layout from "./Layout";
 import MyBreadcrumb from "../components/MyBreadcrumb";
@@ -9,50 +8,40 @@ import ScrollButton from "../components/ScrollButton";
 import FavButton from "../components/FavButton";
 import AddToBagButton from "../components/AddToBagButton";
 
-class ProductDetails extends Component {
-  state = {
-    productDetails: {},
-    isLoading: true
-  };
+function ProductDetails(props) {
+  const [product, setProduct] = useState();
 
-  componentDidMount() {
-    API.fetchProductDetails(this.props.routeProps.match.params.productId)
-      .then(res => {
-        this.setState({ productDetails: res.data, isLoading: false });
-      })
+  useEffect(() => {
+    API.fetchProductDetails(props.routeProps.match.params.productId)
+      .then(res => setProduct(res.data))
       .catch(err => {
         console.log(err);
       });
-  }
+  }, []);
 
-  render() {
-    const breadcrumbRoutes = [
-      { name: "Inicio", to: "/" },
-      { name: "Tienda", to: "/store" },
-      {
-        name: this.state.productDetails.category,
-        to: "/store/" + this.state.productDetails.category
-      },
-      { name: this.state.productDetails.name, to: "active" }
-    ];
-
-    return (
-      <Layout>
-        <MyBreadcrumb routes={breadcrumbRoutes} />
-        {this.state.isLoading ? (
-          <Container className="d-flex align-items-center justify-content-center h-100">
-            <Spinner className="spinnerStyle" animation="grow" />
-          </Container>
-        ) : (
+  return (
+    <Layout>
+      {product ? (
+        <>
+          <MyBreadcrumb
+            routes={[
+              { name: "Inicio", to: "/" },
+              { name: "Tienda", to: "/store" },
+              {
+                name: product.category.name,
+                to: "/store/" + product.category.name
+              },
+              { name: product.name, to: "active" }
+            ]}
+          />
           <Container className="my-4 p-3">
-            <h2 className="mb-1">{this.state.productDetails.name}</h2>
+            <h2 className="mb-1">{product.name}</h2>
             <hr className="myDivider" />
             <Row className="mt-4">
               {/* column 1 */}
               <Col md={3} className="text-center">
                 <Image
-                  // src={require("../images/products/placeholder.jpg")}
-                  src={this.state.productDetails.photo}
+                  src={"/images/products/" + product.photo}
                   className="rounded-lg"
                   fluid
                   alt="product"
@@ -60,106 +49,93 @@ class ProductDetails extends Component {
               </Col>
               {/* column 2 */}
               <Col md={3} className="mt-2 mt-md-0 text-center text-md-left">
-                {/* <FavButton product={this.state.productDetails} /> */}
                 <div className="my-3">
-                  {this.state.productDetails.discount ? (
-                    this.state.productDetails.discount.hasDiscount ? (
-                      <div className="h2 mt-0 mb-1 text-dark">
-                        <small>
-                          <del className="text-muted">
-                            {"$" + this.state.productDetails.salePrice + " MXN"}
-                          </del>
-                        </small>
-                        <strong className="ml-1">
-                          {"$" +
-                            this.state.productDetails.discount.newPrice +
-                            " MXN"}
-                        </strong>
-                      </div>
-                    ) : (
-                      <div className="h2 mt-0 mb-1 text-dark">
-                        <strong>
-                          {"$" + this.state.productDetails.salePrice + " MXN"}
-                        </strong>
-                      </div>
-                    )
-                  ) : null}
+                  {product.discount.hasDiscount ? (
+                    <div className="h2 mt-0 mb-1 text-dark">
+                      <small>
+                        <del className="text-muted">
+                          {"$" + product.salePrice + " MXN"}
+                        </del>
+                      </small>
+                      <strong className="ml-1">
+                        {"$" + product.discount.newPrice + " MXN"}
+                      </strong>
+                    </div>
+                  ) : (
+                    <div className="h2 mt-0 mb-1 text-dark">
+                      <strong>{"$" + product.salePrice + " MXN"}</strong>
+                    </div>
+                  )}
                   <hr />
-                  <div className="lead mb-0 text-dark">
-                    {this.state.productDetails.content}
-                  </div>
+                  <div className="lead mb-0 text-dark">{product.content}</div>
                   <hr />
                   <div
                     className="lead mt-0 mb-0 text-dark"
                     style={{ textTransform: "uppercase" }}
                   >
-                    {this.state.productDetails.brand}
+                    {product.brand}
                   </div>
                 </div>
                 <div className="mt-2">
-                  <AddToBagButton
-                    product={this.state.productDetails}
-                    size="lg"
-                  />
+                  <AddToBagButton product={product} size="lg" />
                 </div>
                 <div className="mt-2">
                   <FavButton
                     block={true}
                     text={"Favoritos "}
-                    product={this.state.productDetails}
+                    product={product}
                   />
                 </div>
               </Col>
               {/* column 3 */}
               <Col md={3} className="mt-3 mt-md-0">
                 <p className="lead mb-1 text-dark">Útil para</p>
-                {this.state.productDetails.sufferings ? (
-                  this.state.productDetails.sufferings.length ? (
-                    <ul className="list-unstyled">
-                      <li>
-                        <ul>
-                          {this.state.productDetails.sufferings.map(suff => (
-                            <li key={suff}>{suff}</li>
-                          ))}
-                        </ul>
-                      </li>
-                    </ul>
-                  ) : (
-                    <span>No hay información disponible</span>
-                  )
-                ) : null}
+                {product.sufferings.length ? (
+                  <ul className="list-unstyled">
+                    <li>
+                      <ul>
+                        {product.sufferings.map(suff => (
+                          <li key={suff}>{suff}</li>
+                        ))}
+                      </ul>
+                    </li>
+                  </ul>
+                ) : (
+                  <span>No hay información disponible</span>
+                )}
               </Col>
               {/* column 4 */}
               <Col md={3}>
                 <p className="lead mb-1 text-dark">Contiene</p>
-                {this.state.productDetails.ingredients ? (
-                  this.state.productDetails.ingredients.length ? (
-                    <ul className="list-unstyled">
-                      <li>
-                        <ul>
-                          {this.state.productDetails.ingredients.map(ing => (
-                            <li key={ing}>{ing}</li>
-                          ))}
-                        </ul>
-                      </li>
-                    </ul>
-                  ) : (
-                    <span>No hay información disponible</span>
-                  )
-                ) : null}
+                {product.ingredients.length ? (
+                  <ul className="list-unstyled">
+                    <li>
+                      <ul>
+                        {product.ingredients.map(ing => (
+                          <li key={ing}>{ing}</li>
+                        ))}
+                      </ul>
+                    </li>
+                  </ul>
+                ) : (
+                  <span>No hay información disponible</span>
+                )}
               </Col>
             </Row>
+            <Row className="mt-3">
+              <Col>{product.comments}</Col>
+            </Row>
+            <HelpButton />
+            <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
           </Container>
-        )}
-        <HelpButton />
-        <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
-      </Layout>
-    );
-  }
+        </>
+      ) : (
+        <div className="text-center my-4">
+          <Spinner animation="grow" role="status" className="spinnerStyle" />
+        </div>
+      )}
+    </Layout>
+  );
 }
 
-const mapStateToProps = state => {
-  return { isClientLogged: state.client.isLogged };
-};
-
-export default connect(mapStateToProps, null)(ProductDetails);
+export default ProductDetails;

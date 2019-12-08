@@ -65,19 +65,38 @@ function ProductsRow(props) {
             <Badge
               pill
               className="ml-1"
-              variant="danger"
+              variant="warning"
               style={{ fontFamily: "Arial" }}
             >
               Sin existencias
             </Badge>
           ) : null}
+          {props.product.discount.hasDiscount ? (
+            <Badge
+              title="Este producto tiene descuento"
+              pill
+              className="ml-1"
+              variant="warning"
+              style={{ fontFamily: "Arial" }}
+            >
+              {props.product.discount.percentage + "%"}
+            </Badge>
+          ) : null}
         </td>
         <td>{props.product.category.name}</td>
+        <td>{props.product.provider.name}</td>
         <td className="text-center">{"$" + props.product.purchasePrice}</td>
-        <td className="text-center">{"$" + props.product.salePrice}</td>
         <td className="text-center">
           {"$"}
-          {props.product.salePrice - props.product.purchasePrice}
+          {props.product.discount.hasDiscount
+            ? props.product.discount.newPrice
+            : props.product.salePrice}
+        </td>
+        <td className="text-center">
+          {"$"}
+          {props.product.discount.hasDiscount
+            ? props.product.discount.newPrice - props.product.purchasePrice
+            : props.product.salePrice - props.product.purchasePrice}
         </td>
         <td className="text-center">{props.product.unitsSold}</td>
         <td className="text-center">{props.product.stock}</td>
@@ -85,7 +104,9 @@ function ProductsRow(props) {
 
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Detalle de Producto</Modal.Title>
+          <Modal.Title>
+            <h2 className="mb-0">Producto</h2>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik
@@ -105,11 +126,14 @@ function ProductsRow(props) {
               priority: props.product.priority,
               comments: props.product.comments,
               unitsSold: props.product.unitsSold,
-              createdAt: props.product.createdAt
+              hasDiscount: props.product.discount.hasDiscount,
+              percentage: props.product.discount.percentage,
+              newPrice: props.product.discount.newPrice
             }}
             validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
+              console.log(values);
               API.updateProduct(values)
                 .then(res => {
                   if (res.data.errmsg) {
@@ -160,8 +184,30 @@ function ProductsRow(props) {
                       component="div"
                     />
                   </Form.Group>
-                  {/* purchase price */}
-                  <Form.Group as={Col} md={2}>
+                  {/* photo */}
+                  <Form.Group as={Col} md={6}>
+                    <Form.Label>
+                      Foto
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      placeholder="Ingresa la foto"
+                      name="photo"
+                      value={values.photo}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.photo && !errors.photo}
+                      isInvalid={touched.photo && !!errors.photo}
+                    />
+                  </Form.Group>
+                </Form.Row>
+                {/* purchase price */}
+                <Form.Row>
+                  <Form.Group as={Col} md={4}>
                     <Form.Label>
                       Precio de compra
                       <span title="Requerido" className="text-danger">
@@ -192,7 +238,7 @@ function ProductsRow(props) {
                     />
                   </Form.Group>
                   {/* salePrice */}
-                  <Form.Group as={Col} md={2}>
+                  <Form.Group as={Col} md={4}>
                     <Form.Label>
                       Precio de venta
                       <span title="Requerido" className="text-danger">
@@ -220,8 +266,8 @@ function ProductsRow(props) {
                       component="div"
                     />
                   </Form.Group>
-                  {/* salePrice */}
-                  <Form.Group as={Col} md={2}>
+                  {/* profit */}
+                  <Form.Group as={Col} md={4}>
                     <Form.Label>Utilidad</Form.Label>
                     <InputGroup>
                       <InputGroup.Prepend>
@@ -393,7 +439,7 @@ function ProductsRow(props) {
                 </Form.Row>
                 {/* stock */}
                 <Form.Row>
-                  <Form.Group as={Col} md={4}>
+                  <Form.Group as={Col} md={6}>
                     <Form.Label>
                       Existencia
                       <span title="Requerido" className="text-danger">
@@ -401,6 +447,7 @@ function ProductsRow(props) {
                       </span>
                     </Form.Label>
                     <Form.Control
+                      disabled
                       type="number"
                       placeholder="1"
                       name="stock"
@@ -416,24 +463,10 @@ function ProductsRow(props) {
                       component="div"
                     />
                   </Form.Group>
-                  {/* photo */}
-                  <Form.Group as={Col} md={4}>
-                    <Form.Label>Foto</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Ingresa la foto"
-                      name="photo"
-                      value={values.photo}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.photo && !errors.photo}
-                      isInvalid={touched.photo && !!errors.photo}
-                    />
-                  </Form.Group>
                   {/* priority */}
-                  <Form.Group as={Col} md={4}>
+                  <Form.Group as={Col} md={6}>
                     <Form.Label>
-                      Prioridad
+                      Destacado
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -478,15 +511,21 @@ function ProductsRow(props) {
                   </Form.Group>
                 </Form.Row>
                 {/* buttons */}
-                <Form.Group className="text-right">
+                <Form.Row className="px-1 mt-2">
+                  <Button variant="danger" disabled onClick={handleClose}>
+                    <i className="fas fa-times-circle mr-1" />
+                    Borrar
+                  </Button>
                   <Button
+                    className="ml-auto"
                     variant="success"
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    Crear
+                    <i className="fas fa-check-circle mr-1" />
+                    Guardar
                   </Button>
-                </Form.Group>
+                </Form.Row>
               </Form>
             )}
           </Formik>

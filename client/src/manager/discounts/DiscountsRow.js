@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal, Form, Col, InputGroup } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
+import API from "../../utils/API";
 
 DiscountsRow.propTypes = {
   discount: PropTypes.object.isRequired
@@ -13,10 +14,6 @@ function DiscountsRow(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const calculateNewPrice = (oldPrice, percentage) => {
-    return oldPrice * (percentage / 100);
-  };
-
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
@@ -24,10 +21,18 @@ function DiscountsRow(props) {
         <td className="text-center">{"$" + props.discount.purchasePrice}</td>
         <td className="text-center">{"$" + props.discount.salePrice}</td>
         <td className="text-center">
+          {"$"}
+          {props.discount.salePrice - props.discount.purchasePrice}
+        </td>
+        <td className="text-center">
           {props.discount.discount.percentage + "%"}
         </td>
         <td className="text-center">
           {"$" + props.discount.discount.newPrice}
+        </td>
+        <td className="text-center">
+          {"$"}
+          {props.discount.discount.newPrice - props.discount.purchasePrice}
         </td>
       </tr>
 
@@ -52,6 +57,8 @@ function DiscountsRow(props) {
           >
             {({
               values,
+              errors,
+              touched,
               handleChange,
               handleBlur,
               handleSubmit,
@@ -66,10 +73,7 @@ function DiscountsRow(props) {
                       disabled
                       type="text"
                       name="name"
-                      value={calculateNewPrice(
-                        values.salePrice,
-                        values.percentage
-                      )}
+                      value={values.name}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
@@ -77,7 +81,7 @@ function DiscountsRow(props) {
                 </Form.Row>
                 {/* purchasePrice */}
                 <Form.Row>
-                  <Form.Group as={Col} md={6}>
+                  <Form.Group as={Col} md={3}>
                     <Form.Label>Precio de compra</Form.Label>
                     <InputGroup>
                       <InputGroup.Prepend>
@@ -94,8 +98,8 @@ function DiscountsRow(props) {
                     </InputGroup>
                   </Form.Group>
                   {/* salePrice */}
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>Precio de venta</Form.Label>
+                  <Form.Group as={Col} md={3}>
+                    <Form.Label>Venta (original)</Form.Label>
                     <InputGroup>
                       <InputGroup.Prepend>
                         <InputGroup.Text>$</InputGroup.Text>
@@ -110,29 +114,9 @@ function DiscountsRow(props) {
                       />
                     </InputGroup>
                   </Form.Group>
-                </Form.Row>
-                {/* percentage */}
-                <Form.Row>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>Descuento</Form.Label>
-                    <Form.Control
-                      name="discount"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      as="select"
-                      defaultValue={values.percentage}
-                    >
-                      <option value={10}>10%</option>
-                      <option value={14}>15%</option>
-                      <option value={20}>20%</option>
-                      <option value={30}>30%</option>
-                      <option value={40}>40%</option>
-                      <option value={50}>50%</option>
-                    </Form.Control>
-                  </Form.Group>
-                  {/* newPrice */}
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>Nuevo precio de venta</Form.Label>
+                  {/* salePrice */}
+                  <Form.Group as={Col} md={3}>
+                    <Form.Label>Venta (con descuento)</Form.Label>
                     <InputGroup>
                       <InputGroup.Prepend>
                         <InputGroup.Text>$</InputGroup.Text>
@@ -147,24 +131,97 @@ function DiscountsRow(props) {
                       />
                     </InputGroup>
                   </Form.Group>
+                  {/* profit */}
+                  <Form.Group as={Col} md={3}>
+                    <Form.Label>Utilidad</Form.Label>
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>$</InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <Form.Control
+                        disabled
+                        type="text"
+                        name="salePrice"
+                        value={values.newPrice - values.purchasePrice}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                    </InputGroup>
+                  </Form.Group>
+                </Form.Row>
+                {/* percentage */}
+                <Form.Row>
+                  <Form.Group as={Col} md={6}>
+                    <Form.Label>Descuento</Form.Label>
+                    <Form.Control
+                      name="percentage"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      as="select"
+                      defaultValue={values.percentage}
+                    >
+                      <option value={10}>10%</option>
+                      <option value={14}>15%</option>
+                      <option value={20}>20%</option>
+                      <option value={30}>30%</option>
+                      <option value={40}>40%</option>
+                      <option value={50}>50%</option>
+                    </Form.Control>
+                  </Form.Group>
+                  {/* newPrice */}
+                  <Form.Group as={Col} md={3}>
+                    <Form.Label>Venta (nuevo)</Form.Label>
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>$</InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <Form.Control
+                        disabled
+                        type="text"
+                        name="newPrice"
+                        value={
+                          values.salePrice -
+                          values.salePrice * (values.percentage / 100)
+                        }
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                    </InputGroup>
+                  </Form.Group>
+                  {/* new profit */}
+                  <Form.Group as={Col} md={3}>
+                    <Form.Label>Utilidad (nueva)</Form.Label>
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>$</InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <Form.Control
+                        disabled
+                        type="text"
+                        name="newPrice"
+                        value={values.newPrice - values.purchasePrice}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                    </InputGroup>
+                  </Form.Group>
                 </Form.Row>
                 {/* buttons */}
-                <Form.Group className="text-right">
-                  <Button
-                    variant="secondary"
-                    onClick={handleClose}
-                    className="mr-2"
-                  >
-                    Cerrar
+                <Form.Row className="px-1 mt-2">
+                  <Button variant="danger" onClick={handleClose}>
+                    <i className="fas fa-times-circle mr-1" />
+                    Terminar
                   </Button>
                   <Button
+                    className="ml-auto"
                     variant="success"
                     type="submit"
                     disabled={isSubmitting}
                   >
+                    <i className="fas fa-check-circle mr-1" />
                     Guardar
                   </Button>
-                </Form.Group>
+                </Form.Row>
               </Form>
             )}
           </Formik>

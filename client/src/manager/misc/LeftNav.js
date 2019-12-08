@@ -9,7 +9,8 @@ function LeftNav() {
   const dispatch = useDispatch();
 
   const logout = () => {
-    fire.auth()
+    fire
+      .auth()
       .signOut()
       .then(() => dispatch(managerActions.logoutManager()))
       .catch(error => console.log(error));
@@ -59,13 +60,13 @@ function LeftNav() {
       <Nav.Link
         className="navLinkStyle"
         href="/manager/discounts"
-        active={manager.active === "Promociones" ? true : false}
+        active={manager.active === "Descuentos" ? true : false}
       >
         <i
           className="fas fa-tags"
           style={{ width: "26px", textAlign: "center" }}
         />
-        <span className="ml-1">Promociones</span>
+        <span className="ml-1">Descuentos</span>
       </Nav.Link>
       <Nav.Link
         className="navLinkStyle"

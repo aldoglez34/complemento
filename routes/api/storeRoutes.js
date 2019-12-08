@@ -4,24 +4,8 @@ const model = require("../../models");
 // fetchCategories()
 // matches with /api/store/categories
 router.get("/categories", function(req, res) {
-  model.Product.aggregate([
-    {
-      $group: {
-        _id: "$category",
-        productCount: { $sum: 1 }
-      }
-    },
-    {
-      $sort: { _id: 1 }
-    },
-    {
-      $project: {
-        _id: 0,
-        name: "$_id",
-        productCount: 1
-      }
-    }
-  ])
+  model.Category.find({})
+    .sort({ name: 1 })
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });

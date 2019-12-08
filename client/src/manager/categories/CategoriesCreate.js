@@ -27,7 +27,7 @@ function CategoriesCreate(props) {
   });
 
   return (
-    <ManagerLayout title="Nueva Categoría" button={null}>
+    <ManagerLayout title="Crear Categoría" button={null}>
       <Formik
         initialValues={{
           name: ""
@@ -88,6 +88,7 @@ function CategoriesCreate(props) {
             {/* buttons */}
             <Form.Group className="text-right">
               <Button variant="success" type="submit" disabled={isSubmitting}>
+                <i className="fas fa-check-circle mr-1" />
                 Crear
               </Button>
             </Form.Group>

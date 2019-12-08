@@ -120,22 +120,21 @@ function CategoriesRow(props) {
                   </Form.Group>
                 </Form.Row>
                 {/* buttons */}
-                <Form.Group className="text-right">
-                  <Button
-                    variant="secondary"
-                    onClick={handleClose}
-                    className="mr-2"
-                  >
-                    Cerrar
+                <Form.Row className="px-1 mt-2">
+                  <Button variant="danger">
+                    <i className="fas fa-times-circle mr-1" />
+                    Borrar
                   </Button>
                   <Button
+                    className="ml-auto"
                     variant="success"
                     type="submit"
                     disabled={isSubmitting}
                   >
+                    <i className="fas fa-check-circle mr-1" />
                     Guardar
                   </Button>
-                </Form.Group>
+                </Form.Row>
               </Form>
             )}
           </Formik>

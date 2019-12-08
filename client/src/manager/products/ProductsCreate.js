@@ -65,7 +65,7 @@ function ProductCreate(props) {
   });
 
   return (
-    <ManagerLayout title="Nuevo Producto" button={null}>
+    <ManagerLayout title="Crear Producto" button={null}>
       {categories && providers ? (
         categories.length && providers.length ? (
           <Formik
@@ -197,7 +197,7 @@ function ProductCreate(props) {
                       component="div"
                     />
                   </Form.Group>
-                  {/* salePrice */}
+                  {/* profit */}
                   <Form.Group as={Col} md={2}>
                     <Form.Label>Utilidad</Form.Label>
                     <InputGroup>
@@ -414,6 +414,7 @@ function ProductCreate(props) {
                   <Form.Group as={Col} md={4}>
                     <Form.Label>Foto</Form.Label>
                     <Form.Control
+                      disabled
                       type="text"
                       placeholder="Ingresa la foto"
                       name="photo"
@@ -427,7 +428,7 @@ function ProductCreate(props) {
                   {/* priority */}
                   <Form.Group as={Col} md={4}>
                     <Form.Label>
-                      Prioridad
+                      Destacado
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -478,6 +479,7 @@ function ProductCreate(props) {
                     type="submit"
                     disabled={isSubmitting}
                   >
+                    <i className="fas fa-check-circle mr-1" />
                     Crear
                   </Button>
                 </Form.Group>

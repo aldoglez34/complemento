@@ -121,16 +121,6 @@ function ClientsRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* buttons */}
-                <Form.Group className="text-right">
-                  <Button
-                    variant="secondary"
-                    onClick={handleClose}
-                    className="mr-2"
-                  >
-                    Cerrar
-                  </Button>
-                </Form.Group>
               </Form>
             )}
           </Formik>

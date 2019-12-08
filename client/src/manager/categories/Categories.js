@@ -22,7 +22,7 @@ function Categories() {
   return (
     <ManagerLayout
       title="Categorías"
-      button={{ text: "Nueva Categoría", to: "/manager/categories/create" }}
+      button={{ text: "Categoría", to: "/manager/categories/create" }}
     >
       {categories ? (
         categories.length ? (

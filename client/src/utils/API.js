@@ -117,6 +117,18 @@ export default {
     return axios.get("/api/manager/notdiscounts/all");
   },
 
+  newDiscount: function(discount) {
+    return axios.put("/api/manager/discounts/new", discount);
+  },
+
+  deleteDiscount: function(discount) {
+    return axios.put("/api/manager/discounts/delete", discount);
+  },
+
+  updateDiscount: function(discount) {
+    return axios.put("/api/manager/discounts/update", discount);
+  },
+
   // providers
 
   fetchProvidersManager: function() {

@@ -12,9 +12,8 @@ function Discounts() {
   const [discounts, setDiscounts] = useState();
 
   useEffect(() => {
-    dispatch(managerActions.setActive("Promociones"));
+    dispatch(managerActions.setActive("Descuentos"));
     dispatch(managerActions.setBackBttn(null));
-    // fetch products
     API.fetchDiscountsManager()
       .then(res => setDiscounts(res.data))
       .catch(err => console.log(err));
@@ -22,26 +21,36 @@ function Discounts() {
 
   return (
     <ManagerLayout
-      title="Promociones"
-      button={{ text: "Nueva Promoción", to: "/manager/discounts/create" }}
+      title="Descuentos"
+      button={{ text: "Descuento", to: "/manager/discounts/create" }}
     >
       {discounts ? (
-        <Table striped bordered hover size="sm" responsive>
-          <thead>
-            <tr>
-              <th className="text-center">Producto</th>
-              <th className="text-center">Precio de compra</th>
-              <th className="text-center">Precio de venta</th>
-              <th className="text-center">Descuento</th>
-              <th className="text-center">Nuevo precio de venta</th>
-            </tr>
-          </thead>
-          <tbody>
-            {discounts.map(d => {
-              return <DiscountsRow key={d._id} discount={d} />;
-            })}
-          </tbody>
-        </Table>
+        discounts.length ? (
+          <>
+            <Table striped hover size="sm" responsive variant="white">
+              <thead>
+                <tr>
+                  <th className="text-center border-0">Producto</th>
+                  <th className="text-center border-0">Precio de compra</th>
+                  <th className="text-center border-0">Precio de venta</th>
+                  <th className="text-center border-0">Utilidad</th>
+                  <th className="text-center border-0">Descuento</th>
+                  <th className="text-center border-0">
+                    Nuevo precio de venta
+                  </th>
+                  <th className="text-center border-0">Nueva utilidad</th>
+                </tr>
+              </thead>
+              <tbody>
+                {discounts.map(d => {
+                  return <DiscountsRow key={d._id} discount={d} />;
+                })}
+              </tbody>
+            </Table>
+          </>
+        ) : (
+          <em>No hay nada aquí</em>
+        )
       ) : (
         <div className="text-center my-4">
           <Spinner animation="grow" role="status" className="spinnerStyle" />

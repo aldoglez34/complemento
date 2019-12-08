@@ -6,8 +6,9 @@ const model = require("../../models");
 router.get("/details/:productId", function(req, res) {
   model.Product.findById(req.params.productId)
     .select(
-      "category name content description sufferings ingredients salePrice stock photo brand discount"
+      "category name content comments sufferings ingredients salePrice stock photo brand discount"
     )
+    .populate("category")
     .then(data => res.json(data))
     .then(err => res.json(err));
 });

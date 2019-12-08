@@ -66,14 +66,15 @@ router.get("/products/all", function(req, res) {
 router.put("/products/update", function(req, res) {
   model.Product.findByIdAndUpdate(req.body._id, {
     name: req.body.name,
-    category: req.body.category,
-    content: req.body.content,
     purchasePrice: req.body.purchasePrice,
     salePrice: req.body.salePrice,
+    content: req.body.content,
     brand: req.body.brand,
+    sufferings: req.body.sufferings.split(","),
+    ingredients: req.body.ingredients.split(","),
     stock: req.body.stock,
-    photo: req.body.photo,
-    description: req.body.description
+    priority: req.body.priority,
+    comments: req.body.comments
   })
     .then(data => res.json(data))
     .catch(err => res.json(err));
@@ -99,7 +100,23 @@ router.post("/products/new", function(req, res) {
     provider: req.body.provider,
     category: req.body.category
   })
-    .then(data => res.json(data))
+    .then(() => {
+      model.Category.findOneAndUpdate(
+        req.body.category,
+        { $inc: { productCount: 1 } },
+        { new: true }
+      )
+        .then(() =>
+          model.Provider.findByIdAndUpdate(
+            req.body.provider,
+            { $inc: { productCount: 1 } },
+            { new: true }
+          )
+            .then(data => res.json(data))
+            .catch(err => res.json(err))
+        )
+        .catch(err => res.json(err));
+    })
     .catch(err => res.json(err));
 });
 
@@ -120,9 +137,48 @@ router.get("/discounts/all", function(req, res) {
 // fetchNotDiscountsManager()
 // matches with /api/manager/notdiscounts/all
 router.get("/notdiscounts/all", function(req, res) {
-  // model.Product.find({ discount: { hasDiscount: true } })
   model.Product.find({ "discount.hasDiscount": false })
     .sort({ name: 1 })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
+// newDiscount()
+// matches with /api/manager/discounts/new
+router.put("/discounts/new", function(req, res) {
+  model.Product.findByIdAndUpdate(req.body._id, {
+    discount: {
+      hasDiscount: true,
+      percentage: req.body.percentage,
+      newPrice: req.body.newPrice
+    }
+  })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
+// deleteDiscount()
+// matches with /api/manager/discounts/delete
+router.put("/discounts/delete", function(req, res) {
+  model.Product.findByIdAndUpdate(req.body._id, {
+    discount: {
+      hasDiscount: false
+    }
+  })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
+// updateDiscount()
+// matches with /api/manager/discounts/update
+router.put("/discounts/update", function(req, res) {
+  model.Product.findByIdAndUpdate(req.body._id, {
+    discount: {
+      hasDiscount: false,
+      percentage: req.body.percentage,
+      newPrice: req.body.newPrice
+    }
+  })
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });

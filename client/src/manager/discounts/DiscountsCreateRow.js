@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Modal, Form, Col, Badge } from "react-bootstrap";
+import { Button, Modal, Form, Col, InputGroup } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
@@ -18,7 +18,7 @@ function DiscountsCreateRow(props) {
   const discountSchema = yup.object({
     percentage: yup
       .mixed()
-      .notOneOf(["Elige..."], "Requerido")
+      .notOneOf([0], "Requerido")
       .required("Requerido")
   });
 
@@ -32,9 +32,9 @@ function DiscountsCreateRow(props) {
         <td className="text-center">{props.notdiscount.stock}</td>
       </tr>
 
-      <Modal show={show} onHide={handleClose} size="lg">
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Nueva Promoción</Modal.Title>
+          <Modal.Title>Crear Promoción</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik
@@ -45,28 +45,32 @@ function DiscountsCreateRow(props) {
               salePrice: props.notdiscount.salePrice,
               unitsSold: props.notdiscount.unitsSold,
               stock: props.notdiscount.stock,
-              percentage: "Elige...",
+              percentage: 0,
               newPrice: 0
             }}
             validationSchema={discountSchema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              //   API.updateCategory(values)
-              //     .then(res => {
-              //       if (res.data.errmsg) {
-              //         alert("ERROR => " + res.data.errmsg);
-              //         setSubmitting(false);
-              //       } else {
-              //         alert("Categoría actualizada");
-              //         handleClose();
-              //         window.location.reload();
-              //       }
-              //     })
-              //     .catch(err => console.log(err));
+              values.newPrice =
+                values.salePrice - values.salePrice * (values.percentage / 100);
+              API.newDiscount(values)
+                .then(res => {
+                  if (res.data.errmsg) {
+                    alert("ERROR => " + res.data.errmsg);
+                    setSubmitting(false);
+                  } else {
+                    alert("Descuento creado");
+                    handleClose();
+                    window.location.reload();
+                  }
+                })
+                .catch(err => console.log(err));
             }}
           >
             {({
               values,
+              errors,
+              touched,
               handleChange,
               handleBlur,
               handleSubmit,
@@ -87,18 +91,25 @@ function DiscountsCreateRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* purchase price */}
                 <Form.Row>
                   <Form.Group as={Col} md={4}>
                     <Form.Label>Precio de compra</Form.Label>
-                    <Form.Control
-                      disabled
-                      type="text"
-                      name="purchasePrice"
-                      value={values.purchasePrice}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>$</InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <Form.Control
+                        disabled
+                        type="text"
+                        name="purchasePrice"
+                        value={values.purchasePrice}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                    </InputGroup>
                   </Form.Group>
+                  {/* units sold */}
                   <Form.Group as={Col} md={4}>
                     <Form.Label>Unidades vendidas</Form.Label>
                     <Form.Control
@@ -110,6 +121,7 @@ function DiscountsCreateRow(props) {
                       onBlur={handleBlur}
                     />
                   </Form.Group>
+                  {/* stock */}
                   <Form.Group as={Col} md={4}>
                     <Form.Label>Existencia</Form.Label>
                     <Form.Control
@@ -122,20 +134,32 @@ function DiscountsCreateRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* sale price */}
                 <Form.Row>
                   <Form.Group as={Col} md={4}>
                     <Form.Label>Precio de venta</Form.Label>
-                    <Form.Control
-                      disabled
-                      type="text"
-                      name="salePrice"
-                      value={values.salePrice}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>$</InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <Form.Control
+                        disabled
+                        type="text"
+                        name="salePrice"
+                        value={values.salePrice}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                    </InputGroup>
                   </Form.Group>
+                  {/* percentage */}
                   <Form.Group as={Col} md={4}>
-                    <Form.Label>Descuento</Form.Label>
+                    <Form.Label>
+                      Descuento
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <Form.Control
                       as="select"
                       type="text"
@@ -143,26 +167,44 @@ function DiscountsCreateRow(props) {
                       value={values.percentage}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      isValid={touched.percentage && !errors.percentage}
+                      isInvalid={touched.percentage && !!errors.percentage}
                     >
-                      <option disabled>Elige...</option>
+                      <option value={0} disabled>
+                        Elige...
+                      </option>
                       <option value={10}>10%</option>
-                      <option value={14}>15%</option>
+                      <option value={15}>15%</option>
                       <option value={20}>20%</option>
                       <option value={30}>30%</option>
                       <option value={40}>40%</option>
                       <option value={50}>50%</option>
                     </Form.Control>
+                    <ErrorMessage
+                      className="text-danger"
+                      name="percentage"
+                      component="div"
+                    />
                   </Form.Group>
+                  {/* new price */}
                   <Form.Group as={Col} md={4}>
                     <Form.Label>Nuevo precio</Form.Label>
-                    <Form.Control
-                      disabled
-                      type="text"
-                      name="newPrice"
-                      value={values.newPrice}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>$</InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <Form.Control
+                        disabled
+                        type="text"
+                        name="newPrice"
+                        value={
+                          values.salePrice -
+                          values.salePrice * (values.percentage / 100)
+                        }
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                    </InputGroup>
                   </Form.Group>
                 </Form.Row>
                 {/* buttons */}
@@ -179,7 +221,7 @@ function DiscountsCreateRow(props) {
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    Guardar
+                    Crear
                   </Button>
                 </Form.Group>
               </Form>

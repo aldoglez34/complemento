@@ -22,7 +22,7 @@ function Providers() {
   return (
     <ManagerLayout
       title="Proveedores"
-      button={{ text: "Nuevo Proveedor", to: "/manager/providers/create" }}
+      button={{ text: "Proveedor", to: "/manager/providers/create" }}
     >
       {providers ? (
         providers.length ? (
@@ -35,6 +35,7 @@ function Providers() {
                   <th className="text-center border-0">Correo</th>
                   <th className="text-center border-0">Teléfono</th>
                   <th className="text-center border-0">Dirección</th>
+                  <th className="text-center border-0">Productos</th>
                 </tr>
               </thead>
               <tbody>

@@ -43,6 +43,7 @@ function ProvidersRow(props) {
         <td>{props.provider.email}</td>
         <td>{props.provider.phone}</td>
         <td>{props.provider.fullAddress}</td>
+        <td className="text-center">{props.provider.productCount}</td>
       </tr>
 
       <Modal show={show} onHide={handleClose}>
@@ -57,7 +58,8 @@ function ProvidersRow(props) {
               rfc: props.provider.rfc,
               email: props.provider.email,
               phone: props.provider.phone,
-              fullAddress: props.provider.fullAddress
+              fullAddress: props.provider.fullAddress,
+              productCount: props.provider.productCount
             }}
             validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
@@ -152,7 +154,7 @@ function ProvidersRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* teléfono */}
+                {/* phone */}
                 <Form.Row>
                   <Form.Group as={Col}>
                     <Form.Label>Teléfono</Form.Label>
@@ -174,7 +176,7 @@ function ProvidersRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* dirección */}
+                {/* full address */}
                 <Form.Row>
                   <Form.Group as={Col}>
                     <Form.Label>Dirección</Form.Label>
@@ -196,23 +198,38 @@ function ProvidersRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* product count */}
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>Productos</Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      name="productCount"
+                      value={values.productCount}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.productCount && !errors.productCount}
+                      isInvalid={touched.productCount && !!errors.productCount}
+                    />
+                  </Form.Group>
+                </Form.Row>
                 {/* buttons */}
-                <Form.Group className="text-right">
-                  <Button
-                    variant="secondary"
-                    onClick={handleClose}
-                    className="mr-2"
-                  >
-                    Cerrar
+                <Form.Row className="px-1 mt-2">
+                  <Button variant="danger" onClick={handleClose}>
+                    <i className="fas fa-times-circle mr-1" />
+                    Borrar
                   </Button>
                   <Button
+                    className="ml-auto"
                     variant="success"
                     type="submit"
                     disabled={isSubmitting}
                   >
+                    <i className="fas fa-check-circle mr-1" />
                     Guardar
                   </Button>
-                </Form.Group>
+                </Form.Row>
               </Form>
             )}
           </Formik>

@@ -10,14 +10,14 @@ function TopHelperNav() {
       <Navbar id="topHelperStyle">
         <Col className="d-flex justify-content-start">
           {manager.backBttn ? (
-            <Button variant="dark" href={manager.backBttn}>
+            <Button variant="dark" title="Regresar" href={manager.backBttn}>
               <i className="fas fa-chevron-left backArrow" />
             </Button>
           ) : null}
         </Col>
         <Col className="d-flex flex-row justify-content-end">
           <Nav.Item className="topHelperItem p-0">
-            <i className="fas fa-user mr-2" />
+            <i className="fas fa-user mr-1" />
             {manager.email}
           </Nav.Item>
         </Col>

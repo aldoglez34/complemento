@@ -27,8 +27,9 @@ function ProductCard(props) {
           width={190}
           height={290}
           className="rounded-0"
-          // src={"/images/products/" + props.product.photo}
-          src={props.product.photo}
+          src={"/images/products/" + props.product.photo}
+          // src={require("./images/placeholder.jpg")}
+          // src={props.product.photo}
         />
       </a>
       <Card.Body
