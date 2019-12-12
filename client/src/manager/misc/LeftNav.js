@@ -91,7 +91,7 @@ function LeftNav() {
         <span className="ml-1">Usuarios</span>
       </Nav.Link>
       {/* reportes */}
-      <Nav.Item className="navItemStyle">Reportes</Nav.Item>
+      {/* <Nav.Item className="navItemStyle">Reportes</Nav.Item>
       <Nav.Link
         className="navLinkStyle"
         href="/manager"
@@ -113,7 +113,7 @@ function LeftNav() {
           style={{ width: "26px", textAlign: "center" }}
         />
         <span className="ml-1">Reporte 2</span>
-      </Nav.Link>
+      </Nav.Link> */}
       <div className="mt-auto p-3">
         <Button variant="danger" onClick={logout} block>
           Salir

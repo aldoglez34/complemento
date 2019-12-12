@@ -95,7 +95,7 @@ export default {
 
   // products
 
-  fetchProductsManager: function() {
+  fetchManagerProducts: function() {
     return axios.get("/api/manager/products/all");
   },
 

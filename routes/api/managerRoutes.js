@@ -51,7 +51,7 @@ router.post("/categories/new", function(req, res) {
 // =========================================================================
 // products
 
-// fetchProductsManager()
+// fetchManagerProducts()
 // matches with /api/manager/products/all
 router.get("/products/all", function(req, res) {
   model.Product.find({})
@@ -129,6 +129,7 @@ router.get("/discounts/all", function(req, res) {
   // model.Product.find({ discount: { hasDiscount: true } })
   model.Product.find({ "discount.hasDiscount": true })
     .sort({ name: 1 })
+    .populate("category provider")
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });

@@ -49,7 +49,7 @@ function ProvidersRow(props) {
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
-            <h2 className="mb-0">Proveedor</h2>
+            <h2 className="mb-0">Editar Proveedor</h2>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

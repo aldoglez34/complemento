@@ -4,13 +4,12 @@ import PropTypes from "prop-types";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import API from "../../utils/API";
-import AddDiscount from "./AddDiscount";
 
-ProductsRow.propTypes = {
+ProductRow.propTypes = {
   product: PropTypes.object.isRequired
 };
 
-function ProductsRow(props) {
+function ProductRow(props) {
   const [show, setshow] = useState(false);
 
   const handleClose = () => setshow(false);
@@ -107,7 +106,7 @@ function ProductsRow(props) {
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>
-            <h2 className="mb-0">Producto</h2>
+            <h2 className="mb-0">Editar Producto</h2>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -116,8 +115,6 @@ function ProductsRow(props) {
               _id: props.product._id,
               name: props.product.name,
               photo: props.product.photo,
-              purchasePrice: props.product.purchasePrice,
-              salePrice: props.product.salePrice,
               content: props.product.content,
               brand: props.product.brand,
               category: props.product.category.name,
@@ -126,7 +123,12 @@ function ProductsRow(props) {
               sufferings: props.product.sufferings.toString(),
               stock: props.product.stock,
               priority: props.product.priority,
-              comments: props.product.comments
+              comments: props.product.comments,
+              // prices
+              purchasePrice: props.product.purchasePrice,
+              salePrice: props.product.salePrice,
+              discount: props.product.discount.hasDiscount,
+              percentage: 0
             }}
             validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
@@ -200,86 +202,6 @@ function ProductsRow(props) {
                       isValid={touched.photo && !errors.photo}
                       isInvalid={touched.photo && !!errors.photo}
                     />
-                  </Form.Group>
-                </Form.Row>
-                {/* purchase price */}
-                <Form.Row>
-                  <Form.Group as={Col} md={4}>
-                    <Form.Label>
-                      Compra
-                      <span title="Requerido" className="text-danger">
-                        *
-                      </span>
-                    </Form.Label>
-                    <InputGroup>
-                      <InputGroup.Prepend>
-                        <InputGroup.Text>$</InputGroup.Text>
-                      </InputGroup.Prepend>
-                      <Form.Control
-                        type="number"
-                        placeholder="0.00"
-                        name="purchasePrice"
-                        value={values.purchasePrice}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        isValid={touched.purchasePrice && !errors.purchasePrice}
-                        isInvalid={
-                          touched.purchasePrice && !!errors.purchasePrice
-                        }
-                      />
-                    </InputGroup>
-                    <ErrorMessage
-                      className="text-danger"
-                      name="purchasePrice"
-                      component="div"
-                    />
-                  </Form.Group>
-                  {/* salePrice */}
-                  <Form.Group as={Col} md={4}>
-                    <Form.Label>
-                      Venta
-                      <span title="Requerido" className="text-danger">
-                        *
-                      </span>
-                    </Form.Label>
-                    <InputGroup>
-                      <InputGroup.Prepend>
-                        <InputGroup.Text>$</InputGroup.Text>
-                      </InputGroup.Prepend>
-                      <Form.Control
-                        type="number"
-                        placeholder="0.00"
-                        name="salePrice"
-                        value={values.salePrice}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        isValid={touched.salePrice && !errors.salePrice}
-                        isInvalid={touched.salePrice && !!errors.salePrice}
-                      />
-                    </InputGroup>
-                    <ErrorMessage
-                      className="text-danger"
-                      name="salePrice"
-                      component="div"
-                    />
-                  </Form.Group>
-                  {/* profit */}
-                  <Form.Group as={Col} md={4}>
-                    <Form.Label>Utilidad</Form.Label>
-                    <InputGroup>
-                      <InputGroup.Prepend>
-                        <InputGroup.Text>$</InputGroup.Text>
-                      </InputGroup.Prepend>
-                      <Form.Control
-                        disabled
-                        type="text"
-                        placeholder="0.00"
-                        name="profit"
-                        value={values.salePrice - values.purchasePrice}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                    </InputGroup>
                   </Form.Group>
                 </Form.Row>
                 {/* content */}
@@ -507,25 +429,153 @@ function ProductsRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* prices */}
+                <h3 className="mt-3">Precios</h3>
+                <hr />
+                {/* purchase price */}
+                <Form.Row>
+                  <Form.Group as={Col} md={4}>
+                    <Form.Label>
+                      Compra
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>$</InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <Form.Control
+                        type="number"
+                        placeholder="0.00"
+                        name="purchasePrice"
+                        value={values.purchasePrice}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isValid={touched.purchasePrice && !errors.purchasePrice}
+                        isInvalid={
+                          touched.purchasePrice && !!errors.purchasePrice
+                        }
+                      />
+                    </InputGroup>
+                    <ErrorMessage
+                      className="text-danger"
+                      name="purchasePrice"
+                      component="div"
+                    />
+                  </Form.Group>
+                  {/* salePrice */}
+                  <Form.Group as={Col} md={4}>
+                    <Form.Label>
+                      Venta
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>$</InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <Form.Control
+                        type="number"
+                        placeholder="0.00"
+                        name="salePrice"
+                        value={values.salePrice}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isValid={touched.salePrice && !errors.salePrice}
+                        isInvalid={touched.salePrice && !!errors.salePrice}
+                      />
+                    </InputGroup>
+                    <ErrorMessage
+                      className="text-danger"
+                      name="salePrice"
+                      component="div"
+                    />
+                  </Form.Group>
+                  {/* profit */}
+                  <Form.Group as={Col} md={4}>
+                    <Form.Label>Utilidad</Form.Label>
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>$</InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <Form.Control
+                        disabled
+                        type="text"
+                        placeholder="0.00"
+                        name="profit"
+                        value={values.salePrice - values.purchasePrice}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                    </InputGroup>
+                  </Form.Group>
+                </Form.Row>
+                {/* discount */}
+                <Form.Row>
+                  <Form.Group as={Col} md={4}>
+                    <Form.Label>
+                      Descuento
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
+                    <Form.Control
+                      as="select"
+                      type="text"
+                      name="discount"
+                      value={values.discount}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    >
+                      <option value={false}>No</option>
+                      <option value={true}>Sí</option>
+                    </Form.Control>
+                  </Form.Group>
+                  {/* percentage */}
+                  <Form.Group as={Col} md={4}>
+                    <Form.Label>
+                      Porcentaje
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
+                    <Form.Control
+                      as="select"
+                      type="text"
+                      name="percentage"
+                      value={values.percentage}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    >
+                      <option value={0} disabled>
+                        Elige...
+                      </option>
+                      <option value={10}>10%</option>
+                      <option value={15}>15%</option>
+                      <option value={20}>20%</option>
+                      <option value={30}>30%</option>
+                      <option value={40}>40%</option>
+                      <option value={50}>50%</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Form.Row>
                 {/* buttons */}
                 <Form.Row className="px-1 mt-2">
-                  <Button variant="danger" disabled onClick={handleClose}>
+                  <Button disabled variant="danger">
                     <i className="fas fa-times-circle mr-1" />
                     Borrar
                   </Button>
-                  <div className="ml-auto">
-                    {props.product.discount.hasDiscount ? null : (
-                      <AddDiscount product={props.product} />
-                    )}
-                    <Button
-                      variant="success"
-                      type="submit"
-                      disabled={isSubmitting}
-                    >
-                      <i className="fas fa-check-circle mr-1" />
-                      Guardar
-                    </Button>
-                  </div>
+                  <Button
+                    className="ml-auto"
+                    variant="success"
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    <i className="fas fa-check-circle mr-1" />
+                    Guardar
+                  </Button>
                 </Form.Row>
               </Form>
             )}
@@ -536,4 +586,4 @@ function ProductsRow(props) {
   );
 }
 
-export default ProductsRow;
+export default ProductRow;
