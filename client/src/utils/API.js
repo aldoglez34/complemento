@@ -143,9 +143,13 @@ export default {
     return axios.post("/api/manager/providers/new", provider);
   },
 
-  // clients (read only)
+  // users
 
   fetchClientsManager: function() {
     return axios.get("/api/manager/clients/all");
+  },
+
+  fetchManagers: function() {
+    return axios.get("/api/manager/managers/all");
   }
 };

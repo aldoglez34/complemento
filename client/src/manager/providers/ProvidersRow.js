@@ -48,7 +48,9 @@ function ProvidersRow(props) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Detalle de Proveedor</Modal.Title>
+          <Modal.Title>
+            <h2 className="mb-0">Proveedor</h2>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik
@@ -216,7 +218,7 @@ function ProvidersRow(props) {
                 </Form.Row>
                 {/* buttons */}
                 <Form.Row className="px-1 mt-2">
-                  <Button variant="danger" onClick={handleClose}>
+                  <Button disabled variant="danger" onClick={handleClose}>
                     <i className="fas fa-times-circle mr-1" />
                     Borrar
                   </Button>

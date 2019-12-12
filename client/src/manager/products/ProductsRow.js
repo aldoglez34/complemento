@@ -4,16 +4,17 @@ import PropTypes from "prop-types";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import API from "../../utils/API";
+import AddDiscount from "./AddDiscount";
 
 ProductsRow.propTypes = {
   product: PropTypes.object.isRequired
 };
 
 function ProductsRow(props) {
-  const [show, setShow] = useState(false);
+  const [show, setshow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setshow(false);
+  const handleShow = () => setshow(true);
 
   const yupschema = yup.object({
     name: yup
@@ -47,12 +48,12 @@ function ProductsRow(props) {
       .required("Requerido"),
     ingredients: yup.string(),
     sufferings: yup.string(),
-    initialStock: yup
+    stock: yup
       .number()
       .positive("Debe ser positivo")
       .required("Requerido"),
     photo: yup.string(),
-    priority: yup.string(),
+    priority: yup.boolean(),
     comments: yup.string()
   });
 
@@ -85,6 +86,7 @@ function ProductsRow(props) {
         </td>
         <td>{props.product.category.name}</td>
         <td>{props.product.provider.name}</td>
+        <td className="text-center">{props.product.priority ? "Sí" : "No"}</td>
         <td className="text-center">{"$" + props.product.purchasePrice}</td>
         <td className="text-center">
           {"$"}
@@ -113,6 +115,7 @@ function ProductsRow(props) {
             initialValues={{
               _id: props.product._id,
               name: props.product.name,
+              photo: props.product.photo,
               purchasePrice: props.product.purchasePrice,
               salePrice: props.product.salePrice,
               content: props.product.content,
@@ -122,18 +125,12 @@ function ProductsRow(props) {
               ingredients: props.product.ingredients.toString(),
               sufferings: props.product.sufferings.toString(),
               stock: props.product.stock,
-              photo: props.product.photo,
               priority: props.product.priority,
-              comments: props.product.comments,
-              unitsSold: props.product.unitsSold,
-              hasDiscount: props.product.discount.hasDiscount,
-              percentage: props.product.discount.percentage,
-              newPrice: props.product.discount.newPrice
+              comments: props.product.comments
             }}
             validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              console.log(values);
               API.updateProduct(values)
                 .then(res => {
                   if (res.data.errmsg) {
@@ -209,7 +206,7 @@ function ProductsRow(props) {
                 <Form.Row>
                   <Form.Group as={Col} md={4}>
                     <Form.Label>
-                      Precio de compra
+                      Compra
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -240,7 +237,7 @@ function ProductsRow(props) {
                   {/* salePrice */}
                   <Form.Group as={Col} md={4}>
                     <Form.Label>
-                      Precio de venta
+                      Venta
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -277,7 +274,7 @@ function ProductsRow(props) {
                         disabled
                         type="text"
                         placeholder="0.00"
-                        name="utility"
+                        name="profit"
                         value={values.salePrice - values.purchasePrice}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -516,15 +513,19 @@ function ProductsRow(props) {
                     <i className="fas fa-times-circle mr-1" />
                     Borrar
                   </Button>
-                  <Button
-                    className="ml-auto"
-                    variant="success"
-                    type="submit"
-                    disabled={isSubmitting}
-                  >
-                    <i className="fas fa-check-circle mr-1" />
-                    Guardar
-                  </Button>
+                  <div className="ml-auto">
+                    {props.product.discount.hasDiscount ? null : (
+                      <AddDiscount product={props.product} />
+                    )}
+                    <Button
+                      variant="success"
+                      type="submit"
+                      disabled={isSubmitting}
+                    >
+                      <i className="fas fa-check-circle mr-1" />
+                      Guardar
+                    </Button>
+                  </div>
                 </Form.Row>
               </Form>
             )}

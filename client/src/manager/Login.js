@@ -28,12 +28,9 @@ function Login(props) {
 
   return (
     <Container>
-      {/* logo */}
-      <Row className="mt-4">
+      <Row>
         <Col md={{ span: 6, offset: 3 }}>
-          <Image src="/images/adminlogo.png" alt="logo" fluid />
-          <h3 className="my-4 text-center">Panel de administrador</h3>
-          {/* form */}
+          <h1 className="mt-4 text-center">Panel de administrador</h1>
           <Formik
             initialValues={{ email: "", password: "" }}
             validationSchema={loginSchema}
@@ -141,7 +138,7 @@ function Login(props) {
                   <Form.Group as={Col}>
                     <Form.Label>Correo electrónico</Form.Label>
                     <Form.Control
-                      placeholder="Correo electrónico"
+                      placeholder="Ingresa el correo electrónico"
                       type="email"
                       name="email"
                       value={values.email}
@@ -160,7 +157,7 @@ function Login(props) {
                   <Form.Group as={Col}>
                     <Form.Label>Contraseña</Form.Label>
                     <Form.Control
-                      placeholder="Contraseña"
+                      placeholder="Ingresa la contraseña"
                       type="password"
                       name="password"
                       value={values.password}
@@ -177,7 +174,7 @@ function Login(props) {
                 </Form.Row>
                 <div className="text-right">
                   <Button
-                    className="globalbttn"
+                    variant="success"
                     type="submit"
                     disabled={isSubmitting}
                   >

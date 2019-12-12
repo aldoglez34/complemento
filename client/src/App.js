@@ -27,7 +27,7 @@ import Discounts from "./manager/discounts/Discounts";
 import DiscountsCreate from "./manager/discounts/DiscountsCreate";
 import Providers from "./manager/providers/Providers";
 import ProvidersCreate from "./manager/providers/ProvidersCreate";
-import Clients from "./manager/clients/Clients";
+import Users from "./manager/users/Users";
 import Products from "./manager/products/Products";
 import ProductsCreate from "./manager/products/ProductsCreate";
 
@@ -112,9 +112,8 @@ function App() {
               path="/manager/providers/create"
               component={ProvidersCreate}
             />
-            {/* clients */}
-            <Route exact path="/manager/clients" component={Clients} />
-            {/* <Redirect from="/manager" to="/manager/dashboard" /> */}
+            {/* users */}
+            <Route exact path="/manager/users" component={Users} />
           </>
         ) : (
           <>

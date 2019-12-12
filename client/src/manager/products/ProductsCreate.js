@@ -140,7 +140,7 @@ function ProductCreate(props) {
                   {/* purchase price */}
                   <Form.Group as={Col} md={2}>
                     <Form.Label>
-                      Precio de compra
+                      Compra
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -171,7 +171,7 @@ function ProductCreate(props) {
                   {/* salePrice */}
                   <Form.Group as={Col} md={2}>
                     <Form.Label>
-                      Precio de venta
+                      Venta
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -208,7 +208,7 @@ function ProductCreate(props) {
                         disabled
                         type="text"
                         placeholder="0.00"
-                        name="utility"
+                        name="profit"
                         value={values.salePrice - values.purchasePrice}
                         onChange={handleChange}
                         onBlur={handleBlur}

@@ -81,14 +81,14 @@ function LeftNav() {
       </Nav.Link>
       <Nav.Link
         className="navLinkStyle"
-        href="/manager/clients"
-        active={manager.active === "Clientes" ? true : false}
+        href="/manager/users"
+        active={manager.active === "Usuarios" ? true : false}
       >
         <i
           className="fas fa-users"
           style={{ width: "26px", textAlign: "center" }}
         />
-        <span className="ml-1">Clientes</span>
+        <span className="ml-1">Usuarios</span>
       </Nav.Link>
       {/* reportes */}
       <Nav.Item className="navItemStyle">Reportes</Nav.Item>

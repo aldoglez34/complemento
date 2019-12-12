@@ -70,9 +70,8 @@ router.put("/products/update", function(req, res) {
     salePrice: req.body.salePrice,
     content: req.body.content,
     brand: req.body.brand,
-    sufferings: req.body.sufferings.split(","),
     ingredients: req.body.ingredients.split(","),
-    stock: req.body.stock,
+    sufferings: req.body.sufferings.split(","),
     priority: req.body.priority,
     comments: req.body.comments
   })
@@ -246,13 +245,23 @@ router.post("/providers/new", async function(req, res) {
 
 // =========================================================================
 // =========================================================================
-// clients
+// users
 
 // fetchClientsManager()
 // matches with /api/manager/clients/all
 router.get("/clients/all", function(req, res) {
   model.Client.find({})
     .select("name firstSurname secondSurname phone email address createdAt")
+    .sort({ name: 1 })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
+// fetchManagers()
+// matches with /api/manager/managers/all
+router.get("/managers/all", function(req, res) {
+  model.Manager.find({})
+    .select("name firstSurname secondSurname email")
     .sort({ name: 1 })
     .then(data => res.json(data))
     .catch(err => res.json(err));

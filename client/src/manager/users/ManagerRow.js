@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Button, Modal, Form, Col } from "react-bootstrap";
+import { Modal, Form, Col } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 
-ClientsRow.propTypes = {
-  client: PropTypes.object.isRequired
+ManagerRow.propTypes = {
+  manager: PropTypes.object.isRequired
 };
 
-function ClientsRow(props) {
+function ManagerRow(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -16,29 +16,26 @@ function ClientsRow(props) {
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
-        <td>{props.client.name}</td>
-        <td>{props.client.firstSurname}</td>
-        <td>{props.client.secondSurname}</td>
-        <td>{props.client.email}</td>
-        <td>{props.client.createdAt}</td>
+        <td>{props.manager.name}</td>
+        <td>{props.manager.firstSurname}</td>
+        <td>{props.manager.secondSurname}</td>
+        <td>{props.manager.email}</td>
       </tr>
 
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>
-            Detalle de Cliente <small>(sólo lectura)</small>
+            <h2 className="mb-0">Manager</h2>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik
             initialValues={{
-              _id: props.client._id,
-              name: props.client.name,
-              firstSurname: props.client.firstSurname,
-              secondSurname: props.client.secondSurname,
-              email: props.client.email,
-              phone: props.client.phone,
-              createdAt: props.client.createdAt
+              _id: props.manager._id,
+              name: props.manager.name,
+              firstSurname: props.manager.firstSurname,
+              secondSurname: props.manager.secondSurname,
+              email: props.manager.email
             }}
           >
             {({ values, handleChange, handleBlur, handleSubmit }) => (
@@ -94,32 +91,6 @@ function ClientsRow(props) {
                       onBlur={handleBlur}
                     />
                   </Form.Group>
-                  {/* phone */}
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>Teléfono</Form.Label>
-                    <Form.Control
-                      disabled
-                      type="text"
-                      name="phone"
-                      value={values.phone}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </Form.Group>
-                </Form.Row>
-                {/* createdAt */}
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>Fecha de creación</Form.Label>
-                    <Form.Control
-                      disabled
-                      type="text"
-                      name="createdAt"
-                      value={values.createdAt}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </Form.Group>
                 </Form.Row>
               </Form>
             )}
@@ -130,4 +101,4 @@ function ClientsRow(props) {
   );
 }
 
-export default ClientsRow;
+export default ManagerRow;

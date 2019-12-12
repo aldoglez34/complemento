@@ -31,12 +31,11 @@ function Discounts() {
               <thead>
                 <tr>
                   <th className="text-center border-0">Producto</th>
-                  <th className="text-center border-0">Precio de compra</th>
-                  <th className="text-center border-0">Precio de venta</th>
+                  <th className="text-center border-0">Compra</th>
+                  <th className="text-center border-0">Venta</th>
                   <th className="text-center border-0">Utilidad</th>
-                  <th className="text-center border-0">Descuento</th>
                   <th className="text-center border-0">
-                    Nuevo precio de venta
+                    Nueva venta
                   </th>
                   <th className="text-center border-0">Nueva utilidad</th>
                 </tr>
