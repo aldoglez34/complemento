@@ -61,7 +61,7 @@ function AddToBagButton(props) {
           <Button variant="secondary" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button className="globalbttn" href="/cart">
+          <Button variant="success" href="/cart">
             Ir a mis compras
             <i className="fas fa-shopping-bag ml-1" />
             <i className="fas fa-angle-double-right ml-1" />
