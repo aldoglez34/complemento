@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 
 CategoriesList.propTypes = {
   categories: PropTypes.array.isRequired,
-  filter: PropTypes.string.isRequired,
-  handleFiltering: PropTypes.func.isRequired
+  filter: PropTypes.string,
+  handleFiltering: PropTypes.func
 };
 
 function CategoriesList(props) {

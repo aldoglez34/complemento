@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Spinner, Col, Row, Dropdown } from "react-bootstrap";
+import { Spinner, Col, Row } from "react-bootstrap";
 import ProductCard from "./ProductCard";
 import PropTypes from "prop-types";
 import MyPagination from "./MyPagination";
@@ -72,198 +72,11 @@ class ProductsSection extends Component {
   render() {
     return (
       <>
-        {/* title */}
-        <Row>
-          <Col className="text-center">
-            <h4 className="mt-3 mb-1">
-              <strong>
-                {this.props.filter === ""
-                  ? "Todos los productos"
-                  : this.props.filter}
-              </strong>
-            </h4>
-            <hr
-              className="myDivider mb-1 ml-auto"
-              style={{ backgroundColor: "#edcb58" }}
-            />
-          </Col>
-        </Row>
         {/* product section */}
         <Row>
           <Col>
             {this.props.products.length ? (
               <>
-                {/* filters */}
-                <Row className="mt-3 mb-2">
-                  <Col md={4}>
-                    <div className="d-flex flex-row align-items-center justify-content-center">
-                      <span
-                        className="mr-1 text-dark"
-                        style={{ fontSize: "17px" }}
-                      >
-                        Orden por nombre:
-                      </span>
-                      <Dropdown>
-                        <Dropdown.Toggle
-                          variant="secondary"
-                          // className="dropdownSort"
-                          size="sm"
-                        >
-                          {this.state.nameSorting}
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                          <Dropdown.Item
-                            className="dropdownItemSort"
-                            onClick={() =>
-                              this.setState({ nameSorting: "Ascendente" })
-                            }
-                            active={
-                              this.state.nameSorting === "Ascendente"
-                                ? true
-                                : false
-                            }
-                          >
-                            Ascendente
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            className="dropdownItemSort"
-                            onClick={() =>
-                              this.setState({ nameSorting: "Descendente" })
-                            }
-                            active={
-                              this.state.nameSorting === "Descendente"
-                                ? true
-                                : false
-                            }
-                          >
-                            Descendente
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </div>
-                  </Col>
-                  <Col md={4}>
-                    <div className="d-flex flex-row align-items-center justify-content-center">
-                      <span
-                        className="mr-1 text-dark"
-                        style={{ fontSize: "17px" }}
-                      >
-                        Orden por precio:
-                      </span>
-                      <Dropdown>
-                        <Dropdown.Toggle
-                          variant="secondary"
-                          // className="dropdownSort"
-                          size="sm"
-                        >
-                          {this.state.priceSorting}
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                          <Dropdown.Item
-                            className="dropdownItemSort"
-                            onClick={() =>
-                              this.setState({ priceSorting: "Sin orden" })
-                            }
-                            active={
-                              this.state.priceSorting === "Sin orden"
-                                ? true
-                                : false
-                            }
-                          >
-                            Sin orden
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            className="dropdownItemSort"
-                            onClick={() =>
-                              this.setState({ priceSorting: "Más barato" })
-                            }
-                            active={
-                              this.state.priceSorting === "Más barato"
-                                ? true
-                                : false
-                            }
-                          >
-                            Más barato
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            className="dropdownItemSort"
-                            onClick={() =>
-                              this.setState({ priceSorting: "Más caro" })
-                            }
-                            active={
-                              this.state.priceSorting === "Más caro"
-                                ? true
-                                : false
-                            }
-                          >
-                            Más caro
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            className="dropdownItemSort"
-                            onClick={() =>
-                              this.setState({ priceSorting: "Con descuento" })
-                            }
-                            active={
-                              this.state.priceSorting === "Con descuento"
-                                ? true
-                                : false
-                            }
-                          >
-                            Con descuento
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </div>
-                  </Col>
-                  <Col md={4}>
-                    <div className="d-flex flex-row align-items-center justify-content-center">
-                      <span
-                        className="mr-1 text-dark"
-                        style={{ fontSize: "17px" }}
-                      >
-                        Productos por página:
-                      </span>
-                      <Dropdown alignRight>
-                        <Dropdown.Toggle
-                          variant="secondary"
-                          // className="dropdownSort"
-                          size="sm"
-                        >
-                          {this.state.productsPerPage}
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                          <Dropdown.Item
-                            className="dropdownItemSort"
-                            onClick={() => this.handleChangeProductsPerPage(20)}
-                            active={
-                              this.state.productsPerPage === 20 ? true : false
-                            }
-                          >
-                            20
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            className="dropdownItemSort"
-                            onClick={() => this.handleChangeProductsPerPage(30)}
-                            active={
-                              this.state.productsPerPage === 30 ? true : false
-                            }
-                          >
-                            30
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            className="dropdownItemSort"
-                            onClick={() => this.handleChangeProductsPerPage(40)}
-                            active={
-                              this.state.productsPerPage === 40 ? true : false
-                            }
-                          >
-                            40
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </div>
-                  </Col>
-                </Row>
                 {/* product cards */}
                 <Row>
                   <Col className="d-flex flex-wrap justify-content-center">
@@ -319,12 +132,8 @@ class ProductsSection extends Component {
                 </Row>
               </>
             ) : (
-              <div className="text-center my-4">
-                <Spinner
-                  animation="grow"
-                  role="status"
-                  className="spinnerStyle"
-                />
+              <div className="h-100 d-flex align-items-center justify-content-center">
+                <Spinner animation="grow" role="status" variant="warning" />
               </div>
             )}
           </Col>

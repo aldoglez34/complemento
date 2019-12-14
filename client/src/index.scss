@@ -30,33 +30,12 @@ h5 {
 }
 
 // ==============================================================================================================
-// removes blue glow on some elements
-// input {
-//   outline: none;
-//   box-shadow: none !important;
-//   border: 1px solid #ccc !important;
-// }
-
-// button {
-//   outline: none;
-//   box-shadow: none !important;
-//   border: 0px !important;
-// }
-
-// ==============================================================================================================
 // client dropdown
 $clientdropdownitem-back: #59a49a;
 .clientDropdownItem {
   &:active {
     background-color: $clientdropdownitem-back;
   }
-}
-
-// ==============================================================================================================
-// spinner
-$spinner-back: #f3d084;
-.spinnerStyle {
-  background-color: $spinner-back !important;
 }
 
 // ==============================================================================================================

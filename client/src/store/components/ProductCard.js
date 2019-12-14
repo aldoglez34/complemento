@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card } from "react-bootstrap";
+import { Card, Badge } from "react-bootstrap";
 import FavButton from "./FavButton";
 import AddToBagButton from "./AddToBagButton";
 
@@ -21,6 +21,15 @@ function ProductCard(props) {
           style={{ backgroundColor: "#264341" }}
         >
           <span>{props.product.name}</span>
+          {props.product.discount.hasDiscount ? (
+            <Badge
+              className="ml-1"
+              variant="warning"
+              title={props.product.discount.percentage + "% de descuento"}
+            >
+              {props.product.discount.percentage + "%"}
+            </Badge>
+          ) : null}
         </Card.Header>
         <Card.Img
           variant="top"

@@ -35,7 +35,7 @@ function LoginDropdown() {
             .auth()
             .signInWithEmailAndPassword(values.email, values.password)
             .then(res => {
-              API.fetchManagerByUID(res.user.uid)
+              API.fetchClientByUID(res.user.uid)
                 .then(res => {
                   if (res.data) {
                     dispatch(clientActions.loginClient(res.data));

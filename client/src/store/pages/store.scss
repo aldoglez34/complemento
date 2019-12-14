@@ -16,11 +16,11 @@
 
 .dropdownItemSort {
   &.active {
-    background-color: #c8c0b0 !important;
+    background-color: lightgray !important;
     color: black;
   }
   &:focus {
-    background-color: "c8c0b0" !important;
+    background-color: rgb(192, 191, 191) !important;
     color: black;
   }
 }

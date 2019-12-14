@@ -32,7 +32,7 @@ function HelpButton() {
           cursus magna, vel scelerisque nisl consectetur et.
         </Modal.Body>
         <Modal.Footer>
-          <Button className="globalbttn" onClick={handleClose}>
+          <Button variant="success" onClick={handleClose}>
             Aceptar
           </Button>
         </Modal.Footer>

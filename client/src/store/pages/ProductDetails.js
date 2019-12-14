@@ -34,12 +34,10 @@ function ProductDetails(props) {
               { name: product.name, to: "active" }
             ]}
           />
-          <Container className="my-4 p-3">
-            <h2 className="mb-1">{product.name}</h2>
-            <hr className="myDivider" />
+          <Container className="my-3">
             <Row className="mt-4">
-              {/* column 1 */}
-              <Col md={3} className="text-center">
+              {/* photo */}
+              <Col md={4} className="text-center">
                 <Image
                   src={"/images/products/" + product.photo}
                   className="rounded-lg"
@@ -47,91 +45,98 @@ function ProductDetails(props) {
                   alt="product"
                 />
               </Col>
-              {/* column 2 */}
-              <Col md={3} className="mt-2 mt-md-0 text-center text-md-left">
-                <div className="my-3">
-                  {product.discount.hasDiscount ? (
-                    <div className="h2 mt-0 mb-1 text-dark">
-                      <small>
-                        <del className="text-muted">
-                          {"$" + product.salePrice + " MXN"}
-                        </del>
-                      </small>
-                      <strong className="ml-1">
-                        {"$" + product.discount.newPrice + " MXN"}
-                      </strong>
-                    </div>
-                  ) : (
-                    <div className="h2 mt-0 mb-1 text-dark">
-                      <strong>{"$" + product.salePrice + " MXN"}</strong>
-                    </div>
-                  )}
-                  <hr />
-                  <div className="lead mb-0 text-dark">{product.content}</div>
-                  <hr />
-                  <div
-                    className="lead mt-0 mb-0 text-dark"
-                    style={{ textTransform: "uppercase" }}
-                  >
-                    {product.brand}
-                  </div>
-                </div>
-                <div className="mt-2">
-                  <AddToBagButton product={product} size="lg" />
-                </div>
-                <div className="mt-2">
-                  <FavButton
-                    block={true}
-                    text={"Favoritos "}
-                    product={product}
-                  />
-                </div>
-              </Col>
-              {/* column 3 */}
-              <Col md={3} className="mt-3 mt-md-0">
-                <p className="lead mb-1 text-dark">Útil para</p>
-                {product.sufferings.length ? (
-                  <ul className="list-unstyled">
-                    <li>
-                      <ul>
-                        {product.sufferings.map(suff => (
-                          <li key={suff}>{suff}</li>
-                        ))}
+              {/* info */}
+              <Col md={8}>
+                {/* name and price */}
+                <Row className="mb-3">
+                  <Col>
+                    <h1 className="mb-0 text-dark">{product.name}</h1>
+                    <hr className="myDivider" />
+                    <h2 className="mb-0">{product.brand}</h2>
+                    <h2 className="mb-0">{product.content}</h2>
+                    {product.discount.hasDiscount ? (
+                      <Row className="px-3">
+                        <h2 className="mb-0 text-danger">
+                          {"$" + product.discount.newPrice + " MXN"}
+                        </h2>
+                        <h3 className="mb-0 ml-2 text-muted">
+                          <del>{"$" + product.salePrice + " MXN"}</del>
+                        </h3>
+                      </Row>
+                    ) : (
+                      <h2 className="mb-0 text-danger">
+                        {"$" + product.salePrice + " MXN"}
+                      </h2>
+                    )}
+                  </Col>
+                </Row>
+                {/* buttons */}
+                <Row className="mb-2">
+                  <Col md={5}>
+                    <AddToBagButton product={product} size="lg" />
+                  </Col>
+                </Row>
+                <Row className="mb-4">
+                  <Col md={5}>
+                    <FavButton
+                      block={true}
+                      text={"Favoritos "}
+                      product={product}
+                    />
+                  </Col>
+                </Row>
+                {/* ingredients and sufferings */}
+                <Row className="mb-1">
+                  <Col>
+                    <h4 className="mb-1">Útil para</h4>
+                    {product.sufferings.length ? (
+                      <ul className="mb-1 list-unstyled">
+                        <li>
+                          <ul>
+                            {product.sufferings.map(suff => (
+                              <li key={suff}>{suff}</li>
+                            ))}
+                          </ul>
+                        </li>
                       </ul>
-                    </li>
-                  </ul>
-                ) : (
-                  <span>No hay información disponible</span>
-                )}
-              </Col>
-              {/* column 4 */}
-              <Col md={3}>
-                <p className="lead mb-1 text-dark">Contiene</p>
-                {product.ingredients.length ? (
-                  <ul className="list-unstyled">
-                    <li>
-                      <ul>
-                        {product.ingredients.map(ing => (
-                          <li key={ing}>{ing}</li>
-                        ))}
+                    ) : (
+                      <span>No hay información disponible</span>
+                    )}
+                  </Col>
+                </Row>
+                <Row className="mb-1">
+                  <Col>
+                    <h4 className="mb-1">Contiene</h4>
+                    {product.ingredients.length ? (
+                      <ul className="mb-1 list-unstyled">
+                        <li>
+                          <ul>
+                            {product.ingredients.map(ing => (
+                              <li key={ing}>{ing}</li>
+                            ))}
+                          </ul>
+                        </li>
                       </ul>
-                    </li>
-                  </ul>
-                ) : (
-                  <span>No hay información disponible</span>
-                )}
+                    ) : (
+                      <span>No hay información disponible</span>
+                    )}
+                  </Col>
+                </Row>
+                {/* comments */}
+                <Row className="mb-2">
+                  <Col className="text-center">
+                    <em>{product.comments}</em>
+                  </Col>
+                </Row>
               </Col>
-            </Row>
-            <Row className="mt-3">
-              <Col>{product.comments}</Col>
             </Row>
             <HelpButton />
             <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
           </Container>
         </>
       ) : (
-        <div className="text-center my-4">
-          <Spinner animation="grow" role="status" className="spinnerStyle" />
+        <div className="h-100 d-flex align-items-center justify-content-center">
+          <Spinner animation="grow" role="status" variant="warning" />
         </div>
       )}
     </Layout>

@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Layout from "./Layout";
-import CategoriesList from "../components/CategoriesList";
-import BrandsList from "../components/BrandsList";
-import ProductsSection from "../components/ProductsSection";
+import ProductsSection from "../store-comps/ProductsSection";
 import HelpButton from "../components/HelpButton";
 import ScrollButton from "../components/ScrollButton";
 import MyBreadcrumb from "../components/MyBreadcrumb";
 import "./store.scss";
 import API from "../../utils/API";
+import FilterSection from "../store-comps/FilterSection";
+import SortDropdown from "../store-comps/SortDropdown";
+import ProductsPerPageDropdown from "../store-comps/ProductsPerPageDropdown";
 
 function Store() {
   const breadcrumbRoute = () => {
@@ -22,18 +23,16 @@ function Store() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
+
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    // fetch categories
     API.fetchCategories()
       .then(res => setCategories(res.data))
       .catch(err => console.log(err));
-    // fetch brands
     API.fetchBrands()
       .then(res => setBrands(res.data))
       .catch(err => console.log(err));
-    // fetch all products
     API.fetchProducts()
       .then(res => setProducts(res.data))
       .catch(err => console.log(err));
@@ -46,48 +45,44 @@ function Store() {
   return (
     <Layout>
       <MyBreadcrumb routes={breadcrumbRoute()} />
-      <Container fluid className="my-3">
-        <Row className="px-3">
-          <Col md={3} className="mt-2">
-            <Row>
-              <Col>
-                <div className="mt-3 mb-1 d-flex flex-row align-items-center">
-                  <h4 className="mb-0 mr-1">
-                    <strong>Filtros</strong>
-                  </h4>
-                  <i className="fas fa-filter" />
-                  <Button
-                    id="clearFiltersBttn"
-                    disabled={filter === "" ? true : false}
-                    onClick={() => setFilter("")}
-                  >
-                    <i className="fas fa-times clearFiltersTimes" />
-                  </Button>
-                </div>
-                <hr className="myDivider mb-1" />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <CategoriesList
-                  categories={categories}
-                  filter={filter}
-                  handleFiltering={handleFiltering}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <BrandsList
-                  brands={brands}
-                  filter={filter}
-                  handleFiltering={handleFiltering}
-                />
-              </Col>
-            </Row>
+      <Container fluid className="mt-3">
+        <Row className="p-3">
+          {/* left-column, filters */}
+          <Col md={3}>
+            <h2>Filtros</h2>
+            <hr className="myDivider" />
+            <FilterSection categories={categories} brands={brands} />
           </Col>
-          <Col md={9} className="mt-2">
-            <ProductsSection products={products} filter={filter} />
+          {/* right-column, title, sorting and products */}
+          <Col md={9}>
+            {/* title */}
+            <Row className="px-3 mb-2">
+              <Col className="text-center">
+                <h2 className="mt-1">Todos los productos</h2>
+                <hr
+                  className="myDivider mb-1 ml-auto"
+                  style={{ backgroundColor: "#edcb58" }}
+                />
+              </Col>
+            </Row>
+            {/* sorting */}
+            <Row className="px-3 mb-2">
+              <div className="d-flex flex-row align-items-center justify-content-center mr-3">
+                <span className="mr-2">Orden</span>
+                <SortDropdown active={"Ninguno"} />
+              </div>
+              <div className="d-flex flex-row align-items-center justify-content-center">
+                <span className="mr-2">Productos por página</span>
+                <ProductsPerPageDropdown qty={20} />
+              </div>
+              <div className="ml-auto">{products.length} productos</div>
+            </Row>
+            {/* products */}
+            <Row className="mb-3">
+              <Col>
+                <ProductsSection products={products} filter={filter} />
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>
