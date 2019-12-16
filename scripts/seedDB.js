@@ -14,7 +14,7 @@ mongoose
 // const managers = require("./devdata/managers");
 // const providers = require("./devdata/providers");
 // const categories = require("./devdata/categories");
-const products = require("./devdata/products");
+// const products = require("./devdata/products");
 
 // models.Client.insertMany(clients)
 //   .then(() => console.log("dev data - clients added"))
@@ -32,6 +32,6 @@ const products = require("./devdata/products");
 //   .then(() => console.log("dev data - categories added"))
 //   .catch(err => console.log(err));
 
-models.Product.insertMany(products)
-  .then(() => console.log("dev data - products added"))
-  .catch(err => console.log(err));
+// models.Product.insertMany(products)
+//   .then(() => console.log("dev data - products added"))
+//   .catch(err => console.log(err));
