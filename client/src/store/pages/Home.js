@@ -99,11 +99,7 @@ class Home extends Component {
                   })
                 ) : (
                   <div className="text-center my-4">
-                    <Spinner
-                      className="spinnerStyle"
-                      animation="grow"
-                      role="status"
-                    />
+                    <Spinner variant="warning" animation="grow" role="status" />
                   </div>
                 )}
               </div>
@@ -120,11 +116,7 @@ class Home extends Component {
                   })
                 ) : (
                   <div className="text-center my-4">
-                    <Spinner
-                      className="spinnerStyle"
-                      animation="grow"
-                      role="status"
-                    />
+                    <Spinner variant="warning" animation="grow" role="status" />
                   </div>
                 )}
               </div>
@@ -141,11 +133,7 @@ class Home extends Component {
                   })
                 ) : (
                   <div className="text-center my-4">
-                    <Spinner
-                      className="spinnerStyle"
-                      animation="grow"
-                      role="status"
-                    />
+                    <Spinner variant="warning" animation="grow" role="status" />
                   </div>
                 )}
               </div>

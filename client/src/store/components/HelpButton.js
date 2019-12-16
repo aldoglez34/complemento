@@ -16,7 +16,9 @@ function HelpButton() {
 
       <Modal className="modal-open" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>¿Necesitas ayuda?</Modal.Title>
+          <Modal.Title>
+            <h3 className="mb-0">¿Necesitas ayuda?</h3>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
