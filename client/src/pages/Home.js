@@ -1,21 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Spinner,
+  Button,
+  Jumbotron
+} from "react-bootstrap";
 import Layout from "../components/Layout";
 import ProductCard from "../components/cards/ProductCard";
 import HelpButton from "../components/misc/HelpButton";
 import ScrollButton from "../components/misc/ScrollButton";
-import MyCarousel from "./components/MyCarousel";
 import API from "../utils/API";
+import HomePrioritized from "./components/HomePrioritized";
+import WelcomeJumbotron from "./components/WelcomeJumbotron";
 
 function Home() {
-  const [prioritized, setPrioritized] = useState([]);
   const [discounts, setDiscounts] = useState([]);
   const [bestSellers, setBestSellers] = useState([]);
 
+  const styles = {
+    welcomeItem: {
+      backgroundImage: "url('images/carousel1.jpg')",
+      backgroundSize: "cover",
+      backgroundColor: "gainsboro",
+      backgroundBlendMode: "multiply",
+      height: "24rem"
+    }
+  };
+
   useEffect(() => {
-    API.fetchPrioritized()
-      .then(res => setPrioritized(res.data))
-      .catch(err => console.log(err));
     API.fetchProductsWithDiscount()
       .then(res => setDiscounts(res.data))
       .catch(err => console.log(err));
@@ -26,10 +40,12 @@ function Home() {
 
   return (
     <Layout>
-      <MyCarousel />
+      {/* welcome title */}
+      <WelcomeJumbotron />
+      {/* content */}
       <Container className="mb-3">
         <Row>
-          <Col md={8} className="mt-5">
+          <Col md={8} className="mt-2">
             <h1 className="mb-1">¿Quiénes somos?</h1>
             <hr className="myDivider" />
             <p>
@@ -48,19 +64,18 @@ function Home() {
               sagittis nunc ac, efficitur tempor metus. Nullam ut eros a libero
               scelerisque porttitor.
             </p>
-            <Button
+            {/* <Button
               size="lg"
               href="/store"
               className="shadow-sm p-3 mt-3"
-              // id="homebttn"
               variant="success"
             >
               Explora la tienda
               <i className="fas fa-store-alt ml-2" />
               <i className="fas fa-angle-double-right ml-2" />
-            </Button>
+            </Button> */}
           </Col>
-          <Col md={4} className="mt-5">
+          <Col md={4} className="mt-2">
             <h1 className="mb-1">Contáctanos</h1>
             <hr className="myDivider" />
             <address>
@@ -86,17 +101,7 @@ function Home() {
           <Col>
             <h1 className="mb-1">Destacados</h1>
             <hr className="myDivider" />
-            <div className="d-flex flex-wrap justify-content-center">
-              {prioritized.length ? (
-                prioritized.map(p => {
-                  return <ProductCard key={p._id} product={p} />;
-                })
-              ) : (
-                <div className="text-center my-4">
-                  <Spinner variant="warning" animation="grow" role="status" />
-                </div>
-              )}
-            </div>
+            <HomePrioritized />
           </Col>
         </Row>
         <Row className="mt-5">
