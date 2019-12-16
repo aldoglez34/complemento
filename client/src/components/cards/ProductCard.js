@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Card, Badge } from "react-bootstrap";
-import FavButton from "./FavButton";
-import AddToBagButton from "./AddToBagButton";
+import FavButton from "../buttons/FavButton";
+import AddToBagButton from "../buttons/AddToBagButton";
 
 ProductCard.propTypes = {
   product: PropTypes.object.isRequired

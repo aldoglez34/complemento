@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import * as clientActions from "./redux-actions/client";
-import * as managerActions from "./redux-actions/manager";
+import * as clientActions from "./redux/actions/client";
+import * as managerActions from "./redux/actions/manager";
 import {
   BrowserRouter as Router,
   Route,
@@ -10,14 +10,14 @@ import {
 } from "react-router-dom";
 import fire from "./firebase/fire";
 // store
-import Home from "./store/pages/Home";
-import Store from "./store/pages/Store";
-import ProductDetails from "./store/pages/ProductDetails";
-import Cart from "./store/pages/Cart";
-import SignUp from "./store/pages/SignUp";
-import NoMatch from "./store/pages/NoMatch";
-import ClientInfo from "./store/pages/ClientInfo";
-import ClientFavorites from "./store/pages/ClientFavorites";
+import Home from "./pages/Home";
+import Store from "./store/Store";
+import ProductDetails from "./pages/ProductDetails";
+import Cart from "./pages/Cart";
+import SignUp from "./pages/SignUp";
+import NoMatch from "./pages/NoMatch";
+import ClientInfo from "./pages/ClientInfo";
+import ClientFavorites from "./pages/ClientFavorites";
 // manager
 import Login from "./manager/Login";
 import Dashboard from "./manager/Dashboard";

@@ -3,7 +3,7 @@ import ManagerLayout from "../ManagerLayout";
 import { Table, Spinner } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import API from "../../utils/API";
-import * as managerActions from "../../redux-actions/manager";
+import * as managerActions from "../../redux/actions/manager";
 import DiscountsCreateRow from "./DiscountsCreateRow";
 
 function DiscountsCreate(props) {

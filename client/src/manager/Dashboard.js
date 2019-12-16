@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import ManagerLayout from "./ManagerLayout";
-import * as managerActions from "../redux-actions/manager";
+import * as managerActions from "../redux/actions/manager";
 
 function Dashboard() {
   const dispatch = useDispatch();

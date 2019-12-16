@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const ProductSchema = new Schema({
   name: {
     type: String,
+    unique: true,
     trim: true,
     required: "Nombre requerido"
   },

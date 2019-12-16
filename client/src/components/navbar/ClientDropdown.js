@@ -2,7 +2,7 @@ import React from "react";
 import { Dropdown, Nav, NavItem } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import fire from "../../firebase/fire";
-import * as clientActions from "../../redux-actions/client";
+import * as clientActions from "../../redux/actions/client";
 
 function ClientDropdown() {
   const dispatch = useDispatch();

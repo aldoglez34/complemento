@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Nav, Button, Image } from "react-bootstrap";
 import fire from "../../firebase/fire";
-import * as managerActions from "../../redux-actions/manager";
+import * as managerActions from "../../redux/actions/manager";
 
 function LeftNav() {
   const manager = useSelector(state => state.manager);

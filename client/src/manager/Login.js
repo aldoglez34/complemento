@@ -4,7 +4,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import fb from "../firebase/fire";
 import { useDispatch } from "react-redux";
-import * as managerActions from "../redux-actions/manager";
+import * as managerActions from "../redux/actions/manager";
 import API from "../utils/API";
 const firebase = require("firebase/app");
 

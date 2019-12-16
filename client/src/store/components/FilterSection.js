@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import CategoriesList from "../store-comps/CategoriesList";
-import BrandsList from "../store-comps/BrandsList";
+import CategoriesList from "./CategoriesList";
+import BrandsList from "./BrandsList";
 
 FilterSection.propTypes = {
   categories: PropTypes.array.isRequired,

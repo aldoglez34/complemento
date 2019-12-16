@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import * as cartActions from "../../redux-actions/cart";
+import * as cartActions from "../redux/actions/cart";
 import {
   Container,
   Row,
@@ -11,9 +11,9 @@ import {
   Spinner,
   Card
 } from "react-bootstrap";
-import Layout from "./Layout";
-import API from "../../utils/API";
-import MyBreadcrumb from "../components/MyBreadcrumb";
+import Layout from "../components/Layout";
+import API from "../utils/API";
+import MyBreadcrumb from "../components/breadcrumb/MyBreadcrumb";
 
 function Cart() {
   const cartItems = useSelector(state => state.cart.items);

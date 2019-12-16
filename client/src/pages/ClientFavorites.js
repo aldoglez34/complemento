@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import Layout from "./Layout";
-import MyBreadcrumb from "../components/MyBreadcrumb";
+import Layout from "../components/Layout";
+import MyBreadcrumb from "../components/breadcrumb/MyBreadcrumb";
 import { Container, Spinner } from "react-bootstrap";
-import API from "../../utils/API";
-import ProductCard from "../components/ProductCard";
+import API from "../utils/API";
+import ProductCard from "../components/cards/ProductCard";
 
 function ClientFavorites() {
   const client = useSelector(state => state.client);

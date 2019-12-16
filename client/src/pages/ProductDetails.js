@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Image, Spinner } from "react-bootstrap";
-import Layout from "./Layout";
-import MyBreadcrumb from "../components/MyBreadcrumb";
-import API from "../../utils/API";
-import HelpButton from "../components/HelpButton";
-import ScrollButton from "../components/ScrollButton";
-import FavButton from "../components/FavButton";
-import AddToBagButton from "../components/AddToBagButton";
+import Layout from "../components/Layout";
+import MyBreadcrumb from "../components/breadcrumb/MyBreadcrumb";
+import API from "../utils/API";
+import HelpButton from "../components/misc/HelpButton";
+import ScrollButton from "../components/misc/ScrollButton";
+import FavButton from "../components/buttons/FavButton";
+import AddToBagButton from "../components/buttons/AddToBagButton";
 
 function ProductDetails(props) {
   const [product, setProduct] = useState();

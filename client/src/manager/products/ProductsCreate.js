@@ -5,7 +5,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import API from "../../utils/API";
-import * as managerActions from "../../redux-actions/manager";
+import * as managerActions from "../../redux/actions/manager";
 
 function ProductCreate(props) {
   const [categories, setCategories] = useState();

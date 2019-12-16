@@ -1,26 +1,32 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import * as clientActions from "../../redux-actions/client";
-import { Container, Col, Form, Button } from "react-bootstrap";
-import Layout from "./Layout";
-import MyBreadcrumb from "../components/MyBreadcrumb";
+import { useSelector, useDispatch } from "react-redux";
+import { Container, Form, Col, Button } from "react-bootstrap";
+import API from "../utils/API";
+import Layout from "../components/Layout";
+import MyBreadcrumb from "../components/breadcrumb/MyBreadcrumb";
+import ScrollButton from "../components/misc/ScrollButton";
+import HelpButton from "../components/misc/HelpButton";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
-import HelpButton from "../components/HelpButton";
-import ScrollButton from "../components/ScrollButton";
-import API from "../../utils/API";
-import fire from "../../firebase/fire";
+import * as clientActions from "../redux/actions/client";
 
-function SignUp(props) {
-  const breadcrumbRoutes = [
-    { name: "Inicio", to: "/" },
-    { name: "Regístrate con nosotros", to: "active" }
-  ];
-
+function ClientInfo() {
+  const client = useSelector(state => state.client);
   const dispatch = useDispatch();
 
-  const signupSchema = yup.object({
-    clientName: yup
+  const breadcrumbRoutes = () => {
+    return [
+      { name: "Inicio", to: "/" },
+      {
+        name: client.name + " " + client.firstSurname,
+        to: "/client/info/"
+      },
+      { name: "Mis datos", to: "active" }
+    ];
+  };
+
+  const changeInfoSchema = yup.object({
+    name: yup
       .string()
       .min(2, "Debe ser más largo que 2 letras")
       .matches(
@@ -44,23 +50,10 @@ function SignUp(props) {
         "Sólo letras"
       )
       .required("Requerido"),
-    email: yup
-      .string()
-      .email("Formato de email incorrecto")
-      // .notOneOf(emails.emails, "Este correo ya se encuentra dado de alta")
-      .required("Requerido"),
     phone: yup
       .string()
       .matches(/^[0-9]*$/, "Sólo números")
       .length(10, "La longitud exacta debe ser 10 dígitos")
-      .required("Requerido"),
-    password: yup
-      .string()
-      .min(5, "Entre 5 y 30 caracteres")
-      .required("Requerido"),
-    passwordConfirm: yup
-      .string()
-      .oneOf([yup.ref("password")], "Las contraseñas no coinciden")
       .required("Requerido"),
     street: yup.string().required("Requerido"),
     neighborhood: yup.string().required("Requerido"),
@@ -74,75 +67,52 @@ function SignUp(props) {
       .required("Requerido")
   });
 
-  return (
+  return client.isLogged ? (
     <Layout>
-      <MyBreadcrumb routes={breadcrumbRoutes} />
-      <Container className="mt-4 mb-4">
-        <h2 className="mb-1">Regístrate con nosotros</h2>
-        <hr className="myDivider" />
+      <MyBreadcrumb routes={breadcrumbRoutes()} />
+      <Container className="mt-4">
+        <h2 className="mb-1">Mis datos</h2>
+        <hr className="myDivider mb-4" />
         <Formik
           initialValues={{
-            clientName: "",
-            firstSurname: "",
-            secondSurname: "",
-            email: "",
-            phone: "",
-            password: "",
-            passwordConfirm: "",
-            street: "",
-            neighborhood: "",
-            municipality: "",
-            city: "",
-            state: "",
-            zipCode: ""
+            name: client.name,
+            firstSurname: client.firstSurname,
+            secondSurname: client.secondSurname,
+            phone: client.phone,
+            street: client.address.street,
+            neighborhood: client.address.neighborhood,
+            municipality: client.address.municipality,
+            city: client.address.city,
+            state: client.address.state,
+            zipCode: client.address.zipCode
           }}
-          validationSchema={signupSchema}
+          validationSchema={changeInfoSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            // sign up
-            fire
-              .auth()
-              .createUserWithEmailAndPassword(values.email, values.password)
+            // this is necessary since the trim() function from yup is not working
+            let trimmedValues = {
+              _id: client._id,
+              name: values.name.trim(),
+              firstSurname: values.firstSurname.trim(),
+              secondSurname: values.secondSurname.trim(),
+              phone: values.phone,
+              street: values.street.trim(),
+              neighborhood: values.neighborhood.trim(),
+              municipality: values.municipality.trim(),
+              city: values.city.trim(),
+              state: values.state,
+              zipCode: values.zipCode
+            };
+            API.updateClient(trimmedValues)
               .then(res => {
-                // set the uid from the newly created user in firebase in the values object
-                values.firebaseUID = res.user.uid;
-                // save the client info in the db
-                API.newClient(values)
-                  .then(() => {
-                    // lasly, fetch the recently created client
-                    API.fetchClientByUID(values.firebaseUID)
-                      .then(res => {
-                        dispatch(clientActions.loginClient(res.data));
-                        alert("¡Bienvenido!");
-                        props.history.push("/");
-                      })
-                      .catch(err => {
-                        // if there's a problem fetching new client, logout from firebase
-                        fire.auth()
-                          .signOut()
-                          .then()
-                          .catch(error => console.log(error));
-                        // then print error
-                        console.log(err);
-                        setSubmitting(false);
-                      });
-                  })
-                  .catch(err => {
-                    // if there's a problem creating new client, logout from firebase
-                    fire.auth()
-                      .signOut()
-                      .then()
-                      .catch(error => console.log(error));
-                    // then print error
-                    console.log(err);
-                    setSubmitting(false);
-                  });
-              })
-              .catch(error => {
-                // firebase won't let duplicate emails
-                alert(values.email + " ya está asignado a otra cuenta");
+                alert("Cliente editado con éxito");
+                dispatch(clientActions.updateClient(trimmedValues));
                 setSubmitting(false);
-                console.log(error);
+                window.location.reload();
+              })
+              .catch(err => {
+                alert(err);
+                setSubmitting(false);
               });
           }}
         >
@@ -157,7 +127,6 @@ function SignUp(props) {
           }) => (
             <>
               <Form noValidate onSubmit={handleSubmit}>
-                <h5 className="mb-3 mt-4">Datos de usuario</h5>
                 <Form.Row>
                   <Form.Group as={Col} md={4}>
                     <Form.Label>
@@ -167,15 +136,15 @@ function SignUp(props) {
                       maxLength="50"
                       placeholder="Nombre(s)"
                       type="text"
-                      name="clientName"
-                      value={values.clientNames}
+                      name="name"
+                      value={values.name}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      isValid={touched.clientName && !errors.clientName}
+                      isValid={touched.name && !errors.name}
                     />
                     <ErrorMessage
                       className="text-danger"
-                      name="clientName"
+                      name="name"
                       component="div"
                     />
                   </Form.Group>
@@ -223,28 +192,7 @@ function SignUp(props) {
                   </Form.Group>
                 </Form.Row>
                 <Form.Row>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>
-                      Correo electrónico
-                      <strong className="ml-1 text-danger">*</strong>
-                    </Form.Label>
-                    <Form.Control
-                      maxLength="50"
-                      placeholder="Correo electrónico"
-                      type="email"
-                      name="email"
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.email && !errors.email}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="email"
-                      component="div"
-                    />
-                  </Form.Group>
-                  <Form.Group as={Col} md={6}>
+                  <Form.Group as={Col} md={{ span: 4 }}>
                     <Form.Label>
                       Teléfono celular
                       <strong className="ml-1 text-danger">*</strong>
@@ -266,54 +214,8 @@ function SignUp(props) {
                     />
                   </Form.Group>
                 </Form.Row>
-                <h5 className="my-3">Contraseña (5-30 caracteres)</h5>
-                <Form.Row>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>
-                      Contraseña
-                      <strong className="ml-1 text-danger">*</strong>
-                    </Form.Label>
-                    <Form.Control
-                      maxLength="30"
-                      placeholder="Contraseña"
-                      type="password"
-                      name="password"
-                      value={values.password}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.password && !errors.password}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="password"
-                      component="div"
-                    />
-                  </Form.Group>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>
-                      Repetir contraseña
-                      <strong className="ml-1 text-danger">*</strong>
-                    </Form.Label>
-                    <Form.Control
-                      maxLength="30"
-                      placeholder="Repetir contraseña"
-                      type="password"
-                      name="passwordConfirm"
-                      value={values.passwordConfirm}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={
-                        touched.passwordConfirm && !errors.passwordConfirm
-                      }
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="passwordConfirm"
-                      component="div"
-                    />
-                  </Form.Group>
-                </Form.Row>
                 <h5 className="my-3">Datos de entrega</h5>
+                {/* <hr /> */}
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
                     <Form.Label>
@@ -409,43 +311,45 @@ function SignUp(props) {
                       onBlur={handleBlur}
                       isValid={touched.state && !errors.state}
                       as="select"
-                      defaultValue={"DEFAULT"}
+                      defaultValue={client.state}
                     >
                       <option value="DEFAULT" disabled>
                         Elige...
                       </option>
-                      <option>Aguascalientes</option>
-                      <option>Baja California</option>
-                      <option>Baja California Sur</option>
-                      <option>Campeche</option>
-                      <option>Chiapas</option>
-                      <option>Chihuahua</option>
-                      <option>Ciudad de México</option>
-                      <option>Coahuila</option>
-                      <option>Colima</option>
-                      <option>Durango</option>
-                      <option>Estado de México</option>
-                      <option>Guanajuato</option>
-                      <option>Guerrero</option>
-                      <option>Hidalgo</option>
-                      <option>Jalisco</option>
-                      <option>Michoacán</option>
-                      <option>Morelos</option>
-                      <option>Nayarit</option>
-                      <option>Nuevo León</option>
-                      <option>Oaxaca</option>
-                      <option>Puebla</option>
-                      <option>Querétaro</option>
-                      <option>Quintana Roo</option>
-                      <option>San Luis Potosí</option>
-                      <option>Sinaloa</option>
-                      <option>Sonora</option>
-                      <option>Tabasco</option>
-                      <option>Tamaulipas</option>
-                      <option>Tlaxcala</option>
-                      <option>Veracruz</option>
-                      <option>Yucatán</option>
-                      <option>Zacatecas</option>
+                      <option value="Aguascalientes">Aguascalientes</option>
+                      <option value="Baja California">Baja California</option>
+                      <option value="Baja California Sur">
+                        Baja California Sur
+                      </option>
+                      <option value="Campeche">Campeche</option>
+                      <option value="Chiapas">Chiapas</option>
+                      <option value="Chihuahua">Chihuahua</option>
+                      <option value="Ciudad de México">Ciudad de México</option>
+                      <option value="Coahuila">Coahuila</option>
+                      <option value="Colima">Colima</option>
+                      <option value="Durango">Durango</option>
+                      <option value="Estado de México">Estado de México</option>
+                      <option value="Guanajuato">Guanajuato</option>
+                      <option value="Guerrero">Guerrero</option>
+                      <option value="Hidalgo">Hidalgo</option>
+                      <option value="Jalisco">Jalisco</option>
+                      <option value="Michoacán">Michoacán</option>
+                      <option value="Morelos">Morelos</option>
+                      <option value="Nayarit">Nayarit</option>
+                      <option value="Nuevo León">Nuevo León</option>
+                      <option value="Oaxaca">Oaxaca</option>
+                      <option value="Puebla">Puebla</option>
+                      <option value="Querétaro">Querétaro</option>
+                      <option value="Quintana Roo">Quintana Roo</option>
+                      <option value="San Luis Potosí">San Luis Potosí</option>
+                      <option value="Sinaloa">Sinaloa</option>
+                      <option value="Sonora">Sonora</option>
+                      <option value="Tabasco">Tabasco</option>
+                      <option value="Tamaulipas">Tamaulipas</option>
+                      <option value="Tlaxcala">Tlaxcala</option>
+                      <option value="Veracruz">Veracruz</option>
+                      <option value="Yucatán">Yucatán</option>
+                      <option value="Zacatecas">Zacatecas</option>
                     </Form.Control>
                   </Form.Group>
                   <Form.Group as={Col} md={3}>
@@ -473,11 +377,11 @@ function SignUp(props) {
                 <Form.Row>
                   <Form.Group>
                     <Button
-                      className="globalbttn"
                       type="submit"
+                      className="my-3 globalbttn"
                       disabled={isSubmitting}
                     >
-                      Registrarme
+                      Guardar cambios
                     </Button>
                   </Form.Group>
                 </Form.Row>
@@ -489,7 +393,7 @@ function SignUp(props) {
       <HelpButton />
       <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
     </Layout>
-  );
+  ) : null;
 }
 
-export default SignUp;
+export default ClientInfo;

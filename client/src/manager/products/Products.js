@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Table, Spinner } from "react-bootstrap";
 import ManagerLayout from "../ManagerLayout";
-import * as managerActions from "../../redux-actions/manager";
+import * as managerActions from "../../redux/actions/manager";
 import API from "../../utils/API";
 import ProductRow from "./ProductRow";
 

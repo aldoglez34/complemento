@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Layout from "./Layout";
-import ProductsSection from "../store-comps/ProductsSection";
-import HelpButton from "../components/HelpButton";
-import ScrollButton from "../components/ScrollButton";
-import MyBreadcrumb from "../components/MyBreadcrumb";
+import Layout from "../components/Layout";
+import ProductsSection from "./components/ProductsSection";
+import HelpButton from "../components/misc/HelpButton";
+import ScrollButton from "../components/misc/ScrollButton";
+import MyBreadcrumb from "../components/breadcrumb/MyBreadcrumb";
 import "./store.scss";
-import API from "../../utils/API";
-import FilterSection from "../store-comps/FilterSection";
-import SortDropdown from "../store-comps/SortDropdown";
-import ProductsPerPageDropdown from "../store-comps/ProductsPerPageDropdown";
+import API from "../utils/API";
+import FilterSection from "./components/FilterSection";
+import SortDropdown from "./components/SortDropdown";
+import ProductsPerPageDropdown from "./components/ProductsPerPageDropdown";
 
 function Store() {
   const breadcrumbRoute = () => {

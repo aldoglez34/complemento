@@ -3,7 +3,7 @@ import { Dropdown, Form, Col, Button, Nav, NavItem } from "react-bootstrap";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
 import API from "../../utils/API";
-import * as clientActions from "../../redux-actions/client";
+import * as clientActions from "../../redux/actions/client";
 import { useDispatch } from "react-redux";
 import fire from "../../firebase/fire";
 // const firebase = require("firebase/app");
