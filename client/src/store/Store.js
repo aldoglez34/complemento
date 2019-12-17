@@ -44,7 +44,7 @@ function Store() {
 
   return (
     <Layout>
-      <MyBreadcrumb routes={breadcrumbRoute()} />
+      {/* <MyBreadcrumb routes={breadcrumbRoute()} /> */}
       <Container fluid className="mt-3">
         <Row className="p-3">
           {/* left-column, filters */}
