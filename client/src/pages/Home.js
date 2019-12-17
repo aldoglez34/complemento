@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Spinner,
-  Button,
-  Jumbotron
-} from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Layout from "../components/Layout";
 import ProductCard from "../components/cards/ProductCard";
 import HelpButton from "../components/misc/HelpButton";
@@ -64,16 +57,6 @@ function Home() {
               sagittis nunc ac, efficitur tempor metus. Nullam ut eros a libero
               scelerisque porttitor.
             </p>
-            {/* <Button
-              size="lg"
-              href="/store"
-              className="shadow-sm p-3 mt-3"
-              variant="success"
-            >
-              Explora la tienda
-              <i className="fas fa-store-alt ml-2" />
-              <i className="fas fa-angle-double-right ml-2" />
-            </Button> */}
           </Col>
           <Col md={4} className="mt-2">
             <h1 className="mb-1">Contáctanos</h1>

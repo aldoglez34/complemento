@@ -1,21 +1,21 @@
 const categories = [
-  "5df811d7c1790a1864249ef4",
-  "5df811d7c1790a1864249ef5",
-  "5df811d7c1790a1864249ef6",
-  "5df811d7c1790a1864249ef7",
-  "5df811d7c1790a1864249ef8",
-  "5df811d7c1790a1864249ef9",
-  "5df811d7c1790a1864249efa",
-  "5df811d7c1790a1864249efb",
-  "5df811d7c1790a1864249efc"
+  "5df7cc2e255d2f3ed4a7367d",
+  "5df7cc2e255d2f3ed4a7367e",
+  "5df7cc2e255d2f3ed4a7367f",
+  "5df7cc2e255d2f3ed4a73680",
+  "5df7cc2e255d2f3ed4a73681",
+  "5df7cc2e255d2f3ed4a73682",
+  "5df7cc2e255d2f3ed4a73683",
+  "5df7cc2e255d2f3ed4a73684",
+  "5df7cc2e255d2f3ed4a73685"
 ];
 
 const providers = [
-  "5df811d7c1790a1864249eef",
-  "5df811d7c1790a1864249ef0",
-  "5df811d7c1790a1864249ef1",
-  "5df811d7c1790a1864249ef2",
-  "5df811d7c1790a1864249ef3"
+  "5df7cc2e255d2f3ed4a73678",
+  "5df7cc2e255d2f3ed4a73679",
+  "5df7cc2e255d2f3ed4a7367a",
+  "5df7cc2e255d2f3ed4a7367b",
+  "5df7cc2e255d2f3ed4a7367c"
 ];
 
 const brand = [
@@ -114,20 +114,18 @@ const products = [
     salePrice: 230,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -144,20 +142,18 @@ const products = [
     salePrice: 100,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: true,
       percentage: 20,
@@ -176,20 +172,18 @@ const products = [
     salePrice: 230,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -206,20 +200,18 @@ const products = [
     salePrice: 75,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: true,
       percentage: 15,
@@ -238,20 +230,18 @@ const products = [
     salePrice: 130,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -268,20 +258,18 @@ const products = [
     salePrice: 60,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -298,20 +286,18 @@ const products = [
     salePrice: 80,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -328,20 +314,18 @@ const products = [
     salePrice: 150,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -358,20 +342,18 @@ const products = [
     salePrice: 200,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -388,20 +370,18 @@ const products = [
     salePrice: 85,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: true,
       percentage: 30,
@@ -422,20 +402,18 @@ const products = [
     salePrice: 85,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -452,20 +430,18 @@ const products = [
     salePrice: 130,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -482,20 +458,18 @@ const products = [
     salePrice: 250,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -512,20 +486,18 @@ const products = [
     salePrice: 200,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -542,20 +514,18 @@ const products = [
     salePrice: 75,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -574,20 +544,18 @@ const products = [
     salePrice: 195,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -604,20 +572,18 @@ const products = [
     salePrice: 80.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -634,20 +600,18 @@ const products = [
     salePrice: 55.7,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -664,20 +628,18 @@ const products = [
     salePrice: 75,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -694,20 +656,18 @@ const products = [
     salePrice: 75.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: true,
       percentage: 10,
@@ -726,20 +686,18 @@ const products = [
     salePrice: 85.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -756,20 +714,18 @@ const products = [
     salePrice: 15,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -786,20 +742,18 @@ const products = [
     salePrice: 65.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: true,
       percentage: 30,
@@ -820,20 +774,18 @@ const products = [
     salePrice: 80,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -850,20 +802,18 @@ const products = [
     salePrice: 55,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -880,20 +830,18 @@ const products = [
     salePrice: 70,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: true,
       percentage: 20,
@@ -912,20 +860,18 @@ const products = [
     salePrice: 65,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -942,20 +888,18 @@ const products = [
     salePrice: 95.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -972,20 +916,18 @@ const products = [
     salePrice: 85,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: true,
       percentage: 50,
@@ -1006,20 +948,18 @@ const products = [
     salePrice: 65,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1036,20 +976,18 @@ const products = [
     salePrice: 85,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1066,20 +1004,18 @@ const products = [
     salePrice: 85,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1096,20 +1032,18 @@ const products = [
     salePrice: 115,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1126,20 +1060,18 @@ const products = [
     salePrice: 85,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1156,20 +1088,18 @@ const products = [
     salePrice: 95.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1186,20 +1116,18 @@ const products = [
     salePrice: 45.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1216,20 +1144,18 @@ const products = [
     salePrice: 65.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1246,20 +1172,18 @@ const products = [
     salePrice: 130.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1278,20 +1202,18 @@ const products = [
     salePrice: 45,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1308,20 +1230,18 @@ const products = [
     salePrice: 45,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1338,20 +1258,18 @@ const products = [
     salePrice: 105,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: true,
       percentage: 40,
@@ -1370,20 +1288,18 @@ const products = [
     salePrice: 65,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1400,20 +1316,18 @@ const products = [
     salePrice: 95.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1430,20 +1344,18 @@ const products = [
     salePrice: 120,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1460,20 +1372,18 @@ const products = [
     salePrice: 45,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1490,20 +1400,18 @@ const products = [
     salePrice: 85,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1520,20 +1428,18 @@ const products = [
     salePrice: 120,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1552,20 +1458,18 @@ const products = [
     salePrice: 85,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1582,20 +1486,18 @@ const products = [
     salePrice: 95,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1612,20 +1514,18 @@ const products = [
     salePrice: 350,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: true,
       percentage: 20,
@@ -1644,20 +1544,18 @@ const products = [
     salePrice: 45.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1674,20 +1572,18 @@ const products = [
     salePrice: 65,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1704,20 +1600,18 @@ const products = [
     salePrice: 55,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1734,20 +1628,18 @@ const products = [
     salePrice: 45.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1766,20 +1658,18 @@ const products = [
     salePrice: 95,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1796,20 +1686,18 @@ const products = [
     salePrice: 116.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1826,20 +1714,18 @@ const products = [
     salePrice: 97.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: true,
       percentage: 30,
@@ -1858,20 +1744,18 @@ const products = [
     salePrice: 284.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1888,20 +1772,18 @@ const products = [
     salePrice: 88.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1918,20 +1800,18 @@ const products = [
     salePrice: 45.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1950,20 +1830,18 @@ const products = [
     salePrice: 150.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -1980,20 +1858,18 @@ const products = [
     salePrice: 95.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -2010,20 +1886,18 @@ const products = [
     salePrice: 85.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: true,
       percentage: 10,
@@ -2042,20 +1916,18 @@ const products = [
     salePrice: 580,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -2072,20 +1944,18 @@ const products = [
     salePrice: 116.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -2102,20 +1972,18 @@ const products = [
     salePrice: 78.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -2132,20 +2000,18 @@ const products = [
     salePrice: 128.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -2162,20 +2028,18 @@ const products = [
     salePrice: 323.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -2192,20 +2056,18 @@ const products = [
     salePrice: 145.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: false
     },
@@ -2222,20 +2084,18 @@ const products = [
     salePrice: 74.5,
     stock: Math.floor(Math.random() * 10),
     priority: priority[Math.floor(Math.random() * 2)],
-    sufferings:
-      sufferings[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
-    ingredients:
-      ingredients[
-        (Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23),
-        Math.floor(Math.random() * 23))
-      ],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
     discount: {
       hasDiscount: true,
       percentage: 30,

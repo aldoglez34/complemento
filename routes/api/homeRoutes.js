@@ -5,7 +5,7 @@ const model = require("../../models");
 // matches with /api/home/prioritized
 router.get("/prioritized", function(req, res) {
   model.Product.find({ priority: true })
-    .limit(5)
+    // .limit(5)
     .sort({ createdAt: 1 })
     .select(
       "category brand name content description salePrice stock photo discount"
