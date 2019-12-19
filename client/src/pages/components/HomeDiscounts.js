@@ -3,20 +3,20 @@ import API from "../../utils/API";
 import ProductCard from "../../components/cards/ProductCard";
 import { Spinner, Carousel } from "react-bootstrap";
 
-function HomePrioritized() {
-  const [prioritized, setPrioritized] = useState([]);
+function HomeDiscounts() {
+  const [discounts, setDiscounts] = useState([]);
   const [pages, setPages] = useState(0);
 
   useEffect(() => {
-    API.fetchPrioritized()
+    API.fetchProductsWithDiscount()
       .then(res => {
         setPages(Math.ceil(res.data.length / 5));
-        setPrioritized(res.data);
+        setDiscounts(res.data);
       })
       .catch(err => console.log(err));
   }, []);
 
-  const carouselItems = prioritized => {
+  const carouselItems = discounts => {
     let carouselItems = [];
 
     for (let i = 1; i <= pages; i++) {
@@ -24,7 +24,7 @@ function HomePrioritized() {
         carouselItems.push(
           <Carousel.Item key={i}>
             <div className="d-flex flex-wrap justify-content-center">
-              {prioritized.slice(0, 5).map(p => {
+              {discounts.slice(0, 5).map(p => {
                 return <ProductCard key={p._id} product={p} />;
               })}
             </div>
@@ -34,7 +34,7 @@ function HomePrioritized() {
         carouselItems.push(
           <Carousel.Item key={i}>
             <div className="d-flex flex-wrap justify-content-center">
-              {prioritized.slice((i - 1) * 5, 5 * i).map(p => {
+              {discounts.slice((i - 1) * 5, 5 * i).map(p => {
                 return <ProductCard key={p._id} product={p} />;
               })}
             </div>
@@ -45,8 +45,8 @@ function HomePrioritized() {
     return carouselItems;
   };
 
-  return prioritized.length ? (
-    <Carousel interval={null}>{carouselItems(prioritized)}</Carousel>
+  return discounts.length ? (
+    <Carousel interval={null}>{carouselItems(discounts)}</Carousel>
   ) : (
     <div className="text-center my-4">
       <Spinner variant="warning" animation="grow" role="status" />
@@ -54,4 +54,4 @@ function HomePrioritized() {
   );
 }
 
-export default HomePrioritized;
+export default HomeDiscounts;

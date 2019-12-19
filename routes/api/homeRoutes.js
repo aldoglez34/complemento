@@ -5,7 +5,7 @@ const model = require("../../models");
 // matches with /api/home/prioritized
 router.get("/prioritized", function(req, res) {
   model.Product.find({ priority: true })
-    // .limit(5)
+    .limit(20)
     .sort({ createdAt: 1 })
     .select(
       "category brand name content description salePrice stock photo discount"
@@ -18,7 +18,7 @@ router.get("/prioritized", function(req, res) {
 // matches with /api/home/discounts
 router.get("/discounts", function(req, res) {
   model.Product.find({ "discount.hasDiscount": true })
-    .limit(5)
+    .limit(20)
     .sort({ createdAt: 1 })
     .select(
       "category brand name content description salePrice stock photo discount"
@@ -31,7 +31,7 @@ router.get("/discounts", function(req, res) {
 // matches with /api/home/bestsellers
 router.get("/bestsellers", function(req, res) {
   model.Product.find({})
-    .limit(5)
+    .limit(20)
     .sort({ unitsSold: -1 })
     .select(
       "category brand name content description salePrice stock photo discount"

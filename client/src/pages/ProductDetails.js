@@ -29,7 +29,7 @@ function ProductDetails(props) {
               { name: "Tienda", to: "/store" },
               {
                 name: product.category.name,
-                to: "/store/" + product.category.name
+                to: "/store/category/" + product.category.name
               },
               { name: product.name, to: "active" }
             ]}
@@ -51,17 +51,20 @@ function ProductDetails(props) {
                 <Row className="mb-3">
                   <Col>
                     <h1 className="mb-0 text-dark">{product.name}</h1>
-                    <hr className="myDivider" />
+                    <hr
+                      className="myDivider"
+                      style={{ backgroundColor: "#edcb58" }}
+                    />
                     <h2 className="mb-0">{product.brand}</h2>
                     <h2 className="mb-0">{product.content}</h2>
                     {product.discount.hasDiscount ? (
                       <Row className="px-3">
+                        <h3 className="mb-0 mr-2 text-muted">
+                          <del>{"$" + product.salePrice + " MXN"}</del>
+                        </h3>
                         <h2 className="mb-0 text-danger">
                           {"$" + product.discount.newPrice + " MXN"}
                         </h2>
-                        <h3 className="mb-0 ml-2 text-muted">
-                          <del>{"$" + product.salePrice + " MXN"}</del>
-                        </h3>
                       </Row>
                     ) : (
                       <h2 className="mb-0 text-danger">

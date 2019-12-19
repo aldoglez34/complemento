@@ -2,6 +2,8 @@
 // filters section
 .filterSection {
   background-color: whitesmoke !important;
+  padding-top: 5px !important;
+  padding-bottom: 17px !important;
 }
 
 .dropdownSort {
@@ -25,27 +27,6 @@
   }
 }
 
-#clearFiltersBttn {
-  height: 25px;
-  width: 26px;
-  background-color: rgb(220, 53, 69);
-  padding: 0px;
-  padding-right: 1px;
-  &:hover {
-    background-color: rgb(241, 67, 84);
-    transition: 0.5s;
-  }
-  &:disabled {
-    background-color: gray;
-    transition: 0.5s;
-  }
-}
-
-#clearFiltersTimes {
-  color: ghostwhite;
-  font-size: 10px;
-}
-
 // ====================================
 // categories list
 .filterItem {
@@ -67,4 +48,24 @@
   background-color: #5a5a5a;
   color: ghostwhite;
   font-family: Arial;
+}
+
+// ====================================
+// pagination
+
+.itemsStyle {
+  &.page-item {
+    a {
+      color: gray;
+      outline: none;
+      box-shadow: none !important;
+    }
+    &.active {
+      .page-link {
+        color: ghostwhite;
+        background-color: #264341;
+        border-color: #264341;
+      }
+    }
+  }
 }

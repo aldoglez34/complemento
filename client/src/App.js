@@ -59,9 +59,19 @@ function App() {
         />
         <Route
           exact
-          path="/store/:cat"
+          path="/store/category/:category"
           render={props => <Store routeProps={props} />}
         />
+        <Route
+          exact
+          path="/store/brand/:brand"
+          render={props => <Store routeProps={props} />}
+        />
+        {/* <Route
+          exact
+          path="/store/:cat"
+          render={props => <Store routeProps={props} />}
+        /> */}
         <Route
           exact
           path="/product/details/:productId"
@@ -69,7 +79,6 @@ function App() {
         />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/signup" component={SignUp} />
-
         {/* client routes */}
         {client.isLogged ? (
           <>
@@ -79,7 +88,6 @@ function App() {
         ) : (
           <Redirect from="/client/" to="/" />
         )}
-
         {/* manager routes */}
         {manager.isLogged ? (
           <>
@@ -121,7 +129,6 @@ function App() {
             <Redirect from="/manager/" to="/manager" />
           </>
         )}
-
         {/* last routes */}
         <Route component={NoMatch} />
       </Switch>

@@ -1,36 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Spinner } from "react-bootstrap";
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import Layout from "../components/Layout";
-import ProductCard from "../components/cards/ProductCard";
 import HelpButton from "../components/misc/HelpButton";
 import ScrollButton from "../components/misc/ScrollButton";
-import API from "../utils/API";
 import HomePrioritized from "./components/HomePrioritized";
+import HomeDiscounts from "./components/HomeDiscounts";
+import HomeBestSellers from "./components/HomeBestSellers";
 import WelcomeJumbotron from "./components/WelcomeJumbotron";
+import "./home.scss";
 
 function Home() {
-  const [discounts, setDiscounts] = useState([]);
-  const [bestSellers, setBestSellers] = useState([]);
-
-  const styles = {
-    welcomeItem: {
-      backgroundImage: "url('images/carousel1.jpg')",
-      backgroundSize: "cover",
-      backgroundColor: "gainsboro",
-      backgroundBlendMode: "multiply",
-      height: "24rem"
-    }
-  };
-
-  useEffect(() => {
-    API.fetchProductsWithDiscount()
-      .then(res => setDiscounts(res.data))
-      .catch(err => console.log(err));
-    API.fetchBestSellers()
-      .then(res => setBestSellers(res.data))
-      .catch(err => console.log(err));
-  }, []);
-
   return (
     <Layout>
       {/* welcome title */}
@@ -91,34 +70,14 @@ function Home() {
           <Col>
             <h1 className="mb-1">Últimas ofertas</h1>
             <hr className="myDivider" />
-            <div className="d-flex flex-wrap justify-content-center">
-              {discounts.length ? (
-                discounts.map(d => {
-                  return <ProductCard key={d._id} product={d} />;
-                })
-              ) : (
-                <div className="text-center my-4">
-                  <Spinner variant="warning" animation="grow" role="status" />
-                </div>
-              )}
-            </div>
+            <HomeDiscounts />
           </Col>
         </Row>
         <Row className="mt-5">
           <Col>
             <h1 className="mb-1">Más vendidos</h1>
             <hr className="myDivider" />
-            <div className="d-flex flex-wrap justify-content-center">
-              {bestSellers.length ? (
-                bestSellers.map(b => {
-                  return <ProductCard key={b._id} product={b} />;
-                })
-              ) : (
-                <div className="text-center my-4">
-                  <Spinner variant="warning" animation="grow" role="status" />
-                </div>
-              )}
-            </div>
+            <HomeBestSellers />
           </Col>
         </Row>
       </Container>

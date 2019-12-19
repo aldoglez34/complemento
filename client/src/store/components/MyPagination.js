@@ -1,7 +1,6 @@
 import React from "react";
 import { Pagination } from "react-bootstrap";
 import PropTypes from "prop-types";
-import "./mypagination.scss";
 
 MyPagination.propTypes = {
   pageCount: PropTypes.number.isRequired,

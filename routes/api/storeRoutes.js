@@ -42,6 +42,7 @@ router.get("/products", function(req, res) {
     .select(
       "category name content description salePrice stock photo brand priority discount"
     )
+    .populate("category")
     .sort({ name: 1 })
     .then(data => res.json(data))
     .catch(err => res.json(err));
