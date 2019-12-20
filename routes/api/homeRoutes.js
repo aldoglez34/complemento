@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const model = require("../../models");
 
-// get prioritized products
+// fetchPrioritized
 // matches with /api/home/prioritized
 router.get("/prioritized", function(req, res) {
   model.Product.find({ priority: true })
@@ -14,7 +14,7 @@ router.get("/prioritized", function(req, res) {
     .catch(err => res.json(err));
 });
 
-// get latest discounts
+// fetchProductsWithDiscount
 // matches with /api/home/discounts
 router.get("/discounts", function(req, res) {
   model.Product.find({ "discount.hasDiscount": true })
@@ -27,7 +27,7 @@ router.get("/discounts", function(req, res) {
     .catch(err => res.json(err));
 });
 
-// get best selllers
+// fetchBestSellers
 // matches with /api/home/bestsellers
 router.get("/bestsellers", function(req, res) {
   model.Product.find({})
@@ -36,6 +36,16 @@ router.get("/bestsellers", function(req, res) {
     .select(
       "category brand name content description salePrice stock photo discount"
     )
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
+// fetchItemsForSearchBar
+// matches with /api/home/itemsforsearchbar
+router.get("/itemsforsearchbar", function(req, res) {
+  model.Product.find({})
+    .select("name")
+    .sort({ name: -1 })
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });

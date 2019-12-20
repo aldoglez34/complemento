@@ -67,11 +67,7 @@ function App() {
           path="/store/brand/:brand"
           render={props => <Store routeProps={props} />}
         />
-        {/* <Route
-          exact
-          path="/store/:cat"
-          render={props => <Store routeProps={props} />}
-        /> */}
+        <Redirect from="/store/" to="/store" />
         <Route
           exact
           path="/product/details/:productId"

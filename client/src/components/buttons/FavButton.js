@@ -4,6 +4,7 @@ import { Button, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
 import API from "../../utils/API";
 import * as clientActions from "../../redux/actions/client";
+import "./favbutton.scss";
 
 FavButton.propTypes = {
   block: PropTypes.bool.isRequired,
@@ -43,6 +44,7 @@ function FavButton(props) {
   return isClientLogged ? (
     <>
       <Button
+        variant="danger"
         className="favbuttonstyle"
         onClick={handleShow}
         title="Agregar a mis favoritos"
@@ -74,11 +76,18 @@ function FavButton(props) {
     </>
   ) : (
     <Button
-      disabled
+      variant="danger"
       className="favbuttonstyle"
-      title="Inicia sesión para guardar este producto en tus favoritos"
+      onClick={() =>
+        alert(
+          "Debes iniciar sesión para poder guardar productos en tus favoritos"
+        )
+      }
+      title="Agregar a mis favoritos"
+      block={props.block}
     >
-      <i className="fas fa-heart" />
+      {props.text}
+      <i className="fa fa-heart" />
     </Button>
   );
 }

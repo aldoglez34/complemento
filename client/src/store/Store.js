@@ -16,6 +16,7 @@ function Store(props) {
   const [brands, setBrands] = useState([]);
 
   const [filter, setFilter] = useState();
+  const [sortBy, setSortBy] = useState("Nombre ascendente");
 
   useEffect(() => {
     API.fetchCategories()
@@ -55,6 +56,41 @@ function Store(props) {
       .catch(err => console.log(err));
   }, []);
 
+  const applyFilter = opt => {
+    setSortBy(opt);
+    let temp = products;
+    switch (opt) {
+      case "Nombre ascendente":
+        temp.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
+        setProducts(temp);
+        break;
+      case "Nombre descendente":
+        temp.sort((a, b) => (a.name < b.name ? 1 : b.name < a.name ? -1 : 0));
+        setProducts(temp);
+        break;
+      case "Más vendido":
+        temp.sort((a, b) =>
+          a.unitsSold < b.unitsSold ? 1 : b.unitsSold < a.unitsSold ? -1 : 0
+        );
+        setProducts(temp);
+        break;
+      case "Más caro primero":
+        temp.sort((a, b) =>
+          a.salePrice < b.salePrice ? 1 : b.salePrice < a.salePrice ? -1 : 0
+        );
+        setProducts(temp);
+        break;
+      case "Más barato primero":
+        temp.sort((a, b) =>
+          a.salePrice > b.salePrice ? 1 : b.salePrice > a.salePrice ? -1 : 0
+        );
+        setProducts(temp);
+        break;
+      default:
+        setProducts(temp);
+    }
+  };
+
   return (
     <Layout>
       {products.length && categories.length && brands.length ? (
@@ -89,7 +125,7 @@ function Store(props) {
                 <Row className="px-3 mb-2">
                   <div className="d-flex flex-row align-items-center justify-content-center mr-3">
                     <span className="mr-2">Orden</span>
-                    <SortDropdown active={"Ninguno"} />
+                    <SortDropdown active={sortBy} applyFilter={applyFilter} />
                   </div>
                   <div className="d-flex flex-row align-items-center justify-content-center">
                     <span className="mr-2">Productos por página</span>

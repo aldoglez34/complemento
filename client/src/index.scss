@@ -93,22 +93,3 @@ $bagbttn-disabled: gray;
     background-color: $bagbttn-disabled;
   }
 }
-
-// favbutton style
-$favbutton-back: #fe4365;
-$favbutton-back-hover: #fc9d9a;
-$favbutton-heart: ghostwhite;
-$favbutton-disabled: gray;
-.favbuttonstyle {
-  border: 0;
-  background-color: $favbutton-back;
-  color: $favbutton-heart;
-  &:hover {
-    border: 0;
-    background-color: $favbutton-back-hover;
-    transition: 0.5s;
-  }
-  &:disabled {
-    background-color: $favbutton-disabled;
-  }
-}
