@@ -37,7 +37,7 @@ function MyNavbar() {
         {/* collapse */}
         <Navbar.Toggle
           aria-controls="top-navbar"
-          style={{ backgroundColor: "ghostwhite" }}
+          style={{ backgroundColor: "ghostwhite", outline: 0 }}
         />
         <Navbar.Collapse id="top-navbar">
           {/* nav */}

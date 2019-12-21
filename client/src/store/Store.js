@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
 import Layout from "../components/Layout";
 import ProductsSection from "./components/ProductsSection";
 import HelpButton from "../components/misc/HelpButton";
@@ -123,13 +123,30 @@ function Store(props) {
                 </Row>
                 {/* sorting */}
                 <Row className="px-3 mb-2">
-                  <div className="d-flex flex-row align-items-center justify-content-center mr-3">
-                    <span className="mr-2">Orden</span>
-                    <SortDropdown active={sortBy} applyFilter={applyFilter} />
-                  </div>
-                  <div className="d-flex flex-row align-items-center justify-content-center">
-                    <span className="mr-2">Productos por página</span>
-                    <ProductsPerPageDropdown qty={20} />
+                  {/* for md to xlg display */}
+                  <Row className="d-none d-md-block">
+                    <div className="d-flex flex-row">
+                      <div className="d-flex flex-row align-items-center">
+                        <span className="mr-2">Orden</span>
+                        <SortDropdown
+                          active={sortBy}
+                          applyFilter={applyFilter}
+                        />
+                      </div>
+                      <div className="d-flex flex-row align-items-center ml-2">
+                        <span className="mr-2">Productos por página</span>
+                        <ProductsPerPageDropdown qty={20} />
+                      </div>
+                    </div>
+                  </Row>
+                  {/* for smaller devices */}
+                  <div className="d-md-none">
+                    <Button variant="dark">
+                      <i className="fas fa-sort" />
+                    </Button>
+                    <Button variant="dark" className="ml-2">
+                      #
+                    </Button>
                   </div>
                   <div className="ml-auto">{products.length} productos</div>
                 </Row>

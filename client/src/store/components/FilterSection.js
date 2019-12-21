@@ -17,6 +17,7 @@ function FilterSection(props) {
       <Navbar.Toggle
         className="mt-3 border-0 w-100 py-1"
         aria-controls="categoriesdropdown"
+        style={{ outline: 0 }}
       >
         <div className="d-flex flex-row justify-content-center align-items-center">
           <h4 className="mb-0">Selecciona</h4>
