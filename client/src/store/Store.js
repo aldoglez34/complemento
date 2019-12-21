@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Layout from "../components/Layout";
 import ProductsSection from "./components/ProductsSection";
 import HelpButton from "../components/misc/HelpButton";
@@ -8,7 +8,9 @@ import "./store.scss";
 import API from "../utils/API";
 import FilterSection from "./components/FilterSection";
 import SortDropdown from "./components/SortDropdown";
+import SmallSortDropdown from "./components/SmallSortDropdown";
 import ProductsPerPageDropdown from "./components/ProductsPerPageDropdown";
+import SmallProductsPerPageDropdown from "./components/SmallProductsPerPageDropdown";
 
 function Store(props) {
   const [products, setProducts] = useState([]);
@@ -110,13 +112,13 @@ function Store(props) {
               {/* right-column, title, sorting and products */}
               <Col md={9}>
                 {/* title */}
-                <Row className="px-3 mb-2">
-                  <Col className="text-center">
+                <Row className="px-md-3 mb-2">
+                  <Col className="text-md-center">
                     <h2 className="mt-1">
                       {!filter ? "Todos los productos" : filter}
                     </h2>
                     <hr
-                      className="myDivider mb-1 ml-auto"
+                      className="myDivider mb-1 ml-md-auto"
                       style={{ backgroundColor: "#edcb58" }}
                     />
                   </Col>
@@ -141,18 +143,21 @@ function Store(props) {
                   </Row>
                   {/* for smaller devices */}
                   <div className="d-md-none">
-                    <Button variant="dark">
-                      <i className="fas fa-sort" />
-                    </Button>
-                    <Button variant="dark" className="ml-2">
-                      #
-                    </Button>
+                    <div className="d-flex flex-row">
+                      <SmallSortDropdown
+                        active={sortBy}
+                        applyFilter={applyFilter}
+                      />
+                      <div className="ml-2">
+                        <SmallProductsPerPageDropdown qty={20} />
+                      </div>
+                    </div>
                   </div>
                   <div className="ml-auto">{products.length} productos</div>
                 </Row>
                 {/* products */}
                 <Row className="mb-3">
-                  <Col>
+                  <Col className="px-0">
                     <ProductsSection products={products} />
                   </Col>
                 </Row>

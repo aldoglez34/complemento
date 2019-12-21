@@ -1,0 +1,18 @@
+#productcardstyle {
+  width: 12.7rem;
+}
+
+#cardheader {
+  background-color: #264341;
+  height: 70px;
+  // padding: 4px;
+}
+
+@media only screen and (max-width: 481px) {
+  #productcardstyle {
+    // width: 10.4rem;
+    width: 48%;
+    margin-right: 3px !important;
+    margin-left: 3px !important;
+  }
+}

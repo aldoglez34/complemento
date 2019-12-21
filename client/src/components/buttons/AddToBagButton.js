@@ -39,13 +39,12 @@ function AddToBagButton(props) {
     <>
       <Button
         variant="success"
-        // className="addtobagbuttonstyle"
         block
         onClick={handleShow}
         size={props.size}
         title="Agregar a mi bolsa de compras"
       >
-        Agregar
+        {/* Agregar */}
         <i className="fas fa-shopping-bag ml-1" />
       </Button>
 
@@ -76,7 +75,7 @@ function AddToBagButton(props) {
       className="addtobagbuttonstyle"
       title="No disponible por el momento"
     >
-      Agregar
+      {/* Agregar */}
       <i className="fas fa-shopping-bag ml-1" />
     </Button>
   );

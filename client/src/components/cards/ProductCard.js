@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Card, Badge } from "react-bootstrap";
 import FavButton from "../buttons/FavButton";
 import AddToBagButton from "../buttons/AddToBagButton";
+import "./productcards.scss";
 
 ProductCard.propTypes = {
   product: PropTypes.object.isRequired
@@ -10,15 +11,12 @@ ProductCard.propTypes = {
 
 function ProductCard(props) {
   return (
-    <Card
-      style={{ width: "12.7rem" }}
-      className="mt-2 mb-4 mx-1 shadow-sm border-0"
-    >
+    <Card id="productcardstyle" className="mt-2 mb-4 mx-1 shadow-sm border-0">
       <a className="text-light" href={"/product/details/" + props.product._id}>
         <Card.Header
-          className="text-center"
-          height="48"
-          style={{ backgroundColor: "#264341" }}
+          // className="text-center align-items-center"
+          // className="d-flex justify-content-center align-items-center"
+          id="cardheader"
         >
           <span>{props.product.name}</span>
           {props.product.discount.hasDiscount ? (

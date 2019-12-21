@@ -2,11 +2,11 @@ import React from "react";
 import { Dropdown } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-ProductsPerPageDropdown.propTypes = {
+SmallProductsPerPageDropdown.propTypes = {
   qty: PropTypes.number.isRequired
 };
 
-function ProductsPerPageDropdown(props) {
+function SmallProductsPerPageDropdown(props) {
   return (
     <Dropdown alignRight>
       <Dropdown.Toggle variant="secondary" size="sm">
@@ -39,4 +39,4 @@ function ProductsPerPageDropdown(props) {
   );
 }
 
-export default ProductsPerPageDropdown;
+export default SmallProductsPerPageDropdown;
