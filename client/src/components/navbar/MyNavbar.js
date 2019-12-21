@@ -51,7 +51,7 @@ function MyNavbar() {
               </div>
             </Row>
             <Row>
-              <Col className="mt-3">
+              <Col className="mt-1">
                 <Nav className="mr-auto">
                   <Nav.Item>
                     <Nav.Link href="/store" className="text-light mr-md-2">

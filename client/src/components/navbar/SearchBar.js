@@ -1,24 +1,68 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./searchbar.scss";
 import API from "../../utils/API";
 
 function SearchBar() {
   const [items, setItems] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
+
+  const node = useRef();
 
   useEffect(() => {
+    // add when mounted
+    document.addEventListener("mousedown", handleClick);
+    // fetch items
     API.fetchItemsForSearchBar()
       .then(res => setItems(res.data))
       .catch(err => console.log(err));
+    // return function to be called when unmounted
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    };
   }, []);
 
-  const handleEditInputChange = e => {
-    console.log(e.target.value);
+  const handleClick = e => {
+    if (node.current.contains(e.target)) {
+      // inside click
+      // do nothing
+    } else {
+      // outside click
+      setSuggestions([]);
+    }
   };
 
-  return (
-    <div className="d-flex rounded-pill p-2" id="sb-div">
+  const handleEditInputChange = e => {
+    const value = e.target.value;
+    const regex = new RegExp(`^${value}`, "i");
+    let temp = [];
+    if (value.length > 0) {
+      temp = items.sort().filter(i => regex.test(i.name));
+    }
+    setSuggestions(temp);
+  };
+
+  const renderSuggestions = () => {
+    if (suggestions.length === 0) {
+      return null;
+    }
+    return (
+      <ul id="suggestions">
+        {suggestions.map(item => (
+          <a
+            key={item._id}
+            href={"/product/details/" + item._id}
+            className="text-dark suggestionsItem"
+          >
+            <li>{item.name}</li>
+          </a>
+        ))}
+      </ul>
+    );
+  };
+
+  return items.length ? (
+    <div ref={node}>
       <input
-        className="d-flex align-items-center w-100 border-0 bg-transparent ml-2 mr-1"
         placeholder="¿Qué estás buscando?"
         type="text"
         id="sb-input"
@@ -26,14 +70,9 @@ function SearchBar() {
         autoFocus
         onChange={handleEditInputChange}
       />
-      <div
-        className="d-flex align-items-center flex-shrink-1 border-0 text-light rounded-circle"
-        id="sb-sb-searchIcon"
-      >
-        <i className="fas fa-search" id="sb-sb-magnifyingGlass" />
-      </div>
+      {renderSuggestions()}
     </div>
-  );
+  ) : null;
 }
 
 export default SearchBar;
