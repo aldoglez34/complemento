@@ -112,7 +112,7 @@ function Store(props) {
               {/* right-column, title, sorting and products */}
               <Col md={9}>
                 {/* title */}
-                <Row className="px-md-3 mb-2">
+                <Row className="px-md-3 mb-2 mt-3 mt-md-0">
                   <Col className="text-md-center">
                     <h2 className="mt-1">
                       {!filter ? "Todos los productos" : filter}

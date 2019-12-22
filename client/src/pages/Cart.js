@@ -13,7 +13,6 @@ import {
 } from "react-bootstrap";
 import Layout from "../components/Layout";
 import API from "../utils/API";
-import MyBreadcrumb from "../components/breadcrumb/MyBreadcrumb";
 
 function Cart() {
   const cartItems = useSelector(state => state.cart.items);
@@ -32,6 +31,7 @@ function Cart() {
             // take only some of the properties of the object
             let tempProduct = {};
             tempProduct._id = res.data._id;
+            tempProduct.stock = res.data.stock;
             tempProduct.name = res.data.name;
             tempProduct.discount = res.data.discount;
             tempProduct.salePrice = res.data.salePrice;
@@ -69,16 +69,9 @@ function Cart() {
     });
   }, []);
 
-  const breadcrumbRoutes = [
-    { name: "Inicio", to: "/" },
-    { name: "Tienda", to: "/store" },
-    { name: "Mi bolsa de compras", to: "active" }
-  ];
-
   return (
     <Layout>
-      <MyBreadcrumb routes={breadcrumbRoutes} />
-      <Container className="my-4">
+      <Container className="mt-4">
         <h2 className="mb-1">Mi bolsa de compras</h2>
         <hr className="myDivider" />
         <Row className="mt-3">
@@ -120,7 +113,16 @@ function Cart() {
                             ) : null}
                           </td>
                           {/* qty */}
-                          <td className="text-center">{p.qty}</td>
+                          <td className="text-center">
+                            <input
+                              type="number"
+                              defaultValue={p.qty}
+                              className="text-center"
+                              min={1}
+                              max={p.stock}
+                              style={{ width: "55px" }}
+                            />
+                          </td>
                           {/* sale price */}
                           <td className="text-center">
                             {p.discount.hasDiscount ? (
@@ -148,11 +150,7 @@ function Cart() {
                 ) : (
                   <tr>
                     <td className="text-center" colSpan="5">
-                      <Spinner
-                        className="spinnerStyle mt-3"
-                        animation="grow"
-                        role="status"
-                      />
+                      <Spinner animation="grow" role="status" />
                     </td>
                   </tr>
                 )}
@@ -215,11 +213,7 @@ function Cart() {
                     </>
                   ) : (
                     <div className="text-center">
-                      <Spinner
-                        className="spinnerStyle mt-3"
-                        animation="grow"
-                        role="status"
-                      />
+                      <Spinner animation="grow" role="status" />
                     </div>
                   )
                 ) : (

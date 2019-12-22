@@ -25,7 +25,7 @@ function MyNavbar() {
           />
         </Navbar.Brand>
         {/* logo (medium to small) */}
-        <Navbar.Brand className="mr-auto d-md-none" href="/">
+        <Navbar.Brand className="mr-auto d-md-none w-75" href="/">
           <Image
             src={"/images/smalllogo.png"}
             className="p-0 m-0"

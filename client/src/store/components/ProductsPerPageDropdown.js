@@ -8,7 +8,7 @@ ProductsPerPageDropdown.propTypes = {
 
 function ProductsPerPageDropdown(props) {
   return (
-    <Dropdown alignRight>
+    <Dropdown>
       <Dropdown.Toggle variant="secondary" size="sm">
         {props.qty}
       </Dropdown.Toggle>
