@@ -13,7 +13,7 @@ function MyNavbar() {
 
   return (
     <>
-      <Navbar expand="md" className="py-3 shadow navbarStyle">
+      <Navbar expand="md" className="py-2 shadow navbarStyle">
         {/* logo (medium to large) */}
         <Navbar.Brand className="mr-4 d-none d-md-block navbarLogo" href="/">
           <Image
@@ -42,16 +42,14 @@ function MyNavbar() {
         <Navbar.Collapse id="top-navbar">
           {/* nav */}
           <Container fluid>
-            <Row className="d-flex pl-3 pr-2 pt-2 align-items-center mt-4 mt-md-0">
+            <Row className="px-3">
               <div className="flex-grow-1">
                 <SearchBar />
               </div>
-              <div className="mr-2">
-                <ShoppingBag />
-              </div>
+              <ShoppingBag />
             </Row>
-            <Row>
-              <Col className="mt-1">
+            <Row className="mt-1">
+              <Col>
                 <Nav className="mr-auto">
                   <Nav.Item>
                     <Nav.Link href="/store" className="text-light mr-md-2">

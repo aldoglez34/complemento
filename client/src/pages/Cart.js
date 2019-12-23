@@ -150,7 +150,13 @@ function Cart() {
                 ) : (
                   <tr>
                     <td className="text-center" colSpan="5">
-                      <Spinner animation="grow" role="status" />
+                      <div className="text-center my-4">
+                        <Spinner
+                          variant="warning"
+                          animation="grow"
+                          role="status"
+                        />
+                      </div>
                     </td>
                   </tr>
                 )}
@@ -212,12 +218,16 @@ function Cart() {
                       <Button variant="danger">Pagar</Button>
                     </>
                   ) : (
-                    <div className="text-center">
-                      <Spinner animation="grow" role="status" />
+                    <div className="text-center my-4">
+                      <Spinner
+                        variant="warning"
+                        animation="grow"
+                        role="status"
+                      />
                     </div>
                   )
                 ) : (
-                  <div className="text-center">-</div>
+                  <div className="text-center">Total $0</div>
                 )}
               </Card.Body>
             </Card>
