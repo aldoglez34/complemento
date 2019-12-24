@@ -46,16 +46,14 @@ function ProductCard(props) {
           {props.product.discount.hasDiscount ? (
             <>
               <span className="text-muted mb-0">
-                <strong>
-                  <del>{"$" + props.product.salePrice}</del>
-                </strong>
+                <del>{"$" + props.product.salePrice}</del>
               </span>
-              <span className="h3 text-danger mb-0 ml-2">
+              <span className="h4 text-danger mb-0 ml-2">
                 {"$" + props.product.discount.newPrice}
               </span>
             </>
           ) : (
-            <span className="h3 text-dark mb-0">
+            <span className="h4 text-dark mb-0">
               {"$" + props.product.salePrice}
             </span>
           )}

@@ -44,8 +44,8 @@ function AddToBagButton(props) {
         size={props.size}
         title="Agregar a mi bolsa de compras"
       >
-        {/* Agregar */}
-        <i className="fas fa-shopping-bag ml-1" />
+        Comprar
+        {/* <i className="fas fa-shopping-bag ml-1" /> */}
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -75,8 +75,8 @@ function AddToBagButton(props) {
       variant="success"
       title="No disponible por el momento"
     >
-      {/* Agregar */}
-      <i className="fas fa-shopping-bag ml-1" />
+      Comprar
+      {/* <i className="fas fa-shopping-bag ml-1" /> */}
     </Button>
   );
 }
