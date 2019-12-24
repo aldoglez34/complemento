@@ -127,11 +127,11 @@ function LoginDropdown() {
             <Dropdown as={NavItem}>
               <Dropdown.Toggle as={Nav.Link} className="text-light">
                 <i className="fas fa-user mr-1" />
-                Iniciar sesión
+                Sesión
               </Dropdown.Toggle>
               <Dropdown.Menu
                 data-display="static"
-                className="bg-light dropdown-menu-xs-left dropdown-menu-md-right"
+                className="dropdown-menu-xs-left dropdown-menu-md-right"
                 style={{ width: "18.125rem" }}
               >
                 <Form

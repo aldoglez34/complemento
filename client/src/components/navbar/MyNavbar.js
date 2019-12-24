@@ -4,6 +4,7 @@ import StoreDropdown from "./StoreDropdown";
 import SearchBar from "./SearchBar";
 import ClientDropdown from "./ClientDropdown";
 import LoginDropdown from "./LoginDropdown";
+import BagDropdown from "./BagDropdown";
 import { useSelector } from "react-redux";
 import API from "../../utils/API";
 
@@ -12,7 +13,6 @@ function MyNavbar() {
   const [categories, setCategories] = useState([]);
 
   const client = useSelector(state => state.client);
-  const counter = useSelector(state => state.cart.counter);
 
   useEffect(() => {
     // fetch items for search bar
@@ -72,19 +72,13 @@ function MyNavbar() {
           {/* bottom row */}
           <Nav className="mr-auto">
             <StoreDropdown categories={categories} />
-            <Nav.Item className="ml-0 ml-lg-2">
+            <Nav.Item className="ml-0 ml-lg-2 w-100 pr-2">
               <SearchBar items={items} />
             </Nav.Item>
-            <Nav.Item className="ml-0 ml-lg-2">
-              <Button variant="outline-light" href="/cart">
-                <i className="fas fa-shopping-bag mr-1" />
-                Bolsa
-                <Badge variant="danger" className="ml-1">
-                  {counter}
-                </Badge>
-              </Button>
+            <Nav.Item className="ml-lg-auto">
+              <BagDropdown />
             </Nav.Item>
-            <Nav.Item className="ml-md-auto">
+            <Nav.Item className="ml-2">
               {client.isLogged ? <ClientDropdown /> : <LoginDropdown />}
             </Nav.Item>
           </Nav>

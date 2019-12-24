@@ -61,14 +61,18 @@ function SearchBar(props) {
   };
 
   return (
-    <Form inline ref={node}>
+    <Form
+      // inline
+      ref={node}
+    >
       <FormControl
         type="text"
         placeholder="¿Qué estás buscando?"
         maxLength="50"
         autoFocus
         onChange={handleEditInputChange}
-        className="mr-sm-2"
+        className="mr-sm-2 border-0"
+        style={{ outline: 0 }}
       />
       {renderSuggestions()}
     </Form>
