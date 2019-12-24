@@ -126,8 +126,8 @@ function LoginDropdown() {
           <>
             <Dropdown as={NavItem}>
               <Dropdown.Toggle as={Nav.Link} className="text-light">
+                <i className="fas fa-user mr-1" />
                 Iniciar sesión
-                <i className="fas fa-user ml-1" />
               </Dropdown.Toggle>
               <Dropdown.Menu
                 data-display="static"

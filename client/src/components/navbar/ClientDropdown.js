@@ -9,7 +9,8 @@ function ClientDropdown() {
   const client = useSelector(state => state.client);
 
   const logout = () => {
-    fire.auth()
+    fire
+      .auth()
       .signOut()
       .then(() => dispatch(clientActions.logoutClient()))
       .catch(error => console.log(error));
@@ -18,8 +19,8 @@ function ClientDropdown() {
   return (
     <Dropdown as={NavItem}>
       <Dropdown.Toggle as={Nav.Link} style={{ color: "#f3d084" }}>
+        <i className="fas fa-user mr-1" />
         {client.name + " " + client.firstSurname}
-        <i className="fas fa-user-check ml-1" />
       </Dropdown.Toggle>
       <Dropdown.Menu
         data-display="static"

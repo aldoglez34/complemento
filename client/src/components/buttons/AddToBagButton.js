@@ -72,7 +72,7 @@ function AddToBagButton(props) {
     <Button
       disabled
       block
-      className="addtobagbuttonstyle"
+      variant="success"
       title="No disponible por el momento"
     >
       {/* Agregar */}

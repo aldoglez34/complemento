@@ -136,7 +136,7 @@ function Store(props) {
                         />
                       </div>
                       <div className="d-flex flex-row align-items-center ml-2">
-                        <span className="mr-2">Productos por página</span>
+                        <span className="mr-2">Ver</span>
                         <ProductsPerPageDropdown qty={20} />
                       </div>
                     </div>

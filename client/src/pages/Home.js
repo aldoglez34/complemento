@@ -18,7 +18,7 @@ function Home() {
       <Container className="mb-3">
         <Row>
           <Col md={8} className="mt-2">
-            <h1 className="mb-1">¿Quiénes somos?</h1>
+            <h2 className="mb-1">¿Quiénes somos?</h2>
             <hr className="myDivider" />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
@@ -38,7 +38,7 @@ function Home() {
             </p>
           </Col>
           <Col md={4} className="mt-2">
-            <h1 className="mb-1">Contáctanos</h1>
+            <h2 className="mb-1">Contáctanos</h2>
             <hr className="myDivider" />
             <address>
               <strong>Dirección</strong>
@@ -53,29 +53,29 @@ function Home() {
               (228) 111-2031
               <br />
               <i className="fas fa-envelope mr-2" />
-              <a href="mailto:complemento.natural@gmail.com">
+              <a className="text-success" href="mailto:complemento.natural@gmail.com">
                 complemento.natural@gmail.com
               </a>
             </address>
           </Col>
         </Row>
-        <Row className="mt-5">
+        <Row className="mt-3">
           <Col>
-            <h1 className="mb-1">Destacados</h1>
+            <h2 className="mb-1">Destacados</h2>
             <hr className="myDivider" />
             <HomePrioritized />
           </Col>
         </Row>
-        <Row className="mt-5">
+        <Row className="mt-3">
           <Col>
-            <h1 className="mb-1">Últimas ofertas</h1>
+            <h2 className="mb-1">Últimas ofertas</h2>
             <hr className="myDivider" />
             <HomeDiscounts />
           </Col>
         </Row>
-        <Row className="mt-5">
+        <Row className="mt-3">
           <Col>
-            <h1 className="mb-1">Más vendidos</h1>
+            <h2 className="mb-1">Más vendidos</h2>
             <hr className="myDivider" />
             <HomeBestSellers />
           </Col>

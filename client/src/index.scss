@@ -6,7 +6,7 @@ html,
 body {
   height: 100%;
   color: #5a5a5a;
-  font-family: "Dosis", sans-serif;
+  font-family: "Raleway", sans-serif;
   background-color: ghostwhite;
 }
 
@@ -15,10 +15,9 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Bebas Neue", cursive;
+  font-family: "Roboto Slab", serif;
 }
 
-// ==============================================================================================================
 // hr
 .myDivider {
   margin-top: 0;
@@ -27,69 +26,4 @@ h5 {
   width: 4rem;
   background-color: #59a49a;
   margin-left: 0;
-}
-
-// ==============================================================================================================
-// client dropdown
-$clientdropdownitem-back: #59a49a;
-.clientDropdownItem {
-  &:active {
-    background-color: $clientdropdownitem-back;
-  }
-}
-
-// ==============================================================================================================
-// buttons
-
-// global button
-$globalbttn-back: #264341;
-$globalbttn-back-hover: #59a49a;
-$globalbttn-text: ghostwhite;
-.globalbttn {
-  border: 0;
-  background-color: $globalbttn-back;
-  color: $globalbttn-text;
-  &:hover {
-    border: 0;
-    background-color: $globalbttn-back-hover;
-    transition: 0.5s;
-  }
-  &:disabled {
-    background-color: $globalbttn-back-hover;
-  }
-}
-
-// home button
-$homebttn-back: #264341;
-$homebttn-back-hover: #59a49a;
-$homebttn-text: ghostwhite;
-#homebttn {
-  border: 0;
-  background-color: $homebttn-back;
-  color: $homebttn-text;
-  &:hover {
-    background-color: $homebttn-back-hover;
-    border: 0;
-    transition: 0.5s;
-  }
-}
-
-// addtobagbutton style
-$bagbttn-back: #264341;
-$bagbttn-back-hover: #59a49a;
-$bagbttn-text: ghostwhite;
-$bagbttn-disabled: gray;
-.addtobagbuttonstyle {
-  border: 0;
-  background-color: $bagbttn-back;
-  color: $bagbttn-text;
-  &:hover {
-    border: 0;
-    background-color: $bagbttn-back-hover;
-    transition: 0.5s;
-  }
-  &:disabled {
-    // background-color: #99aab5 !important;
-    background-color: $bagbttn-disabled;
-  }
 }

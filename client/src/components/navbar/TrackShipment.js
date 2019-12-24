@@ -29,8 +29,8 @@ function TrackShipment() {
           <>
             <Dropdown as={NavItem}>
               <Dropdown.Toggle as={Nav.Link} className="text-light">
+                <i className="fas fa-shipping-fast mr-1" />
                 Pedidos
-                <i className="fas fa-shipping-fast ml-1" />
               </Dropdown.Toggle>
               <Dropdown.Menu
                 data-display="static"

@@ -40,14 +40,4 @@ router.get("/bestsellers", function(req, res) {
     .catch(err => res.json(err));
 });
 
-// fetchItemsForSearchBar
-// matches with /api/home/itemsforsearchbar
-router.get("/itemsforsearchbar", function(req, res) {
-  model.Product.find({})
-    .select("name")
-    .sort({ name: -1 })
-    .then(data => res.json(data))
-    .catch(err => res.json(err));
-});
-
 module.exports = router;

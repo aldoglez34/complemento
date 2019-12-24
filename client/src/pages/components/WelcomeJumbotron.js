@@ -4,18 +4,18 @@ import { Jumbotron, Container, Button } from "react-bootstrap";
 function WelcomeJumbotron() {
   const styles = {
     jumbotron: {
-      backgroundImage: "url('images/carousel1.jpg')",
+      backgroundImage: "url('images/carousel3.jpg')",
       backgroundSize: "cover",
-      backgroundColor: "gainsboro",
+      backgroundColor: "gray",
       backgroundBlendMode: "multiply"
-    },
-    container: { height: "11rem" }
+    }
   };
 
   return (
     <Jumbotron style={styles.jumbotron} fluid>
-      <Container style={styles.container} className="text-center">
-        <h1 className="text-light mt-2">Tienda naturista en línea</h1>
+      <Container>
+        <h1 className="text-white">Tienda naturista en línea</h1>
+        <h2 className="text-light">Natural, siempre la decisión correcta</h2>
         <Button
           size="lg"
           href="/store"
@@ -24,7 +24,6 @@ function WelcomeJumbotron() {
         >
           Explora la tienda
           <i className="fas fa-store-alt ml-2" />
-          <i className="fas fa-angle-double-right ml-2" />
         </Button>
       </Container>
     </Jumbotron>

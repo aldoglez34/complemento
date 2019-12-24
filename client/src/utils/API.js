@@ -17,8 +17,16 @@ export default {
     return axios.get("/api/home/bestsellers");
   },
 
+  // ---------------------------------------------------------------------------
+  // NAVBAR
+  // ---------------------------------------------------------------------------
+
   fetchItemsForSearchBar: function() {
-    return axios.get("/api/home/itemsforsearchbar");
+    return axios.get("/api/navbar/itemsforsearchbar");
+  },
+
+  fetchItemsForStoreDropdown: function() {
+    return axios.get("/api/navbar/itemsforstoredropdown");
   },
 
   // ---------------------------------------------------------------------------

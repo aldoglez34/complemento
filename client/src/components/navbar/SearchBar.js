@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
+import { Form, FormControl } from "react-bootstrap";
 import "./searchbar.scss";
-import API from "../../utils/API";
 
-function SearchBar() {
-  const [items, setItems] = useState([]);
+SearchBar.propTypes = {
+  items: PropTypes.array.isRequired
+};
+
+function SearchBar(props) {
   const [suggestions, setSuggestions] = useState([]);
 
   const node = useRef();
@@ -11,10 +15,6 @@ function SearchBar() {
   useEffect(() => {
     // add when mounted
     document.addEventListener("mousedown", handleClick);
-    // fetch items
-    API.fetchItemsForSearchBar()
-      .then(res => setItems(res.data))
-      .catch(err => console.log(err));
     // return function to be called when unmounted
     return () => {
       document.removeEventListener("mousedown", handleClick);
@@ -36,7 +36,7 @@ function SearchBar() {
     const regex = new RegExp(`^${value}`, "i");
     let temp = [];
     if (value.length > 0) {
-      temp = items.sort().filter(i => regex.test(i.name));
+      temp = props.items.sort().filter(i => regex.test(i.name));
     }
     setSuggestions(temp);
   };
@@ -47,32 +47,32 @@ function SearchBar() {
     }
     return (
       <ul id="suggestions">
-        {suggestions.map(item => (
+        {suggestions.map(i => (
           <a
-            key={item._id}
-            href={"/product/details/" + item._id}
+            key={i._id}
+            href={"/product/details/" + i._id}
             className="text-dark suggestionsItem"
           >
-            <li>{item.name}</li>
+            <li>{i.name}</li>
           </a>
         ))}
       </ul>
     );
   };
 
-  return items.length ? (
-    <div ref={node}>
-      <input
-        placeholder="¿Qué estás buscando?"
+  return (
+    <Form inline ref={node}>
+      <FormControl
         type="text"
-        id="sb-input"
-        maxLength="110"
+        placeholder="¿Qué estás buscando?"
+        maxLength="50"
         autoFocus
         onChange={handleEditInputChange}
+        className="mr-sm-2"
       />
       {renderSuggestions()}
-    </div>
-  ) : null;
+    </Form>
+  );
 }
 
 export default SearchBar;
