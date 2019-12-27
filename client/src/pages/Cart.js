@@ -15,58 +15,39 @@ import Layout from "../components/Layout";
 import API from "../utils/API";
 
 function Cart() {
-  const cartItems = useSelector(state => state.cart.items);
+  const cart = useSelector(state => state.cart);
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // fetch all products in the shopping cart, one by one
+    let fullCart = [];
+    // fetch all products in the shopping cart, one by one using a promise
     let fetchAllProducts = new Promise((resolve, reject) => {
-      // declare a temp array that will hold the products without duplicates
-      let tempArr = [];
       // start looping each product and fetch its info
-      cartItems.forEach((value, index, array) => {
-        API.fetchProductDetails(value)
+      cart.items.forEach((value, index, array) => {
+        // fetch info from db
+        API.fetchCartProduct(value._id)
           .then(res => {
-            // take only some of the properties of the object
-            let tempProduct = {};
-            tempProduct._id = res.data._id;
-            tempProduct.stock = res.data.stock;
-            tempProduct.name = res.data.name;
-            tempProduct.discount = res.data.discount;
-            tempProduct.salePrice = res.data.salePrice;
-            // loop tempArr and find if the product exists, if so retrieve the index
-            let indexOfProduct = tempArr.findIndex(
-              p => p._id === tempProduct._id
-            );
-            // if indexOfProduct is -1, it means the product's _id wasn't found
-            if (indexOfProduct === -1) {
-              // set the qty to 1 and the subtotal equals to the salePrice (check if it has discount first) and then push the value
-              tempProduct.qty = 1;
-              tempProduct.subTotal = tempProduct.discount.hasDiscount
-                ? tempProduct.discount.newPrice
-                : tempProduct.salePrice;
-              tempArr.push(tempProduct);
-            }
-            // if indexOfProduct is different than -1, means the product was found
-            // update the qty value of that product and update subTotal
-            else {
-              tempArr[indexOfProduct].qty += 1;
-              tempArr[indexOfProduct].subTotal += tempProduct.discount
-                .hasDiscount
-                ? tempProduct.discount.newPrice
-                : tempProduct.salePrice;
-            }
-            // after its done, "resolve" the promise and send the temp arr as a parameter
-            if (index === array.length - 1) resolve(tempArr);
+            // temp product
+            let product = res.data;
+            product.qty = value.qty;
+            product.subTotal = product.discount.hasDiscount
+              ? product.discount.newPrice * value.qty
+              : product.salePrice * value.qty;
+            // push temp product into fullCart
+            fullCart.push(product);
+            // "resolve" the promise and send the temp arr as a parameter
+            if (index === array.length - 1) resolve();
           })
           .catch(err => console.log(err));
       });
     });
     // when its done fetching all products info,
-    fetchAllProducts.then(tempArr => {
-      setProducts(tempArr);
-    });
+    fetchAllProducts
+      .then(() => {
+        setProducts(fullCart);
+      })
+      .catch(err => console.log(err));
   }, []);
 
   return (
@@ -87,7 +68,7 @@ function Cart() {
                 </tr>
               </thead>
               <tbody>
-                {cartItems.length === 0 ? (
+                {cart.counter === 0 ? (
                   <tr>
                     <td className="bg-light text-center pt-3" colSpan="5">
                       <em>Tu bolsa de compras está vacía</em>
@@ -170,7 +151,7 @@ function Cart() {
                 <strong>Resumen</strong>
               </Card.Header>
               <Card.Body>
-                {cartItems.length ? (
+                {cart.counter > 0 ? (
                   products.length ? (
                     <>
                       <Table>

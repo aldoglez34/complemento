@@ -22,7 +22,9 @@ function AddToBagButton(props) {
   };
 
   const handleShow = () => {
-    dispatch(cartActions.addItem(props.product._id));
+    dispatch(
+      cartActions.addItem({ _id: props.product._id, name: props.product.name })
+    );
     setShow(true);
   };
 
@@ -35,17 +37,17 @@ function AddToBagButton(props) {
     }
   }, []);
 
-  return props.product.stock > 0 ? (
+  return (
     <>
       <Button
         variant="success"
         block
         onClick={handleShow}
         size={props.size}
-        title="Agregar a mi bolsa de compras"
+        title={props.product.stock > 0 ? "Compra rápida" : "No hay existencias"}
+        disabled={props.product.stock > 0 ? false : true}
       >
         Comprar
-        {/* <i className="fas fa-shopping-bag ml-1" /> */}
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -57,27 +59,15 @@ function AddToBagButton(props) {
           exitosamente a tu bolsa de compras.
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
+          <Button variant="success" onClick={handleClose}>
+            Sigue comprando
           </Button>
-          <Button variant="success" href="/cart">
-            Ir a mis compras
-            <i className="fas fa-shopping-bag ml-1" />
-            <i className="fas fa-angle-double-right ml-1" />
+          <Button variant="danger" href="/cart">
+            Proceder con el pago
           </Button>
         </Modal.Footer>
       </Modal>
     </>
-  ) : (
-    <Button
-      disabled
-      block
-      variant="success"
-      title="No disponible por el momento"
-    >
-      Comprar
-      {/* <i className="fas fa-shopping-bag ml-1" /> */}
-    </Button>
   );
 }
 

@@ -23,7 +23,7 @@ function WelcomeJumbotron() {
           variant="success"
         >
           Explora la tienda
-          <i className="fas fa-store-alt ml-2" />
+          {/* <i className="fas fa-store-alt ml-2" /> */}
         </Button>
       </Container>
     </Jumbotron>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Container, Nav, Button, Badge } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import StoreDropdown from "./StoreDropdown";
 import SearchBar from "./SearchBar";
 import ClientDropdown from "./ClientDropdown";
@@ -72,13 +72,13 @@ function MyNavbar() {
           {/* bottom row */}
           <Nav className="mr-auto">
             <StoreDropdown categories={categories} />
-            <Nav.Item className="ml-0 ml-lg-2 w-100 pr-2">
+            <Nav.Item className="ml-0 ml-lg-2 pr-2 w-100 mt-1 mt-lg-0">
               <SearchBar items={items} />
             </Nav.Item>
-            <Nav.Item className="ml-lg-auto">
+            <Nav.Item className="ml-lg-auto mt-1 mt-lg-0">
               <BagDropdown />
             </Nav.Item>
-            <Nav.Item className="ml-2">
+            <Nav.Item>
               {client.isLogged ? <ClientDropdown /> : <LoginDropdown />}
             </Nav.Item>
           </Nav>

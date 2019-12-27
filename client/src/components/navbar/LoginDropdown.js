@@ -134,10 +134,12 @@ function LoginDropdown() {
                 className="dropdown-menu-xs-left dropdown-menu-md-right"
                 style={{ width: "18.125rem" }}
               >
+                <h5 className="pt-1 pl-3 pb-1">Inicia sesión</h5>
+                <Dropdown.Divider />
                 <Form
                   noValidate
                   onSubmit={handleSubmit}
-                  className="pt-3 pl-3 pr-3 pb-1"
+                  className="pt-1 pl-3 pr-3 pb-1 pt-3"
                 >
                   <Form.Row className="mb-2">
                     <Form.Group as={Col}>

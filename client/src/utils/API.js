@@ -46,11 +46,11 @@ export default {
   },
 
   // ---------------------------------------------------------------------------
-  // PRODUCT DETAILS
+  // CART
   // ---------------------------------------------------------------------------
 
-  fetchProductDetails: function(productId) {
-    return axios.get("/api/product/details/" + productId);
+  fetchCartProduct: function(productId) {
+    return axios.get("/api/cart/product/" + productId);
   },
 
   // ---------------------------------------------------------------------------

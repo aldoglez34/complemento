@@ -14,6 +14,8 @@ function StoreDropdown(props) {
         Tienda
       </Dropdown.Toggle>
       <Dropdown.Menu data-display="static">
+        <h5 className="pt-1 pl-3 pb-1">Categorías</h5>
+        <Dropdown.Divider />
         {props.categories.map(c => (
           <Dropdown.Item key={c._id} href={"/store/category/" + c.name}>
             {c.name}

@@ -53,7 +53,10 @@ function Home() {
               (228) 111-2031
               <br />
               <i className="fas fa-envelope mr-2" />
-              <a className="text-success" href="mailto:complemento.natural@gmail.com">
+              <a
+                style={{ color: "#5a5a5a" }}
+                href="mailto:complemento.natural@gmail.com"
+              >
                 complemento.natural@gmail.com
               </a>
             </address>
