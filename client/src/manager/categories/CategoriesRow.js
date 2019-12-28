@@ -42,9 +42,7 @@ function CategoriesRow(props) {
 
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>
-            <h2 className="mb-0">Editar Categoría</h2>
-          </Modal.Title>
+          <Modal.Title>Editar Categoría</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik

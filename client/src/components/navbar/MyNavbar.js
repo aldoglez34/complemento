@@ -38,7 +38,7 @@ function MyNavbar() {
         href="/"
         style={{
           color: "#f3d084",
-          fontFamily: "'Girassol', cursive",
+          fontFamily: "'Acme', sans-serif",
           fontSize: "35px"
         }}
       >
@@ -51,12 +51,12 @@ function MyNavbar() {
         href="/"
         style={{
           color: "#f3d084",
-          fontFamily: "'Girassol', cursive",
+          fontFamily: "'Acme', sans-serif",
           fontSize: "26px"
         }}
       >
+        {/* <i className="fab fa-canadian-maple-leaf mr-1" /> */}
         Complemento Natural
-        {/* <i className="fab fa-canadian-maple-leaf ml-1" /> */}
       </Navbar.Brand>
 
       {/* toggle */}

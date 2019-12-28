@@ -25,9 +25,7 @@ function ClientsRow(props) {
 
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>
-            <h2 className="mb-0">Cliente</h2>
-          </Modal.Title>
+          <Modal.Title>Cliente</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik

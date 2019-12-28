@@ -60,10 +60,12 @@ function AddToBagButton(props) {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="success" onClick={handleClose}>
+            <i className="fas fa-angle-double-left mr-1" />
             Seguir comprando
           </Button>
-          <Button variant="danger" href="/cart">
+          <Button className="ml-auto" variant="danger" href="/cart">
             Proceder con el pago
+            <i className="fas fa-angle-double-right ml-1" />
           </Button>
         </Modal.Footer>
       </Modal>

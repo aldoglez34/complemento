@@ -48,16 +48,16 @@ function ProductDetails(props) {
               {/* info */}
               <Col md={8}>
                 {/* name and price */}
-                <Row className="mb-3">
+                <Row className="mb-2">
                   <Col>
                     <div className="d-flex flex-row">
-                      <h2 className="mb-0">{product.name}</h2>
+                      <h2>{product.name}</h2>
                       {product.discount.hasDiscount ? (
-                        <h2>
+                        <h3>
                           <Badge variant="warning" className="ml-2">
                             {product.discount.percentage + "%"}
                           </Badge>
-                        </h2>
+                        </h3>
                       ) : null}
                     </div>
                     <hr
@@ -66,10 +66,10 @@ function ProductDetails(props) {
                     />
                     <h5 className="mb-0">{product.brand}</h5>
                     <h5 className="mb-0">{product.content}</h5>
-                    <div className="d-flex flex-row mt-2 mb-2">
+                    <div className="d-flex flex-row mt-2">
                       {product.discount.hasDiscount ? (
                         <>
-                          <h2 className="mb-0 text-muted">
+                          <h2 className="mb-0" style={{ color: "gainsboro" }}>
                             <del>{"$" + product.salePrice + " MXN"}</del>
                           </h2>
                           <h2 className="mb-0 ml-1 text-danger">
@@ -90,7 +90,7 @@ function ProductDetails(props) {
                     <AddToBagButton product={product} size="lg" />
                   </Col>
                 </Row>
-                <Row className="mb-4">
+                <Row className="mb-3">
                   <Col md={5}>
                     <FavButton isBlock={true} product={product} />
                   </Col>
@@ -98,7 +98,7 @@ function ProductDetails(props) {
                 {/* ingredients and sufferings */}
                 <Row className="mb-1">
                   <Col>
-                    <h4 className="mb-1">Útil para</h4>
+                    <strong>Útil para</strong>
                     {product.sufferings.length ? (
                       <ul className="mb-1 list-unstyled">
                         <li>
@@ -116,7 +116,7 @@ function ProductDetails(props) {
                 </Row>
                 <Row className="mb-1">
                   <Col>
-                    <h4 className="mb-1">Contiene</h4>
+                    <strong>Contiene</strong>
                     {product.ingredients.length ? (
                       <ul className="mb-1 list-unstyled">
                         <li>
@@ -134,8 +134,8 @@ function ProductDetails(props) {
                 </Row>
                 {/* comments */}
                 <Row className="mb-2">
-                  <Col className="text-center">
-                    <em>{product.comments}</em>
+                  <Col>
+                    <small>{product.comments}</small>
                   </Col>
                 </Row>
               </Col>

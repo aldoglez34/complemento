@@ -36,9 +36,15 @@ function FilterSection(props) {
                   active={category.name === props.filterSelected ? true : false}
                 >
                   {category.name}
-                  <Badge className="ml-1 filterBadge">
-                    {category.productCount}
-                  </Badge>
+                  {category.name === props.filterSelected ? (
+                    <Badge className="ml-1 filterBadgeSelected">
+                      {category.productCount}
+                    </Badge>
+                  ) : (
+                    <Badge className="ml-1 filterBadge">
+                      {category.productCount}
+                    </Badge>
+                  )}
                 </Nav.Link>
               </Nav.Item>
             );
@@ -53,9 +59,15 @@ function FilterSection(props) {
                   active={brand.name === props.filterSelected ? true : false}
                 >
                   {brand.name}
-                  <Badge className="ml-1 filterBadge">
-                    {brand.productCount}
-                  </Badge>
+                  {brand.name === props.filterSelected ? (
+                    <Badge className="ml-1 filterBadgeSelected">
+                      {brand.productCount}
+                    </Badge>
+                  ) : (
+                    <Badge className="ml-1 filterBadge">
+                      {brand.productCount}
+                    </Badge>
+                  )}
                 </Nav.Link>
               </Nav.Item>
             );

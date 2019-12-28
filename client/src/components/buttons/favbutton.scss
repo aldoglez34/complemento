@@ -1,18 +1,14 @@
 // favbutton style
 $favbutton-back: #fe4365;
 $favbutton-back-hover: #ce3551;
-$favbutton-heart: ghostwhite;
-$favbutton-disabled: gray;
+$favbutton-text: white;
 .favbuttonstyle {
   border-color: $favbutton-back;
   background-color: $favbutton-back;
-  color: $favbutton-heart;
+  color: $favbutton-text;
   &:hover {
     border-color: $favbutton-back-hover;
     background-color: $favbutton-back-hover;
     transition: 0.5s;
-  }
-  &:disabled {
-    background-color: $favbutton-disabled;
   }
 }

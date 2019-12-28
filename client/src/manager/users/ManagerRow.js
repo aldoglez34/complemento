@@ -24,9 +24,7 @@ function ManagerRow(props) {
 
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>
-            <h2 className="mb-0">Manager</h2>
-          </Modal.Title>
+          <Modal.Title>Manager</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik

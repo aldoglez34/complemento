@@ -105,9 +105,7 @@ function ProductRow(props) {
 
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>
-            <h2 className="mb-0">Editar Producto</h2>
-          </Modal.Title>
+          <Modal.Title>Editar Producto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik

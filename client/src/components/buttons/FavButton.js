@@ -68,10 +68,16 @@ function FavButton(props) {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="success" onClick={handleClose}>
+            <i className="fas fa-angle-double-left mr-1" />
             Seguir comprando
           </Button>
-          <Button variant="danger" href="/client/favorites/">
+          <Button
+            className="ml-auto"
+            variant="danger"
+            href="/client/favorites/"
+          >
             Ir a mis favoritos
+            <i className="fas fa-angle-double-right ml-1" />
           </Button>
         </Modal.Footer>
       </Modal>

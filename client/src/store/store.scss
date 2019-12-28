@@ -30,29 +30,34 @@
 // ====================================
 // categories list
 .filterItem {
-  font-size: 16px;
-  color: black !important;
+  color: rgb(46, 46, 46) !important;
   &:hover {
-    background-color: #f5efe2 !important;
-    color: black;
+    color: yellowgreen !important;
   }
   &.active {
-    background-color: #c8c0b0 !important;
-    color: black;
+    background-color: transparent !important;
+    border-bottom: 3px solid yellowgreen;
+    border-radius: 0px;
+    // width: 75%;
+    color: rgb(135, 184, 38) !important;
+    // font-weight: bold;
   }
 }
 
 // ====================================
 // filter badge
 .filterBadge {
-  background-color: #5a5a5a;
+  background-color: #5a5a5a !important;
   color: ghostwhite;
-  font-family: Arial;
+}
+
+.filterBadgeSelected {
+  background-color: rgb(135, 184, 38) !important;
+  color: ghostwhite;
 }
 
 // ====================================
 // pagination
-
 .itemsStyle {
   &.page-item {
     a {
