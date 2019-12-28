@@ -67,7 +67,7 @@ function ProductCard(props) {
           <div className="d-flex inline">
             <AddToBagButton product={props.product} size="md" />
             <div className="ml-1">
-              <FavButton block={false} text={null} product={props.product} />
+              <FavButton isBlock={false} text={null} product={props.product} />
             </div>
           </div>
         </div>

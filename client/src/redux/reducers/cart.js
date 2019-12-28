@@ -26,6 +26,23 @@ const cartReducers = (state = { counter: 0, items: [] }, action) => {
         counter: 0,
         items: []
       };
+    case "cart/decrementQty":
+      let temp = state.items;
+      let i = state.items.findIndex(i => i._id === action.data);
+      let quantity = temp[i].qty;
+      if (quantity > 1) {
+        temp[i].qty = quantity - 1;
+        return {
+          counter: state.counter - 1,
+          items: temp
+        };
+      } else {
+        temp.splice(i, 1);
+        return {
+          counter: state.counter - 1,
+          items: temp
+        };
+      }
     default:
       return state;
   }

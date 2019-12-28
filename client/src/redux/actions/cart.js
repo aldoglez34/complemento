@@ -10,3 +10,10 @@ export const clear = () => {
     type: "cart/clear"
   };
 };
+
+export const decrementQty = data => {
+  return {
+    type: "cart/decrementQty",
+    data
+  };
+};

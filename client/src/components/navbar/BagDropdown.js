@@ -7,14 +7,16 @@ import {
   Button,
   Spinner
 } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import * as cartActions from "../../redux/actions/cart";
 import API from "../../utils/API";
 
 function BagDropdown() {
+  const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
+  const initBag = () => {
     let fullCart = [];
     // fetch all products in the shopping cart, one by one using a promise
     let fetchAllProducts = new Promise((resolve, reject) => {
@@ -43,6 +45,10 @@ function BagDropdown() {
         setProducts(fullCart);
       })
       .catch(err => console.log(err));
+  };
+
+  useEffect(() => {
+    initBag();
   }, []);
 
   return (
@@ -65,29 +71,53 @@ function BagDropdown() {
             <em>Tu bolsa está vacía</em>
           ) : products.length ? (
             <>
-              <div className="mt-2">
+              <div className="mt-3">
                 {products.map(p => {
                   return (
                     <div key={p._id} className="d-flex flex-row">
+                      <span
+                        className="mr-1 text-danger"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => {
+                          dispatch(cartActions.decrementQty(p._id));
+                          initBag();
+                        }}
+                        title="Borrar este elemento"
+                      >
+                        x
+                      </span>
                       <span>{p.name}</span>
                       <span className="text-muted ml-2">{"x" + p.qty}</span>
                       <strong className="ml-auto">{"$" + p.subTotal}</strong>
                     </div>
                   );
                 })}
+                <div className="d-flex flex-row">
+                  <small
+                    className="ml-auto text-danger"
+                    style={{ cursor: "pointer" }}
+                    title="Limpiar bolsa"
+                    onClick={() => {
+                      dispatch(cartActions.clear());
+                      setProducts(products);
+                    }}
+                  >
+                    Limpiar bolsa
+                  </small>
+                </div>
                 <div className="d-flex flex-row mt-2">
-                  <h3 className="ml-auto text-danger">
+                  <h4 className="ml-auto text-success">
                     {"Total $" +
                       products
                         .map(p => p.subTotal)
                         .reduce((prev, next) => prev + next)}
-                  </h3>
+                  </h4>
                 </div>
               </div>
               <Button
                 block
                 size="sm"
-                className="mt-2"
+                className="mt-1"
                 variant="danger"
                 href="/cart"
               >

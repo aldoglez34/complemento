@@ -7,8 +7,7 @@ import * as clientActions from "../../redux/actions/client";
 import "./favbutton.scss";
 
 FavButton.propTypes = {
-  block: PropTypes.bool.isRequired,
-  text: PropTypes.string,
+  isBlock: PropTypes.bool.isRequired,
   product: PropTypes.object.isRequired
 };
 
@@ -41,17 +40,22 @@ function FavButton(props) {
     }
   };
 
-  return isClientLogged ? (
+  return (
     <>
       <Button
         variant="danger"
         className="favbuttonstyle"
-        onClick={handleShow}
-        title="Agregar a mis favoritos"
-        block={props.block}
+        onClick={
+          isClientLogged
+            ? handleShow
+            : () =>
+                alert(
+                  "Debes iniciar sesión para poder guardar productos en tus favoritos"
+                )
+        }
+        block={props.isBlock}
       >
-        {props.text}
-        <i className="fa fa-heart" />
+        {props.isBlock ? "Favoritos" : <i className="fa fa-heart" />}
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -63,32 +67,15 @@ function FavButton(props) {
           favoritos
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
+          <Button variant="success" onClick={handleClose}>
+            Seguir comprando
           </Button>
-          <Button className="globalbttn" href="/client/favorites/">
+          <Button variant="danger" href="/client/favorites/">
             Ir a mis favoritos
-            <i className="fas fa-heart ml-1" />
-            <i className="fas fa-angle-double-right ml-1" />
           </Button>
         </Modal.Footer>
       </Modal>
     </>
-  ) : (
-    <Button
-      variant="danger"
-      className="favbuttonstyle"
-      onClick={() =>
-        alert(
-          "Debes iniciar sesión para poder guardar productos en tus favoritos"
-        )
-      }
-      title="Agregar a mis favoritos"
-      block={props.block}
-    >
-      {props.text}
-      <i className="fa fa-heart" />
-    </Button>
   );
 }
 

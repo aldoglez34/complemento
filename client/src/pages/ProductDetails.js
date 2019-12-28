@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Image, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Image, Spinner, Badge } from "react-bootstrap";
 import Layout from "../components/Layout";
 import MyBreadcrumb from "../components/breadcrumb/MyBreadcrumb";
 import API from "../utils/API";
@@ -50,27 +50,38 @@ function ProductDetails(props) {
                 {/* name and price */}
                 <Row className="mb-3">
                   <Col>
-                    <h1 className="mb-0 text-dark">{product.name}</h1>
+                    <div className="d-flex flex-row">
+                      <h2 className="mb-0">{product.name}</h2>
+                      {product.discount.hasDiscount ? (
+                        <h2>
+                          <Badge variant="warning" className="ml-2">
+                            {product.discount.percentage + "%"}
+                          </Badge>
+                        </h2>
+                      ) : null}
+                    </div>
                     <hr
                       className="myDivider"
                       style={{ backgroundColor: "#edcb58" }}
                     />
-                    <h2 className="mb-0">{product.brand}</h2>
-                    <h2 className="mb-0">{product.content}</h2>
-                    {product.discount.hasDiscount ? (
-                      <Row className="px-3">
-                        <h3 className="mb-0 mr-2 text-muted">
-                          <del>{"$" + product.salePrice + " MXN"}</del>
-                        </h3>
+                    <h5 className="mb-0">{product.brand}</h5>
+                    <h5 className="mb-0">{product.content}</h5>
+                    <div className="d-flex flex-row mt-2 mb-2">
+                      {product.discount.hasDiscount ? (
+                        <>
+                          <h2 className="mb-0 text-muted">
+                            <del>{"$" + product.salePrice + " MXN"}</del>
+                          </h2>
+                          <h2 className="mb-0 ml-1 text-danger">
+                            {"$" + product.discount.newPrice + " MXN"}
+                          </h2>
+                        </>
+                      ) : (
                         <h2 className="mb-0 text-danger">
-                          {"$" + product.discount.newPrice + " MXN"}
+                          {"$" + product.salePrice + " MXN"}
                         </h2>
-                      </Row>
-                    ) : (
-                      <h2 className="mb-0 text-danger">
-                        {"$" + product.salePrice + " MXN"}
-                      </h2>
-                    )}
+                      )}
+                    </div>
                   </Col>
                 </Row>
                 {/* buttons */}
@@ -81,11 +92,7 @@ function ProductDetails(props) {
                 </Row>
                 <Row className="mb-4">
                   <Col md={5}>
-                    <FavButton
-                      block={true}
-                      text={"Favoritos "}
-                      product={product}
-                    />
+                    <FavButton isBlock={true} product={product} />
                   </Col>
                 </Row>
                 {/* ingredients and sufferings */}

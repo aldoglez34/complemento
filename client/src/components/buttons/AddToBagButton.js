@@ -44,7 +44,7 @@ function AddToBagButton(props) {
         block
         onClick={handleShow}
         size={props.size}
-        title={props.product.stock > 0 ? "Compra rápida" : "No hay existencias"}
+        title={props.product.stock > 0 ? null : "No hay existencias"}
         disabled={props.product.stock > 0 ? false : true}
       >
         Comprar
