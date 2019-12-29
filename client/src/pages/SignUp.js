@@ -78,7 +78,7 @@ function SignUp(props) {
     <Layout>
       <MyBreadcrumb routes={breadcrumbRoutes} />
       <Container className="mt-4 mb-4">
-        <h2 className="mb-1">Regístrate con nosotros</h2>
+        <h2>Regístrate con nosotros</h2>
         <hr className="myDivider" />
         <Formik
           initialValues={{

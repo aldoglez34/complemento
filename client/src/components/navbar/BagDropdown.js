@@ -82,7 +82,7 @@ function BagDropdown() {
                           dispatch(cartActions.decrementQty(p._id));
                           initBag();
                         }}
-                        title="Borrar este elemento"
+                        title="Borrar este producto"
                       >
                         x
                       </span>

@@ -19,7 +19,7 @@ function Cart() {
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  const initCart = () => {
     let fullCart = [];
     // fetch all products in the shopping cart, one by one using a promise
     let fetchAllProducts = new Promise((resolve, reject) => {
@@ -42,18 +42,22 @@ function Cart() {
           .catch(err => console.log(err));
       });
     });
-    // when its done fetching all products info,
+    // when its done fetching all products info
     fetchAllProducts
       .then(() => {
         setProducts(fullCart);
       })
       .catch(err => console.log(err));
+  };
+
+  useEffect(() => {
+    initCart();
   }, []);
 
   return (
     <Layout>
       <Container className="mt-4">
-        <h2 className="mb-1">Mi bolsa de compras</h2>
+        <h2>Mi bolsa de compras</h2>
         <hr className="myDivider" />
         <Row className="mt-3">
           {/* shopping bag col */}
@@ -61,6 +65,7 @@ function Cart() {
             <Table className="mt-1" responsive size="sm">
               <thead>
                 <tr>
+                  <th className="text-center border-top-0 pb-2"></th>
                   <th className="text-center border-top-0 pb-2">Producto</th>
                   <th className="text-center border-top-0 pb-2">Cantidad</th>
                   <th className="text-center border-top-0 pb-2">Precio</th>
@@ -79,6 +84,20 @@ function Cart() {
                     {products.map(p => {
                       return (
                         <tr key={p._id}>
+                          {/* delete item */}
+                          <td>
+                            <span
+                              className="text-danger"
+                              style={{ cursor: "pointer" }}
+                              onClick={() => {
+                                dispatch(cartActions.decrementQty(p._id));
+                                initCart();
+                              }}
+                              title="Borrar este producto"
+                            >
+                              x
+                            </span>
+                          </td>
                           {/* name */}
                           <td className="text-left">
                             <a

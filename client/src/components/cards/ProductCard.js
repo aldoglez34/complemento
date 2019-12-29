@@ -53,7 +53,7 @@ function ProductCard(props) {
               </span>
             </>
           ) : (
-            <span className="h4 text-dark mb-0">
+            <span className="h4 text-danger mb-0">
               {"$" + props.product.salePrice}
             </span>
           )}

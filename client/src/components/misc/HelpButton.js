@@ -32,8 +32,9 @@ function HelpButton() {
           cursus magna, vel scelerisque nisl consectetur et.
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="success" onClick={handleClose}>
-            Aceptar
+          <Button variant="success" className="mr-auto" onClick={handleClose}>
+            <i className="fas fa-angle-double-left mr-1" />
+            Seguir comprando
           </Button>
         </Modal.Footer>
       </Modal>

@@ -51,7 +51,7 @@ function SearchBar(props) {
           <a
             key={i._id}
             href={"/product/details/" + i._id}
-            className="text-dark suggestionsItem"
+            className="text-dark"
           >
             <li>{i.name}</li>
           </a>
