@@ -51,6 +51,7 @@ function Cart() {
   };
 
   useEffect(() => {
+    dispatch(cartActions.hideDropdown());
     initCart();
   }, []);
 
@@ -60,7 +61,7 @@ function Cart() {
         <h2>Mi bolsa de compras</h2>
         <hr className="myDivider" />
         <Row className="mt-3">
-          {/* shopping bag col */}
+          {/* LEFT COLUMN */}
           <Col md={8}>
             <Table className="mt-1" responsive size="sm">
               <thead>
@@ -90,7 +91,7 @@ function Cart() {
                               className="text-danger"
                               style={{ cursor: "pointer" }}
                               onClick={() => {
-                                dispatch(cartActions.decrementQty(p._id));
+                                dispatch(cartActions.deleteItem(p._id));
                                 initCart();
                               }}
                               title="Borrar este producto"
@@ -121,6 +122,17 @@ function Cart() {
                               min={1}
                               max={p.stock}
                               style={{ width: "55px" }}
+                              onChange={e => {
+                                e.target.value > p.qty
+                                  ? dispatch(
+                                      cartActions.addItem({
+                                        _id: p._id,
+                                        name: p.name
+                                      })
+                                    )
+                                  : dispatch(cartActions.decrementQty(p._id));
+                                initCart();
+                              }}
                             />
                           </td>
                           {/* sale price */}
@@ -163,71 +175,69 @@ function Cart() {
               </tbody>
             </Table>
           </Col>
-          {/* card */}
-          <Col md={4}>
+          {/* RIGHT COLUMN */}
+          <Col md={4} className="mb-3">
             <Card>
               <Card.Header style={{ paddingBottom: "7px", paddingTop: "7px" }}>
                 <strong>Resumen</strong>
               </Card.Header>
               <Card.Body>
-                {cart.counter > 0 ? (
-                  products.length ? (
-                    <>
-                      <Table>
-                        <tbody>
-                          <tr>
-                            <td className="border-top-0">
-                              Cantidad de productos
-                            </td>
-                            <td className="border-top-0">
-                              {products
-                                .map(p => p.qty)
-                                .reduce((prev, next) => prev + next)}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Subtotal</td>
-                            <td>
+                {cart.counter === 0 ? (
+                  <div className="text-center text-success">
+                    <strong>Total $0</strong>
+                  </div>
+                ) : products.length ? (
+                  <>
+                    <Table>
+                      <tbody>
+                        <tr>
+                          <td className="border-top-0">
+                            Cantidad de productos
+                          </td>
+                          <td className="border-top-0">
+                            {products
+                              .map(p => p.qty)
+                              .reduce((prev, next) => prev + next)}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Subtotal</td>
+                          <td>
+                            $
+                            {products
+                              .map(p => p.subTotal)
+                              .reduce((prev, next) => prev + next)}{" "}
+                            MXN
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Costo de envío</td>
+                          <td>$70 MXN</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong className="text-success">Total</strong>
+                          </td>
+                          <td>
+                            <strong className="text-success">
                               $
                               {products
                                 .map(p => p.subTotal)
-                                .reduce((prev, next) => prev + next)}{" "}
+                                .reduce((prev, next) => prev + next) + 70}{" "}
                               MXN
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Costo de envío</td>
-                            <td>$70 MXN</td>
-                          </tr>
-                          <tr>
-                            <td>Total general</td>
-                            <td>
-                              <strong>
-                                {" "}
-                                $
-                                {products
-                                  .map(p => p.subTotal)
-                                  .reduce((prev, next) => prev + next) +
-                                  70}{" "}
-                                MXN
-                              </strong>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </Table>
-                      <Button variant="danger">Pagar</Button>
-                    </>
-                  ) : (
-                    <div className="text-center my-4">
-                      <Spinner
-                        variant="warning"
-                        animation="grow"
-                        role="status"
-                      />
-                    </div>
-                  )
+                            </strong>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </Table>
+                    <Button variant="danger" className="shadow-sm">
+                      Pagar
+                    </Button>
+                  </>
                 ) : (
-                  <div className="text-center">Total $0</div>
+                  <div className="text-center my-4">
+                    <Spinner variant="warning" animation="grow" role="status" />
+                  </div>
                 )}
               </Card.Body>
             </Card>

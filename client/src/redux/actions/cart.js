@@ -17,3 +17,22 @@ export const decrementQty = data => {
     data
   };
 };
+
+export const deleteItem = data => {
+  return {
+    type: "cart/deleteItem",
+    data
+  };
+};
+
+export const showDropdown = () => {
+  return {
+    type: "cart/showDropdown"
+  };
+};
+
+export const hideDropdown = () => {
+  return {
+    type: "cart/hideDropdown"
+  };
+};

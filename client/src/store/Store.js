@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import * as cartActions from "../redux/actions/cart";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Layout from "../components/Layout";
 import ProductsSection from "./components/ProductsSection";
@@ -20,7 +22,10 @@ function Store(props) {
   const [filter, setFilter] = useState();
   const [sortBy, setSortBy] = useState("Nombre ascendente");
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
+    dispatch(cartActions.showDropdown());
     API.fetchCategories()
       .then(res => setCategories(res.data))
       .catch(err => console.log(err));

@@ -13,6 +13,7 @@ function MyNavbar() {
   const [categories, setCategories] = useState([]);
 
   const client = useSelector(state => state.client);
+  const cart = useSelector(state => state.cart);
 
   useEffect(() => {
     // fetch items for search bar
@@ -76,7 +77,7 @@ function MyNavbar() {
               <SearchBar items={items} />
             </Nav.Item>
             <Nav.Item className="ml-lg-auto mt-1 mt-lg-0">
-              <BagDropdown />
+              {cart.show ? <BagDropdown /> : null}
             </Nav.Item>
             <Nav.Item>
               {client.isLogged ? <ClientDropdown /> : <LoginDropdown />}
