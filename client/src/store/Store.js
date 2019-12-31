@@ -21,7 +21,6 @@ function Store(props) {
 
   const [products, setProducts] = useState([]);
   const [productsPerPage, setProductsPerPage] = useState(12);
-  const [productCounter, setProductCounter] = useState();
   const [pageCount, setPageCount] = useState();
   const [activePage, setActivePage] = useState(1);
 
@@ -48,13 +47,16 @@ function Store(props) {
   };
 
   useEffect(() => {
+    // show store dropdown
     dispatch(cartActions.showDropdown());
+    // fetch filters
     API.fetchCategories()
       .then(res => setCategories(res.data))
       .catch(err => console.log(err));
     API.fetchBrands()
       .then(res => setBrands(res.data))
       .catch(err => console.log(err));
+    // fetch products
     API.fetchProducts()
       .then(res => {
         // no filters
@@ -63,32 +65,27 @@ function Store(props) {
           !props.routeProps.match.params.category
         ) {
           setProducts(res.data);
-          setProductCounter(res.data.length);
           setPageCount(Math.ceil(res.data.length / productsPerPage));
           setOffsetAndLimit();
         }
         // category filter
         if (props.routeProps.match.params.category) {
           setFilter(props.routeProps.match.params.category);
-          setProducts(
-            res.data.filter(
-              p => p.category.name === props.routeProps.match.params.category
-            )
+          let filteredProducts = res.data.filter(
+            p => p.category.name === props.routeProps.match.params.category
           );
-          setProductCounter(res.data.length);
-          setPageCount(Math.ceil(res.data.length / productsPerPage));
+          setProducts(filteredProducts);
+          setPageCount(Math.ceil(filteredProducts.length / productsPerPage));
           setOffsetAndLimit();
         }
         // brand filter
         if (props.routeProps.match.params.brand) {
           setFilter(props.routeProps.match.params.brand);
-          setProducts(
-            res.data.filter(
-              p => p.brand === props.routeProps.match.params.brand
-            )
+          let filteredProducts = res.data.filter(
+            p => p.brand === props.routeProps.match.params.brand
           );
-          setProductCounter(res.data.length);
-          setPageCount(Math.ceil(res.data.length / productsPerPage));
+          setProducts(filteredProducts);
+          setPageCount(Math.ceil(filteredProducts.length / productsPerPage));
           setOffsetAndLimit();
         }
       })
@@ -99,7 +96,7 @@ function Store(props) {
     setProductsPerPage(pages);
   };
 
-  const applyFilter = opt => {
+  const applySorting = opt => {
     setSortBy(opt);
     let temp = products;
     switch (opt) {
@@ -141,7 +138,7 @@ function Store(props) {
 
   return (
     <Layout>
-      {products.length && categories.length && brands.length ? (
+      {products.length && categories.length && brands.length && pageCount ? (
         <>
           <Container fluid className="mt-3">
             <Row className="p-3">
@@ -178,7 +175,7 @@ function Store(props) {
                         <span className="mr-2">Orden</span>
                         <SortDropdown
                           active={sortBy}
-                          applyFilter={applyFilter}
+                          applySorting={applySorting}
                         />
                       </div>
                       <div className="d-flex flex-row align-items-center ml-2">
@@ -197,7 +194,7 @@ function Store(props) {
                     <div className="d-flex flex-row">
                       <SmallSortDropdown
                         active={sortBy}
-                        applyFilter={applyFilter}
+                        applySorting={applySorting}
                       />
                       <div className="ml-2">
                         <SmallProductsPerPageDropdown
@@ -217,14 +214,13 @@ function Store(props) {
                     <ProductsSection products={products.slice(offset, limit)} />
                   </Col>
                 </Row>
-                <Row className="mb-3">
-                  <Col className="px-0">
-                    <MyPagination
-                      pageCount={pageCount}
-                      activePage={activePage}
-                      handleChangePage={handleChangePage}
-                    />
-                  </Col>
+                {/* pagination */}
+                <Row className="mb-3 justify-content-center">
+                  <MyPagination
+                    pageCount={pageCount}
+                    activePage={activePage}
+                    handleChangePage={handleChangePage}
+                  />
                 </Row>
               </Col>
             </Row>
