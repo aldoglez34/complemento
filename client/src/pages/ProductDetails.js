@@ -69,17 +69,17 @@ function ProductDetails(props) {
                     <div className="d-flex flex-row mt-2">
                       {product.discount.hasDiscount ? (
                         <>
-                          <h2 className="mb-0" style={{ color: "gainsboro" }}>
+                          <h3 className="mb-0" style={{ color: "gainsboro" }}>
                             <del>{"$" + product.salePrice + " MXN"}</del>
-                          </h2>
-                          <h2 className="mb-0 ml-1 text-danger">
+                          </h3>
+                          <h3 className="mb-0 ml-1 text-danger">
                             {"$" + product.discount.newPrice + " MXN"}
-                          </h2>
+                          </h3>
                         </>
                       ) : (
-                        <h2 className="mb-0 text-danger">
+                        <h3 className="mb-0 text-danger">
                           {"$" + product.salePrice + " MXN"}
-                        </h2>
+                        </h3>
                       )}
                     </div>
                   </Col>

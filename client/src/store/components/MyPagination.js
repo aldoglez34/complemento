@@ -15,7 +15,10 @@ const generatePages = props => {
       <Pagination.Item
         key={i}
         className="itemsStyle"
-        onClick={() => props.handleChangePage(i)}
+        onClick={() => {
+          props.handleChangePage(i);
+          window.scrollTo(0, 0);
+        }}
         active={i === props.activePage ? true : false}
       >
         {i}

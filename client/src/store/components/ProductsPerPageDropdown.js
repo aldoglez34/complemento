@@ -3,7 +3,8 @@ import { Dropdown } from "react-bootstrap";
 import PropTypes from "prop-types";
 
 ProductsPerPageDropdown.propTypes = {
-  qty: PropTypes.number.isRequired
+  qty: PropTypes.number.isRequired,
+  handleChangeProductsPerPage: PropTypes.func.isRequired
 };
 
 function ProductsPerPageDropdown(props) {
@@ -15,24 +16,24 @@ function ProductsPerPageDropdown(props) {
       <Dropdown.Menu>
         <Dropdown.Item
           className="dropdownItemSort"
-          //   onClick={() => this.handleChangeProductsPerPage(20)}
+          onClick={() => props.handleChangeProductsPerPage(12)}
+          active={props.qty === 12 ? true : false}
+        >
+          12
+        </Dropdown.Item>
+        <Dropdown.Item
+          className="dropdownItemSort"
+          onClick={() => props.handleChangeProductsPerPage(20)}
           active={props.qty === 20 ? true : false}
         >
           20
         </Dropdown.Item>
         <Dropdown.Item
           className="dropdownItemSort"
-          //   onClick={() => this.handleChangeProductsPerPage(30)}
-          active={props.qty === 30 ? true : false}
+          onClick={() => props.handleChangeProductsPerPage(28)}
+          active={props.qty === 28 ? true : false}
         >
-          30
-        </Dropdown.Item>
-        <Dropdown.Item
-          className="dropdownItemSort"
-          //   onClick={() => this.handleChangeProductsPerPage(40)}
-          active={props.qty === 40 ? true : false}
-        >
-          40
+          28
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

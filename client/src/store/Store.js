@@ -13,16 +13,39 @@ import SortDropdown from "./components/SortDropdown";
 import SmallSortDropdown from "./components/SmallSortDropdown";
 import ProductsPerPageDropdown from "./components/ProductsPerPageDropdown";
 import SmallProductsPerPageDropdown from "./components/SmallProductsPerPageDropdown";
+import MyPagination from "./components/MyPagination";
 
 function Store(props) {
-  const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
+
+  const [products, setProducts] = useState([]);
+  const [productsPerPage, setProductsPerPage] = useState(12);
+  const [productCounter, setProductCounter] = useState();
+  const [pageCount, setPageCount] = useState();
+  const [activePage, setActivePage] = useState(1);
+
+  const [offset, setOffset] = useState();
+  const [limit, setLimit] = useState();
 
   const [filter, setFilter] = useState();
   const [sortBy, setSortBy] = useState("Nombre ascendente");
 
   const dispatch = useDispatch();
+
+  const setOffsetAndLimit = () => {
+    let offset;
+    let limit;
+    if (activePage === 1) {
+      offset = 0;
+      limit = offset + productsPerPage;
+    } else {
+      offset = (activePage - 1) * 20;
+      limit = offset + productsPerPage;
+    }
+    setOffset(offset);
+    setLimit(limit);
+  };
 
   useEffect(() => {
     dispatch(cartActions.showDropdown());
@@ -40,6 +63,9 @@ function Store(props) {
           !props.routeProps.match.params.category
         ) {
           setProducts(res.data);
+          setProductCounter(res.data.length);
+          setPageCount(Math.ceil(res.data.length / productsPerPage));
+          setOffsetAndLimit();
         }
         // category filter
         if (props.routeProps.match.params.category) {
@@ -49,6 +75,9 @@ function Store(props) {
               p => p.category.name === props.routeProps.match.params.category
             )
           );
+          setProductCounter(res.data.length);
+          setPageCount(Math.ceil(res.data.length / productsPerPage));
+          setOffsetAndLimit();
         }
         // brand filter
         if (props.routeProps.match.params.brand) {
@@ -58,10 +87,17 @@ function Store(props) {
               p => p.brand === props.routeProps.match.params.brand
             )
           );
+          setProductCounter(res.data.length);
+          setPageCount(Math.ceil(res.data.length / productsPerPage));
+          setOffsetAndLimit();
         }
       })
       .catch(err => console.log(err));
   }, []);
+
+  const handleChangeProductsPerPage = pages => {
+    setProductsPerPage(pages);
+  };
 
   const applyFilter = opt => {
     setSortBy(opt);
@@ -96,6 +132,11 @@ function Store(props) {
       default:
         setProducts(temp);
     }
+  };
+
+  const handleChangePage = page => {
+    setActivePage(page);
+    setOffsetAndLimit();
   };
 
   return (
@@ -142,7 +183,12 @@ function Store(props) {
                       </div>
                       <div className="d-flex flex-row align-items-center ml-2">
                         <span className="mr-2">Ver</span>
-                        <ProductsPerPageDropdown qty={20} />
+                        <ProductsPerPageDropdown
+                          qty={productsPerPage}
+                          handleChangeProductsPerPage={
+                            handleChangeProductsPerPage
+                          }
+                        />
                       </div>
                     </div>
                   </Row>
@@ -154,7 +200,12 @@ function Store(props) {
                         applyFilter={applyFilter}
                       />
                       <div className="ml-2">
-                        <SmallProductsPerPageDropdown qty={20} />
+                        <SmallProductsPerPageDropdown
+                          qty={productsPerPage}
+                          handleChangeProductsPerPage={
+                            handleChangeProductsPerPage
+                          }
+                        />
                       </div>
                     </div>
                   </div>
@@ -163,7 +214,16 @@ function Store(props) {
                 {/* products */}
                 <Row className="mb-3">
                   <Col className="px-0">
-                    <ProductsSection products={products} />
+                    <ProductsSection products={products.slice(offset, limit)} />
+                  </Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col className="px-0">
+                    <MyPagination
+                      pageCount={pageCount}
+                      activePage={activePage}
+                      handleChangePage={handleChangePage}
+                    />
                   </Col>
                 </Row>
               </Col>
