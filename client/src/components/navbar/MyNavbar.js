@@ -8,12 +8,11 @@ import BagDropdown from "./BagDropdown";
 import { useSelector } from "react-redux";
 import API from "../../utils/API";
 
-function MyNavbar() {
+function MyNavbar(props) {
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
 
   const client = useSelector(state => state.client);
-  const cart = useSelector(state => state.cart);
 
   useEffect(() => {
     // fetch items for search bar
@@ -43,7 +42,6 @@ function MyNavbar() {
           fontSize: "35px"
         }}
       >
-        {/* <i className="fab fa-canadian-maple-leaf mr-1" /> */}
         Complemento Natural
       </Navbar.Brand>
       {/* logo (medium to small) */}
@@ -56,7 +54,6 @@ function MyNavbar() {
           fontSize: "26px"
         }}
       >
-        {/* <i className="fab fa-canadian-maple-leaf mr-1" /> */}
         Complemento Natural
       </Navbar.Brand>
 
@@ -77,7 +74,7 @@ function MyNavbar() {
               <SearchBar items={items} />
             </Nav.Item>
             <Nav.Item className="ml-lg-auto mt-1 mt-lg-0">
-              {cart.show ? <BagDropdown /> : null}
+              {props.hideBag ? null : <BagDropdown />}
             </Nav.Item>
             <Nav.Item>
               {client.isLogged ? <ClientDropdown /> : <LoginDropdown />}

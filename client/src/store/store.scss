@@ -36,11 +36,10 @@
   }
   &.active {
     background-color: transparent !important;
-    border-bottom: 3px solid yellowgreen;
+    border-bottom: 3px solid rgb(110, 153, 24);
     border-radius: 0px;
-    // width: 75%;
-    color: rgb(135, 184, 38) !important;
-    // font-weight: bold;
+    color: rgb(110, 153, 24) !important;
+    font-weight: bold;
   }
 }
 
@@ -52,7 +51,7 @@
 }
 
 .filterBadgeSelected {
-  background-color: rgb(135, 184, 38) !important;
+  background-color: rgb(110, 153, 24) !important;
   color: ghostwhite;
 }
 

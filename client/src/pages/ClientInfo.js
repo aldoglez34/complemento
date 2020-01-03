@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Container, Form, Col, Button } from "react-bootstrap";
 import API from "../utils/API";
 import Layout from "../components/Layout";
-import MyBreadcrumb from "../components/breadcrumb/MyBreadcrumb";
 import ScrollButton from "../components/misc/ScrollButton";
 import HelpButton from "../components/misc/HelpButton";
 import * as yup from "yup";
@@ -13,17 +12,6 @@ import * as clientActions from "../redux/actions/client";
 function ClientInfo() {
   const client = useSelector(state => state.client);
   const dispatch = useDispatch();
-
-  const breadcrumbRoutes = () => {
-    return [
-      { name: "Inicio", to: "/" },
-      {
-        name: client.name + " " + client.firstSurname,
-        to: "/client/info/"
-      },
-      { name: "Mis datos", to: "active" }
-    ];
-  };
 
   const changeInfoSchema = yup.object({
     name: yup
@@ -69,10 +57,9 @@ function ClientInfo() {
 
   return client.isLogged ? (
     <Layout>
-      <MyBreadcrumb routes={breadcrumbRoutes()} />
       <Container className="mt-4">
-        <h2 className="mb-1">Mis datos</h2>
-        <hr className="myDivider mb-4" />
+        <h2>Mis datos</h2>
+        <hr className="myDivider" />
         <Formik
           initialValues={{
             name: client.name,
@@ -374,17 +361,15 @@ function ClientInfo() {
                     />
                   </Form.Group>
                 </Form.Row>
-                <Form.Row>
-                  <Form.Group>
-                    <Button
-                      type="submit"
-                      className="my-3 globalbttn"
-                      disabled={isSubmitting}
-                    >
-                      Guardar cambios
-                    </Button>
-                  </Form.Group>
-                </Form.Row>
+                <Form.Group>
+                  <Button
+                    type="submit"
+                    variant="success"
+                    disabled={isSubmitting}
+                  >
+                    Guardar cambios
+                  </Button>
+                </Form.Group>
               </Form>
             </>
           )}

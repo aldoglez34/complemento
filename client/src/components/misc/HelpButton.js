@@ -19,17 +19,11 @@ function HelpButton() {
           <Modal.Title>¿Necesitas ayuda?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel
-          scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue
-          laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla
-          sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl
-          consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-          auctor fringilla. Cras mattis consectetur purus sit amet fermentum.
-          Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
-          risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
-          cursus magna, vel scelerisque nisl consectetur et.
+          En Complemento Natural estamos disponibles para ti. Puedes marcarnos
+          al <strong>2281112031</strong> de Lunes a Viernes en horario de 9AM a
+          9PM. O si prefieres puedes enviarnos un correo a
+          <strong> complemento.natural@gmail.com</strong> y nosotros te
+          responderemos a la brevedead.
         </Modal.Body>
         <Modal.Footer>
           <Button variant="success" className="mr-auto" onClick={handleClose}>

@@ -6,9 +6,9 @@ import API from "../../utils/API";
 import * as clientActions from "../../redux/actions/client";
 import { useDispatch } from "react-redux";
 import fire from "../../firebase/fire";
-// const firebase = require("firebase/app");
+const firebase = require("firebase/app");
 
-function LoginDropdown() {
+function LoginDropdown(props) {
   const dispatch = useDispatch();
 
   const loginSchema = yup.object({
@@ -31,87 +31,85 @@ function LoginDropdown() {
         validationSchema={loginSchema}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          fire
-            .auth()
-            .signInWithEmailAndPassword(values.email, values.password)
-            .then(res => {
-              API.fetchClientByUID(res.user.uid)
-                .then(res => {
-                  if (res.data) {
-                    dispatch(clientActions.loginClient(res.data));
-                    alert("¡Bienvenido!");
-                  } else {
-                    alert("Usuario incorrecto");
-                    setSubmitting(false);
-                  }
+          values.rememberme
+            ? firebase
+                .auth()
+                .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+                .then(function() {
+                  return fire
+                    .auth()
+                    .signInWithEmailAndPassword(values.email, values.password)
+                    .then(res => {
+                      API.fetchClientByUID(res.user.uid)
+                        .then(res => {
+                          if (res.data) {
+                            dispatch(clientActions.loginClient(res.data));
+                            alert("¡Bienvenido!");
+                            window.location.href = "/";
+                          } else {
+                            alert("Usuario incorrecto");
+                            setSubmitting(false);
+                          }
+                        })
+                        .catch(error => {
+                          alert("Error de autenticación, revisa tus datos");
+                          console.log("Error de fetchClientByUID");
+                          console.log(error);
+                          setSubmitting(false);
+                        });
+                    })
+                    .catch(error => {
+                      alert("Error de autenticación, revisa tus datos");
+                      console.log("Error de firebase signIn...");
+                      console.log(error);
+                      setSubmitting(false);
+                    });
                 })
-                .catch(error => {
-                  alert("Error de autenticación, revisa tus datos");
-                  console.log("Error de fetchClientByUID");
-                  console.log(error);
-                  setSubmitting(false);
+                .catch(function(error) {
+                  // Handle Errors here.
+                  let errorCode = error.code;
+                  let errorMessage = error.message;
+                  alert(`Error ${errorCode} \n Mensaje: ${errorMessage}`);
+                })
+            : firebase
+                .auth()
+                .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+                .then(function() {
+                  return fire
+                    .auth()
+                    .signInWithEmailAndPassword(values.email, values.password)
+                    .then(res => {
+                      API.fetchClientByUID(res.user.uid)
+                        .then(res => {
+                          if (res.data) {
+                            dispatch(clientActions.loginClient(res.data));
+                            alert("¡Bienvenido!");
+                            window.location.href = "/";
+                          } else {
+                            alert("Usuario incorrecto");
+                            setSubmitting(false);
+                          }
+                        })
+                        .catch(error => {
+                          alert("Error de autenticación, revisa tus datos");
+                          console.log("Error de fetchClientByUID");
+                          console.log(error);
+                          setSubmitting(false);
+                        });
+                    })
+                    .catch(error => {
+                      alert("Error de autenticación, revisa tus datos");
+                      console.log("Error de firebase signIn...");
+                      console.log(error);
+                      setSubmitting(false);
+                    });
+                })
+                .catch(function(error) {
+                  // Handle Errors here.
+                  let errorCode = error.code;
+                  let errorMessage = error.message;
+                  alert(`Error ${errorCode} \n Mensaje: ${errorMessage}`);
                 });
-            })
-            .catch(error => {
-              alert("Error de autenticación, revisa tus datos");
-              console.log("Error de firebase signIn...");
-              console.log(error);
-              setSubmitting(false);
-            });
-          // step 1: logout any other session that might be open in firebase (could be from a manager)
-          // no need to logout from redux, the listener in App handles that
-          // fb.auth()
-          //   .signOut()
-          //   .then(() => {
-          //     // step 2: set persistence for the new session in firebase
-          //     fb.auth()
-          //       .setPersistence(firebase.auth.Auth.Persistence.SESSION)
-          //       .then(() => {
-          //         // step 3: login client in firebase
-          //         return fb
-          //           .auth()
-          //           .signInWithEmailAndPassword(values.email, values.password)
-          //           .then(res => {
-          //             // step 4: if auth successful, fetch client in the db
-          //             API.fetchClientByUID(res.user.uid)
-          //               .then(res => {
-          //                 // step 5: login client in redux
-          //                 dispatch(clientActions.loginClient(res.data));
-          //                 alert("¡Bienvenido!");
-          //               })
-          //               .catch(error => {
-          //                 // if there's a problem fetching info from the db, logout from firebase
-          //                 fb.auth()
-          //                   .signOut()
-          //                   .then()
-          //                   .catch(error => console.log(error));
-          //                 // then print error
-          //                 alert("Error de autenticación, revisa tus datos");
-          //                 console.log("Error de fetchClientByUID");
-          //                 console.log(error);
-          //                 setSubmitting(false);
-          //               });
-          //           })
-          //           .catch(error => {
-          //             alert("Error de autenticación, revisa tus datos");
-          //             console.log("Error de firebase signIn...");
-          //             console.log(error);
-          //             setSubmitting(false);
-          //           });
-          //       })
-          //       .catch(error => {
-          //         alert("Error");
-          //         console.log("Error de firebase persistence");
-          //         console.log(error);
-          //         setSubmitting(false);
-          //       });
-          //   })
-          //   .catch(error => {
-          //     alert("Error");
-          //     console.log("Error de firebase logout");
-          //     console.log(error);
-          //     setSubmitting(false);
-          //   });
         }}
       >
         {({

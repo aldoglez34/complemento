@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import * as clientActions from "../redux/actions/client";
 import { Container, Col, Form, Button } from "react-bootstrap";
 import Layout from "../components/Layout";
-import MyBreadcrumb from "../components/breadcrumb/MyBreadcrumb";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
 import HelpButton from "../components/misc/HelpButton";
@@ -12,11 +11,6 @@ import API from "../utils/API";
 import fire from "../firebase/fire";
 
 function SignUp(props) {
-  const breadcrumbRoutes = [
-    { name: "Inicio", to: "/" },
-    { name: "Regístrate con nosotros", to: "active" }
-  ];
-
   const dispatch = useDispatch();
 
   const signupSchema = yup.object({
@@ -76,7 +70,6 @@ function SignUp(props) {
 
   return (
     <Layout>
-      <MyBreadcrumb routes={breadcrumbRoutes} />
       <Container className="mt-4 mb-4">
         <h2>Regístrate con nosotros</h2>
         <hr className="myDivider" />
@@ -109,38 +102,28 @@ function SignUp(props) {
                 // save the client info in the db
                 API.newClient(values)
                   .then(() => {
-                    // lasly, fetch the recently created client
+                    // lastly, fetch the recently created client
                     API.fetchClientByUID(values.firebaseUID)
                       .then(res => {
                         dispatch(clientActions.loginClient(res.data));
                         alert("¡Bienvenido!");
-                        props.history.push("/");
+                        window.location.href = "/";
                       })
                       .catch(err => {
-                        // if there's a problem fetching new client, logout from firebase
-                        fire.auth()
-                          .signOut()
-                          .then()
-                          .catch(error => console.log(error));
-                        // then print error
+                        // print error
                         console.log(err);
                         setSubmitting(false);
                       });
                   })
                   .catch(err => {
-                    // if there's a problem creating new client, logout from firebase
-                    fire.auth()
-                      .signOut()
-                      .then()
-                      .catch(error => console.log(error));
-                    // then print error
+                    // print error
                     console.log(err);
                     setSubmitting(false);
                   });
               })
               .catch(error => {
                 // firebase won't let duplicate emails
-                alert(values.email + " ya está asignado a otra cuenta");
+                alert(`${values.email} ya está asignado a otra cuenta`);
                 setSubmitting(false);
                 console.log(error);
               });
@@ -473,7 +456,7 @@ function SignUp(props) {
                 <Form.Row>
                   <Form.Group>
                     <Button
-                      className="globalbttn"
+                      variant="success"
                       type="submit"
                       disabled={isSubmitting}
                     >

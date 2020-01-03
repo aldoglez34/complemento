@@ -15,9 +15,10 @@ import Layout from "../components/Layout";
 import API from "../utils/API";
 
 function Cart() {
+  const dispatch = useDispatch();
+
   const cart = useSelector(state => state.cart);
   const [products, setProducts] = useState([]);
-  const dispatch = useDispatch();
 
   const initCart = () => {
     let fullCart = [];
@@ -51,12 +52,15 @@ function Cart() {
   };
 
   useEffect(() => {
-    dispatch(cartActions.hideDropdown());
     initCart();
   }, []);
 
+  const buyProducts = () => {
+    alert("buy products");
+  };
+
   return (
-    <Layout>
+    <Layout hideBag={true}>
       <Container className="mt-4">
         <h2>Mi bolsa de compras</h2>
         <hr className="myDivider" />
@@ -230,7 +234,11 @@ function Cart() {
                         </tr>
                       </tbody>
                     </Table>
-                    <Button variant="danger" className="shadow-sm">
+                    <Button
+                      variant="danger"
+                      className="shadow-sm"
+                      onClick={buyProducts}
+                    >
                       Pagar
                     </Button>
                   </>

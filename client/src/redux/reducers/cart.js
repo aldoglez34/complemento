@@ -1,7 +1,4 @@
-const cartReducers = (
-  state = { show: true, counter: 0, items: [] },
-  action
-) => {
+const cartReducers = (state = { counter: 0, items: [] }, action) => {
   switch (action.type) {
     case "cart/addItem":
       // before adding the item, check if its already in state.items
@@ -55,16 +52,6 @@ const cartReducers = (
       return {
         counter: state.counter - quantity2,
         items: tempState3
-      };
-    case "cart/showDropdown":
-      return {
-        ...state,
-        show: true
-      };
-    case "cart/hideDropdown":
-      return {
-        ...state,
-        show: false
       };
     default:
       return state;

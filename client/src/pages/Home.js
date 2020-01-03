@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import * as cartActions from "../redux/actions/cart";
+import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Layout from "../components/Layout";
 import HelpButton from "../components/misc/HelpButton";
@@ -12,12 +10,6 @@ import WelcomeJumbotron from "./components/WelcomeJumbotron";
 import "./home.scss";
 
 function Home() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(cartActions.showDropdown());
-  }, []);
-
   return (
     <Layout>
       {/* welcome title */}
