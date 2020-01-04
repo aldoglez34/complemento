@@ -54,7 +54,7 @@ router.post("/new", function(req, res) {
       zipCode: req.body.zipCode
     }
   })
-    .then(res => res.json(res))
+    .then(data => res.json(data))
     .catch(err => res.json(err));
 });
 

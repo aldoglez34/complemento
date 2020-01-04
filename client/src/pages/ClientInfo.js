@@ -57,7 +57,7 @@ function ClientInfo() {
 
   return client.isLogged ? (
     <Layout>
-      <Container className="mt-4">
+      <Container className="my-4">
         <h2>Mis datos</h2>
         <hr className="myDivider" />
         <Formik
@@ -361,7 +361,7 @@ function ClientInfo() {
                     />
                   </Form.Group>
                 </Form.Row>
-                <Form.Group>
+                <Form.Group className="mt-3">
                   <Button
                     type="submit"
                     variant="success"

@@ -22,9 +22,7 @@ function AddToBagButton(props) {
   };
 
   const handleShow = () => {
-    dispatch(
-      cartActions.addItem({ _id: props.product._id, name: props.product.name })
-    );
+    dispatch(cartActions.addItem({ _id: props.product._id }));
     setShow(true);
   };
 

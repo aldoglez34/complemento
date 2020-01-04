@@ -17,6 +17,7 @@ import API from "../utils/API";
 function Cart() {
   const dispatch = useDispatch();
 
+  const client = useSelector(state => state.client);
   const cart = useSelector(state => state.cart);
   const [products, setProducts] = useState([]);
 
@@ -56,7 +57,16 @@ function Cart() {
   }, []);
 
   const buyProducts = () => {
-    alert("buy products");
+    API.buyProducts({ products, client })
+      .then(res => {
+        if (!res.data.errors) {
+          alert("Gracias por tu compra");
+          dispatch(cartActions.clear());
+        } else {
+          alert(res.data.errors.message);
+        }
+      })
+      .catch(err => console.log(err));
   };
 
   return (
@@ -66,7 +76,7 @@ function Cart() {
         <hr className="myDivider" />
         <Row className="mt-3">
           {/* LEFT COLUMN */}
-          <Col md={8}>
+          <Col md={7}>
             <Table className="mt-1" responsive size="sm">
               <thead>
                 <tr>
@@ -154,11 +164,12 @@ function Cart() {
                     <tr>
                       <td className="text-right" colSpan="5">
                         <Button
+                          size="sm"
                           variant="link"
                           className="text-danger"
                           onClick={() => dispatch(cartActions.clear())}
                         >
-                          Limpiar bolsa
+                          Vaciar bolsa
                         </Button>
                       </td>
                     </tr>
@@ -180,7 +191,7 @@ function Cart() {
             </Table>
           </Col>
           {/* RIGHT COLUMN */}
-          <Col md={4} className="mb-3">
+          <Col md={5} className="mb-3">
             <Card>
               <Card.Header style={{ paddingBottom: "7px", paddingTop: "7px" }}>
                 <strong>Resumen</strong>
@@ -195,9 +206,7 @@ function Cart() {
                     <Table>
                       <tbody>
                         <tr>
-                          <td className="border-top-0">
-                            Cantidad de productos
-                          </td>
+                          <td className="border-top-0">Productos</td>
                           <td className="border-top-0">
                             {products
                               .map(p => p.qty)
@@ -215,21 +224,17 @@ function Cart() {
                           </td>
                         </tr>
                         <tr>
-                          <td>Costo de envío</td>
+                          <td>Envío</td>
                           <td>$70 MXN</td>
                         </tr>
-                        <tr>
+                        <tr className="lead text-success">
+                          <td>Total</td>
                           <td>
-                            <strong className="text-success">Total</strong>
-                          </td>
-                          <td>
-                            <strong className="text-success">
-                              $
-                              {products
-                                .map(p => p.subTotal)
-                                .reduce((prev, next) => prev + next) + 70}{" "}
-                              MXN
-                            </strong>
+                            $
+                            {products
+                              .map(p => p.subTotal)
+                              .reduce((prev, next) => prev + next) + 70}{" "}
+                            MXN
                           </td>
                         </tr>
                       </tbody>

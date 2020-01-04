@@ -53,12 +53,20 @@ export default {
     return axios.get("/api/cart/product/" + productId);
   },
 
+  buyProducts: function(data) {
+    return axios.post("/api/cart/buy", data);
+  },
+
   // ---------------------------------------------------------------------------
   // PRODUCT DETAILS
   // ---------------------------------------------------------------------------
 
   fetchProductDetails: function(productId) {
     return axios.get("/api/product/details/" + productId);
+  },
+
+  fetchSimilarProducts: function(categoryId) {
+    return axios.get("/api/product/similar/" + categoryId);
   },
 
   // ---------------------------------------------------------------------------

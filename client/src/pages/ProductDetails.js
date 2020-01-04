@@ -7,6 +7,7 @@ import HelpButton from "../components/misc/HelpButton";
 import ScrollButton from "../components/misc/ScrollButton";
 import FavButton from "../components/buttons/FavButton";
 import AddToBagButton from "../components/buttons/AddToBagButton";
+import SimilarProducts from "./components/SimilarProducts";
 
 function ProductDetails(props) {
   const [product, setProduct] = useState();
@@ -138,6 +139,13 @@ function ProductDetails(props) {
                     <small>{product.comments}</small>
                   </Col>
                 </Row>
+              </Col>
+            </Row>
+            <Row className="mt-4">
+              <Col>
+                <h2>Similares</h2>
+                <hr className="myDivider" />
+                <SimilarProducts categoryId={product.category._id} />
               </Col>
             </Row>
             <HelpButton />

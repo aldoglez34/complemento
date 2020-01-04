@@ -33,7 +33,11 @@ function ClientDropdown() {
         <Dropdown.Item className="clientDropdownItem" href="/client/info">
           Mis datos
         </Dropdown.Item>
-        <Dropdown.Item className="clientDropdownItem" href="/client/shipment">
+        <Dropdown.Item
+          className="clientDropdownItem"
+          href="/client/shipment"
+          disabled
+        >
           Mis pedidos
         </Dropdown.Item>
         <Dropdown.Item className="clientDropdownItem" href="/client/favorites">

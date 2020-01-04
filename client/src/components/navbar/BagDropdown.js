@@ -61,14 +61,16 @@ function BagDropdown() {
       </Dropdown.Toggle>
 
       <Dropdown.Menu
-        className="dropdown-menu-xs-left dropdown-menu-md-right bg-light"
+        className="dropdown-menu-xs-left dropdown-menu-md-right"
         style={{ width: "20.125rem" }}
       >
         <h5 className="pt-1 pl-3 pb-1">Bolsa de compras</h5>
         <Dropdown.Divider />
         <div className="px-3">
           {cart.counter === 0 ? (
-            <em>Tu bolsa está vacía</em>
+            <div className="text-center">
+              <em>Tu bolsa está vacía</em>
+            </div>
           ) : products.length ? (
             <>
               <div className="mt-3">
@@ -96,13 +98,12 @@ function BagDropdown() {
                   <small
                     className="ml-auto text-danger"
                     style={{ cursor: "pointer" }}
-                    title="Limpiar bolsa"
                     onClick={() => {
                       dispatch(cartActions.clear());
                       setProducts(products);
                     }}
                   >
-                    Limpiar bolsa
+                    Vaciar bolsa
                   </small>
                 </div>
                 <div className="d-flex flex-row mt-2">

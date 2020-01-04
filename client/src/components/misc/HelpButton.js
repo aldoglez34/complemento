@@ -19,11 +19,12 @@ function HelpButton() {
           <Modal.Title>¿Necesitas ayuda?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          En Complemento Natural estamos disponibles para ti. Puedes marcarnos
-          al <strong>2281112031</strong> de Lunes a Viernes en horario de 9AM a
-          9PM. O si prefieres puedes enviarnos un correo a
-          <strong> complemento.natural@gmail.com</strong> y nosotros te
-          responderemos a la brevedead.
+          <p>
+            Puedes marcarnos al <strong>2281112031</strong> de Lunes a Viernes
+            en horario de 9:00 AM a 9:00 PM. También puedes enviar un correo a{" "}
+            <strong>complementonatural@gmail.com</strong>
+          </p>
+          <p>O si lo prefieres puedes dejarnos un mensaje a continuación:</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="success" className="mr-auto" onClick={handleClose}>

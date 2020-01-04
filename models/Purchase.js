@@ -2,28 +2,45 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PurchaseSchema = new Schema({
-  totalProducts: {
+  products: [
+    {
+      _id: {
+        type: Schema.Types.ObjectId,
+        ref: "Product"
+      },
+      qty: {
+        type: Number
+      },
+      salePrice: {
+        type: Number
+      }
+    }
+  ],
+  subTotal: {
     type: Number,
     required: true
   },
-  total: {
+  shipment: {
+    type: Number,
+    required: true
+  },
+  grandTotal: {
     type: Number,
     required: true
   },
   client: {
     type: Schema.Types.ObjectId,
-    ref: "Client",
-    required: true
+    ref: "Client"
   },
   address: {
-    street: String,
-    neighborhood: String,
-    municipality: String,
-    city: String,
-    state: String,
-    zipCode: String
+    street: { type: String, required: true },
+    neighborhood: { type: String, required: true },
+    municipality: { type: String, required: true },
+    city: { type: String, required: true },
+    state: { type: String, required: true },
+    zipCode: { type: String, required: true }
   },
-  createdAt: {
+  purchaseDate: {
     type: Date,
     default: Date.now()
   }

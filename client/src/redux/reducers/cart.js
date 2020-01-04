@@ -10,7 +10,6 @@ const cartReducers = (state = { counter: 0, items: [] }, action) => {
           counter: state.counter + 1,
           items: state.items.concat({
             _id: action.data._id,
-            name: action.data.name,
             qty: 1
           })
         };

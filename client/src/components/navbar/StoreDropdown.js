@@ -13,7 +13,7 @@ function StoreDropdown(props) {
         <i className="fas fa-store-alt mr-1" />
         Tienda
       </Dropdown.Toggle>
-      <Dropdown.Menu data-display="static" className="bg-light">
+      <Dropdown.Menu data-display="static">
         <h5 className="pt-1 pl-3 pb-1">Categorías</h5>
         <Dropdown.Divider />
         {props.categories.length ? (
