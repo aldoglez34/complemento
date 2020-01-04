@@ -31,7 +31,7 @@ class ScrollButton extends Component {
           this.scrollToTop();
         }}
       >
-        <i className="fas fa-angle-double-up arrow-up" />
+        <i className="fas fa-chevron-up arrow-up" />
       </button>
     );
   }
