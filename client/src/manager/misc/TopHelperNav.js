@@ -16,10 +16,7 @@ function TopHelperNav() {
           ) : null}
         </Col>
         <Col className="d-flex flex-row justify-content-end">
-          <Nav.Item className="topHelperItem p-0">
-            <i className="fas fa-user mr-1" />
-            {manager.email}
-          </Nav.Item>
+          <Nav.Item className="topHelperItem p-0">{manager.email}</Nav.Item>
         </Col>
       </Navbar>
     </div>

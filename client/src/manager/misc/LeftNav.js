@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Nav, Button, Image } from "react-bootstrap";
+import { Nav, Button } from "react-bootstrap";
 import fire from "../../firebase/fire";
 import * as managerActions from "../../redux/actions/manager";
 
@@ -18,9 +18,24 @@ function LeftNav() {
 
   return (
     <Nav className="d-none d-lg-flex flex-column h-100" id="verticalNavStyle">
-      <div className="text-center mt-3">
-        <Image alt="" src={"/images/biglogo.png"} width="180" height="80" />
-      </div>
+      <h2
+        className="text-center mt-3 mb-0"
+        style={{
+          color: "#f3d084",
+          fontFamily: "'Acme', sans-serif"
+        }}
+      >
+        Complemento
+      </h2>
+      <h2
+        className="text-center mb-0"
+        style={{
+          color: "#f3d084",
+          fontFamily: "'Acme', sans-serif"
+        }}
+      >
+        Natural
+      </h2>
 
       {/* menu */}
       <Nav.Item className="navItemStyle">Menú</Nav.Item>
@@ -115,7 +130,7 @@ function LeftNav() {
         <span className="ml-1">Reporte 2</span>
       </Nav.Link> */}
       <div className="mt-auto p-3">
-        <Button variant="danger" onClick={logout} block>
+        <Button variant="danger" className="shadow-sm" onClick={logout} block>
           Salir
         </Button>
       </div>

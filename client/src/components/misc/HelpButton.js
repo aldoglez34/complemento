@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Col } from "react-bootstrap";
 import "./helpButton.scss";
-import { Formik } from "formik";
+import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
+import API from "../../utils/API";
 
 function HelpButton() {
   const [show, setShow] = useState(false);
@@ -13,12 +14,17 @@ function HelpButton() {
   const yupschema = yup.object({
     name: yup
       .string()
-      .min(3, "Nombre demasiado corto")
       .matches(
         /^[a-zA-Z-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñÑ ]+$/,
         "Sólo letras"
       )
-      .required("Requerido")
+      .min(3, "Nombre demasiado corto")
+      .required("Requerido"),
+    email: yup
+      .string()
+      .email("Formato de correo incorrecto")
+      .required("Requerido"),
+    message: yup.string().required("Requerido")
   });
 
   return (
@@ -33,27 +39,32 @@ function HelpButton() {
         </Modal.Header>
         <Modal.Body>
           <p>
-            Puedes marcarnos al <strong>2281112031</strong> de Lunes a Viernes
-            en horario de 9:00 AM a 9:00 PM. También puedes enviar un correo a{" "}
-            <strong>complementonatural@gmail.com</strong>
-          </p>
-          <p>
-            O si lo prefieres puedes dejarnos un mensaje con tu correo y
-            nosotros nos pondremos en contacto contigo a la brevedad.
+            ¿Tienes dudas sobre algún producto? Envíanos tus
+            preguntas/comentarios y nosotros nos pondremos en contacto contigo.
           </p>
           <Formik
             initialValues={{
               name: "",
-              productCount: ""
+              email: "",
+              message: ""
             }}
             validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              console.log(values);
+              API.postHelpMessage(values)
+                .then(res => {
+                  alert(
+                    "Mensaje enviado con éxito. Nos pondremos en contacto contigo al correo proporcionado. "
+                  );
+                  handleClose();
+                })
+                .catch(err => console.log(err));
             }}
           >
             {({
               values,
+              errors,
+              touched,
               handleChange,
               handleBlur,
               handleSubmit,
@@ -63,22 +74,57 @@ function HelpButton() {
                 {/* name */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Nombre</Form.Label>
+                    <Form.Label>
+                      <strong>Nombre</strong>
+                    </Form.Label>
                     <Form.Control
-                      maxLength="80"
+                      maxLength="150"
                       type="text"
                       placeholder="Ingresa tu nombre"
                       name="name"
                       value={values.name}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      isValid={touched.name && !errors.name}
+                      isInvalid={touched.name && !!errors.name}
+                    />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="name"
+                      component="div"
+                    />
+                  </Form.Group>
+                </Form.Row>
+                {/* email */}
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>
+                      <strong>Correo electrónico</strong>
+                    </Form.Label>
+                    <Form.Control
+                      maxLength="150"
+                      type="text"
+                      placeholder="Ingresa tu correo"
+                      name="email"
+                      value={values.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.email && !errors.email}
+                      isInvalid={touched.email && !!errors.email}
+                    />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="email"
+                      component="div"
                     />
                   </Form.Group>
                 </Form.Row>
                 {/* productCount */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Mensaje</Form.Label>
+                    <Form.Label>
+                      <strong>Mensaje</strong>
+                    </Form.Label>
                     <Form.Control
                       as="textarea"
                       rows="3"
@@ -88,36 +134,29 @@ function HelpButton() {
                       value={values.message}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      isValid={touched.message && !errors.message}
+                      isInvalid={touched.message && !!errors.message}
                     />
                   </Form.Group>
                 </Form.Row>
                 {/* buttons */}
-                <Form.Group className="text-right">
-                  <Button
-                    variant="secondary"
-                    onClick={handleClose}
-                    className="mr-2"
-                  >
+                <Form.Row className="px-1">
+                  <Button variant="secondary" onClick={handleClose}>
                     Cerrar
                   </Button>
                   <Button
+                    className="ml-auto"
                     variant="success"
                     type="submit"
                     disabled={isSubmitting}
                   >
                     Enviar
                   </Button>
-                </Form.Group>
+                </Form.Row>
               </Form>
             )}
           </Formik>
         </Modal.Body>
-        {/* <Modal.Footer>
-          <Button variant="success" className="mr-auto" onClick={handleClose}>
-            <i className="fas fa-angle-double-left mr-1" />
-            Seguir comprando
-          </Button>
-        </Modal.Footer> */}
       </Modal>
     </>
   );

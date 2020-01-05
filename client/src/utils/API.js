@@ -73,6 +73,14 @@ export default {
   // CLIENTS
   // ---------------------------------------------------------------------------
 
+  newClient: function(client) {
+    return axios.post("/api/client/new", client);
+  },
+
+  updateClient: function(client) {
+    return axios.put("/api/client/update", client);
+  },
+
   fetchClientByUID: function(uid) {
     return axios.get("/api/client/" + uid);
   },
@@ -85,20 +93,18 @@ export default {
     return axios.get("/api/client/favorites/" + clientId);
   },
 
+  // ---------------------------------------------------------------------------
   // OTHER
+  // ---------------------------------------------------------------------------
 
-  // fetchEmails: function() {
-  //   return axios.get("/api/client/email/all");
-  // },
-
-  newClient: function(client) {
-    return axios.post("/api/client/new", client);
+  postHelpMessage: function(data) {
+    return axios.post("/api/client/helpmessage/new", data);
   },
 
-  updateClient: function(client) {
-    return axios.put("/api/client/update", client);
-  },
-
+  // ---------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
   // ---------------------------------------------------------------------------
   // MANAGER
   // ---------------------------------------------------------------------------
