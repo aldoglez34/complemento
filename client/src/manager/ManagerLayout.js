@@ -27,9 +27,7 @@ function ManagerLayout(props) {
           {/* title */}
           <Row className="mb-1">
             <Col md={8} className="d-flex align-items-center">
-              <h1 style={{ color: "#264341" }}>
-                {props.title}
-              </h1>
+              <h1 style={{ color: "#264341" }}>{props.title}</h1>
             </Col>
             <Col md={4} className="mt-1 mt-md-0 text-md-right">
               {props.button ? (

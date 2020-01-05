@@ -83,25 +83,16 @@ router.put("/update", function(req, res) {
     });
 });
 
-// get client emails
-// matches with /api/client/email/all
-router.get("/email/all", function(req, res) {
-  model.Client.find({})
-    .sort({ email: 1 })
-    .select("email")
-    .then(function(data) {
-      // let toFrontArr = [];
-      // data.forEach(item => {
-      //   toFrontArr.push(item.email);
-      // });
-      // let toFrontObj = {};
-      // toFrontObj.emails = toFrontArr;
-      // res.json(toFrontObj);
-      res.json(data);
-    })
-    .catch(function(err) {
-      res.json(err);
-    });
+// postHelpMessage()
+// matches with /api/client/helpmessage/new
+router.post("/helpmessage/new", function(req, res) {
+  model.HelpMessage.create({
+    name: req.body.name,
+    email: req.body.email,
+    message: req.body.message
+  })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
 });
 
 module.exports = router;

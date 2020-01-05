@@ -31,7 +31,17 @@ function Login(props) {
     <Container>
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
-          <h1 className="mt-4 text-center">Panel de administrador</h1>
+          <h1
+            className="text-center text-dark mt-3"
+            style={{
+              fontFamily: "'Acme', sans-serif"
+            }}
+          >
+            Complemento Natural
+          </h1>
+          <h4 className="mt-1 mb-4 text-center text-muted">
+            Panel de administrador
+          </h4>
           <Formik
             initialValues={{ email: "", password: "" }}
             validationSchema={loginSchema}
