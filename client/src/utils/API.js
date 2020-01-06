@@ -57,6 +57,10 @@ export default {
     return axios.post("/api/cart/buy", data);
   },
 
+  updateStock: function(data) {
+    return axios.put("/api/cart/update/stock", data);
+  },
+
   // ---------------------------------------------------------------------------
   // PRODUCT DETAILS
   // ---------------------------------------------------------------------------

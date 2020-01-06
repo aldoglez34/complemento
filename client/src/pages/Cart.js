@@ -56,12 +56,20 @@ function Cart() {
     initCart();
   }, []);
 
-  const buyProducts = () => {
+  const makePurchase = () => {
     API.buyProducts({ products, client })
       .then(res => {
         if (!res.data.errors) {
-          alert("Gracias por tu compra");
-          dispatch(cartActions.clear());
+          API.updateStock(products)
+            .then(res => {
+              if (!res.data.errors) {
+                alert("Gracias por tu compra");
+                dispatch(cartActions.clear());
+              } else {
+                alert(res.data.errors.message);
+              }
+            })
+            .catch(err => console.log(err));
         } else {
           alert(res.data.errors.message);
         }
@@ -242,7 +250,7 @@ function Cart() {
                     <Button
                       variant="danger"
                       className="shadow-sm"
-                      onClick={buyProducts}
+                      onClick={makePurchase}
                     >
                       Pagar
                     </Button>

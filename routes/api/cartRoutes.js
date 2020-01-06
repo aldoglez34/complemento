@@ -15,7 +15,6 @@ router.get("/product/:productId", function(req, res) {
 router.post("/buy", function(req, res) {
   let products = [];
   let subTotal = 0;
-  // let address = {};
 
   req.body.products.map(p => {
     let temp = {
@@ -69,6 +68,20 @@ router.post("/buy", function(req, res) {
   })
     .then(data => res.json(data))
     .catch(err => res.json(err));
+});
+
+// updateStock
+// matches with /api/cart/update/stock
+router.put("/update/stock", function(req, res) {
+  let updateAll = new Promise((resolve, reject) => {
+    req.body.forEach((value, index, array) => {
+      model.Product.findByIdAndUpdate(value._id, {
+        $inc: { unitsSold: value.qty, stock: -Math.abs(value.qty) }
+      }).catch(err => res.json(err));
+      if (index === array.length - 1) resolve();
+    });
+  });
+  updateAll.then(data => res.json(data));
 });
 
 module.exports = router;
