@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Form, FormControl } from "react-bootstrap";
-import "./searchbar.scss";
 
 SearchBar.propTypes = {
   items: PropTypes.array.isRequired

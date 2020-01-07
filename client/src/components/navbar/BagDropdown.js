@@ -52,7 +52,7 @@ function BagDropdown() {
   }, []);
 
   return (
-    <Dropdown as={NavItem}>
+    <Dropdown as={NavItem} title="Bolsa de compras">
       <Dropdown.Toggle as={Nav.Link} className="text-light">
         <i className="fas fa-shopping-bag" />
         <Badge variant="danger" pill className="ml-1">
@@ -61,8 +61,8 @@ function BagDropdown() {
       </Dropdown.Toggle>
 
       <Dropdown.Menu
+        id="bagDropdownMenu"
         className="dropdown-menu-xs-left dropdown-menu-md-right"
-        style={{ width: "20.125rem" }}
       >
         <h5 className="pt-1 pl-3 pb-1">Bolsa de compras</h5>
         <Dropdown.Divider />
@@ -118,7 +118,7 @@ function BagDropdown() {
               <Button
                 block
                 size="sm"
-                className="mt-1"
+                className="mt-1 mb-2"
                 variant="danger"
                 href="/cart"
               >

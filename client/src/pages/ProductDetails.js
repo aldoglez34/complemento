@@ -36,9 +36,9 @@ function ProductDetails(props) {
             ]}
           />
           <Container className="my-3">
-            <Row className="mt-4">
+            <Row>
               {/* photo */}
-              <Col md={4} className="text-center">
+              <Col md={5} className="text-center">
                 <Image
                   src={"/images/products/" + product.photo}
                   className="rounded-lg"
@@ -47,9 +47,9 @@ function ProductDetails(props) {
                 />
               </Col>
               {/* info */}
-              <Col md={8}>
+              <Col md={7}>
                 {/* name and price */}
-                <Row className="mb-2">
+                <Row className="mb-2 mt-2 mt-md-0">
                   <Col>
                     <div className="d-flex flex-row">
                       <h2>{product.name}</h2>
@@ -65,9 +65,9 @@ function ProductDetails(props) {
                       className="myDivider"
                       style={{ backgroundColor: "#edcb58" }}
                     />
-                    <h5 className="mb-0">{product.brand}</h5>
-                    <h5 className="mb-0">{product.content}</h5>
-                    <div className="d-flex flex-row mt-2">
+                    <h5 className="mb-1">{product.content}</h5>
+                    <h5 className="mb-2">{product.brand}</h5>
+                    <div className="d-flex flex-row">
                       {product.discount.hasDiscount ? (
                         <>
                           <h3 className="mb-0" style={{ color: "gainsboro" }}>
@@ -141,7 +141,7 @@ function ProductDetails(props) {
                 </Row>
               </Col>
             </Row>
-            <Row className="mt-4">
+            <Row className="mt-4 px-1">
               <Col>
                 <h2>Similares</h2>
                 <hr className="myDivider" />

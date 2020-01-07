@@ -122,17 +122,17 @@ function LoginDropdown(props) {
           isSubmitting
         }) => (
           <>
-            <Dropdown as={NavItem}>
+            <Dropdown title="Iniciar sesión" as={NavItem}>
               <Dropdown.Toggle as={Nav.Link} className="text-light">
                 <i className="fas fa-user mr-1" />
                 Sesión
               </Dropdown.Toggle>
               <Dropdown.Menu
+                id="clientLoginDropdown"
                 data-display="static"
                 className="dropdown-menu-xs-left dropdown-menu-md-right"
-                style={{ width: "20.125rem" }}
               >
-                <h5 className="pt-1 pl-3 pb-1">Inicia sesión</h5>
+                <h5 className="pt-1 pl-3 pb-1">Iniciar sesión</h5>
                 <Dropdown.Divider />
                 <Form
                   noValidate

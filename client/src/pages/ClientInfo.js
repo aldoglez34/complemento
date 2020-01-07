@@ -95,7 +95,7 @@ function ClientInfo() {
                 alert("Cliente editado con éxito");
                 dispatch(clientActions.updateClient(trimmedValues));
                 setSubmitting(false);
-                window.location.reload();
+                window.location.href = "/";
               })
               .catch(err => {
                 alert(err);
@@ -298,7 +298,7 @@ function ClientInfo() {
                       onBlur={handleBlur}
                       isValid={touched.state && !errors.state}
                       as="select"
-                      defaultValue={client.state}
+                      defaultValue={values.state}
                     >
                       <option value="DEFAULT" disabled>
                         Elige...

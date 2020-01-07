@@ -1,3 +1,5 @@
+// search bar
+
 #sb-input {
   width: 100%;
   outline: 0;
@@ -22,4 +24,15 @@
   overflow-y: auto;
   padding-left: 8px;
   width: 32%;
+}
+
+// dropdowns
+
+@media only screen and (min-width: 991px) {
+  #bagDropdownMenu {
+    width: 20.125rem;
+  }
+  #clientLoginDropdown {
+    width: 20.125rem;
+  }
 }

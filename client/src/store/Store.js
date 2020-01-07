@@ -8,9 +8,7 @@ import "./store.scss";
 import API from "../utils/API";
 import FilterSection from "./components/FilterSection";
 import SortDropdown from "./components/SortDropdown";
-import SmallSortDropdown from "./components/SmallSortDropdown";
 import ProductsPerPageDropdown from "./components/ProductsPerPageDropdown";
-import SmallProductsPerPageDropdown from "./components/SmallProductsPerPageDropdown";
 import MyPagination from "./components/MyPagination";
 
 class Store extends Component {
@@ -162,8 +160,8 @@ class Store extends Component {
         this.state.brands.length &&
         this.state.pageCount ? (
           <>
-            <Container fluid className="mt-3">
-              <Row className="p-3">
+            <Container fluid className="mt-3 p-3">
+              <Row>
                 {/* left-column, filters */}
                 <Col md={3}>
                   <h2>Filtros</h2>
@@ -177,82 +175,51 @@ class Store extends Component {
                 {/* right-column, title, sorting and products */}
                 <Col md={9}>
                   {/* title */}
-                  <Row className="px-md-3 mb-2 mt-3 mt-md-0">
-                    <Col className="text-md-center">
-                      <h2 className="mt-1">
-                        {!this.state.filter
-                          ? "Todos los productos"
-                          : this.state.filter}
-                      </h2>
-                      <hr
-                        className="myDivider mb-1 ml-md-auto"
-                        style={{ backgroundColor: "#edcb58" }}
-                      />
-                    </Col>
-                  </Row>
-                  {/* sorting */}
-                  <Row className="px-3 mb-2">
-                    {/* for md to xlg display */}
-                    <Row className="d-none d-md-block">
-                      <div className="d-flex flex-row">
-                        <div className="d-flex flex-row align-items-center">
-                          <span className="mr-2">Orden</span>
-                          <SortDropdown
-                            active={this.state.sortBy}
-                            applySorting={this.applySorting}
-                          />
-                        </div>
-                        <div className="d-flex flex-row align-items-center ml-2">
-                          <span className="mr-2">Ver</span>
-                          <ProductsPerPageDropdown
-                            qty={this.state.productsPerPage}
-                            handleChangeProductsPerPage={
-                              this.handleChangeProductsPerPage
-                            }
-                          />
-                        </div>
-                      </div>
-                    </Row>
-                    {/* for smaller devices */}
-                    <div className="d-md-none">
-                      <div className="d-flex flex-row">
-                        <SmallSortDropdown
-                          active={this.state.sortBy}
-                          applySorting={this.applySorting}
-                        />
-                        <div className="ml-2">
-                          <SmallProductsPerPageDropdown
-                            qty={this.state.productsPerPage}
-                            handleChangeProductsPerPage={
-                              this.handleChangeProductsPerPage
-                            }
-                          />
-                        </div>
-                      </div>
-                    </div>
+                  <div className="mb-2 mt-3 mt-md-0">
+                    <h2 className="text-md-center">
+                      {!this.state.filter
+                        ? "Todos los productos"
+                        : this.state.filter}
+                    </h2>
+                    <hr
+                      className="myDivider ml-md-auto"
+                      style={{ backgroundColor: "#edcb58" }}
+                    />
+                  </div>
+                  {/* sort and products per page */}
+                  <div className="d-flex flex-row mb-2">
+                    <SortDropdown
+                      active={this.state.sortBy}
+                      applySorting={this.applySorting}
+                    />
+                    <span className="ml-2" />
+                    <ProductsPerPageDropdown
+                      qty={this.state.productsPerPage}
+                      handleChangeProductsPerPage={
+                        this.handleChangeProductsPerPage
+                      }
+                    />
                     <div className="ml-auto">
                       {this.state.products.length} productos
                     </div>
-                  </Row>
+                  </div>
                   {/* products */}
-                  <Row className="mb-3">
-                    <Col className="px-0">
-                      <ProductsSection
-                        products={this.state.products.slice(
-                          this.state.offset,
-                          this.state.limit
-                        )}
-                      />
-                    </Col>
-                  </Row>
+                  <div className="mb-2">
+                    <ProductsSection
+                      products={this.state.products.slice(
+                        this.state.offset,
+                        this.state.limit
+                      )}
+                    />
+                  </div>
                   {/* pagination */}
-                  <Row className="mb-3 justify-content-center">
+                  <div className="d-flex justify-content-center mb-2">
                     <MyPagination
                       pageCount={this.state.pageCount}
                       activePage={this.state.activePage}
                       handleChangePage={this.handleChangePage}
                     />
-                  </Row>
+                  </div>
                 </Col>
               </Row>
             </Container>

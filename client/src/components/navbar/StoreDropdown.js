@@ -8,7 +8,7 @@ StoreDropdown.propTypes = {
 
 function StoreDropdown(props) {
   return (
-    <Dropdown as={NavItem}>
+    <Dropdown title="Tienda" as={NavItem}>
       <Dropdown.Toggle as={Nav.Link} className="text-light">
         <i className="fas fa-store-alt mr-1" />
         Tienda

@@ -7,6 +7,7 @@ import LoginDropdown from "./LoginDropdown";
 import BagDropdown from "./BagDropdown";
 import { useSelector } from "react-redux";
 import API from "../../utils/API";
+import "./mynavbar.scss";
 
 function MyNavbar(props) {
   const [items, setItems] = useState([]);

@@ -1,23 +1,16 @@
-#breadcrumbStyle {
-  background-color: #59a49a;
-  padding: 11px 20px;
-}
-
 .breadcrumbItem {
   color: ghostwhite;
-  padding: 0px 10px;
   font-size: 17px;
-  text-decoration: none;
+  text-decoration: underline;
   &:hover {
     color: #edcb58;
-    text-decoration: none;
   }
   &.active {
+    text-decoration: none;
     color: ghostwhite;
   }
 }
 
 .breadcrumbArrow {
   color: #c8c0b0;
-  margin: 0px 10px;
 }

@@ -43,6 +43,7 @@ function FavButton(props) {
   return (
     <>
       <Button
+        title="Agregar a favoritos"
         variant="danger"
         className="favbuttonstyle"
         onClick={

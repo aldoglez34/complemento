@@ -5,21 +5,23 @@ import { Spinner, Carousel } from "react-bootstrap";
 
 function SimilarProducts(props) {
   const [similar, setSimilar] = useState([]);
-  const [pages, setPages] = useState(0);
+  const [pagesbg, setPagesBG] = useState(0);
+  const [pagessm, setPagesSM] = useState(0);
 
   useEffect(() => {
     API.fetchSimilarProducts(props.categoryId)
       .then(res => {
-        setPages(Math.ceil(res.data.length / 5));
+        setPagesBG(Math.ceil(res.data.length / 5));
+        setPagesSM(Math.ceil(res.data.length / 2));
         setSimilar(res.data);
       })
       .catch(err => console.log(err));
   }, []);
 
-  const carouselItems = similar => {
+  const bigCarouselItems = similar => {
     let carouselItems = [];
 
-    for (let i = 1; i <= pages; i++) {
+    for (let i = 1; i <= pagesbg; i++) {
       if (i === 1) {
         carouselItems.push(
           <Carousel.Item key={i}>
@@ -45,8 +47,44 @@ function SimilarProducts(props) {
     return carouselItems;
   };
 
+  const smallCarouselItems = prioritized => {
+    let carouselItems = [];
+
+    for (let i = 1; i <= pagessm; i++) {
+      if (i === 1) {
+        carouselItems.push(
+          <Carousel.Item key={i}>
+            <div className="d-flex flex-wrap justify-content-center">
+              {prioritized.slice(0, 2).map(p => {
+                return <ProductCard key={p._id} product={p} />;
+              })}
+            </div>
+          </Carousel.Item>
+        );
+      } else {
+        carouselItems.push(
+          <Carousel.Item key={i}>
+            <div className="d-flex flex-wrap justify-content-center">
+              {prioritized.slice((i - 1) * 2, 2 * i).map(p => {
+                return <ProductCard key={p._id} product={p} />;
+              })}
+            </div>
+          </Carousel.Item>
+        );
+      }
+    }
+    return carouselItems;
+  };
+
   return similar.length ? (
-    <Carousel interval={null}>{carouselItems(similar)}</Carousel>
+    <>
+      <div className="d-none d-md-block">
+        <Carousel interval={null}>{bigCarouselItems(similar)}</Carousel>
+      </div>
+      <div className="d-md-none">
+        <Carousel interval={null}>{smallCarouselItems(similar)}</Carousel>
+      </div>
+    </>
   ) : (
     <div className="text-center my-4">
       <Spinner variant="warning" animation="grow" role="status" />
