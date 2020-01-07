@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import ManagerLayout from "../ManagerLayout";
-import * as managerActions from "../../redux/actions/manager";
 import API from "../../utils/API";
 import { Table, Spinner } from "react-bootstrap";
 import ProvidersRow from "./ProvidersRow";
 
 function Providers() {
-  const dispatch = useDispatch();
-
   const [providers, setProviders] = useState();
 
   useEffect(() => {
-    dispatch(managerActions.setActive("Proveedores"));
-    dispatch(managerActions.setBackBttn(null));
     API.fetchProvidersManager()
       .then(res => setProviders(res.data))
       .catch(err => console.log(err));
@@ -21,6 +15,7 @@ function Providers() {
 
   return (
     <ManagerLayout
+      leftBarActive="Proveedores"
       title="Proveedores"
       button={{ text: "Proveedor", to: "/manager/providers/create" }}
     >
@@ -50,7 +45,7 @@ function Providers() {
         )
       ) : (
         <div className="text-center my-4">
-          <Spinner animation="grow" role="status" className="spinnerStyle" />
+          <Spinner animation="grow" role="status" variant="warning" />
         </div>
       )}
     </ManagerLayout>

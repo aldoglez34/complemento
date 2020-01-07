@@ -1,20 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ManagerLayout from "../ManagerLayout";
 import { Col, Button, Form } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
 import API from "../../utils/API";
-import * as managerActions from "../../redux/actions/manager";
 
 function ProvidersCreate(props) {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(managerActions.setActive("Proveedores"));
-    dispatch(managerActions.setBackBttn("/manager/providers"));
-  }, []);
-
   const yupschema = yup.object({
     name: yup
       .string()
@@ -40,7 +31,12 @@ function ProvidersCreate(props) {
   });
 
   return (
-    <ManagerLayout title="Crear Proveedor" button={null}>
+    <ManagerLayout
+      backBttn="/manager/providers"
+      leftBarActive="Proveedores"
+      title="Crear Proveedor"
+      button={null}
+    >
       <Formik
         initialValues={{
           name: "",
@@ -209,7 +205,6 @@ function ProvidersCreate(props) {
             {/* buttons */}
             <Form.Group className="text-right">
               <Button variant="success" type="submit" disabled={isSubmitting}>
-                <i className="fas fa-check-circle mr-1" />
                 Crear
               </Button>
             </Form.Group>

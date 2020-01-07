@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from "react";
 import ManagerLayout from "../ManagerLayout";
 import { Table, Spinner } from "react-bootstrap";
-import { useDispatch } from "react-redux";
 import API from "../../utils/API";
-import * as managerActions from "../../redux/actions/manager";
 import DiscountsCreateRow from "./DiscountsCreateRow";
 
-function DiscountsCreate(props) {
-  const dispatch = useDispatch();
-
+function DiscountsCreate() {
   const [notdiscounts, setNotDiscounts] = useState();
 
   useEffect(() => {
-    dispatch(managerActions.setActive("Promociones"));
-    dispatch(managerActions.setBackBttn("/manager/discounts"));
     API.fetchNotDiscountsManager()
       .then(res => setNotDiscounts(res.data))
       .catch(err => console.log(err));
   }, []);
 
   return (
-    <ManagerLayout title="Crear Promoción" button={null}>
+    <ManagerLayout
+      backBttn="/manager/discounts"
+      leftBarActive="Descuentos"
+      title="Crear Promoción"
+      button={null}
+    >
       {notdiscounts ? (
         notdiscounts.length ? (
           <>
@@ -46,7 +45,7 @@ function DiscountsCreate(props) {
         )
       ) : (
         <div className="text-center my-4">
-          <Spinner animation="grow" role="status" className="spinnerStyle" />
+          <Spinner animation="grow" role="status" variant="warning" />
         </div>
       )}
     </ManagerLayout>

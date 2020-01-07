@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import ManagerLayout from "../ManagerLayout";
-import * as managerActions from "../../redux/actions/manager";
 import API from "../../utils/API";
 import { Table, Spinner } from "react-bootstrap";
 import DiscountsRow from "./DiscountsRow";
 
 function Discounts() {
-  const dispatch = useDispatch();
-
   const [discounts, setDiscounts] = useState();
 
   useEffect(() => {
-    dispatch(managerActions.setActive("Descuentos"));
-    dispatch(managerActions.setBackBttn(null));
     API.fetchDiscountsManager()
       .then(res => setDiscounts(res.data))
       .catch(err => console.log(err));
@@ -21,6 +15,7 @@ function Discounts() {
 
   return (
     <ManagerLayout
+      leftBarActive="Descuentos"
       title="Descuentos"
       button={{ text: "Descuento", to: "/manager/discounts/create" }}
     >
@@ -34,9 +29,7 @@ function Discounts() {
                   <th className="text-center border-0">Compra</th>
                   <th className="text-center border-0">Venta</th>
                   <th className="text-center border-0">Utilidad</th>
-                  <th className="text-center border-0">
-                    Nueva venta
-                  </th>
+                  <th className="text-center border-0">Nueva venta</th>
                   <th className="text-center border-0">Nueva utilidad</th>
                 </tr>
               </thead>
@@ -52,7 +45,7 @@ function Discounts() {
         )
       ) : (
         <div className="text-center my-4">
-          <Spinner animation="grow" role="status" className="spinnerStyle" />
+          <Spinner animation="grow" role="status" variant="warning" />
         </div>
       )}
     </ManagerLayout>

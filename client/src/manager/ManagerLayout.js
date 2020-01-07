@@ -12,9 +12,9 @@ ManagerLayout.propTypes = {
 function ManagerLayout(props) {
   return (
     <div className="d-lg-flex flex-row h-100">
-      <LeftNav />
+      <LeftNav leftBarActive={props.leftBarActive} />
       <Container id="containerMargin" fluid>
-        <TopHelperNav />
+        <TopHelperNav backBttn={props.backBttn} />
         <Container
           style={{
             paddingTop: "6px",
@@ -31,7 +31,7 @@ function ManagerLayout(props) {
             </Col>
             <Col md={4} className="mt-1 mt-md-0 text-md-right">
               {props.button ? (
-                <Button variant="success" href={props.button.to}>
+                <Button variant="outline-success" href={props.button.to}>
                   <i className="fas fa-plus-circle mr-1" />
                   {props.button.text}
                 </Button>

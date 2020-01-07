@@ -3,18 +3,13 @@ import ManagerLayout from "../ManagerLayout";
 import { Col, Button, Form, InputGroup, Spinner } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
 import API from "../../utils/API";
-import * as managerActions from "../../redux/actions/manager";
 
 function ProductCreate(props) {
   const [categories, setCategories] = useState();
   const [providers, setProviders] = useState();
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(managerActions.setActive("Productos"));
-    dispatch(managerActions.setBackBttn("/manager/products"));
     API.fetchCategoriesManager()
       .then(res => setCategories(res.data))
       .catch(err => console.log(err));
@@ -65,7 +60,12 @@ function ProductCreate(props) {
   });
 
   return (
-    <ManagerLayout title="Crear Producto" button={null}>
+    <ManagerLayout
+      backBttn="/manager/products"
+      leftBarActive="Productos"
+      title="Crear Producto"
+      button={null}
+    >
       {categories && providers ? (
         categories.length && providers.length ? (
           <Formik
@@ -479,7 +479,6 @@ function ProductCreate(props) {
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    <i className="fas fa-check-circle mr-1" />
                     Crear
                   </Button>
                 </Form.Group>
@@ -491,7 +490,7 @@ function ProductCreate(props) {
         )
       ) : (
         <div className="text-center my-4">
-          <Spinner animation="grow" role="status" className="spinnerStyle" />
+          <Spinner animation="grow" role="status" variant="warning" />
         </div>
       )}
     </ManagerLayout>

@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import ManagerLayout from "../ManagerLayout";
-import * as managerActions from "../../redux/actions/manager";
 import { Table, Spinner, Tabs, Tab } from "react-bootstrap";
 import ClientsRow from "./ClientsRow";
 import ManagerRow from "./ManagerRow";
 import API from "../../utils/API";
 
 function Users() {
-  const dispatch = useDispatch();
-
   const [clients, setClientes] = useState();
   const [managers, setManagers] = useState();
 
   useEffect(() => {
-    dispatch(managerActions.setActive("Usuarios"));
-    dispatch(managerActions.setBackBttn(null));
     API.fetchClientsManager()
       .then(res => setClientes(res.data))
       .catch(err => console.log(err));
@@ -25,7 +19,7 @@ function Users() {
   }, []);
 
   return (
-    <ManagerLayout title="Usuarios" button={null}>
+    <ManagerLayout leftBarActive="Usuarios" title="Usuarios" button={null}>
       <Tabs defaultActiveKey="clientes" id="uncontrolled-tab-example">
         <Tab eventKey="clientes" title="Clientes">
           {clients ? (
@@ -62,11 +56,7 @@ function Users() {
             )
           ) : (
             <div className="text-center my-4">
-              <Spinner
-                animation="grow"
-                role="status"
-                className="spinnerStyle"
-              />
+              <Spinner animation="grow" role="status" variant="warning" />
             </div>
           )}
         </Tab>
@@ -102,11 +92,7 @@ function Users() {
             )
           ) : (
             <div className="text-center my-4">
-              <Spinner
-                animation="grow"
-                role="status"
-                className="spinnerStyle"
-              />
+              <Spinner animation="grow" role="status" variant="warning" />
             </div>
           )}
         </Tab>

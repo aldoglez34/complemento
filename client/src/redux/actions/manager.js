@@ -10,17 +10,3 @@ export const logoutManager = () => {
     type: "manager/logout"
   };
 };
-
-export const setActive = data => {
-  return {
-    type: "manager/setActive",
-    data
-  };
-};
-
-export const setBackBttn = data => {
-  return {
-    type: "manager/setBackBttn",
-    data
-  };
-};

@@ -2,15 +2,15 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Navbar, Nav, Col, Button } from "react-bootstrap";
 
-function TopHelperNav() {
+function TopHelperNav(props) {
   const manager = useSelector(state => state.manager);
 
   return (
     <div className="d-none d-md-block">
       <Navbar id="topHelperStyle">
         <Col className="d-flex justify-content-start">
-          {manager.backBttn ? (
-            <Button variant="dark" title="Regresar" href={manager.backBttn}>
+          {props.backBttn ? (
+            <Button variant="success" title="Regresar" href={props.backBttn}>
               <i className="fas fa-chevron-left backArrow" />
             </Button>
           ) : null}

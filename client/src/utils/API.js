@@ -189,5 +189,10 @@ export default {
 
   fetchManagers: function() {
     return axios.get("/api/manager/managers/all");
+  },
+
+  // sales
+  fetchSales: function() {
+    return axios.get("/api/manager/sales/all");
   }
 };

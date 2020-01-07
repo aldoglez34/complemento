@@ -268,4 +268,18 @@ router.get("/managers/all", function(req, res) {
     .catch(err => res.json(err));
 });
 
+// =========================================================================
+// =========================================================================
+// sales
+
+// fetchManagers()
+// matches with /api/manager/managers/all
+router.get("/sales/all", function(req, res) {
+  model.Purchase.find({})
+    .sort({ purchaseDate: 1 })
+    .populate("client")
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
 module.exports = router;
