@@ -18,7 +18,7 @@ router.post("/buy", function(req, res) {
 
   req.body.products.map(p => {
     let temp = {
-      _id: p._id,
+      product: p._id,
       qty: p.qty,
       salePrice: p.discount.hasDiscount ? p.discount.newPrice : p.salePrice
     };

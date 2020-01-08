@@ -277,7 +277,7 @@ router.get("/managers/all", function(req, res) {
 router.get("/sales/all", function(req, res) {
   model.Purchase.find({})
     .sort({ purchaseDate: 1 })
-    .populate("client")
+    .populate("client products.product")
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });

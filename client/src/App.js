@@ -30,6 +30,7 @@ import ProvidersCreate from "./manager/providers/ProvidersCreate";
 import Users from "./manager/users/Users";
 import Products from "./manager/products/Products";
 import ProductsCreate from "./manager/products/ProductsCreate";
+import Sales from "./manager/sales/Sales";
 
 function App() {
   const client = useSelector(state => state.client);
@@ -118,6 +119,8 @@ function App() {
             />
             {/* users */}
             <Route exact path="/manager/users" component={Users} />
+            {/* sales */}
+            <Route exact path="/manager/sales" component={Sales} />
           </>
         ) : (
           <>

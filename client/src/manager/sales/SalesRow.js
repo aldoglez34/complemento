@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Button, Modal, Form, Col } from "react-bootstrap";
+import { Modal, Form, Col, InputGroup } from "react-bootstrap";
 import PropTypes from "prop-types";
-import { Formik, ErrorMessage } from "formik";
-import API from "../../utils/API";
+import { Formik } from "formik";
 
 SalesRow.propTypes = {
   sale: PropTypes.object.isRequired
@@ -17,11 +16,12 @@ function SalesRow(props) {
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
+        <td>{props.sale.purchaseDate}</td>
         <td className="text-center">{props.sale.products.length}</td>
         <td className="text-center">{props.sale.subTotal}</td>
         <td className="text-center">{props.sale.shipment}</td>
         <td className="text-center">{props.sale.grandTotal}</td>
-        <td>{props.sale.client ? props.sale.client : null}</td>
+        <td>{props.sale.client ? props.sale.client.email : ""}</td>
       </tr>
 
       <Modal show={show} onHide={handleClose}>
@@ -31,182 +31,106 @@ function SalesRow(props) {
         <Modal.Body>
           <Formik
             initialValues={{
-              products: props.sale.products,
-              name: props.provider.name,
-              rfc: props.provider.rfc,
-              email: props.provider.email,
-              phone: props.provider.phone,
-              fullAddress: props.provider.fullAddress,
-              productCount: props.provider.productCount
+              purchaseDate: props.sale.purchaseDate,
+              subTotal: props.sale.subTotal,
+              shipment: props.sale.shipment,
+              grandTotal: props.sale.grandTotal,
+              client: props.sale.client ? props.sale.client.email : ""
             }}
-            validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              API.updateProvider(values)
-                .then(res => {
-                  if (res.data.errmsg) {
-                    alert("ERROR => " + res.data.errmsg);
-                    setSubmitting(false);
-                  } else {
-                    alert("Proveedor actualizado");
-                    handleClose();
-                    window.location.reload();
-                  }
-                })
-                .catch(err => console.log(err));
+              console.log(values);
             }}
           >
-            {({
-              values,
-              errors,
-              touched,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              isSubmitting
-            }) => (
+            {({ values, handleChange, handleBlur, handleSubmit }) => (
               <Form noValidate onSubmit={handleSubmit}>
-                {/* name */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Nombre</Form.Label>
-                    <Form.Control
-                      maxLength="150"
-                      type="text"
-                      placeholder="Ingresa el nombre"
-                      name="name"
-                      value={values.name}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.name && !errors.name}
-                      isInvalid={touched.name && !!errors.name}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="name"
-                      component="div"
-                    />
-                  </Form.Group>
-                </Form.Row>
-                {/* rfc */}
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>RFC</Form.Label>
-                    <Form.Control
-                      maxLength="12"
-                      type="text"
-                      placeholder="Ingresa el RFC"
-                      name="rfc"
-                      value={values.rfc}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.rfc && !errors.rfc}
-                      isInvalid={touched.rfc && !!errors.rfc}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="rfc"
-                      component="div"
-                    />
-                  </Form.Group>
-                </Form.Row>
-                {/* email */}
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>Correo</Form.Label>
-                    <Form.Control
-                      maxLength="100"
-                      type="text"
-                      placeholder="Ingresa el correo"
-                      name="email"
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.email && !errors.email}
-                      isInvalid={touched.email && !!errors.email}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="email"
-                      component="div"
-                    />
-                  </Form.Group>
-                </Form.Row>
-                {/* phone */}
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>Teléfono</Form.Label>
-                    <Form.Control
-                      maxLength="10"
-                      type="text"
-                      placeholder="Ingresa el teléfono"
-                      name="phone"
-                      value={values.phone}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.phone && !errors.phone}
-                      isInvalid={touched.phone && !!errors.phone}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="phone"
-                      component="div"
-                    />
-                  </Form.Group>
-                </Form.Row>
-                {/* full address */}
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>Dirección</Form.Label>
-                    <Form.Control
-                      maxLength="200"
-                      type="text"
-                      placeholder="Ingresa la dirección"
-                      name="fullAddress"
-                      value={values.fullAddress}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.fullAddress && !errors.fullAddress}
-                      isInvalid={touched.fullAddress && !!errors.fullAddress}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="fullAddress"
-                      component="div"
-                    />
-                  </Form.Group>
-                </Form.Row>
-                {/* product count */}
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>Productos</Form.Label>
+                    <Form.Label>Fecha</Form.Label>
                     <Form.Control
                       disabled
                       type="text"
-                      name="productCount"
-                      value={values.productCount}
+                      name="purchaseDate"
+                      value={values.purchaseDate}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      isValid={touched.productCount && !errors.productCount}
-                      isInvalid={touched.productCount && !!errors.productCount}
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* buttons */}
-                <Form.Row className="px-1 mt-2">
-                  <Button disabled variant="danger" onClick={handleClose}>
-                    <i className="fas fa-times-circle mr-1" />
-                    Borrar
-                  </Button>
-                  <Button
-                    className="ml-auto"
-                    variant="success"
-                    type="submit"
-                    disabled={isSubmitting}
-                  >
-                    <i className="fas fa-check-circle mr-1" />
-                    Guardar
-                  </Button>
+                <Form.Row>
+                  <Form.Label>Productos</Form.Label>
+                </Form.Row>
+                <ul>
+                  {props.sale.products.map(p => {
+                    return (
+                      <li
+                        key={p.product._id}
+                      >{`${p.product.name} x ${p.qty} a ${p.salePrice}`}</li>
+                    );
+                  })}
+                </ul>
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>Subtotal</Form.Label>
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>$</InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <Form.Control
+                        disabled
+                        type="text"
+                        name="subTotal"
+                        value={values.subTotal}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                    </InputGroup>
+                  </Form.Group>
+                  <Form.Group as={Col}>
+                    <Form.Label>Envío</Form.Label>
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>$</InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <Form.Control
+                        disabled
+                        type="text"
+                        name="shipment"
+                        value={values.shipment}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                    </InputGroup>
+                  </Form.Group>
+                  <Form.Group as={Col}>
+                    <Form.Label>Gran total</Form.Label>
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>$</InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <Form.Control
+                        disabled
+                        type="text"
+                        name="grandTotal"
+                        value={values.grandTotal}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                    </InputGroup>
+                  </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>Cliente</Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      name="client"
+                      value={values.client}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
                 </Form.Row>
               </Form>
             )}

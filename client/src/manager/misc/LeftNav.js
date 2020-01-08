@@ -121,7 +121,7 @@ function LeftNav(props) {
       <Nav.Item className="navItemStyle">Reportes</Nav.Item>
       <Nav.Link
         className="navLinkStyle"
-        href="/manager/sells"
+        href="/manager/sales"
         active={props.leftBarActive === "Ventas" ? true : false}
       >
         <i

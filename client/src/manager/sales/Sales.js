@@ -21,6 +21,7 @@ function Sales() {
             <Table striped hover size="sm" responsive variant="white">
               <thead>
                 <tr>
+                  <th className="text-center border-0">Fecha</th>
                   <th className="text-center border-0">Productos</th>
                   <th className="text-center border-0">Subtotal</th>
                   <th className="text-center border-0">Envío</th>
