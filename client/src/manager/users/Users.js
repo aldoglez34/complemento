@@ -37,8 +37,8 @@ function Users() {
                     <tr>
                       <th className="text-center border-0">Nombre(s)</th>
                       <th className="text-center border-0">Apellido paterno</th>
-                      <th className="text-center border-0">Apellido materno</th>
                       <th className="text-center border-0">Email</th>
+                      <th className="text-center border-0">Favoritos</th>
                       <th className="text-center border-0">
                         Fecha de registro
                       </th>

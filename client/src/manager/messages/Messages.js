@@ -23,8 +23,8 @@ function Messages() {
                 <tr>
                   <th className="text-center border-0">Fecha</th>
                   <th className="text-center border-0">Nombre del cliente</th>
-                  <th className="text-center border-0">Email</th>
-                  <th className="text-center border-0">Message</th>
+                  <th className="text-center border-0">Correo electrónico</th>
+                  <th className="text-center border-0">Mensaje</th>
                 </tr>
               </thead>
               <tbody>

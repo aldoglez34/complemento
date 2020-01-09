@@ -34,10 +34,8 @@ function HelpButton() {
       </button>
 
       <Modal className="modal-open" show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>¿Necesitas ayuda?</Modal.Title>
-        </Modal.Header>
         <Modal.Body>
+          <h4>¿Necesitas ayuda?</h4>
           <p>
             ¿Tienes dudas sobre algún producto? Envíanos tus
             preguntas/comentarios y nosotros nos pondremos en contacto contigo.

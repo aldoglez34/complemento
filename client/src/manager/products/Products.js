@@ -28,18 +28,6 @@ function Products() {
       {products ? (
         products.length ? (
           <>
-            <div className="d-flex flex-row px-2 py-3 mb-3 bg-light text-dark ">
-              <div>
-                <span>Ver</span>
-                <select className="ml-1" name="cars">
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="fiat">Fiat</option>
-                  <option value="audi">Audi</option>
-                </select>
-              </div>
-              <div className="ml-auto">{products.length} productos</div>
-            </div>
             <Table
               striped
               hover

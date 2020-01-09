@@ -73,6 +73,7 @@ function SalesRow(props) {
                 {/* date */}
                 <Form.Row>
                   <Form.Group as={Col}>
+                    {console.log(props)}
                     <Form.Label>Fecha</Form.Label>
                     <Form.Control
                       disabled

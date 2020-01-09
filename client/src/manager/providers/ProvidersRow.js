@@ -47,9 +47,6 @@ function ProvidersRow(props) {
       </tr>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Editar Proveedor</Modal.Title>
-        </Modal.Header>
         <Modal.Body>
           <Formik
             initialValues={{
@@ -88,6 +85,7 @@ function ProvidersRow(props) {
               isSubmitting
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
+                <h4>Detalle de proveedor</h4>
                 {/* name */}
                 <Form.Row>
                   <Form.Group as={Col}>
@@ -217,7 +215,6 @@ function ProvidersRow(props) {
                 {/* buttons */}
                 <Form.Row className="px-1 mt-2">
                   <Button disabled variant="danger" onClick={handleClose}>
-                    <i className="fas fa-times-circle mr-1" />
                     Borrar
                   </Button>
                   <Button
@@ -226,7 +223,6 @@ function ProvidersRow(props) {
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    <i className="fas fa-check-circle mr-1" />
                     Guardar
                   </Button>
                 </Form.Row>

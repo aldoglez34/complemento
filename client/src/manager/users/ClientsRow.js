@@ -13,13 +13,22 @@ function ClientsRow(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const printFavorites = () => {
+    let text = [];
+    props.client.favorites.forEach(f => {
+      let { name } = f;
+      text.push(name + "\n");
+    });
+    return text.join("");
+  };
+
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
         <td>{props.client.name}</td>
         <td>{props.client.firstSurname}</td>
-        <td>{props.client.secondSurname}</td>
         <td>{props.client.email}</td>
+        <td className="text-center">{props.client.favorites.length}</td>
         <td>{props.client.createdAt}</td>
       </tr>
 
@@ -30,9 +39,9 @@ function ClientsRow(props) {
               _id: props.client._id,
               name: props.client.name,
               firstSurname: props.client.firstSurname,
-              secondSurname: props.client.secondSurname,
               email: props.client.email,
               phone: props.client.phone,
+              favorites: printFavorites(),
               createdAt: props.client.createdAt
             }}
           >
@@ -53,8 +62,8 @@ function ClientsRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* firstSurname */}
                 <Form.Row>
-                  {/* firstSurname */}
                   <Form.Group as={Col}>
                     <Form.Label>Apellido paterno</Form.Label>
                     <Form.Control
@@ -67,22 +76,8 @@ function ClientsRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* email */}
                 <Form.Row>
-                  {/* secondSurname */}
-                  <Form.Group as={Col}>
-                    <Form.Label>Apellido materno</Form.Label>
-                    <Form.Control
-                      disabled
-                      type="text"
-                      name="secondSurname"
-                      value={values.secondSurname}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                  {/* email */}
                   <Form.Group as={Col}>
                     <Form.Label>Correo</Form.Label>
                     <Form.Control
@@ -95,8 +90,8 @@ function ClientsRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* phone */}
                 <Form.Row>
-                  {/* phone */}
                   <Form.Group as={Col}>
                     <Form.Label>Teléfono</Form.Label>
                     <Form.Control
@@ -118,6 +113,22 @@ function ClientsRow(props) {
                       type="text"
                       name="createdAt"
                       value={values.createdAt}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                </Form.Row>
+                {/* favorites */}
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>Favoritos</Form.Label>
+                    <Form.Control
+                      disabled
+                      as="textarea"
+                      rows="5"
+                      type="text"
+                      name="favorites"
+                      value={values.favorites}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />

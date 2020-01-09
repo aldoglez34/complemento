@@ -40,10 +40,7 @@ function CategoriesRow(props) {
         <td className="text-center">{props.category.productCount}</td>
       </tr>
 
-      <Modal show={show} onHide={handleClose} size="lg">
-        <Modal.Header closeButton>
-          <Modal.Title>Editar Categoría</Modal.Title>
-        </Modal.Header>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Body>
           <Formik
             initialValues={{
@@ -78,6 +75,7 @@ function CategoriesRow(props) {
               isSubmitting
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
+                <h4>Detalle de categoría</h4>
                 {/* name */}
                 <Form.Row>
                   <Form.Group as={Col}>
@@ -122,7 +120,6 @@ function CategoriesRow(props) {
                 {/* buttons */}
                 <Form.Row className="px-1 mt-2">
                   <Button disabled variant="danger">
-                    <i className="fas fa-times-circle mr-1" />
                     Borrar
                   </Button>
                   <Button
@@ -131,7 +128,6 @@ function CategoriesRow(props) {
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    <i className="fas fa-check-circle mr-1" />
                     Guardar
                   </Button>
                 </Form.Row>
