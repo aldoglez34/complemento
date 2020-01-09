@@ -13,6 +13,19 @@ function SalesRow(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const printProducts = () => {
+    let text = [];
+    props.sale.products.forEach(p => {
+      let { qty, salePrice } = p;
+      let name = p.product.name;
+      let x = qty
+        .toString()
+        .concat(" ", name, " a ", salePrice.toString(), "\n");
+      text.push(x);
+    });
+    return text.join("");
+  };
+
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
@@ -24,18 +37,30 @@ function SalesRow(props) {
         <td>{props.sale.client ? props.sale.client.email : ""}</td>
       </tr>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Detalle de venta</Modal.Title>
-        </Modal.Header>
+      <Modal size="lg" show={show} onHide={handleClose}>
         <Modal.Body>
           <Formik
             initialValues={{
               purchaseDate: props.sale.purchaseDate,
+              products: printProducts(),
               subTotal: props.sale.subTotal,
               shipment: props.sale.shipment,
               grandTotal: props.sale.grandTotal,
-              client: props.sale.client ? props.sale.client.email : ""
+              clientName: props.sale.client
+                ? props.sale.client.name +
+                  " " +
+                  props.sale.client.firstSurname +
+                  " " +
+                  props.sale.client.secondSurname
+                : "",
+              clientEmail: props.sale.client ? props.sale.client.email : "",
+              clientPhone: props.sale.client ? props.sale.client.phone : "",
+              state: props.sale.address.state,
+              city: props.sale.address.city,
+              municipality: props.sale.address.municipality,
+              neighborhood: props.sale.address.neighborhood,
+              street: props.sale.address.street,
+              zipcode: props.sale.address.zipCode
             }}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
@@ -44,6 +69,8 @@ function SalesRow(props) {
           >
             {({ values, handleChange, handleBlur, handleSubmit }) => (
               <Form noValidate onSubmit={handleSubmit}>
+                <h4>Detalle de venta</h4>
+                {/* date */}
                 <Form.Row>
                   <Form.Group as={Col}>
                     <Form.Label>Fecha</Form.Label>
@@ -57,18 +84,23 @@ function SalesRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* products */}
                 <Form.Row>
-                  <Form.Label>Productos</Form.Label>
+                  <Form.Group as={Col}>
+                    <Form.Label>Productos</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      rows="4"
+                      disabled
+                      type="text"
+                      name="products"
+                      value={values.products}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
                 </Form.Row>
-                <ul>
-                  {props.sale.products.map(p => {
-                    return (
-                      <li
-                        key={p.product._id}
-                      >{`${p.product.name} x ${p.qty} a ${p.salePrice}`}</li>
-                    );
-                  })}
-                </ul>
+                {/* prices */}
                 <Form.Row>
                   <Form.Group as={Col}>
                     <Form.Label>Subtotal</Form.Label>
@@ -119,14 +151,116 @@ function SalesRow(props) {
                     </InputGroup>
                   </Form.Group>
                 </Form.Row>
+                {/* client */}
+                <h4 className="mt-3">Cliente</h4>
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Cliente</Form.Label>
+                    <Form.Label>Nombre</Form.Label>
                     <Form.Control
                       disabled
                       type="text"
-                      name="client"
-                      value={values.client}
+                      name="clientName"
+                      value={values.clientName}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>Correo electrónico</Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      name="clientEmail"
+                      value={values.clientEmail}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>Teléfono</Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      name="clientPhone"
+                      value={values.clientPhone}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                </Form.Row>
+                {/* address */}
+                <h4 className="mt-3">Dirección de entrega</h4>
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>Estado</Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      name="state"
+                      value={values.state}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                  <Form.Group as={Col}>
+                    <Form.Label>Ciudad</Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      name="city"
+                      value={values.city}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>Municipio</Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      name="municipality"
+                      value={values.municipality}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                  <Form.Group as={Col}>
+                    <Form.Label>Colonia</Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      name="neighborhood"
+                      value={values.neighborhood}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                  <Form.Group as={Col} md={8}>
+                    <Form.Label>Calle</Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      name="street"
+                      value={values.street}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                  <Form.Group as={Col} md={4}>
+                    <Form.Label>Código postal</Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      name="zipcode"
+                      value={values.zipcode}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />

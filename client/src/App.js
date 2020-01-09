@@ -28,6 +28,7 @@ import DiscountsCreate from "./manager/discounts/DiscountsCreate";
 import Providers from "./manager/providers/Providers";
 import ProvidersCreate from "./manager/providers/ProvidersCreate";
 import Users from "./manager/users/Users";
+import Messages from "./manager/messages/Messages";
 import Products from "./manager/products/Products";
 import ProductsCreate from "./manager/products/ProductsCreate";
 import Sales from "./manager/sales/Sales";
@@ -119,6 +120,7 @@ function App() {
             />
             {/* users */}
             <Route exact path="/manager/users" component={Users} />
+            <Route exact path="/manager/messages" component={Messages} />
             {/* sales */}
             <Route exact path="/manager/sales" component={Sales} />
           </>

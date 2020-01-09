@@ -83,10 +83,10 @@ router.put("/update", function(req, res) {
     });
 });
 
-// postHelpMessage()
-// matches with /api/client/helpmessage/new
-router.post("/helpmessage/new", function(req, res) {
-  model.HelpMessage.create({
+// postMessage()
+// matches with /api/client/message/new
+router.post("/message/new", function(req, res) {
+  model.Message.create({
     name: req.body.name,
     email: req.body.email,
     message: req.body.message

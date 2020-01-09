@@ -109,7 +109,7 @@ function LeftNav(props) {
       </Nav.Link>
       <Nav.Link
         className="navLinkStyle"
-        href="/manager/users"
+        href="/manager/messages"
         active={props.leftBarActive === "Mensajes" ? true : false}
       >
         <i

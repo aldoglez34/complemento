@@ -97,12 +97,8 @@ export default {
     return axios.get("/api/client/favorites/" + clientId);
   },
 
-  // ---------------------------------------------------------------------------
-  // OTHER
-  // ---------------------------------------------------------------------------
-
-  postHelpMessage: function(data) {
-    return axios.post("/api/client/helpmessage/new", data);
+  postMessage: function(data) {
+    return axios.post("/api/client/message/new", data);
   },
 
   // ---------------------------------------------------------------------------
@@ -189,6 +185,12 @@ export default {
 
   fetchManagers: function() {
     return axios.get("/api/manager/managers/all");
+  },
+
+  // messages
+
+  fetchMessages: function() {
+    return axios.get("/api/manager/messages/all");
   },
 
   // sales

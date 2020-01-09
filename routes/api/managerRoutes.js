@@ -268,6 +268,15 @@ router.get("/managers/all", function(req, res) {
     .catch(err => res.json(err));
 });
 
+// fetchMessages()
+// matches with /api/manager/messages/all
+router.get("/messages/all", function(req, res) {
+  model.Message.find({})
+    .sort({ sentAt: 1 })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
 // =========================================================================
 // =========================================================================
 // sales

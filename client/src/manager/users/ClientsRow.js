@@ -23,10 +23,7 @@ function ClientsRow(props) {
         <td>{props.client.createdAt}</td>
       </tr>
 
-      <Modal show={show} onHide={handleClose} size="lg">
-        <Modal.Header closeButton>
-          <Modal.Title>Cliente</Modal.Title>
-        </Modal.Header>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Body>
           <Formik
             initialValues={{
@@ -41,9 +38,10 @@ function ClientsRow(props) {
           >
             {({ values, handleChange, handleBlur, handleSubmit }) => (
               <Form noValidate>
+                <h4>Detalle del cliente</h4>
                 {/* name */}
                 <Form.Row>
-                  <Form.Group as={Col} md={4}>
+                  <Form.Group as={Col}>
                     <Form.Label>Nombre</Form.Label>
                     <Form.Control
                       disabled
@@ -54,8 +52,10 @@ function ClientsRow(props) {
                       onBlur={handleBlur}
                     />
                   </Form.Group>
+                </Form.Row>
+                <Form.Row>
                   {/* firstSurname */}
-                  <Form.Group as={Col} md={4}>
+                  <Form.Group as={Col}>
                     <Form.Label>Apellido paterno</Form.Label>
                     <Form.Control
                       disabled
@@ -66,8 +66,10 @@ function ClientsRow(props) {
                       onBlur={handleBlur}
                     />
                   </Form.Group>
+                </Form.Row>
+                <Form.Row>
                   {/* secondSurname */}
-                  <Form.Group as={Col} md={4}>
+                  <Form.Group as={Col}>
                     <Form.Label>Apellido materno</Form.Label>
                     <Form.Control
                       disabled
@@ -81,7 +83,7 @@ function ClientsRow(props) {
                 </Form.Row>
                 <Form.Row>
                   {/* email */}
-                  <Form.Group as={Col} md={6}>
+                  <Form.Group as={Col}>
                     <Form.Label>Correo</Form.Label>
                     <Form.Control
                       disabled
@@ -92,8 +94,10 @@ function ClientsRow(props) {
                       onBlur={handleBlur}
                     />
                   </Form.Group>
+                </Form.Row>
+                <Form.Row>
                   {/* phone */}
-                  <Form.Group as={Col} md={6}>
+                  <Form.Group as={Col}>
                     <Form.Label>Teléfono</Form.Label>
                     <Form.Control
                       disabled
@@ -108,7 +112,7 @@ function ClientsRow(props) {
                 {/* createdAt */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Fecha de creación</Form.Label>
+                    <Form.Label>Fecha de registro</Form.Label>
                     <Form.Control
                       disabled
                       type="text"

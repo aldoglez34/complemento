@@ -51,12 +51,16 @@ function HelpButton() {
             validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              API.postHelpMessage(values)
+              API.postMessage(values)
                 .then(res => {
-                  alert(
-                    "Mensaje enviado con éxito. Nos pondremos en contacto contigo al correo proporcionado. "
-                  );
-                  handleClose();
+                  if (!res.data.errors) {
+                    alert(
+                      "Mensaje enviado con éxito. Nos pondremos en contacto contigo al correo proporcionado. "
+                    );
+                    handleClose();
+                  } else {
+                    alert(res.data.errors.message);
+                  }
                 })
                 .catch(err => console.log(err));
             }}
@@ -119,7 +123,7 @@ function HelpButton() {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* productCount */}
+                {/* message */}
                 <Form.Row>
                   <Form.Group as={Col}>
                     <Form.Label>
@@ -129,7 +133,7 @@ function HelpButton() {
                       as="textarea"
                       rows="3"
                       placeholder="Ingresa tu mensaje"
-                      maxLength="250"
+                      maxLength="500"
                       name="message"
                       value={values.message}
                       onChange={handleChange}

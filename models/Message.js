@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const HelpMessageSchema = new Schema({
+const MessageSchema = new Schema({
   name: {
     type: String,
     trim: true,
@@ -17,9 +17,13 @@ const HelpMessageSchema = new Schema({
     type: String,
     trim: true,
     required: "Mensaje requerido"
+  },
+  sentAt: {
+    type: Date,
+    default: Date.now()
   }
 });
 
-const HelpMessage = mongoose.model("HelpMessage", HelpMessageSchema);
+const Message = mongoose.model("Message", MessageSchema);
 
-module.exports = HelpMessage;
+module.exports = Message;
