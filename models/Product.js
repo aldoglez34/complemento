@@ -22,13 +22,23 @@ const ProductSchema = new Schema({
     type: String,
     trim: true
   },
-  purchasePrice: {
-    type: Number,
-    required: "Precio de compra requerido"
-  },
-  salePrice: {
-    type: Number,
-    required: "Precio de venta requerido"
+  price: {
+    salePrice: {
+      type: Number,
+      required: "Precio de venta requerido"
+    },
+    latestPurchasePrice: {
+      type: Number,
+      required: "Último precio de compra"
+    },
+    discount: {
+      hasDiscount: {
+        type: Boolean,
+        required: "Descuento requerido (ya sea falso o verdadero)"
+      },
+      percentage: Number,
+      newPrice: Number
+    }
   },
   unitsSold: {
     type: Number,
@@ -48,14 +58,6 @@ const ProductSchema = new Schema({
   },
   sufferings: [{ type: String, trim: true }],
   ingredients: [{ type: String, trim: true }],
-  discount: {
-    hasDiscount: {
-      type: Boolean,
-      required: "Descuento requerido (ya sea falso o verdadero)"
-    },
-    percentage: Number,
-    newPrice: Number
-  },
   provider: {
     type: Schema.Types.ObjectId,
     ref: "Provider",
@@ -66,7 +68,7 @@ const ProductSchema = new Schema({
     ref: "Category",
     required: "Categoría inválida"
   },
-  createdAt: {
+  registeredAt: {
     type: Date,
     default: Date.now()
   }

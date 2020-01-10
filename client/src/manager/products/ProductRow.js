@@ -59,6 +59,7 @@ function ProductRow(props) {
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
+        {/* name */}
         <td>
           {props.product.name}
           {props.product.stock === 0 ? (
@@ -71,7 +72,7 @@ function ProductRow(props) {
               Sin existencias
             </Badge>
           ) : null}
-          {props.product.discount.hasDiscount ? (
+          {props.product.price.discount.hasDiscount ? (
             <Badge
               title="Este producto tiene descuento"
               pill
@@ -79,27 +80,25 @@ function ProductRow(props) {
               variant="warning"
               style={{ fontFamily: "Arial" }}
             >
-              {props.product.discount.percentage + "%"}
+              {props.product.price.discount.percentage + "%"}
             </Badge>
           ) : null}
         </td>
+        {/* category */}
         <td>{props.product.category.name}</td>
+        {/* provider */}
         <td>{props.product.provider.name}</td>
+        {/* priority */}
         <td className="text-center">{props.product.priority ? "Sí" : "No"}</td>
-        <td className="text-center">{"$" + props.product.purchasePrice}</td>
-        <td className="text-center">
-          {"$"}
-          {props.product.discount.hasDiscount
-            ? props.product.discount.newPrice
-            : props.product.salePrice}
+        {/* sale price */}
+        <td >
+          {props.product.price.discount.hasDiscount
+            ? props.product.price.discount.newPrice
+            : props.product.price.salePrice}
         </td>
-        <td className="text-center">
-          {"$"}
-          {props.product.discount.hasDiscount
-            ? props.product.discount.newPrice - props.product.purchasePrice
-            : props.product.salePrice - props.product.purchasePrice}
-        </td>
+        {/* units sold */}
         <td className="text-center">{props.product.unitsSold}</td>
+        {/* stock */}
         <td className="text-center">{props.product.stock}</td>
       </tr>
 
@@ -123,9 +122,9 @@ function ProductRow(props) {
               priority: props.product.priority,
               comments: props.product.comments,
               // prices
-              purchasePrice: props.product.purchasePrice,
-              salePrice: props.product.salePrice,
-              discount: props.product.discount.hasDiscount,
+              lastPurchasePrice: props.product.price.lastPurchasePrice,
+              salePrice: props.product.price.salePrice,
+              discount: props.product.price.discount.hasDiscount,
               percentage: 0
             }}
             validationSchema={yupschema}

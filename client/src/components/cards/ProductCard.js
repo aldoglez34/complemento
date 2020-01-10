@@ -19,13 +19,13 @@ function ProductCard(props) {
           id="cardheader"
         >
           <span>{props.product.name}</span>
-          {props.product.discount.hasDiscount ? (
+          {props.product.price.discount.hasDiscount ? (
             <Badge
               className="ml-1"
               variant="warning"
-              title={props.product.discount.percentage + "% de descuento"}
+              title={props.product.price.discount.percentage + "% de descuento"}
             >
-              {props.product.discount.percentage + "%"}
+              {props.product.price.discount.percentage + "%"}
             </Badge>
           ) : null}
         </Card.Header>
@@ -43,18 +43,18 @@ function ProductCard(props) {
       >
         {/* price */}
         <div className="lead text-center mb-3">
-          {props.product.discount.hasDiscount ? (
+          {props.product.price.discount.hasDiscount ? (
             <>
               <span className="text-muted mb-0">
-                <del>{"$" + props.product.salePrice}</del>
+                <del>{"$" + props.product.price.salePrice}</del>
               </span>
               <span className="h4 text-danger mb-0 ml-2">
-                {"$" + props.product.discount.newPrice}
+                {"$" + props.product.price.discount.newPrice}
               </span>
             </>
           ) : (
             <span className="h4 text-danger mb-0">
-              {"$" + props.product.salePrice}
+              {"$" + props.product.price.salePrice}
             </span>
           )}
         </div>

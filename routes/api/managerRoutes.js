@@ -284,11 +284,11 @@ router.get("/messages/all", function(req, res) {
 // =========================================================================
 // sales
 
-// fetchManagers()
-// matches with /api/manager/managers/all
+// fetchSales()
+// matches with /api/manager/sales/all
 router.get("/sales/all", function(req, res) {
-  model.Purchase.find({})
-    .sort({ purchaseDate: 1 })
+  model.Sale.find({})
+    .sort({ saleDate: 1 })
     .populate("client products.product")
     .then(data => res.json(data))
     .catch(err => res.json(err));

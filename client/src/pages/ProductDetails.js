@@ -53,10 +53,10 @@ function ProductDetails(props) {
                   <Col>
                     <div className="d-flex flex-row">
                       <h2>{product.name}</h2>
-                      {product.discount.hasDiscount ? (
+                      {product.price.discount.hasDiscount ? (
                         <h3>
                           <Badge variant="warning" className="ml-2">
-                            {product.discount.percentage + "%"}
+                            {product.price.discount.percentage + "%"}
                           </Badge>
                         </h3>
                       ) : null}
@@ -68,18 +68,18 @@ function ProductDetails(props) {
                     <h5 className="mb-1">{product.content}</h5>
                     <h5 className="mb-2">{product.brand}</h5>
                     <div className="d-flex flex-row">
-                      {product.discount.hasDiscount ? (
+                      {product.price.discount.hasDiscount ? (
                         <>
                           <h3 className="mb-0" style={{ color: "gainsboro" }}>
-                            <del>{"$" + product.salePrice + " MXN"}</del>
+                            <del>{"$" + product.price.salePrice + " MXN"}</del>
                           </h3>
                           <h3 className="mb-0 ml-1 text-danger">
-                            {"$" + product.discount.newPrice + " MXN"}
+                            {"$" + product.price.discount.newPrice + " MXN"}
                           </h3>
                         </>
                       ) : (
                         <h3 className="mb-0 text-danger">
-                          {"$" + product.salePrice + " MXN"}
+                          {"$" + product.price.salePrice + " MXN"}
                         </h3>
                       )}
                     </div>

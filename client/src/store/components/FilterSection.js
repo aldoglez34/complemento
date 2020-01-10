@@ -20,13 +20,16 @@ function FilterSection(props) {
         style={{ outline: 0 }}
       >
         <div className="d-flex flex-row justify-content-center align-items-center">
-          <h4 className="mb-0">Selecciona</h4>
+          <h5 className="mb-0">Selecciona</h5>
           <i className="fas fa-chevron-down ml-1" />
         </div>
       </Navbar.Toggle>
       <Navbar.Collapse id="categoriesdropdown">
         <Nav variant="pills" className="flex-column w-100 text-left">
-          <h5 className="mt-3">Categorías</h5>
+          <h5 className="mt-3" style={{ fontWeight: "600" }}>
+            Categoría
+            <i className="fas fa-stream ml-1" />
+          </h5>
           {props.categories.map(category => {
             return (
               <Nav.Item key={category.name}>
@@ -49,7 +52,10 @@ function FilterSection(props) {
               </Nav.Item>
             );
           })}
-          <h5 className="mt-3">Marcas</h5>
+          <h5 className="mt-3" style={{ fontWeight: "600" }}>
+            Laboratorio
+            <i className="fas fa-vials ml-1" />
+          </h5>
           {props.brands.map(brand => {
             return (
               <Nav.Item key={brand.name}>

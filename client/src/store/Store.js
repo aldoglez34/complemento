@@ -133,13 +133,13 @@ class Store extends Component {
         break;
       case "Más caro primero":
         temp.sort((a, b) =>
-          a.salePrice < b.salePrice ? 1 : b.salePrice < a.salePrice ? -1 : 0
+          a.price.salePrice < b.price.salePrice ? 1 : b.price.salePrice < a.price.salePrice ? -1 : 0
         );
         this.setState({ products: temp });
         break;
       case "Más barato primero":
         temp.sort((a, b) =>
-          a.salePrice > b.salePrice ? 1 : b.salePrice > a.salePrice ? -1 : 0
+          a.price.salePrice > b.price.salePrice ? 1 : b.price.salePrice > a.price.salePrice ? -1 : 0
         );
         this.setState({ products: temp });
         break;
@@ -164,7 +164,10 @@ class Store extends Component {
               <Row>
                 {/* left-column, filters */}
                 <Col md={3}>
-                  <h2>Filtros</h2>
+                  <h4 style={{ fontWeight: "600" }}>
+                    Filtros
+                    <i className="fas fa-filter ml-1" />
+                  </h4>
                   <hr className="myDivider" />
                   <FilterSection
                     categories={this.state.categories}
@@ -176,11 +179,9 @@ class Store extends Component {
                 <Col md={9}>
                   {/* title */}
                   <div className="mb-2 mt-3 mt-md-0">
-                    <h2 className="text-md-center">
-                      {!this.state.filter
-                        ? "Todos los productos"
-                        : this.state.filter}
-                    </h2>
+                    <h3 className="text-md-center">
+                      {!this.state.filter ? "Productos" : this.state.filter}
+                    </h3>
                     <hr
                       className="myDivider ml-md-auto"
                       style={{ backgroundColor: "#edcb58" }}

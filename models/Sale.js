@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const PurchaseSchema = new Schema({
+const SaleSchema = new Schema({
   products: [
     {
       product: {
@@ -40,12 +40,12 @@ const PurchaseSchema = new Schema({
     state: { type: String, required: true },
     zipCode: { type: String, required: true }
   },
-  purchaseDate: {
+  saleDate: {
     type: Date,
     default: Date.now()
   }
 });
 
-const Purchase = mongoose.model("Purchase", PurchaseSchema);
+const Sale = mongoose.model("Sale", SaleSchema);
 
-module.exports = Purchase;
+module.exports = Sale;

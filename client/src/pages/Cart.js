@@ -33,9 +33,9 @@ function Cart() {
             // temp product
             let product = res.data;
             product.qty = value.qty;
-            product.subTotal = product.discount.hasDiscount
-              ? product.discount.newPrice * value.qty
-              : product.salePrice * value.qty;
+            product.subTotal = product.price.discount.hasDiscount
+              ? product.price.discount.newPrice * value.qty
+              : product.price.salePrice * value.qty;
             // push temp product into fullCart
             fullCart.push(product);
             // "resolve" the promise and send the temp arr as a parameter
@@ -56,7 +56,7 @@ function Cart() {
     initCart();
   }, []);
 
-  const makePurchase = () => {
+  const makeSale = () => {
     API.buyProducts({ products, client })
       .then(res => {
         if (!res.data.errors) {
@@ -129,7 +129,7 @@ function Cart() {
                             >
                               {p.name}
                             </a>
-                            {p.discount.hasDiscount ? (
+                            {p.price.discount.hasDiscount ? (
                               <Badge pill className="ml-2" variant="warning">
                                 {p.discount.percentage}%
                               </Badge>
@@ -159,10 +159,10 @@ function Cart() {
                           </td>
                           {/* sale price */}
                           <td className="text-center">
-                            {p.discount.hasDiscount ? (
-                              <>${p.discount.newPrice}</>
+                            {p.price.discount.hasDiscount ? (
+                              <>${p.price.discount.newPrice}</>
                             ) : (
-                              <>${p.salePrice}</>
+                              <>${p.price.salePrice}</>
                             )}
                           </td>
                           <td className="text-center">${p.subTotal}</td>
@@ -250,7 +250,7 @@ function Cart() {
                     <Button
                       variant="danger"
                       className="shadow-sm"
-                      onClick={makePurchase}
+                      onClick={makeSale}
                     >
                       Pagar
                     </Button>

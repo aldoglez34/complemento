@@ -94,7 +94,6 @@ function LeftNav(props) {
         />
         <span className="ml-1">Proveedores</span>
       </Nav.Link>
-
       <Nav.Item className="navItemStyle">Usuarios</Nav.Item>
       <Nav.Link
         className="navLinkStyle"
@@ -118,7 +117,7 @@ function LeftNav(props) {
         />
         <span className="ml-1">Mensajes</span>
       </Nav.Link>
-      <Nav.Item className="navItemStyle">Reportes</Nav.Item>
+      <Nav.Item className="navItemStyle">Tienda</Nav.Item>
       <Nav.Link
         className="navLinkStyle"
         href="/manager/sales"
@@ -130,8 +129,7 @@ function LeftNav(props) {
         />
         <span className="ml-1">Ventas</span>
       </Nav.Link>
-      {/* reportes */}
-      {/* <Nav.Item className="navItemStyle">Reportes</Nav.Item>
+      <Nav.Item className="navItemStyle">Reportes</Nav.Item>
       <Nav.Link
         className="navLinkStyle"
         href="/manager"
@@ -153,7 +151,7 @@ function LeftNav(props) {
           style={{ width: "26px", textAlign: "center" }}
         />
         <span className="ml-1">Reporte 2</span>
-      </Nav.Link> */}
+      </Nav.Link>
       <div className="mt-auto p-3">
         <Button variant="danger" className="shadow-sm" onClick={logout} block>
           Salir

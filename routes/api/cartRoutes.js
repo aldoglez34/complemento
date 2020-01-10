@@ -5,7 +5,7 @@ const model = require("../../models");
 // matches with /api/cart/product/:productId
 router.get("/product/:productId", function(req, res) {
   model.Product.findById(req.params.productId)
-    .select("name salePrice stock discount")
+    .select("name price stock")
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });
@@ -20,13 +20,13 @@ router.post("/buy", function(req, res) {
     let temp = {
       product: p._id,
       qty: p.qty,
-      salePrice: p.discount.hasDiscount ? p.discount.newPrice : p.salePrice
+      salePrice: p.price.discount.hasDiscount ? p.price.discount.newPrice : p.price.salePrice
     };
     subTotal += p.qty * temp.salePrice;
     products.push(temp);
   });
 
-  const newPurchase = {
+  const newSale = {
     products,
     subTotal,
     shipment: 70,
@@ -51,19 +51,19 @@ router.post("/buy", function(req, res) {
         }
   };
 
-  model.Purchase.create({
-    products: newPurchase.products,
-    subTotal: newPurchase.subTotal,
-    shipment: newPurchase.shipment,
-    grandTotal: newPurchase.grandTotal,
-    client: newPurchase.client,
+  model.Sale.create({
+    products: newSale.products,
+    subTotal: newSale.subTotal,
+    shipment: newSale.shipment,
+    grandTotal: newSale.grandTotal,
+    client: newSale.client,
     address: {
-      street: newPurchase.address.street,
-      neighborhood: newPurchase.address.neighborhood,
-      municipality: newPurchase.address.municipality,
-      city: newPurchase.address.city,
-      state: newPurchase.address.state,
-      zipCode: newPurchase.address.zipCode
+      street: newSale.address.street,
+      neighborhood: newSale.address.neighborhood,
+      municipality: newSale.address.municipality,
+      city: newSale.address.city,
+      state: newSale.address.state,
+      zipCode: newSale.address.zipCode
     }
   })
     .then(data => res.json(data))

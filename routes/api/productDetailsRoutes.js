@@ -6,7 +6,7 @@ const model = require("../../models");
 router.get("/details/:productId", function(req, res) {
   model.Product.findById(req.params.productId)
     .select(
-      "name content salePrice stock discount category sufferings ingredients comments photo brand"
+      "category brand name content comments stock photo price sufferings ingredients"
     )
     .populate("category")
     .then(data => res.json(data))
@@ -18,7 +18,7 @@ router.get("/details/:productId", function(req, res) {
 router.get("/similar/:categoryId", function(req, res) {
   model.Product.find({ category: req.params.categoryId })
     .select(
-      "name content salePrice stock discount category sufferings ingredients comments photo brand"
+      "category brand name content comments stock photo price sufferings ingredients"
     )
     .populate("category")
     .then(data => res.json(data))

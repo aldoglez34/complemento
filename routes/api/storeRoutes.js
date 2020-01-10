@@ -39,38 +39,11 @@ router.get("/brands", function(req, res) {
 // matches with /api/store/products
 router.get("/products", function(req, res) {
   model.Product.find({})
-    .select(
-      "category name content description salePrice stock photo brand priority discount"
-    )
+    .select("category name content price stock photo brand priority")
     .populate("category")
     .sort({ name: 1 })
     .then(data => res.json(data))
     .catch(err => res.json(err));
-
-  // // check the 2 possible outcomes
-  // // 1 cat is null
-  // // 2 cat is NOT null
-  // let cat = req.params.cat;
-  // if (cat === "null") {
-  //   // send all products
-  //   model.Product.find({})
-  //     .select(
-  //       "category name content description salePrice stock photo brand priority discount"
-  //     )
-  //     .sort({ name: 1 })
-  //     .then(data => res.json(data))
-  //     .catch(err => res.json(err));
-  // }
-  // if (cat !== "null") {
-  //   // send products filtered by cat
-  //   model.Product.find({ category: cat })
-  //     .select(
-  //       "category name content description salePrice stock photo brand priority discount"
-  //     )
-  //     .sort({ name: 1 })
-  //     .then(data => res.json(data))
-  //     .catch(err => res.json(err));
-  // }
 });
 
 module.exports = router;

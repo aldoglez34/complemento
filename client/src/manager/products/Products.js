@@ -3,7 +3,6 @@ import { Table, Spinner, Row } from "react-bootstrap";
 import ManagerLayout from "../ManagerLayout";
 import API from "../../utils/API";
 import ProductRow from "./ProductRow";
-import MyPagination from "../../store/components/MyPagination";
 
 function Products() {
   const [products, setProducts] = useState();
@@ -13,11 +12,6 @@ function Products() {
       .then(res => setProducts(res.data))
       .catch(err => console.log(err));
   }, []);
-
-  const handleChangePage = page => {
-    console.log(page);
-    // this.setState({ activePage: page }, () => this.setOffsetAndLimit());
-  };
 
   return (
     <ManagerLayout
@@ -42,9 +36,7 @@ function Products() {
                   <th className="text-center border-0">Categoría</th>
                   <th className="text-center border-0">Proveedor</th>
                   <th className="text-center border-0">Destacado</th>
-                  <th className="text-center border-0">Compra</th>
                   <th className="text-center border-0">Venta</th>
-                  <th className="text-center border-0">Utilidad</th>
                   <th className="text-center border-0">Vendidos</th>
                   <th className="text-center border-0">Existencia</th>
                 </tr>
@@ -55,13 +47,6 @@ function Products() {
                 })}
               </tbody>
             </Table>
-            <Row className="justify-content-center">
-              <MyPagination
-                pageCount={10}
-                activePage={1}
-                handleChangePage={handleChangePage}
-              />
-            </Row>
           </>
         ) : (
           <em>No hay nada aquí</em>

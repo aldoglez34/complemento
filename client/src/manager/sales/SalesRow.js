@@ -29,7 +29,7 @@ function SalesRow(props) {
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
-        <td>{props.sale.purchaseDate}</td>
+        <td>{props.sale.saleDate}</td>
         <td className="text-center">{props.sale.products.length}</td>
         <td className="text-center">{props.sale.subTotal}</td>
         <td className="text-center">{props.sale.shipment}</td>
@@ -41,7 +41,7 @@ function SalesRow(props) {
         <Modal.Body>
           <Formik
             initialValues={{
-              purchaseDate: props.sale.purchaseDate,
+              purchaseDate: props.sale.saleDate,
               products: printProducts(),
               subTotal: props.sale.subTotal,
               shipment: props.sale.shipment,
