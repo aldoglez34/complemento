@@ -1,20 +1,7 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { Nav, Button } from "react-bootstrap";
-import fire from "../../firebase/fire";
-import * as managerActions from "../../redux/actions/manager";
+import { Nav } from "react-bootstrap";
 
 function LeftNav(props) {
-  const dispatch = useDispatch();
-
-  const logout = () => {
-    fire
-      .auth()
-      .signOut()
-      .then(() => dispatch(managerActions.logoutManager()))
-      .catch(error => console.log(error));
-  };
-
   return (
     <Nav className="d-none d-lg-flex flex-column h-100" id="verticalNavStyle">
       <h2
@@ -129,6 +116,17 @@ function LeftNav(props) {
         />
         <span className="ml-1">Ventas</span>
       </Nav.Link>
+      <Nav.Link
+        className="navLinkStyle"
+        href="/manager/purchases"
+        active={props.leftBarActive === "Compras" ? true : false}
+      >
+        <i
+          className="fas fa-shopping-basket"
+          style={{ width: "26px", textAlign: "center" }}
+        />
+        <span className="ml-1">Compras</span>
+      </Nav.Link>
       <Nav.Item className="navItemStyle">Reportes</Nav.Item>
       <Nav.Link
         className="navLinkStyle"
@@ -152,11 +150,6 @@ function LeftNav(props) {
         />
         <span className="ml-1">Reporte 2</span>
       </Nav.Link>
-      <div className="mt-auto p-3">
-        <Button variant="danger" className="shadow-sm" onClick={logout} block>
-          Salir
-        </Button>
-      </div>
     </Nav>
   );
 }

@@ -16,39 +16,6 @@ router.get("/:uid", function(req, res) {
 
 // =========================================================================
 // =========================================================================
-// categories
-
-// fetchCategoriesManager()
-// matches with /api/manager/categories/all
-router.get("/categories/all", function(req, res) {
-  model.Category.find({})
-    .sort({ name: 1 })
-    .then(data => res.json(data))
-    .catch(err => res.json(err));
-});
-
-// updateCategory()
-// matches with /api/manager/categories/update
-router.put("/categories/update", function(req, res) {
-  model.Category.findByIdAndUpdate(req.body._id, {
-    name: req.body.name
-  })
-    .then(data => res.json(data))
-    .catch(err => res.json(err));
-});
-
-// newCategory()
-// matches with /api/manager/categories/new
-router.post("/categories/new", function(req, res) {
-  model.Category.create({
-    name: req.body.name
-  })
-    .then(data => res.json(data))
-    .catch(err => res.json(err));
-});
-
-// =========================================================================
-// =========================================================================
 // products
 
 // fetchManagerProducts()
@@ -127,7 +94,7 @@ router.post("/products/new", function(req, res) {
 // matches with /api/manager/discounts/all
 router.get("/discounts/all", function(req, res) {
   // model.Product.find({ discount: { hasDiscount: true } })
-  model.Product.find({ "discount.hasDiscount": true })
+  model.Product.find({ "price.discount.hasDiscount": true })
     .sort({ name: 1 })
     .populate("category provider")
     .then(data => res.json(data))
@@ -137,7 +104,7 @@ router.get("/discounts/all", function(req, res) {
 // fetchNotDiscountsManager()
 // matches with /api/manager/notdiscounts/all
 router.get("/notdiscounts/all", function(req, res) {
-  model.Product.find({ "discount.hasDiscount": false })
+  model.Product.find({ "price.discount.hasDiscount": false })
     .sort({ name: 1 })
     .then(data => res.json(data))
     .catch(err => res.json(err));
@@ -147,10 +114,12 @@ router.get("/notdiscounts/all", function(req, res) {
 // matches with /api/manager/discounts/new
 router.put("/discounts/new", function(req, res) {
   model.Product.findByIdAndUpdate(req.body._id, {
-    discount: {
-      hasDiscount: true,
-      percentage: req.body.percentage,
-      newPrice: req.body.newPrice
+    price: {
+      discount: {
+        hasDiscount: true,
+        percentage: req.body.percentage,
+        newPrice: req.body.newPrice
+      }
     }
   })
     .then(data => res.json(data))
@@ -161,8 +130,10 @@ router.put("/discounts/new", function(req, res) {
 // matches with /api/manager/discounts/delete
 router.put("/discounts/delete", function(req, res) {
   model.Product.findByIdAndUpdate(req.body._id, {
-    discount: {
-      hasDiscount: false
+    price: {
+      discount: {
+        hasDiscount: false
+      }
     }
   })
     .then(data => res.json(data))
@@ -173,11 +144,46 @@ router.put("/discounts/delete", function(req, res) {
 // matches with /api/manager/discounts/update
 router.put("/discounts/update", function(req, res) {
   model.Product.findByIdAndUpdate(req.body._id, {
-    discount: {
-      hasDiscount: false,
-      percentage: req.body.percentage,
-      newPrice: req.body.newPrice
+    price: {
+      discount: {
+        hasDiscount: false,
+        percentage: req.body.percentage,
+        newPrice: req.body.newPrice
+      }
     }
+  })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
+// =========================================================================
+// =========================================================================
+// categories
+
+// fetchCategoriesManager()
+// matches with /api/manager/categories/all
+router.get("/categories/all", function(req, res) {
+  model.Category.find({})
+    .sort({ name: 1 })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
+// updateCategory()
+// matches with /api/manager/categories/update
+router.put("/categories/update", function(req, res) {
+  model.Category.findByIdAndUpdate(req.body._id, {
+    name: req.body.name
+  })
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
+// newCategory()
+// matches with /api/manager/categories/new
+router.post("/categories/new", function(req, res) {
+  model.Category.create({
+    name: req.body.name
   })
     .then(data => res.json(data))
     .catch(err => res.json(err));
@@ -213,26 +219,6 @@ router.put("/providers/update", function(req, res) {
 // newProvider()
 // matches with /api/manager/providers/new
 router.post("/providers/new", async function(req, res) {
-  // try {
-  //   const { name, rfc, email, phone, fullAddress } = req.body;
-
-  //   let provider = await model.Provider.findOne({ name });
-  //   if (provider) return res.status(400).json({ error: "El nombre ya existe" });
-
-  //   provider = await model.Provider.findOne({ rfc });
-  //   if (provider) return res.status(400).send({ error: "El RFC ya existe" });
-
-  //   provider = await model.Provider.findOne({ email });
-  //   if (provider) return res.status(400).send({ error: "El correo ya existe" });
-
-  //   provider = new Provider({ name, rfc, email, phone, fullAddress });
-
-  //   await provider.save();
-
-  //   res.status(201).json({ message: "El proveedor fue creado con éxito" });
-  // } catch (error) {
-  //   res.status(500).json({ error });
-  // }
   model.Provider.create({
     name: req.body.name,
     rfc: req.body.rfc,
@@ -271,6 +257,10 @@ router.get("/managers/all", function(req, res) {
     .catch(err => res.json(err));
 });
 
+// =========================================================================
+// =========================================================================
+// messages
+
 // fetchMessages()
 // matches with /api/manager/messages/all
 router.get("/messages/all", function(req, res) {
@@ -290,6 +280,19 @@ router.get("/sales/all", function(req, res) {
   model.Sale.find({})
     .sort({ saleDate: 1 })
     .populate("client products.product")
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
+
+// =========================================================================
+// =========================================================================
+// purchases
+
+// fetchPurchases()
+// matches with /api/manager/purchases/all
+router.get("/purchases/all", function(req, res) {
+  model.Purchase.find({})
+    .sort({ createdAt: 1 })
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });

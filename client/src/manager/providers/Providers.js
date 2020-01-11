@@ -17,7 +17,7 @@ function Providers() {
     <ManagerLayout
       leftBarActive="Proveedores"
       title="Proveedores"
-      button={{ text: "Proveedor", to: "/manager/providers/create" }}
+      button={{ text: "Nuevo proveedor", to: "/manager/providers/create" }}
     >
       {providers ? (
         providers.length ? (

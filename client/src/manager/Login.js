@@ -30,7 +30,7 @@ function Login(props) {
   return (
     <Container>
       <Row>
-        <Col md={{ span: 6, offset: 3 }}>
+        <Col md={{ span: 4, offset: 4 }}>
           <h1
             className="text-center text-dark mt-3"
             style={{
@@ -102,7 +102,7 @@ function Login(props) {
                   <Form.Group as={Col}>
                     <Form.Label>Correo electrónico</Form.Label>
                     <Form.Control
-                      placeholder="Ingresa el correo electrónico"
+                      placeholder="Correo electrónico"
                       type="email"
                       name="email"
                       value={values.email}
@@ -121,7 +121,7 @@ function Login(props) {
                   <Form.Group as={Col}>
                     <Form.Label>Contraseña</Form.Label>
                     <Form.Control
-                      placeholder="Ingresa la contraseña"
+                      placeholder="Contraseña"
                       type="password"
                       name="password"
                       value={values.password}

@@ -20,7 +20,7 @@ function ProductRow(props) {
       .string()
       .min(3, "Demasiado corto")
       .required("Requerido"),
-    purchasePrice: yup
+    latestPurchasePrice: yup
       .number()
       .positive("Debe ser positivo")
       .required("Requerido"),
@@ -91,7 +91,7 @@ function ProductRow(props) {
         {/* priority */}
         <td className="text-center">{props.product.priority ? "Sí" : "No"}</td>
         {/* sale price */}
-        <td >
+        <td>
           {props.product.price.discount.hasDiscount
             ? props.product.price.discount.newPrice
             : props.product.price.salePrice}
@@ -103,9 +103,6 @@ function ProductRow(props) {
       </tr>
 
       <Modal show={show} onHide={handleClose} size="lg">
-        <Modal.Header closeButton>
-          <Modal.Title>Editar Producto</Modal.Title>
-        </Modal.Header>
         <Modal.Body>
           <Formik
             initialValues={{
@@ -122,7 +119,7 @@ function ProductRow(props) {
               priority: props.product.priority,
               comments: props.product.comments,
               // prices
-              lastPurchasePrice: props.product.price.lastPurchasePrice,
+              latestPurchasePrice: props.product.price.latestPurchasePrice,
               salePrice: props.product.price.salePrice,
               discount: props.product.price.discount.hasDiscount,
               percentage: 0
@@ -154,6 +151,7 @@ function ProductRow(props) {
               isSubmitting
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
+                <h4>Detalle del producto</h4>
                 {/* name */}
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
@@ -427,8 +425,7 @@ function ProductRow(props) {
                   </Form.Group>
                 </Form.Row>
                 {/* prices */}
-                <h3 className="mt-3">Precios</h3>
-                <hr />
+                <h4>Precios</h4>
                 {/* purchase price */}
                 <Form.Row>
                   <Form.Group as={Col} md={4}>
@@ -445,19 +442,23 @@ function ProductRow(props) {
                       <Form.Control
                         type="number"
                         placeholder="0.00"
-                        name="purchasePrice"
-                        value={values.purchasePrice}
+                        name="latestPurchasePrice"
+                        value={values.latestPurchasePrice}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        isValid={touched.purchasePrice && !errors.purchasePrice}
+                        isValid={
+                          touched.latestPurchasePrice &&
+                          !errors.latestPurchasePrice
+                        }
                         isInvalid={
-                          touched.purchasePrice && !!errors.purchasePrice
+                          touched.latestPurchasePrice &&
+                          !!errors.latestPurchasePrice
                         }
                       />
                     </InputGroup>
                     <ErrorMessage
                       className="text-danger"
-                      name="purchasePrice"
+                      name="latestPurchasePrice"
                       component="div"
                     />
                   </Form.Group>
@@ -502,7 +503,7 @@ function ProductRow(props) {
                         type="text"
                         placeholder="0.00"
                         name="profit"
-                        value={values.salePrice - values.purchasePrice}
+                        value={values.salePrice - values.latestPurchasePrice}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />

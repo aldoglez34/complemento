@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Formik } from "formik";
 
 DiscountsRow.propTypes = {
-  discount: PropTypes.object.isRequired
+  productWithDiscount: PropTypes.object.isRequired
 };
 
 function DiscountsRow(props) {
@@ -17,8 +17,8 @@ function DiscountsRow(props) {
     <>
       <tr onClick={handleShow} className="rowStyle">
         <td>
-          {props.discount.name}
-          {props.discount.stock === 0 ? (
+          {props.productWithDiscount.name}
+          {props.productWithDiscount.stock === 0 ? (
             <Badge
               pill
               className="ml-1"
@@ -28,7 +28,7 @@ function DiscountsRow(props) {
               Sin existencias
             </Badge>
           ) : null}
-          {props.discount.discount.hasDiscount ? (
+          {props.productWithDiscount.price.discount.hasDiscount ? (
             <Badge
               title="Este producto tiene descuento"
               pill
@@ -36,22 +36,22 @@ function DiscountsRow(props) {
               variant="warning"
               style={{ fontFamily: "Arial" }}
             >
-              {props.discount.discount.percentage + "%"}
+              {props.productWithDiscount.price.discount.percentage + "%"}
             </Badge>
           ) : null}
         </td>
-        <td className="text-center">{"$" + props.discount.purchasePrice}</td>
-        <td className="text-center">{"$" + props.discount.salePrice}</td>
+        <td className="text-center">{"$" + props.productWithDiscount.price.latestPurchasePrice}</td>
+        <td className="text-center">{"$" + props.productWithDiscount.price.discount.salePrice}</td>
         <td className="text-center">
           {"$"}
-          {props.discount.salePrice - props.discount.purchasePrice}
+          {props.productWithDiscount.price.salePrice - props.productWithDiscount.price.latestPurchasePrice}
         </td>
         <td className="text-center">
-          {"$" + props.discount.discount.newPrice}
+          {"$" + props.productWithDiscount.price.discount.newPrice}
         </td>
         <td className="text-center">
           {"$"}
-          {props.discount.discount.newPrice - props.discount.purchasePrice}
+          {props.productWithDiscount.price.discount.newPrice - props.productWithDiscount.price.discount.purchasePrice}
         </td>
       </tr>
 
@@ -62,12 +62,12 @@ function DiscountsRow(props) {
         <Modal.Body>
           <Formik
             initialValues={{
-              _id: props.discount._id,
-              name: props.discount.name,
-              purchasePrice: props.discount.purchasePrice,
-              salePrice: props.discount.salePrice,
-              percentage: props.discount.discount.percentage,
-              newPrice: props.discount.discount.newPrice
+              _id: props.productWithDiscount._id,
+              name: props.productWithDiscount.name,
+              purchasePrice: props.productWithDiscount.price.latestPurchasePrice,
+              salePrice: props.productWithDiscount.price.salePrice,
+              percentage: props.productWithDiscount.price.discount.percentage,
+              newPrice: props.productWithDiscount.price.discount.newPrice
             }}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);

@@ -35,7 +35,7 @@ function ProductDetails(props) {
               { name: product.name, to: "active" }
             ]}
           />
-          <Container className="my-3">
+          <Container className="mt-3 py-3">
             <Row>
               {/* photo */}
               <Col md={5} className="text-center">

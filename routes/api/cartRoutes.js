@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const model = require("../../models");
 
-// fetchProductDetails
+// fetchCartProduct
 // matches with /api/cart/product/:productId
 router.get("/product/:productId", function(req, res) {
   model.Product.findById(req.params.productId)

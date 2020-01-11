@@ -28,9 +28,9 @@ function BagDropdown() {
             // temp product
             let product = res.data;
             product.qty = value.qty;
-            product.subTotal = product.discount.hasDiscount
-              ? product.discount.newPrice * value.qty
-              : product.salePrice * value.qty;
+            product.subTotal = product.price.discount.hasDiscount
+              ? product.price.discount.newPrice * value.qty
+              : product.price.salePrice * value.qty;
             // push temp product into fullCart
             fullCart.push(product);
             // "resolve" the promise and send the temp arr as a parameter

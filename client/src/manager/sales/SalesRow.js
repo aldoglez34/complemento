@@ -17,7 +17,7 @@ function SalesRow(props) {
     let text = [];
     props.sale.products.forEach(p => {
       let { qty, salePrice } = p;
-      let name = p.product.name;
+      let name = p.name;
       let x = qty
         .toString()
         .concat(" ", name, " a ", salePrice.toString(), "\n");
@@ -73,7 +73,6 @@ function SalesRow(props) {
                 {/* date */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    {console.log(props)}
                     <Form.Label>Fecha</Form.Label>
                     <Form.Control
                       disabled

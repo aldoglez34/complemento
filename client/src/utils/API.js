@@ -113,20 +113,6 @@ export default {
     return axios.get("/api/manager/" + uid);
   },
 
-  // categories
-
-  fetchCategoriesManager: function() {
-    return axios.get("/api/manager/categories/all");
-  },
-
-  updateCategory: function(category) {
-    return axios.put("/api/manager/categories/update", category);
-  },
-
-  newCategory: function(data) {
-    return axios.post("/api/manager/categories/new", data);
-  },
-
   // products
 
   fetchManagerProducts: function() {
@@ -163,6 +149,20 @@ export default {
     return axios.put("/api/manager/discounts/update", discount);
   },
 
+  // categories
+
+  fetchCategoriesManager: function() {
+    return axios.get("/api/manager/categories/all");
+  },
+
+  updateCategory: function(category) {
+    return axios.put("/api/manager/categories/update", category);
+  },
+
+  newCategory: function(data) {
+    return axios.post("/api/manager/categories/new", data);
+  },
+
   // providers
 
   fetchProvidersManager: function() {
@@ -194,7 +194,13 @@ export default {
   },
 
   // sales
+
   fetchSales: function() {
     return axios.get("/api/manager/sales/all");
+  },
+
+  // purchases
+  fetchPurchases: function() {
+    return axios.get("/api/manager/purchases/all");
   }
 };

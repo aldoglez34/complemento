@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Spinner, Row } from "react-bootstrap";
+import { Table, Spinner } from "react-bootstrap";
 import ManagerLayout from "../ManagerLayout";
 import API from "../../utils/API";
 import ProductRow from "./ProductRow";
@@ -14,11 +14,7 @@ function Products() {
   }, []);
 
   return (
-    <ManagerLayout
-      leftBarActive="Productos"
-      title="Productos"
-      button={{ text: "Producto", to: "/manager/products/create" }}
-    >
+    <ManagerLayout leftBarActive="Productos" title="Productos">
       {products ? (
         products.length ? (
           <>

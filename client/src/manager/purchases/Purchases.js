@@ -2,36 +2,36 @@ import React, { useState, useEffect } from "react";
 import ManagerLayout from "../ManagerLayout";
 import API from "../../utils/API";
 import { Table, Spinner } from "react-bootstrap";
-import CategoriesRow from "./CategoriesRow";
+import PurchasesRow from "./PurchasesRow";
 
-function Categories() {
-  const [categories, setCategories] = useState();
+function Purchases() {
+  const [purchases, setPurchases] = useState();
 
   useEffect(() => {
-    API.fetchCategoriesManager()
-      .then(res => setCategories(res.data))
+    API.fetchPurchases()
+      .then(res => setPurchases(res.data))
       .catch(err => console.log(err));
   }, []);
 
   return (
     <ManagerLayout
-      leftBarActive="Categorías"
-      title="Categorías"
-      button={{ text: "Nueva categoría", to: "/manager/categories/create" }}
+      button={{ text: "Nueva compra", to: "/manager/purchases/create" }}
+      leftBarActive="Compras"
+      title="Compras"
     >
-      {categories ? (
-        categories.length ? (
+      {purchases ? (
+        purchases.length ? (
           <>
             <Table striped hover size="sm" responsive variant="white">
               <thead>
                 <tr>
-                  <th className="text-center border-0">Nombre</th>
-                  <th className="text-center border-0">Productos</th>
+                  <th className="text-center border-0">Gran total</th>
+                  <th className="text-center border-0">Fecha</th>
                 </tr>
               </thead>
               <tbody>
-                {categories.map(c => {
-                  return <CategoriesRow key={c._id} category={c} />;
+                {purchases.map(p => {
+                  return <PurchasesRow key={p._id} purchase={p} />;
                 })}
               </tbody>
             </Table>
@@ -48,4 +48,4 @@ function Categories() {
   );
 }
 
-export default Categories;
+export default Purchases;

@@ -32,7 +32,6 @@ function ManagerLayout(props) {
             <Col md={4} className="mt-1 mt-md-0 text-md-right">
               {props.button ? (
                 <Button variant="outline-success" href={props.button.to}>
-                  <i className="fas fa-plus-circle mr-1" />
                   {props.button.text}
                 </Button>
               ) : null}

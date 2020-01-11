@@ -70,7 +70,7 @@ function SearchBar(props) {
         maxLength="50"
         autoFocus
         onChange={handleEditInputChange}
-        className="mr-sm-2 border-0"
+        className="mr-sm-2 border-0 w-50"
         style={{ outline: 0 }}
       />
       {renderSuggestions()}

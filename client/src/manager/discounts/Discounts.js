@@ -5,11 +5,11 @@ import { Table, Spinner } from "react-bootstrap";
 import DiscountsRow from "./DiscountsRow";
 
 function Discounts() {
-  const [discounts, setDiscounts] = useState();
+  const [productsWithDiscount, setProductsWithDiscount] = useState();
 
   useEffect(() => {
     API.fetchDiscountsManager()
-      .then(res => setDiscounts(res.data))
+      .then(res => setProductsWithDiscount(res.data))
       .catch(err => console.log(err));
   }, []);
 
@@ -17,10 +17,10 @@ function Discounts() {
     <ManagerLayout
       leftBarActive="Descuentos"
       title="Descuentos"
-      button={{ text: "Descuento", to: "/manager/discounts/create" }}
+      button={{ text: "Nuevo descuento", to: "/manager/discounts/create" }}
     >
-      {discounts ? (
-        discounts.length ? (
+      {productsWithDiscount ? (
+        productsWithDiscount.length ? (
           <>
             <Table striped hover size="sm" responsive variant="white">
               <thead>
@@ -34,8 +34,8 @@ function Discounts() {
                 </tr>
               </thead>
               <tbody>
-                {discounts.map(d => {
-                  return <DiscountsRow key={d._id} discount={d} />;
+                {productsWithDiscount.map(d => {
+                  return <DiscountsRow key={d._id} productWithDiscount={d} />;
                 })}
               </tbody>
             </Table>

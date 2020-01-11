@@ -142,6 +142,38 @@ const products = [
       "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
     price: {
       salePrice: 75,
+      latestPurchasePrice: 30,
+      discount: {
+        hasDiscount: true,
+        percentage: 15,
+        newPrice: 63.75
+      }
+    },
+    stock: Math.floor(Math.random() * 10),
+    priority: priority[Math.floor(Math.random() * 2)],
+    sufferings: [
+      "Infección de la piel",
+      "Bronquiolitis",
+      "Dolor",
+      "Resfriado común"
+    ],
+    ingredients: [
+      "Alcohol Bencilico",
+      "Etilexil gliceril",
+      "Fragancia",
+      "Ácido cítrico"
+    ],
+    provider: providers[0]
+  },
+  {
+    category: categories[0],
+    brand: brand[0],
+    name: "Glutamax Gold",
+    content: content[Math.floor(Math.random() * 10)],
+    comments:
+      "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
+    price: {
+      salePrice: 75,
       latestPurchasePrice: 180,
       discount: {
         hasDiscount: true,
@@ -164,6 +196,312 @@ const products = [
       "Ácido cítrico"
     ],
     provider: providers[0]
+  },
+  {
+    category: categories[0],
+    brand: brand[0],
+    name: "Acido Glutamico",
+    content: content[Math.floor(Math.random() * 10)],
+    comments:
+      "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
+    price: {
+      salePrice: 75,
+      latestPurchasePrice: 180,
+      discount: {
+        hasDiscount: true,
+        percentage: 15,
+        newPrice: 63.75
+      }
+    },
+    stock: Math.floor(Math.random() * 10),
+    priority: priority[Math.floor(Math.random() * 2)],
+    sufferings: [
+      "Infección de la piel",
+      "Bronquiolitis",
+      "Dolor",
+      "Resfriado común"
+    ],
+    ingredients: [
+      "Alcohol Bencilico",
+      "Etilexil gliceril",
+      "Fragancia",
+      "Ácido cítrico"
+    ],
+    provider: providers[0]
+  },
+  {
+    category: categories[0],
+    brand: brand[0],
+    name: "Ginseng Sanjing Royal Jelly",
+    content: content[Math.floor(Math.random() * 10)],
+    comments:
+      "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
+    price: {
+      salePrice: 75,
+      latestPurchasePrice: 180,
+      discount: {
+        hasDiscount: true,
+        percentage: 15,
+        newPrice: 63.75
+      }
+    },
+    stock: Math.floor(Math.random() * 10),
+    priority: priority[Math.floor(Math.random() * 2)],
+    sufferings: [
+      "Infección de la piel",
+      "Bronquiolitis",
+      "Dolor",
+      "Resfriado común"
+    ],
+    ingredients: [
+      "Alcohol Bencilico",
+      "Etilexil gliceril",
+      "Fragancia",
+      "Ácido cítrico"
+    ],
+    provider: providers[0]
+  },
+  {
+    category: categories[0],
+    brand: brand[0],
+    name: "Jalea Real Bee",
+    content: content[Math.floor(Math.random() * 10)],
+    comments:
+      "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
+    price: {
+      salePrice: 230,
+      latestPurchasePrice: 180,
+      discount: {
+        hasDiscount: false
+      }
+    },
+    stock: Math.floor(Math.random() * 10),
+    priority: priority[Math.floor(Math.random() * 2)],
+    sufferings: [
+      "Infección de la piel",
+      "Bronquiolitis",
+      "Dolor",
+      "Resfriado común"
+    ],
+    ingredients: [
+      "Alcohol Bencilico",
+      "Etilexil gliceril",
+      "Fragancia",
+      "Ácido cítrico"
+    ],
+    provider: providers[0]
+  },
+  {
+    category: categories[0],
+    brand: brand[0],
+    name: "Vinguifor",
+    content: content[Math.floor(Math.random() * 10)],
+    comments:
+      "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
+    price: {
+      salePrice: 230,
+      latestPurchasePrice: 180,
+      discount: {
+        hasDiscount: false
+      }
+    },
+    stock: Math.floor(Math.random() * 10),
+    priority: priority[Math.floor(Math.random() * 2)],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
+    provider: providers[0]
+  },
+  {
+    category: categories[0],
+    brand: brand[0],
+    name: "Tiamina",
+    content: content[Math.floor(Math.random() * 10)],
+    comments:
+      "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
+    price: {
+      salePrice: 230,
+      latestPurchasePrice: 180,
+      discount: {
+        hasDiscount: false
+      }
+    },
+    stock: Math.floor(Math.random() * 10),
+    priority: priority[Math.floor(Math.random() * 2)],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
+    provider: providers[0]
+  },
+  // =====================================================================================
+  // category 1
+  {
+    category: categories[1],
+    brand: brand[1],
+    name: "Jalea Real",
+    content: content[Math.floor(Math.random() * 10)],
+    comments:
+      "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
+    price: {
+      salePrice: 230,
+      latestPurchasePrice: 180,
+      discount: {
+        hasDiscount: false
+      }
+    },
+    stock: Math.floor(Math.random() * 10),
+    priority: priority[Math.floor(Math.random() * 2)],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
+    provider: providers[1]
+  },
+  {
+    category: categories[1],
+    brand: brand[1],
+    name: "Omega 3, 6, 9",
+    content: content[Math.floor(Math.random() * 10)],
+    comments:
+      "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
+    price: {
+      salePrice: 230,
+      latestPurchasePrice: 180,
+      discount: {
+        hasDiscount: false
+      }
+    },
+    stock: Math.floor(Math.random() * 10),
+    priority: priority[Math.floor(Math.random() * 2)],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
+    provider: providers[1]
+  },
+  {
+    category: categories[1],
+    brand: brand[1],
+    name: "Omega 3 De Salmón",
+    content: content[Math.floor(Math.random() * 10)],
+    comments:
+      "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
+    price: {
+      salePrice: 230,
+      latestPurchasePrice: 180,
+      discount: {
+        hasDiscount: false
+      }
+    },
+    stock: Math.floor(Math.random() * 10),
+    priority: priority[Math.floor(Math.random() * 2)],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
+    provider: providers[1]
+  },
+  {
+    category: categories[1],
+    brand: brand[1],
+    name: "Garlic Ajo Deodorizado",
+    content: content[Math.floor(Math.random() * 10)],
+    comments:
+      "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
+    price: {
+      salePrice: 230,
+      latestPurchasePrice: 180,
+      discount: {
+        hasDiscount: false
+      }
+    },
+    stock: Math.floor(Math.random() * 10),
+    priority: priority[Math.floor(Math.random() * 2)],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
+    provider: providers[1]
+  },
+  {
+    category: categories[1],
+    brand: brand[1],
+    name: "Chia",
+    content: content[Math.floor(Math.random() * 10)],
+    comments:
+      "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
+    price: {
+      salePrice: 230,
+      latestPurchasePrice: 180,
+      discount: {
+        hasDiscount: false
+      }
+    },
+    stock: Math.floor(Math.random() * 10),
+    priority: priority[Math.floor(Math.random() * 2)],
+    sufferings: [
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)],
+      sufferings[Math.floor(Math.random() * 23)]
+    ],
+    ingredients: [
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)],
+      ingredients[Math.floor(Math.random() * 23)]
+    ],
+    provider: providers[1]
   }
 ];
 

@@ -53,23 +53,23 @@ function AddToBagButton(props) {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Producto agregado</Modal.Title>
-        </Modal.Header>
         <Modal.Body>
-          El producto <strong>{props.product.name}</strong> ha sido agregado
-          exitosamente a tu bolsa de compras.
+          <h4 className="mb-3">Producto agreado a tu bolsa</h4>
+          <div className="mb-3">
+            El producto <strong>{props.product.name}</strong> ha sido agregado
+            exitosamente a tu bolsa de compras.
+          </div>
+          <div className="d-flex flex-row">
+            <Button variant="outline-success" onClick={handleClose}>
+              <i className="fas fa-angle-double-left mr-1" />
+              Seguir comprando
+            </Button>
+            <Button className="ml-auto" variant="outline-danger" href="/cart">
+              Proceder con el pago
+              <i className="fas fa-angle-double-right ml-1" />
+            </Button>
+          </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="success" onClick={handleClose}>
-            <i className="fas fa-angle-double-left mr-1" />
-            Seguir comprando
-          </Button>
-          <Button className="ml-auto" variant="danger" href="/cart">
-            Proceder con el pago
-            <i className="fas fa-angle-double-right ml-1" />
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );

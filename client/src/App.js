@@ -32,6 +32,7 @@ import Messages from "./manager/messages/Messages";
 import Products from "./manager/products/Products";
 import ProductsCreate from "./manager/products/ProductsCreate";
 import Sales from "./manager/sales/Sales";
+import Purchases from "./manager/purchases/Purchases";
 
 function App() {
   const client = useSelector(state => state.client);
@@ -123,6 +124,8 @@ function App() {
             <Route exact path="/manager/messages" component={Messages} />
             {/* sales */}
             <Route exact path="/manager/sales" component={Sales} />
+            {/* purchases */}
+            <Route exact path="/manager/purchases" component={Purchases} />
           </>
         ) : (
           <>
