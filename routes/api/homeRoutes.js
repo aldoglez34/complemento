@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const model = require("../../models");
 
-// fetchPrioritized
+// fetchPrioritized()
 // matches with /api/home/prioritized
 router.get("/prioritized", function(req, res) {
   model.Product.find({ priority: true })
@@ -12,7 +12,7 @@ router.get("/prioritized", function(req, res) {
     .catch(err => res.json(err));
 });
 
-// fetchProductsWithDiscount
+// fetchProductsWithDiscount()
 // matches with /api/home/discounts
 router.get("/discounts", function(req, res) {
   model.Product.find({ "price.discount.hasDiscount": true })
@@ -23,7 +23,7 @@ router.get("/discounts", function(req, res) {
     .catch(err => res.json(err));
 });
 
-// fetchBestSellers
+// fetchBestSellers()
 // matches with /api/home/bestsellers
 router.get("/bestsellers", function(req, res) {
   model.Product.find({})

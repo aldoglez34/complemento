@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const model = require("../../models");
 
-// fetchCartProduct
+// fetchCartProduct()
 // matches with /api/cart/product/:productId
 router.get("/product/:productId", function(req, res) {
   model.Product.findById(req.params.productId)
@@ -10,7 +10,7 @@ router.get("/product/:productId", function(req, res) {
     .catch(err => res.json(err));
 });
 
-// buyProducts
+// buyProducts()
 // matches with /api/cart/buy
 router.post("/buy", function(req, res) {
   let products = [];
@@ -70,7 +70,7 @@ router.post("/buy", function(req, res) {
     .catch(err => res.json(err));
 });
 
-// updateStock
+// updateStock()
 // matches with /api/cart/update/stock
 router.put("/update/stock", function(req, res) {
   let updateAll = new Promise((resolve, reject) => {
