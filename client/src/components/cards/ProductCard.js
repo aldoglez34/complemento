@@ -5,11 +5,7 @@ import FavButton from "../buttons/FavButton";
 import AddToBagButton from "../buttons/AddToBagButton";
 import "./productcards.scss";
 
-ProductCard.propTypes = {
-  product: PropTypes.object.isRequired
-};
-
-function ProductCard(props) {
+const ProductCard = React.memo(function ProductCard(props) {
   return (
     <Card id="productcardstyle" className="mt-2 mb-4 mx-1 shadow-sm border-0">
       <a className="text-light" href={"/product/details/" + props.product._id}>
@@ -74,6 +70,10 @@ function ProductCard(props) {
       </Card.Body>
     </Card>
   );
-}
+});
+
+ProductCard.propTypes = {
+  product: PropTypes.object.isRequired
+};
 
 export default ProductCard;

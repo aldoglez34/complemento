@@ -1,13 +1,13 @@
 .breadcrumbItem {
-  color: ghostwhite;
-  font-size: 17px;
-  text-decoration: underline;
+  color: whitesmoke;
+  // font-size: 17px;
+  // text-decoration: underline;
   &:hover {
     color: #edcb58;
   }
   &.active {
     text-decoration: none;
-    color: ghostwhite;
+    color: gainsboro;
   }
 }
 

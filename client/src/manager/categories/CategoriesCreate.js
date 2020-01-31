@@ -5,7 +5,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import API from "../../utils/API";
 
-function CategoriesCreate(props) {
+const CategoriesCreate = React.memo(function CategoriesCreate(props) {
   const yupschema = yup.object({
     name: yup
       .string()
@@ -92,6 +92,6 @@ function CategoriesCreate(props) {
       </Formik>
     </ManagerLayout>
   );
-}
+});
 
 export default CategoriesCreate;

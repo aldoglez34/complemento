@@ -5,7 +5,7 @@ import { Container, Spinner } from "react-bootstrap";
 import API from "../utils/API";
 import ProductCard from "../components/cards/ProductCard";
 
-function ClientFavorites() {
+const ClientFavorites = React.memo(function ClientFavorites() {
   const client = useSelector(state => state.client);
   const [isLoading, setIsLoading] = useState(true);
   const [favorites, setFavorites] = useState();
@@ -40,6 +40,6 @@ function ClientFavorites() {
       </Container>
     </Layout>
   );
-}
+});
 
 export default ClientFavorites;

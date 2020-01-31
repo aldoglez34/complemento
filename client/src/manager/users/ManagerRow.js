@@ -3,11 +3,7 @@ import { Modal, Form, Col } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 
-ManagerRow.propTypes = {
-  manager: PropTypes.object.isRequired
-};
-
-function ManagerRow(props) {
+const ManagerRow = React.memo(function ManagerRow(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -99,6 +95,10 @@ function ManagerRow(props) {
       </Modal>
     </>
   );
-}
+});
+
+ManagerRow.propTypes = {
+  manager: PropTypes.object.isRequired
+};
 
 export default ManagerRow;

@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import ProductCard from "../../components/cards/ProductCard";
 import { Spinner, Carousel } from "react-bootstrap";
 
-function SimilarProducts(props) {
+const SimilarProducts = React.memo(function SimilarProducts(props) {
   const [similar, setSimilar] = useState([]);
   const [pagesbg, setPagesBG] = useState(0);
   const [pagessm, setPagesSM] = useState(0);
@@ -90,6 +90,6 @@ function SimilarProducts(props) {
       <Spinner variant="warning" animation="grow" role="status" />
     </div>
   );
-}
+});
 
 export default SimilarProducts;

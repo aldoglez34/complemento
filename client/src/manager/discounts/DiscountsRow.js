@@ -3,11 +3,7 @@ import { Button, Modal, Form, Col, InputGroup, Badge } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 
-DiscountsRow.propTypes = {
-  productWithDiscount: PropTypes.object.isRequired
-};
-
-function DiscountsRow(props) {
+const DiscountsRow = React.memo(function DiscountsRow(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -40,18 +36,24 @@ function DiscountsRow(props) {
             </Badge>
           ) : null}
         </td>
-        <td className="text-center">{"$" + props.productWithDiscount.price.latestPurchasePrice}</td>
-        <td className="text-center">{"$" + props.productWithDiscount.price.discount.salePrice}</td>
+        <td className="text-center">
+          {"$" + props.productWithDiscount.price.latestPurchasePrice}
+        </td>
+        <td className="text-center">
+          {"$" + props.productWithDiscount.price.discount.salePrice}
+        </td>
         <td className="text-center">
           {"$"}
-          {props.productWithDiscount.price.salePrice - props.productWithDiscount.price.latestPurchasePrice}
+          {props.productWithDiscount.price.salePrice -
+            props.productWithDiscount.price.latestPurchasePrice}
         </td>
         <td className="text-center">
           {"$" + props.productWithDiscount.price.discount.newPrice}
         </td>
         <td className="text-center">
           {"$"}
-          {props.productWithDiscount.price.discount.newPrice - props.productWithDiscount.price.discount.purchasePrice}
+          {props.productWithDiscount.price.discount.newPrice -
+            props.productWithDiscount.price.discount.purchasePrice}
         </td>
       </tr>
 
@@ -64,7 +66,8 @@ function DiscountsRow(props) {
             initialValues={{
               _id: props.productWithDiscount._id,
               name: props.productWithDiscount.name,
-              purchasePrice: props.productWithDiscount.price.latestPurchasePrice,
+              purchasePrice:
+                props.productWithDiscount.price.latestPurchasePrice,
               salePrice: props.productWithDiscount.price.salePrice,
               percentage: props.productWithDiscount.price.discount.percentage,
               newPrice: props.productWithDiscount.price.discount.newPrice
@@ -248,6 +251,10 @@ function DiscountsRow(props) {
       </Modal>
     </>
   );
-}
+});
+
+DiscountsRow.propTypes = {
+  productWithDiscount: PropTypes.object.isRequired
+};
 
 export default DiscountsRow;

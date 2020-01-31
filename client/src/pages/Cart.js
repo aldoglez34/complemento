@@ -14,7 +14,7 @@ import {
 import Layout from "../components/Layout";
 import API from "../utils/API";
 
-function Cart() {
+const Cart = React.memo(function Cart() {
   const dispatch = useDispatch();
 
   const client = useSelector(state => state.client);
@@ -274,6 +274,6 @@ function Cart() {
       </Container>
     </Layout>
   );
-}
+});
 
 export default Cart;

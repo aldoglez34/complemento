@@ -5,7 +5,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import API from "../../utils/API";
 
-function HelpButton() {
+const HelpButton = React.memo(function HelpButton() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -162,6 +162,6 @@ function HelpButton() {
       </Modal>
     </>
   );
-}
+});
 
 export default HelpButton;

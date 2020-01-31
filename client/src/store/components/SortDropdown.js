@@ -2,12 +2,7 @@ import React from "react";
 import { Dropdown } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-SortDropdown.propTypes = {
-  active: PropTypes.string.isRequired,
-  applySorting: PropTypes.func.isRequired
-};
-
-function SortDropdown(props) {
+const SortDropdown = React.memo(function SortDropdown(props) {
   return (
     <>
       {/* big dropdow */}
@@ -105,6 +100,11 @@ function SortDropdown(props) {
       </div>
     </>
   );
-}
+});
+
+SortDropdown.propTypes = {
+  active: PropTypes.string.isRequired,
+  applySorting: PropTypes.func.isRequired
+};
 
 export default SortDropdown;

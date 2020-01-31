@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout";
 
-function NoMatch() {
+const NoMatch = React.memo(function NoMatch() {
   return (
     <Layout>
       <div className="text-center p-4 mt-5">
@@ -11,6 +11,6 @@ function NoMatch() {
       </div>
     </Layout>
   );
-}
+});
 
 export default NoMatch;

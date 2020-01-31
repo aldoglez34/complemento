@@ -10,7 +10,7 @@ import ScrollButton from "../components/misc/ScrollButton";
 import API from "../utils/API";
 import fire from "../firebase/fire";
 
-function SignUp(props) {
+const SignUp = React.memo(function SignUp(props) {
   const dispatch = useDispatch();
 
   const signupSchema = yup.object({
@@ -473,6 +473,6 @@ function SignUp(props) {
       <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
     </Layout>
   );
-}
+});
 
 export default SignUp;

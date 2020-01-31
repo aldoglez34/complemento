@@ -5,11 +5,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import API from "../../utils/API";
 
-CategoriesRow.propTypes = {
-  category: PropTypes.object.isRequired
-};
-
-function CategoriesRow(props) {
+const CategoriesRow = React.memo(function CategoriesRow(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -138,6 +134,10 @@ function CategoriesRow(props) {
       </Modal>
     </>
   );
-}
+});
+
+CategoriesRow.propTypes = {
+  category: PropTypes.object.isRequired
+};
 
 export default CategoriesRow;

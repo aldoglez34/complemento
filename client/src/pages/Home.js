@@ -9,7 +9,7 @@ import HomeBestSellers from "./components/HomeBestSellers";
 import WelcomeJumbotron from "./components/WelcomeJumbotron";
 import "./home.scss";
 
-function Home() {
+const Home = React.memo(function Home() {
   return (
     <Layout>
       {/* welcome title */}
@@ -88,6 +88,6 @@ function Home() {
       <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
     </Layout>
   );
-}
+});
 
 export default Home;

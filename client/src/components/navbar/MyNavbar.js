@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import API from "../../utils/API";
 import "./mynavbar.scss";
 
-function MyNavbar(props) {
+const MyNavbar = React.memo(function MyNavbar(props) {
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -31,7 +31,7 @@ function MyNavbar(props) {
       // fixed="top"
       expand="lg"
       className="shadow"
-      style={{ backgroundColor: "#264341" }}
+      style={{ backgroundColor: "#264341", height: "60px" }}
     >
       {/* logo (medium to large) */}
       <Navbar.Brand
@@ -85,6 +85,6 @@ function MyNavbar(props) {
       </Navbar.Collapse>
     </Navbar>
   );
-}
+});
 
 export default MyNavbar;

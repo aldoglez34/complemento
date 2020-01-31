@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import { Table, Spinner } from "react-bootstrap";
 import DiscountsRow from "./DiscountsRow";
 
-function Discounts() {
+const Discounts = React.memo(function Discounts() {
   const [productsWithDiscount, setProductsWithDiscount] = useState();
 
   useEffect(() => {
@@ -50,6 +50,6 @@ function Discounts() {
       )}
     </ManagerLayout>
   );
-}
+});
 
 export default Discounts;

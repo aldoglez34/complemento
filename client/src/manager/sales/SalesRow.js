@@ -3,11 +3,7 @@ import { Modal, Form, Col, InputGroup } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 
-SalesRow.propTypes = {
-  sale: PropTypes.object.isRequired
-};
-
-function SalesRow(props) {
+const SalesRow = React.memo(function SalesRow(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -273,6 +269,10 @@ function SalesRow(props) {
       </Modal>
     </>
   );
-}
+});
+
+SalesRow.propTypes = {
+  sale: PropTypes.object.isRequired
+};
 
 export default SalesRow;

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import fire from "../../firebase/fire";
 import * as managerActions from "../../redux/actions/manager";
 
-function ManagerDropdown() {
+const ManagerDropdown = React.memo(function ManagerDropdown() {
   const dispatch = useDispatch();
 
   const manager = useSelector(state => state.manager);
@@ -49,6 +49,6 @@ function ManagerDropdown() {
       </Dropdown.Menu>
     </Dropdown>
   );
-}
+});
 
 export default ManagerDropdown;

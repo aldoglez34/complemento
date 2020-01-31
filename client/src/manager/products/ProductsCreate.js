@@ -5,7 +5,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import API from "../../utils/API";
 
-function ProductCreate(props) {
+const ProductCreate = React.memo(function ProductCreate(props) {
   const [categories, setCategories] = useState();
   const [providers, setProviders] = useState();
 
@@ -495,6 +495,6 @@ function ProductCreate(props) {
       )}
     </ManagerLayout>
   );
-}
+});
 
 export default ProductCreate;

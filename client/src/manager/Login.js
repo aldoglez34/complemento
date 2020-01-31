@@ -8,7 +8,7 @@ import * as managerActions from "../redux/actions/manager";
 import API from "../utils/API";
 const firebase = require("firebase/app");
 
-function Login(props) {
+const Login = React.memo(function Login(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -152,6 +152,6 @@ function Login(props) {
       </Row>
     </Container>
   );
-}
+});
 
 export default Login;

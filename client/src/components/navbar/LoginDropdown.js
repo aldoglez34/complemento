@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import fire from "../../firebase/fire";
 const firebase = require("firebase/app");
 
-function LoginDropdown(props) {
+const LoginDropdown = React.memo(function LoginDropdown(props) {
   const dispatch = useDispatch();
 
   const loginSchema = yup.object({
@@ -211,6 +211,6 @@ function LoginDropdown(props) {
       </Formik>
     </>
   );
-}
+});
 
 export default LoginDropdown;

@@ -5,11 +5,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import API from "../../utils/API";
 
-ProvidersRow.propTypes = {
-  provider: PropTypes.object.isRequired
-};
-
-function ProvidersRow(props) {
+const ProvidersRow = React.memo(function ProvidersRow(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -233,6 +229,10 @@ function ProvidersRow(props) {
       </Modal>
     </>
   );
-}
+});
+
+ProvidersRow.propTypes = {
+  provider: PropTypes.object.isRequired
+};
 
 export default ProvidersRow;

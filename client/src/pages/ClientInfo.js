@@ -9,7 +9,7 @@ import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
 import * as clientActions from "../redux/actions/client";
 
-function ClientInfo() {
+const ClientInfo = React.memo(function ClientInfo() {
   const client = useSelector(state => state.client);
   const dispatch = useDispatch();
 
@@ -379,6 +379,6 @@ function ClientInfo() {
       <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
     </Layout>
   ) : null;
-}
+});
 
 export default ClientInfo;

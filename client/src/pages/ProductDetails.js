@@ -9,7 +9,7 @@ import FavButton from "../components/buttons/FavButton";
 import AddToBagButton from "../components/buttons/AddToBagButton";
 import SimilarProducts from "./components/SimilarProducts";
 
-function ProductDetails(props) {
+const ProductDetails = React.memo(function ProductDetails(props) {
   const [product, setProduct] = useState();
 
   useEffect(() => {
@@ -159,6 +159,6 @@ function ProductDetails(props) {
       )}
     </Layout>
   );
-}
+});
 
 export default ProductDetails;

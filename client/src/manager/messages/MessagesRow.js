@@ -3,11 +3,7 @@ import { Modal, Form, Col } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 
-MessagesRow.propTypes = {
-  message: PropTypes.object.isRequired
-};
-
-function MessagesRow(props) {
+const MessagesRow = React.memo(function MessagesRow(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -108,6 +104,10 @@ function MessagesRow(props) {
       </Modal>
     </>
   );
-}
+});
+
+MessagesRow.propTypes = {
+  message: PropTypes.object.isRequired
+};
 
 export default MessagesRow;

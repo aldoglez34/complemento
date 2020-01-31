@@ -6,12 +6,7 @@ import API from "../../utils/API";
 import * as clientActions from "../../redux/actions/client";
 import "./favbutton.scss";
 
-FavButton.propTypes = {
-  isBlock: PropTypes.bool.isRequired,
-  product: PropTypes.object.isRequired
-};
-
-function FavButton(props) {
+const FavButton = React.memo(function FavButton(props) {
   const dispatch = useDispatch();
 
   const isClientLogged = useSelector(state => state.client.isLogged);
@@ -84,6 +79,11 @@ function FavButton(props) {
       </Modal>
     </>
   );
-}
+});
+
+FavButton.propTypes = {
+  isBlock: PropTypes.bool.isRequired,
+  product: PropTypes.object.isRequired
+};
 
 export default FavButton;

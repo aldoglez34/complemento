@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import { Table, Spinner } from "react-bootstrap";
 import SalesRow from "./SalesRow";
 
-function Sales() {
+const Sales = React.memo(function Sales() {
   const [sales, setSales] = useState();
 
   useEffect(() => {
@@ -46,6 +46,6 @@ function Sales() {
       )}
     </ManagerLayout>
   );
-}
+});
 
 export default Sales;

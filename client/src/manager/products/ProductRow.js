@@ -5,11 +5,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import API from "../../utils/API";
 
-ProductRow.propTypes = {
-  product: PropTypes.object.isRequired
-};
-
-function ProductRow(props) {
+const ProductRow = React.memo(function ProductRow(props) {
   const [show, setshow] = useState(false);
 
   const handleClose = () => setshow(false);
@@ -582,6 +578,10 @@ function ProductRow(props) {
       </Modal>
     </>
   );
-}
+});
+
+ProductRow.propTypes = {
+  product: PropTypes.object.isRequired
+};
 
 export default ProductRow;

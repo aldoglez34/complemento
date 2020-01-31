@@ -1,7 +1,7 @@
 import React from "react";
 import { Jumbotron, Container, Button } from "react-bootstrap";
 
-function WelcomeJumbotron() {
+const WelcomeJumbotron = React.memo(function WelcomeJumbotron() {
   const styles = {
     jumbotron: {
       backgroundImage: "url('images/carousel3.jpg')",
@@ -28,6 +28,6 @@ function WelcomeJumbotron() {
       </Container>
     </Jumbotron>
   );
-}
+});
 
 export default WelcomeJumbotron;

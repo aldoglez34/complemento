@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import { Table, Spinner } from "react-bootstrap";
 import ProvidersRow from "./ProvidersRow";
 
-function Providers() {
+const Providers = React.memo(function Providers() {
   const [providers, setProviders] = useState();
 
   useEffect(() => {
@@ -50,6 +50,6 @@ function Providers() {
       )}
     </ManagerLayout>
   );
-}
+});
 
 export default Providers;

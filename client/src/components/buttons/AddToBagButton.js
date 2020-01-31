@@ -4,11 +4,7 @@ import * as cartActions from "../../redux/actions/cart";
 import { Button, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-AddToBagButton.propTypes = {
-  product: PropTypes.object.isRequired
-};
-
-function AddToBagButton(props) {
+const AddToBagButton = React.memo(function AddToBagButton(props) {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
 
@@ -73,6 +69,10 @@ function AddToBagButton(props) {
       </Modal>
     </>
   );
-}
+});
+
+AddToBagButton.propTypes = {
+  product: PropTypes.object.isRequired
+};
 
 export default AddToBagButton;

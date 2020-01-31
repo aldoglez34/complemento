@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Nav, Col, Button } from "react-bootstrap";
 import ManagerDropdown from "./ManagerDropdown";
 
-function TopHelperNav(props) {
+const TopHelperNav = React.memo(function TopHelperNav(props) {
   return (
     <div className="d-none d-md-block">
       <Navbar id="topHelperStyle">
@@ -29,6 +29,6 @@ function TopHelperNav(props) {
       </Navbar>
     </div>
   );
-}
+});
 
 export default TopHelperNav;

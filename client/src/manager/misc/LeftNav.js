@@ -1,7 +1,7 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
 
-function LeftNav(props) {
+const LeftNav = React.memo(function LeftNav(props) {
   return (
     <Nav className="d-none d-lg-flex flex-column h-100" id="verticalNavStyle">
       <h2
@@ -152,6 +152,6 @@ function LeftNav(props) {
       </Nav.Link>
     </Nav>
   );
-}
+});
 
 export default LeftNav;

@@ -2,11 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Form, FormControl } from "react-bootstrap";
 
-SearchBar.propTypes = {
-  items: PropTypes.array.isRequired
-};
-
-function SearchBar(props) {
+const SearchBar = React.memo(function SearchBar(props) {
   const [suggestions, setSuggestions] = useState([]);
 
   const node = useRef();
@@ -76,6 +72,10 @@ function SearchBar(props) {
       {renderSuggestions()}
     </Form>
   );
-}
+});
+
+SearchBar.propTypes = {
+  items: PropTypes.array.isRequired
+};
 
 export default SearchBar;

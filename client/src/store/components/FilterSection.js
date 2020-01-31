@@ -2,13 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Navbar, Nav, Badge } from "react-bootstrap";
 
-FilterSection.propTypes = {
-  categories: PropTypes.array.isRequired,
-  brands: PropTypes.array.isRequired,
-  filterSelected: PropTypes.string
-};
-
-function FilterSection(props) {
+const FilterSection = React.memo(function FilterSection(props) {
   return (
     <Navbar
       expand="md"
@@ -82,6 +76,12 @@ function FilterSection(props) {
       </Navbar.Collapse>
     </Navbar>
   );
-}
+});
+
+FilterSection.propTypes = {
+  categories: PropTypes.array.isRequired,
+  brands: PropTypes.array.isRequired,
+  filterSelected: PropTypes.string
+};
 
 export default FilterSection;

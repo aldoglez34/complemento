@@ -4,7 +4,7 @@ import { Table, Spinner } from "react-bootstrap";
 import API from "../../utils/API";
 import DiscountsCreateRow from "./DiscountsCreateRow";
 
-function DiscountsCreate() {
+const DiscountsCreate = React.memo(function DiscountsCreate() {
   const [notdiscounts, setNotDiscounts] = useState();
 
   useEffect(() => {
@@ -50,6 +50,6 @@ function DiscountsCreate() {
       )}
     </ManagerLayout>
   );
-}
+});
 
 export default DiscountsCreate;

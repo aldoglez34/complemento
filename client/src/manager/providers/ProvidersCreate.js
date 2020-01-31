@@ -5,7 +5,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import API from "../../utils/API";
 
-function ProvidersCreate(props) {
+const ProvidersCreate = React.memo(function ProvidersCreate(props) {
   const yupschema = yup.object({
     name: yup
       .string()
@@ -213,6 +213,6 @@ function ProvidersCreate(props) {
       </Formik>
     </ManagerLayout>
   );
-}
+});
 
 export default ProvidersCreate;

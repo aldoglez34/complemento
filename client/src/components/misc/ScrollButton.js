@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import "./scrollButton.scss";
 
-class ScrollButton extends Component {
+class ScrollButton extends PureComponent {
   state = {
     intervalId: 0
   };

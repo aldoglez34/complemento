@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import { Table, Spinner } from "react-bootstrap";
 import CategoriesRow from "./CategoriesRow";
 
-function Categories() {
+const Categories = React.memo(function Categories() {
   const [categories, setCategories] = useState();
 
   useEffect(() => {
@@ -46,6 +46,6 @@ function Categories() {
       )}
     </ManagerLayout>
   );
-}
+});
 
 export default Categories;

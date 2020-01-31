@@ -2,11 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import ProductCard from "../../components/cards/ProductCard";
 
-ProductsSection.propTypes = {
-  products: PropTypes.array.isRequired
-};
-
-function ProductsSection(props) {
+const ProductsSection = React.memo(function ProductsSection(props) {
   return (
     <div className="d-flex flex-wrap justify-content-center">
       {props.products.map(product => {
@@ -14,6 +10,10 @@ function ProductsSection(props) {
       })}
     </div>
   );
-}
+});
+
+ProductsSection.propTypes = {
+  products: PropTypes.array.isRequired
+};
 
 export default ProductsSection;

@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as cartActions from "../../redux/actions/cart";
 import API from "../../utils/API";
 
-function BagDropdown() {
+const BagDropdown = React.memo(function BagDropdown() {
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
   const [products, setProducts] = useState([]);
@@ -134,6 +134,6 @@ function BagDropdown() {
       </Dropdown.Menu>
     </Dropdown>
   );
-}
+});
 
 export default BagDropdown;

@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import { Table, Spinner } from "react-bootstrap";
 import PurchasesRow from "./PurchasesRow";
 
-function Purchases() {
+const Purchases = React.memo(function Purchases() {
   const [purchases, setPurchases] = useState();
 
   useEffect(() => {
@@ -46,6 +46,6 @@ function Purchases() {
       )}
     </ManagerLayout>
   );
-}
+});
 
 export default Purchases;

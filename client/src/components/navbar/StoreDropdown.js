@@ -2,11 +2,7 @@ import React from "react";
 import { Dropdown, Nav, NavItem, Spinner } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-StoreDropdown.propTypes = {
-  categories: PropTypes.array.isRequired
-};
-
-function StoreDropdown(props) {
+const StoreDropdown = React.memo(function StoreDropdown(props) {
   return (
     <Dropdown title="Tienda" as={NavItem}>
       <Dropdown.Toggle as={Nav.Link} className="text-light">
@@ -30,6 +26,10 @@ function StoreDropdown(props) {
       </Dropdown.Menu>
     </Dropdown>
   );
-}
+});
+
+StoreDropdown.propTypes = {
+  categories: PropTypes.array.isRequired
+};
 
 export default StoreDropdown;

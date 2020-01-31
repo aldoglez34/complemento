@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import { Table, Spinner } from "react-bootstrap";
 import MessagesRow from "./MessagesRow";
 
-function Messages() {
+const Messages = React.memo(function Messages() {
   const [messages, setMessages] = useState();
 
   useEffect(() => {
@@ -44,6 +44,6 @@ function Messages() {
       )}
     </ManagerLayout>
   );
-}
+});
 
 export default Messages;

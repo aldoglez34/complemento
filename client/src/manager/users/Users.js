@@ -5,7 +5,7 @@ import ClientsRow from "./ClientsRow";
 import ManagerRow from "./ManagerRow";
 import API from "../../utils/API";
 
-function Users() {
+const Users = React.memo(function Users() {
   const [clients, setClientes] = useState();
   const [managers, setManagers] = useState();
 
@@ -99,6 +99,6 @@ function Users() {
       </Tabs>
     </ManagerLayout>
   );
-}
+});
 
 export default Users;

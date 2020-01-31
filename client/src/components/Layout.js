@@ -3,11 +3,7 @@ import MyNavbar from "./navbar/MyNavbar";
 import MyFooter from "./footer/MyFooter";
 import PropTypes from "prop-types";
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired
-};
-
-function Layout(props) {
+const Layout = React.memo(function Layout(props) {
   return (
     <div className="d-flex flex-column h-100">
       <MyNavbar hideBag={props.hideBag} />
@@ -15,6 +11,10 @@ function Layout(props) {
       <MyFooter />
     </div>
   );
-}
+});
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export default Layout;

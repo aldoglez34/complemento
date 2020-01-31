@@ -3,11 +3,7 @@ import { Modal, Form, Col } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 
-PurchasesRow.propTypes = {
-  purchase: PropTypes.object.isRequired
-};
-
-function PurchasesRow(props) {
+const PurchasesRow = React.memo(function PurchasesRow(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -70,6 +66,10 @@ function PurchasesRow(props) {
       </Modal>
     </>
   );
-}
+});
+
+PurchasesRow.propTypes = {
+  purchase: PropTypes.object.isRequired
+};
 
 export default PurchasesRow;

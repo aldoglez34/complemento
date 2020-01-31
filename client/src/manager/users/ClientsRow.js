@@ -3,11 +3,7 @@ import { Modal, Form, Col } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 
-ClientsRow.propTypes = {
-  client: PropTypes.object.isRequired
-};
-
-function ClientsRow(props) {
+const ClientsRow = React.memo(function ClientsRow(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -141,6 +137,10 @@ function ClientsRow(props) {
       </Modal>
     </>
   );
-}
+});
+
+ClientsRow.propTypes = {
+  client: PropTypes.object.isRequired
+};
 
 export default ClientsRow;

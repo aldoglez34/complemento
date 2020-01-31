@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Layout from "../components/Layout";
 import ProductsSection from "./components/ProductsSection";
@@ -11,7 +11,7 @@ import SortDropdown from "./components/SortDropdown";
 import ProductsPerPageDropdown from "./components/ProductsPerPageDropdown";
 import MyPagination from "./components/MyPagination";
 
-class Store extends Component {
+class Store extends PureComponent {
   state = {
     categories: [],
     brands: [],
@@ -133,13 +133,21 @@ class Store extends Component {
         break;
       case "Más caro primero":
         temp.sort((a, b) =>
-          a.price.salePrice < b.price.salePrice ? 1 : b.price.salePrice < a.price.salePrice ? -1 : 0
+          a.price.salePrice < b.price.salePrice
+            ? 1
+            : b.price.salePrice < a.price.salePrice
+            ? -1
+            : 0
         );
         this.setState({ products: temp });
         break;
       case "Más barato primero":
         temp.sort((a, b) =>
-          a.price.salePrice > b.price.salePrice ? 1 : b.price.salePrice > a.price.salePrice ? -1 : 0
+          a.price.salePrice > b.price.salePrice
+            ? 1
+            : b.price.salePrice > a.price.salePrice
+            ? -1
+            : 0
         );
         this.setState({ products: temp });
         break;

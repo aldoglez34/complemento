@@ -5,11 +5,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import API from "../../utils/API";
 
-DiscountsCreateRow.propTypes = {
-  notdiscount: PropTypes.object.isRequired
-};
-
-function DiscountsCreateRow(props) {
+const DiscountsCreateRow = React.memo(function DiscountsCreateRow(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -231,6 +227,10 @@ function DiscountsCreateRow(props) {
       </Modal>
     </>
   );
-}
+});
+
+DiscountsCreateRow.propTypes = {
+  notdiscount: PropTypes.object.isRequired
+};
 
 export default DiscountsCreateRow;

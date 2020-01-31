@@ -4,7 +4,7 @@ import ManagerLayout from "../ManagerLayout";
 import API from "../../utils/API";
 import ProductRow from "./ProductRow";
 
-function Products() {
+const Products = React.memo(function Products() {
   const [products, setProducts] = useState();
 
   useEffect(() => {
@@ -54,6 +54,6 @@ function Products() {
       )}
     </ManagerLayout>
   );
-}
+});
 
 export default Products;

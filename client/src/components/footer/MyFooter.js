@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-function MyFooter() {
+const MyFooter = React.memo(function MyFooter() {
   return (
     <footer
       className="mt-auto py-2 text-center text-light"
@@ -71,6 +71,6 @@ function MyFooter() {
       </Container>
     </footer>
   );
-}
+});
 
 export default MyFooter;

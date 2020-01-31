@@ -3,11 +3,7 @@ import PropTypes from "prop-types";
 import { Container, Row } from "react-bootstrap";
 import "./mybreadcrumb.scss";
 
-MyBreadcrumb.propTypes = {
-  routes: PropTypes.array
-};
-
-function MyBreadcrumb(props) {
+const MyBreadcrumb = React.memo(function MyBreadcrumb(props) {
   return (
     <Container fluid>
       <Row style={{ backgroundColor: "#59a49a" }} className="py-2 px-2">
@@ -36,6 +32,10 @@ function MyBreadcrumb(props) {
       </Row>
     </Container>
   );
-}
+});
+
+MyBreadcrumb.propTypes = {
+  routes: PropTypes.array
+};
 
 export default MyBreadcrumb;

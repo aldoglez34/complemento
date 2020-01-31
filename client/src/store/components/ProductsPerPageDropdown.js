@@ -2,12 +2,9 @@ import React from "react";
 import { Dropdown } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-ProductsPerPageDropdown.propTypes = {
-  qty: PropTypes.number.isRequired,
-  handleChangeProductsPerPage: PropTypes.func.isRequired
-};
-
-function ProductsPerPageDropdown(props) {
+const ProductsPerPageDropdown = React.memo(function ProductsPerPageDropdown(
+  props
+) {
   return (
     <>
       {/* big dropdow */}
@@ -77,6 +74,11 @@ function ProductsPerPageDropdown(props) {
       </div>
     </>
   );
-}
+});
+
+ProductsPerPageDropdown.propTypes = {
+  qty: PropTypes.number.isRequired,
+  handleChangeProductsPerPage: PropTypes.func.isRequired
+};
 
 export default ProductsPerPageDropdown;

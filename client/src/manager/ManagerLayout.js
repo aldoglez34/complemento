@@ -5,11 +5,7 @@ import LeftNav from "./misc/LeftNav";
 import TopHelperNav from "./misc/TopHelperNav";
 import "./manager.scss";
 
-ManagerLayout.propTypes = {
-  children: PropTypes.node.isRequired
-};
-
-function ManagerLayout(props) {
+const ManagerLayout = React.memo(function ManagerLayout(props) {
   return (
     <div className="d-lg-flex flex-row h-100">
       <LeftNav leftBarActive={props.leftBarActive} />
@@ -47,6 +43,10 @@ function ManagerLayout(props) {
       </Container>
     </div>
   );
-}
+});
+
+ManagerLayout.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export default ManagerLayout;
