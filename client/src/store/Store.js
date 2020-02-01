@@ -168,15 +168,15 @@ class Store extends PureComponent {
         this.state.brands.length &&
         this.state.pageCount ? (
           <>
-            <Container fluid className="mt-3 p-3">
+            <Container className="mt-3 p-3">
               <Row>
                 {/* left-column, filters */}
                 <Col md={3}>
-                  <h4 style={{ fontWeight: "600" }}>
+                  {/* <h4 style={{ fontWeight: "600" }}>
                     Filtros
                     <i className="fas fa-filter ml-1" />
                   </h4>
-                  <hr className="myDivider" />
+                  <hr className="myDivider" /> */}
                   <FilterSection
                     categories={this.state.categories}
                     brands={this.state.brands}
