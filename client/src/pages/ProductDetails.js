@@ -52,19 +52,19 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                 <Row className="mb-2 mt-2 mt-md-0">
                   <Col>
                     <div className="d-flex flex-row">
-                      <h2>{product.name}</h2>
+                      <strong style={{ fontSize: "35px" }}>
+                        {product.name}
+                      </strong>
                       {product.price.discount.hasDiscount ? (
-                        <h3>
-                          <Badge variant="warning" className="ml-2">
-                            {product.price.discount.percentage + "%"}
-                          </Badge>
-                        </h3>
+                        <Badge
+                          variant="warning"
+                          className="ml-2 d-flex align-items-center justify-content-center"
+                          style={{ fontSize: "25px" }}
+                        >
+                          {product.price.discount.percentage + "%"}
+                        </Badge>
                       ) : null}
                     </div>
-                    <hr
-                      className="myDivider"
-                      style={{ backgroundColor: "#edcb58" }}
-                    />
                     <h5 className="mb-1">{product.content}</h5>
                     <h5 className="mb-2">{product.brand}</h5>
                     <div className="d-flex flex-row">

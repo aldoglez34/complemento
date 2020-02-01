@@ -30,8 +30,8 @@ const MyNavbar = React.memo(function MyNavbar(props) {
     <Navbar
       // fixed="top"
       expand="lg"
-      className="shadow"
-      style={{ backgroundColor: "#264341", height: "60px" }}
+      // className="shadow"
+      style={{ backgroundColor: "#264341", height: "65px" }}
     >
       {/* logo (medium to large) */}
       <Navbar.Brand

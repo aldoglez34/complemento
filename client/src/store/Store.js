@@ -172,11 +172,6 @@ class Store extends PureComponent {
               <Row>
                 {/* left-column, filters */}
                 <Col md={3}>
-                  {/* <h4 style={{ fontWeight: "600" }}>
-                    Filtros
-                    <i className="fas fa-filter ml-1" />
-                  </h4>
-                  <hr className="myDivider" /> */}
                   <FilterSection
                     categories={this.state.categories}
                     brands={this.state.brands}
