@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const model = require("../../models");
 
-// fetchItemsForSearchBar
+// fetchItemsForSearchBar()
 // matches with /api/navbar/itemsforsearchbar
 router.get("/itemsforsearchbar", function(req, res) {
   model.Product.find({})
@@ -11,7 +11,7 @@ router.get("/itemsforsearchbar", function(req, res) {
     .catch(err => res.json(err));
 });
 
-// fetchItemsForStoreDropdown
+// fetchItemsForStoreDropdown()
 // matches with /api/navbar/itemsforstoredropdown
 router.get("/itemsforstoredropdown", function(req, res) {
   model.Category.find({})
