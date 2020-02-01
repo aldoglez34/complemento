@@ -4,10 +4,7 @@ import { Navbar, Nav, Badge } from "react-bootstrap";
 
 const FilterSection = React.memo(function FilterSection(props) {
   return (
-    <Navbar
-      expand="md"
-      className="filterSection shadow-sm rounded mb-3 mb-md-0"
-    >
+    <Navbar expand="md" className="filterSection mb-3 mb-md-0">
       <Navbar.Toggle
         className="mt-3 border-0 w-100 py-1"
         aria-controls="categoriesdropdown"
@@ -19,10 +16,9 @@ const FilterSection = React.memo(function FilterSection(props) {
         </div>
       </Navbar.Toggle>
       <Navbar.Collapse id="categoriesdropdown">
-        <Nav variant="pills" className="flex-column w-100 text-left">
-          <h5 className="mt-3" style={{ fontWeight: "600" }}>
-            Categoría
-            <i className="fas fa-stream ml-1" />
+        <Nav className="flex-column w-100 text-left">
+          <h5 className="mt-3">
+            <strong>CATEGORÍA</strong>
           </h5>
           {props.categories.map(category => {
             return (
@@ -34,21 +30,20 @@ const FilterSection = React.memo(function FilterSection(props) {
                 >
                   {category.name}
                   {category.name === props.filterSelected ? (
-                    <Badge className="ml-1 filterBadgeSelected">
+                    <span className="ml-1 filterBadgeSelected">
                       {category.productCount}
-                    </Badge>
+                    </span>
                   ) : (
-                    <Badge className="ml-1 filterBadge">
+                    <span className="ml-1 filterBadge">
                       {category.productCount}
-                    </Badge>
+                    </span>
                   )}
                 </Nav.Link>
               </Nav.Item>
             );
           })}
-          <h5 className="mt-3" style={{ fontWeight: "600" }}>
-            Laboratorio
-            <i className="fas fa-vials ml-1" />
+          <h5 className="mt-3">
+            <strong>LABORATORIO</strong>
           </h5>
           {props.brands.map(brand => {
             return (
