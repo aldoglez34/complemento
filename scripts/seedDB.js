@@ -31,6 +31,6 @@ models.Category.insertMany(categories)
   .then(() => console.log("dev data - categories added"))
   .catch(err => console.log(err));
 
-models.Product.insertMany(products)
-  .then(() => console.log("dev data - products added"))
-  .catch(err => console.log(err));
+// models.Product.insertMany(products)
+//   .then(() => console.log("dev data - products added"))
+//   .catch(err => console.log(err));

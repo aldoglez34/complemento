@@ -5,7 +5,7 @@ const providers = [
     rfc: "ABCDEFGHIWTR",
     email: "alfadelta@test.com",
     phone: "2281102030",
-    productCount: 10
+    productCount: 11
   },
   {
     name: "Hidroquímica de México",
@@ -13,7 +13,7 @@ const providers = [
     rfc: "ABCDEFGHIWTQ",
     email: "hidroq@test.com",
     phone: "2281102030",
-    productCount: 10
+    productCount: 11
   },
   {
     name: "Arefil S.A. DE C.V",
@@ -21,7 +21,7 @@ const providers = [
     rfc: "ABCDEFGHIWTP",
     email: "arefil@test.com",
     phone: "2281102030",
-    productCount: 20
+    productCount: 11
   },
   {
     name: "Laboratorios Phitother",
@@ -29,7 +29,7 @@ const providers = [
     rfc: "ABCDEFGHIWTZ",
     email: "phitother@test.com",
     phone: "2281102030",
-    productCount: 20
+    productCount: 11
   },
   {
     name: "Laboratorios Senosiain",
@@ -37,7 +37,7 @@ const providers = [
     rfc: "ABCDEFGHIWTY",
     email: "senosiain@test.com",
     phone: "2281102030",
-    productCount: 10
+    productCount: 11
   }
 ];
 
