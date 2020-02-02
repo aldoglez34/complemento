@@ -52,7 +52,7 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                 <Row className="mb-2 mt-2 mt-md-0">
                   <Col>
                     <div className="d-flex flex-row">
-                      <strong style={{ fontSize: "35px" }}>
+                      <strong style={{ fontSize: "20px" }}>
                         {product.name}
                       </strong>
                       {product.price.discount.hasDiscount ? (
