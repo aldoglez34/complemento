@@ -20,7 +20,9 @@ router.post("/buy", function(req, res) {
     let temp = {
       product: p._id,
       qty: p.qty,
-      salePrice: p.price.discount.hasDiscount ? p.price.discount.newPrice : p.price.salePrice
+      salePrice: p.price.discount.hasDiscount
+        ? p.price.discount.newPrice
+        : p.price.salePrice
     };
     subTotal += p.qty * temp.salePrice;
     products.push(temp);
@@ -81,7 +83,7 @@ router.put("/update/stock", function(req, res) {
       if (index === array.length - 1) resolve();
     });
   });
-  updateAll.then(data => res.json(data));
+  updateAll.then(data => res.json(data)).catch(err => res.json(err));
 });
 
 module.exports = router;

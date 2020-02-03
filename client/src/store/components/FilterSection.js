@@ -13,7 +13,7 @@ const FilterSection = React.memo(function FilterSection(props) {
         style={{ outline: 0 }}
       >
         <div className="d-flex flex-row justify-content-center align-items-center">
-          <h5 className="mb-0">Selecciona</h5>
+          <h5 className="mb-0">Filtros</h5>
           <i className="fas fa-chevron-down ml-1" />
         </div>
       </Navbar.Toggle>
