@@ -26,7 +26,7 @@ const HomeBestSellers = React.memo(function HomeBestSellers() {
         carouselItems.push(
           <Carousel.Item key={i}>
             <div className="d-flex flex-wrap justify-content-center">
-              {bestSellers.slice(0, 5).map(p => {
+              {bestSellers.slice(0, 4).map(p => {
                 return <ProductCard key={p._id} product={p} />;
               })}
             </div>

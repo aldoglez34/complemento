@@ -1,21 +1,21 @@
 const categories = [
-  "5e3655df32c9be4b3019777e",
-  "5e3655df32c9be4b3019777f",
-  "5e3655df32c9be4b30197780",
-  "5e3655df32c9be4b30197781",
-  "5e3655df32c9be4b30197782",
-  "5e3655df32c9be4b30197783",
-  "5e3655df32c9be4b30197784",
-  "5e3655df32c9be4b30197785",
-  "5e3655df32c9be4b30197786"
+  "5e3877be924a4142303714cf",
+  "5e3877be924a4142303714d0",
+  "5e3877be924a4142303714d1",
+  "5e3877be924a4142303714d2",
+  "5e3877be924a4142303714d3",
+  "5e3877be924a4142303714d4",
+  "5e3877be924a4142303714d5",
+  "5e3877be924a4142303714d6",
+  "5e3877be924a4142303714d7"
 ];
 
 const providers = [
-  "5e3655df32c9be4b30197779",
-  "5e3655df32c9be4b3019777a",
-  "5e3655df32c9be4b3019777b",
-  "5e3655df32c9be4b3019777c",
-  "5e3655df32c9be4b3019777d"
+  "5e3877be924a4142303714ca",
+  "5e3877be924a4142303714cb",
+  "5e3877be924a4142303714cc",
+  "5e3877be924a4142303714cd",
+  "5e3877be924a4142303714ce"
 ];
 
 const products = [
@@ -664,7 +664,7 @@ const products = [
   {
     category: categories[4],
     brand: "Love Nature",
-    name: "Pomada De Calendula",
+    name: "Pomada De Calendula 2",
     content: "100 gramos",
     comments:
       "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",

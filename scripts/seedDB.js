@@ -15,22 +15,22 @@ mongoose
   })
   .catch(error => console.log(error));
 
-models.Client.insertMany(clients)
-  .then(() => console.log("dev data - clients added"))
-  .catch(err => console.log(err));
-
-models.Manager.insertMany(managers)
-  .then(() => console.log("dev data - managers added"))
-  .catch(err => console.log(err));
-
-models.Provider.insertMany(providers)
-  .then(() => console.log("dev data - providers added"))
-  .catch(err => console.log(err));
-
-models.Category.insertMany(categories)
-  .then(() => console.log("dev data - categories added"))
-  .catch(err => console.log(err));
-
-// models.Product.insertMany(products)
-//   .then(() => console.log("dev data - products added"))
+// models.Client.insertMany(clients)
+//   .then(() => console.log("dev data - clients added"))
 //   .catch(err => console.log(err));
+
+// models.Manager.insertMany(managers)
+//   .then(() => console.log("dev data - managers added"))
+//   .catch(err => console.log(err));
+
+// models.Provider.insertMany(providers)
+//   .then(() => console.log("dev data - providers added"))
+//   .catch(err => console.log(err));
+
+// models.Category.insertMany(categories)
+//   .then(() => console.log("dev data - categories added"))
+//   .catch(err => console.log(err));
+
+models.Product.insertMany(products)
+  .then(() => console.log("dev data - products added"))
+  .catch(err => console.log(err));

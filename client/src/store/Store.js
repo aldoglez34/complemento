@@ -181,16 +181,18 @@ class Store extends PureComponent {
                 {/* right-column, title, sorting and products */}
                 <Col md={9}>
                   {/* title */}
-                  <div className="mb-2 mt-3 mt-md-0">
-                    <h3 className="text-md-center">
-                      {!this.state.filter ? "Productos" : this.state.filter}
-                    </h3>
+                  <div>
+                    <h5>
+                      <strong>
+                        {!this.state.filter ? "PRODUCTOS" : this.state.filter}
+                      </strong>
+                    </h5>
                     <hr
-                      className="myDivider ml-md-auto"
+                      className="myDivider"
                       style={{ backgroundColor: "#edcb58" }}
                     />
                   </div>
-                  {/* sort and products per page */}
+                  {/* filters */}
                   <div className="d-flex flex-row mb-2">
                     <SortDropdown
                       active={this.state.sortBy}
@@ -203,9 +205,6 @@ class Store extends PureComponent {
                         this.handleChangeProductsPerPage
                       }
                     />
-                    <div className="ml-auto">
-                      {this.state.products.length} productos
-                    </div>
                   </div>
                   {/* products */}
                   <div className="mb-2">

@@ -8,7 +8,7 @@ const FilterSection = React.memo(function FilterSection(props) {
   return (
     <Navbar expand="md" className="filterSection mb-3 mb-md-0">
       <Navbar.Toggle
-        className="mt-3 border-0 w-100 py-1"
+        className="border-0 w-100 py-1"
         aria-controls="categoriesdropdown"
         style={{ outline: 0 }}
       >
@@ -19,7 +19,7 @@ const FilterSection = React.memo(function FilterSection(props) {
       </Navbar.Toggle>
       <Navbar.Collapse id="categoriesdropdown">
         <Nav className="flex-column w-100 text-left">
-          <div className="mt-3">
+          <div>
             <Categories categories={props.categories} />
           </div>
           <div className="mt-3">
