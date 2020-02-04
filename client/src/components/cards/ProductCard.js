@@ -36,14 +36,14 @@ const ProductCard = React.memo(function ProductCard(props) {
         {/* price */}
         <div className="lead text-center mb-3">
           {props.product.price.discount.hasDiscount ? (
-            <>
-              <span className="text-muted mb-0">
+            <React.Fragment>
+              <span className="mb-0" style={{ color: "gainsboro" }}>
                 <del>{"$" + props.product.price.salePrice}</del>
               </span>
               <span className="h4 text-danger mb-0 ml-2">
                 {"$" + props.product.price.discount.newPrice}
               </span>
-            </>
+            </React.Fragment>
           ) : (
             <span className="h4 text-danger mb-0">
               {"$" + props.product.price.salePrice}

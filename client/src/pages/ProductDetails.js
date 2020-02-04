@@ -49,44 +49,38 @@ const ProductDetails = React.memo(function ProductDetails(props) {
               {/* info */}
               <Col md={7}>
                 {/* name and price */}
-                <Row className="mb-2 mt-2 mt-md-0">
-                  <Col>
-                    <div className="d-flex flex-row">
-                      <h1>
-                        <strong>{product.name}</strong>
-                      </h1>
-                      {product.price.discount.hasDiscount ? (
-                        <Badge
-                          variant="warning"
-                          className="ml-2 d-flex align-items-center justify-content-center"
-                          style={{ fontSize: "25px" }}
-                        >
-                          {product.price.discount.percentage + "%"}
-                        </Badge>
-                      ) : null}
-                    </div>
-                    <h5 className="mb-1">{product.content}</h5>
-                    <h5 className="mb-2">{product.brand}</h5>
-                    <div className="d-flex flex-row">
-                      {product.price.discount.hasDiscount ? (
-                        <>
-                          <h3 className="mb-0" style={{ color: "gainsboro" }}>
-                            <del>{"$" + product.price.salePrice + " MXN"}</del>
-                          </h3>
-                          <h3 className="mb-0 ml-1 text-danger">
-                            {"$" + product.price.discount.newPrice + " MXN"}
-                          </h3>
-                        </>
-                      ) : (
-                        <h3 className="mb-0 text-danger">
-                          {"$" + product.price.salePrice + " MXN"}
-                        </h3>
-                      )}
-                    </div>
-                  </Col>
-                </Row>
+                <div className="d-flex flex-row">
+                  <h1>
+                    <strong>{product.name}</strong>
+                  </h1>
+                  {product.price.discount.hasDiscount ? (
+                    <Badge
+                      variant="warning"
+                      className="ml-2 d-flex align-items-center justify-content-center"
+                      style={{ fontSize: "25px" }}
+                    >
+                      {product.price.discount.percentage + "%"}
+                    </Badge>
+                  ) : null}
+                </div>
+                <p className="h5 mb-1">{product.content}</p>
+                <p className="h5 mb-2">{product.brand}</p>
+                {product.price.discount.hasDiscount ? (
+                  <React.Fragment>
+                    <span className="h4 mb-0" style={{ color: "gainsboro" }}>
+                      <del>{"$" + product.price.salePrice + " MXN"}</del>
+                    </span>
+                    <span className="h3 mb-0 ml-1 text-danger">
+                      {"$" + product.price.discount.newPrice + " MXN"}
+                    </span>
+                  </React.Fragment>
+                ) : (
+                  <span className="h3 mb-0 text-danger mb-3">
+                    {"$" + product.price.salePrice + " MXN"}
+                  </span>
+                )}
                 {/* buttons */}
-                <Row className="mb-2">
+                <Row className="my-2">
                   <Col md={5}>
                     <AddToBagButton product={product} size="lg" />
                   </Col>
