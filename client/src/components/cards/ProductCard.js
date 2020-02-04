@@ -9,11 +9,7 @@ const ProductCard = React.memo(function ProductCard(props) {
   return (
     <Card id="productcardstyle" className="mt-2 mb-4 mr-1 shadow-sm border-0">
       <a className="text-light" href={"/product/details/" + props.product._id}>
-        <Card.Header
-          className="text-center"
-          // className="d-flex justify-content-center align-items-center"
-          id="cardheader"
-        >
+        <Card.Header className="text-center" id="cardheader">
           <span>{props.product.name}</span>
           {props.product.price.discount.hasDiscount ? (
             <Badge
@@ -28,7 +24,7 @@ const ProductCard = React.memo(function ProductCard(props) {
         <Card.Img
           variant="top"
           width={190}
-          height={290}
+          height={230}
           className="rounded-0"
           src="/images/products/test.jpg"
         />

@@ -183,7 +183,7 @@ class Store extends PureComponent {
                   {/* title */}
                   <div>
                     <h5>
-                      <strong>
+                      <strong style={{ textTransform: "uppercase" }}>
                         {!this.state.filter ? "PRODUCTOS" : this.state.filter}
                       </strong>
                     </h5>

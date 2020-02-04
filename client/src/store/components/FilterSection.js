@@ -20,10 +20,16 @@ const FilterSection = React.memo(function FilterSection(props) {
       <Navbar.Collapse id="categoriesdropdown">
         <Nav className="flex-column w-100 text-left">
           <div>
-            <Categories categories={props.categories} />
+            <Categories
+              categories={props.categories}
+              filterSelected={props.filterSelected}
+            />
           </div>
           <div className="mt-3">
-            <Brands brands={props.brands} />
+            <Brands
+              brands={props.brands}
+              filterSelected={props.filterSelected}
+            />
           </div>
         </Nav>
       </Navbar.Collapse>

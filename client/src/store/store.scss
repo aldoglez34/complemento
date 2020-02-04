@@ -1,29 +1,44 @@
 // ====================================
 // filters section
 .filterSection {
-  // background-color: whitesmoke !important;
   padding-top: 5px !important;
   padding-bottom: 17px !important;
 }
 
+// ====================================
+// sort dropdowns
 .dropdownSort {
-  background-color: #264341 !important;
-  border: 0px;
-  color: white;
+  background-color: transparent !important;
+  font-size: 13px;
+  color: rgb(142, 142, 142);
+
+  outline: none;
+  box-shadow: none !important;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 1.5px solid rgb(142, 142, 142) !important;
   &:hover {
-    background-color: #0c2c2c !important;
-    transition: 0.5s;
+    color: rgb(97, 97, 97) !important;
   }
+  &:focus {
+    color: rgb(97, 97, 97) !important;
+  }
+}
+
+.dropdownSort::after {
+  display: none; // this will get rid of the little triangle
 }
 
 .dropdownItemSort {
   &.active {
-    background-color: lightgray !important;
-    color: black;
+    background-color: transparent !important;
+    color: rgb(52, 58, 64);
+    font-weight: bold;
   }
   &:focus {
-    background-color: rgb(192, 191, 191) !important;
-    color: black;
+    background-color: transparent !important;
+    color: rgb(52, 58, 64);
   }
 }
 
@@ -35,10 +50,7 @@
     color: gray !important;
   }
   &.active {
-    // background-color: transparent !important;
-    // border-bottom: 2px solid rgb(110, 153, 24);
     border-radius: 0px;
-    // color: rgb(110, 153, 24) !important;
     color: rgb(52, 58, 64) !important;
     font-weight: bold;
   }
@@ -47,15 +59,14 @@
 // ====================================
 // filter badge
 .filterBadge {
-  // background-color: #5a5a5a !important;
   background-color: transparent !important;
   color: #fe4365 !important;
   font-weight: bold;
 }
 
 .filterBadgeSelected {
-  background-color: #fe4365 !important;
-  color: ghostwhite;
+  font-weight: bold;
+  color: #fe4365;
 }
 
 // ====================================

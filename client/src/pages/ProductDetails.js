@@ -24,23 +24,23 @@ const ProductDetails = React.memo(function ProductDetails(props) {
     <Layout>
       {product ? (
         <>
-          <MyBreadcrumb
-            routes={[
-              { name: "Inicio", to: "/" },
-              { name: "Tienda", to: "/store" },
-              {
-                name: product.category.name,
-                to: "/store/category/" + product.category.name
-              },
-              { name: product.name, to: "active" }
-            ]}
-          />
           <Container className="mt-3 py-3">
+            <MyBreadcrumb
+              routes={[
+                { name: "Inicio", to: "/" },
+                { name: "Tienda", to: "/store" },
+                {
+                  name: product.category.name,
+                  to: "/store/category/" + product.category.name
+                },
+                { name: product.name, to: "active" }
+              ]}
+            />
             <Row>
               {/* photo */}
               <Col md={5} className="text-center">
                 <Image
-                  src={"/images/products/" + product.photo}
+                  src="/images/products/test.jpg"
                   className="rounded-lg"
                   fluid
                   alt="product"
@@ -52,9 +52,9 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                 <Row className="mb-2 mt-2 mt-md-0">
                   <Col>
                     <div className="d-flex flex-row">
-                      <strong style={{ fontSize: "20px" }}>
-                        {product.name}
-                      </strong>
+                      <h1>
+                        <strong>{product.name}</strong>
+                      </h1>
                       {product.price.discount.hasDiscount ? (
                         <Badge
                           variant="warning"

@@ -40,7 +40,8 @@ const MyNavbar = React.memo(function MyNavbar(props) {
         style={{
           color: "#f3d084",
           fontFamily: "'Acme', sans-serif",
-          fontSize: "35px"
+          // fontSize: "35px"
+          fontSize: "28px"
         }}
       >
         Complemento Natural

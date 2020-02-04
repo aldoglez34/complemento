@@ -9,8 +9,8 @@ const SortDropdown = React.memo(function SortDropdown(props) {
       <div className="d-none d-md-block">
         <div className="d-flex flew-row align-items-center">
           <span>Ordenar por</span>
-          <Dropdown className="ml-1">
-            <Dropdown.Toggle variant="secondary" size="sm">
+          <Dropdown className="ml-1 rounded-0">
+            <Dropdown.Toggle className="dropdownSort" size="sm">
               {props.active}
             </Dropdown.Toggle>
             <Dropdown.Menu>

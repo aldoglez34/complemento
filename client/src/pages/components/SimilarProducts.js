@@ -26,7 +26,7 @@ const SimilarProducts = React.memo(function SimilarProducts(props) {
         carouselItems.push(
           <Carousel.Item key={i}>
             <div className="d-flex flex-wrap justify-content-center">
-              {similar.slice(0, 5).map(p => {
+              {similar.slice(0, 4).map(p => {
                 return <ProductCard key={p._id} product={p} />;
               })}
             </div>
