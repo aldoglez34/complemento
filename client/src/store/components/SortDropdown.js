@@ -9,8 +9,12 @@ const SortDropdown = React.memo(function SortDropdown(props) {
       <div className="d-none d-md-block">
         <div className="d-flex flew-row align-items-center">
           <span>Ordenar por</span>
-          <Dropdown className="ml-1 rounded-0">
-            <Dropdown.Toggle className="dropdownSort" size="sm">
+          <Dropdown className="ml-1">
+            <Dropdown.Toggle
+              variant="transparent"
+              className="border border-secondary rounded-pill dropdownSort"
+              size="sm"
+            >
               {props.active}
             </Dropdown.Toggle>
             <Dropdown.Menu>
@@ -30,24 +34,24 @@ const SortDropdown = React.memo(function SortDropdown(props) {
               </Dropdown.Item>
               <Dropdown.Item
                 className="dropdownItemSort"
+                onClick={() => props.applySorting("Precio: bajo a alto")}
+                active={props.active === "Precio: bajo a alto" ? true : false}
+              >
+                Precio: bajo a alto
+              </Dropdown.Item>
+              <Dropdown.Item
+                className="dropdownItemSort"
+                onClick={() => props.applySorting("Precio: alto a bajo")}
+                active={props.active === "Precio: alto a bajo" ? true : false}
+              >
+                Precio: alto a bajo
+              </Dropdown.Item>
+              <Dropdown.Item
+                className="dropdownItemSort"
                 onClick={() => props.applySorting("Más vendido")}
                 active={props.active === "Más vendido" ? true : false}
               >
                 Más vendido
-              </Dropdown.Item>
-              <Dropdown.Item
-                className="dropdownItemSort"
-                onClick={() => props.applySorting("Más caro primero")}
-                active={props.active === "Más caro primero" ? true : false}
-              >
-                Más caro primero
-              </Dropdown.Item>
-              <Dropdown.Item
-                className="dropdownItemSort"
-                onClick={() => props.applySorting("Más barato primero")}
-                active={props.active === "Más barato primero" ? true : false}
-              >
-                Más barato primero
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>

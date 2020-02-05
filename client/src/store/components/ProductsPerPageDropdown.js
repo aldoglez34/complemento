@@ -12,7 +12,11 @@ const ProductsPerPageDropdown = React.memo(function ProductsPerPageDropdown(
         <div className="d-flex flew-row align-items-center">
           <span>Ver</span>
           <Dropdown className="ml-1">
-            <Dropdown.Toggle className="dropdownSort" size="sm">
+            <Dropdown.Toggle
+              variant="transparent"
+              className="border border-secondary rounded-pill dropdownSort"
+              size="sm"
+            >
               {props.qty}
             </Dropdown.Toggle>
             <Dropdown.Menu>

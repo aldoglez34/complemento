@@ -8,26 +8,12 @@
 // ====================================
 // sort dropdowns
 .dropdownSort {
-  background-color: transparent !important;
-  font-size: 13px;
-  color: rgb(142, 142, 142);
-
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 4px;
   outline: none;
   box-shadow: none !important;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  border-bottom: 1.5px solid rgb(142, 142, 142) !important;
-  &:hover {
-    color: rgb(97, 97, 97) !important;
-  }
-  &:focus {
-    color: rgb(97, 97, 97) !important;
-  }
-}
-
-.dropdownSort::after {
-  display: none; // this will get rid of the little triangle
+  border: 1px solid #ccc !important;
 }
 
 .dropdownItemSort {

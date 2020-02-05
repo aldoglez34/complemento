@@ -125,13 +125,17 @@ class Store extends PureComponent {
         temp.sort((a, b) => (a.name < b.name ? 1 : b.name < a.name ? -1 : 0));
         this.setState({ products: temp });
         break;
-      case "Más vendido":
+      case "Precio: bajo a alto":
         temp.sort((a, b) =>
-          a.unitsSold < b.unitsSold ? 1 : b.unitsSold < a.unitsSold ? -1 : 0
+          a.price.salePrice > b.price.salePrice
+            ? 1
+            : b.price.salePrice > a.price.salePrice
+            ? -1
+            : 0
         );
         this.setState({ products: temp });
         break;
-      case "Más caro primero":
+      case "Precio: alto a bajo":
         temp.sort((a, b) =>
           a.price.salePrice < b.price.salePrice
             ? 1
@@ -141,13 +145,9 @@ class Store extends PureComponent {
         );
         this.setState({ products: temp });
         break;
-      case "Más barato primero":
+      case "Más vendido":
         temp.sort((a, b) =>
-          a.price.salePrice > b.price.salePrice
-            ? 1
-            : b.price.salePrice > a.price.salePrice
-            ? -1
-            : 0
+          a.unitsSold < b.unitsSold ? 1 : b.unitsSold < a.unitsSold ? -1 : 0
         );
         this.setState({ products: temp });
         break;
