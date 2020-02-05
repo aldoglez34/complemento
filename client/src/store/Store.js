@@ -216,12 +216,15 @@ class Store extends PureComponent {
                     />
                   </div>
                   {/* pagination */}
-                  <div className="d-flex justify-content-center mb-2">
-                    <MyPagination
-                      pageCount={this.state.pageCount}
-                      activePage={this.state.activePage}
-                      handleChangePage={this.handleChangePage}
-                    />
+                  <div className="d-flex">
+                    <div>10 productos</div>
+                    <div className="ml-auto">
+                      <MyPagination
+                        pageCount={this.state.pageCount}
+                        activePage={this.state.activePage}
+                        handleChangePage={this.handleChangePage}
+                      />
+                    </div>
                   </div>
                 </Col>
               </Row>

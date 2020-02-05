@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card, Badge } from "react-bootstrap";
+import { Card, Badge, Image } from "react-bootstrap";
 import FavButton from "../buttons/FavButton";
 import AddToBagButton from "../buttons/AddToBagButton";
 import "./productcards.scss";
@@ -23,11 +23,16 @@ const ProductCard = React.memo(function ProductCard(props) {
         </Card.Header>
         <Card.Img
           variant="top"
-          width={190}
-          height={230}
-          className="rounded-0"
+          className="productCardPhoto"
           src="/images/products/test.jpg"
         />
+        {props.product.price.discount.hasDiscount ? (
+          <Image
+            src="/images/products/discount.png"
+            className="productCardDiscount"
+            alt="discount"
+          />
+        ) : null}
       </a>
       <Card.Body
         className="d-flex justify-items-center flex-column"

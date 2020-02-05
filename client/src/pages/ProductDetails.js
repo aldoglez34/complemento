@@ -8,6 +8,7 @@ import ScrollButton from "../components/misc/ScrollButton";
 import FavButton from "../components/buttons/FavButton";
 import AddToBagButton from "../components/buttons/AddToBagButton";
 import SimilarProducts from "./components/SimilarProducts";
+import "./productDetails.scss";
 
 const ProductDetails = React.memo(function ProductDetails(props) {
   const [product, setProduct] = useState();
@@ -15,9 +16,7 @@ const ProductDetails = React.memo(function ProductDetails(props) {
   useEffect(() => {
     API.fetchProductDetails(props.routeProps.match.params.productId)
       .then(res => setProduct(res.data))
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => console.log(err));
   }, []);
 
   return (
@@ -41,10 +40,17 @@ const ProductDetails = React.memo(function ProductDetails(props) {
               <Col md={5} className="text-center">
                 <Image
                   src="/images/products/test.jpg"
-                  className="rounded-lg"
+                  className="productPhoto"
                   fluid
                   alt="product"
                 />
+                {product.price.discount.hasDiscount ? (
+                  <Image
+                    src="/images/products/discount.png"
+                    className="discountImg"
+                    alt="discount"
+                  />
+                ) : null}
               </Col>
               {/* info */}
               <Col md={7}>

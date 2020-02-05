@@ -1,0 +1,15 @@
+.productPhoto {
+  width: 370px;
+  height: 370px;
+  //   position: absolute;
+  z-index: 1;
+}
+
+.discountImg {
+  position: absolute;
+  height: 75px;
+  width: 75px;
+  top: 25px;
+  left: 25px;
+  z-index: 2;
+}
