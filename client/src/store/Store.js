@@ -217,7 +217,7 @@ class Store extends PureComponent {
                   </div>
                   {/* pagination */}
                   <div className="d-flex">
-                    <div>10 productos</div>
+                    <div>{this.state.products.length + " productos"}</div>
                     <div className="ml-auto">
                       <MyPagination
                         pageCount={this.state.pageCount}
