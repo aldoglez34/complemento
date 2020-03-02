@@ -4,8 +4,24 @@ const model = require("../../models");
 // fetchCategories()
 // matches with /api/store/categories
 router.get("/categories", function(req, res) {
-  model.Category.find({})
-    .sort({ name: 1 })
+  model.Product.aggregate([
+    {
+      $group: {
+        _id: "$category",
+        productCount: { $sum: 1 }
+      }
+    },
+    {
+      $sort: { _id: 1 }
+    },
+    {
+      $project: {
+        _id: 0,
+        name: "$_id",
+        productCount: 1
+      }
+    }
+  ])
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });
@@ -40,7 +56,6 @@ router.get("/brands", function(req, res) {
 router.get("/products", function(req, res) {
   model.Product.find({})
     .select("category name content price stock photo brand priority")
-    .populate("category")
     .sort({ name: 1 })
     .then(data => res.json(data))
     .catch(err => res.json(err));

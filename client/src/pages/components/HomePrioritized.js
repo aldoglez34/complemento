@@ -11,7 +11,7 @@ const HomePrioritized = React.memo(function HomePrioritized() {
   useEffect(() => {
     API.fetchPrioritized()
       .then(res => {
-        setPagesBG(Math.ceil(res.data.length / 5));
+        setPagesBG(Math.ceil(res.data.length / 4));
         setPagesSM(Math.ceil(res.data.length / 2));
         setPrioritized(res.data);
       })
@@ -36,7 +36,7 @@ const HomePrioritized = React.memo(function HomePrioritized() {
         carouselItems.push(
           <Carousel.Item key={i}>
             <div className="d-flex flex-wrap justify-content-center">
-              {prioritized.slice((i - 1) * 5, 5 * i).map(p => {
+              {prioritized.slice((i - 1) * 4, 4 * i).map(p => {
                 return <ProductCard key={p._id} product={p} />;
               })}
             </div>

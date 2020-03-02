@@ -11,7 +11,7 @@ const HomeDiscounts = React.memo(function HomeDiscounts() {
   useEffect(() => {
     API.fetchProductsWithDiscount()
       .then(res => {
-        setPagesBG(Math.ceil(res.data.length / 5));
+        setPagesBG(Math.ceil(res.data.length / 4));
         setPagesSM(Math.ceil(res.data.length / 2));
         setDiscounts(res.data);
       })
@@ -36,7 +36,7 @@ const HomeDiscounts = React.memo(function HomeDiscounts() {
         carouselItems.push(
           <Carousel.Item key={i}>
             <div className="d-flex flex-wrap justify-content-center">
-              {discounts.slice((i - 1) * 5, 5 * i).map(p => {
+              {discounts.slice((i - 1) * 4, 4 * i).map(p => {
                 return <ProductCard key={p._id} product={p} />;
               })}
             </div>

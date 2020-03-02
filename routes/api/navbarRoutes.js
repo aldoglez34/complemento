@@ -14,10 +14,13 @@ router.get("/itemsforsearchbar", function(req, res) {
 // fetchItemsForStoreDropdown()
 // matches with /api/navbar/itemsforstoredropdown
 router.get("/itemsforstoredropdown", function(req, res) {
-  model.Category.find({})
-    .select("name")
-    .sort({ name: -1 })
-    .then(data => res.json(data))
+  model.Product.find({})
+    .select("category")
+    .distinct("category")
+    .then(data => {
+      let ordered = data.sort();
+      res.json(ordered);
+    })
     .catch(err => res.json(err));
 });
 

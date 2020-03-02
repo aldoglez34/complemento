@@ -21,12 +21,13 @@ const ProductCard = React.memo(function ProductCard(props) {
             </Badge>
           ) : null}
         </Card.Header>
-        <Card.Img
-          variant="top"
-          className="productCardPhoto"
-          src={"/images/products/" + props.product.photo}
-          style={{ width: "245px", height: "360px" }}
-        />
+        <div className="text-center">
+          <Card.Img
+            variant="top"
+            className="productCardPhoto"
+            src={"/images/products/" + props.product.photo}
+          />
+        </div>
         {props.product.price.discount.hasDiscount ? (
           <Image
             src="/images/discount.png"

@@ -1,5 +1,7 @@
 #productcardstyle {
-  width: 18rem;
+  width: 17rem;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #cardheader {
@@ -7,8 +9,8 @@
 }
 
 .productCardPhoto {
-  width: 190;
-  height: 230;
+  width: 230px !important;
+  height: 385px !important;
   z-index: 1;
 }
 

@@ -11,7 +11,7 @@ const HomeBestSellers = React.memo(function HomeBestSellers() {
   useEffect(() => {
     API.fetchBestSellers()
       .then(res => {
-        setPagesBG(Math.ceil(res.data.length / 5));
+        setPagesBG(Math.ceil(res.data.length / 4));
         setPagesSM(Math.ceil(res.data.length / 2));
         setBestSellers(res.data);
       })
@@ -36,7 +36,7 @@ const HomeBestSellers = React.memo(function HomeBestSellers() {
         carouselItems.push(
           <Carousel.Item key={i}>
             <div className="d-flex flex-wrap justify-content-center">
-              {bestSellers.slice((i - 1) * 5, 5 * i).map(p => {
+              {bestSellers.slice((i - 1) * 4, 4 * i).map(p => {
                 return <ProductCard key={p._id} product={p} />;
               })}
             </div>

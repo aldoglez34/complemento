@@ -2,7 +2,7 @@ import React from "react";
 import { Dropdown, Nav, NavItem, Spinner } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-const StoreDropdown = React.memo(function StoreDropdown(props) {
+const StoreDropdown = React.memo(function StoreDropdown({ categories }) {
   return (
     <Dropdown title="Tienda" as={NavItem}>
       <Dropdown.Toggle as={Nav.Link} className="text-light">
@@ -12,10 +12,10 @@ const StoreDropdown = React.memo(function StoreDropdown(props) {
       <Dropdown.Menu data-display="static">
         <h5 className="pt-1 pl-3 pb-1">Categorías</h5>
         <Dropdown.Divider />
-        {props.categories.length ? (
-          props.categories.map(c => (
-            <Dropdown.Item key={c._id} href={"/store/category/" + c.name}>
-              {c.name}
+        {categories.length ? (
+          categories.map(c => (
+            <Dropdown.Item key={c} href={"/store/category/" + c}>
+              {c}
             </Dropdown.Item>
           ))
         ) : (
