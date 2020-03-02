@@ -24,11 +24,12 @@ const ProductCard = React.memo(function ProductCard(props) {
         <Card.Img
           variant="top"
           className="productCardPhoto"
-          src="/images/products/test.jpg"
+          src={"/images/products/" + props.product.photo}
+          style={{ width: "245px", height: "360px" }}
         />
         {props.product.price.discount.hasDiscount ? (
           <Image
-            src="/images/products/discount.png"
+            src="/images/discount.png"
             className="productCardDiscount"
             alt="discount"
           />

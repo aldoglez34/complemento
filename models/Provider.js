@@ -40,10 +40,6 @@ const ProviderSchema = new Schema({
     type: String,
     trim: true
   },
-  productCount: {
-    type: Number,
-    default: 0
-  },
   createdAt: {
     type: Date,
     default: Date.now

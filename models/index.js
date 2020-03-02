@@ -4,7 +4,6 @@ module.exports = {
   Manager: require("./Manager"),
   Product: require("./Product"),
   Provider: require("./Provider"),
-  Category: require("./Category"),
   Sale: require("./Sale"),
   Purchase: require("./Purchase"),
   Message: require("./Message")

@@ -2,16 +2,26 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
-  name: {
+  provider: {
+    type: Schema.Types.ObjectId,
+    ref: "Provider",
+    required: "Proveedor inválido"
+  },
+  category: {
     type: String,
-    unique: true,
     trim: true,
-    required: "Nombre requerido"
+    required: "Categoría inválida"
   },
   brand: {
     type: String,
     trim: true,
     required: "Marca requerida"
+  },
+  name: {
+    type: String,
+    unique: true,
+    trim: true,
+    required: "Nombre requerido"
   },
   content: {
     type: String,
@@ -45,29 +55,18 @@ const ProductSchema = new Schema({
     default: 0
   },
   stock: {
-    type: Number,
-    default: 1
-  },
-  photo: {
-    type: String,
-    default: "placeholder.jpg"
+    type: Number
   },
   priority: {
     type: Boolean,
     default: false
   },
+  photo: {
+    type: String,
+    default: "placeholder.jpg"
+  },
   sufferings: [{ type: String, trim: true }],
   ingredients: [{ type: String, trim: true }],
-  provider: {
-    type: Schema.Types.ObjectId,
-    ref: "Provider",
-    required: "Proveedor inválido"
-  },
-  category: {
-    type: Schema.Types.ObjectId,
-    ref: "Category",
-    required: "Categoría inválida"
-  },
   registeredAt: {
     type: Date,
     default: Date.now()
