@@ -14,7 +14,7 @@ import {
 import Layout from "../components/Layout";
 import API from "../utils/API";
 
-const Cart = React.memo(function Cart() {
+const Cart = React.memo(() => {
   const dispatch = useDispatch();
 
   const client = useSelector(state => state.client);
@@ -30,7 +30,7 @@ const Cart = React.memo(function Cart() {
         // fetch info from db
         API.fetchCartProduct(value._id)
           .then(res => {
-            console.log(`adding ${res.data.name} to the bag`);
+            // console.log(`adding ${res.data.name} to the bag`);
 
             // temp product
             let product = res.data;
@@ -42,7 +42,7 @@ const Cart = React.memo(function Cart() {
             // push temp product into fullCart
             fullCart.push(product);
 
-            console.log(`index: ${index}`);
+            // console.log(`index: ${index}`);
 
             // "resolve" the promise and send the temp arr as a parameter
             if (index === array.length - 1) resolve();
@@ -53,7 +53,7 @@ const Cart = React.memo(function Cart() {
     // when its done fetching all products info
     fetchAllProducts
       .then(() => {
-        console.log("RESOLVED");
+        // console.log("RESOLVED");
         setProducts(fullCart);
       })
       .catch(err => console.log(err));
