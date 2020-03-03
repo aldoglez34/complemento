@@ -55,7 +55,7 @@ router.get("/brands", function(req, res) {
 // matches with /api/store/products
 router.get("/products", function(req, res) {
   model.Product.find({})
-    .select("category name content price stock photo brand priority")
+    .select("category name content price stock photo brand priority unitsSold")
     .sort({ name: 1 })
     .then(data => res.json(data))
     .catch(err => res.json(err));

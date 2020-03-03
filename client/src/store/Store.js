@@ -28,6 +28,60 @@ class Store extends PureComponent {
     sortBy: "Nombre ascendente"
   };
 
+  componentDidMount() {
+    // fetch filters (left bar)
+    API.fetchCategories()
+      .then(res => this.setState({ categories: res.data }))
+      .catch(err => console.log(err));
+    API.fetchBrands()
+      .then(res => this.setState({ brands: res.data }))
+      .catch(err => console.log(err));
+    // fetch products
+    API.fetchProducts()
+      .then(res => {
+        this.setState(
+          (prevState, props) => {
+            //
+            let brand = props.routeProps.match.params.brand;
+            let category = props.routeProps.match.params.category;
+            // if no filters
+            if (!brand && !category) {
+              return {
+                products: res.data,
+                pageCount: Math.ceil(
+                  res.data.length / prevState.productsPerPage
+                )
+              };
+            }
+            // if category filter
+            if (category && !brand) {
+              let filtered = res.data.filter(p => p.category === category);
+              return {
+                filter: category,
+                products: filtered,
+                pageCount: Math.ceil(
+                  filtered.length / prevState.productsPerPage
+                )
+              };
+            }
+            // if brands filter
+            if (!category && brand) {
+              let filtered = res.data.filter(p => p.brand === brand);
+              return {
+                filter: brand,
+                products: filtered,
+                pageCount: Math.ceil(
+                  filtered.length / prevState.productsPerPage
+                )
+              };
+            }
+          },
+          () => this.setOffsetAndLimit()
+        );
+      })
+      .catch(err => console.log(err));
+  }
+
   setOffsetAndLimit = () => {
     let offset;
     let limit;
@@ -41,119 +95,59 @@ class Store extends PureComponent {
     this.setState({ offset, limit });
   };
 
-  componentDidMount() {
-    // fetch filters
-    API.fetchCategories()
-      .then(res => this.setState({ categories: res.data }))
-      .catch(err => console.log(err));
-    API.fetchBrands()
-      .then(res => this.setState({ brands: res.data }))
-      .catch(err => console.log(err));
-    // fetch products
-    API.fetchProducts()
-      .then(res => {
-        // no filters
-        if (
-          !this.props.routeProps.match.params.brand ||
-          !this.props.routeProps.match.params.category
-        ) {
-          this.setState(
-            {
-              products: res.data,
-              pageCount: Math.ceil(res.data.length / this.state.productsPerPage)
-            },
-            () => this.setOffsetAndLimit()
-          );
-        }
-        // category filter
-        if (this.props.routeProps.match.params.category) {
-          this.setState({
-            filter: this.props.routeProps.match.params.category
-          });
-          let filteredProducts = res.data.filter(
-            p => p.category.name === this.props.routeProps.match.params.category
-          );
-          this.setState(
-            {
-              products: filteredProducts,
-              pageCount: Math.ceil(
-                filteredProducts.length / this.state.productsPerPage
-              )
-            },
-            () => this.setOffsetAndLimit()
-          );
-        }
-        // brand filter
-        if (this.props.routeProps.match.params.brand) {
-          this.setState({ filter: this.props.routeProps.match.params.brand });
-          let filteredProducts = res.data.filter(
-            p => p.brand === this.props.routeProps.match.params.brand
-          );
-          this.setState(
-            {
-              products: filteredProducts,
-              pageCount: Math.ceil(
-                filteredProducts.length / this.state.productsPerPage
-              )
-            },
-            () => this.setOffsetAndLimit()
-          );
-        }
-      })
-      .catch(err => console.log(err));
-  }
-
   handleChangeProductsPerPage = pages => {
     this.setState(
-      {
-        productsPerPage: pages,
-        pageCount: Math.ceil(this.state.products.length / pages)
+      prevState => {
+        return {
+          productsPerPage: pages,
+          pageCount: Math.ceil(prevState.products.length / pages)
+        };
       },
       () => this.setOffsetAndLimit()
     );
   };
 
   applySorting = opt => {
-    this.setState({ sortBy: opt });
-    let temp = this.state.products;
-    switch (opt) {
-      case "Nombre ascendente":
-        temp.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
-        this.setState({ products: temp });
-        break;
-      case "Nombre descendente":
-        temp.sort((a, b) => (a.name < b.name ? 1 : b.name < a.name ? -1 : 0));
-        this.setState({ products: temp });
-        break;
-      case "Precio: bajo a alto":
-        temp.sort((a, b) =>
-          a.price.salePrice > b.price.salePrice
-            ? 1
-            : b.price.salePrice > a.price.salePrice
-            ? -1
-            : 0
-        );
-        this.setState({ products: temp });
-        break;
-      case "Precio: alto a bajo":
-        temp.sort((a, b) =>
-          a.price.salePrice < b.price.salePrice
-            ? 1
-            : b.price.salePrice < a.price.salePrice
-            ? -1
-            : 0
-        );
-        this.setState({ products: temp });
-        break;
-      case "Más vendido":
-        temp.sort((a, b) =>
-          a.unitsSold < b.unitsSold ? 1 : b.unitsSold < a.unitsSold ? -1 : 0
-        );
-        this.setState({ products: temp });
-        break;
-      default:
-        this.setState({ products: temp });
-    }
+    this.setState(prevState => {
+      let sorted = [];
+      switch (opt) {
+        case "Nombre ascendente":
+          sorted = prevState.products.sort((a, b) =>
+            a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+          );
+          return { sortBy: opt, products: sorted };
+        case "Nombre descendente":
+          sorted = prevState.products.sort((a, b) =>
+            a.name < b.name ? 1 : b.name < a.name ? -1 : 0
+          );
+          return { sortBy: opt, products: sorted };
+        case "Precio: bajo a alto":
+          sorted = prevState.products.sort((a, b) =>
+            a.price.salePrice > b.price.salePrice
+              ? 1
+              : b.price.salePrice > a.price.salePrice
+              ? -1
+              : 0
+          );
+          return { sortBy: opt, products: sorted };
+        case "Precio: alto a bajo":
+          sorted = prevState.products.sort((a, b) =>
+            a.price.salePrice < b.price.salePrice
+              ? 1
+              : b.price.salePrice < a.price.salePrice
+              ? -1
+              : 0
+          );
+          return { sortBy: opt, products: sorted };
+        case "Más vendido":
+          sorted = prevState.products.sort((a, b) =>
+            a.unitsSold < b.unitsSold ? 1 : b.unitsSold < a.unitsSold ? -1 : 0
+          );
+          return { sortBy: opt, products: sorted };
+        default:
+          return { sortBy: opt, products: prevState.products };
+      }
+    });
   };
 
   handleChangePage = page => {
@@ -217,7 +211,9 @@ class Store extends PureComponent {
                   </div>
                   {/* pagination */}
                   <div className="d-flex">
-                    <div>{this.state.products.length + " productos"}</div>
+                    <div className="text-muted">
+                      {this.state.products.length + " productos"}
+                    </div>
                     <div className="ml-auto">
                       <MyPagination
                         pageCount={this.state.pageCount}

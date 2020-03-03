@@ -4,6 +4,7 @@ module.exports = providersList => {
   const products = [
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
       brand: "GN+V",
       name: "Cártilago de Tiburón",
@@ -25,6 +26,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
       brand: "High Power",
       name: "Glutamina",
@@ -46,6 +48,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
       brand: "High Power",
       name: "BCAAS Aminoácidos",
@@ -67,6 +70,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
       brand: "Kuups",
       name: "Barra de proteína",
@@ -88,6 +92,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
       brand: "High Power",
       name: "Hippercuts XTreme",
@@ -109,6 +114,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
       brand: "High Power",
       name: "Carboure",
@@ -130,6 +136,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Antiestrés",
       brand: "Marcoper",
       name: "Gotas Me Vale Madre",
@@ -151,6 +158,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Antiestrés",
       brand: "Marcoper",
       name: "Altapress",
@@ -172,6 +180,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Antiestrés",
       brand: "Marcoper",
       name: "Pasiflorina Extracto",
@@ -193,6 +202,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
       brand: "GN+V",
       name: "Ácido Glutámico",
@@ -214,6 +224,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
       brand: "GN+V",
       name: "Neurocerebryl",
@@ -235,6 +246,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
       brand: "GN+V",
       name: "Vitacebrol",
@@ -256,6 +268,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Insomnio",
       brand: "Vitalé",
       name: "Aromatizante Ambiental",
@@ -277,6 +290,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Insomnio",
       brand: "Vitalé",
       name: "Aceite de Melisa",
@@ -298,6 +312,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Insomnio",
       brand: "Vitalé",
       name: "Romero Aceite",
@@ -319,6 +334,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Pérdida y Control de Peso",
       brand: "Vidanat",
       name: "Gel De Jengibre",
@@ -340,6 +356,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Pérdida y Control de Peso",
       brand: "Vidanat",
       name: "Raíz De Tejocote",
@@ -361,6 +378,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Pérdida y Control de Peso",
       brand: "Vidanat",
       name: "Cetonas De Frambuesa",
@@ -382,6 +400,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Pérdida y Control de Peso",
       brand: "GN+V",
       name: "Raíz de Nopal y Toronja",
@@ -403,6 +422,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Pérdida y Control de Peso",
       brand: "Vidanat",
       name: "Gel Mango Africano",
@@ -424,6 +444,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Pérdida y Control de Peso",
       brand: "GN+V",
       name: "Piñalife",
@@ -441,10 +462,11 @@ module.exports = providersList => {
       priority: false,
       sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
-      photo: "piñalife.jpg"
+      photo: "pinalife.jpg"
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Salud Sexual",
       brand: "Bio-Logium",
       name: "Big Size For Men",
@@ -466,6 +488,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Salud Sexual",
       brand: "Bio-Logium",
       name: "Alpha Male",
@@ -487,6 +510,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Salud Sexual",
       brand: "Bio-Logium",
       name: "Big Size For Women",
@@ -508,6 +532,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Desinflamatorios",
       brand: "Anahuac",
       name: "Árnica",
@@ -529,6 +554,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Desinflamatorios",
       brand: "Vidanat",
       name: "Pomada De Manzana",
@@ -550,6 +576,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Desinflamatorios",
       brand: "Vidanat",
       name: "Gel Cloruro de Magnesio",
@@ -571,6 +598,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
       brand: "Anahuac",
       name: "Neo Omega 3",
@@ -592,6 +620,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
       brand: "Anahuac",
       name: "Aceite De Krill",
@@ -613,6 +642,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
       brand: "Vidanat",
       name: "Chía",
@@ -634,6 +664,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
       brand: "Gelcaps",
       name: "KolestriL plus",
@@ -657,6 +688,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
       brand: "Gelcaps",
       name: "Lecitina De Soya",
@@ -680,6 +712,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
       brand: "Anahuac",
       name: "Neo Alfalfa",
@@ -703,6 +736,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Salud Sexual",
       brand: "Bio-Logium",
       name: "The Sensual Tea",
@@ -726,6 +760,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
       brand: "Pure Nutricion",
       name: "Women Plenna",
@@ -749,6 +784,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
       brand: "Pure Nutricion",
       name: "Men Silver 50",
@@ -772,6 +808,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Antiestrés",
       brand: "Anahuac",
       name: "Valenox",
@@ -795,6 +832,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
       brand: "Prosa",
       name: "Ginkgo Biloba Plus",
@@ -818,6 +856,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Sistema Circulatorio",
       brand: "MGL",
       name: "Ajo Rey",
@@ -841,6 +880,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Sistema Circulatorio",
       brand: "Vidanat",
       name: "Aceite De Higado Tiburon",
@@ -864,6 +904,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Sistema Circulatorio",
       brand: "Margarita Naturalmente",
       name: "Zapote Blanco Extracto",
@@ -887,6 +928,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Sistema Circulatorio",
       brand: "Salud Natural",
       name: "Ajo Deodorizado",
@@ -910,6 +952,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
       brand: "Anahuac",
       name: "Triomega 3 6 y 9",
@@ -933,6 +976,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
       brand: "GranaGard",
       name: "Omega 5",
@@ -956,6 +1000,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
       brand: "GranaGard",
       name: "Omega 530",
@@ -979,6 +1024,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Pérdida y Control de Peso",
       brand: "Margarita Naturalmente",
       name: "Semilla De Brasil",
@@ -1002,6 +1048,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Antiestrés",
       brand: "Salud Natural",
       name: "Taflavix",
@@ -1025,6 +1072,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Desinflamatorios",
       brand: "MGL",
       name: "Arnidol Crema Para Golpes",
@@ -1048,6 +1096,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Desinflamatorios",
       brand: "Anahuac",
       name: "Balsamo Golden Dragon",
@@ -1071,6 +1120,7 @@ module.exports = providersList => {
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
+      unitsSold: Math.floor(Math.random() * 10),
       category: "Desinflamatorios",
       brand: "MGL",
       name: "Tónico De Ajo Negro",
