@@ -69,8 +69,8 @@ export default {
     return axios.get("/api/product/details/" + productId);
   },
 
-  fetchSimilarProducts: function(categoryId) {
-    return axios.get("/api/product/similar/" + categoryId);
+  fetchSimilarProducts: function(category) {
+    return axios.get("/api/product/similar/" + category);
   },
 
   // ---------------------------------------------------------------------------

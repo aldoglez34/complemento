@@ -56,11 +56,11 @@ const AddToBagButton = React.memo(function AddToBagButton(props) {
             exitosamente a tu bolsa de compras.
           </div>
           <div className="d-flex flex-row">
-            <Button variant="outline-success" onClick={handleClose}>
+            <Button variant="success" onClick={handleClose}>
               <i className="fas fa-angle-double-left mr-1" />
               Seguir comprando
             </Button>
-            <Button className="ml-auto" variant="outline-danger" href="/cart">
+            <Button className="ml-auto" variant="danger" href="/cart">
               Proceder con el pago
               <i className="fas fa-angle-double-right ml-1" />
             </Button>

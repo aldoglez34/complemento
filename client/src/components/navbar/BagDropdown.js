@@ -11,8 +11,9 @@ import { useSelector, useDispatch } from "react-redux";
 import * as cartActions from "../../redux/actions/cart";
 import API from "../../utils/API";
 
-const BagDropdown = React.memo(function BagDropdown() {
+const BagDropdown = React.memo(() => {
   const dispatch = useDispatch();
+
   const cart = useSelector(state => state.cart);
   const [products, setProducts] = useState([]);
 
@@ -41,9 +42,7 @@ const BagDropdown = React.memo(function BagDropdown() {
     });
     // when its done fetching all products info,
     fetchAllProducts
-      .then(() => {
-        setProducts(fullCart);
-      })
+      .then(() => setProducts(fullCart))
       .catch(err => console.log(err));
   };
 

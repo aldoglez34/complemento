@@ -6,7 +6,7 @@ import API from "../../utils/API";
 import * as clientActions from "../../redux/actions/client";
 import "./favbutton.scss";
 
-const FavButton = React.memo(function FavButton(props) {
+const FavButton = React.memo(props => {
   const dispatch = useDispatch();
 
   const isClientLogged = useSelector(state => state.client.isLogged);
@@ -55,27 +55,27 @@ const FavButton = React.memo(function FavButton(props) {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Producto agregado</Modal.Title>
-        </Modal.Header>
         <Modal.Body>
-          El producto <strong>{props.product.name}</strong> fue agregado a tus
-          favoritos
+          <h4>Producto agregado</h4>
+          <p>
+            El producto <strong>{props.product.name}</strong> fue agregado a tus
+            favoritos
+          </p>
+          <div className="d-flex flex-row">
+            <Button variant="success" onClick={handleClose}>
+              <i className="fas fa-angle-double-left mr-1" />
+              Seguir comprando
+            </Button>
+            <Button
+              className="ml-auto"
+              variant="danger"
+              href="/client/favorites/"
+            >
+              Ir a mis favoritos
+              <i className="fas fa-angle-double-right ml-1" />
+            </Button>
+          </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="success" onClick={handleClose}>
-            <i className="fas fa-angle-double-left mr-1" />
-            Seguir comprando
-          </Button>
-          <Button
-            className="ml-auto"
-            variant="danger"
-            href="/client/favorites/"
-          >
-            Ir a mis favoritos
-            <i className="fas fa-angle-double-right ml-1" />
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );

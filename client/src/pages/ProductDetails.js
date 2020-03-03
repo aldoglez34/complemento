@@ -29,8 +29,8 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                 { name: "Inicio", to: "/" },
                 { name: "Tienda", to: "/store" },
                 {
-                  name: product.category.name,
-                  to: "/store/category/" + product.category.name
+                  name: product.category,
+                  to: "/store/category/" + product.category
                 },
                 { name: product.name, to: "active" }
               ]}
@@ -39,14 +39,14 @@ const ProductDetails = React.memo(function ProductDetails(props) {
               {/* photo */}
               <Col md={5} className="text-center">
                 <Image
-                  src="/images/products/test.jpg"
+                  src={"/images/products/" + product.photo}
                   className="productPhoto"
                   fluid
                   alt="product"
                 />
                 {product.price.discount.hasDiscount ? (
                   <Image
-                    src="/images/products/discount.png"
+                    src="/images/discount.png"
                     className="discountImg"
                     alt="discount"
                   />
@@ -55,8 +55,8 @@ const ProductDetails = React.memo(function ProductDetails(props) {
               {/* info */}
               <Col md={7}>
                 {/* name and price */}
-                <div className="d-flex flex-row">
-                  <h1>
+                <div className="d-flex flex-row mb-2">
+                  <h1 className="m-0">
                     <strong>{product.name}</strong>
                   </h1>
                   {product.price.discount.hasDiscount ? (
@@ -69,8 +69,14 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                     </Badge>
                   ) : null}
                 </div>
-                <p className="h5 mb-1">{product.content}</p>
-                <p className="h5 mb-2">{product.brand}</p>
+                <p className="h5 mb-1">
+                  <span className="text-muted mr-1">Contenido:</span>
+                  {product.content}
+                </p>
+                <p className="h5 mb-2">
+                  <span className="text-muted mr-1">Marca:</span>
+                  {product.brand}
+                </p>
                 {product.price.discount.hasDiscount ? (
                   <React.Fragment>
                     <span className="h4 mb-0" style={{ color: "gainsboro" }}>
@@ -145,7 +151,7 @@ const ProductDetails = React.memo(function ProductDetails(props) {
               <Col>
                 <h2>Similares</h2>
                 <hr className="myDivider" />
-                <SimilarProducts categoryId={product.category._id} />
+                <SimilarProducts category={product.category} />
               </Col>
             </Row>
             <HelpButton />

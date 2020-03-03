@@ -3,13 +3,13 @@ import API from "../../utils/API";
 import ProductCard from "../../components/cards/ProductCard";
 import { Spinner, Carousel } from "react-bootstrap";
 
-const SimilarProducts = React.memo(function SimilarProducts(props) {
+const SimilarProducts = React.memo(({ category }) => {
   const [similar, setSimilar] = useState([]);
   const [pagesbg, setPagesBG] = useState(0);
   const [pagessm, setPagesSM] = useState(0);
 
   useEffect(() => {
-    API.fetchSimilarProducts(props.categoryId)
+    API.fetchSimilarProducts(category)
       .then(res => {
         setPagesBG(Math.ceil(res.data.length / 5));
         setPagesSM(Math.ceil(res.data.length / 2));
@@ -36,7 +36,7 @@ const SimilarProducts = React.memo(function SimilarProducts(props) {
         carouselItems.push(
           <Carousel.Item key={i}>
             <div className="d-flex flex-wrap justify-content-center">
-              {similar.slice((i - 1) * 5, 5 * i).map(p => {
+              {similar.slice((i - 1) * 4, 4 * i).map(p => {
                 return <ProductCard key={p._id} product={p} />;
               })}
             </div>

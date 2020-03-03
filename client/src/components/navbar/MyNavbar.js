@@ -8,8 +8,9 @@ import BagDropdown from "./BagDropdown";
 import { useSelector } from "react-redux";
 import API from "../../utils/API";
 import "./mynavbar.scss";
+import PropTypes from "prop-types";
 
-const MyNavbar = React.memo(function MyNavbar(props) {
+const MyNavbar = React.memo(({ hideBag }) => {
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -76,7 +77,7 @@ const MyNavbar = React.memo(function MyNavbar(props) {
               <SearchBar items={items} />
             </Nav.Item>
             <Nav.Item className="ml-lg-auto mt-1 mt-lg-0">
-              {props.hideBag ? null : <BagDropdown />}
+              {hideBag ? null : <BagDropdown />}
             </Nav.Item>
             <Nav.Item>
               {client.isLogged ? <ClientDropdown /> : <LoginDropdown />}
@@ -87,5 +88,9 @@ const MyNavbar = React.memo(function MyNavbar(props) {
     </Navbar>
   );
 });
+
+MyNavbar.propTypes = {
+  hideBag: PropTypes.bool
+};
 
 export default MyNavbar;

@@ -8,19 +8,18 @@ router.get("/details/:productId", function(req, res) {
     .select(
       "category brand name content comments stock photo price sufferings ingredients"
     )
-    .populate("category")
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });
 
 // fetchSimilarProducts()
 // matches with /api/product/similar/:category
-router.get("/similar/:categoryId", function(req, res) {
-  model.Product.find({ category: req.params.categoryId })
+router.get("/similar/:category", function(req, res) {
+  model.Product.find({ category: req.params.category })
     .select(
       "category brand name content comments stock photo price sufferings ingredients"
     )
-    .populate("category")
+    .limit(8)
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });

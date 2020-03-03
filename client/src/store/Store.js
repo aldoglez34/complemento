@@ -18,6 +18,7 @@ class Store extends PureComponent {
     //
     products: [],
     productsPerPage: 12,
+    productsPerPageOptions: "",
     pageCount: "",
     activePage: 1,
     //
@@ -76,7 +77,10 @@ class Store extends PureComponent {
               };
             }
           },
-          () => this.setOffsetAndLimit()
+          () => {
+            this.setOffsetAndLimit();
+            this.setProductsPerPageOptions();
+          }
         );
       })
       .catch(err => console.log(err));
@@ -93,6 +97,16 @@ class Store extends PureComponent {
       limit = offset + this.state.productsPerPage;
     }
     this.setState({ offset, limit });
+  };
+
+  setProductsPerPageOptions = () => {
+    let pppopt =
+      this.state.products.length > 28
+        ? [12, 20, 28]
+        : this.state.products.length > 20
+        ? [12, 20]
+        : [12];
+    this.setState({ productsPerPageOptions: pppopt });
   };
 
   handleChangeProductsPerPage = pages => {
@@ -160,7 +174,8 @@ class Store extends PureComponent {
         {this.state.products.length &&
         this.state.categories.length &&
         this.state.brands.length &&
-        this.state.pageCount ? (
+        this.state.pageCount &&
+        this.state.productsPerPageOptions ? (
           <>
             <Container className="mt-3 p-3">
               <Row>
@@ -192,8 +207,9 @@ class Store extends PureComponent {
                       active={this.state.sortBy}
                       applySorting={this.applySorting}
                     />
-                    <span className="ml-2" />
+                    <span className="ml-3" />
                     <ProductsPerPageDropdown
+                      options={this.state.productsPerPageOptions}
                       qty={this.state.productsPerPage}
                       handleChangeProductsPerPage={
                         this.handleChangeProductsPerPage
