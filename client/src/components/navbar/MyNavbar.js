@@ -50,7 +50,7 @@ const MyNavbar = React.memo(({ hideBag }) => {
         {/* nav */}
         <Container fluid>
           {/* bottom row */}
-          <Nav className="mr-auto">
+          <Nav className="mr-auto bg-dark">
             <StoreDropdown categories={categories} />
             <Nav.Item className="ml-0 ml-lg-2 pr-2 w-100 mt-1 mt-lg-0">
               <SearchBar items={items} />
