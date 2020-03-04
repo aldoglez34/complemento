@@ -7,23 +7,16 @@ import "./productcards.scss";
 
 const ProductCard = React.memo(function ProductCard(props) {
   return (
-    <Card id="productcardstyle" className="mt-2 mb-4 mr-1 border-0">
-      <Card.Body
-        className="d-flex justify-items-center flex-column"
-        style={{ backgroundColor: "snowwhite" }}
-      >
-        {/* image */}
-        <a
-          className="text-light"
-          href={"/product/details/" + props.product._id}
-        >
-          <div className="text-center">
-            <Card.Img
-              variant="top"
-              className="productCardPhoto"
-              src={"/images/products/" + props.product.photo}
-            />
-          </div>
+    <Card className="productCard">
+      <Card.Body className="productCardBody text-center">
+        {/* image and name (as link) */}
+        <a href={"/product/details/" + props.product._id}>
+          {/* images */}
+          <Card.Img
+            variant="top"
+            className="productCardPhoto"
+            src={"/images/products/" + props.product.photo}
+          />
           {props.product.price.discount.hasDiscount ? (
             <Image
               src="/images/discount.png"
@@ -33,40 +26,41 @@ const ProductCard = React.memo(function ProductCard(props) {
           ) : null}
           {/* name */}
           <div
-            className="d-flex align-items-center justify-content-center mb-3"
-            style={{ height: "42px", maxHeight: "42px" }}
+            className="d-flex align-items-center justify-content-center my-3"
+            style={{ height: "50px", maxHeight: "50px" }}
           >
-            <h5 className="text-center text-dark mb-0">{props.product.name}</h5>
+            <h4 className="text-center text-dark mb-0">{props.product.name}</h4>
           </div>
         </a>
         {/* price */}
         <div className="lead text-center mb-3">
           {props.product.price.discount.hasDiscount ? (
-            <React.Fragment>
-              <span className="mb-0" style={{ color: "gainsboro" }}>
-                <del>{"$" + props.product.price.salePrice}</del>
-              </span>
-              <span className="h4 text-danger mb-0 ml-2">
+            <>
+              <del className="" style={{ color: "gainsboro" }}>
+                {"$" + props.product.price.salePrice}
+              </del>
+              <strong className="text-danger ml-2">
                 {"$" + props.product.price.discount.newPrice}
-              </span>
-            </React.Fragment>
+              </strong>
+            </>
           ) : (
-            <span className="h4 text-danger mb-0">
+            <strong className="text-danger">
               {"$" + props.product.price.salePrice}
-            </span>
+            </strong>
           )}
         </div>
-        {/* content */}
-        <p className="mb-0">{props.product.content}</p>
-        {/* brand */}
-        <p style={{ textTransform: "uppercase" }}>{props.product.brand}</p>
+        {/* content and brand */}
+        <div className="mb-3">
+          <p className="mb-0">{props.product.content}</p>
+          <p className="mb-0" style={{ textTransform: "uppercase" }}>
+            {props.product.brand}
+          </p>
+        </div>
         {/* add to cart button */}
-        <div className="mt-auto pt-2 text-center">
-          <div className="d-flex inline">
-            <AddToBagButton product={props.product} size="md" />
-            <div className="ml-1">
-              <FavButton isBlock={false} text={null} product={props.product} />
-            </div>
+        <div className="d-flex inline">
+          <AddToBagButton product={props.product} size="md" />
+          <div className="ml-1">
+            <FavButton isBlock={false} text={null} product={props.product} />
           </div>
         </div>
       </Card.Body>

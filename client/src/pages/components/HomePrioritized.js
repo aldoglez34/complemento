@@ -79,10 +79,14 @@ const HomePrioritized = React.memo(function HomePrioritized() {
   return prioritized.length ? (
     <>
       <div className="d-none d-md-block">
-        <Carousel interval={null}>{bigCarouselItems(prioritized)}</Carousel>
+        <Carousel indicators={false} interval={null}>
+          {bigCarouselItems(prioritized)}
+        </Carousel>
       </div>
       <div className="d-md-none">
-        <Carousel interval={null}>{smallCarouselItems(prioritized)}</Carousel>
+        <Carousel indicators={false} interval={null}>
+          {smallCarouselItems(prioritized)}
+        </Carousel>
       </div>
     </>
   ) : (

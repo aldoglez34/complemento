@@ -6,40 +6,18 @@ import Brands from "./Brands";
 
 const FilterSection = React.memo(props => {
   return (
-    <Navbar expand="md" className="filterSection mb-3 mb-md-0">
-      {/* toggles */}
-      <div className="d-flex justify-content-around w-100">
-        <Navbar.Toggle
-          className="border-0"
-          aria-controls="filtersDropdown"
-          style={{ outline: 0 }}
-        >
-          <div className="d-flex flex-row justify-content-center align-items-center">
-            <h5 className="mb-0">Filtros</h5>
-            <i className="fas fa-chevron-down ml-1" />
-          </div>
-        </Navbar.Toggle>
-        <Navbar.Toggle
-          className="border-0"
-          aria-controls="sortDropdown"
-          style={{ outline: 0 }}
-        >
-          <div className="d-flex flex-row justify-content-center align-items-center">
-            <h5 className="mb-0">Orden</h5>
-            <i className="fas fa-chevron-down ml-1" />
-          </div>
-        </Navbar.Toggle>
-        <Navbar.Toggle
-          className="border-0"
-          aria-controls="seeDropdown"
-          style={{ outline: 0 }}
-        >
-          <div className="d-flex flex-row justify-content-center align-items-center">
-            <h5 className="mb-0">Ver</h5>
-            <i className="fas fa-chevron-down ml-1" />
-          </div>
-        </Navbar.Toggle>
-      </div>
+    <Navbar expand="md" className="mb-3 mb-md-0 p-0">
+      {/* toggle */}
+      <Navbar.Toggle
+        className="border-0"
+        aria-controls="filtersDropdown"
+        style={{ outline: 0 }}
+      >
+        <div className="d-flex flex-row justify-content-center align-items-center">
+          <h5 className="mb-0">Filtros</h5>
+          <i className="fas fa-chevron-down ml-1" />
+        </div>
+      </Navbar.Toggle>
       {/* collapsed menus */}
       <Navbar.Collapse id="filtersDropdown">
         <Nav className="flex-column w-100 text-left mt-3 mt-md-0">

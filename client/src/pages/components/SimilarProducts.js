@@ -79,10 +79,14 @@ const SimilarProducts = React.memo(({ category }) => {
   return similar.length ? (
     <>
       <div className="d-none d-md-block">
-        <Carousel interval={null}>{bigCarouselItems(similar)}</Carousel>
+        <Carousel indicators={false} interval={null}>
+          {bigCarouselItems(similar)}
+        </Carousel>
       </div>
       <div className="d-md-none">
-        <Carousel interval={null}>{smallCarouselItems(similar)}</Carousel>
+        <Carousel indicators={false} interval={null}>
+          {smallCarouselItems(similar)}
+        </Carousel>
       </div>
     </>
   ) : (

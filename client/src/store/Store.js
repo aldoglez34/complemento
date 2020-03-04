@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { Row, Col, Spinner } from "react-bootstrap";
+import { Row, Col, Spinner, Container } from "react-bootstrap";
 import Layout from "../components/Layout";
 import ProductsSection from "./components/ProductsSection";
 import HelpButton from "../components/misc/HelpButton";
@@ -176,7 +176,7 @@ class Store extends PureComponent {
         this.state.brands.length &&
         this.state.pageCount &&
         this.state.productsPerPageOptions ? (
-          <>
+          <Container className="my-4">
             <Row>
               {/* left-column, filters */}
               <Col md={3}>
@@ -189,20 +189,18 @@ class Store extends PureComponent {
               {/* right-column, title, sorting and products */}
               <Col md={9}>
                 {/* title */}
-                <div>
-                  <h5>
-                    <strong style={{ textTransform: "uppercase" }}>
-                      {!this.state.filter ? "PRODUCTOS" : this.state.filter}
-                    </strong>
-                  </h5>
-                  <hr
-                    className="myDivider"
-                    style={{ backgroundColor: "#edcb58" }}
-                  />
-                </div>
+                <h5>
+                  <strong style={{ textTransform: "uppercase" }}>
+                    {!this.state.filter ? "PRODUCTOS" : this.state.filter}
+                  </strong>
+                </h5>
+                <hr
+                  className="myDivider"
+                  style={{ backgroundColor: "#edcb58" }}
+                />
                 {/* sort and products per page */}
                 <div className="d-none d-md-block mb-2">
-                  <Row className="px-3">
+                  <div className="d-flex flex-row">
                     <SortDropdown
                       active={this.state.sortBy}
                       applySorting={this.applySorting}
@@ -215,7 +213,7 @@ class Store extends PureComponent {
                         this.handleChangeProductsPerPage
                       }
                     />
-                  </Row>
+                  </div>
                 </div>
                 {/* products */}
                 <div className="mb-2">
@@ -226,7 +224,7 @@ class Store extends PureComponent {
                     )}
                   />
                 </div>
-                {/* pagination */}
+                {/* bottom (products length and pagination) */}
                 <div className="d-flex">
                   <div className="text-muted">
                     {this.state.products.length + " productos"}
@@ -243,7 +241,7 @@ class Store extends PureComponent {
             </Row>
             <HelpButton />
             <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
-          </>
+          </Container>
         ) : (
           <div className="h-100 d-flex align-items-center justify-content-center">
             <Spinner animation="grow" role="status" variant="warning" />

@@ -18,6 +18,7 @@ const BagDropdown = React.memo(() => {
   const [products, setProducts] = useState([]);
 
   const initBag = () => {
+    setProducts([]);
     let fullCart = [];
     // fetch all products in the shopping cart, one by one using a promise
     let fetchAllProducts = new Promise((resolve, reject) => {

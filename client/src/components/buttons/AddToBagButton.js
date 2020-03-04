@@ -40,7 +40,7 @@ const AddToBagButton = React.memo(function AddToBagButton(props) {
         size={props.size}
         title={
           props.product.stock > 0
-            ? null
+            ? "Agregar a bolsa de compras"
             : "Este producto no se encuentra disponible"
         }
         disabled={props.product.stock > 0 ? false : true}

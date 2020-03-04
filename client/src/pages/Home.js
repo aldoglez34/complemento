@@ -15,10 +15,12 @@ const Home = React.memo(function Home() {
       {/* welcome title */}
       <WelcomeJumbotron />
       {/* content */}
-      <Container>
-        <Row>
-          <Col md={8} className="mt-2">
-            <h2>¿Quiénes somos?</h2>
+      <Container className="mb-4">
+        <Row className="mb-4">
+          <Col md={8} className="mt-2 mt-md-0">
+            <h5>
+              <strong>¿QUIÉNES SOMOS?</strong>
+            </h5>
             <hr className="myDivider" />
             <p>
               Somos una tienda Mexicana de productos Complementarios Naturales,
@@ -34,8 +36,10 @@ const Home = React.memo(function Home() {
               domicilio en todo México.
             </p>
           </Col>
-          <Col md={4} className="mt-2">
-            <h2>Contáctanos</h2>
+          <Col md={4} className="mt-2 mt-md-0">
+            <h5>
+              <strong>CONTÁCTANOS</strong>
+            </h5>
             <hr className="myDivider" />
             <address>
               <strong>Dirección</strong>
@@ -59,23 +63,31 @@ const Home = React.memo(function Home() {
             </address>
           </Col>
         </Row>
-        <Row className="mt-3">
+        <Row className="mb-4">
           <Col>
-            <h2>Destacados</h2>
+            <h5>
+              <strong>DESTACADOS</strong>
+            </h5>
             <hr className="myDivider" />
             <HomePrioritized />
           </Col>
         </Row>
-        <Row className="mt-3">
+        <br />
+        <Row className="mb-4">
           <Col>
-            <h2>Últimas ofertas</h2>
+            <h5>
+              <strong>ÚLTIMAS OFERTAS</strong>
+            </h5>
             <hr className="myDivider" />
             <HomeDiscounts />
           </Col>
         </Row>
-        <Row className="mt-3">
+        <br />
+        <Row className="mb-4">
           <Col>
-            <h2>Más vendidos</h2>
+            <h5>
+              <strong>MÁS VENDIDOS</strong>
+            </h5>
             <hr className="myDivider" />
             <HomeBestSellers />
           </Col>

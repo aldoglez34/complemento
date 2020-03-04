@@ -79,10 +79,14 @@ const HomeDiscounts = React.memo(function HomeDiscounts() {
   return discounts.length ? (
     <>
       <div className="d-none d-md-block">
-        <Carousel interval={null}>{bigCarouselItems(discounts)}</Carousel>
+        <Carousel indicators={false} interval={null}>
+          {bigCarouselItems(discounts)}
+        </Carousel>
       </div>
       <div className="d-md-none">
-        <Carousel interval={null}>{smallCarouselItems(discounts)}</Carousel>
+        <Carousel indicators={false} interval={null}>
+          {smallCarouselItems(discounts)}
+        </Carousel>
       </div>
     </>
   ) : (

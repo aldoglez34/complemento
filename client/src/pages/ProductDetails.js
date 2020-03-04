@@ -23,7 +23,7 @@ const ProductDetails = React.memo(function ProductDetails(props) {
     <Layout>
       {product ? (
         <>
-          <Container className="mt-3 py-3">
+          <Container className="my-4">
             <MyBreadcrumb
               routes={[
                 { name: "Inicio", to: "/" },
@@ -143,7 +143,9 @@ const ProductDetails = React.memo(function ProductDetails(props) {
             </Row>
             <Row className="mt-4 px-1">
               <Col>
-                <h2>Similares</h2>
+                <h5>
+                  <strong>SIMILARES</strong>
+                </h5>
                 <hr className="myDivider" />
                 <SimilarProducts category={product.category} />
               </Col>
