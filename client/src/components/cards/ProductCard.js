@@ -1,45 +1,44 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card, Badge, Image } from "react-bootstrap";
+import { Card, Image } from "react-bootstrap";
 import FavButton from "../buttons/FavButton";
 import AddToBagButton from "../buttons/AddToBagButton";
 import "./productcards.scss";
 
 const ProductCard = React.memo(function ProductCard(props) {
   return (
-    <Card id="productcardstyle" className="mt-2 mb-4 mr-1 shadow-sm border-0">
-      <a className="text-light" href={"/product/details/" + props.product._id}>
-        <Card.Header className="text-center" id="cardheader">
-          <span>{props.product.name}</span>
-          {props.product.price.discount.hasDiscount ? (
-            <Badge
-              className="ml-1"
-              variant="warning"
-              title={props.product.price.discount.percentage + "% de descuento"}
-            >
-              {props.product.price.discount.percentage + "%"}
-            </Badge>
-          ) : null}
-        </Card.Header>
-        <div className="text-center">
-          <Card.Img
-            variant="top"
-            className="productCardPhoto"
-            src={"/images/products/" + props.product.photo}
-          />
-        </div>
-        {props.product.price.discount.hasDiscount ? (
-          <Image
-            src="/images/discount.png"
-            className="productCardDiscount"
-            alt="discount"
-          />
-        ) : null}
-      </a>
+    <Card id="productcardstyle" className="mt-2 mb-4 mr-1 border-0">
       <Card.Body
         className="d-flex justify-items-center flex-column"
         style={{ backgroundColor: "snowwhite" }}
       >
+        {/* image */}
+        <a
+          className="text-light"
+          href={"/product/details/" + props.product._id}
+        >
+          <div className="text-center">
+            <Card.Img
+              variant="top"
+              className="productCardPhoto"
+              src={"/images/products/" + props.product.photo}
+            />
+          </div>
+          {props.product.price.discount.hasDiscount ? (
+            <Image
+              src="/images/discount.png"
+              className="productCardDiscount"
+              alt="discount"
+            />
+          ) : null}
+          {/* name */}
+          <div
+            className="d-flex align-items-center justify-content-center mb-3"
+            style={{ height: "42px", maxHeight: "42px" }}
+          >
+            <h5 className="text-center text-dark mb-0">{props.product.name}</h5>
+          </div>
+        </a>
         {/* price */}
         <div className="lead text-center mb-3">
           {props.product.price.discount.hasDiscount ? (

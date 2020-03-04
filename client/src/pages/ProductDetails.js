@@ -69,14 +69,8 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                     </Badge>
                   ) : null}
                 </div>
-                <p className="h5 mb-1">
-                  <span className="text-muted mr-1">Contenido:</span>
-                  {product.content}
-                </p>
-                <p className="h5 mb-2">
-                  <span className="text-muted mr-1">Marca:</span>
-                  {product.brand}
-                </p>
+                <p className="h5 mb-1">{product.content}</p>
+                <p className="h5 mb-2">{product.brand}</p>
                 {product.price.discount.hasDiscount ? (
                   <React.Fragment>
                     <span className="h4 mb-0" style={{ color: "gainsboro" }}>

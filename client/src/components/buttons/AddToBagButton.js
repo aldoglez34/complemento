@@ -45,7 +45,7 @@ const AddToBagButton = React.memo(function AddToBagButton(props) {
         }
         disabled={props.product.stock > 0 ? false : true}
       >
-        Comprar
+        Agregar
       </Button>
 
       <Modal show={show} onHide={handleClose}>

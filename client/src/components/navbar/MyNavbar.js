@@ -28,44 +28,23 @@ const MyNavbar = React.memo(({ hideBag }) => {
   }, []);
 
   return (
-    <Navbar
-      // fixed="top"
-      expand="lg"
-      // className="shadow"
-      style={{ backgroundColor: "#264341", height: "65px" }}
-    >
-      {/* logo (medium to large) */}
+    <Navbar expand="lg" style={{ backgroundColor: "#264341", height: "65px" }}>
+      {/* logo */}
       <Navbar.Brand
-        className="d-none d-md-block"
         href="/"
         style={{
           color: "#f3d084",
           fontFamily: "'Acme', sans-serif",
-          // fontSize: "35px"
           fontSize: "28px"
         }}
       >
         Complemento Natural
       </Navbar.Brand>
-      {/* logo (medium to small) */}
-      <Navbar.Brand
-        className="d-md-none"
-        href="/"
-        style={{
-          color: "#f3d084",
-          fontFamily: "'Acme', sans-serif",
-          fontSize: "26px"
-        }}
-      >
-        Complemento Natural
-      </Navbar.Brand>
-
       {/* toggle */}
       <Navbar.Toggle
         aria-controls="top-navbar"
         style={{ backgroundColor: "ghostwhite", outline: 0 }}
       />
-
       {/* collapse */}
       <Navbar.Collapse id="top-navbar">
         {/* nav */}

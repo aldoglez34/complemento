@@ -11,11 +11,11 @@ import "./home.scss";
 
 const Home = React.memo(function Home() {
   return (
-    <Layout>
+    <Layout isHomePage={true}>
       {/* welcome title */}
       <WelcomeJumbotron />
       {/* content */}
-      <Container className="mb-3">
+      <Container>
         <Row>
           <Col md={8} className="mt-2">
             <h2>¿Quiénes somos?</h2>
@@ -80,9 +80,9 @@ const Home = React.memo(function Home() {
             <HomeBestSellers />
           </Col>
         </Row>
+        <HelpButton />
+        <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
       </Container>
-      <HelpButton />
-      <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
     </Layout>
   );
 });
