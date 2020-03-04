@@ -122,7 +122,6 @@ const Cart = React.memo(() => {
                               onClick={() => {
                                 dispatch(cartActions.deleteItem(p._id));
                                 window.location.reload();
-                                // initCart();
                               }}
                               title="Borrar este producto"
                             >

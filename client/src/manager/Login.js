@@ -32,16 +32,13 @@ const Login = React.memo(function Login(props) {
       <Row>
         <Col md={{ span: 4, offset: 4 }}>
           <h1
-            className="text-center text-dark mt-3"
+            className="text-center text-muted mt-4 mb-4"
             style={{
               fontFamily: "'Acme', sans-serif"
             }}
           >
             Complemento Natural
           </h1>
-          <h4 className="mt-1 mb-4 text-center text-muted">
-            Panel de administrador
-          </h4>
           <Formik
             initialValues={{ email: "", password: "" }}
             validationSchema={loginSchema}
@@ -58,14 +55,17 @@ const Login = React.memo(function Login(props) {
                     .then(res => {
                       API.fetchManagerByUID(res.user.uid)
                         .then(res => {
-                          if (res.data) {
-                            dispatch(managerActions.loginManager(res.data));
-                            alert("¡Bienvenido!");
-                            props.history.push("/manager/dashboard");
-                          } else {
-                            alert("Manager incorrecto");
-                            setSubmitting(false);
-                          }
+                          // if (res.data) {
+                          //   dispatch(managerActions.loginManager(res.data));
+                          //   alert("¡Bienvenido!");
+                          //   props.history.push("/manager/dashboard");
+                          // } else {
+                          //   alert("Manager incorrecto");
+                          //   setSubmitting(false);
+                          // }
+                          dispatch(managerActions.loginManager(res.data));
+                          alert("¡Bienvenido!");
+                          props.history.push("/manager/dashboard");
                         })
                         .catch(error => {
                           alert("Error de autenticación, revisa tus datos");

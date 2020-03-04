@@ -21,20 +21,17 @@ const Home = React.memo(function Home() {
             <h2>¿Quiénes somos?</h2>
             <hr className="myDivider" />
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              cursus arcu vitae nunc commodo viverra. Nunc malesuada rutrum
-              tortor ac fringilla. Nam malesuada felis lectus, in tempus velit
-              ullamcorper a. Praesent interdum erat ac leo dictum aliquet.
-              Curabitur bibendum facilisis leo sit amet ornare. Sed aliquet
-              justo ac nunc euismod imperdiet.
+              Somos una tienda Mexicana de productos Complementarios Naturales,
+              nos esforzamos por ofrecerle las más innovadoras marcas y
+              productos, contando con un amplio catálogo de vitaminas y
+              suplementos alimenticios, remedios herbolarios, medicina
+              alternativa y productos para el cuidado personal.
             </p>
             <p>
-              Sed sollicitudin viverra urna in molestie. Vivamus bibendum
-              tristique nisi non maximus. Fusce sit amet lacinia orci. Nam
-              viverra fringilla urna vitae bibendum. Morbi interdum porttitor
-              augue, a tincidunt quam feugiat et. Cras velit felis, faucibus
-              sagittis nunc ac, efficitur tempor metus. Nullam ut eros a libero
-              scelerisque porttitor.
+              En nuestra tienda encontraras productos complementarios a la
+              medicina moderna basados en plantas medicinales, a precios
+              accesibles con compra rápida, segura y que enviaremos a tu
+              domicilio en todo México.
             </p>
           </Col>
           <Col md={4} className="mt-2">

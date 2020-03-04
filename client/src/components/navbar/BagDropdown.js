@@ -82,6 +82,7 @@ const BagDropdown = React.memo(() => {
                         onClick={() => {
                           dispatch(cartActions.decrementQty(p._id));
                           initBag();
+                          // window.location.reload();
                         }}
                         title="Borrar este producto"
                       >
