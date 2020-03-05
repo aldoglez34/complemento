@@ -10,16 +10,22 @@ const StoreDropdown = React.memo(function StoreDropdown({ categories }) {
         Tienda
       </Dropdown.Toggle>
       <Dropdown.Menu data-display="static">
-        <h5 className="pt-1 pl-3 pb-1">Categorías</h5>
-        <Dropdown.Divider />
         {categories.length ? (
-          categories.map(c => (
-            <Dropdown.Item key={c} href={"/store/category/" + c}>
-              {c}
-            </Dropdown.Item>
-          ))
+          <>
+            <div className="px-3 py-2">
+              <h5>
+                <strong>CATEGORÍAS</strong>
+              </h5>
+              <hr className="myDivider mb-0" />
+            </div>
+            {categories.map(c => (
+              <Dropdown.Item key={c} href={"/store/category/" + c}>
+                {c}
+              </Dropdown.Item>
+            ))}
+          </>
         ) : (
-          <div className="text-center">
+          <div className="text-center py-4">
             <Spinner animation="grow" role="status" variant="warning" />
           </div>
         )}

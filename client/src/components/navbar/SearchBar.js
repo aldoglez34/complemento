@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Form, FormControl } from "react-bootstrap";
+import "./searchbar.scss";
 
 const SearchBar = React.memo(function SearchBar(props) {
   const [suggestions, setSuggestions] = useState([]);
@@ -66,7 +67,8 @@ const SearchBar = React.memo(function SearchBar(props) {
         maxLength="50"
         autoFocus
         onChange={handleEditInputChange}
-        className="mr-sm-2 border-0 w-50"
+        // className="w-100 w-md-50" // <- this doesn't work
+        className="mr-sm-2 border-0 w-100"
         style={{ outline: 0 }}
       />
       {renderSuggestions()}

@@ -1,28 +1,25 @@
-// search bar
-#sb-input {
-  width: 100%;
-  outline: 0;
-  height: 40;
-  background-color: ghostwhite;
-  border: 0px;
-  border-radius: 5px;
-  padding: 6px;
+#navbarStyle {
+  background-color: #264341;
+
+  // if i set a height the dropdown breaks idk why
+  // height: 65px;
 }
 
-#suggestions {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  position: fixed;
-  background-color: white;
-  z-index: 100;
-  border: 0px !important;
-  border-radius: 2px;
-  list-style: none;
-  margin-top: 7px;
-  max-height: 163px;
-  overflow-y: auto;
-  padding-left: 8px;
-  width: 32%;
+#navbarLogo {
+  color: #f3d084;
+  font-family: "Acme", sans-serif;
+  font-size: 28px;
+}
+
+#navbarToggleStyle {
+  border: none;
+  outline: 0;
+}
+
+#navbarToggleIcon {
+  font-size: 25px;
+  color: ghostwhite;
+  outline: 0;
 }
 
 // dropdowns

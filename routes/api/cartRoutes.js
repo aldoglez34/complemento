@@ -10,6 +10,19 @@ router.get("/product/:productId", function(req, res) {
     .catch(err => res.json(err));
 });
 
+// fetchCartProductTest()
+// matches with /api/cart/products
+router.get("/products", function(req, res) {
+  console.log("@req.body", req.body);
+  console.log("@req.headers", req.headers);
+  console.log("@req.query", req.query);
+  // console.dir(req.headers);
+  // model.Product.findById(req.params.productId)
+  //   .select("name price stock")
+  //   .then(data => res.json(data))
+  //   .catch(err => res.json(err));
+});
+
 // buyProducts()
 // matches with /api/cart/buy
 router.post("/buy", function(req, res) {

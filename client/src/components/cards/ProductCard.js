@@ -10,7 +10,11 @@ const ProductCard = React.memo(function ProductCard(props) {
     <Card className="productCard">
       <Card.Body className="productCardBody text-center">
         {/* image and name (as link) */}
-        <a href={"/product/details/" + props.product._id}>
+        <a
+          href={"/product/details/" + props.product._id}
+          style={{ textDecoration: "none" }}
+          title={props.product.name}
+        >
           {/* images */}
           <Card.Img
             variant="top"

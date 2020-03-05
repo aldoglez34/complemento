@@ -53,6 +53,11 @@ export default {
     return axios.get("/api/cart/product/" + productId);
   },
 
+  fetchCartProductTest: function(data) {
+    console.log(data);
+    return axios.get("/api/cart/products", data);
+  },
+
   buyProducts: function(data) {
     return axios.post("/api/cart/buy", data);
   },
