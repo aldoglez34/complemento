@@ -49,7 +49,7 @@ export default {
   // CART
   // ---------------------------------------------------------------------------
 
-  fetchCartProduct: function(cartString) {
+  fetchCartProducts: function(cartString) {
     return axios.get("/api/cart/products/" + cartString);
   },
 

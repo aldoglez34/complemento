@@ -24,21 +24,42 @@ router.get("/products/:cartStr", function(req, res) {
     .in(idsOnly)
     .then(data => {
       // generate cart items report with subtotals
-      let cartItems = data.reduce((acc, cv) => {
-        let index = cartObjs
-          .map(obj => obj._id.toString())
-          .indexOf(cv._id.toString());
-        acc.push({
-          _id: cv._id,
-          name: cv.name,
-          qty: Number(cartObjs[index].qty),
-          subTotal: cv.price.discount.hasDiscount
-            ? cv.price.discount.newPrice * Number(cartObjs[index].qty)
-            : cv.price.salePrice * Number(cartObjs[index].qty)
+      // then sort it by product name
+      let cartItems = data
+        .reduce((acc, cv) => {
+          let index = cartObjs
+            .map(obj => obj._id.toString())
+            .indexOf(cv._id.toString());
+          acc.push({
+            _id: cv._id,
+            name: cv.name,
+            stock: cv.stock,
+            qty: Number(cartObjs[index].qty),
+            price: cv.price.discount.hasDiscount
+              ? cv.price.discount.newPrice
+              : cv.price.salePrice,
+            discountPercentage: cv.price.discount.hasDiscount
+              ? cv.price.discount.percentage
+              : null,
+            subTotal: cv.price.discount.hasDiscount
+              ? cv.price.discount.newPrice * Number(cartObjs[index].qty)
+              : cv.price.salePrice * Number(cartObjs[index].qty)
+          });
+          return acc;
+        }, [])
+        .sort((a, b) => {
+          let nameA = a.name.toUpperCase(); // ignore upper and lowercase
+          let nameB = b.name.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          // names must be equal
+          return 0;
         });
-        return acc;
-      }, []);
-      //
+      // send result
       res.json(cartItems);
     })
     .catch(err => res.status(422).send(err));

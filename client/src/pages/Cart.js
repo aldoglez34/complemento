@@ -1,279 +1,203 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import * as cartActions from "../redux/actions/cart";
-import {
-  Container,
-  Row,
-  Col,
-  Table,
-  Button,
-  Badge,
-  Spinner,
-  Card
-} from "react-bootstrap";
+import React, { PureComponent } from "react";
+import { connect } from "react-redux";
+import { clear, addItem, decrementQty } from "../redux/actions/cart";
+import { Container, Table, Button, Badge, Spinner } from "react-bootstrap";
 import Layout from "../components/Layout";
 import API from "../utils/API";
 
-const Cart = React.memo(() => {
-  const dispatch = useDispatch();
-
-  const client = useSelector(state => state.client);
-  const cart = useSelector(state => state.cart);
-  const [products, setProducts] = useState([]);
-
-  const initCart = () => {
-    let fullCart = [];
-    // fetch all products in the shopping cart, one by one using a promise
-    let fetchAllProducts = new Promise((resolve, reject) => {
-      // start looping each product and fetch its info
-      cart.items.forEach((value, index, array) => {
-        // fetch info from db
-        API.fetchCartProduct(value._id)
-          .then(res => {
-            // console.log(`adding ${res.data.name} to the bag`);
-
-            // temp product
-            let product = res.data;
-            product.qty = value.qty;
-            product.subTotal = product.price.discount.hasDiscount
-              ? product.price.discount.newPrice * value.qty
-              : product.price.salePrice * value.qty;
-
-            // push temp product into fullCart
-            fullCart.push(product);
-
-            // console.log(`index: ${index}`);
-
-            // "resolve" the promise and send the temp arr as a parameter
-            if (index === array.length - 1) resolve();
-          })
-          .catch(err => console.log(err));
-      });
-    });
-    // when its done fetching all products info
-    fetchAllProducts
-      .then(() => {
-        // console.log("RESOLVED");
-        setProducts(fullCart);
-      })
-      .catch(err => console.log(err));
+class Cart extends PureComponent {
+  state = {
+    products: []
   };
 
-  useEffect(() => {
-    initCart();
-  }, []);
+  componentDidMount() {
+    this.createCartReport();
+  }
 
-  const makeSale = () => {
-    API.buyProducts({ products, client })
-      .then(res => {
-        if (!res.data.errors) {
-          API.updateStock(products)
-            .then(res => {
-              if (!res.data.errors) {
-                alert("Gracias por tu compra");
-                dispatch(cartActions.clear());
-              } else {
-                alert(res.data.errors.message);
-              }
-            })
-            .catch(err => console.log(err));
+  createCartReport() {
+    // clear products first
+    this.setState({ products: [] }, () => {
+      // generate a string including all cart items with their quantities
+      let cartStr = this.props.cart.items.reduce((acc, cv, idx) => {
+        if (idx === this.props.cart.items.length - 1) {
+          acc += cv._id + "-" + cv.qty;
         } else {
-          alert(res.data.errors.message);
+          acc += cv._id + "-" + cv.qty + ",";
         }
-      })
-      .catch(err => console.log(err));
-  };
+        return acc;
+      }, "");
+      // fetch cart items (if there are any)
+      if (cartStr !== "")
+        API.fetchCartProducts(cartStr)
+          .then(res => this.setState({ products: res.data }))
+          .catch(err => console.log(err));
+    });
+  }
 
-  return (
-    <Layout hideBag={true}>
-      <Container className="mt-4">
-        <h2>Mi bolsa de compras</h2>
-        <hr className="myDivider" />
-        <Row className="mt-3">
-          {/* LEFT COLUMN */}
-          <Col md={7}>
-            <Table className="mt-1" responsive size="sm">
-              <thead>
+  makeSale() {
+    // API.buyProducts({ products, client })
+    //   .then(res => {
+    //     if (!res.data.errors) {
+    //       API.updateStock(products)
+    //         .then(() => {
+    //           alert("Gracias por tu compra");
+    //           this.props.clear();
+    //         })
+    //         .catch(err => console.log(err));
+    //     } else {
+    //       alert(res.data.errors.message);
+    //     }
+    //   })
+    //   .catch(err => console.log(err));
+  }
+
+  async decrementQty(id, dispatchAction) {
+    return dispatchAction(id);
+  }
+
+  async incrementQty(id, dispatchAction) {
+    return dispatchAction(id);
+  }
+
+  render() {
+    return (
+      <Layout hideBag={true}>
+        <Container className="my-4">
+          <h5>
+            <strong>CANASTA</strong>
+          </h5>
+          <hr className="myDivider" />
+          <Table responsive size="sm" striped>
+            <thead>
+              <tr>
+                <th className="text-center border-top-0 pb-2"></th>
+                <th className="text-center border-top-0 pb-2">Producto</th>
+                <th className="text-center border-top-0 pb-2">Cantidad</th>
+                <th className="text-center border-top-0 pb-2">Precio</th>
+                <th className="text-center border-top-0 pb-2">Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.props.cart.counter === 0 ? (
                 <tr>
-                  <th className="text-center border-top-0 pb-2"></th>
-                  <th className="text-center border-top-0 pb-2">Producto</th>
-                  <th className="text-center border-top-0 pb-2">Cantidad</th>
-                  <th className="text-center border-top-0 pb-2">Precio</th>
-                  <th className="text-center border-top-0 pb-2">Subtotal</th>
+                  <td className="bg-light text-center pt-3" colSpan="5">
+                    <em>Tu bolsa de compras está vacía</em>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {cart.counter === 0 ? (
-                  <tr>
-                    <td className="bg-light text-center pt-3" colSpan="5">
-                      <em>Tu bolsa de compras está vacía</em>
-                    </td>
-                  </tr>
-                ) : products.length ? (
-                  <>
-                    {products.map(p => {
-                      return (
-                        <tr key={p._id}>
-                          {/* delete item */}
-                          <td>
-                            <span
-                              className="text-danger"
-                              style={{ cursor: "pointer" }}
-                              onClick={() => {
-                                dispatch(cartActions.deleteItem(p._id));
-                                window.location.reload();
-                              }}
-                              title="Borrar este producto"
-                            >
-                              x
-                            </span>
-                          </td>
-                          {/* name */}
-                          <td className="text-left">
-                            <a
-                              href={"/product/details/" + p._id}
-                              className="text-dark"
-                            >
-                              {p.name}
-                            </a>
-                            {p.price.discount.hasDiscount ? (
-                              <Badge pill className="ml-2" variant="warning">
-                                {p.price.discount.percentage}%
-                              </Badge>
-                            ) : null}
-                          </td>
-                          {/* qty */}
-                          <td className="text-center">
-                            <input
-                              type="number"
-                              defaultValue={p.qty}
-                              className="text-center"
-                              min={1}
-                              max={p.stock}
-                              style={{ width: "55px" }}
-                              onChange={e => {
-                                e.target.value > p.qty
-                                  ? dispatch(
-                                      cartActions.addItem({
-                                        _id: p._id,
-                                        name: p.name
-                                      })
-                                    )
-                                  : dispatch(cartActions.decrementQty(p._id));
-                                initCart();
-                              }}
-                            />
-                          </td>
-                          {/* sale price */}
-                          <td className="text-center">
-                            {p.price.discount.hasDiscount ? (
-                              <>${p.price.discount.newPrice}</>
-                            ) : (
-                              <>${p.price.salePrice}</>
-                            )}
-                          </td>
-                          <td className="text-center">${p.subTotal}</td>
-                        </tr>
-                      );
-                    })}
-                    <tr>
-                      <td className="text-right" colSpan="5">
-                        <Button
-                          size="sm"
-                          variant="link"
-                          className="text-danger"
-                          onClick={() => dispatch(cartActions.clear())}
-                        >
-                          Vaciar bolsa
-                        </Button>
-                      </td>
-                    </tr>
-                  </>
-                ) : (
-                  <tr>
-                    <td className="text-center" colSpan="5">
-                      <div className="text-center my-4">
-                        <Spinner
-                          variant="warning"
-                          animation="grow"
-                          role="status"
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </Table>
-          </Col>
-          {/* RIGHT COLUMN */}
-          <Col md={5} className="mb-3">
-            <Card>
-              <Card.Header style={{ paddingBottom: "7px", paddingTop: "7px" }}>
-                <strong>Resumen</strong>
-              </Card.Header>
-              <Card.Body>
-                {cart.counter === 0 ? (
-                  <div className="text-center text-success">
-                    <strong>Total $0</strong>
-                  </div>
-                ) : products.length ? (
-                  <>
-                    <Table>
-                      <tbody>
-                        <tr>
-                          <td className="border-top-0">Productos</td>
-                          <td className="border-top-0">
-                            {products
-                              .map(p => p.qty)
-                              .reduce((prev, next) => prev + next)}
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Subtotal</td>
-                          <td>
-                            $
-                            {products
-                              .map(p => p.subTotal)
-                              .reduce((prev, next) => prev + next)}{" "}
-                            MXN
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Envío</td>
-                          <td>$70 MXN</td>
-                        </tr>
-                        <tr className="lead text-success">
-                          <td>Total</td>
-                          <td>
-                            $
-                            {products
-                              .map(p => p.subTotal)
-                              .reduce((prev, next) => prev + next) + 70}{" "}
-                            MXN
-                          </td>
-                        </tr>
-                      </tbody>
-                    </Table>
-                    <Button
-                      variant="danger"
-                      className="shadow-sm"
-                      onClick={makeSale}
-                    >
-                      Pagar
-                    </Button>
-                  </>
-                ) : (
-                  <div className="text-center my-4">
-                    <Spinner variant="warning" animation="grow" role="status" />
-                  </div>
-                )}
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
-    </Layout>
-  );
-});
+              ) : this.state.products.length ? (
+                <>
+                  {this.state.products.map(p => {
+                    return (
+                      <tr key={p._id}>
+                        {/* delete item */}
+                        <td className="text-danger text-center">
+                          <strong
+                            style={{ cursor: "pointer" }}
+                            onClick={() => {
+                              // dispatch(cartActions.deleteItem(p._id));
+                              // window.location.reload();
+                              this.decrementQty(
+                                p._id,
+                                this.props.decrementQty
+                              ).then(() => this.createCartReport());
+                            }}
+                            title="Borrar este producto"
+                          >
+                            x
+                          </strong>
+                        </td>
+                        {/* name */}
+                        <td className="text-left">
+                          <a
+                            href={"/product/details/" + p._id}
+                            className="text-dark"
+                          >
+                            {p.name}
+                          </a>
+                          {p.discountPercentage ? (
+                            <Badge pill className="ml-2" variant="warning">
+                              {p.discountPercentage + "%"}
+                            </Badge>
+                          ) : null}
+                        </td>
+                        {/* qty */}
+                        <td className="text-center">
+                          <input
+                            type="number"
+                            defaultValue={p.qty}
+                            className="text-center"
+                            min={1}
+                            max={p.stock}
+                            style={{ width: "55px" }}
+                            onChange={e => {
+                              e.target.value > p.qty
+                                ? this.incrementQty(
+                                    p._id,
+                                    this.props.addItem
+                                  ).then(() => this.createCartReport())
+                                : this.decrementQty(
+                                    p._id,
+                                    this.props.decrementQty
+                                  ).then(() => this.createCartReport());
+                            }}
+                          />
+                        </td>
+                        {/* sale price */}
+                        <td className="text-right">{p.price}</td>
+                        <td className="text-right">{p.subTotal}</td>
+                      </tr>
+                    );
+                  })}
+                </>
+              ) : (
+                <tr>
+                  <td className="text-center" colSpan="5">
+                    <div className="text-center my-4">
+                      <Spinner
+                        variant="warning"
+                        animation="grow"
+                        role="status"
+                      />
+                    </div>
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </Table>
+          {this.state.products.length ? (
+            <div className="d-flex flex-row align-items-start">
+              <Button
+                size="sm"
+                variant="link"
+                className="text-danger p-0"
+                onClick={this.props.clear}
+              >
+                Vaciar bolsa
+              </Button>
+              <h3 className="ml-auto text-success">
+                {"Total: $" +
+                  this.state.products
+                    .map(p => p.subTotal)
+                    .reduce((prev, next) => prev + next)}
+              </h3>
+            </div>
+          ) : null}
+        </Container>
+      </Layout>
+    );
+  }
+}
 
-export default Cart;
+const mapStateToProps = state => {
+  return {
+    cart: state.cart
+  };
+};
+
+const mapDispatchToProps = {
+  clear,
+  addItem,
+  decrementQty
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

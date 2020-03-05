@@ -67,8 +67,8 @@ const SearchBar = React.memo(function SearchBar(props) {
         maxLength="50"
         autoFocus
         onChange={handleEditInputChange}
-        // className="w-100 w-md-50" // <- this doesn't work
-        className="mr-sm-2 border-0 w-100"
+        className="border-0"
+        id="searchBarStyle"
         style={{ outline: 0, boxShadow: "none" }}
       />
       {renderSuggestions()}
