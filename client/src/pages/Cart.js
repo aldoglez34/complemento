@@ -56,7 +56,7 @@ class Cart extends PureComponent {
   }
 
   async incrementQty(id, dispatchAction) {
-    return dispatchAction(id);
+    return dispatchAction({ _id: id });
   }
 
   render() {
@@ -70,11 +70,11 @@ class Cart extends PureComponent {
           <Table responsive size="sm" striped>
             <thead>
               <tr>
-                <th className="text-center border-top-0 pb-2"></th>
-                <th className="text-center border-top-0 pb-2">Producto</th>
+                <th className="border-top-0 pb-2"></th>
+                <th className="text-left border-top-0 pb-2">Producto</th>
                 <th className="text-center border-top-0 pb-2">Cantidad</th>
-                <th className="text-center border-top-0 pb-2">Precio</th>
-                <th className="text-center border-top-0 pb-2">Subtotal</th>
+                <th className="text-right border-top-0 pb-2">Precio</th>
+                <th className="text-right border-top-0 pb-2">Subtotal</th>
               </tr>
             </thead>
             <tbody>
