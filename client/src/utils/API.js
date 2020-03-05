@@ -49,13 +49,8 @@ export default {
   // CART
   // ---------------------------------------------------------------------------
 
-  fetchCartProduct: function(productId) {
-    return axios.get("/api/cart/product/" + productId);
-  },
-
-  fetchCartProductTest: function(data) {
-    console.log(data);
-    return axios.get("/api/cart/products", data);
+  fetchCartProduct: function(cartString) {
+    return axios.get("/api/cart/products/" + cartString);
   },
 
   buyProducts: function(data) {

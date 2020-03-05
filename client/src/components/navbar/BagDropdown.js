@@ -17,14 +17,25 @@ const BagDropdown = React.memo(() => {
   const cart = useSelector(state => state.cart);
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    API.fetchCartProductTest(cart.items)
-      .then(res => {
-        // temp product
-        console.log(res);
-      })
+  const elaborateShoppingBag = () => {
+    // reset
+    setProducts([]);
+    // generate a string including all cart items with their quantities
+    let cartStr = cart.items.reduce((acc, cv, idx) => {
+      if (idx === cart.items.length - 1) {
+        acc += cv._id + "-" + cv.qty;
+      } else {
+        acc += cv._id + "-" + cv.qty + ",";
+      }
+      return acc;
+    }, "");
+    // fetch cart items
+    API.fetchCartProduct(cartStr)
+      .then(res => setProducts(res.data))
       .catch(err => console.log(err));
-  }, []);
+  };
+
+  useEffect(() => elaborateShoppingBag(), []);
 
   return (
     <Dropdown as={NavItem}>
@@ -41,9 +52,9 @@ const BagDropdown = React.memo(() => {
         <div className="px-3 py-2">
           {cart.counter === 0 ? (
             <>
-              <h5>
+              <h6>
                 <strong>CANASTA</strong>
-              </h5>
+              </h6>
               <hr className="myDivider mb-0" />
               <div className="text-center pt-3 pb-2">
                 <em>No hay nada aquí :(</em>
@@ -64,8 +75,9 @@ const BagDropdown = React.memo(() => {
                       style={{ cursor: "pointer" }}
                       onClick={() => {
                         dispatch(cartActions.decrementQty(p._id));
-                        // initBag();
-                        window.location.reload();
+                        elaborateShoppingBag();
+                        // forceUpdate();
+                        // window.location.reload();
                       }}
                     >
                       x

@@ -69,7 +69,7 @@ const SearchBar = React.memo(function SearchBar(props) {
         onChange={handleEditInputChange}
         // className="w-100 w-md-50" // <- this doesn't work
         className="mr-sm-2 border-0 w-100"
-        style={{ outline: 0 }}
+        style={{ outline: 0, boxShadow: "none" }}
       />
       {renderSuggestions()}
     </Form>

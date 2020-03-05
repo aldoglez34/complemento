@@ -122,8 +122,12 @@ const LoginDropdown = React.memo(function LoginDropdown(props) {
           isSubmitting
         }) => (
           <>
-            <Dropdown title="Sesión" as={NavItem}>
-              <Dropdown.Toggle as={Nav.Link} className="text-light">
+            <Dropdown as={NavItem}>
+              <Dropdown.Toggle
+                as={Nav.Link}
+                className="text-light"
+                title="Sesión"
+              >
                 <i className="fas fa-user mr-1" />
                 Sesión
               </Dropdown.Toggle>
@@ -133,9 +137,9 @@ const LoginDropdown = React.memo(function LoginDropdown(props) {
                 className="dropdown-menu-xs-left dropdown-menu-md-right"
               >
                 <div className="px-3 py-2">
-                  <h5>
+                  <h6>
                     <strong>SESIÓN</strong>
-                  </h5>
+                  </h6>
                   <hr className="myDivider" />
                   <Form noValidate onSubmit={handleSubmit}>
                     <Form.Row className="mb-2">

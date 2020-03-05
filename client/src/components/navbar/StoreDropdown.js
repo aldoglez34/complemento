@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 
 const StoreDropdown = React.memo(function StoreDropdown({ categories }) {
   return (
-    <Dropdown title="Tienda" as={NavItem}>
-      <Dropdown.Toggle as={Nav.Link} className="text-light">
+    <Dropdown as={NavItem}>
+      <Dropdown.Toggle as={Nav.Link} className="text-light" title="Tienda">
         <i className="fas fa-store-alt mr-1" />
         Tienda
       </Dropdown.Toggle>
@@ -13,9 +13,9 @@ const StoreDropdown = React.memo(function StoreDropdown({ categories }) {
         {categories.length ? (
           <>
             <div className="px-3 py-2">
-              <h5>
+              <h6>
                 <strong>CATEGORÍAS</strong>
-              </h5>
+              </h6>
               <hr className="myDivider mb-0" />
             </div>
             {categories.map(c => (

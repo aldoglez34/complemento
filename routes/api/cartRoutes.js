@@ -1,26 +1,47 @@
 const router = require("express").Router();
 const model = require("../../models");
 
-// fetchCartProduct()
-// matches with /api/cart/product/:productId
-router.get("/product/:productId", function(req, res) {
-  model.Product.findById(req.params.productId)
-    .select("name price stock")
-    .then(data => res.json(data))
-    .catch(err => res.json(err));
-});
-
 // fetchCartProductTest()
-// matches with /api/cart/products
-router.get("/products", function(req, res) {
-  console.log("@req.body", req.body);
-  console.log("@req.headers", req.headers);
-  console.log("@req.query", req.query);
-  // console.dir(req.headers);
-  // model.Product.findById(req.params.productId)
-  //   .select("name price stock")
-  //   .then(data => res.json(data))
-  //   .catch(err => res.json(err));
+// matches with /api/cart/products/:cartStr
+router.get("/products/:cartStr", function(req, res) {
+  // generate an array of cart items with thei quantities
+  let cartObjs = req.params.cartStr.split(",").reduce((acc, cv) => {
+    acc.push({
+      _id: cv.split("-")[0],
+      qty: Number(cv.split("-")[1])
+    });
+    return acc;
+  }, []);
+  // generate an array with only ids of cart items
+  let idsOnly = req.params.cartStr.split(",").reduce((acc, cv) => {
+    acc.push(cv.split("-")[0]);
+    return acc;
+  }, []);
+  // consult list of ids in mongodb
+  model.Product.find()
+    .select("name price stock")
+    .where("_id")
+    .in(idsOnly)
+    .then(data => {
+      // generate cart items report with subtotals
+      let cartItems = data.reduce((acc, cv) => {
+        let index = cartObjs
+          .map(obj => obj._id.toString())
+          .indexOf(cv._id.toString());
+        acc.push({
+          _id: cv._id,
+          name: cv.name,
+          qty: Number(cartObjs[index].qty),
+          subTotal: cv.price.discount.hasDiscount
+            ? cv.price.discount.newPrice * Number(cartObjs[index].qty)
+            : cv.price.salePrice * Number(cartObjs[index].qty)
+        });
+        return acc;
+      }, []);
+      //
+      res.json(cartItems);
+    })
+    .catch(err => res.status(422).send(err));
 });
 
 // buyProducts()
