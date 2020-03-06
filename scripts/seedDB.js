@@ -5,9 +5,9 @@ const managers = require("./devdata/managers");
 const providers = require("./devdata/providers");
 const insertProducts = require("./devdata/insertProducts");
 
-const uri = process.env.MONGODB_URI || "mongodb://localhost/complementoDB";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/complementoDB";
 mongoose
-  .connect(uri, {
+  .connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
