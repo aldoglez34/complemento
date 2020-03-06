@@ -9,11 +9,11 @@ const FilterSection = React.memo(props => {
     <Navbar expand="md" className="mb-3 mb-md-0 p-0">
       {/* toggle */}
       <Navbar.Toggle
-        className="border-0"
+        className="p-0 border border-danger"
         aria-controls="filtersDropdown"
         style={{ outline: 0 }}
       >
-        <div className="d-flex flex-row justify-content-center align-items-center">
+        <div className="d-flex flex-row justify-content-center align-items-center border border-primary">
           <h5 className="mb-0">Filtros</h5>
           <i className="fas fa-chevron-down ml-1" />
         </div>

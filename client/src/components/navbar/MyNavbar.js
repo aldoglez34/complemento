@@ -35,7 +35,8 @@ const MyNavbar = React.memo(({ hideBag }) => {
       </Navbar.Brand>
       {/* toggle */}
       <Navbar.Toggle aria-controls="top-navbar" id="navbarToggleStyle">
-        <i className="fas fa-bars" id="navbarToggleIcon" />
+        <i className="fas fa-bars navbarToggleIcon" />
+        {/* <i className="fas fa-times navbarToggleIcon" /> */}
       </Navbar.Toggle>
       {/* collapse */}
       <Navbar.Collapse id="top-navbar">

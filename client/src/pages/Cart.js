@@ -94,8 +94,6 @@ class Cart extends PureComponent {
                           <strong
                             style={{ cursor: "pointer" }}
                             onClick={() => {
-                              // dispatch(cartActions.deleteItem(p._id));
-                              // window.location.reload();
                               this.decrementQty(
                                 p._id,
                                 this.props.decrementQty
@@ -126,7 +124,7 @@ class Cart extends PureComponent {
                             type="number"
                             defaultValue={p.qty}
                             className="text-center"
-                            min={1}
+                            min={0}
                             max={p.stock}
                             style={{ width: "55px" }}
                             onChange={e => {
@@ -143,8 +141,8 @@ class Cart extends PureComponent {
                           />
                         </td>
                         {/* sale price */}
-                        <td className="text-right">{p.price}</td>
-                        <td className="text-right">{p.subTotal}</td>
+                        <td className="text-right">{"$" + p.price}</td>
+                        <td className="text-right">{"$" + p.subTotal}</td>
                       </tr>
                     );
                   })}

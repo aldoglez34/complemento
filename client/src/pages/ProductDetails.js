@@ -55,19 +55,20 @@ const ProductDetails = React.memo(function ProductDetails(props) {
               {/* info */}
               <Col md={7}>
                 {/* name and price */}
-                <div className="d-flex flex-row mb-2">
+                <div className="d-flex flex-row mb-2 text-center text-md-left">
                   <h1 className="m-0">
                     <strong>{product.name}</strong>
+                    {product.price.discount.hasDiscount ? (
+                      <Badge
+                        variant="warning"
+                        // className="ml-2 d-flex align-items-center justify-content-center"
+                        // style={{ fontSize: "25px" }}
+                        className="ml-1 p-1 text-dark"
+                      >
+                        {product.price.discount.percentage + "%"}
+                      </Badge>
+                    ) : null}
                   </h1>
-                  {product.price.discount.hasDiscount ? (
-                    <Badge
-                      variant="warning"
-                      className="ml-2 d-flex align-items-center justify-content-center"
-                      style={{ fontSize: "25px" }}
-                    >
-                      {product.price.discount.percentage + "%"}
-                    </Badge>
-                  ) : null}
                 </div>
                 <p className="h5 mb-1">{product.content}</p>
                 <p className="h5 mb-2">{product.brand}</p>
