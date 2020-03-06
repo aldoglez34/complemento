@@ -534,7 +534,7 @@ module.exports = providersList => {
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Desinflamatorios",
-      brand: "Anahuac",
+      brand: "Anáhuac",
       name: "Árnica",
       content: "75 cápsulas",
       comments:
@@ -600,7 +600,7 @@ module.exports = providersList => {
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
-      brand: "Anahuac",
+      brand: "Anáhuac",
       name: "Neo Omega 3",
       content: "100 cápsulas",
       comments:
@@ -622,7 +622,7 @@ module.exports = providersList => {
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
-      brand: "Anahuac",
+      brand: "Anáhuac",
       name: "Aceite De Krill",
       content: "30 cápsulas",
       comments:
@@ -714,7 +714,7 @@ module.exports = providersList => {
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
-      brand: "Anahuac",
+      brand: "Anáhuac",
       name: "Neo Alfalfa",
       content: "300 tabletas",
       comments:
@@ -762,7 +762,7 @@ module.exports = providersList => {
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
-      brand: "Pure Nutricion",
+      brand: "Pure Nutrición",
       name: "Women Plenna",
       content: "60 cápsulas",
       comments:
@@ -786,7 +786,7 @@ module.exports = providersList => {
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
-      brand: "Pure Nutricion",
+      brand: "Pure Nutrición",
       name: "Men Silver 50",
       content: "60 cápsulas",
       comments:
@@ -810,7 +810,7 @@ module.exports = providersList => {
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Antiestrés",
-      brand: "Anahuac",
+      brand: "Anáhuac",
       name: "Valenox",
       content: "40 tabletas",
       comments:
@@ -883,7 +883,7 @@ module.exports = providersList => {
       unitsSold: Math.floor(Math.random() * 10),
       category: "Sistema Circulatorio",
       brand: "Vidanat",
-      name: "Aceite De Higado Tiburon",
+      name: "Aceite De Hígado Tiburón",
       content: "180 cápsulas",
       comments:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
@@ -954,7 +954,7 @@ module.exports = providersList => {
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
-      brand: "Anahuac",
+      brand: "Anáhuac",
       name: "Triomega 3 6 y 9",
       content: "100 cápsulas",
       comments:
@@ -1098,8 +1098,8 @@ module.exports = providersList => {
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Desinflamatorios",
-      brand: "Anahuac",
-      name: "Balsamo Golden Dragon",
+      brand: "Anáhuac",
+      name: "Bálsamo Golden Dragon",
       content: "12 gramos",
       comments:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
