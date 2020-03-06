@@ -3,7 +3,7 @@ const firebase = require("firebase/app");
 require("firebase/auth");
 
 // environment variables
-require("dotenv").config();
+// require("dotenv").config();
 
 // const config = {
 //   apiKey: process.env.REACT_APP_API_KEY,
