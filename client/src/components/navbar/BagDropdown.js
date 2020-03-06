@@ -65,7 +65,7 @@ class BagDropdown extends PureComponent {
                 </h6>
                 <hr className="myDivider mb-0" />
                 <div className="text-center pt-3 pb-2">
-                  <em>No hay nada aquí :(</em>
+                  <em>Parece que no hay nada aquí</em>
                 </div>
               </>
             ) : this.state.products.length ? (

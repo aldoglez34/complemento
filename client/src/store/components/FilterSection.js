@@ -6,7 +6,7 @@ import Brands from "./Brands";
 
 const FilterSection = React.memo(props => {
   return (
-    <Navbar expand="md" className="mb-3 mb-md-0 p-0">
+    <Navbar expand="md" className="mb-3 mb-md-0 p-0 d-none d-md-block">
       {/* toggle */}
       <Navbar.Toggle
         className="p-0 border border-danger"

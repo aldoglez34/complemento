@@ -225,11 +225,11 @@ class Store extends PureComponent {
                   />
                 </div>
                 {/* bottom (products length and pagination) */}
-                <div className="d-flex">
-                  <div className="text-muted">
+                <div className="d-flex justify-content-center align-items-center pt-3">
+                  <em className="text-muted d-none d-md-block">
                     {this.state.products.length + " productos"}
-                  </div>
-                  <div className="ml-auto">
+                  </em>
+                  <div className="ml-md-auto">
                     <MyPagination
                       pageCount={this.state.pageCount}
                       activePage={this.state.activePage}

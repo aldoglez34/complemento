@@ -8,23 +8,18 @@ const MyBreadcrumb = React.memo(function MyBreadcrumb(props) {
         if (r.to !== "active") {
           return (
             <span key={r.to}>
-              <a href={r.to} className="text-dark ml-2">
+              <a href={r.to} className="text-dark">
                 {r.name}
               </a>
               <i
-                className="fas fa-chevron-right ml-2"
+                className="fas fa-chevron-right mx-2"
                 style={{ color: "#c8c0b0" }}
               />
             </span>
           );
         } else {
           return (
-            <span
-              key={r.to}
-              href={r.to}
-              className="ml-2"
-              style={{ color: "grey" }}
-            >
+            <span key={r.to} href={r.to} style={{ color: "grey" }}>
               {r.name}
             </span>
           );

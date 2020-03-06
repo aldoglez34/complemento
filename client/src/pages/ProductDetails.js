@@ -55,37 +55,37 @@ const ProductDetails = React.memo(function ProductDetails(props) {
               {/* info */}
               <Col md={7}>
                 {/* name and price */}
-                <div className="d-flex flex-row mb-2 text-center text-md-left">
-                  <h1 className="m-0">
+                <div className="text-center text-md-left">
+                  <h1 className="mt-4 mt-md-0 mb-2">
                     <strong>{product.name}</strong>
                     {product.price.discount.hasDiscount ? (
-                      <Badge
-                        variant="warning"
-                        // className="ml-2 d-flex align-items-center justify-content-center"
-                        // style={{ fontSize: "25px" }}
-                        className="ml-1 p-1 text-dark"
-                      >
+                      <Badge variant="warning" className="ml-1 p-1">
                         {product.price.discount.percentage + "%"}
                       </Badge>
                     ) : null}
                   </h1>
+                  <p className="h5 mb-1">{product.content}</p>
+                  <p className="h5 mb-2">{product.brand}</p>
+                  <div className="mb-3">
+                    {product.price.discount.hasDiscount ? (
+                      <div className="">
+                        <span
+                          className="h4 mb-0"
+                          style={{ color: "gainsboro" }}
+                        >
+                          <del>{"$" + product.price.salePrice + " MXN"}</del>
+                        </span>
+                        <span className="h3 mb-0 ml-1 text-danger">
+                          {"$" + product.price.discount.newPrice + " MXN"}
+                        </span>
+                      </div>
+                    ) : (
+                      <span className="h3 mb-0 text-danger mb-3">
+                        {"$" + product.price.salePrice + " MXN"}
+                      </span>
+                    )}
+                  </div>
                 </div>
-                <p className="h5 mb-1">{product.content}</p>
-                <p className="h5 mb-2">{product.brand}</p>
-                {product.price.discount.hasDiscount ? (
-                  <React.Fragment>
-                    <span className="h4 mb-0" style={{ color: "gainsboro" }}>
-                      <del>{"$" + product.price.salePrice + " MXN"}</del>
-                    </span>
-                    <span className="h3 mb-0 ml-1 text-danger">
-                      {"$" + product.price.discount.newPrice + " MXN"}
-                    </span>
-                  </React.Fragment>
-                ) : (
-                  <span className="h3 mb-0 text-danger mb-3">
-                    {"$" + product.price.salePrice + " MXN"}
-                  </span>
-                )}
                 {/* buttons */}
                 <Row className="my-2">
                   <Col md={5}>

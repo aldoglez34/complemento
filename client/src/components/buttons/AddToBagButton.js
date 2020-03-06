@@ -61,7 +61,7 @@ const AddToBagButton = React.memo(function AddToBagButton(props) {
               Seguir comprando
             </Button>
             <Button className="ml-auto" variant="danger" href="/cart">
-              Proceder con el pago
+              Proceder al pago
               <i className="fas fa-angle-double-right ml-1" />
             </Button>
           </div>

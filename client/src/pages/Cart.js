@@ -80,8 +80,8 @@ class Cart extends PureComponent {
             <tbody>
               {this.props.cart.counter === 0 ? (
                 <tr>
-                  <td className="bg-light text-center pt-3" colSpan="5">
-                    <em>Tu bolsa de compras está vacía</em>
+                  <td className="bg-light text-center py-3" colSpan="5">
+                    <em>Parece que no hay nada aquí</em>
                   </td>
                 </tr>
               ) : this.state.products.length ? (
