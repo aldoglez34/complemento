@@ -34,12 +34,14 @@ app.get("*", (req, res) => {
 });
 
 // connect to the Mongo DB
-// const uri = process.env.MONGODB_URI || "mongodb://localhost/complementoDB";
-const uri =
-  process.env.MONGODB_URI ||
-  "mongodb://aldo:ThirtyFour340815@ds213896.mlab.com:13896/heroku_zhf3ks7x";
+let MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost/complementoDB";
+// let MONGODB_URI =
+//   process.env.MONGODB_URI ||
+//   "mongodb://aldo:ThirtyFour340815@ds213896.mlab.com:13896/heroku_zhf3ks7x";
+
 mongoose
-  .connect(uri, {
+  .connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
