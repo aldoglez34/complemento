@@ -50,10 +50,10 @@ const AddToBagButton = React.memo(function AddToBagButton(props) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
-          <h4 className="mb-3">Producto agreado a tu bolsa</h4>
+          <h4 className="mb-3">Producto agreado</h4>
           <div className="mb-3">
             El producto <strong>{props.product.name}</strong> ha sido agregado
-            exitosamente a tu bolsa de compras.
+            exitosamente a tu canasta de compras.
           </div>
           <div className="d-flex flex-row">
             <Button variant="success" onClick={handleClose}>
