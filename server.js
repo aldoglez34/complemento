@@ -36,10 +36,6 @@ app.get("*", (req, res) => {
 // connect to the Mongo DB
 let MONGODB_URI =
   process.env.MONGODB_URI || "mongodb://localhost/complementoDB";
-// let MONGODB_URI =
-//   process.env.MONGODB_URI ||
-//   "mongodb://aldo:ThirtyFour340815@ds213896.mlab.com:13896/heroku_zhf3ks7x";
-
 mongoose
   .connect(MONGODB_URI, {
     useNewUrlParser: true,
