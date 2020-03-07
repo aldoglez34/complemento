@@ -19,9 +19,9 @@ const Home = React.memo(function Home() {
         {/* who are we & about */}
         <Row className="mb-4 py-4">
           <Col md={8} className="mt-2 mt-md-0">
-            <h3>¿QUIÉNES SOMOS?</h3>
+            <h3>¿Quiénes somos?</h3>
             <hr className="myDivider" />
-            <p className="lead">
+            <p style={{ fontSize: "17px", fontWeight: "200" }}>
               Somos una tienda Mexicana de productos complementarios naturales,
               nos esforzamos por ofrecerle las más innovadoras marcas y
               productos, contando con un amplio catálogo de vitaminas y
@@ -30,7 +30,7 @@ const Home = React.memo(function Home() {
             </p>
           </Col>
           <Col md={4} className="mt-2 mt-md-0">
-            <h3>CONTACTO</h3>
+            <h3>Contáctanos</h3>
             <hr className="myDivider" />
             <address>
               <strong>Dirección</strong>
@@ -52,7 +52,7 @@ const Home = React.memo(function Home() {
         {/* 3 columns */}
         <Row className="mb-4 py-4">
           <Col>
-            <h3>¿QUÉ OFRECEMOS?</h3>
+            <h3>¿Qué ofrecemos?</h3>
             <hr className="myDivider" />
             <Row className="pt-4">
               <Col md={4} className="d-flex flex-column p-3">
@@ -111,7 +111,7 @@ const Home = React.memo(function Home() {
         {/* destacados */}
         <Row className="mb-4 py-4">
           <Col>
-            <h3>DESTACADOS</h3>
+            <h3>Destacados</h3>
             <hr className="myDivider" />
             <HomePrioritized />
           </Col>
@@ -119,7 +119,7 @@ const Home = React.memo(function Home() {
         {/* latest offers */}
         <Row className="mb-4 py-4">
           <Col>
-            <h3>ÚLTIMAS OFERTAS</h3>
+            <h3>Últimas ofertas</h3>
             <hr className="myDivider" />
             <HomeDiscounts />
           </Col>
@@ -127,7 +127,7 @@ const Home = React.memo(function Home() {
         {/* best sellers */}
         <Row className="mb-4 py-4">
           <Col>
-            <h3>MÁS VENDIDOS</h3>
+            <h3>Más vendidos</h3>
             <hr className="myDivider" />
             <HomeBestSellers />
           </Col>

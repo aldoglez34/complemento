@@ -32,6 +32,7 @@ const MyNavbar = React.memo(({ hideBag }) => {
       {/* logo */}
       <Navbar.Brand href="/" id="navbarLogo">
         Complemento Natural
+        <i className="fas fa-leaf ml-2" />
       </Navbar.Brand>
       {/* toggle */}
       <Navbar.Toggle aria-controls="top-navbar" id="navbarToggleStyle">
