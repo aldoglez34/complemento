@@ -31,7 +31,7 @@ const MyNavbar = React.memo(({ hideBag }) => {
     <Navbar expand="lg" id="navbarStyle">
       {/* logo */}
       <Navbar.Brand href="/" id="navbarLogo">
-        Complemento Natural
+        Tu Complemento
         <i className="fas fa-leaf ml-2" />
       </Navbar.Brand>
       {/* toggle */}

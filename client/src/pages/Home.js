@@ -21,7 +21,7 @@ const Home = React.memo(function Home() {
           <Col md={8} className="mt-2 mt-md-0">
             <h3>¿Quiénes somos?</h3>
             <hr className="myDivider" />
-            <p style={{ fontSize: "17px", fontWeight: "200" }}>
+            <p style={{ fontSize: "16px" }}>
               Somos una tienda Mexicana de productos complementarios naturales,
               nos esforzamos por ofrecerle las más innovadoras marcas y
               productos, contando con un amplio catálogo de vitaminas y
@@ -50,59 +50,51 @@ const Home = React.memo(function Home() {
           </Col>
         </Row>
         {/* 3 columns */}
-        <Row className="mb-4 py-4">
+        <Row className="mb-4 pt-3 pb-4">
           <Col>
             <h3>¿Qué ofrecemos?</h3>
             <hr className="myDivider" />
             <Row className="pt-4">
-              <Col md={4} className="d-flex flex-column p-3">
-                <div className="text-center mb-3">
-                  {/* <i className="fas fa-truck" style={{ fontSize: "40px" }} /> */}
+              <Col md={4} className="d-flex flex-column text-center p-3">
+                <div className="mb-3 text-center">
                   <Image
-                    src={"/images/box.png"}
+                    src="./images/box.png"
                     alt="box"
-                    width="70"
-                    height="70"
+                    width="64"
+                    height="64"
                   />
                 </div>
-                <span className="lead" style={{ color: "#161C2D" }}>
-                  Envíos seguros a todo México
-                </span>
-                <span>
-                  En nuestra tienda encontraras productos complementarios a la
-                  medicina moderna basados en plantas medicinales.
+                <h4 className="mb-1">Envíos seguros a todo México</h4>
+                <span style={{ fontSize: "17px" }}>
+                  Contamos con pedido seguro.
                 </span>
               </Col>
-              <Col md={4} className="d-flex flex-column p-3">
-                <div className="text-center mb-3">
-                  {/* <i className="fas fa-phone" style={{ fontSize: "40px" }} /> */}
+              <Col md={4} className="d-flex flex-column text-center p-3">
+                <div className="mb-3 text-center">
                   <Image
                     src="/images/chat.png"
                     alt="chat"
-                    width="70"
-                    height="70"
+                    width="64"
+                    height="64"
                   />
                 </div>
-                <span className="lead">Asistencia en tus compras</span>
-                <span>
-                  En nuestra tienda encontraras productos complementarios a la
-                  medicina moderna basados en plantas medicinales.
+                <h4 className="mb-1">Asistencia en tus compras</h4>
+                <span style={{ fontSize: "17px" }}>
+                  ¿Miedo a comprar en línea? Nosotros te ayudamos.
                 </span>
               </Col>
-              <Col md={4} className="d-flex flex-column p-3">
-                <div className="text-center mb-3">
-                  {/* <i className="fas fa-tags" style={{ fontSize: "40px" }} /> */}
+              <Col md={4} className="d-flex flex-column text-center p-3">
+                <div className="mb-3 text-center">
                   <Image
                     src={"/images/tag.png"}
                     alt="tag"
-                    width="70"
-                    height="70"
+                    width="64"
+                    height="64"
                   />
                 </div>
-                <span className="lead">Ofertas semanales</span>
-                <span>
-                  En nuestra tienda encontraras productos complementarios a la
-                  medicina moderna basados en plantas medicinales.
+                <h4 className="mb-1">Ofertas semanales</h4>
+                <span style={{ fontSize: "17px" }}>
+                  En nuestra tienda encontrarás ofertas nuevas cada semana.
                 </span>
               </Col>
             </Row>
