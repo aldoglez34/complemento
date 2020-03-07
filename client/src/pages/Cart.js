@@ -168,7 +168,9 @@ class Cart extends PureComponent {
                 size="sm"
                 variant="link"
                 className="text-danger p-0"
-                onClick={this.props.clear}
+                onClick={() => {
+                  this.setState({ products: [] }, () => this.props.clear());
+                }}
               >
                 Vaciar bolsa
               </Button>
