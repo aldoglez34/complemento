@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, ListGroup } from "react-bootstrap";
 import Layout from "../components/Layout";
 import HelpButton from "../components/misc/HelpButton";
 import ScrollButton from "../components/misc/ScrollButton";
@@ -29,7 +29,7 @@ const Home = React.memo(function Home() {
               suplementos alimenticios, remedios herbolarios, medicina
               alternativa y productos para el cuidado personal.
             </p>
-            <p>
+            <p className="d-none d-md-block">
               En nuestra tienda encontraras productos complementarios a la
               medicina moderna basados en plantas medicinales, a precios
               accesibles con compra rápida, segura y que enviaremos a tu
@@ -56,6 +56,40 @@ const Home = React.memo(function Home() {
               <i className="fas fa-envelope mr-2" />
               complemento.natural@gmail.com
             </address>
+          </Col>
+        </Row>
+        <Row className="mb-4 p-3">
+          <Col className="d-flex flex-column p-3">
+            <div className="text-center mb-3">
+              <i className="fas fa-truck" style={{ fontSize:  "40px" }} />
+            </div>
+            <span className="lead" style={{ color: "#161C2D" }}>
+              Envíos seguros a todo México
+            </span>
+            <span>
+              En nuestra tienda encontraras productos complementarios a la
+              medicina moderna basados en plantas medicinales.
+            </span>
+          </Col>
+          <Col className="d-flex flex-column p-3">
+            <div className="text-center mb-3">
+              <i className="fas fa-phone" style={{ fontSize: "40px" }} />
+            </div>
+            <span className="lead">Asistencia en tu primer compra</span>
+            <span>
+              En nuestra tienda encontraras productos complementarios a la
+              medicina moderna basados en plantas medicinales.
+            </span>
+          </Col>
+          <Col className="d-flex flex-column p-3">
+            <div className="text-center mb-3">
+              <i className="fas fa-tags" style={{ fontSize: "40px" }} />
+            </div>
+            <span className="lead">Ofertas semanales</span>
+            <span>
+              En nuestra tienda encontraras productos complementarios a la
+              medicina moderna basados en plantas medicinales.
+            </span>
           </Col>
         </Row>
         <Row className="mb-4">

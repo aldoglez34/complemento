@@ -220,7 +220,7 @@ module.exports = providersList => {
       priority: false,
       sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
-      photo: "acidoGlut.jpg"
+      photo: "acidGlutam.jpg"
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],

@@ -15,7 +15,7 @@ const WelcomeJumbotron = React.memo(function WelcomeJumbotron() {
     <Jumbotron style={styles.jumbotron} fluid>
       <Container>
         <h1 className="text-white">Tienda naturista en línea</h1>
-        <h2 className="text-light">Natural, siempre la decisión correcta</h2>
+        <h5 className="text-light">Natural, siempre la decisión correcta</h5>
         <Button
           size="lg"
           href="/store"
@@ -23,7 +23,7 @@ const WelcomeJumbotron = React.memo(function WelcomeJumbotron() {
           variant="success"
         >
           Explora la tienda
-          {/* <i className="fas fa-store-alt ml-2" /> */}
+          <i className="fas fa-arrow-right ml-2" />
         </Button>
       </Container>
     </Jumbotron>
