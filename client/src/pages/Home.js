@@ -17,9 +17,9 @@ const Home = React.memo(function Home() {
       {/* content */}
       <Container className="mb-4">
         {/* who are we & about */}
-        <Row className="mb-4 py-4">
+        <Row className="mb-3 py-4">
           <Col md={8} className="mt-2 mt-md-0">
-            <h3>¿Quiénes somos?</h3>
+            <h2>¿Quiénes somos?</h2>
             <hr className="myDivider" />
             <p style={{ fontSize: "16px" }}>
               Somos una tienda Mexicana de productos complementarios naturales,
@@ -29,8 +29,8 @@ const Home = React.memo(function Home() {
               alternativa y productos para el cuidado personal.
             </p>
           </Col>
-          <Col md={4} className="mt-2 mt-md-0">
-            <h3>Contáctanos</h3>
+          <Col md={4} className="d-none d-md-block">
+            <h2>Contáctanos</h2>
             <hr className="myDivider" />
             <address>
               <strong>Dirección</strong>
@@ -52,7 +52,7 @@ const Home = React.memo(function Home() {
         {/* 3 columns */}
         <Row className="mb-4 pt-3 pb-4">
           <Col>
-            <h3>¿Qué ofrecemos?</h3>
+            <h2>¿Qué ofrecemos?</h2>
             <hr className="myDivider" />
             <Row className="pt-4">
               <Col md={4} className="d-flex flex-column text-center p-3">
@@ -65,8 +65,8 @@ const Home = React.memo(function Home() {
                   />
                 </div>
                 <h4 className="mb-1">Envíos seguros a todo México</h4>
-                <span style={{ fontSize: "17px" }}>
-                  Contamos con pedido seguro.
+                <span style={{ fontSize: "17px", color: "#616264" }}>
+                  Contamos con envíos seguros a toda la República Mexicana.
                 </span>
               </Col>
               <Col md={4} className="d-flex flex-column text-center p-3">
@@ -79,7 +79,7 @@ const Home = React.memo(function Home() {
                   />
                 </div>
                 <h4 className="mb-1">Asistencia en tus compras</h4>
-                <span style={{ fontSize: "17px" }}>
+                <span style={{ fontSize: "17px", color: "#616264" }}>
                   ¿Miedo a comprar en línea? Nosotros te ayudamos.
                 </span>
               </Col>
@@ -93,7 +93,7 @@ const Home = React.memo(function Home() {
                   />
                 </div>
                 <h4 className="mb-1">Ofertas semanales</h4>
-                <span style={{ fontSize: "17px" }}>
+                <span style={{ fontSize: "17px", color: "#616264" }}>
                   En nuestra tienda encontrarás ofertas nuevas cada semana.
                 </span>
               </Col>
@@ -103,7 +103,7 @@ const Home = React.memo(function Home() {
         {/* destacados */}
         <Row className="mb-4 py-4">
           <Col>
-            <h3>Destacados</h3>
+            <h2>Destacados</h2>
             <hr className="myDivider" />
             <HomePrioritized />
           </Col>
@@ -111,7 +111,7 @@ const Home = React.memo(function Home() {
         {/* latest offers */}
         <Row className="mb-4 py-4">
           <Col>
-            <h3>Últimas ofertas</h3>
+            <h2>Últimas ofertas</h2>
             <hr className="myDivider" />
             <HomeDiscounts />
           </Col>
@@ -119,7 +119,7 @@ const Home = React.memo(function Home() {
         {/* best sellers */}
         <Row className="mb-4 py-4">
           <Col>
-            <h3>Más vendidos</h3>
+            <h2>Más vendidos</h2>
             <hr className="myDivider" />
             <HomeBestSellers />
           </Col>
