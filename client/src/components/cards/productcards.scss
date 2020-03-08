@@ -1,6 +1,6 @@
 .productCard {
   width: 17rem;
-  margin: 0px 11px;
+  margin: 10px 11px;
   border-style: none;
 }
 
@@ -16,17 +16,18 @@
 
 .productCardDiscount {
   position: absolute;
-  height: 45px;
-  width: 45px;
-  top: 25px;
-  left: 25px;
+  height: 59px;
+  width: 59px;
+  top: 15px;
+  left: 15px;
   z-index: 2;
 }
 
 @media only screen and (max-width: 481px) {
   .productCard {
     width: 48%;
-    margin: 0px;
+    margin: 3px 2px;
+    padding: 5px 1px;
   }
   .productCardBody {
     padding: 4px;
