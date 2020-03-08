@@ -71,7 +71,7 @@ const SignUp = React.memo(function SignUp(props) {
   return (
     <Layout>
       <Container className="mt-4 mb-4">
-        <h2>Regístrate con nosotros</h2>
+        <h3>Regístrate con nosotros</h3>
         <hr className="myDivider" />
         <Formik
           initialValues={{

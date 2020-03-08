@@ -189,11 +189,7 @@ class Store extends PureComponent {
               {/* right-column, title, sorting and products */}
               <Col md={9}>
                 {/* title */}
-                <h5>
-                  <strong style={{ textTransform: "uppercase" }}>
-                    {!this.state.filter ? "PRODUCTOS" : this.state.filter}
-                  </strong>
-                </h5>
+                <h3>{!this.state.filter ? "Productos" : this.state.filter}</h3>
                 <hr
                   className="myDivider"
                   style={{ backgroundColor: "#edcb58" }}

@@ -63,9 +63,7 @@ class Cart extends PureComponent {
     return (
       <Layout hideBag={true}>
         <Container className="my-4">
-          <h5>
-            <strong>CANASTA</strong>
-          </h5>
+          <h3>Canasta</h3>
           <hr className="myDivider" />
           <Table responsive size="sm" striped>
             <thead>

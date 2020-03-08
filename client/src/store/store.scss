@@ -6,9 +6,11 @@
   padding-top: 4px;
   outline: none;
   box-shadow: none !important;
-  // border: 1px solid #ccc !important;
-  border: 0px !important;
-  background-color: white;
+  border: 1px solid #ccc !important;
+  &:hover {
+    background-color: white;
+    transition: 0.3s;
+  }
 }
 
 .dropdownItemSort {

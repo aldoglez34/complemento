@@ -46,7 +46,7 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                 />
                 {product.price.discount.hasDiscount ? (
                   <Image
-                    src="/images/discount.png"
+                    src="/images/tag.png"
                     className="discountImg"
                     alt="discount"
                   />
