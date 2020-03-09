@@ -63,14 +63,17 @@ const SearchBarDropdown = React.memo(({ items }) => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu as={CustomMenu}>
-        {items.length ? (
-          items.map(i => {
-            return (
-              <Dropdown.Item key={i._id} href={"/product/details/" + i._id}>
-                {i.name}
-              </Dropdown.Item>
-            );
-          })
+        {items.products.length ? (
+          <>
+            <strong>Productos</strong>
+            {items.products.map(i => {
+              return (
+                <Dropdown.Item key={i} href={"/product/details/" + i}>
+                  {i}
+                </Dropdown.Item>
+              );
+            })}
+          </>
         ) : (
           <div className="text-center py-4">
             <Spinner animation="grow" role="status" variant="warning" />
@@ -82,7 +85,7 @@ const SearchBarDropdown = React.memo(({ items }) => {
 });
 
 SearchBarDropdown.propTypes = {
-  items: PropTypes.array.isRequired
+  items: PropTypes.object.isRequired
 };
 
 export default SearchBarDropdown;

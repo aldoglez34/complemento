@@ -3,7 +3,7 @@ import { Navbar, Container, Nav, Badge } from "react-bootstrap";
 import SmallNav from "./smallNav/SmallNav";
 import BagCollapsed from "./smallNav/BagCollapsed";
 import CategoriesDropdown from "./CategoriesDropdown";
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
 import SearchBarDropdown from "./SearchBarDropdown";
 import ClientDropdown from "./ClientDropdown";
 import LoginDropdown from "./LoginDropdown";
@@ -14,7 +14,7 @@ import "./mynavbar.scss";
 import PropTypes from "prop-types";
 
 const MyNavbar = React.memo(({ hideBag = false }) => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState({});
   const [categories, setCategories] = useState([]);
 
   const client = useSelector(state => state.client);
@@ -23,7 +23,10 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
   useEffect(() => {
     // fetch items for search bar
     API.fetchItemsForSearchBar()
-      .then(res => setItems(res.data))
+      .then(res => {
+        console.log("@res.data", res.data);
+        setItems(res.data);
+      })
       .catch(err => console.log(err));
     // fetch items for categories dropdown
     API.fetchItemsForCategoriesDropdown()

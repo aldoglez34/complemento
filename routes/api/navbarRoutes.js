@@ -4,10 +4,29 @@ const model = require("../../models");
 // fetchItemsForSearchBar()
 // matches with /api/navbar/searchbar/names
 router.get("/searchbar/names", function(req, res) {
+  let data = {};
   model.Product.find({})
     .select("name")
-    .sort({ name: -1 })
-    .then(data => res.json(data))
+    .distinct("name")
+    .collation({ locale: "es" })
+    .then(products => {
+      data.products = products.sort((a, b) => a.localeCompare(b));
+      return model.Product.find({})
+        .select("category")
+        .distinct("category")
+        .collation({ locale: "es" });
+    })
+    .then(categories => {
+      data.categories = categories.sort((a, b) => a.localeCompare(b));
+      return model.Product.find({})
+        .select("brand")
+        .distinct("brand")
+        .collation({ locale: "es" });
+    })
+    .then(brands => {
+      data.brands = brands;
+      res.json(data);
+    })
     .catch(err => res.json(err));
 });
 
@@ -32,6 +51,7 @@ router.get("/dropdown/categories", function(req, res) {
       }
     }
   ])
+    .collation({ locale: "es" })
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });
