@@ -22,6 +22,7 @@ router.get("/categories", function(req, res) {
       }
     }
   ])
+    .collation({ locale: "es" })
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });
@@ -47,6 +48,7 @@ router.get("/brands", function(req, res) {
       }
     }
   ])
+    .collation({ locale: "es" })
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });
@@ -57,6 +59,7 @@ router.get("/products", function(req, res) {
   model.Product.find({})
     .select("category name content price stock photo brand priority unitsSold")
     .sort({ name: 1 })
+    .collation({ locale: "es" })
     .then(data => res.json(data))
     .catch(err => res.json(err));
 });

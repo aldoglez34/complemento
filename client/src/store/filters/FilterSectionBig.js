@@ -25,7 +25,7 @@ const FilterSectionBig = React.memo(props => {
 FilterSectionBig.propTypes = {
   categories: PropTypes.array.isRequired,
   brands: PropTypes.array.isRequired,
-  filterSelected: PropTypes.string
+  filterSelected: PropTypes.string.isRequired
 };
 
 export default FilterSectionBig;

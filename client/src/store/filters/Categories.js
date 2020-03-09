@@ -32,7 +32,7 @@ const Categories = React.memo(props => {
 
 Categories.propTypes = {
   categories: PropTypes.array.isRequired,
-  filterSelected: PropTypes.string
+  filterSelected: PropTypes.string.isRequired
 };
 
 export default Categories;

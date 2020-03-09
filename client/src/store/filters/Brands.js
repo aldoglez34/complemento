@@ -16,13 +16,12 @@ const Brands = React.memo(function Brands(props) {
               active={brand.name === props.filterSelected ? true : false}
             >
               {brand.name}
-              {brand.name === props.filterSelected ? (
-                <span className="ml-1 filterBadgeSelected">
-                  {brand.productCount}
-                </span>
-              ) : (
-                <span className="ml-1 filterBadge">{brand.productCount}</span>
-              )}
+              <span
+                className="ml-1"
+                style={{ color: "#fe4365", fontWeight: "bold" }}
+              >
+                {brand.productCount}
+              </span>
             </Nav.Link>
           </Nav.Item>
         );
@@ -32,7 +31,8 @@ const Brands = React.memo(function Brands(props) {
 });
 
 Brands.propTypes = {
-  brands: PropTypes.array.isRequired
+  brands: PropTypes.array.isRequired,
+  filterSelected: PropTypes.string.isRequired
 };
 
 export default Brands;

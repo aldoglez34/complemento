@@ -127,12 +127,12 @@ class Store extends PureComponent {
       switch (opt) {
         case "Nombre ascendente":
           sorted = prevState.products.sort((a, b) =>
-            a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+            a.name.localeCompare(b.name)
           );
           return { sortBy: opt, products: sorted };
         case "Nombre descendente":
           sorted = prevState.products.sort((a, b) =>
-            a.name < b.name ? 1 : b.name < a.name ? -1 : 0
+            b.name.localeCompare(a.name)
           );
           return { sortBy: opt, products: sorted };
         case "Precio: bajo a alto":

@@ -4,6 +4,7 @@ import SmallNav from "./smallNav/SmallNav";
 import BagCollapsed from "./smallNav/BagCollapsed";
 import CategoriesDropdown from "./CategoriesDropdown";
 import SearchBar from "./SearchBar";
+import SearchBarDropdown from "./SearchBarDropdown";
 import ClientDropdown from "./ClientDropdown";
 import LoginDropdown from "./LoginDropdown";
 import BagDropdown from "./BagDropdown";
@@ -61,8 +62,11 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
         <div className="d-none d-md-block w-100">
           <Nav>
             <CategoriesDropdown categories={categories} />
-            <Nav.Item>
+            {/* <Nav.Item>
               <SearchBar items={items} />
+            </Nav.Item> */}
+            <Nav.Item>
+              <SearchBarDropdown items={items} />
             </Nav.Item>
             <Nav.Item className="ml-auto">
               {hideBag ? null : <BagDropdown />}

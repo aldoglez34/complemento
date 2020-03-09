@@ -67,7 +67,7 @@ const SearchBar = React.memo(function SearchBar(props) {
         maxLength="50"
         // autoFocus
         onChange={handleEditInputChange}
-        className="border-0"
+        className="border-0 ml-2"
         id="searchBarStyle"
         style={{ outline: 0, boxShadow: "none" }}
       />
