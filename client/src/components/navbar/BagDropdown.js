@@ -47,7 +47,11 @@ class BagDropdown extends PureComponent {
   render() {
     return (
       <Dropdown as={NavItem}>
-        <Dropdown.Toggle as={Nav.Link} className="text-light" title="Canasta">
+        <Dropdown.Toggle
+          as={Nav.Link}
+          className="text-light p-0 p-md-2"
+          title="Canasta"
+        >
           <i className="fas fa-shopping-bag" />
           <Badge variant="danger" pill className="ml-1">
             {this.props.cart.counter}
@@ -106,14 +110,9 @@ class BagDropdown extends PureComponent {
                       .map(p => p.subTotal)
                       .reduce((prev, next) => prev + next)}
                 </h3>
-                <Button
-                  block
-                  size="sm"
-                  className="mb-1"
-                  variant="danger"
-                  href="/cart"
-                >
-                  Proceder con el pago
+                <Button block variant="danger" href="/cart">
+                  Ir a canasta
+                  <i className="fas fa-arrow-right ml-1" />
                 </Button>
               </>
             ) : (

@@ -47,7 +47,7 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                 {product.price.discount.hasDiscount ? (
                   <Image
                     src="/images/tag.png"
-                    className="discountImg"
+                    className="discountImgBig"
                     alt="discount"
                   />
                 ) : null}
@@ -144,9 +144,7 @@ const ProductDetails = React.memo(function ProductDetails(props) {
             </Row>
             <Row className="mt-4 px-1">
               <Col>
-                <h5>
-                  <strong>SIMILARES</strong>
-                </h5>
+                <h3>Similares</h3>
                 <hr className="myDivider" />
                 <SimilarProducts category={product.category} />
               </Col>

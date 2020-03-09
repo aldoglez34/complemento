@@ -11,6 +11,9 @@
     background-color: white;
     transition: 0.3s;
   }
+  &:focus {
+    background-color: white;
+  }
 }
 
 .dropdownItemSort {
@@ -37,19 +40,6 @@
     color: rgb(52, 58, 64) !important;
     font-weight: bold;
   }
-}
-
-// ====================================
-// filter badge
-.filterBadge {
-  background-color: transparent !important;
-  color: #fe4365 !important;
-  font-weight: bold;
-}
-
-.filterBadgeSelected {
-  font-weight: bold;
-  color: #fe4365;
 }
 
 // ====================================

@@ -6,9 +6,9 @@ import HelpButton from "../components/misc/HelpButton";
 import ScrollButton from "../components/misc/ScrollButton";
 import "./store.scss";
 import API from "../utils/API";
-import FilterSection from "./components/FilterSection";
-import SortDropdown from "./components/SortDropdown";
-import ProductsPerPageDropdown from "./components/ProductsPerPageDropdown";
+import FilterSectionBig from "./filters/FilterSectionBig";
+import SortDropdown from "./dropdowns/SortDropdown";
+import ProductsPerPageDropdown from "./dropdowns/ProductsPerPageDropdown";
 import MyPagination from "./components/MyPagination";
 
 class Store extends PureComponent {
@@ -176,70 +176,74 @@ class Store extends PureComponent {
         this.state.brands.length &&
         this.state.pageCount &&
         this.state.productsPerPageOptions ? (
-          <Container className="my-4">
-            <Row>
-              {/* left-column, filters */}
-              <Col md={3}>
-                <FilterSection
-                  categories={this.state.categories}
-                  brands={this.state.brands}
-                  filterSelected={this.state.filter}
-                />
-              </Col>
-              {/* right-column, title, sorting and products */}
-              <Col md={9}>
-                {/* title */}
-                <h3>{!this.state.filter ? "Productos" : this.state.filter}</h3>
-                <hr
-                  className="myDivider"
-                  style={{ backgroundColor: "#edcb58" }}
-                />
-                {/* sort and products per page */}
-                <div className="d-none d-md-block mb-2">
-                  <div className="d-flex flex-row">
-                    <SortDropdown
-                      active={this.state.sortBy}
-                      applySorting={this.applySorting}
-                    />
-                    <span className="ml-3" />
-                    <ProductsPerPageDropdown
-                      options={this.state.productsPerPageOptions}
-                      qty={this.state.productsPerPage}
-                      handleChangeProductsPerPage={
-                        this.handleChangeProductsPerPage
-                      }
-                    />
-                  </div>
-                </div>
-                {/* products */}
-                <div className="mb-2">
-                  <ProductsSection
-                    products={this.state.products.slice(
-                      this.state.offset,
-                      this.state.limit
-                    )}
+          <React.Fragment>
+            <Container className="my-4">
+              <Row>
+                {/* left-column, filters */}
+                <Col md={3}>
+                  <FilterSectionBig
+                    categories={this.state.categories}
+                    brands={this.state.brands}
+                    filterSelected={this.state.filter}
                   />
-                </div>
-                {/* bottom (products length and pagination) */}
-                <div className="d-flex justify-content-center align-items-center pt-3">
-                  <em className="text-muted d-none d-md-block">
-                    {this.state.products.length > 1
-                      ? this.state.products.length + " productos"
-                      : this.state.products.length + " producto"}
-                  </em>
-                  <div className="ml-md-auto">
-                    <MyPagination
-                      pageCount={this.state.pageCount}
-                      activePage={this.state.activePage}
-                      handleChangePage={this.handleChangePage}
+                </Col>
+                {/* right-column, title, sorting and products */}
+                <Col md={9}>
+                  {/* title */}
+                  <h3>
+                    {!this.state.filter ? "Productos" : this.state.filter}
+                  </h3>
+                  <hr
+                    className="myDivider"
+                    style={{ backgroundColor: "#edcb58" }}
+                  />
+                  {/* sort and products per page */}
+                  <div className="mb-2">
+                    <div className="d-flex flex-row">
+                      <SortDropdown
+                        active={this.state.sortBy}
+                        applySorting={this.applySorting}
+                      />
+                      <span className="ml-3" />
+                      <ProductsPerPageDropdown
+                        options={this.state.productsPerPageOptions}
+                        qty={this.state.productsPerPage}
+                        handleChangeProductsPerPage={
+                          this.handleChangeProductsPerPage
+                        }
+                      />
+                    </div>
+                  </div>
+                  {/* products */}
+                  <div className="mb-2">
+                    <ProductsSection
+                      products={this.state.products.slice(
+                        this.state.offset,
+                        this.state.limit
+                      )}
                     />
                   </div>
-                </div>
-              </Col>
-            </Row>
-            <HelpButton />
-            <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
-          </Container>
+                  {/* bottom (products length and pagination) */}
+                  <div className="d-flex justify-content-center align-items-center pt-3">
+                    <em className="text-muted d-none d-md-block">
+                      {this.state.products.length > 1
+                        ? this.state.products.length + " productos"
+                        : this.state.products.length + " producto"}
+                    </em>
+                    <div className="ml-md-auto">
+                      <MyPagination
+                        pageCount={this.state.pageCount}
+                        activePage={this.state.activePage}
+                        handleChangePage={this.handleChangePage}
+                      />
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+              <HelpButton />
+              <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
+            </Container>
+          </React.Fragment>
         ) : (
           <div className="h-100 d-flex align-items-center justify-content-center">
             <Spinner animation="grow" role="status" variant="warning" />

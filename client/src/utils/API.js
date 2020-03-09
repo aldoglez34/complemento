@@ -22,11 +22,11 @@ export default {
   // ---------------------------------------------------------------------------
 
   fetchItemsForSearchBar: function() {
-    return axios.get("/api/navbar/itemsforsearchbar");
+    return axios.get("/api/navbar/searchbar/names");
   },
 
-  fetchItemsForStoreDropdown: function() {
-    return axios.get("/api/navbar/itemsforstoredropdown");
+  fetchItemsForCategoriesDropdown: function() {
+    return axios.get("/api/navbar/dropdown/categories");
   },
 
   // ---------------------------------------------------------------------------

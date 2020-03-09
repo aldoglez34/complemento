@@ -16,15 +16,12 @@ const Categories = React.memo(props => {
               active={category.name === props.filterSelected ? true : false}
             >
               {category.name}
-              {category.name === props.filterSelected ? (
-                <span className="ml-1 filterBadgeSelected">
-                  {category.productCount}
-                </span>
-              ) : (
-                <span className="ml-1 filterBadge">
-                  {category.productCount}
-                </span>
-              )}
+              <span
+                className="ml-1"
+                style={{ color: "#fe4365", fontWeight: "bold" }}
+              >
+                {category.productCount}
+              </span>
             </Nav.Link>
           </Nav.Item>
         );
@@ -34,7 +31,8 @@ const Categories = React.memo(props => {
 });
 
 Categories.propTypes = {
-  categories: PropTypes.array.isRequired
+  categories: PropTypes.array.isRequired,
+  filterSelected: PropTypes.string
 };
 
 export default Categories;

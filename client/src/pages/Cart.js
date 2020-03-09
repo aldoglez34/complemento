@@ -170,7 +170,7 @@ class Cart extends PureComponent {
                   this.setState({ products: [] }, () => this.props.clear());
                 }}
               >
-                Vaciar bolsa
+                Vaciar canasta
               </Button>
               <h3 className="ml-auto text-success">
                 {"Total: $" +

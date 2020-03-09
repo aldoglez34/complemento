@@ -65,7 +65,7 @@ const SearchBar = React.memo(function SearchBar(props) {
         type="text"
         placeholder="¿Qué estás buscando?"
         maxLength="50"
-        autoFocus
+        // autoFocus
         onChange={handleEditInputChange}
         className="border-0"
         id="searchBarStyle"
