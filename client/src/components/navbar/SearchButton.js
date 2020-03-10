@@ -88,12 +88,12 @@ const SearchButton = props => {
   return (
     <Dropdown>
       <Dropdown.Toggle
-        className="navbarDropdownStyle ml-0 ml-md-2 p-0 p-md-2"
+        className="navbarDropdownStyle ml-0 ml-md-2 p-0 p-md-2 pt-md-3"
         variant="transparent"
         id="dropdown-basic"
         style={{ outline: "none", boxShadow: "none" }}
       >
-        <i className="fas fa-search mr-1" />
+        <i className="fas fa-search dropdownIcon mr-1" />
         Buscar
       </Dropdown.Toggle>
 

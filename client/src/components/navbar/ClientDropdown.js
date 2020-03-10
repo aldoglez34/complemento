@@ -20,10 +20,9 @@ const ClientDropdown = React.memo(function ClientDropdown() {
     <Dropdown as={NavItem}>
       <Dropdown.Toggle
         as={Nav.Link}
-        style={{ color: "#f3d084" }}
-        className="p-0 p-md-2"
+        className="clientLoginDropdown p-0 p-md-2 pt-md-3"
       >
-        <i className="fas fa-user mr-1" />
+        <i className="fas fa-user dropdownIcon mr-1" />
         {client.name + " " + client.firstSurname}
       </Dropdown.Toggle>
       <Dropdown.Menu

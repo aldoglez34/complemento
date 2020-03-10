@@ -1,11 +1,11 @@
-// navbar
+// NAVBAR
 #navbarStyle {
   background-color: #0c2c2c;
 }
 
-// logo
+// LOGO
 #navbarLogo {
-  color: #f3d084;
+  color: #f1f227;
   font-family: "Lobster", cursive;
   font-size: 28px;
 }
@@ -14,7 +14,7 @@
   font-size: 24px;
 }
 
-// toggle
+// TOGGLE
 #navbarToggleStyle {
   border: none;
   outline: 0;
@@ -30,27 +30,40 @@
   margin-left: -4px;
 }
 
-// all dropdowns
+// ALL DROPDOWN
 .navbarDropdownStyle {
-  color: red !important;
+  color: #c8f7c5 !important;
+}
+
+.dropdownIcon {
+  font-size: 18px;
 }
 
 .navbarDropdownStyle::after {
   display: none;
 }
 
-// dropdown - categories
+// DROPDOWN - CATEGORIES
 .categoriesProductCounter {
   color: #fe4365;
   font-weight: bold;
 }
 
-// dropdown - login
-#clientLoginDropdownMenu {
+// DROPDOWN - LOGIN
+#loginDropdownMenu {
   width: 19rem;
 }
 
-// dropdown - bag
+// DROPDOWN - CLIENT
+.clientLoginDropdown {
+  color: #36d7b7 !important;
+}
+
+.navbarDropdownStyle::after {
+  display: none;
+}
+
+// DROPDOWN - BAG
 @media only screen and (min-width: 767px) {
   #bagDropdownMenu {
     width: 24rem;

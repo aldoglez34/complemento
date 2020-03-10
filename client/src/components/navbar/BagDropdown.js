@@ -49,10 +49,10 @@ class BagDropdown extends PureComponent {
       <Dropdown as={NavItem}>
         <Dropdown.Toggle
           as={Nav.Link}
-          className="navbarDropdownStyle ml-0 mr-md-2 p-0 p-md-2"
+          className="navbarDropdownStyle ml-0 mr-md-2 p-0 p-md-2 pt-md-3"
           title="Canasta"
         >
-          <i className="fas fa-shopping-bag" />
+          <i className="fas fa-shopping-bag dropdownIcon" />
           <Badge variant="danger" pill className="ml-1">
             {this.props.cart.counter}
           </Badge>
