@@ -11,6 +11,7 @@ const Brands = React.memo(function Brands(props) {
         return (
           <Nav.Item key={brand.name}>
             <Nav.Link
+              title={brand.name}
               className="py-1 filterItem"
               href={"/store/brand/" + brand.name}
               active={brand.name === props.filterSelected ? true : false}

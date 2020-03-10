@@ -49,7 +49,7 @@ class BagDropdown extends PureComponent {
       <Dropdown as={NavItem}>
         <Dropdown.Toggle
           as={Nav.Link}
-          className="text-light p-0 p-md-2"
+          className="navbarDropdownStyle ml-0 mr-md-2 p-0 p-md-2"
           title="Canasta"
         >
           <i className="fas fa-shopping-bag" />

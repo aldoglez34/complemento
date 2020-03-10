@@ -1,28 +1,4 @@
-#smallnavStyle {
+// small nav
+#smallNavbarStyle {
   background-color: #264341;
-}
-
-.smallnavIcon {
-  color: ghostwhite;
-  font-size: 14px;
-}
-
-.smallDropdownToggleStyle {
-  background-color: transparent;
-  color: ghostwhite;
-  outline: none !important;
-  box-shadow: none !important;
-  &:focus {
-    background-color: transparent !important;
-    color: ghostwhite;
-  }
-}
-
-.searchSmallnavicon {
-  color: ghostwhite;
-  font-size: 16px;
-}
-
-.eraseTriangleFromDropdown::after {
-  display: none;
 }

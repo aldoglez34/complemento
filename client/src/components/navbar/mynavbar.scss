@@ -1,38 +1,56 @@
+// navbar
 #navbarStyle {
   background-color: #0c2c2c;
-  // if i set a height the dropdown breaks idk why
-  // height: 65px;
 }
 
+// logo
 #navbarLogo {
   color: #f3d084;
   font-family: "Lobster", cursive;
   font-size: 28px;
 }
 
+#navbarLogoLeaf {
+  font-size: 24px;
+}
+
+// toggle
 #navbarToggleStyle {
   border: none;
   outline: 0;
-  //
 }
 
-.navbarToggleIcon {
+#navbarToggleBag {
   font-size: 25px;
   color: ghostwhite;
   outline: 0;
 }
 
-#clientLoginDropdown {
+#navbarToggleCounter {
+  margin-left: -4px;
+}
+
+// all dropdowns
+.navbarDropdownStyle {
+  color: red !important;
+}
+
+.navbarDropdownStyle::after {
+  display: none;
+}
+
+// dropdown - categories
+.categoriesProductCounter {
+  color: #fe4365;
+  font-weight: bold;
+}
+
+// dropdown - login
+#clientLoginDropdownMenu {
   width: 19rem;
 }
 
-// search
-.searchButtonStyle {
-  outline: none;
-  box-shadow: none !important;
-}
-
-// dropdowns
+// dropdown - bag
 @media only screen and (min-width: 767px) {
   #bagDropdownMenu {
     width: 24rem;

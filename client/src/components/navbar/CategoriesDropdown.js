@@ -7,7 +7,7 @@ const CategoriesDropdown = React.memo(({ categories }) => {
     <Dropdown as={NavItem}>
       <Dropdown.Toggle
         as={Nav.Link}
-        className="text-light p-0 p-md-2"
+        className="navbarDropdownStyle p-0 p-md-2"
         title="Categorías"
       >
         <i className="fas fa-store mr-1" />
@@ -23,12 +23,13 @@ const CategoriesDropdown = React.memo(({ categories }) => {
               <hr className="myDivider mb-0" />
             </div>
             {categories.map(c => (
-              <Dropdown.Item key={c.name} href={"/store/category/" + c.name}>
+              <Dropdown.Item
+                key={c.name}
+                href={"/store/category/" + c.name}
+                title={c.name}
+              >
                 {c.name}
-                <span
-                  className="ml-1"
-                  style={{ color: "#fe4365", fontWeight: "bold" }}
-                >
+                <span className="categoriesProductCounter ml-1">
                   {c.productCount}
                 </span>
               </Dropdown.Item>

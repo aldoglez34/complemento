@@ -3,8 +3,7 @@ import { Navbar, Container, Nav, Badge } from "react-bootstrap";
 import SmallNav from "./smallNav/SmallNav";
 import BagCollapsed from "./smallNav/BagCollapsed";
 import CategoriesDropdown from "./CategoriesDropdown";
-import SearchBar from "./SearchBar";
-import SearchBarDropdown from "./SearchBarDropdown";
+import SearchButton from "./SearchButton";
 import ClientDropdown from "./ClientDropdown";
 import LoginDropdown from "./LoginDropdown";
 import BagDropdown from "./BagDropdown";
@@ -39,7 +38,7 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
         {/* brand */}
         <Navbar.Brand href="/" id="navbarLogo">
           Tu Complemento
-          <i className="fas fa-leaf ml-2" style={{ fontSize: "24px" }} />
+          <i className="fas fa-leaf ml-2" id="navbarLogoLeaf" />
         </Navbar.Brand>
         {/* toggle */}
         <Navbar.Toggle
@@ -47,12 +46,12 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
           className="p-0"
           id="navbarToggleStyle"
         >
-          <i className="fas fa-shopping-bag navbarToggleIcon" />
-          <Badge variant="danger" pill style={{ marginLeft: "-4px" }}>
+          <i className="fas fa-shopping-bag" id="navbarToggleBag" />
+          <Badge variant="danger" pill id="navbarToggleCounter">
             {cart.counter}
           </Badge>
         </Navbar.Toggle>
-        {/* sm and md */}
+        {/* sm */}
         <div className="d-block d-md-none w-100">
           <Navbar.Collapse id="top-navbar">
             <Container className="my-2 bg-white rounded" fluid>
@@ -60,14 +59,12 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
             </Container>
           </Navbar.Collapse>
         </div>
+        {/* md */}
         <div className="d-none d-md-block w-100">
           <Nav>
             <CategoriesDropdown categories={categories} />
             <Nav.Item>
-              <SearchBar items={items} />
-            </Nav.Item>
-            <Nav.Item>
-              <SearchBarDropdown items={items} />
+              <SearchButton items={items} />
             </Nav.Item>
             <Nav.Item className="ml-auto">
               {hideBag ? null : <BagDropdown />}
@@ -79,7 +76,7 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
         </div>
       </Navbar>
       {/* smaller navbar for mobile */}
-      <SmallNav categories={categories} />
+      <SmallNav categories={categories} items={items} />
     </>
   );
 });

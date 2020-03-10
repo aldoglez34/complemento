@@ -11,6 +11,7 @@ const Categories = React.memo(props => {
         return (
           <Nav.Item key={category.name}>
             <Nav.Link
+              title={category.name}
               className="py-1 filterItem"
               href={"/store/category/" + category.name}
               active={category.name === props.filterSelected ? true : false}

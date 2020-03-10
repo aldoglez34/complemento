@@ -90,7 +90,7 @@ const LoginDropdown = React.memo(() => {
           <Dropdown as={NavItem}>
             <Dropdown.Toggle
               as={Nav.Link}
-              className="text-light p-0 p-md-2"
+              className="navbarDropdownStyle p-0 p-md-2"
               title="Sesión"
             >
               <i className="fas fa-user mr-1" />
@@ -98,7 +98,7 @@ const LoginDropdown = React.memo(() => {
             </Dropdown.Toggle>
             <Dropdown.Menu
               alignRight
-              id="clientLoginDropdown"
+              id="clientLoginDropdownMenu"
               data-display="static"
             >
               <div className="px-3 py-2">
