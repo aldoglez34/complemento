@@ -24,7 +24,7 @@ router.get("/searchbar/names", function(req, res) {
         .collation({ locale: "es" });
     })
     .then(brands => {
-      data.brands = brands;
+      data.brands = brands.sort((a, b) => a.localeCompare(b));
       res.json(data);
     })
     .catch(err => res.json(err));

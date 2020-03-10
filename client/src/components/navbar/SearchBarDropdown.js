@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Spinner, Button, FormControl, Dropdown } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-const SearchBarDropdown = React.memo(({ items }) => {
+const SearchBarDropdown = React.memo(props => {
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <Button
       className="searchButtonStyle text-light p-0 p-md-2 ml-2"
@@ -53,27 +53,20 @@ const SearchBarDropdown = React.memo(({ items }) => {
 
   return (
     <Dropdown>
-      <Dropdown.Toggle
-        style={{ outline: "none", border: "none" }}
-        as={CustomToggle}
-        id="dropdown-custom-components"
-      >
+      <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
         <i className="fas fa-search mr-1" />
         Buscar
       </Dropdown.Toggle>
 
       <Dropdown.Menu as={CustomMenu}>
-        {items.products.length ? (
-          <>
-            <strong>Productos</strong>
-            {items.products.map(i => {
-              return (
-                <Dropdown.Item key={i} href={"/product/details/" + i}>
-                  {i}
-                </Dropdown.Item>
-              );
-            })}
-          </>
+        {props.items.products ? (
+          props.items.products.map(p => {
+            return (
+              <Dropdown.Item key={p} href={"/product/details/" + p}>
+                {p}
+              </Dropdown.Item>
+            );
+          })
         ) : (
           <div className="text-center py-4">
             <Spinner animation="grow" role="status" variant="warning" />

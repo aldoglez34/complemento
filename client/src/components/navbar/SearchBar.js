@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import { Form, FormControl } from "react-bootstrap";
 import "./searchbar.scss";
 
-const SearchBar = React.memo(function SearchBar(props) {
+const SearchBar = React.memo(props => {
+  // console.log("@SearchBar", props);
+
   const [suggestions, setSuggestions] = useState([]);
 
   const node = useRef();
@@ -32,7 +34,7 @@ const SearchBar = React.memo(function SearchBar(props) {
     const regex = new RegExp(`^${value}`, "i");
     let temp = [];
     if (value.length > 0) {
-      temp = props.items.sort().filter(i => regex.test(i.name));
+      temp = props.products.sort().filter(i => regex.test(i));
     }
     setSuggestions(temp);
   };
@@ -77,7 +79,7 @@ const SearchBar = React.memo(function SearchBar(props) {
 });
 
 SearchBar.propTypes = {
-  items: PropTypes.array.isRequired
+  items: PropTypes.object.isRequired
 };
 
 export default SearchBar;
