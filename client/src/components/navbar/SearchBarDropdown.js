@@ -62,8 +62,8 @@ const SearchBarDropdown = React.memo(props => {
         {props.items.products ? (
           props.items.products.map(p => {
             return (
-              <Dropdown.Item key={p} href={"/product/details/" + p}>
-                {p}
+              <Dropdown.Item key={p._id} href={"/product/details/" + p._id}>
+                {p.name}
               </Dropdown.Item>
             );
           })

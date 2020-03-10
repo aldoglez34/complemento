@@ -24,10 +24,7 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
   useEffect(() => {
     // fetch items for search bar
     API.fetchItemsForSearchBar()
-      .then(res => {
-        console.log("@MyNavbar", res.data);
-        setItems(res.data);
-      })
+      .then(res => setItems(res.data))
       .catch(err => console.log(err));
     // fetch items for categories dropdown
     API.fetchItemsForCategoriesDropdown()
@@ -66,9 +63,9 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
         <div className="d-none d-md-block w-100">
           <Nav>
             <CategoriesDropdown categories={categories} />
-            {/* <Nav.Item>
+            <Nav.Item>
               <SearchBar items={items} />
-            </Nav.Item> */}
+            </Nav.Item>
             <Nav.Item>
               <SearchBarDropdown items={items} />
             </Nav.Item>

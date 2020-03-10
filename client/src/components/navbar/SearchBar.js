@@ -34,7 +34,7 @@ const SearchBar = React.memo(props => {
     const regex = new RegExp(`^${value}`, "i");
     let temp = [];
     if (value.length > 0) {
-      temp = props.products.sort().filter(i => regex.test(i));
+      temp = props.items.products.sort().filter(i => regex.test(i.name));
     }
     setSuggestions(temp);
   };

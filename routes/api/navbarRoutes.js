@@ -7,10 +7,11 @@ router.get("/searchbar/names", function(req, res) {
   let data = {};
   model.Product.find({})
     .select("name")
-    .distinct("name")
+    .sort({ name: 1 })
     .collation({ locale: "es" })
     .then(products => {
-      data.products = products.sort((a, b) => a.localeCompare(b));
+      // data.products = products.sort((a, b) => a.localeCompare(b));
+      data.products = products;
       return model.Product.find({})
         .select("category")
         .distinct("category")
