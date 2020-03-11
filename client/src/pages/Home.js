@@ -64,8 +64,10 @@ const Home = React.memo(function Home() {
                     height="64"
                   />
                 </div>
-                <h4 className="mb-1">Envíos seguros a todo México</h4>
-                <span style={{ fontSize: "17px", color: "#616264" }}>
+                <strong className="lead mb-1" style={{ color: "#343638" }}>
+                  <strong>Envíos seguros a todo México</strong>
+                </strong>
+                <span style={{ fontSize: "15px", color: "#78797a" }}>
                   Contamos con envíos seguros a toda la República Mexicana.
                 </span>
               </Col>
@@ -78,8 +80,10 @@ const Home = React.memo(function Home() {
                     height="64"
                   />
                 </div>
-                <h4 className="mb-1">Asistencia en tus compras</h4>
-                <span style={{ fontSize: "17px", color: "#616264" }}>
+                <span className="lead mb-1" style={{ color: "#343638" }}>
+                  <strong>Asistencia en tus compras</strong>
+                </span>
+                <span style={{ fontSize: "15px", color: "#78797a" }}>
                   ¿Miedo a comprar en línea? Nosotros te ayudamos.
                 </span>
               </Col>
@@ -92,8 +96,10 @@ const Home = React.memo(function Home() {
                     height="64"
                   />
                 </div>
-                <h4 className="mb-1">Ofertas semanales</h4>
-                <span style={{ fontSize: "17px", color: "#616264" }}>
+                <span className="lead mb-1" style={{ color: "#343638" }}>
+                  <strong>Ofertas semanales</strong>
+                </span>
+                <span style={{ fontSize: "15px", color: "#78797a" }}>
                   En nuestra tienda encontrarás ofertas nuevas cada semana.
                 </span>
               </Col>

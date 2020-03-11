@@ -52,8 +52,12 @@ class BagDropdown extends PureComponent {
           className="navbarDropdownStyle ml-0 mr-md-2 p-0 p-md-2 pt-md-3"
           title="Canasta"
         >
-          <i className="fas fa-shopping-bag dropdownIcon" />
-          <Badge variant="danger" pill className="ml-1">
+          <i className="fas fa-shopping-bag" />
+          <Badge
+            variant="danger"
+            pill
+            style={{ fontSize: "10px", marginLeft: "-1px" }}
+          >
             {this.props.cart.counter}
           </Badge>
         </Dropdown.Toggle>

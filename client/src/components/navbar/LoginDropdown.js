@@ -93,7 +93,7 @@ const LoginDropdown = React.memo(() => {
               className="navbarDropdownStyle p-0 p-md-2 pt-md-3"
               title="Sesión"
             >
-              <i className="fas fa-user dropdownIcon mr-1" />
+              <i className="fas fa-user mr-1" />
               Sesión
             </Dropdown.Toggle>
             <Dropdown.Menu
@@ -171,7 +171,7 @@ const LoginDropdown = React.memo(() => {
               <Dropdown.Divider />
               <div className="px-3 py-2">
                 <Dropdown.Item
-                  className="clientDropdownItem px-0"
+                  className="navbarDropdownItemStyle px-0"
                   href="/signup"
                 >
                   Regístrate con nosotros

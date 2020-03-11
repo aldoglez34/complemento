@@ -10,7 +10,7 @@ const CategoriesDropdown = React.memo(({ categories }) => {
         className="navbarDropdownStyle p-0 p-md-2 pt-md-3"
         title="Categorías"
       >
-        <i className="fas fa-store dropdownIcon mr-1" />
+        <i className="fas fa-store mr-1" />
         Categorías
       </Dropdown.Toggle>
       <Dropdown.Menu data-display="static">
@@ -27,6 +27,7 @@ const CategoriesDropdown = React.memo(({ categories }) => {
                 key={c.name}
                 href={"/store/category/" + c.name}
                 title={c.name}
+                className="navbarDropdownItemStyle"
               >
                 {c.name}
                 <span className="categoriesProductCounter ml-1">

@@ -5,9 +5,9 @@
 
 // LOGO
 #navbarLogo {
-  color: #f1f227;
+  color: #f3d084;
   font-family: "Lobster", cursive;
-  font-size: 28px;
+  font-size: 30px;
 }
 
 #navbarLogoLeaf {
@@ -20,9 +20,9 @@
   outline: 0;
 }
 
-#navbarToggleBag {
+#navbarToggleBagIcon {
   font-size: 25px;
-  color: ghostwhite;
+  color: #f2f1ef;
   outline: 0;
 }
 
@@ -32,15 +32,17 @@
 
 // ALL DROPDOWN
 .navbarDropdownStyle {
-  color: #c8f7c5 !important;
-}
-
-.dropdownIcon {
-  font-size: 18px;
+  color: #f2f1ef !important;
 }
 
 .navbarDropdownStyle::after {
   display: none;
+}
+
+.navbarDropdownItemStyle {
+  &:focus {
+    background-color: #59a49a;
+  }
 }
 
 // DROPDOWN - CATEGORIES
@@ -52,6 +54,11 @@
 // DROPDOWN - LOGIN
 #loginDropdownMenu {
   width: 19rem;
+}
+
+// DROPDOWN- SEARCH
+#searchDropdownMenu {
+  width: 21rem;
 }
 
 // DROPDOWN - CLIENT

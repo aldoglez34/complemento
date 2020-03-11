@@ -46,7 +46,7 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
           className="p-0"
           id="navbarToggleStyle"
         >
-          <i className="fas fa-shopping-bag" id="navbarToggleBag" />
+          <i className="fas fa-shopping-bag" id="navbarToggleBagIcon" />
           <Badge variant="danger" pill id="navbarToggleCounter">
             {cart.counter}
           </Badge>

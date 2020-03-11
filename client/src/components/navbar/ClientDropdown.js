@@ -30,21 +30,24 @@ const ClientDropdown = React.memo(function ClientDropdown() {
         data-display="static"
         className="dropdown-menu-xs-left dropdown-menu-md-right"
       >
-        <Dropdown.Item className="clientDropdownItem" href="/client/info">
+        <Dropdown.Item className="navbarDropdownItemStyle" href="/client/info">
           Mis datos
         </Dropdown.Item>
         <Dropdown.Item
-          className="clientDropdownItem"
+          className="navbarDropdownItemStyle"
           href="/client/shipment"
           disabled
         >
           Mis pedidos
         </Dropdown.Item>
-        <Dropdown.Item className="clientDropdownItem" href="/client/favorites">
+        <Dropdown.Item
+          className="navbarDropdownItemStyle"
+          href="/client/favorites"
+        >
           Mis favoritos
         </Dropdown.Item>
         <Dropdown.Divider className="mt-1 mb-2" />
-        <Dropdown.Item className="clientDropdownItem" onClick={logout}>
+        <Dropdown.Item className="navbarDropdownItemStyle" onClick={logout}>
           Cerrar sesión
         </Dropdown.Item>
       </Dropdown.Menu>
