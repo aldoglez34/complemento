@@ -7,7 +7,10 @@ router.get("/:uid", function(req, res) {
   model.Client.find({ firebaseUID: req.params.uid })
     .select("name firstSurname secondSurname phone email address favorites")
     .then(data => res.json(data[0]))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // addFavorite()
@@ -21,7 +24,10 @@ router.put("/favorite/new", (req, res) => {
     { new: true }
   )
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // fetchFavorites()
@@ -31,7 +37,10 @@ router.get("/favorites/:clientId", (req, res) => {
     .populate("favorites") // this will get all the data from the provider collection
     .select("favorites")
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // newClient()
@@ -54,8 +63,14 @@ router.post("/new", function(req, res) {
       zipCode: req.body.zipCode
     }
   })
-    .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .then(data => {
+      console.log("@todo bien", data);
+      res.json(data);
+    })
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // updateClient()
@@ -79,7 +94,8 @@ router.put("/update", function(req, res) {
       res.json(data);
     })
     .catch(function(err) {
-      res.json(err);
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
     });
 });
 
@@ -92,7 +108,10 @@ router.post("/message/new", function(req, res) {
     message: req.body.message
   })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 module.exports = router;

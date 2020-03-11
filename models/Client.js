@@ -72,8 +72,7 @@ const ClientSchema = new Schema({
   favorites: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Product",
-      unique: true
+      ref: "Product"
     }
   ]
 });

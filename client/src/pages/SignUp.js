@@ -101,10 +101,12 @@ const SignUp = React.memo(function SignUp(props) {
                 values.firebaseUID = res.user.uid;
                 // save the client info in the db
                 API.newClient(values)
-                  .then(() => {
+                  .then(res => {
+                    console.log("@newClient", res.data);
                     // lastly, fetch the recently created client
                     API.fetchClientByUID(values.firebaseUID)
                       .then(res => {
+                        console.log("@fetchClientByUID", res.data);
                         dispatch(clientActions.loginClient(res.data));
                         alert("¡Bienvenido!");
                         window.location.href = "/";
@@ -117,7 +119,7 @@ const SignUp = React.memo(function SignUp(props) {
                   })
                   .catch(err => {
                     // print error
-                    console.log(err);
+                    alert(err.response.data.msg);
                     setSubmitting(false);
                   });
               })
