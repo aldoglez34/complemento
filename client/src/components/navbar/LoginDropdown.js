@@ -48,7 +48,7 @@ const LoginDropdown = React.memo(() => {
                   .then(res => {
                     if (res.data) {
                       dispatch(clientActions.loginClient(res.data));
-                      alert("¡Bienvenido!");
+                      alert(`Iniciaste sesión con éxito, ${res.data.name}`);
                       window.location.href = "/";
                     } else {
                       alert("Usuario incorrecto");
@@ -109,7 +109,12 @@ const LoginDropdown = React.memo(() => {
                 <Form noValidate onSubmit={handleSubmit}>
                   <Form.Row className="mb-2">
                     <Form.Group as={Col}>
-                      <Form.Label>Correo electrónico</Form.Label>
+                      <Form.Label>
+                        Correo electrónico
+                        <strong className="ml-1 text-danger" title="Requerido">
+                          *
+                        </strong>
+                      </Form.Label>
                       <Form.Control
                         placeholder="Correo electrónico"
                         type="email"
@@ -128,7 +133,12 @@ const LoginDropdown = React.memo(() => {
                   </Form.Row>
                   <Form.Row className="mb-0">
                     <Form.Group as={Col}>
-                      <Form.Label>Contraseña</Form.Label>
+                      <Form.Label>
+                        Contraseña
+                        <strong className="ml-1 text-danger" title="Requerido">
+                          *
+                        </strong>
+                      </Form.Label>
                       <Form.Control
                         placeholder="Contraseña"
                         type="password"
@@ -169,14 +179,9 @@ const LoginDropdown = React.memo(() => {
                 </Form>
               </div>
               <Dropdown.Divider />
-              <div className="px-3 py-2">
-                <Dropdown.Item
-                  className="navbarDropdownItemStyle px-0"
-                  href="/signup"
-                >
-                  Regístrate con nosotros
-                </Dropdown.Item>
-              </div>
+              <Dropdown.Item className="navbarDropdownItemStyle" href="/signup">
+                Regístrate con nosotros
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </>

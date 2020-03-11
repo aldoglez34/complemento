@@ -15,6 +15,15 @@ const clients = [
       state: "Veracruz",
       zipCode: "91300"
     }
+  },
+  {
+    firebaseUID: "Zk2kUhK3awM2w03WxcWORTvTuqH2",
+    name: "Testence",
+    firstSurname: "Surname",
+    secondSurname: "Second",
+    phone: "2281112031",
+    email: "test@test.com",
+    password: "123456"
   }
 ];
 

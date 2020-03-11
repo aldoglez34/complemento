@@ -4,29 +4,28 @@ const Schema = mongoose.Schema;
 const ProductSchema = new Schema({
   provider: {
     type: Schema.Types.ObjectId,
-    ref: "Provider",
-    required: "Proveedor inválido"
+    ref: "Provider"
   },
   category: {
     type: String,
     trim: true,
-    required: "Categoría inválida"
+    required: true
   },
   brand: {
     type: String,
     trim: true,
-    required: "Marca requerida"
+    required: true
   },
   name: {
     type: String,
     unique: true,
     trim: true,
-    required: "Nombre requerido"
+    required: true
   },
   content: {
     type: String,
     trim: true,
-    required: "Contenido requerido"
+    required: true
   },
   comments: {
     type: String,
@@ -35,16 +34,16 @@ const ProductSchema = new Schema({
   price: {
     salePrice: {
       type: Number,
-      required: "Precio de venta requerido"
+      required: true
     },
     latestPurchasePrice: {
       type: Number,
-      required: "Último precio de compra"
+      required: true
     },
     discount: {
       hasDiscount: {
         type: Boolean,
-        required: "Descuento requerido (ya sea falso o verdadero)"
+        required: true
       },
       percentage: Number,
       newPrice: Number
@@ -55,7 +54,8 @@ const ProductSchema = new Schema({
     default: 0
   },
   stock: {
-    type: Number
+    type: Number,
+    required: true
   },
   priority: {
     type: Boolean,
@@ -63,11 +63,12 @@ const ProductSchema = new Schema({
   },
   photo: {
     type: String,
-    default: "placeholder.jpg"
+    unique: true,
+    required: true
   },
   sufferings: [{ type: String, trim: true }],
   ingredients: [{ type: String, trim: true }],
-  registeredAt: {
+  createdAt: {
     type: Date,
     default: Date.now()
   }

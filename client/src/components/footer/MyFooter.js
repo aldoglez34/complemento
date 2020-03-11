@@ -58,8 +58,11 @@ const MyFooter = React.memo(function MyFooter() {
       </Container>
 
       <Container className="d-flex flex-row justify-content-center py-1 mt-4 text-light">
-        <span style={{ color: "#c8c0b0" }}>© Complemento Natural</span>
-        <a style={{ color: "#c8c0b0" }} href="/" title="Twitter">
+        <span style={{ color: "#c8c0b0", fontFamily: "Lobster" }}>
+          ©Tu Complemento
+          <i className="fas fa-leaf ml-1" />
+        </span>
+        {/* <a style={{ color: "#c8c0b0" }} href="/" title="Twitter">
           <i className="fab fa-twitter ml-2" />
         </a>
         <a style={{ color: "#c8c0b0" }} href="/" title="Facebook">
@@ -67,7 +70,7 @@ const MyFooter = React.memo(function MyFooter() {
         </a>
         <a style={{ color: "#c8c0b0" }} href="/" title="Instagram">
           <i className="fab fa-instagram ml-2" />
-        </a>
+        </a> */}
       </Container>
     </footer>
   );

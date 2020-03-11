@@ -23,14 +23,18 @@ const ClientDropdown = React.memo(function ClientDropdown() {
         className="clientLoginDropdown p-0 p-md-2 pt-md-3"
       >
         <i className="fas fa-user dropdownIcon mr-1" />
-        {client.name + " " + client.firstSurname}
+        {client.name}
       </Dropdown.Toggle>
       <Dropdown.Menu
         alignRight
         data-display="static"
         className="dropdown-menu-xs-left dropdown-menu-md-right"
       >
-        <Dropdown.Item className="navbarDropdownItemStyle" href="/client/info">
+        <Dropdown.Item
+          className="navbarDropdownItemStyle"
+          href="/client/info"
+          disabled
+        >
           Mis datos
         </Dropdown.Item>
         <Dropdown.Item

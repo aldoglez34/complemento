@@ -5,7 +5,7 @@
 
 // LOGO
 #navbarLogo {
-  color: #f3d084;
+  color: #edcb58;
   font-family: "Lobster", cursive;
   font-size: 30px;
 }
@@ -41,7 +41,8 @@
 
 .navbarDropdownItemStyle {
   &:focus {
-    background-color: #59a49a;
+    background-color: #f3d084;
+    color: #0c2c2c;
   }
 }
 
@@ -63,7 +64,11 @@
 
 // DROPDOWN - CLIENT
 .clientLoginDropdown {
-  color: #36d7b7 !important;
+  color: #f3d084 !important;
+}
+
+.clientLoginDropdown::after {
+  display: none;
 }
 
 .navbarDropdownStyle::after {

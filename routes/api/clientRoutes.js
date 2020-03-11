@@ -46,6 +46,7 @@ router.get("/favorites/:clientId", (req, res) => {
 // newClient()
 // matches with /api/client/new
 router.post("/new", function(req, res) {
+  console.log("@newClient", req.body);
   model.Client.create({
     firebaseUID: req.body.firebaseUID,
     name: req.body.clientName,
@@ -53,20 +54,9 @@ router.post("/new", function(req, res) {
     secondSurname: req.body.secondSurname,
     email: req.body.email,
     phone: req.body.phone,
-    password: req.body.password,
-    address: {
-      street: req.body.street,
-      neighborhood: req.body.neighborhood,
-      municipality: req.body.municipality,
-      city: req.body.city,
-      state: req.body.state,
-      zipCode: req.body.zipCode
-    }
+    password: req.body.password
   })
-    .then(data => {
-      console.log("@todo bien", data);
-      res.json(data);
-    })
+    .then(data => res.json(data))
     .catch(err => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
