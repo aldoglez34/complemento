@@ -1,0 +1,24 @@
+.addtobagbuttonphoto {
+  height: 400px;
+  width: 235px;
+  z-index: 1;
+}
+
+.addtobagbuttondiscount {
+  position: absolute;
+  height: 89px;
+  width: 89px;
+  top: 15px;
+  left: 45px;
+  z-index: 2;
+}
+
+@media only screen and (max-width: 766px) {
+  .addtobagbuttonphoto {
+    height: 260px;
+    width: 135px;
+  }
+  .addtobagbuttondiscount {
+    left: 25px;
+  }
+}

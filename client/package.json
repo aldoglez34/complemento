@@ -22,6 +22,7 @@
     "redux": "^4.0.4",
     "redux-persist": "^6.0.0",
     "rfc": "0.0.11",
+    "semantic-ui-react-numberpicker": "0.0.1-b",
     "yup": "^0.27.0"
   },
   "scripts": {
