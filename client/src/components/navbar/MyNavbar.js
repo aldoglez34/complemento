@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Navbar, Container, Nav, Badge } from "react-bootstrap";
 import SmallNav from "./smallNav/SmallNav";
 import BagCollapsed from "./smallNav/BagCollapsed";
-import CategoriesDropdown from "./CategoriesDropdown";
+import StoreDropdown from "./StoreDropdown";
 import SearchButton from "./SearchButton";
 import ClientDropdown from "./ClientDropdown";
 import LoginDropdown from "./LoginDropdown";
@@ -15,7 +15,7 @@ import PropTypes from "prop-types";
 const MyNavbar = React.memo(({ hideBag = false }) => {
   const [items, setItems] = useState({});
 
-  const [categories, setCategories] = useState([]);
+  const [store, setStore] = useState([]);
 
   const client = useSelector(state => state.client);
   const cart = useSelector(state => state.cart);
@@ -26,8 +26,8 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
       .then(res => setItems(res.data))
       .catch(err => console.log(err));
     // fetch items for categories dropdown
-    API.fetchItemsForCategoriesDropdown()
-      .then(res => setCategories(res.data))
+    API.fetchItemsForStoreDropdown()
+      .then(res => setStore(res.data))
       .catch(err => console.log(err));
   }, []);
 
@@ -62,7 +62,7 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
         {/* md */}
         <div className="d-none d-md-block w-100">
           <Nav>
-            <CategoriesDropdown categories={categories} />
+            <StoreDropdown store={store} />
             <Nav.Item>
               <SearchButton items={items} />
             </Nav.Item>
@@ -76,7 +76,7 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
         </div>
       </Navbar>
       {/* smaller navbar for mobile */}
-      <SmallNav categories={categories} items={items} />
+      <SmallNav store={store} items={items} />
     </>
   );
 });

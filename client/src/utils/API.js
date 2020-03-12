@@ -25,8 +25,8 @@ export default {
     return axios.get("/api/navbar/searchbar/names");
   },
 
-  fetchItemsForCategoriesDropdown: function() {
-    return axios.get("/api/navbar/dropdown/categories");
+  fetchItemsForStoreDropdown: function() {
+    return axios.get("/api/navbar/dropdown/store");
   },
 
   // ---------------------------------------------------------------------------

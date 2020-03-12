@@ -3,12 +3,12 @@ import { useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
 import LoginDropdown from "../LoginDropdown";
 import ClientDropdown from "../ClientDropdown";
-import CategoriesDropdown from "../CategoriesDropdown";
+import StoreDropdown from "../StoreDropdown";
 import PropTypes from "prop-types";
 import SearchButton from "../SearchButton";
 import "./smallnav.scss";
 
-const SmallNav = React.memo(({ categories, items }) => {
+const SmallNav = React.memo(({ store, items }) => {
   const client = useSelector(state => state.client);
 
   return (
@@ -17,7 +17,7 @@ const SmallNav = React.memo(({ categories, items }) => {
       id="smallNavbarStyle"
       fluid
     >
-      <CategoriesDropdown categories={categories} />
+      <StoreDropdown store={store} />
       <SearchButton items={items} />
       {client.isLogged ? <ClientDropdown /> : <LoginDropdown />}
     </Container>
@@ -25,7 +25,7 @@ const SmallNav = React.memo(({ categories, items }) => {
 });
 
 SmallNav.propTypes = {
-  categories: PropTypes.array.isRequired,
+  store: PropTypes.array.isRequired,
   items: PropTypes.object.isRequired
 };
 

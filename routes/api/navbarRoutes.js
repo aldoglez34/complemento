@@ -31,9 +31,9 @@ router.get("/searchbar/names", function(req, res) {
     .catch(err => res.json(err));
 });
 
-// fetchItemsForCategoriesDropdown()
-// matches with /api/navbar/dropdown/categories
-router.get("/dropdown/categories", function(req, res) {
+// fetchItemsForStoreDropdown()
+// matches with /api/navbar/dropdown/store
+router.get("/dropdown/store", function(req, res) {
   model.Product.aggregate([
     {
       $group: {

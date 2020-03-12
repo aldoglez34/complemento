@@ -45,15 +45,12 @@ const SearchButton = props => {
     if (productSuggestions.length) {
       allSuggestions.push(
         <>
-          <h6
-            className="dropdown-header px-0 px-md-3"
-            style={{ color: "#59a49a" }}
-          >
+          <h6 className="dropdown-header px-0" style={{ color: "#59a49a" }}>
             <strong>Productos</strong>
           </h6>
           {productSuggestions.map(i => (
             <Dropdown.Item
-              className="navbarDropdownItemStyle px-0 px-md-3"
+              className="navbarDropdownItemStyle px-0"
               key={i._id}
               href={"/product/details/" + i._id}
             >
@@ -67,15 +64,12 @@ const SearchButton = props => {
     if (categorySuggestions.length) {
       allSuggestions.push(
         <>
-          <h6
-            className="dropdown-header px-0 px-md-3"
-            style={{ color: "#59a49a" }}
-          >
+          <h6 className="dropdown-header px-0" style={{ color: "#59a49a" }}>
             <strong>Categorías</strong>
           </h6>
           {categorySuggestions.map(c => (
             <Dropdown.Item
-              className="navbarDropdownItemStyle px-0 px-md-3"
+              className="navbarDropdownItemStyle px-0"
               key={c}
               href={"/store/category/" + c}
             >
@@ -89,15 +83,12 @@ const SearchButton = props => {
     if (brandSuggestions.length) {
       allSuggestions.push(
         <>
-          <h6
-            className="dropdown-header px-0 px-md-3"
-            style={{ color: "#59a49a" }}
-          >
+          <h6 className="dropdown-header px-0" style={{ color: "#59a49a" }}>
             <strong>Marcas</strong>
           </h6>
           {brandSuggestions.map(b => (
             <Dropdown.Item
-              className="navbarDropdownItemStyle px-0 px-md-3"
+              className="navbarDropdownItemStyle px-0"
               key={b}
               href={"/store/brand/" + b}
             >
@@ -111,13 +102,52 @@ const SearchButton = props => {
     return allSuggestions;
   };
 
+  const content = type =>
+    products.length ? (
+      <>
+        {/* title */}
+        {type === "modal" ? (
+          <div className="d-flex flex-row pt-2 mb-3">
+            <div className="d-flex flex-column">
+              <h6>
+                <strong>BUSCAR</strong>
+              </h6>
+              <hr className="myDivider mb-0" />
+            </div>
+            <div className="ml-auto">
+              <i className="fas fa-times" onClick={handleClose} />
+            </div>
+          </div>
+        ) : type === "dropdown" ? (
+          <div className="pt-2 pb-3">
+            <h6>
+              <strong>BUSCAR</strong>
+            </h6>
+            <hr className="myDivider mb-0" />
+          </div>
+        ) : null}
+        {/* the rest */}
+        <FormControl
+          autoFocus
+          className="w-100 mb-3"
+          placeholder="¿Qué estás buscando?"
+          onChange={handleEditInputChange}
+        />
+        {renderSuggestions()}
+      </>
+    ) : (
+      <div className="text-center py-4">
+        <Spinner animation="grow" role="status" variant="warning" />
+      </div>
+    );
+
   return (
     <React.Fragment>
-      {/* <sm */}
+      {/* sm */}
       <div className="d-block d-md-none">
         <Button
           variant="transparent"
-          className="navbarDropdownStyle ml-0 ml-md-2 p-0 p-md-2 pt-md-3"
+          className="navbarDropdownStyle ml-0 p-0"
           onClick={handleShow}
           style={{ outline: "none", boxShadow: "none" }}
         >
@@ -125,27 +155,15 @@ const SearchButton = props => {
           Buscar
         </Button>
 
-        <Modal className="py-3" show={show} onHide={handleClose}>
-          <Modal.Body>
-            <h6>
-              <strong>BUSCAR</strong>
-            </h6>
-            <hr className="myDivider mb-4" />
-            <FormControl
-              autoFocus
-              className="w-100 mb-2"
-              placeholder="¿Qué estás buscando?"
-              onChange={handleEditInputChange}
-            />
-            {renderSuggestions()}
-          </Modal.Body>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Body className="px-3 py-2">{content("modal")}</Modal.Body>
         </Modal>
       </div>
       {/* md */}
       <div className="d-none d-md-block">
         <Dropdown>
           <Dropdown.Toggle
-            className="navbarDropdownStyle ml-0 ml-md-2 p-0 p-md-2 pt-md-3"
+            className="navbarDropdownStyle ml-2 p-2 pt-3"
             variant="transparent"
             id="dropdown-basic"
             style={{ outline: "none", boxShadow: "none" }}
@@ -154,28 +172,8 @@ const SearchButton = props => {
             Buscar
           </Dropdown.Toggle>
 
-          <Dropdown.Menu id="searchDropdownMenu">
-            {products.length ? (
-              <>
-                <div className="pl-3 pr-3 pb-3 pt-2">
-                  <h6>
-                    <strong>BUSCAR</strong>
-                  </h6>
-                  <hr className="myDivider mb-4" />
-                  <FormControl
-                    autoFocus
-                    className="w-100"
-                    placeholder="¿Qué estás buscando?"
-                    onChange={handleEditInputChange}
-                  />
-                </div>
-                {renderSuggestions()}
-              </>
-            ) : (
-              <div className="text-center py-4">
-                <Spinner animation="grow" role="status" variant="warning" />
-              </div>
-            )}
+          <Dropdown.Menu className="px-3 py-2" id="searchDropdownMenu">
+            {content("dropdown")}
           </Dropdown.Menu>
         </Dropdown>
       </div>

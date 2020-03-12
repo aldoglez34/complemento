@@ -86,105 +86,103 @@ const LoginDropdown = React.memo(() => {
         handleSubmit,
         isSubmitting
       }) => (
-        <>
-          <Dropdown as={NavItem}>
-            <Dropdown.Toggle
-              as={Nav.Link}
-              className="navbarDropdownStyle p-0 p-md-2 pt-md-3"
-              title="Sesión"
-            >
-              <i className="fas fa-user mr-1" />
-              Sesión
-            </Dropdown.Toggle>
-            <Dropdown.Menu
-              alignRight
-              id="loginDropdownMenu"
-              data-display="static"
-            >
-              <div className="px-3 py-2">
-                <h6>
-                  <strong>SESIÓN</strong>
-                </h6>
-                <hr className="myDivider" />
-                <Form noValidate onSubmit={handleSubmit}>
-                  <Form.Row className="mb-2">
-                    <Form.Group as={Col}>
-                      <Form.Label>
-                        Correo electrónico
-                        <strong className="ml-1 text-danger" title="Requerido">
-                          *
-                        </strong>
-                      </Form.Label>
-                      <Form.Control
-                        placeholder="Correo electrónico"
-                        type="email"
-                        name="email"
-                        value={values.email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        isValid={touched.email && !errors.email}
-                      />
-                      <ErrorMessage
-                        className="text-danger"
-                        name="email"
-                        component="div"
-                      />
-                    </Form.Group>
-                  </Form.Row>
-                  <Form.Row className="mb-0">
-                    <Form.Group as={Col}>
-                      <Form.Label>
-                        Contraseña
-                        <strong className="ml-1 text-danger" title="Requerido">
-                          *
-                        </strong>
-                      </Form.Label>
-                      <Form.Control
-                        placeholder="Contraseña"
-                        type="password"
-                        name="password"
-                        value={values.password}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        isValid={touched.password && !errors.password}
-                      />
-                      <ErrorMessage
-                        className="text-danger"
-                        name="password"
-                        component="div"
-                      />
-                    </Form.Group>
-                  </Form.Row>
-                  <Form.Row className="mb-2">
-                    <Form.Group as={Col}>
-                      <Form.Check
-                        type="checkbox"
-                        name="rememberme"
-                        onChange={handleChange}
-                        label="Recuérdame"
-                      />
-                    </Form.Group>
-                  </Form.Row>
-                  <Form.Row>
-                    <Form.Group as={Col}>
-                      <Button
-                        variant="warning"
-                        type="submit"
-                        disabled={isSubmitting}
-                      >
-                        Entrar
-                      </Button>
-                    </Form.Group>
-                  </Form.Row>
-                </Form>
-              </div>
-              <Dropdown.Divider />
-              <Dropdown.Item className="navbarDropdownItemStyle" href="/signup">
-                Regístrate con nosotros
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </>
+        <Dropdown as={NavItem}>
+          <Dropdown.Toggle
+            as={Nav.Link}
+            className="navbarDropdownStyle p-0 p-md-2 pt-md-3"
+            title="Sesión"
+          >
+            <i className="fas fa-user mr-1" />
+            Sesión
+          </Dropdown.Toggle>
+          <Dropdown.Menu
+            alignRight
+            id="loginDropdownMenu"
+            data-display="static"
+          >
+            <div className="px-3 py-2">
+              <h6>
+                <strong>SESIÓN</strong>
+              </h6>
+              <hr className="myDivider" />
+              <Form noValidate onSubmit={handleSubmit}>
+                <Form.Row className="mb-2">
+                  <Form.Group as={Col}>
+                    <Form.Label>
+                      Correo electrónico
+                      <strong className="ml-1 text-danger" title="Requerido">
+                        *
+                      </strong>
+                    </Form.Label>
+                    <Form.Control
+                      placeholder="Correo electrónico"
+                      type="email"
+                      name="email"
+                      value={values.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.email && !errors.email}
+                    />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="email"
+                      component="div"
+                    />
+                  </Form.Group>
+                </Form.Row>
+                <Form.Row className="mb-0">
+                  <Form.Group as={Col}>
+                    <Form.Label>
+                      Contraseña
+                      <strong className="ml-1 text-danger" title="Requerido">
+                        *
+                      </strong>
+                    </Form.Label>
+                    <Form.Control
+                      placeholder="Contraseña"
+                      type="password"
+                      name="password"
+                      value={values.password}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.password && !errors.password}
+                    />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="password"
+                      component="div"
+                    />
+                  </Form.Group>
+                </Form.Row>
+                <Form.Row className="mb-2">
+                  <Form.Group as={Col}>
+                    <Form.Check
+                      type="checkbox"
+                      name="rememberme"
+                      onChange={handleChange}
+                      label="Recuérdame"
+                    />
+                  </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Button
+                      variant="warning"
+                      type="submit"
+                      disabled={isSubmitting}
+                    >
+                      Entrar
+                    </Button>
+                  </Form.Group>
+                </Form.Row>
+              </Form>
+            </div>
+            <Dropdown.Divider />
+            <Dropdown.Item className="navbarDropdownItemStyle" href="/signup">
+              Regístrate con nosotros
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       )}
     </Formik>
   );
