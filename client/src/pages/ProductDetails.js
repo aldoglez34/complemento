@@ -43,6 +43,7 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                   className="productPhoto"
                   fluid
                   alt="product"
+                  title={product.name}
                 />
                 {product.price.discount.hasDiscount ? (
                   <Image

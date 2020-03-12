@@ -16,6 +16,16 @@ class BagDropdown extends PureComponent {
     products: []
   };
 
+  formatNumber(num) {
+    return num !== undefined
+      ? "$" +
+          num
+            .toFixed(2)
+            .toString()
+            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+      : null;
+  }
+
   componentDidMount() {
     this.createCartReport();
   }
@@ -103,16 +113,20 @@ class BagDropdown extends PureComponent {
                         <span className="text-muted ml-1">
                           {"(" + p.qty + ")"}
                         </span>
-                        <strong className="ml-auto">{"$" + p.subTotal}</strong>
+                        <strong className="ml-auto">
+                          {this.formatNumber(p.subTotal)}
+                        </strong>
                       </div>
                     );
                   })}
                 </div>
                 <h3 className="text-right text-success mb-3">
-                  {"Total: $" +
-                    this.state.products
-                      .map(p => p.subTotal)
-                      .reduce((prev, next) => prev + next)}
+                  {"Total: " +
+                    this.formatNumber(
+                      this.state.products
+                        .map(p => p.subTotal)
+                        .reduce((prev, next) => prev + next)
+                    )}
                 </h3>
                 <Button block variant="danger" href="/cart">
                   Ir a canasta

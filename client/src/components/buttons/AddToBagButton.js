@@ -6,38 +6,46 @@ import PropTypes from "prop-types";
 import "./addtobagbutton.scss";
 
 const AddToBagButton = React.memo(({ product, size }) => {
+  const formatNumber = num => {
+    return num !== undefined
+      ? "$" +
+          num
+            .toFixed(2)
+            .toString()
+            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+      : null;
+  };
+
   const [show, setShow] = useState(false);
 
   const dispatch = useDispatch();
 
-  const handleClose = () => {
-    // close modal
-    setShow(false);
-    // save the position of the window in the localstorage
-    localStorage.setItem("last-ypos", window.pageYOffset);
-    // refresh the window
-    window.location.reload();
-  };
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
-  const handleShow = () => {
-    dispatch(cartActions.addItem({ _id: product._id }));
-    setShow(true);
-  };
-
-  useEffect(() => {
-    // scroll after refreshing
-    let ypos = localStorage.getItem("last-ypos");
-    if (ypos) {
-      window.scrollTo(0, ypos);
-      localStorage.removeItem("last-ypos");
-    }
-  }, []);
+  useEffect(
+    () =>
+      setPrice(
+        product.price.discount.hasDiscount
+          ? product.price.discount.newPrice
+          : product.price.salePrice
+      ),
+    [product.price]
+  );
 
   const [qty, setQty] = useState(1);
+  const [price, setPrice] = useState();
 
   const handleDecrementQty = () => (qty === 1 ? null : setQty(qty - 1));
   const handleIncrementQty = () =>
-    qty === product.stock ? null : setQty(qty + 1);
+    qty === product.stock || qty === 10
+      ? alert(
+          `Lo sentimos, por el momento no podemos ofrecerte más piezas de este producto.`
+        )
+      : setQty(qty + 1);
+
+  const updateRedux = async () =>
+    dispatch(cartActions.addItem({ _id: product._id, qty }));
 
   return (
     <>
@@ -59,13 +67,20 @@ const AddToBagButton = React.memo(({ product, size }) => {
       <Modal size="lg" show={show} onHide={handleClose}>
         <Modal.Body>
           <div className="d-flex flex-row px-2 pt-2">
-            <i className="fas fa-times ml-auto" onClick={handleClose} />
+            <i
+              className="fas fa-times ml-auto"
+              style={{ cursor: "pointer" }}
+              title="Cerrar"
+              onClick={handleClose}
+            />
           </div>
-          <Row className="px-2 py-2">
-            <Col md={6} className="text-center">
+          <Row className="px-2 px-md-3 py-2 py-md-3">
+            {/* left col - image */}
+            <Col md={7} className="text-center">
               <Image
                 className="addtobagbuttonphoto"
                 src={"/images/products/" + product.photo}
+                title={product.name}
               />
               {product.price.discount.hasDiscount ? (
                 <Image
@@ -75,15 +90,18 @@ const AddToBagButton = React.memo(({ product, size }) => {
                 />
               ) : null}
             </Col>
-            <Col md={6}>
-              <h1 className="mt-1">{product.name}</h1>
+            {/* right col */}
+            <Col md={5}>
+              <h2 className="mt-2 text-center">{product.name}</h2>
+              <hr />
               <div className="mb-3">
-                El producto <strong>{product.name}</strong> ha sido agregado
-                exitosamente a tu canasta de compras.
+                Estás por agregar el producto <strong>{product.name}</strong> a
+                tu canasta de compras.
               </div>
-              Elige la cantidad:
+              <hr />
               {/* qty picker */}
-              <div className="d-flex flex-row mb-4">
+              <strong>Cantidad</strong>
+              <div className="d-flex flex-row mb-4 mt-2">
                 <Button
                   style={{
                     outline: "none",
@@ -92,12 +110,13 @@ const AddToBagButton = React.memo(({ product, size }) => {
                   onClick={handleDecrementQty}
                   className="rounded-0"
                   variant="dark"
+                  title="Quitar uno"
                 >
                   <i className="fas fa-minus" />
                 </Button>
                 <FormControl
                   readOnly
-                  className="text-right boder border-secondary rounded-0"
+                  className="text-right border border-secondary rounded-0"
                   style={{
                     fontSize: "19px",
                     outline: "none",
@@ -113,36 +132,47 @@ const AddToBagButton = React.memo(({ product, size }) => {
                   onClick={handleIncrementQty}
                   className="rounded-0"
                   variant="dark"
+                  title="Agregar uno"
                 >
                   <i className="fas fa-plus" />
                 </Button>
               </div>
               {/* price */}
-              <h1 className="mb-3 text-center">
-                {product.price.discount.hasDiscount ? (
-                  <>
-                    <del className="" style={{ color: "gainsboro" }}>
-                      {"$" + product.price.salePrice}
-                    </del>
-                    <strong className="text-danger ml-2">
-                      {"$" + product.price.discount.newPrice}
-                    </strong>
-                  </>
-                ) : (
-                  <strong className="text-danger">
-                    {"$" + product.price.salePrice}
-                  </strong>
-                )}
-              </h1>
+              <div className="d-flex flex-row">
+                <strong>Precio</strong>
+                <span className="ml-auto lead">{formatNumber(price)}</span>
+              </div>
+              <div className="d-flex flex-row">
+                <strong>Subtotal</strong>
+                <span className="ml-auto lead text-danger">
+                  {formatNumber(qty * price)}
+                </span>
+              </div>
               {/* buttons */}
-              <Col className="p-0">
-                <Button size="lg" block variant="outline-success" onClick={handleClose}>
-                  <i className="fas fa-arrow-left mr-1" />
-                  Seguir comprando
+              {/* <hr /> */}
+              <Col className="mt-3 p-0">
+                <Button
+                  size="lg"
+                  variant="success"
+                  block
+                  onClick={() => updateRedux().then(() => handleClose())}
+                  title="Agregar y seguir comprando"
+                >
+                  <i className="fas fa-arrow-left mr-2" />
+                  Agregar y seguir comprando
                 </Button>
-                <Button size="lg" block variant="outline-danger" href="/cart">
-                  Ir a canasta
-                  <i className="fas fa-arrow-right ml-1" />
+                <Button
+                  className="mt-2"
+                  block
+                  size="lg"
+                  variant="danger"
+                  onClick={() =>
+                    updateRedux().then(() => (window.location = "/cart"))
+                  }
+                  title="Agregar e ir a canasta"
+                >
+                  Agregar e ir a canasta
+                  <i className="fas fa-arrow-right ml-2" />
                 </Button>
               </Col>
             </Col>

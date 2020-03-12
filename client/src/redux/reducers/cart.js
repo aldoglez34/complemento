@@ -1,27 +1,28 @@
 const cartReducers = (state = { counter: 0, items: [] }, action) => {
   // this function will recieve a productId and find the index in the items array
-  const findIndex = productId => {
-    return state.items.findIndex(i => i._id === productId);
-  };
-  //
+  // findIndex() returns -1 if the item wasn't found
+  const findIndex = productId =>
+    state.items.findIndex(i => i._id === productId);
+
   switch (action.type) {
     case "cart/addItem":
+      // first check if the product is already in the cart
+      // if it is, sum the qty
+      // if it's not, add the item
       if (findIndex(action.data._id) === -1) {
-        // if not found, concat the item like so
         return {
-          counter: state.counter + 1,
+          counter: state.counter + action.data.qty,
           items: state.items.concat({
             _id: action.data._id,
-            qty: 1
+            qty: action.data.qty
           })
         };
       } else {
-        // if it is, then sum qty + 1 in that position
         return {
-          counter: state.counter + 1,
+          counter: state.counter + action.data.qty,
           items: state.items.reduce((acc, cv, idx) => {
             if (findIndex(action.data._id) === idx) {
-              acc.push({ ...cv, qty: cv.qty + 1 });
+              acc.push({ ...cv, qty: cv.qty + action.data.qty });
             } else {
               acc.push(cv);
             }
