@@ -150,7 +150,12 @@ const AddToBagButton = React.memo(({ product, size }) => {
                   size="lg"
                   variant="success"
                   block
-                  onClick={() => updateRedux().then(() => handleClose())}
+                  onClick={() =>
+                    updateRedux().then(() => {
+                      setQty(1);
+                      handleClose();
+                    })
+                  }
                   title="Agregar y seguir comprando"
                 >
                   <i className="fas fa-arrow-left mr-2" />

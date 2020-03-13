@@ -1,17 +1,33 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { clear, addItem, decrementQty } from "../redux/actions/cart";
 import { Container, Table, Button, Badge, Spinner } from "react-bootstrap";
 import Layout from "../components/Layout";
 import API from "../utils/API";
 
-class Cart extends PureComponent {
+class Cart extends Component {
   state = {
     products: []
   };
 
+  formatNumber(num) {
+    return num !== undefined
+      ? "$" +
+          num
+            .toFixed(2)
+            .toString()
+            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+      : null;
+  }
+
   componentDidMount() {
     this.createCartReport();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.cart.counter !== this.props.cart.counter) {
+      this.createCartReport();
+    }
   }
 
   createCartReport() {
@@ -34,30 +50,30 @@ class Cart extends PureComponent {
     });
   }
 
-  makeSale() {
-    // API.buyProducts({ products, client })
-    //   .then(res => {
-    //     if (!res.data.errors) {
-    //       API.updateStock(products)
-    //         .then(() => {
-    //           alert("Gracias por tu compra");
-    //           this.props.clear();
-    //         })
-    //         .catch(err => console.log(err));
-    //     } else {
-    //       alert(res.data.errors.message);
-    //     }
-    //   })
-    //   .catch(err => console.log(err));
-  }
-
   async decrementQty(id, dispatchAction) {
     return dispatchAction(id);
   }
 
   async incrementQty(id, dispatchAction) {
-    return dispatchAction({ _id: id });
+    return dispatchAction({ _id: id, qty: 1 });
   }
+
+  // makeSale() {
+  //   API.buyProducts({ products, client })
+  //     .then(res => {
+  //       if (!res.data.errors) {
+  //         API.updateStock(products)
+  //           .then(() => {
+  //             alert("Gracias por tu compra");
+  //             this.props.clear();
+  //           })
+  //           .catch(err => console.log(err));
+  //       } else {
+  //         alert(res.data.errors.message);
+  //       }
+  //     })
+  //     .catch(err => console.log(err));
+  // }
 
   render() {
     return (

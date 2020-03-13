@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import {
   Dropdown,
   Nav,
@@ -12,7 +12,7 @@ import { decrementQty } from "../../redux/actions/cart";
 import API from "../../utils/API";
 import PropTypes from "prop-types";
 
-class BagDropdown extends Component {
+class BagDropdown extends PureComponent {
   state = {
     products: []
   };
@@ -34,10 +34,6 @@ class BagDropdown extends Component {
   static propTypes = {
     size: PropTypes.string.isRequired
   };
-
-  shouldComponentUpdate(nextProps) {
-    return nextProps.cart.counter !== this.counter ? true : false;
-  }
 
   componentDidUpdate(prevProps) {
     if (prevProps.cart.counter !== this.props.cart.counter) {
