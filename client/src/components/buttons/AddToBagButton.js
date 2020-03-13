@@ -37,12 +37,7 @@ const AddToBagButton = React.memo(({ product, size }) => {
   const [price, setPrice] = useState();
 
   const handleDecrementQty = () => (qty === 1 ? null : setQty(qty - 1));
-  const handleIncrementQty = () =>
-    qty === product.stock || qty === 10
-      ? alert(
-          `Lo sentimos, por el momento no podemos ofrecerte más piezas de este producto.`
-        )
-      : setQty(qty + 1);
+  const handleIncrementQty = () => setQty(qty + 1);
 
   const updateRedux = async () =>
     dispatch(cartActions.addItem({ _id: product._id, qty }));
@@ -92,7 +87,7 @@ const AddToBagButton = React.memo(({ product, size }) => {
             </Col>
             {/* right col */}
             <Col md={5}>
-              <h2 className="mt-2 text-center">{product.name}</h2>
+              <h2 className="text-center mt-2 mt-md-0">{product.name}</h2>
               <hr />
               <div className="mb-3">
                 Estás por agregar el producto <strong>{product.name}</strong> a

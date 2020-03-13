@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Container, Nav, Badge } from "react-bootstrap";
 import SmallNav from "./smallNav/SmallNav";
-import BagCollapsed from "./smallNav/BagCollapsed";
 import StoreDropdown from "./StoreDropdown";
 import SearchButton from "./SearchButton";
 import ClientDropdown from "./ClientDropdown";
@@ -55,7 +54,7 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
         <div className="d-block d-md-none w-100">
           <Navbar.Collapse id="top-navbar">
             <Container className="my-2 bg-white rounded" fluid>
-              <BagCollapsed />
+              <BagDropdown size="small" />
             </Container>
           </Navbar.Collapse>
         </div>
@@ -67,7 +66,7 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
               <SearchButton items={items} />
             </Nav.Item>
             <Nav.Item className="ml-auto">
-              {hideBag ? null : <BagDropdown />}
+              {hideBag ? null : <BagDropdown size="large" />}
             </Nav.Item>
             <Nav.Item>
               {client.isLogged ? <ClientDropdown /> : <LoginDropdown />}

@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import {
   Dropdown,
   Nav,
@@ -10,8 +10,9 @@ import {
 import { connect } from "react-redux";
 import { decrementQty } from "../../redux/actions/cart";
 import API from "../../utils/API";
+import PropTypes from "prop-types";
 
-class BagDropdown extends PureComponent {
+class BagDropdown extends Component {
   state = {
     products: []
   };
@@ -28,6 +29,20 @@ class BagDropdown extends PureComponent {
 
   componentDidMount() {
     this.createCartReport();
+  }
+
+  static propTypes = {
+    size: PropTypes.string.isRequired
+  };
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.cart.counter !== this.counter ? true : false;
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.cart.counter !== this.props.cart.counter) {
+      this.createCartReport();
+    }
   }
 
   createCartReport() {
@@ -55,7 +70,7 @@ class BagDropdown extends PureComponent {
   }
 
   render() {
-    return (
+    return this.props.size === "large" ? (
       <Dropdown as={NavItem}>
         <Dropdown.Toggle
           as={Nav.Link}
@@ -71,6 +86,7 @@ class BagDropdown extends PureComponent {
             {this.props.cart.counter}
           </Badge>
         </Dropdown.Toggle>
+
         <Dropdown.Menu
           id="bagDropdownMenu"
           className="dropdown-menu-xs-left dropdown-menu-md-right"
@@ -83,7 +99,7 @@ class BagDropdown extends PureComponent {
                 </h6>
                 <hr className="myDivider mb-0" />
                 <div className="text-center pt-3 pb-2">
-                  <em>Parece que no hay nada aquí</em>
+                  <em>Canasta vacía</em>
                 </div>
               </>
             ) : this.state.products.length ? (
@@ -141,7 +157,70 @@ class BagDropdown extends PureComponent {
           </div>
         </Dropdown.Menu>
       </Dropdown>
-    );
+    ) : this.props.size === "small" ? (
+      <div className="py-3">
+        {this.props.cart.counter === 0 ? (
+          <>
+            <h6>
+              <strong>CANASTA</strong>
+            </h6>
+            <hr className="myDivider mb-0" />
+            <div className="text-center pt-3 pb-2">
+              <em>Canasta vacía</em>
+            </div>
+          </>
+        ) : this.state.products.length ? (
+          <>
+            <h6>
+              <strong>CANASTA</strong>
+            </h6>
+            <hr className="myDivider mb-4" />
+            <div className="mb-3">
+              {this.state.products.map(p => {
+                return (
+                  <div key={p._id} className="d-flex flex-row">
+                    <strong
+                      title="Borrar este producto"
+                      className="mr-1 text-danger"
+                      style={{ cursor: "pointer" }}
+                      onClick={() =>
+                        this.decrementQty(
+                          p._id,
+                          this.props.decrementQty
+                        ).then(() => this.createCartReport())
+                      }
+                    >
+                      x
+                    </strong>
+                    <span>{p.name}</span>
+                    <span className="text-muted ml-1">{"(" + p.qty + ")"}</span>
+                    <strong className="ml-auto">
+                      {this.formatNumber(p.subTotal)}
+                    </strong>
+                  </div>
+                );
+              })}
+            </div>
+            <h3 className="text-right text-success mb-3">
+              {"Total: " +
+                this.formatNumber(
+                  this.state.products
+                    .map(p => p.subTotal)
+                    .reduce((prev, next) => prev + next)
+                )}
+            </h3>
+            <Button block variant="danger" href="/cart">
+              Ir a canasta
+              <i className="fas fa-arrow-right ml-1" />
+            </Button>
+          </>
+        ) : (
+          <div className="text-center py-4">
+            <Spinner animation="grow" role="status" variant="warning" />
+          </div>
+        )}
+      </div>
+    ) : null;
   }
 }
 
