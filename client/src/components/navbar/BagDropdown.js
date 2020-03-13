@@ -8,7 +8,6 @@ import {
   Spinner
 } from "react-bootstrap";
 import { connect } from "react-redux";
-import { decrementQty } from "../../redux/actions/cart";
 import API from "../../utils/API";
 import PropTypes from "prop-types";
 
@@ -61,10 +60,6 @@ class BagDropdown extends PureComponent {
     });
   }
 
-  async decrementQty(id, dispatchAction) {
-    return dispatchAction(id);
-  }
-
   render() {
     return this.props.size === "large" ? (
       <Dropdown as={NavItem}>
@@ -108,19 +103,6 @@ class BagDropdown extends PureComponent {
                   {this.state.products.map(p => {
                     return (
                       <div key={p._id} className="d-flex flex-row">
-                        <strong
-                          title="Borrar este producto"
-                          className="mr-1 text-danger"
-                          style={{ cursor: "pointer" }}
-                          onClick={() =>
-                            this.decrementQty(
-                              p._id,
-                              this.props.decrementQty
-                            ).then(() => this.createCartReport())
-                          }
-                        >
-                          x
-                        </strong>
                         <span>{p.name}</span>
                         <span className="text-muted ml-1">
                           {"(" + p.qty + ")"}
@@ -175,19 +157,6 @@ class BagDropdown extends PureComponent {
               {this.state.products.map(p => {
                 return (
                   <div key={p._id} className="d-flex flex-row">
-                    <strong
-                      title="Borrar este producto"
-                      className="mr-1 text-danger"
-                      style={{ cursor: "pointer" }}
-                      onClick={() =>
-                        this.decrementQty(
-                          p._id,
-                          this.props.decrementQty
-                        ).then(() => this.createCartReport())
-                      }
-                    >
-                      x
-                    </strong>
                     <span>{p.name}</span>
                     <span className="text-muted ml-1">{"(" + p.qty + ")"}</span>
                     <strong className="ml-auto">
@@ -226,8 +195,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = {
-  decrementQty
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(BagDropdown);
+export default connect(mapStateToProps, null)(BagDropdown);

@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const model = require("../../models");
 
-// fetchCartProductTest()
+// fetchCartProducts()
 // matches with /api/cart/products/:cartStr
 router.get("/products/:cartStr", function(req, res) {
   // generate an array of cart items with thei quantities
@@ -19,7 +19,7 @@ router.get("/products/:cartStr", function(req, res) {
   }, []);
   // consult list of ids in mongodb
   model.Product.find()
-    .select("name price stock")
+    .select("name price stock photo")
     .where("_id")
     .in(idsOnly)
     .then(data => {
@@ -34,6 +34,7 @@ router.get("/products/:cartStr", function(req, res) {
             _id: cv._id,
             name: cv.name,
             stock: cv.stock,
+            photo: cv.photo,
             qty: Number(cartObjs[index].qty),
             price: cv.price.discount.hasDiscount
               ? cv.price.discount.newPrice
