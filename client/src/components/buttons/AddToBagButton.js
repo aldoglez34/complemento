@@ -53,7 +53,7 @@ const AddToBagButton = React.memo(({ product, size }) => {
         title={product.stock > 0 ? "Agregar a canasta" : "No disponible"}
         disabled={product.stock > 0 ? false : true}
       >
-        {product.stock > 0 ? "Agregar" : Agotado}
+        {product.stock > 0 ? "Agregar" : "Agotado"}
       </Button>
 
       <Modal size="lg" show={show} onHide={handleClose}>
