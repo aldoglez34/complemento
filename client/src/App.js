@@ -13,7 +13,7 @@ import fire from "./firebase/fire";
 import Home from "./pages/Home";
 import Store from "./store/Store";
 import ProductDetails from "./pages/ProductDetails";
-import Cart from "./pages/Cart";
+import Cart from "./cart/Cart";
 import SignUp from "./pages/SignUp";
 import NoMatch from "./pages/NoMatch";
 import ClientInfo from "./pages/ClientInfo";
