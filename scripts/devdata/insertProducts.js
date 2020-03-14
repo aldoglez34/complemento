@@ -45,9 +45,9 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: true,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description: "Auxiliar en el desarrollo de las fibras musculares",
+      dose: "Mezclar una porción en 500 ml de agua, beber antes de 15 minutos",
+      ingredients: ["L-glutamina"],
       photo: "glutamina.jpg"
     },
     {
@@ -56,7 +56,7 @@ module.exports = providersList => {
       category: "Nutrición Deportiva",
       brand: "High Power",
       name: "BCAAS Aminoácidos",
-      content: "120 cápsulas",
+      content: "120 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -68,9 +68,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: true,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Contribuye a la correcta conservación y sintonización de proteínas y promueve el incremento de masa muscular",
+      dose: "Tomar cuatro capsulas antes del entrenamiento",
+      ingredients: ["L-Leucina", "L-Isoleucina", "L-Valina", "L-Glutamina"],
       photo: "bcaas.jpg"
     },
     {
@@ -91,9 +92,17 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: true,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Snack 100% saludable, benéfico en el consumo de proteína natural sin azúcar",
+      dose:
+        "Consumir como colación, antes de un entrenamiento para la producción de energía",
+      ingredients: [
+        "Arándanos",
+        "Blueberries",
+        "Almendra",
+        "Vainilla",
+        "Sal del himalaya"
+      ],
       photo: "barrarandano.jpg"
     },
     {
@@ -102,7 +111,7 @@ module.exports = providersList => {
       category: "Nutrición Deportiva",
       brand: "High Power",
       name: "Hippercuts XTreme",
-      content: "100 cápsulas",
+      content: "100 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -114,9 +123,9 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: true,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description: "Ayuda a quemar la grasa",
+      dose: "Tomar dos capsulas por la mañana y 2 por la tarde",
+      ingredients: ["Extracto de guaraná", "L-Carnitina", "Ginseng"],
       photo: "hippercuts.jpg"
     },
     {
@@ -124,7 +133,7 @@ module.exports = providersList => {
       unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
       brand: "High Power",
-      name: "Carboure",
+      name: "CarboPure",
       content: "1 kilogramo",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
@@ -137,9 +146,11 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: true,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar en mantener bajo el control de los niveles de azúcar en la sangre",
+      dose:
+        "Tomar 30 g diluído en agua por las mañanas y antes de realizar ejercicio",
+      ingredients: ["Carbohidratos semicomplejos y simples"],
       photo: "carbopure.jpg"
     },
     {
@@ -160,9 +171,17 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: true,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxilia en el tratamiento de ansiedad, insomnio, neurosis, nerviosismo, hipertensión, taquicardia, estrés, tiene actividad sedante y ansiolítica",
+      dose:
+        "Agregar 40 gotas a 250 ml de agua y tomar tres veces al día, 10 minutos antes de cada alimento",
+      ingredients: [
+        "Magnolia",
+        "Tila",
+        "Toronjiles",
+        "Damiana",
+        "Zapote blanco"
+      ],
       photo: "gotasmevale.jpg"
     },
     {
@@ -171,7 +190,7 @@ module.exports = providersList => {
       category: "Antiestrés",
       brand: "Marcoper",
       name: "Altapress",
-      content: "100 cápsulas",
+      content: "100 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -183,9 +202,15 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description: "Auxiliar en el control del estrés",
+      dose: "Tomar tres capsulas al día",
+      ingredients: [
+        "Zapote blanco",
+        "Salvadora",
+        "Estafiate",
+        "Laurel",
+        "Sauce"
+      ],
       photo: "altapress.jpg"
     },
     {
@@ -193,7 +218,7 @@ module.exports = providersList => {
       unitsSold: Math.floor(Math.random() * 10),
       category: "Antiestrés",
       brand: "Marcoper",
-      name: "Pasiflorina Extracto",
+      name: "Paciflorina Extracto",
       content: "75 mililitros",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
@@ -206,9 +231,15 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar en el control de la ansiedad, insomnio, nervios, dolor de cabeza, migraña, y falta de sueño",
+      dose: "Agregue 50 gotas en medio vaso con agua , mínimo dos veces al día",
+      ingredients: [
+        "Pasiflorina",
+        "Damiana de California",
+        "Valeriana",
+        "Flor de Tila"
+      ],
       photo: "pasiflorina.jpg"
     },
     {
@@ -229,9 +260,15 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar en problemas de hiperplasia prostática benigna y en el tratamietno de la memoria",
+      dose: "Tomar una cápsula con cada alimento",
+      ingredients: [
+        "Ácido glutámico",
+        "Lecitina de soya",
+        "Fósforo",
+        "Ácido Fólico"
+      ],
       photo: "acidGlutam.jpg"
     },
     {
@@ -239,7 +276,7 @@ module.exports = providersList => {
       unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
       brand: "GN+V",
-      name: "Neurocerebryl",
+      name: "Neurocebryl",
       content: "10x10 mililitros",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
@@ -252,9 +289,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Intensifica el rendimiento físico y mental y es auxiliar en retardar el envejecimiento celular",
+      dose: "Una ampolleta al día",
+      ingredients: ["Vitaminas y Minerales", "Ácido glutámico", "Jalea Real"],
       photo: "neurocerebryl.jpg"
     },
     {
@@ -275,9 +313,16 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description: "Auxiliar para el buen funcionamiento del sistema nervioso",
+      dose:
+        "Adultos: 1 ½ cucharada sopera en 300 ml de agua, tomar 2 a 3 veces al día. Niños: 1 cucharada cafetera en una taza de agua, tomar 2 a 3 veces al día",
+      ingredients: [
+        "L-lisina",
+        "Glicerofosfato de Sodio",
+        "Glicerofosfato de calcio",
+        "Ácido Fosfórico",
+        "Vitamina B"
+      ],
       photo: "vitacebrol.jpg"
     },
     {
@@ -298,9 +343,11 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Aroma cálido y dulce que evoca la playa y la relajación con salida a coco",
+      dose:
+        "Colocar los palitos de bambú dentro del frasco y dejar absorber el aroma durante 10 minutos, posteriormente voltear los palitos",
+      ingredients: ["Agua", "Extracto alcohólico de coco"],
       photo: "aromatizante.jpg"
     },
     {
@@ -321,9 +368,11 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Relajante que promueve el sueño y estimula la concentración. También alivia problemas de tos, asma y bronquitis",
+      dose:
+        "Diluir en aceite o crema de preferencia para uso tópico. Uso en difusor",
+      ingredients: ["Aceite concentrado natural de melisa"],
       photo: "acemelisa.jpg"
     },
     {
@@ -344,9 +393,11 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Relajante muscular que ayuda a aliviar dolorores, alivia el estrés y es muy beneficioso para el estado de ánimo",
+      dose:
+        "Con un difusor o quemador, añadir de 2 a 3 gotas del aceite esencial de romero e inhalar",
+      ingredients: ["Aceite de oliva extra virgen", "Romero"],
       photo: "romeroaceite.jpg"
     },
     {
@@ -367,9 +418,17 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Ayuda a acelerar el metabolismo, quemar grasa y combatir la retención de líquidos",
+      dose:
+        "Aplica el gel diariamente en el área deseada con un ligero masaje, máximo 2 veces al día",
+      ingredients: [
+        "Extracto de Jengibre",
+        "Citronella",
+        "Eucalipto",
+        "Menta",
+        "Árnica"
+      ],
       photo: "jengibre.jpg"
     },
     {
@@ -378,7 +437,7 @@ module.exports = providersList => {
       category: "Pérdida y Control de Peso",
       brand: "Vidanat",
       name: "Raíz De Tejocote",
-      content: "60 cápsulas",
+      content: "60 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -390,9 +449,11 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Reduce ansiedad de alimentos, talla y peso con eliminación de grasa acumulada",
+      dose:
+        "Tomar dps capsulas por la mañana y por la noche, de preferencia acompañado de alimentos",
+      ingredients: ["Raíz de tejocote Craetaegus mexicana"],
       photo: "raiz.jpg"
     },
     {
@@ -401,7 +462,7 @@ module.exports = providersList => {
       category: "Pérdida y Control de Peso",
       brand: "Vidanat",
       name: "Cetonas De Frambuesa",
-      content: "60 cápsulas",
+      content: "60 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -413,9 +474,9 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description: "Facilita la pérdida de peso",
+      dose: "Tomar una capsula antes del desayuno y una antes de la cena",
+      ingredients: ["Cetonas de frambuesa"],
       photo: "cetonas.jpg"
     },
     {
@@ -424,7 +485,7 @@ module.exports = providersList => {
       category: "Pérdida y Control de Peso",
       brand: "GN+V",
       name: "Raíz de Nopal y Toronja",
-      content: "45 cápsulas",
+      content: "45 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -436,9 +497,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar en tratamiento de estreñimiento, sistema digestivo y para control de peso",
+      dose: "Máxima seis al dia, 2 por cada alimento",
+      ingredients: ["Raíz de Nopal", "Raíz de Toronja"],
       photo: "raiznopal.jpg"
     },
     {
@@ -459,9 +521,16 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Acelera el metabolismo para quemar calorías y reducir tallas",
+      dose: "Aplique en el área deseada dando un ligero masaje",
+      ingredients: [
+        "Extracto de Mango Africano",
+        "Extracto de Toronja",
+        "Extracto de Limón",
+        "Algas Marinas",
+        "Eucalipto"
+      ],
       photo: "mangoaf.jpg"
     },
     {
@@ -470,7 +539,7 @@ module.exports = providersList => {
       category: "Pérdida y Control de Peso",
       brand: "GN+V",
       name: "Piñalife",
-      content: "30 cápsulas",
+      content: "30 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -482,9 +551,16 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Elimina la retención de líquidos y calma la ansiedad para reducir los excesos en la comida",
+      dose: "Tomar una capsula al dia preferentemente con el desayuno",
+      ingredients: [
+        "Piña",
+        "Jamaica",
+        "Té Verde",
+        "Manzana",
+        "Vitaminas y Minerales"
+      ],
       photo: "pinalife.jpg"
     },
     {
@@ -505,9 +581,9 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description: "Auxiliar en la regularización de las hormonas",
+      dose: "Tomar una tableta al día",
+      ingredients: ["Fennel", "Sativa", "Kelp", "Ortiga", "Zarzaparrilla"],
       photo: "bsfm.jpg"
     },
     {
@@ -528,9 +604,16 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Ayuda a mejorar la circulacion de flujo vascular y al tratamiento de la disfuncion erectil en hombres adultos",
+      dose:
+        "Antes del acto, colocar 1 tira frutal en la lengua hasta que se disuelva",
+      ingredients: [
+        "Extracto de Tribulus Terrestris",
+        "Maca root",
+        "Damiana",
+        "Ácido abscórbico"
+      ],
       photo: "alpha.jpg"
     },
     {
@@ -551,9 +634,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar en la regularización de las hormonas y a incrementar rápidamente el tamaño del busto",
+      dose: "Tomar una tableta al día",
+      ingredients: ["Fennel", "Fenogreco", "Kelp", "Zarzaparrilla", "Ortiga"],
       photo: "bsfw.jpg"
     },
     {
@@ -562,7 +646,7 @@ module.exports = providersList => {
       category: "Desinflamatorios",
       brand: "Anáhuac",
       name: "Árnica",
-      content: "75 cápsulas",
+      content: "75 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -574,9 +658,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar en el control de la desinflamación y el dolor producido por golpes, esguinces y torceduras",
+      dose: "Tomar 2 capsulas antes de cada alimento",
+      ingredients: ["Árnica"],
       photo: "arnica.jpg"
     },
     {
@@ -597,9 +682,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Es un tratamiento alternativo con propiedades antiinflamatorias, humectantes, regeneradoras y suavizantes",
+      dose: "Se aplica con leves masajes sobre el área deseada",
+      ingredients: ["Extracto de Manzana", "Vaselina", "Polvo de Sulfatiazol"],
       photo: "pomada.jpg"
     },
     {
@@ -620,9 +706,16 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Favorece una correcta circulación sanguínea, tiene propiedades antioxidantes, astringentes y cicatrizantes",
+      dose:
+        "Aplicar en piel limpia de manera uniforme, dando suave masaje sobre el área o zona requerida hasta su total absorción",
+      ingredients: [
+        "Cloruro de Magnesio",
+        "Carbómero",
+        "Agua demineralizada",
+        "Mentol"
+      ],
       photo: "cloruromag.jpg"
     },
     {
@@ -631,7 +724,7 @@ module.exports = providersList => {
       category: "Colesterol",
       brand: "Anáhuac",
       name: "Neo Omega 3",
-      content: "100 cápsulas",
+      content: "100 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -643,9 +736,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar en el tratamiento de enfermedades cardiovasculares",
+      dose: "Tomar una capsula antes de cada alimento",
+      ingredients: ["Aceite de Omega 3 Salmón"],
       photo: "omega3.jpg"
     },
     {
@@ -654,7 +748,7 @@ module.exports = providersList => {
       category: "Colesterol",
       brand: "Anáhuac",
       name: "Aceite De Krill",
-      content: "30 cápsulas",
+      content: "30 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -666,9 +760,15 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description: "Tiene poderosas propiedades antioxidantes",
+      dose: "Tomar una capsula antes de los alimentos",
+      ingredients: [
+        "Aceite de Krill",
+        "Aceite de Omega 3",
+        "Agua purificada",
+        "Grenetina",
+        "Metil Parabeno"
+      ],
       photo: "aceitekrill.jpg"
     },
     {
@@ -677,7 +777,7 @@ module.exports = providersList => {
       category: "Colesterol",
       brand: "Vidanat",
       name: "Chía",
-      content: "60 cápsulas",
+      content: "60 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -689,9 +789,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar para reducir el colesterol malo y los triglicéridos y regular la coagulación de la sangre",
+      dose: "Tomar dos capsulas antes de cada alimento, tres veces al día",
+      ingredients: ["Chía"],
       photo: "chia.jpg"
     },
     {
@@ -700,7 +801,7 @@ module.exports = providersList => {
       category: "Colesterol",
       brand: "Gelcaps",
       name: "KolestriL plus",
-      content: "50 cápsulas",
+      content: "50 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -714,9 +815,11 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Purificación de hígado graso. Disminución acelerada del colesterol y triglicéridos en venas y arterias",
+      dose:
+        "Tomar una capsula cada 12 horas o en caso de ser necesario una antes de cada alimento",
+      ingredients: ["Omega 3", "Quinoa", "Hierba de Sapo"],
       photo: "kolestril.jpg"
     },
     {
@@ -725,7 +828,7 @@ module.exports = providersList => {
       category: "Colesterol",
       brand: "Gelcaps",
       name: "Lecitina De Soya",
-      content: "100 cápsulas",
+      content: "100 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -739,9 +842,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar en el tratamiento del sobrepeso y la obesidad, así como para la disminución del colesterol",
+      dose: "Tomar dos capsulas con cada alimento",
+      ingredients: ["Lecitina de Soya"],
       photo: "lecitina.jpg"
     },
     {
@@ -764,9 +868,9 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description: "Suplemento multivitamínico",
+      dose: "Tomar 2 tabletas antes de cada alimento",
+      ingredients: ["Alfalfa", "Miel de Abeja"],
       photo: "neoalfalfa.jpg"
     },
     {
@@ -789,9 +893,14 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar para mejorar la falta de vigor y para mejorar el desempeño sexual de hombres y mujeres",
+      dose: "Tomar solo una tableta, una hora antes del acto",
+      ingredients: [
+        "Raíz de panax ginseng",
+        "Polvo de epimedium brevicomun",
+        "Polvo de semilla de rapharus sativus"
+      ],
       photo: "sensualtea.jpg"
     },
     {
@@ -800,7 +909,7 @@ module.exports = providersList => {
       category: "Nutrición Deportiva",
       brand: "Pure Nutrición",
       name: "Women Plenna",
-      content: "60 cápsulas",
+      content: "60 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -814,9 +923,16 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Nutrientes específicos que contribuyen a un mejor desempeño físico, mental y sexual, que a la vez combate los síntomas de la menopausia",
+      dose: "Tomar dos capsulas al día después del desayuno",
+      ingredients: [
+        "Almidón de maíz",
+        "Carbonato de Calcio",
+        "Cloruro de Magnesio",
+        "Colágeno Hidrolizado",
+        "Óxido de Zinc"
+      ],
       photo: "womenplenna.jpg"
     },
     {
@@ -825,7 +941,7 @@ module.exports = providersList => {
       category: "Nutrición Deportiva",
       brand: "Pure Nutrición",
       name: "Men Silver 50",
-      content: "60 cápsulas",
+      content: "60 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -839,9 +955,16 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Nutrientes específicos que contribuyen una mejor energía y movimiento articular",
+      dose: "Tomar dos capsulas al día después del desayuno",
+      ingredients: [
+        "Carbonato de Calcio",
+        "Almidón de Maíz",
+        "Sulfato de Glucosamina",
+        "Colágeno hidrolizado",
+        "Cloruro de Magnesio"
+      ],
       photo: "mensilver.jpg"
     },
     {
@@ -864,9 +987,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar en el tratamiento para el estrés, depresión, nerviosismo e insomnio",
+      dose: "Tomar 2 tabletas antes de cada alimento",
+      ingredients: ["Valeriana", "Lúpulo", "Pasionaria", "Tila"],
       photo: "valenox.jpg"
     },
     {
@@ -875,7 +999,7 @@ module.exports = providersList => {
       category: "Cerebro y Memoria",
       brand: "Prosa",
       name: "Ginkgo Biloba Plus",
-      content: "100 cápsulas",
+      content: "100 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -889,9 +1013,9 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description: "Auxiliar en el tratamiento de la circulación sanguínea",
+      dose: "Tomar dos capsulas con los alimentos",
+      ingredients: ["Ginkgo"],
       photo: "ginkgo.jpg"
     },
     {
@@ -914,9 +1038,9 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description: "Purifica la sangre y refresca el aparato circulatorio",
+      dose: "Tomar dos tabletas antes de cada alimento",
+      ingredients: ["Ajo deshidratado"],
       photo: "ajorey.jpg"
     },
     {
@@ -925,7 +1049,7 @@ module.exports = providersList => {
       category: "Sistema Circulatorio",
       brand: "Vidanat",
       name: "Aceite De Hígado Tiburón",
-      content: "180 cápsulas",
+      content: "180 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -939,9 +1063,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar para personas que padecen alguna enfermedad cardiovascular y enfermedades de articulaciones",
+      dose: "Tomar dos capsulas 3 veces al día con los alimentos",
+      ingredients: ["Aceite de hígado de tiburón", "Bht antioxidantes"],
       photo: "higtiburon.jpg"
     },
     {
@@ -964,9 +1089,9 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description: "Auxiliar en el tratamiento de la hipertensión arterial",
+      dose: "Tomar 20 gotas diluidas en ¼ de vaso de agua 3 veces al día",
+      ingredients: ["Zapote Blanco", "Hojas de Olivo"],
       photo: "zapotebco.jpg"
     },
     {
@@ -989,9 +1114,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar en el tratamiento de trastornos circulatorios, digestivos y de arteriosclerosis",
+      dose: "Tomar de una a dos tabletas al día",
+      ingredients: ["Extracto de Ajo Deodorizado", "Excipiente CBP"],
       photo: "ajodeo.jpg"
     },
     {
@@ -1000,7 +1126,7 @@ module.exports = providersList => {
       category: "Colesterol",
       brand: "Anáhuac",
       name: "Triomega 3 6 y 9",
-      content: "100 cápsulas",
+      content: "100 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -1014,9 +1140,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar en el control de los niveles adecuados de colesterol y triglicéridos",
+      dose: "Tomar dos capsulas antes de cada alimento",
+      ingredients: ["Aceite de Salmón", "Aceite de Lino", "Aceite de Olivo"],
       photo: "triomega.jpg"
     },
     {
@@ -1025,7 +1152,7 @@ module.exports = providersList => {
       category: "Cerebro y Memoria",
       brand: "GranaGard",
       name: "Omega 5",
-      content: "60 cápsulas",
+      content: "60 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -1039,9 +1166,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Coadyuvante en tratamiento de trastornos cardiovasculares con alto compromiso oxidativo",
+      dose: "Mayores de 15 años, dos capsulas al día",
+      ingredients: ["Omega 5", "Ácido Punícico"],
       photo: "omega5.jpg"
     },
     {
@@ -1049,8 +1177,8 @@ module.exports = providersList => {
       unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
       brand: "GranaGard",
-      name: "Omega 530",
-      content: "30 cápsulas",
+      name: "Omega 5 30",
+      content: "30 capsulas",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
@@ -1064,9 +1192,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Coadyuvante en tratamiento de trastornos cardiovasculares con alto compromiso oxidativo",
+      dose: "Mayores de 15 años, dos capsulas al día",
+      ingredients: ["Omega 5", "Ácido Punícico"],
       photo: "omega530.jpg"
     },
     {
@@ -1089,9 +1218,16 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Acelera el metabolismo, disminuye la flacidez y sirve como tratamiento para la perdida de peso",
+      dose: "Tomar 20 gotas 3 veces al día",
+      ingredients: [
+        "Semilla de Brasil",
+        "Garcinia Cambogia",
+        "Lecitina de Soya",
+        "Bromelina",
+        "Nopal y Sábila"
+      ],
       photo: "semillabrasil.jpg"
     },
     {
@@ -1114,9 +1250,14 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar para el tratamiento de la ansiedad, angustia e irritabilidad; coadyuvante para conciliar el sueño",
+      dose:
+        "En caso de nerviosismo tomar de una a dos tabletas 3 veces al día; para ayudar a conciliar el sueño tomar dos a tres tabletas una hora antes de acostarse",
+      ingredients: [
+        "Extracto de seco de Valeriana Officinalis",
+        "Extracto de seco de Pasiflora Incamata"
+      ],
       photo: "taflavix.jpg"
     },
     {
@@ -1139,9 +1280,11 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar en inflamaciones causadas por golpes, torceduras, esguinces, tensiones musculares, desgarres y problemas reumáticos",
+      dose:
+        "Aplíquese una capa delgada en el área afectada recomendablemente cada 6 horas",
+      ingredients: ["Extracto de Árnica", "Extracto de Hamamelis Virginiana"],
       photo: "arnidol.jpg"
     },
     {
@@ -1149,7 +1292,7 @@ module.exports = providersList => {
       unitsSold: Math.floor(Math.random() * 10),
       category: "Desinflamatorios",
       brand: "Anáhuac",
-      name: "Bálsamo Golden Dragon",
+      name: "Bálsamo Golden Dragón",
       content: "12 gramos",
       warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
@@ -1164,9 +1307,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Ayuda a reducir el dolor e inflamación en músculos y articulaciones ya que posee propiedades analgésicas y antiinflamatorias",
+      dose: "Aplicar la pomada frotando suavemente sobre la piel",
+      ingredients: ["Alcanfor", "Mentol", "Aceite de Clavo", "Aceite de Menta"],
       photo: "balsamo.jpg"
     },
     {
@@ -1189,9 +1333,10 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      description: "Descripción",
-      dose: "Dosis",
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Favorecedor de la circulación, ayudando a reducir problemas en los músculos y las articulaciones",
+      dose: "Diluir 10 gotas en un vaso de 250 ml de agua, 2 veces al día",
+      ingredients: ["Ajo Negro"],
       photo: "ajonegro.jpg"
     }
   ];
