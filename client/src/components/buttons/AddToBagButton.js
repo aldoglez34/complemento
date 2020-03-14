@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as cartActions from "../../redux/actions/cart";
-import { Button, Modal, Row, Col, Image, FormControl } from "react-bootstrap";
+import { Button, Modal, Row, Col, Image } from "react-bootstrap";
 import PropTypes from "prop-types";
 import "./addtobagbutton.scss";
+import QtyPicker from "../QtyPicker";
 
 const AddToBagButton = React.memo(({ product, size }) => {
   const formatNumber = num => {
@@ -96,41 +97,12 @@ const AddToBagButton = React.memo(({ product, size }) => {
               <hr />
               {/* qty picker */}
               <strong>Cantidad</strong>
-              <div className="d-flex flex-row mb-4 mt-2">
-                <Button
-                  style={{
-                    outline: "none",
-                    boxShadow: "none"
-                  }}
-                  onClick={handleDecrementQty}
-                  className="rounded-0"
-                  variant="dark"
-                  title="Quitar uno"
-                >
-                  <i className="fas fa-minus" />
-                </Button>
-                <FormControl
-                  readOnly
-                  className="text-right border border-secondary rounded-0"
-                  style={{
-                    fontSize: "19px",
-                    outline: "none",
-                    boxShadow: "none"
-                  }}
-                  value={qty}
+              <div className="mb-4 mt-2">
+                <QtyPicker
+                  handleDecrementQty={handleDecrementQty}
+                  handleIncrementQty={handleIncrementQty}
+                  qty={qty}
                 />
-                <Button
-                  style={{
-                    outline: "none",
-                    boxShadow: "none"
-                  }}
-                  onClick={handleIncrementQty}
-                  className="rounded-0"
-                  variant="dark"
-                  title="Agregar uno"
-                >
-                  <i className="fas fa-plus" />
-                </Button>
               </div>
               {/* price */}
               <div className="d-flex flex-row">

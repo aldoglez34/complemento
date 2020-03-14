@@ -16,6 +16,8 @@ const SearchButton = props => {
   const [categorySuggestions, setCategorySuggestions] = useState([]);
   const [brandSuggestions, setBrandSuggestions] = useState([]);
 
+  const [value, setValue] = useState("");
+
   useEffect(() => {
     if (props.items.products) setProducts(props.items.products);
     if (props.items.categories) setCategories(props.items.categories);
@@ -24,7 +26,10 @@ const SearchButton = props => {
 
   const handleEditInputChange = e => {
     const value = e.target.value;
+    setValue(value);
+
     const regex = new RegExp(`^${value}`, "i");
+
     // get product suggestions
     let prodSugg = [];
     if (value.length > 0) prodSugg = products.filter(p => regex.test(p.name));
@@ -42,9 +47,25 @@ const SearchButton = props => {
   const renderSuggestions = () => {
     let allSuggestions = [];
 
+    if (
+      !productSuggestions.length &&
+      !categorySuggestions.length &&
+      !brandSuggestions.length &&
+      value
+    ) {
+      allSuggestions.push(
+        <div key="noResults" className="pb-2">
+          <em>
+            No encontramos resultados en la tienda para "
+            <strong>{value}</strong>"
+          </em>
+        </div>
+      );
+    }
+
     if (productSuggestions.length) {
       allSuggestions.push(
-        <>
+        <React.Fragment key="productsSuggestions">
           <h6 className="dropdown-header px-0" style={{ color: "#59a49a" }}>
             <strong>Productos</strong>
           </h6>
@@ -57,13 +78,13 @@ const SearchButton = props => {
               {i.name}
             </Dropdown.Item>
           ))}
-        </>
+        </React.Fragment>
       );
     }
 
     if (categorySuggestions.length) {
       allSuggestions.push(
-        <>
+        <React.Fragment key="categorySuggestions">
           <h6 className="dropdown-header px-0" style={{ color: "#59a49a" }}>
             <strong>Categorías</strong>
           </h6>
@@ -76,13 +97,13 @@ const SearchButton = props => {
               {c}
             </Dropdown.Item>
           ))}
-        </>
+        </React.Fragment>
       );
     }
 
     if (brandSuggestions.length) {
       allSuggestions.push(
-        <>
+        <React.Fragment key="brandSuggestions">
           <h6 className="dropdown-header px-0" style={{ color: "#59a49a" }}>
             <strong>Marcas</strong>
           </h6>
@@ -95,7 +116,7 @@ const SearchButton = props => {
               {b}
             </Dropdown.Item>
           ))}
-        </>
+        </React.Fragment>
       );
     }
 

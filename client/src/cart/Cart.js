@@ -1,21 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { clear, addItem, decrementQty } from "../redux/actions/cart";
-import {
-  Container,
-  Table,
-  Button,
-  Badge,
-  Spinner,
-  Image,
-  Card,
-  Row,
-  Col
-} from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import Layout from "../components/Layout";
 import API from "../utils/API";
 import "./cart.scss";
 import BigCart from "./BigCart";
+import SmallCart from "./SmallCart";
 
 class Cart extends Component {
   state = {
@@ -62,13 +53,13 @@ class Cart extends Component {
     });
   }
 
-  async decrementQty(id, dispatchAction) {
-    return dispatchAction(id);
-  }
+  // async decrementQty(id, dispatchAction) {
+  //   return dispatchAction(id);
+  // }
 
-  async incrementQty(id, dispatchAction) {
-    return dispatchAction({ _id: id, qty: 1 });
-  }
+  // async incrementQty(id, dispatchAction) {
+  //   return dispatchAction({ _id: id, qty: 1 });
+  // }
 
   // makeSale() {
   //   API.buyProducts({ products, client })
@@ -90,14 +81,30 @@ class Cart extends Component {
   render() {
     return (
       <Layout hideBag={true}>
-        {this.props.cart.count === 0 ? (
-          <div className="text-center my-4">Canasta vacía</div>
+        {this.props.cart.counter === 0 ? (
+          <Container className="my-4">
+            <h3>Canasta</h3>
+            <hr className="myDivider" />
+            <div className="my-4">
+              <em>Canasta vacía</em>
+            </div>
+          </Container>
         ) : this.state.products.length ? (
           <Container className="my-4">
             {/* small cart */}
-            <div className="d-block d-md-none">canasta pequeña</div>
+            <div className="d-block d-md-none">
+              <SmallCart
+                formatNumber={this.formatNumber}
+                products={this.state.products}
+              />
+            </div>
             {/* big cart */}
-            <div className="d-none d-md-block"><BigCart formatNumber={formatNumber} /></div>
+            <div className="d-none d-md-block">
+              <BigCart
+                formatNumber={this.formatNumber}
+                products={this.state.products}
+              />
+            </div>
           </Container>
         ) : (
           <div className="h-100 d-flex align-items-center justify-content-center">

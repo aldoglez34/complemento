@@ -1,5 +1,11 @@
-.cartProductPhoto {
+.cartProductPhotoBig {
   height: 75px;
   width: 35px;
+  z-index: 1;
+}
+
+.cartProductPhotoSmall {
+  height: 100px;
+  width: 65px;
   z-index: 1;
 }
