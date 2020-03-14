@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Image } from "react-bootstrap";
 import PropTypes from "prop-types";
 import API from "../../utils/API";
 import * as clientActions from "../../redux/actions/client";
 import "./favbutton.scss";
 
-const FavButton = React.memo(props => {
+const FavButton = React.memo(({ product, isBlock }) => {
   const dispatch = useDispatch();
 
   const isClientLogged = useSelector(state => state.client.isLogged);
@@ -20,12 +20,12 @@ const FavButton = React.memo(props => {
 
   const handleShow = () => {
     // checks if the product isn't already in the user's favorites
-    if (client.favorites.includes(props.product._id)) {
+    if (client.favorites.includes(product._id)) {
       // alerts the user that the products is already in his/her favorites
-      alert(props.product.name + " ya está en tus favoritos");
+      alert(product.name + " ya está en tus favoritos");
     } else {
       // post favorite in the db
-      API.addFavorite({ clientId: client._id, product: props.product._id })
+      API.addFavorite({ clientId: client._id, product: product._id })
         .then(res =>
           dispatch(clientActions.updateFavorites(res.data.favorites))
         )
@@ -49,30 +49,50 @@ const FavButton = React.memo(props => {
                   "Debes iniciar sesión para poder guardar productos en tus favoritos"
                 )
         }
-        block={props.isBlock}
+        block={isBlock}
       >
-        {props.isBlock ? "Favoritos" : <i className="fa fa-heart" />}
+        {isBlock ? "Favoritos" : <i className="fa fa-heart" />}
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal size="md" show={show} onHide={handleClose} className="text-center">
         <Modal.Body>
-          <h4>Producto agregado</h4>
-          <p>
-            El producto <strong>{props.product.name}</strong> fue agregado a tus
-            favoritos
-          </p>
-          <div className="d-flex flex-row">
-            <Button variant="success" onClick={handleClose}>
-              <i className="fas fa-angle-double-left mr-1" />
-              Seguir comprando
-            </Button>
+          <div className="d-flex flex-row px-2 pt-2 pb-3">
+            <h4 className="mb-0">Producto agregado</h4>
+            <i
+              className="fas fa-times ml-auto"
+              style={{ cursor: "pointer" }}
+              title="Cerrar"
+              onClick={handleClose}
+            />
+          </div>
+          <Image
+            className="favImage"
+            src={"/images/products/" + product.photo}
+            href={"/product/details/" + product._id}
+            title={product.name}
+            style={{ cursor: "pointer" }}
+          />
+          <h3 className="mb-0">
+            <a
+              href={"/product/details/" + product._id}
+              title={product.name}
+              className="text-dark"
+            >
+              {product.name}
+            </a>
+          </h3>
+          <hr />
+          <div className="mb-3">
+            El producto fue agregado a tu lista de favoritos.
+          </div>
+          <hr />
+          <div className="text-center">
             <Button
-              className="ml-auto"
-              variant="danger"
+              variant="link"
+              className="favbuttonstyle"
               href="/client/favorites/"
             >
               Ir a mis favoritos
-              <i className="fas fa-angle-double-right ml-1" />
             </Button>
           </div>
         </Modal.Body>

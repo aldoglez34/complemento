@@ -101,25 +101,21 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                 {/* ingredients and sufferings */}
                 <Row className="mb-1">
                   <Col>
-                    <strong>Útil para</strong>
-                    {product.sufferings.length ? (
-                      <ul className="mb-1 list-unstyled">
-                        <li>
-                          <ul>
-                            {product.sufferings.map(suff => (
-                              <li key={suff}>{suff}</li>
-                            ))}
-                          </ul>
-                        </li>
-                      </ul>
-                    ) : (
-                      <span>No hay información disponible</span>
-                    )}
+                    <strong>Descripción</strong>
+                    <br />
+                    <span>{product.description}</span>
                   </Col>
                 </Row>
                 <Row className="mb-1">
                   <Col>
-                    <strong>Contiene</strong>
+                    <strong>Dosis</strong>
+                    <br />
+                    <span>{product.dose}</span>
+                  </Col>
+                </Row>
+                <Row className="mb-1">
+                  <Col>
+                    <strong>Ingredientes</strong>
                     {product.ingredients.length ? (
                       <ul className="mb-1 list-unstyled">
                         <li>
@@ -138,7 +134,9 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                 {/* comments */}
                 <Row className="mb-2">
                   <Col>
-                    <small>{product.comments}</small>
+                    <strong>Aviso</strong>
+                    <br />
+                    <span>{product.warning}</span>
                   </Col>
                 </Row>
               </Col>

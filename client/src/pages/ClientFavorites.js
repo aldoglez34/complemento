@@ -7,6 +7,7 @@ import ProductCard from "../components/cards/ProductCard";
 
 const ClientFavorites = React.memo(function ClientFavorites() {
   const client = useSelector(state => state.client);
+
   const [isLoading, setIsLoading] = useState(true);
   const [favorites, setFavorites] = useState();
 
@@ -21,8 +22,8 @@ const ClientFavorites = React.memo(function ClientFavorites() {
 
   return (
     <Layout>
-      <Container className="mt-4">
-        <h2>Mis favoritos</h2>
+      <Container className="my-4">
+        <h3>Favoritos</h3>
         <hr className="myDivider" />
         <div className="d-flex flex-wrap justify-content-center">
           {isLoading ? (

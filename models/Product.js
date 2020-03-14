@@ -27,7 +27,18 @@ const ProductSchema = new Schema({
     trim: true,
     required: true
   },
-  comments: {
+  description: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  dose: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  ingredients: [{ type: String, trim: true }],
+  warning: {
     type: String,
     trim: true
   },
@@ -66,8 +77,6 @@ const ProductSchema = new Schema({
     unique: true,
     required: true
   },
-  sufferings: [{ type: String, trim: true }],
-  ingredients: [{ type: String, trim: true }],
   createdAt: {
     type: Date,
     default: Date.now()

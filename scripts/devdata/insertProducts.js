@@ -7,9 +7,9 @@ module.exports = providersList => {
       unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
       brand: "GN+V",
-      name: "Cártilago de Tiburón",
+      name: "Cartílago de Tiburón",
       content: "10x10 mililitros",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 112,
@@ -20,8 +20,11 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: true,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
-      ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
+      description:
+        "Auxiliar en el control del buen desarrollo de huesos y dientes en niños y adolescentes, Auxiliar en el control de la osteoporosis y fracturas en adultos",
+      dose:
+        "Adultos: tomar 1 ampolletas al día preferentemente con sus alimentos, Niños: tomar la mitad de la dosis",
+      ingredients: ["Calcio", "Extractos herbales", "Vitaminas y minerales"],
       photo: "cartilago.jpg"
     },
     {
@@ -31,7 +34,7 @@ module.exports = providersList => {
       brand: "High Power",
       name: "Glutamina",
       content: "250 gramos",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 215,
@@ -42,7 +45,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: true,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "glutamina.jpg"
     },
@@ -53,7 +57,7 @@ module.exports = providersList => {
       brand: "High Power",
       name: "BCAAS Aminoácidos",
       content: "120 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 207,
@@ -64,7 +68,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: true,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "bcaas.jpg"
     },
@@ -75,7 +80,7 @@ module.exports = providersList => {
       brand: "Kuups",
       name: "Barra de proteína",
       content: "4.9 gramos",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 400,
@@ -86,7 +91,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: true,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "barrarandano.jpg"
     },
@@ -97,7 +103,7 @@ module.exports = providersList => {
       brand: "High Power",
       name: "Hippercuts XTreme",
       content: "100 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 171,
@@ -108,7 +114,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: true,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "hippercuts.jpg"
     },
@@ -119,7 +126,7 @@ module.exports = providersList => {
       brand: "High Power",
       name: "Carboure",
       content: "1 kilogramo",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 169,
@@ -130,7 +137,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: true,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "carbopure.jpg"
     },
@@ -141,7 +149,7 @@ module.exports = providersList => {
       brand: "Marcoper",
       name: "Gotas Me Vale Madre",
       content: "60 mililitros",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 15,
@@ -152,7 +160,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: true,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "gotasmevale.jpg"
     },
@@ -163,7 +172,7 @@ module.exports = providersList => {
       brand: "Marcoper",
       name: "Altapress",
       content: "100 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 186,
@@ -174,7 +183,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "altapress.jpg"
     },
@@ -185,7 +195,7 @@ module.exports = providersList => {
       brand: "Marcoper",
       name: "Pasiflorina Extracto",
       content: "75 mililitros",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 36,
@@ -196,7 +206,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "pasiflorina.jpg"
     },
@@ -207,7 +218,7 @@ module.exports = providersList => {
       brand: "GN+V",
       name: "Ácido Glutámico",
       content: "10x10 mililitros",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 106,
@@ -218,7 +229,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "acidGlutam.jpg"
     },
@@ -229,7 +241,7 @@ module.exports = providersList => {
       brand: "GN+V",
       name: "Neurocerebryl",
       content: "10x10 mililitros",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 133,
@@ -240,7 +252,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "neurocerebryl.jpg"
     },
@@ -251,7 +264,7 @@ module.exports = providersList => {
       brand: "GN+V",
       name: "Vitacebrol",
       content: "240 mililitros",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 130,
@@ -262,7 +275,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "vitacebrol.jpg"
     },
@@ -273,7 +287,7 @@ module.exports = providersList => {
       brand: "Vitalé",
       name: "Aromatizante Ambiental",
       content: "50 mililitros",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 77,
@@ -284,7 +298,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "aromatizante.jpg"
     },
@@ -295,7 +310,7 @@ module.exports = providersList => {
       brand: "Vitalé",
       name: "Aceite de Melisa",
       content: "10 mililitros",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 85,
@@ -306,7 +321,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "acemelisa.jpg"
     },
@@ -317,7 +333,7 @@ module.exports = providersList => {
       brand: "Vitalé",
       name: "Romero Aceite",
       content: "10 mililitros",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 186,
@@ -328,7 +344,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "romeroaceite.jpg"
     },
@@ -339,7 +356,7 @@ module.exports = providersList => {
       brand: "Vidanat",
       name: "Gel De Jengibre",
       content: "475 gramos",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 71.5,
@@ -350,7 +367,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "jengibre.jpg"
     },
@@ -361,7 +379,7 @@ module.exports = providersList => {
       brand: "Vidanat",
       name: "Raíz De Tejocote",
       content: "60 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 59,
@@ -372,7 +390,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "raiz.jpg"
     },
@@ -383,7 +402,7 @@ module.exports = providersList => {
       brand: "Vidanat",
       name: "Cetonas De Frambuesa",
       content: "60 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 79,
@@ -394,7 +413,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "cetonas.jpg"
     },
@@ -405,7 +425,7 @@ module.exports = providersList => {
       brand: "GN+V",
       name: "Raíz de Nopal y Toronja",
       content: "45 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 94,
@@ -416,7 +436,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "raiznopal.jpg"
     },
@@ -427,7 +448,7 @@ module.exports = providersList => {
       brand: "Vidanat",
       name: "Gel Mango Africano",
       content: "125 gramos",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 26,
@@ -438,7 +459,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "mangoaf.jpg"
     },
@@ -449,7 +471,7 @@ module.exports = providersList => {
       brand: "GN+V",
       name: "Piñalife",
       content: "30 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 205,
@@ -460,7 +482,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "pinalife.jpg"
     },
@@ -471,7 +494,7 @@ module.exports = providersList => {
       brand: "Bio-Logium",
       name: "Big Size For Men",
       content: "60 tabletas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 193,
@@ -482,7 +505,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "bsfm.jpg"
     },
@@ -493,7 +517,7 @@ module.exports = providersList => {
       brand: "Bio-Logium",
       name: "Alpha Male",
       content: "1 pieza",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 137,
@@ -504,7 +528,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "alpha.jpg"
     },
@@ -515,7 +540,7 @@ module.exports = providersList => {
       brand: "Bio-Logium",
       name: "Big Size For Women",
       content: "60 tabletas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 196,
@@ -526,7 +551,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "bsfw.jpg"
     },
@@ -537,7 +563,7 @@ module.exports = providersList => {
       brand: "Anáhuac",
       name: "Árnica",
       content: "75 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 81,
@@ -548,7 +574,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "arnica.jpg"
     },
@@ -559,7 +586,7 @@ module.exports = providersList => {
       brand: "Vidanat",
       name: "Pomada De Manzana",
       content: "125 gramos",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 28,
@@ -570,7 +597,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "pomada.jpg"
     },
@@ -581,7 +609,7 @@ module.exports = providersList => {
       brand: "Vidanat",
       name: "Gel Cloruro de Magnesio",
       content: "475 gramos",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 86,
@@ -592,7 +620,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "cloruromag.jpg"
     },
@@ -603,7 +632,7 @@ module.exports = providersList => {
       brand: "Anáhuac",
       name: "Neo Omega 3",
       content: "100 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 267,
@@ -614,7 +643,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "omega3.jpg"
     },
@@ -625,7 +655,7 @@ module.exports = providersList => {
       brand: "Anáhuac",
       name: "Aceite De Krill",
       content: "30 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 235,
@@ -636,7 +666,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "aceitekrill.jpg"
     },
@@ -647,7 +678,7 @@ module.exports = providersList => {
       brand: "Vidanat",
       name: "Chía",
       content: "60 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 58,
@@ -658,7 +689,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "chia.jpg"
     },
@@ -669,7 +701,7 @@ module.exports = providersList => {
       brand: "Gelcaps",
       name: "KolestriL plus",
       content: "50 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 84,
@@ -682,7 +714,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "kolestril.jpg"
     },
@@ -693,7 +726,7 @@ module.exports = providersList => {
       brand: "Gelcaps",
       name: "Lecitina De Soya",
       content: "100 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 200,
@@ -706,7 +739,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "lecitina.jpg"
     },
@@ -717,7 +751,7 @@ module.exports = providersList => {
       brand: "Anáhuac",
       name: "Neo Alfalfa",
       content: "300 tabletas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 104,
@@ -730,7 +764,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "neoalfalfa.jpg"
     },
@@ -741,7 +776,7 @@ module.exports = providersList => {
       brand: "Bio-Logium",
       name: "The Sensual Tea",
       content: "2 tabletas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 189,
@@ -754,7 +789,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "sensualtea.jpg"
     },
@@ -765,7 +801,7 @@ module.exports = providersList => {
       brand: "Pure Nutrición",
       name: "Women Plenna",
       content: "60 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 239,
@@ -778,7 +814,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "womenplenna.jpg"
     },
@@ -789,7 +826,7 @@ module.exports = providersList => {
       brand: "Pure Nutrición",
       name: "Men Silver 50",
       content: "60 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 239,
@@ -802,7 +839,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "mensilver.jpg"
     },
@@ -813,7 +851,7 @@ module.exports = providersList => {
       brand: "Anáhuac",
       name: "Valenox",
       content: "40 tabletas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 86,
@@ -826,7 +864,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "valenox.jpg"
     },
@@ -837,7 +876,7 @@ module.exports = providersList => {
       brand: "Prosa",
       name: "Ginkgo Biloba Plus",
       content: "100 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 67,
@@ -850,7 +889,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "ginkgo.jpg"
     },
@@ -861,7 +901,7 @@ module.exports = providersList => {
       brand: "MGL",
       name: "Ajo Rey",
       content: "200 tabletas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 113,
@@ -874,7 +914,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "ajorey.jpg"
     },
@@ -885,7 +926,7 @@ module.exports = providersList => {
       brand: "Vidanat",
       name: "Aceite De Hígado Tiburón",
       content: "180 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 105,
@@ -898,7 +939,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "higtiburon.jpg"
     },
@@ -909,7 +951,7 @@ module.exports = providersList => {
       brand: "Margarita Naturalmente",
       name: "Zapote Blanco Extracto",
       content: "50 mililitros",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 92,
@@ -922,7 +964,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "zapotebco.jpg"
     },
@@ -933,7 +976,7 @@ module.exports = providersList => {
       brand: "Salud Natural",
       name: "Ajo Deodorizado",
       content: "180 tabletas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 116,
@@ -946,7 +989,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "ajodeo.jpg"
     },
@@ -957,7 +1001,7 @@ module.exports = providersList => {
       brand: "Anáhuac",
       name: "Triomega 3 6 y 9",
       content: "100 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 267,
@@ -970,7 +1014,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "triomega.jpg"
     },
@@ -981,7 +1026,7 @@ module.exports = providersList => {
       brand: "GranaGard",
       name: "Omega 5",
       content: "60 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 661,
@@ -994,7 +1039,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "omega5.jpg"
     },
@@ -1005,7 +1051,7 @@ module.exports = providersList => {
       brand: "GranaGard",
       name: "Omega 530",
       content: "30 cápsulas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 381,
@@ -1018,7 +1064,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "omega530.jpg"
     },
@@ -1029,7 +1076,7 @@ module.exports = providersList => {
       brand: "Margarita Naturalmente",
       name: "Semilla De Brasil",
       content: "70 mililitros",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 34,
@@ -1042,7 +1089,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "semillabrasil.jpg"
     },
@@ -1053,7 +1101,7 @@ module.exports = providersList => {
       brand: "Salud Natural",
       name: "Taflavix",
       content: "40 tabletas",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 107,
@@ -1066,7 +1114,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "taflavix.jpg"
     },
@@ -1077,7 +1126,7 @@ module.exports = providersList => {
       brand: "MGL",
       name: "Arnidol Crema Para Golpes",
       content: "35 gramos",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 45,
@@ -1090,7 +1139,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "arnidol.jpg"
     },
@@ -1101,7 +1151,7 @@ module.exports = providersList => {
       brand: "Anáhuac",
       name: "Bálsamo Golden Dragon",
       content: "12 gramos",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 70,
@@ -1114,7 +1164,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "balsamo.jpg"
     },
@@ -1125,7 +1176,7 @@ module.exports = providersList => {
       brand: "MGL",
       name: "Tónico De Ajo Negro",
       content: "500 mililitros",
-      comments:
+      warning:
         "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
       price: {
         salePrice: 84,
@@ -1138,7 +1189,8 @@ module.exports = providersList => {
       },
       stock: Math.floor(Math.random() * 10),
       priority: false,
-      sufferings: ["padecimiento 1", "padecimiento 2", "padecimiento 3"],
+      description: "Descripción",
+      dose: "Dosis",
       ingredients: ["ingrediente 1", "ingrediente 2", "ingrediente 3"],
       photo: "ajonegro.jpg"
     }

@@ -6,7 +6,7 @@ const model = require("../../models");
 router.get("/details/:productId", function(req, res) {
   model.Product.findById(req.params.productId)
     .select(
-      "category brand name content comments stock photo price sufferings ingredients"
+      "category brand name content warning stock photo price ingredients description dose"
     )
     .then(data => res.json(data))
     .catch(err => res.json(err));

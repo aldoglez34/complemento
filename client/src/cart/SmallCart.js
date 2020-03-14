@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as cartActions from "../redux/actions/cart";
-import { Row, Col, Table, Image, Badge, Button } from "react-bootstrap";
+import { Row, Col, Image, Badge, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 import QtyPickerForCart from "./QtyPickerForCart";
 import Summary from "./Summary";
@@ -39,7 +39,17 @@ const SmallCart = React.memo(({ formatNumber, products = [] }) => {
                     />
                   </Col>
                   <Col xs={9}>
-                    <h4>{p.name}</h4>
+                    <h4>
+                      {p.name}
+                      <small>
+                        {p.discountPercentage ? (
+                          <Badge variant="warning">
+                            {p.discountPercentage + "%"}
+                          </Badge>
+                        ) : null}
+                      </small>
+                    </h4>
+
                     <div className="d-flex flex-column">
                       <div className="w-50">
                         <QtyPickerForCart
@@ -65,6 +75,18 @@ const SmallCart = React.memo(({ formatNumber, products = [] }) => {
               </React.Fragment>
             );
           })}
+          {cart.counter > 0 ? (
+            <div className="my-3">
+              <Button
+                variant="link"
+                className="p-0 text-danger"
+                title="Vaciar canasta"
+                onClick={() => dispatch(cartActions.clear())}
+              >
+                Vaciar canasta
+              </Button>
+            </div>
+          ) : null}
           <Row>
             <Col>
               <h3>Resumen de compra</h3>
