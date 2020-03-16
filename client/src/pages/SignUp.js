@@ -103,7 +103,7 @@ const SignUp = React.memo(() => {
                       });
                   })
                   .catch(err => {
-                    // print error
+                    console.log(err.response);
                     alert(err.response.data.msg);
                     setSubmitting(false);
                   });

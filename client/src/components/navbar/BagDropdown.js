@@ -56,7 +56,10 @@ class BagDropdown extends PureComponent {
       if (cartStr !== "")
         API.fetchCartProducts(cartStr)
           .then(res => this.setState({ products: res.data }))
-          .catch(err => console.log(err));
+          .catch(err => {
+            console.log(err.response);
+            alert(err.response.data.msg);
+          });
     });
   }
 

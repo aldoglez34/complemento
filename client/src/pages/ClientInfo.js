@@ -98,8 +98,8 @@ const ClientInfo = React.memo(function ClientInfo() {
                 window.location.href = "/";
               })
               .catch(err => {
-                alert(err);
-                setSubmitting(false);
+                console.log(err.response);
+                alert(err.response.data.msg);
               });
           }}
         >

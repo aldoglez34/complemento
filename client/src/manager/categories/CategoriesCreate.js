@@ -41,7 +41,10 @@ const CategoriesCreate = React.memo(function CategoriesCreate(props) {
                 props.history.push("/manager/categories");
               }
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+              console.log(err.response);
+              alert(err.response.data.msg);
+            });
         }}
       >
         {({

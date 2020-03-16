@@ -63,7 +63,10 @@ router.get("/products/:cartStr", function(req, res) {
       // send result
       res.json(cartItems);
     })
-    .catch(err => res.status(422).send(err));
+    .catch(err => {
+      console.log("@err", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // buyProducts()
@@ -125,7 +128,10 @@ router.post("/buy", function(req, res) {
     }
   })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@err", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // updateStock()
@@ -139,7 +145,12 @@ router.put("/update/stock", function(req, res) {
       if (index === array.length - 1) resolve();
     });
   });
-  updateAll.then(data => res.json(data)).catch(err => res.json(err));
+  updateAll
+    .then(data => res.json(data))
+    .catch(err => {
+      console.log("@err", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 module.exports = router;

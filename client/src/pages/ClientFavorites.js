@@ -17,7 +17,10 @@ const ClientFavorites = React.memo(function ClientFavorites() {
         setFavorites(res.data.favorites);
         setIsLoading(false);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
   }, []);
 
   return (

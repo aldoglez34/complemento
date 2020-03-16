@@ -58,7 +58,10 @@ const ProvidersCreate = React.memo(function ProvidersCreate(props) {
                 props.history.push("/manager/providers");
               }
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+              console.log(err.response);
+              alert(err.response.data.msg);
+            });
         }}
       >
         {({

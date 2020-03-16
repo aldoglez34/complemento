@@ -83,7 +83,7 @@ router.put("/update", function(req, res) {
     .then(function(data) {
       res.json(data);
     })
-    .catch(function(err) {
+    .catch(err => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });

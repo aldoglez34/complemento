@@ -58,7 +58,10 @@ const CategoriesRow = React.memo(function CategoriesRow(props) {
                     window.location.reload();
                   }
                 })
-                .catch(err => console.log(err));
+                .catch(err => {
+                  console.log(err.response);
+                  alert(err.response.data.msg);
+                });
             }}
           >
             {({

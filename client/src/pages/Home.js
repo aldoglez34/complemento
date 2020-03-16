@@ -15,13 +15,22 @@ const Home = React.memo(() => {
   useEffect(() => {
     API.fetchPrioritized()
       .then(res => setPrioritized(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
     API.fetchProductsWithDiscount()
       .then(res => setDiscounts(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
     API.fetchBestSellers()
       .then(res => setBestSellers(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
   }, []);
 
   return (

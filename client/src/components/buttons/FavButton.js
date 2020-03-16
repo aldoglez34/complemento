@@ -29,7 +29,10 @@ const FavButton = React.memo(({ product, isBlock }) => {
         .then(res =>
           dispatch(clientActions.updateFavorites(res.data.favorites))
         )
-        .catch(err => alert(err));
+        .catch(err => {
+          console.log(err.response);
+          alert(err.response.data.msg);
+        });
       // show modal
       setShow(true);
     }

@@ -9,7 +9,10 @@ router.get("/details/:productId", function(req, res) {
       "category brand name content warning stock photo price ingredients description dose"
     )
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // fetchSimilarProducts()
@@ -21,7 +24,10 @@ router.get("/similar/:category", function(req, res) {
     )
     .limit(8)
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 module.exports = router;

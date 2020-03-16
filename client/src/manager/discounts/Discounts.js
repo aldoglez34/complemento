@@ -10,7 +10,10 @@ const Discounts = React.memo(function Discounts() {
   useEffect(() => {
     API.fetchDiscountsManager()
       .then(res => setProductsWithDiscount(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
   }, []);
 
   return (

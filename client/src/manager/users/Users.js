@@ -12,10 +12,16 @@ const Users = React.memo(function Users() {
   useEffect(() => {
     API.fetchClientsManager()
       .then(res => setClientes(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
     API.fetchManagers()
       .then(res => setManagers(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
   }, []);
 
   return (

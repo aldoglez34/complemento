@@ -50,17 +50,15 @@ const HelpButton = React.memo(function HelpButton() {
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               API.postMessage(values)
-                .then(res => {
-                  if (!res.data.errors) {
-                    alert(
-                      "Mensaje enviado con éxito. Nos pondremos en contacto contigo al correo proporcionado. "
-                    );
-                    handleClose();
-                  } else {
-                    alert(res.data.errors.message);
-                  }
-                })
-                .catch(err => console.log(err));
+                .then(() =>
+                  alert(
+                    "Mensaje enviado con éxito. Nos pondremos en contacto contigo al correo proporcionado. "
+                  )
+                )
+                .catch(err => {
+                  console.log(err.response);
+                  alert(err.response.data.msg);
+                });
             }}
           >
             {({

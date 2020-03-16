@@ -9,7 +9,10 @@ router.get("/prioritized", function(req, res) {
     .sort({ createdAt: 1 })
     .select("category brand name content stock photo price")
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // fetchProductsWithDiscount()
@@ -20,7 +23,10 @@ router.get("/discounts", function(req, res) {
     .sort({ createdAt: 1 })
     .select("category brand name content stock photo price")
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // fetchBestSellers()
@@ -31,7 +37,10 @@ router.get("/bestsellers", function(req, res) {
     .sort({ unitsSold: -1 })
     .select("category brand name content stock photo price")
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 module.exports = router;

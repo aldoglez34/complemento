@@ -12,10 +12,16 @@ const ProductCreate = React.memo(function ProductCreate(props) {
   useEffect(() => {
     API.fetchCategoriesManager()
       .then(res => setCategories(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
     API.fetchProvidersManager()
       .then(res => setProviders(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
   }, []);
 
   const yupschema = yup.object({
@@ -98,7 +104,10 @@ const ProductCreate = React.memo(function ProductCreate(props) {
                     props.history.push("/manager/products");
                   }
                 })
-                .catch(err => console.log(err));
+                .catch(err => {
+                  console.log(err.response);
+                  alert(err.response.data.msg);
+                });
             }}
           >
             {({

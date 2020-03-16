@@ -10,7 +10,10 @@ const Products = React.memo(function Products() {
   useEffect(() => {
     API.fetchManagerProducts()
       .then(res => setProducts(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
   }, []);
 
   return (

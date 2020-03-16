@@ -22,7 +22,10 @@ const ProductDetails = React.memo(function ProductDetails(props) {
           setSimilar(res.data)
         );
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
   }, []);
 
   return (
@@ -75,31 +78,43 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                       </Badge>
                     ) : null}
                   </h1>
-                  <strong style={{ color: "#59a49a" }}>Contenido</strong>
-                  <p className="h5">{product.content}</p>
-                  <strong style={{ color: "#59a49a" }}>Marca</strong>
-                  <p className="h5">{product.brand}</p>
+                  <p
+                    className="mb-0"
+                    style={{ color: "#59a49a", fontWeight: "bold" }}
+                  >
+                    Contenido
+                  </p>
+                  <p className="lead mb-0">{product.content}</p>
+                  <p
+                    className="mb-0"
+                    style={{ color: "#59a49a", fontWeight: "bold" }}
+                  >
+                    Marca
+                  </p>
+                  <p className="lead mb-0">{product.brand}</p>
                   <div className="d-flex flex-column mb-3">
-                    <strong style={{ color: "#59a49a" }}>Precio</strong>
+                    <p
+                      className="mb-0"
+                      style={{ color: "#59a49a", fontWeight: "bold" }}
+                    >
+                      Precio
+                    </p>
                     {product.price.discount.hasDiscount ? (
-                      <div
-                        className="d-flex flex-row justify-content-center justify-content-md-start"
-                        style={{ fontSize: "24px" }}
-                      >
-                        <span style={{ color: "gainsboro" }}>
+                      <div className="d-flex flex-row justify-content-center justify-content-md-start">
+                        <p className="lead mb-0" style={{ color: "gainsboro" }}>
                           <del>{"$" + product.price.salePrice}</del>
-                        </span>
-                        <span className="ml-2 text-danger">
+                        </p>
+                        <p className="lead mb-0 ml-2 text-danger">
                           {"$" + product.price.discount.newPrice}
-                        </span>
+                        </p>
                       </div>
                     ) : (
-                      <span
-                        className="text-danger"
-                        style={{ fontSize: "24px" }}
+                      <p
+                        className="lead mb-0 text-danger"
+                        style={{ fontSize: "25px" }}
                       >
                         {"$" + product.price.salePrice}
-                      </span>
+                      </p>
                     )}
                   </div>
                 </div>

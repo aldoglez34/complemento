@@ -49,34 +49,12 @@ class Cart extends Component {
       if (cartStr !== "")
         API.fetchCartProducts(cartStr)
           .then(res => this.setState({ products: res.data }))
-          .catch(err => console.log(err));
+          .catch(err => {
+            console.log(err.response);
+            alert(err.response.data.msg);
+          });
     });
   }
-
-  // async decrementQty(id, dispatchAction) {
-  //   return dispatchAction(id);
-  // }
-
-  // async incrementQty(id, dispatchAction) {
-  //   return dispatchAction({ _id: id, qty: 1 });
-  // }
-
-  // makeSale() {
-  //   API.buyProducts({ products, client })
-  //     .then(res => {
-  //       if (!res.data.errors) {
-  //         API.updateStock(products)
-  //           .then(() => {
-  //             alert("Gracias por tu compra");
-  //             this.props.clear();
-  //           })
-  //           .catch(err => console.log(err));
-  //       } else {
-  //         alert(res.data.errors.message);
-  //       }
-  //     })
-  //     .catch(err => console.log(err));
-  // }
 
   render() {
     return (

@@ -23,11 +23,17 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
     // fetch items for search bar
     API.fetchItemsForSearchBar()
       .then(res => setItems(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
     // fetch items for categories dropdown
     API.fetchItemsForStoreDropdown()
       .then(res => setStore(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
   }, []);
 
   return (

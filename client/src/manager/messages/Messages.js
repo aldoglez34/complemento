@@ -10,7 +10,10 @@ const Messages = React.memo(function Messages() {
   useEffect(() => {
     API.fetchMessages()
       .then(res => setMessages(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
   }, []);
 
   return (

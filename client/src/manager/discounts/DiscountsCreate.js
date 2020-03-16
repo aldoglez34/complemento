@@ -10,7 +10,10 @@ const DiscountsCreate = React.memo(function DiscountsCreate() {
   useEffect(() => {
     API.fetchNotDiscountsManager()
       .then(res => setNotDiscounts(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
   }, []);
 
   return (

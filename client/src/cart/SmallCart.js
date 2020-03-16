@@ -62,7 +62,7 @@ const SmallCart = React.memo(({ formatNumber, products = [] }) => {
                     </div>
                     <div className="d-flex flex-row">
                       <span>Precio:</span>
-                      <strong className="ml-2">{formatNumber(p.qty)}</strong>
+                      <strong className="ml-2">{formatNumber(p.price)}</strong>
                     </div>
                     <div className="d-flex flex-row">
                       <span>Subtotal:</span>

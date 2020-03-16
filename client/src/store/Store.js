@@ -33,10 +33,16 @@ class Store extends PureComponent {
     // fetch filters (left bar)
     API.fetchCategories()
       .then(res => this.setState({ categories: res.data }))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
     API.fetchBrands()
       .then(res => this.setState({ brands: res.data }))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
     // fetch products
     API.fetchProducts()
       .then(res => {
@@ -97,7 +103,10 @@ class Store extends PureComponent {
           }
         );
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
   }
 
   setOffsetAndLimit = () => {

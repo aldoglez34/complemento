@@ -10,7 +10,10 @@ const Purchases = React.memo(function Purchases() {
   useEffect(() => {
     API.fetchPurchases()
       .then(res => setPurchases(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
   }, []);
 
   return (

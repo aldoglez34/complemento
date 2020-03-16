@@ -10,7 +10,10 @@ const Providers = React.memo(function Providers() {
   useEffect(() => {
     API.fetchProvidersManager()
       .then(res => setProviders(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
   }, []);
 
   return (

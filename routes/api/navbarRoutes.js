@@ -43,7 +43,10 @@ router.get("/searchbar/names", function(req, res) {
       //
       res.json(data);
     })
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // fetchItemsForStoreDropdown()
@@ -69,7 +72,10 @@ router.get("/dropdown/store", function(req, res) {
   ])
     .collation({ locale: "es" })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 module.exports = router;

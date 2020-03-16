@@ -24,7 +24,10 @@ router.get("/categories", function(req, res) {
   ])
     .collation({ locale: "es" })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // fetchBrands()
@@ -50,18 +53,26 @@ router.get("/brands", function(req, res) {
   ])
     .collation({ locale: "es" })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // fetchProducts()
 // matches with /api/store/products
 router.get("/products", function(req, res) {
   model.Product.find({})
-    .select("category name content price stock photo brand priority unitsSold ingredients")
+    .select(
+      "category name content price stock photo brand priority unitsSold ingredients"
+    )
     .sort({ name: 1 })
     .collation({ locale: "es" })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 module.exports = router;

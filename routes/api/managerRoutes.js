@@ -12,7 +12,7 @@ router.get("/:uid", function(req, res) {
     .select("firebaseUID name firstSurname secondSurname email")
     .then(data => res.json(data[0]))
     .catch(err => {
-      console.log(err);
+      console.log("@err", err);
       res.status(422).send({
         msg: "Datos incorrectos"
       });
@@ -30,7 +30,10 @@ router.get("/products/all", function(req, res) {
     .sort({ name: 1 })
     .populate("category provider")
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // updateProduct()
@@ -48,7 +51,10 @@ router.put("/products/update", function(req, res) {
     comments: req.body.comments
   })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // newProductManager()
@@ -72,23 +78,24 @@ router.post("/products/new", function(req, res) {
     category: req.body.category
   })
     .then(() => {
-      model.Category.findOneAndUpdate(
+      return model.Category.findOneAndUpdate(
         req.body.category,
         { $inc: { productCount: 1 } },
         { new: true }
-      )
-        .then(() =>
-          model.Provider.findByIdAndUpdate(
-            req.body.provider,
-            { $inc: { productCount: 1 } },
-            { new: true }
-          )
-            .then(data => res.json(data))
-            .catch(err => res.json(err))
-        )
-        .catch(err => res.json(err));
+      );
     })
-    .catch(err => res.json(err));
+    .then(() => {
+      return model.Provider.findByIdAndUpdate(
+        req.body.provider,
+        { $inc: { productCount: 1 } },
+        { new: true }
+      );
+    })
+    .then(data => res.json(data))
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // =========================================================================
@@ -98,12 +105,14 @@ router.post("/products/new", function(req, res) {
 // fetchDiscountsManager()
 // matches with /api/manager/discounts/all
 router.get("/discounts/all", function(req, res) {
-  // model.Product.find({ discount: { hasDiscount: true } })
   model.Product.find({ "price.discount.hasDiscount": true })
     .sort({ name: 1 })
     .populate("category provider")
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // fetchNotDiscountsManager()
@@ -112,7 +121,10 @@ router.get("/notdiscounts/all", function(req, res) {
   model.Product.find({ "price.discount.hasDiscount": false })
     .sort({ name: 1 })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // newDiscount()
@@ -128,7 +140,10 @@ router.put("/discounts/new", function(req, res) {
     }
   })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // deleteDiscount()
@@ -142,7 +157,10 @@ router.put("/discounts/delete", function(req, res) {
     }
   })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // updateDiscount()
@@ -158,7 +176,10 @@ router.put("/discounts/update", function(req, res) {
     }
   })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // =========================================================================
@@ -171,7 +192,10 @@ router.get("/categories/all", function(req, res) {
   model.Category.find({})
     .sort({ name: 1 })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // updateCategory()
@@ -181,7 +205,10 @@ router.put("/categories/update", function(req, res) {
     name: req.body.name
   })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // newCategory()
@@ -191,7 +218,10 @@ router.post("/categories/new", function(req, res) {
     name: req.body.name
   })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // =========================================================================
@@ -204,7 +234,10 @@ router.get("/providers/all", function(req, res) {
   model.Provider.find({})
     .sort({ name: 1 })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // updateProvider()
@@ -218,7 +251,10 @@ router.put("/providers/update", function(req, res) {
     phone: req.body.phone
   })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // newProvider()
@@ -232,7 +268,10 @@ router.post("/providers/new", async function(req, res) {
     fullAddress: req.body.fullAddress
   })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // =========================================================================
@@ -249,7 +288,10 @@ router.get("/clients/all", function(req, res) {
     .sort({ name: 1 })
     .populate("favorites")
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // fetchManagers()
@@ -259,7 +301,10 @@ router.get("/managers/all", function(req, res) {
     .select("name firstSurname secondSurname email")
     .sort({ name: 1 })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // =========================================================================
@@ -272,7 +317,10 @@ router.get("/messages/all", function(req, res) {
   model.Message.find({})
     .sort({ sentAt: 1 })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // =========================================================================
@@ -286,7 +334,10 @@ router.get("/sales/all", function(req, res) {
     .sort({ saleDate: 1 })
     .populate("client products.product")
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // =========================================================================
@@ -299,7 +350,10 @@ router.get("/purchases/all", function(req, res) {
   model.Purchase.find({})
     .sort({ createdAt: 1 })
     .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .catch(err => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 module.exports = router;

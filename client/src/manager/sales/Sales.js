@@ -10,7 +10,10 @@ const Sales = React.memo(function Sales() {
   useEffect(() => {
     API.fetchSales()
       .then(res => setSales(res.data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response);
+        alert(err.response.data.msg);
+      });
   }, []);
 
   return (
