@@ -37,13 +37,13 @@ const ProductCard = React.memo(function ProductCard(props) {
           </div>
         </a>
         {/* price */}
-        <div className="lead text-center mb-3">
+        <div className="lead text-center mb-3" style={{ fontSize: "22px" }}>
           {props.product.price.discount.hasDiscount ? (
             <>
-              <del className="" style={{ color: "gainsboro" }}>
+              <del style={{ color: "gainsboro" }}>
                 {"$" + props.product.price.salePrice}
               </del>
-              <strong className="text-danger ml-2">
+              <strong className="text-danger ml-1">
                 {"$" + props.product.price.discount.newPrice}
               </strong>
             </>
@@ -55,10 +55,10 @@ const ProductCard = React.memo(function ProductCard(props) {
         </div>
         {/* content and brand */}
         <div className="mb-3">
-          <p className="mb-0">{props.product.content}</p>
-          <p className="mb-0" style={{ textTransform: "uppercase" }}>
+          <p className="mb-0 text-muted">{props.product.content}</p>
+          {/* <p className="mb-0" style={{ textTransform: "uppercase" }}>
             {props.product.brand}
-          </p>
+          </p> */}
         </div>
         {/* add to cart button */}
         <div className="d-flex inline">

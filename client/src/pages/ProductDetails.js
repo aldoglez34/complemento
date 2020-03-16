@@ -64,31 +64,41 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                 {/* name and price */}
                 <div className="text-center text-md-left">
                   <h1 className="mt-4 mt-md-0 mb-2">
-                    <strong>{product.name}</strong>
+                    <strong style={{ color: "#484a4b" }}>{product.name}</strong>
                     {product.price.discount.hasDiscount ? (
-                      <Badge variant="warning" className="ml-1 p-1">
+                      <Badge
+                        variant="warning"
+                        className="ml-1 p-1"
+                        style={{ color: "#484a4b" }}
+                      >
                         {product.price.discount.percentage + "%"}
                       </Badge>
                     ) : null}
                   </h1>
-                  <p className="h5 mb-1">{product.content}</p>
-                  <p className="h5 mb-2">{product.brand}</p>
-                  <div className="mb-3">
+                  <strong style={{ color: "#59a49a" }}>Contenido</strong>
+                  <p className="h5">{product.content}</p>
+                  <strong style={{ color: "#59a49a" }}>Marca</strong>
+                  <p className="h5">{product.brand}</p>
+                  <div className="d-flex flex-column mb-3">
+                    <strong style={{ color: "#59a49a" }}>Precio</strong>
                     {product.price.discount.hasDiscount ? (
-                      <div className="">
-                        <span
-                          className="h4 mb-0"
-                          style={{ color: "gainsboro" }}
-                        >
-                          <del>{"$" + product.price.salePrice + " MXN"}</del>
+                      <div
+                        className="d-flex flex-row justify-content-center justify-content-md-start"
+                        style={{ fontSize: "24px" }}
+                      >
+                        <span style={{ color: "gainsboro" }}>
+                          <del>{"$" + product.price.salePrice}</del>
                         </span>
-                        <span className="h3 mb-0 ml-1 text-danger">
-                          {"$" + product.price.discount.newPrice + " MXN"}
+                        <span className="ml-2 text-danger">
+                          {"$" + product.price.discount.newPrice}
                         </span>
                       </div>
                     ) : (
-                      <span className="h3 mb-0 text-danger mb-3">
-                        {"$" + product.price.salePrice + " MXN"}
+                      <span
+                        className="text-danger"
+                        style={{ fontSize: "24px" }}
+                      >
+                        {"$" + product.price.salePrice}
                       </span>
                     )}
                   </div>
@@ -107,21 +117,21 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                 {/* ingredients and sufferings */}
                 <Row className="mb-1">
                   <Col>
-                    <strong>Descripción</strong>
+                    <strong style={{ color: "#59a49a" }}>Descripción</strong>
                     <br />
                     <span>{product.description}</span>
                   </Col>
                 </Row>
                 <Row className="mb-1">
                   <Col>
-                    <strong>Dosis</strong>
+                    <strong style={{ color: "#59a49a" }}>Dosis</strong>
                     <br />
                     <span>{product.dose}</span>
                   </Col>
                 </Row>
                 <Row className="mb-1">
                   <Col>
-                    <strong>Ingredientes</strong>
+                    <strong style={{ color: "#59a49a" }}>Ingredientes</strong>
                     {product.ingredients.length ? (
                       <ul className="mb-1 list-unstyled">
                         <li>
@@ -142,7 +152,7 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                 {/* comments */}
                 <Row className="mb-2">
                   <Col>
-                    <strong>Aviso</strong>
+                    <strong className="text-danger">Aviso</strong>
                     <br />
                     <span>{product.warning}</span>
                   </Col>
