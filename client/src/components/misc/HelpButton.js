@@ -29,13 +29,26 @@ const HelpButton = React.memo(function HelpButton() {
 
   return (
     <>
-      <button title="Ayuda" className="helpbttn" onClick={handleShow}>
+      <Button
+        title="Ayuda"
+        variant="transparent"
+        className="helpbttn p-0"
+        onClick={handleShow}
+      >
         <i className="fas fa-comments qMark" />
-      </button>
+      </Button>
 
       <Modal className="modal-open" show={show} onHide={handleClose}>
         <Modal.Body>
-          <h4>¿Necesitas ayuda?</h4>
+          <div className="d-flex flex-row pt-1 pb-2">
+            <h3 className="mb-0">¿Necesitas ayuda?</h3>
+            <i
+              className="fas fa-times ml-auto"
+              style={{ cursor: "pointer" }}
+              title="Cerrar"
+              onClick={handleClose}
+            />
+          </div>
           <p>
             ¿Tienes dudas sobre algún producto? Envíanos tus
             preguntas/comentarios y nosotros nos pondremos en contacto contigo.
@@ -141,9 +154,6 @@ const HelpButton = React.memo(function HelpButton() {
                 </Form.Row>
                 {/* buttons */}
                 <Form.Row className="px-1">
-                  <Button variant="secondary" onClick={handleClose}>
-                    Cerrar
-                  </Button>
                   <Button
                     className="ml-auto"
                     variant="success"

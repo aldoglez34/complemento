@@ -5,11 +5,13 @@ import PropTypes from "prop-types";
 
 const Layout = React.memo(({ children, hideBag = false }) => {
   return (
-    <div className="d-flex flex-column h-100">
+    <React.Fragment>
       <MyNavbar hideBag={hideBag} />
-      {children}
-      <MyFooter />
-    </div>
+      <div className="d-flex flex-column h-100">
+        {children}
+        <MyFooter />
+      </div>
+    </React.Fragment>
   );
 });
 

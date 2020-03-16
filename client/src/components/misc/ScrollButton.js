@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import "./scrollButton.scss";
+import { Button } from "react-bootstrap";
 
 class ScrollButton extends PureComponent {
   state = {
@@ -24,15 +25,16 @@ class ScrollButton extends PureComponent {
 
   render() {
     return (
-      <button
+      <Button
         title="Ir arriba"
-        className="scroll"
+        variant="transparent"
+        className="scroll p-0"
         onClick={() => {
           this.scrollToTop();
         }}
       >
         <i className="fas fa-chevron-up arrow-up" />
-      </button>
+      </Button>
     );
   }
 }
