@@ -4,7 +4,6 @@ import Layout from "../components/Layout";
 import HelpButton from "../components/misc/HelpButton";
 import ScrollButton from "../components/misc/ScrollButton";
 import WelcomeJumbotron from "./components/WelcomeJumbotron";
-import "./home.scss";
 import MyCarousel from "../components/carousel/MyCarousel";
 import API from "../utils/API";
 

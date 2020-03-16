@@ -2,6 +2,7 @@ import React from "react";
 import ProductCard from "../cards/ProductCard";
 import { Spinner, Carousel } from "react-bootstrap";
 import PropTypes from "prop-types";
+import "./mycarousel.scss";
 
 const MyCarousel = React.memo(({ products }) => {
   const renderProducts = productsPerPage => {
