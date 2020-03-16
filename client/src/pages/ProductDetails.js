@@ -7,15 +7,21 @@ import HelpButton from "../components/misc/HelpButton";
 import ScrollButton from "../components/misc/ScrollButton";
 import FavButton from "../components/buttons/FavButton";
 import AddToBagButton from "../components/buttons/AddToBagButton";
-import SimilarProducts from "./components/SimilarProducts";
 import "./productDetails.scss";
+import MyCarousel from "../components/carousel/MyCarousel";
 
 const ProductDetails = React.memo(function ProductDetails(props) {
   const [product, setProduct] = useState();
+  const [similar, setSimilar] = useState([]);
 
   useEffect(() => {
     API.fetchProductDetails(props.routeProps.match.params.productId)
-      .then(res => setProduct(res.data))
+      .then(res => {
+        setProduct(res.data);
+        API.fetchSimilarProducts(res.data.category).then(res =>
+          setSimilar(res.data)
+        );
+      })
       .catch(err => console.log(err));
   }, []);
 
@@ -120,9 +126,11 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                       <ul className="mb-1 list-unstyled">
                         <li>
                           <ul>
-                            {product.ingredients.map(ing => (
-                              <li key={ing}>{ing}</li>
-                            ))}
+                            {product.ingredients
+                              .sort((a, b) => a.localeCompare(b))
+                              .map(ing => (
+                                <li key={ing}>{ing}</li>
+                              ))}
                           </ul>
                         </li>
                       </ul>
@@ -145,7 +153,7 @@ const ProductDetails = React.memo(function ProductDetails(props) {
               <Col>
                 <h3>Similares</h3>
                 <hr className="myDivider" />
-                <SimilarProducts category={product.category} />
+                <MyCarousel products={similar} />
               </Col>
             </Row>
             <HelpButton />

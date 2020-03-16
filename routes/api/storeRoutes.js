@@ -57,7 +57,7 @@ router.get("/brands", function(req, res) {
 // matches with /api/store/products
 router.get("/products", function(req, res) {
   model.Product.find({})
-    .select("category name content price stock photo brand priority unitsSold")
+    .select("category name content price stock photo brand priority unitsSold ingredients")
     .sort({ name: 1 })
     .collation({ locale: "es" })
     .then(data => res.json(data))

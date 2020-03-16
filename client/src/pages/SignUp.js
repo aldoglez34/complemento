@@ -293,7 +293,7 @@ const SignUp = React.memo(() => {
               </Form.Row>
               <Button
                 className="mt-3 mb-4"
-                variant="success"
+                variant="warning"
                 type="submit"
                 disabled={isSubmitting}
               >

@@ -45,8 +45,9 @@ class Store extends PureComponent {
             //
             let brand = props.routeProps.match.params.brand;
             let category = props.routeProps.match.params.category;
+            let ingredient = props.routeProps.match.params.ingredient;
             // if no filters
-            if (!brand && !category) {
+            if (!brand && !category && !ingredient) {
               return {
                 products: res.data,
                 pageCount: Math.ceil(
@@ -55,7 +56,7 @@ class Store extends PureComponent {
               };
             }
             // if category filter
-            if (category && !brand) {
+            if (category && !brand && !ingredient) {
               let filtered = res.data.filter(p => p.category === category);
               return {
                 filter: category,
@@ -66,10 +67,23 @@ class Store extends PureComponent {
               };
             }
             // if brands filter
-            if (!category && brand) {
+            if (!category && brand && !ingredient) {
               let filtered = res.data.filter(p => p.brand === brand);
               return {
                 filter: brand,
+                products: filtered,
+                pageCount: Math.ceil(
+                  filtered.length / prevState.productsPerPage
+                )
+              };
+            }
+            // if ingredient filter
+            if (!category && !brand && ingredient) {
+              let filtered = res.data.filter(p =>
+                p.ingredients.includes(ingredient)
+              );
+              return {
+                filter: ingredient,
                 products: filtered,
                 pageCount: Math.ceil(
                   filtered.length / prevState.productsPerPage

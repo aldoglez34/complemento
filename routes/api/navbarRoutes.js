@@ -10,22 +10,37 @@ router.get("/searchbar/names", function(req, res) {
     .sort({ name: 1 })
     .collation({ locale: "es" })
     .then(products => {
-      // data.products = products.sort((a, b) => a.localeCompare(b));
-      data.products = products;
-      return model.Product.find({})
-        .select("category")
-        .distinct("category")
-        .collation({ locale: "es" });
+      // removing tildes
+      data.products = products.reduce((acc, cv) => {
+        acc.push({
+          _id: cv._id,
+          name: cv.name,
+          cleanName: cv.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        });
+        return acc;
+      }, []);
+      //
+      return model.Product.find({}).select("ingredients");
     })
-    .then(categories => {
-      data.categories = categories.sort((a, b) => a.localeCompare(b));
-      return model.Product.find({})
-        .select("brand")
-        .distinct("brand")
-        .collation({ locale: "es" });
-    })
-    .then(brands => {
-      data.brands = brands.sort((a, b) => a.localeCompare(b));
+    .then(ingredients => {
+      // extract all ingredients into an array
+      let ings = ingredients
+        .reduce((acc, cv) => {
+          acc.push(...cv.ingredients);
+          return acc;
+        }, [])
+        .sort((a, b) => a.localeCompare(b));
+      // delete duplicates
+      let uniqueIngredients = [...new Set(ings)];
+      // delete tildes
+      data.ingredients = uniqueIngredients.reduce((acc, cv) => {
+        acc.push({
+          name: cv,
+          cleanName: cv.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        });
+        return acc;
+      }, []);
+      //
       res.json(data);
     })
     .catch(err => res.json(err));

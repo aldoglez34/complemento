@@ -20,6 +20,18 @@ body {
   background-color: white;
 }
 
+input,
+textarea {
+  // outline: none;
+  // box-shadow: 5px 10px yellow !important;
+  border: 1px solid #ccc !important;
+  &:focus {
+    box-shadow: 1px 2px #edcb58 !important;
+    border: 1px solid #edcb58 !important;
+    transition: 0.5s;
+  }
+}
+
 // hr
 .myDivider {
   margin-top: 0;

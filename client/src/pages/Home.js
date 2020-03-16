@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import Layout from "../components/Layout";
 import HelpButton from "../components/misc/HelpButton";
 import ScrollButton from "../components/misc/ScrollButton";
-import HomePrioritized from "./components/HomePrioritized";
-import HomeDiscounts from "./components/HomeDiscounts";
-import HomeBestSellers from "./components/HomeBestSellers";
 import WelcomeJumbotron from "./components/WelcomeJumbotron";
 import "./home.scss";
+import MyCarousel from "../components/carousel/MyCarousel";
+import API from "../utils/API";
 
-const Home = React.memo(function Home() {
+const Home = React.memo(() => {
+  const [prioritized, setPrioritized] = useState([]);
+  const [discounts, setDiscounts] = useState([]);
+  const [bestSellers, setBestSellers] = useState([]);
+
+  useEffect(() => {
+    API.fetchPrioritized()
+      .then(res => setPrioritized(res.data))
+      .catch(err => console.log(err));
+    API.fetchProductsWithDiscount()
+      .then(res => setDiscounts(res.data))
+      .catch(err => console.log(err));
+    API.fetchBestSellers()
+      .then(res => setBestSellers(res.data))
+      .catch(err => console.log(err));
+  }, []);
+
   return (
     <Layout isHomePage={true}>
       {/* welcome title */}
@@ -106,20 +121,20 @@ const Home = React.memo(function Home() {
             </Row>
           </Col>
         </Row>
-        {/* destacados */}
+        {/* carousel - prioritized */}
         <Row className="mb-4 py-4">
           <Col>
             <h3>Destacados</h3>
             <hr className="myDivider" />
-            <HomePrioritized />
+            <MyCarousel products={prioritized} />
           </Col>
         </Row>
-        {/* latest offers */}
+        {/* carousel - latest offers */}
         <Row className="mb-4 py-4">
           <Col>
             <h3>Últimas ofertas</h3>
             <hr className="myDivider" />
-            <HomeDiscounts />
+            <MyCarousel products={discounts} />
           </Col>
         </Row>
         {/* best sellers */}
@@ -127,7 +142,7 @@ const Home = React.memo(function Home() {
           <Col>
             <h3>Más vendidos</h3>
             <hr className="myDivider" />
-            <HomeBestSellers />
+            <MyCarousel products={bestSellers} />
           </Col>
         </Row>
         <HelpButton />

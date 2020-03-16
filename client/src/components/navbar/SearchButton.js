@@ -2,59 +2,60 @@ import React, { useState, useEffect } from "react";
 import { Dropdown, FormControl, Spinner, Modal, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-const SearchButton = props => {
+const SearchButton = React.memo(({ items }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [brands, setBrands] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
 
   const [productSuggestions, setProductSuggestions] = useState([]);
-  const [categorySuggestions, setCategorySuggestions] = useState([]);
-  const [brandSuggestions, setBrandSuggestions] = useState([]);
+  const [ingredientSuggestions, setIngredientSuggestions] = useState([]);
 
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    if (props.items.products) setProducts(props.items.products);
-    if (props.items.categories) setCategories(props.items.categories);
-    if (props.items.brands) setBrands(props.items.brands);
-  }, [props.items.products]);
+    if (items.products) setProducts(items.products);
+    if (items.ingredients) setIngredients(items.ingredients);
+  }, [items]);
 
   const handleEditInputChange = e => {
-    const value = e.target.value;
-    setValue(value);
+    setValue(e.target.value.normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+    let v = e.target.value;
 
-    const regex = new RegExp(`^${value}`, "i");
+    // for upper or lower case
+    let regex = new RegExp(`^${v}`, "i");
 
-    // get product suggestions
+    // suggestions
     let prodSugg = [];
-    if (value.length > 0) prodSugg = products.filter(p => regex.test(p.name));
+    let ingSugg = [];
+
+    // clear state
+    setProductSuggestions([]);
+    setIngredientSuggestions([]);
+
+    // make search (by filtering suggestions)
+    if (v.length >= 3) {
+      prodSugg = products.filter(p => regex.test(p.cleanName));
+      ingSugg = ingredients.filter(i => regex.test(i.cleanName));
+    }
     setProductSuggestions(prodSugg);
-    // get product suggestions
-    let catSugg = [];
-    if (value.length > 0) catSugg = categories.filter(c => regex.test(c));
-    setCategorySuggestions(catSugg);
-    // get product suggestions
-    let brandSugg = [];
-    if (value.length > 0) brandSugg = brands.filter(b => regex.test(b));
-    setBrandSuggestions(brandSugg);
+    setIngredientSuggestions(ingSugg);
   };
 
   const renderSuggestions = () => {
     let allSuggestions = [];
 
+    // no results
     if (
       !productSuggestions.length &&
-      !categorySuggestions.length &&
-      !brandSuggestions.length &&
-      value
+      !ingredientSuggestions.length &&
+      value.length >= 3
     ) {
       allSuggestions.push(
-        <div key="noResults" className="pb-2">
+        <div key="noResults" className="pb-2 px-3">
           <em>
             No encontramos resultados en la tienda para "
             <strong>{value}</strong>"
@@ -63,15 +64,16 @@ const SearchButton = props => {
       );
     }
 
+    // render products suggestion
     if (productSuggestions.length) {
       allSuggestions.push(
         <React.Fragment key="productsSuggestions">
-          <h6 className="dropdown-header px-0" style={{ color: "#59a49a" }}>
+          <h6 className="dropdown-header px-3" style={{ color: "#59a49a" }}>
             <strong>Productos</strong>
           </h6>
           {productSuggestions.map(i => (
             <Dropdown.Item
-              className="navbarDropdownItemStyle px-0"
+              className="navbarDropdownItemStyle px-3"
               key={i._id}
               href={"/product/details/" + i._id}
             >
@@ -82,38 +84,20 @@ const SearchButton = props => {
       );
     }
 
-    if (categorySuggestions.length) {
+    // render ingredients suggestions
+    if (ingredientSuggestions.length) {
       allSuggestions.push(
         <React.Fragment key="categorySuggestions">
-          <h6 className="dropdown-header px-0" style={{ color: "#59a49a" }}>
-            <strong>Categorías</strong>
+          <h6 className="dropdown-header px-3" style={{ color: "#59a49a" }}>
+            <strong>Ingredientes</strong>
           </h6>
-          {categorySuggestions.map(c => (
+          {ingredientSuggestions.map(i => (
             <Dropdown.Item
-              className="navbarDropdownItemStyle px-0"
-              key={c}
-              href={"/store/category/" + c}
+              className="navbarDropdownItemStyle px-3"
+              key={i.name}
+              href={"/store/ingredient/" + i.name}
             >
-              {c}
-            </Dropdown.Item>
-          ))}
-        </React.Fragment>
-      );
-    }
-
-    if (brandSuggestions.length) {
-      allSuggestions.push(
-        <React.Fragment key="brandSuggestions">
-          <h6 className="dropdown-header px-0" style={{ color: "#59a49a" }}>
-            <strong>Marcas</strong>
-          </h6>
-          {brandSuggestions.map(b => (
-            <Dropdown.Item
-              className="navbarDropdownItemStyle px-0"
-              key={b}
-              href={"/store/brand/" + b}
-            >
-              {b}
+              {i.name}
             </Dropdown.Item>
           ))}
         </React.Fragment>
@@ -128,7 +112,7 @@ const SearchButton = props => {
       <>
         {/* title */}
         {type === "modal" ? (
-          <div className="d-flex flex-row pt-2 mb-3">
+          <div className="d-flex flex-row pt-2 mb-3 px-3">
             <div className="d-flex flex-column">
               <h6>
                 <strong>BUSCAR</strong>
@@ -140,7 +124,7 @@ const SearchButton = props => {
             </div>
           </div>
         ) : type === "dropdown" ? (
-          <div className="pt-2 pb-3">
+          <div className="pt-2 pb-3 px-3">
             <h6>
               <strong>BUSCAR</strong>
             </h6>
@@ -148,12 +132,14 @@ const SearchButton = props => {
           </div>
         ) : null}
         {/* the rest */}
-        <FormControl
-          autoFocus
-          className="w-100 mb-3"
-          placeholder="¿Qué estás buscando?"
-          onChange={handleEditInputChange}
-        />
+        <div className="mb-3 px-3">
+          <FormControl
+            autoFocus
+            className="w-100"
+            placeholder="¿Qué estás buscando?"
+            onChange={handleEditInputChange}
+          />
+        </div>
         {renderSuggestions()}
       </>
     ) : (
@@ -177,7 +163,7 @@ const SearchButton = props => {
         </Button>
 
         <Modal show={show} onHide={handleClose}>
-          <Modal.Body className="px-3 py-2">{content("modal")}</Modal.Body>
+          <Modal.Body className="px-0 py-2">{content("modal")}</Modal.Body>
         </Modal>
       </div>
       {/* md */}
@@ -193,14 +179,14 @@ const SearchButton = props => {
             Buscar
           </Dropdown.Toggle>
 
-          <Dropdown.Menu className="px-3 py-2" id="searchDropdownMenu">
+          <Dropdown.Menu className="px-0 py-2" id="searchDropdownMenu">
             {content("dropdown")}
           </Dropdown.Menu>
         </Dropdown>
       </div>
     </React.Fragment>
   );
-};
+});
 
 SearchButton.propTypes = {
   items: PropTypes.object.isRequired

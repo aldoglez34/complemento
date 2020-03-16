@@ -70,6 +70,11 @@ function App() {
           path="/store/brand/:brand"
           render={props => <Store routeProps={props} />}
         />
+        <Route
+          exact
+          path="/store/ingredient/:ingredient"
+          render={props => <Store routeProps={props} />}
+        />
         <Redirect from="/store/" to="/store" />
         <Route
           exact

@@ -130,7 +130,7 @@ const AddToBagButton = React.memo(({ product, size }) => {
                 <Button
                   className="mt-2"
                   block
-                  variant="outline-danger"
+                  variant="danger"
                   onClick={() =>
                     updateRedux().then(() => (window.location = "/cart"))
                   }
