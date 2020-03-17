@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Image, Spinner, Badge } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Image,
+  Spinner,
+  Badge,
+  Alert
+} from "react-bootstrap";
 import Layout from "../components/Layout";
 import MyBreadcrumb from "../components/breadcrumb/MyBreadcrumb";
 import API from "../utils/API";
@@ -13,6 +21,8 @@ import MyCarousel from "../components/carousel/MyCarousel";
 const ProductDetails = React.memo(function ProductDetails(props) {
   const [product, setProduct] = useState();
   const [similar, setSimilar] = useState([]);
+
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
     API.fetchProductDetails(props.routeProps.match.params.productId)
@@ -33,6 +43,17 @@ const ProductDetails = React.memo(function ProductDetails(props) {
       {product ? (
         <>
           <Container className="my-4">
+            {product.warning ? (
+              <Alert
+                show={show}
+                variant="danger"
+                onClose={() => setShow(false)}
+                dismissible
+                className="mb-4"
+              >
+                {product.warning}
+              </Alert>
+            ) : null}
             <MyBreadcrumb
               routes={[
                 { name: "Inicio", to: "/" },
@@ -45,8 +66,40 @@ const ProductDetails = React.memo(function ProductDetails(props) {
               ]}
             />
             <Row>
-              {/* photo */}
+              {/* LEFT COLUMN */}
               <Col md={5} className="text-center">
+                {/* title and price for smaller devices */}
+                <Row className="d-inline-flex d-md-none mb-3 mb-md-0">
+                  <Col xs={8}>
+                    <h3 className="mb-0 text-left">
+                      {product.name}{" "}
+                      {product.price.discount.hasDiscount ? (
+                        <Badge variant="warning" style={{ color: "#484a4b" }}>
+                          {product.price.discount.percentage + "%"}
+                        </Badge>
+                      ) : null}
+                    </h3>
+                  </Col>
+                  <Col xs={4}>
+                    {product.price.discount.hasDiscount ? (
+                      <div className="text-right">
+                        <h3 className="mb-0 text-muted">
+                          <small>
+                            <del>{"$" + product.price.salePrice}</del>
+                          </small>
+                        </h3>
+                        <h3 className="mb-0 text-danger">
+                          {"$" + product.price.discount.newPrice}
+                        </h3>
+                      </div>
+                    ) : (
+                      <h3 className="mb-0 text-danger text-right">
+                        {"$" + product.price.salePrice}
+                      </h3>
+                    )}
+                  </Col>
+                </Row>
+                {/* image */}
                 <Image
                   src={"/images/products/" + product.photo}
                   className="productPhoto"
@@ -54,101 +107,63 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                   alt="product"
                   title={product.name}
                 />
-                {product.price.discount.hasDiscount ? (
-                  <Image
-                    src="/images/tag.png"
-                    className="discountImgBig"
-                    alt="discount"
-                  />
-                ) : null}
               </Col>
               {/* info */}
               <Col md={7}>
-                {/* name and price */}
-                <div className="text-center text-md-left">
-                  <h1 className="mt-4 mt-md-0 mb-2">
-                    <strong style={{ color: "#484a4b" }}>{product.name}</strong>
-                    {product.price.discount.hasDiscount ? (
-                      <Badge
-                        variant="warning"
-                        className="ml-1 p-1"
-                        style={{ color: "#484a4b" }}
-                      >
-                        {product.price.discount.percentage + "%"}
-                      </Badge>
-                    ) : null}
-                  </h1>
-                  <p
-                    className="mb-0"
-                    style={{ color: "#59a49a", fontWeight: "bold" }}
-                  >
-                    Contenido
-                  </p>
-                  <p className="lead mb-0">{product.content}</p>
-                  <p
-                    className="mb-0"
-                    style={{ color: "#59a49a", fontWeight: "bold" }}
-                  >
-                    Marca
-                  </p>
-                  <p className="lead mb-0">{product.brand}</p>
-                  <div className="d-flex flex-column mb-3">
-                    <p
-                      className="mb-0"
-                      style={{ color: "#59a49a", fontWeight: "bold" }}
-                    >
-                      Precio
-                    </p>
-                    {product.price.discount.hasDiscount ? (
-                      <div className="d-flex flex-row justify-content-center justify-content-md-start">
-                        <p className="lead mb-0" style={{ color: "gainsboro" }}>
-                          <del>{"$" + product.price.salePrice}</del>
-                        </p>
-                        <p className="lead mb-0 ml-2 text-danger">
-                          {"$" + product.price.discount.newPrice}
-                        </p>
-                      </div>
-                    ) : (
-                      <p
-                        className="lead mb-0 text-danger"
-                        style={{ fontSize: "25px" }}
-                      >
-                        {"$" + product.price.salePrice}
-                      </p>
-                    )}
-                  </div>
-                </div>
-                {/* buttons */}
-                <Row className="my-2">
-                  <Col md={5}>
-                    <AddToBagButton product={product} size="lg" />
+                {/* title and price for bigger devices */}
+                <Row className="d-none d-md-block">
+                  <Col>
+                    <h1 className="mb-0">
+                      {product.name}{" "}
+                      {product.price.discount.hasDiscount ? (
+                        <Badge variant="warning" style={{ color: "#484a4b" }}>
+                          {product.price.discount.percentage + "%"}
+                        </Badge>
+                      ) : null}
+                    </h1>
+                    <h1 className="mb-0 text-danger">
+                      {product.price.discount.hasDiscount ? (
+                        <>
+                          <small className="text-muted">
+                            <del>{"$" + product.price.salePrice}</del>
+                          </small>
+                          <span className="text-danger ml-2">
+                            {"$" + product.price.discount.newPrice}
+                          </span>
+                        </>
+                      ) : (
+                        <span className="text-danger">
+                          {"$" + product.price.salePrice}
+                        </span>
+                      )}
+                    </h1>
                   </Col>
                 </Row>
-                <Row className="mb-3">
-                  <Col md={5}>
+                <Row className="mt-3">
+                  <Col>
+                    <h5 className="mb-1">Contenido</h5>
+                    <p className="mb-2">{product.content}</p>
+                    <h5 className="mb-1">Marca</h5>
+                    <p className="mb-2">{product.brand}</p>
+                    <h5 className="mb-1">Descripción</h5>
+                    <p className="mb-2">{product.description}</p>
+                  </Col>
+                </Row>
+                {/* buttons */}
+                <Row className="my-4">
+                  <Col md={6}>
+                    <AddToBagButton product={product} size="lg" />
                     <FavButton isBlock={true} product={product} />
                   </Col>
                 </Row>
-                {/* ingredients and sufferings */}
-                <Row className="mb-1">
+                {/* details */}
+                <Row>
                   <Col>
-                    <strong style={{ color: "#59a49a" }}>Descripción</strong>
-                    <br />
-                    <span>{product.description}</span>
-                  </Col>
-                </Row>
-                <Row className="mb-1">
-                  <Col>
-                    <strong style={{ color: "#59a49a" }}>Dosis</strong>
-                    <br />
-                    <span>{product.dose}</span>
-                  </Col>
-                </Row>
-                <Row className="mb-1">
-                  <Col>
-                    <strong style={{ color: "#59a49a" }}>Ingredientes</strong>
+                    <h5 className="mb-1">Dosis</h5>
+                    <p className="mb-2">{product.dose}</p>
+                    <h5 className="mb-1">Ingredientes</h5>
                     {product.ingredients.length ? (
-                      <ul className="mb-1 list-unstyled">
+                      <ul className="mb-2 list-unstyled">
                         <li>
                           <ul>
                             {product.ingredients
@@ -160,27 +175,15 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                         </li>
                       </ul>
                     ) : (
-                      <span>No hay información disponible</span>
+                      <span className="mb-2">Información no disponible</span>
                     )}
                   </Col>
                 </Row>
-                {/* comments */}
-                <Row className="mb-2">
-                  <Col>
-                    <strong className="text-danger">Aviso</strong>
-                    <br />
-                    <span>{product.warning}</span>
-                  </Col>
-                </Row>
               </Col>
             </Row>
-            <Row className="mt-4 px-1">
-              <Col>
-                <h3>Similares</h3>
-                <hr className="myDivider" />
-                <MyCarousel products={similar} />
-              </Col>
-            </Row>
+            <h3 className="mt-3">Similares</h3>
+            <hr className="myDivider" />
+            <MyCarousel products={similar} />
             <HelpButton />
             <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
           </Container>

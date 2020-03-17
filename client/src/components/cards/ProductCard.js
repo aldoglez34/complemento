@@ -33,7 +33,7 @@ const ProductCard = React.memo(function ProductCard(props) {
             className="d-flex align-items-center justify-content-center my-3"
             style={{ height: "50px", maxHeight: "50px" }}
           >
-            <h4 className="text-center text-dark mb-0">{props.product.name}</h4>
+            <h5 className="text-center mb-0">{props.product.name}</h5>
           </div>
         </a>
         {/* price */}
@@ -56,9 +56,6 @@ const ProductCard = React.memo(function ProductCard(props) {
         {/* content and brand */}
         <div className="mb-3">
           <p className="mb-0 text-muted">{props.product.content}</p>
-          {/* <p className="mb-0" style={{ textTransform: "uppercase" }}>
-            {props.product.brand}
-          </p> */}
         </div>
         {/* add to cart button */}
         <div className="d-flex inline">

@@ -231,7 +231,7 @@ const LoginDropdown = React.memo(() => {
             title="Sesión"
           >
             <i className="fas fa-user mr-1" />
-            Sesion
+            Sesión
           </Dropdown.Toggle>
 
           <Dropdown.Menu

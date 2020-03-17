@@ -115,7 +115,7 @@ const AddToBagButton = React.memo(({ product, size }) => {
               <Col className="mt-3 p-0">
                 <Button
                   size="lg"
-                  variant="outline-success"
+                  variant="success"
                   block
                   onClick={() =>
                     updateRedux().then(() => {
@@ -128,9 +128,10 @@ const AddToBagButton = React.memo(({ product, size }) => {
                   Agregar y seguir comprando
                 </Button>
                 <Button
+                  size="lg"
                   className="mt-2"
                   block
-                  variant="danger"
+                  variant="outline-danger"
                   onClick={() =>
                     updateRedux().then(() => (window.location = "/cart"))
                   }

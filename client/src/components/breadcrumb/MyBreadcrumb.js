@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const MyBreadcrumb = React.memo(function MyBreadcrumb(props) {
   return (
-    <div className="mb-4">
+    <div className="mb-3">
       {props.routes.map(r => {
         if (r.to !== "active") {
           return (

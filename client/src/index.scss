@@ -7,24 +7,22 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Josefin Sans", sans-serif;
-  color: #343638;
+  font-family: "Bitter", serif;
+  color: darkslategray;
 }
 
 html,
 body {
   height: 100%;
   color: #484a4b;
-  // font-family: Arial, Helvetica, sans-serif;
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
   background-color: white;
 }
 
 input,
-textarea {
-  // outline: none;
-  // box-shadow: 5px 10px yellow !important;
+textarea,
+select {
   border: 1px solid #ccc !important;
   &:focus {
     box-shadow: 1px 2px #edcb58 !important;
@@ -37,7 +35,7 @@ textarea {
 .myDivider {
   margin-top: 0;
   border: none;
-  height: 0.2rem;
+  min-height: 0.3rem !important;
   width: 2.5rem;
   background-color: #edcb58;
   margin-left: 0;
