@@ -5,7 +5,6 @@ import { Row, Col, Image, Badge, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 import QtyPickerForCart from "./QtyPickerForCart";
 import Summary from "./Summary";
-import BuyNowButton from "./BuyNowButton";
 
 const SmallCart = React.memo(({ formatNumber, products = [] }) => {
   const dispatch = useDispatch();
@@ -108,7 +107,16 @@ const SmallCart = React.memo(({ formatNumber, products = [] }) => {
                   }, 0) + 70
                 )}
               />
-              <BuyNowButton />
+              <Button
+                href="/checkout"
+                variant="danger"
+                size="lg"
+                block
+                className="mt-3"
+                title="Comprar"
+              >
+                COMPRAR
+              </Button>
             </Col>
           </Row>
         </>

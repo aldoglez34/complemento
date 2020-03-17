@@ -14,6 +14,7 @@ import Home from "./pages/Home";
 import Store from "./store/Store";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./cart/Cart";
+import Checkout from "./cart/Checkout";
 import SignUp from "./pages/SignUp";
 import NoMatch from "./pages/NoMatch";
 import ClientInfo from "./pages/ClientInfo";
@@ -82,6 +83,7 @@ function App() {
           render={props => <ProductDetails routeProps={props} />}
         />
         <Route exact path="/cart" component={Cart} />
+        <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/signup" component={SignUp} />
         {/* client routes */}
         {client.isLogged ? (
