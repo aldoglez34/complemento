@@ -5,6 +5,7 @@ import { Row, Col, Table, Image, Badge, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 import QtyPickerForCart from "./QtyPickerForCart";
 import Summary from "./Summary";
+import BuyNowButton from "./BuyNowButton";
 
 const BigCart = React.memo(({ formatNumber, products = [] }) => {
   const dispatch = useDispatch();
@@ -142,6 +143,7 @@ const BigCart = React.memo(({ formatNumber, products = [] }) => {
               }, 0) + 70
             )}
           />
+          <BuyNowButton />
         </Col>
       </Row>
     </React.Fragment>

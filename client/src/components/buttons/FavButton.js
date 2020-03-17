@@ -88,8 +88,7 @@ const FavButton = React.memo(({ product, isBlock }) => {
           <div className="mb-3">
             El producto fue agregado a tu lista de favoritos.
           </div>
-          <hr />
-          <div className="text-center">
+          <div className="text-center mt-3">
             <Button className="favbuttonstyle" href="/client/favorites/">
               Ir a mis favoritos
             </Button>

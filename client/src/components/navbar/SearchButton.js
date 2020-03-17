@@ -157,6 +157,7 @@ const SearchButton = React.memo(({ items }) => {
           className="navbarDropdownStyle ml-0 p-0"
           onClick={handleShow}
           style={{ outline: "none", boxShadow: "none" }}
+          title="Buscar"
         >
           <i className="fas fa-search mr-1" />
           Buscar
@@ -174,6 +175,7 @@ const SearchButton = React.memo(({ items }) => {
             variant="transparent"
             id="dropdown-basic"
             style={{ outline: "none", boxShadow: "none" }}
+            title="Buscar"
           >
             <i className="fas fa-search mr-1" />
             Buscar

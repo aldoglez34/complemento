@@ -39,9 +39,6 @@ const StoreDropdown = React.memo(({ store }) => {
             <hr className="myDivider mb-0" />
           </div>
         ) : null}
-        {/* <h6 className="dropdown-header px-3" style={{ color: "#59a49a" }}>
-          <strong>Categorías</strong>
-        </h6> */}
         {/* the rest */}
         {store.map(c => (
           <Dropdown.Item

@@ -33,6 +33,9 @@
 // ALL DROPDOWN
 .navbarDropdownStyle {
   color: #f2f1ef !important;
+  &:hover {
+    color: #d9f0d3 !important;
+  }
 }
 
 .navbarDropdownStyle::after {

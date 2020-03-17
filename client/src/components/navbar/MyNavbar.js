@@ -51,7 +51,8 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
           className="p-0"
           id="navbarToggleStyle"
         >
-          <i className="fas fa-shopping-bag" id="navbarToggleBagIcon" />
+          <i className="fas fa-shopping-basket" id="navbarToggleBagIcon" />
+          {/* <i className="fas fa-shopping-bag" id="navbarToggleBagIcon" /> */}
           <Badge variant="danger" pill id="navbarToggleCounter">
             {cart.counter}
           </Badge>
@@ -66,7 +67,7 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
         </div>
         {/* md */}
         <div className="d-none d-md-block w-100">
-          <Nav>
+          <Nav style={{ fontSize: "16px" }}>
             <StoreDropdown store={store} />
             <Nav.Item>
               <SearchButton items={items} />

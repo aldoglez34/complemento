@@ -20,7 +20,7 @@ const QtyPicker = React.memo(
         </Button>
         <FormControl
           readOnly
-          className="text-right border border-light rounded-0"
+          className="text-right rounded-0 qtypickerforcart"
           style={{
             outline: "none",
             boxShadow: "none"

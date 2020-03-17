@@ -9,3 +9,15 @@
   width: 65px;
   z-index: 1;
 }
+
+.qtypickerforcart {
+  cursor: default;
+  outline: none;
+  box-shadow: none !important;
+  border: 1px solid #e9ecef !important;
+  &:focus {
+    outline: none;
+    box-shadow: none !important;
+    border: 1px solid #e9ecef !important;
+  }
+}
