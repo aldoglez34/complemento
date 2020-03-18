@@ -42,10 +42,14 @@ const SmallCart = React.memo(({ formatNumber, products = [] }) => {
                     <h4>
                       {p.name}
                       <small>
+                        {" "}
                         {p.discountPercentage ? (
                           <Badge variant="warning">
                             {p.discountPercentage + "%"}
                           </Badge>
+                        ) : null}{" "}
+                        {p.stock === 0 ? (
+                          <Badge variant="danger">Agotado</Badge>
                         ) : null}
                       </small>
                     </h4>

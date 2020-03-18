@@ -23,7 +23,6 @@ const generateArrays = str => {
 // fetchCartProducts()
 // matches with /api/cart/products/:cartStr
 router.get("/products/:cartStr", function(req, res) {
-  //
   const { cartObjs, idsOnly } = generateArrays(req.params.cartStr);
   // consult list of ids in mongodb
   model.Product.find()
@@ -80,7 +79,6 @@ router.get("/products/:cartStr", function(req, res) {
 // checkProducts()
 // matches with /api/cart/checkStock/:cartStr
 router.get("/checkStock/:cartStr", (req, res) => {
-  //
   const { cartObjs, idsOnly } = generateArrays(req.params.cartStr);
   // fetch data from db
   model.Product.find()
@@ -109,11 +107,17 @@ router.get("/checkStock/:cartStr", (req, res) => {
         return acc;
       }, []);
       // check if qty is greater than stock in any of the items
-      let errors = merged.reduce((acc, cv) => {
-        if (cv.qty > cv.stock) acc.push(cv);
+      // or if any product is sold out
+      let notEnoughStock = merged.reduce((acc, cv) => {
+        if (cv.qty > cv.stock && cv.stock !== 0) acc.push(cv);
         return acc;
       }, []);
-      if (errors.length) res.status(422).json(errors);
+      let zeroStock = merged.reduce((acc, cv) => {
+        if (cv.stock === 0) acc.push(cv);
+        return acc;
+      }, []);
+      if (notEnoughStock.length || zeroStock.legnth)
+        res.status(422).json({ notEnoughStock, zeroStock });
       // console.log("@merged", merged);
       // merged.forEach(p => {
       //   if (p.qty > p.stock)

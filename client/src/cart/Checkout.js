@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Container, Col, Form, Button } from "react-bootstrap";
 import Layout from "../components/Layout";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
 import API from "../utils/API";
+import CartErrorsModal from "./components/CartErrorsModal";
 
 const Checkout = React.memo(() => {
   const cart = useSelector(state => state.cart);
+
+  const [notEnoughStock, setNotEnoughStock] = useState([]);
+  const [zeroStock, setZeroStock] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   const yupSchema = yup.object({
     street: yup.string().required("Requerido"),
@@ -17,13 +22,18 @@ const Checkout = React.memo(() => {
     state: yup.string().required("Requerido"),
     zipCode: yup
       .string()
-      .matches(/^[0-9]*$/, "Sólo números")
+      .matches(/^[0-9]*$/, "Formato inválido")
       .length(5, "La longitud exacta debe ser 5 dígitos")
       .required("Requerido")
   });
 
   return (
     <Layout hideBag={true}>
+      <CartErrorsModal
+        showModal={showModal}
+        notEnoughStock={notEnoughStock}
+        zeroStock={zeroStock}
+      />
       <Container className="my-4">
         <h3>Dirección de envío</h3>
         <hr className="myDivider" />
@@ -52,8 +62,9 @@ const Checkout = React.memo(() => {
               .then(() => alert("Compra realizada con éxito"))
               .catch(err => {
                 console.log("@err.response", err.response);
-                const errors = err.response.data;
-                alert(JSON.stringify(errors));
+                setNotEnoughStock(err.response.data.notEnoughStock);
+                setZeroStock(err.response.data.zeroStock);
+                setShowModal(true);
                 // alert(err.response.data.msg);
               });
           }}
@@ -233,7 +244,7 @@ const Checkout = React.memo(() => {
               <hr className="myDivider" />
               <p>Aquí van los datos de la tarjeta</p>
               <Button
-                className="mt-3"
+                className="my-3"
                 size="lg"
                 variant="danger"
                 type="submit"

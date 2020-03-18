@@ -80,11 +80,14 @@ const BigCart = React.memo(({ formatNumber, products = [] }) => {
                           >
                             {p.name}
                           </a>
-                        </h4>
+                        </h4>{" "}
                         {p.discountPercentage ? (
                           <Badge variant="warning">
                             {p.discountPercentage + "%"}
                           </Badge>
+                        ) : null}{" "}
+                        {p.stock === 0 ? (
+                          <Badge variant="danger">Agotado</Badge>
                         ) : null}
                       </td>
                       <td className="align-middle text-center py-1">

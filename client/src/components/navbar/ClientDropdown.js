@@ -18,7 +18,10 @@ const ClientDropdown = React.memo(function ClientDropdown() {
     fire
       .auth()
       .signOut()
-      .then(() => dispatch(clientActions.logoutClient()))
+      .then(() => {
+        dispatch(clientActions.logoutClient());
+        window.location.href = "/";
+      })
       .catch(error => console.log(error));
   };
 
