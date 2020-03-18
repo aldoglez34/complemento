@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card, Image } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import FavButton from "../buttons/FavButton";
 import AddToBagButton from "../buttons/AddToBagButton";
 import "./productcards.scss";

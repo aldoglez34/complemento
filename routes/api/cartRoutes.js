@@ -1,11 +1,10 @@
 const router = require("express").Router();
 const model = require("../../models");
 
-// fetchCartProducts()
-// matches with /api/cart/products/:cartStr
-router.get("/products/:cartStr", function(req, res) {
-  // generate an array of cart items with thei quantities
-  let cartObjs = req.params.cartStr.split(",").reduce((acc, cv) => {
+const generateArrays = str => {
+  // this fn receives a str and return two arrays
+  // generate an array of cart items with their quantities
+  let cartObjs = str.split(",").reduce((acc, cv) => {
     acc.push({
       _id: cv.split("-")[0],
       qty: Number(cv.split("-")[1])
@@ -13,10 +12,19 @@ router.get("/products/:cartStr", function(req, res) {
     return acc;
   }, []);
   // generate an array with only ids of cart items
-  let idsOnly = req.params.cartStr.split(",").reduce((acc, cv) => {
+  let idsOnly = str.split(",").reduce((acc, cv) => {
     acc.push(cv.split("-")[0]);
     return acc;
   }, []);
+  //
+  return { cartObjs, idsOnly };
+};
+
+// fetchCartProducts()
+// matches with /api/cart/products/:cartStr
+router.get("/products/:cartStr", function(req, res) {
+  //
+  const { cartObjs, idsOnly } = generateArrays(req.params.cartStr);
   // consult list of ids in mongodb
   model.Product.find()
     .select("name price stock photo")
@@ -69,7 +77,58 @@ router.get("/products/:cartStr", function(req, res) {
     });
 });
 
-// buyProducts()
+// checkProducts()
+// matches with /api/cart/checkStock/:cartStr
+router.get("/checkStock/:cartStr", (req, res) => {
+  //
+  const { cartObjs, idsOnly } = generateArrays(req.params.cartStr);
+  // fetch data from db
+  model.Product.find()
+    .select("stock name")
+    .where("_id")
+    .in(idsOnly)
+    .then(data => {
+      // merge arrays
+      let merged = data.reduce((acc, cv) => {
+        // search index of cv's _id in the cartObjs array (if not found this will return -1)
+        let idx = cartObjs.findIndex(
+          p => p._id.toString() === cv._id.toString()
+        );
+        // merge arrays
+        // if product not found, send 422 status
+        if (idx !== -1) {
+          acc.push({
+            _id: cv._id,
+            name: cv.name,
+            stock: cv.stock,
+            qty: cartObjs[idx].qty
+          });
+        } else {
+          res.status(422).send({ msg: "Ocurrió un error" });
+        }
+        return acc;
+      }, []);
+      // check if qty is greater than stock in any of the items
+      let errors = merged.reduce((acc, cv) => {
+        if (cv.qty > cv.stock) acc.push(cv);
+        return acc;
+      }, []);
+      if (errors.length) res.status(422).json(errors);
+      // console.log("@merged", merged);
+      // merged.forEach(p => {
+      //   if (p.qty > p.stock)
+      //     res.status(422).send({
+      //       msg: `Disculpa las molestias. Por el momento sólo podemos ofrecerte ${p.stock} unidades del producto ${p.name}`
+      //     });
+      // });
+    })
+    .catch(err => {
+      res.status(422).send({ msg: "Ocurrió un error" });
+      console.log(err);
+    });
+});
+
+// makeSale()
 // matches with /api/cart/buy
 router.post("/buy", function(req, res) {
   let products = [];

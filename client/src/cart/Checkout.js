@@ -1,56 +1,18 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Container, Col, Form, Button } from "react-bootstrap";
 import Layout from "../components/Layout";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
+import API from "../utils/API";
 
 const Checkout = React.memo(() => {
-  const signupSchema = yup.object({
-    clientName: yup
-      .string()
-      .min(2, "Debe ser más largo que 2 letras")
-      .matches(
-        /^[a-zA-Z-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñÑ ]+$/,
-        "Sólo letras"
-      )
-      .required("Requerido"),
-    firstSurname: yup
-      .string()
-      .min(2, "Debe ser más largo que 2 letras")
-      .matches(
-        /^[a-zA-Z-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñÑ ]+$/,
-        "Sólo letras"
-      )
-      .required("Requerido"),
-    secondSurname: yup
-      .string()
-      .min(2, "Debe ser más largo que 2 letras")
-      .matches(
-        /^[a-zA-Z-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñÑ ]+$/,
-        "Sólo letras"
-      )
-      .required("Requerido"),
-    email: yup
-      .string()
-      .email("Formato de email incorrecto")
-      // .notOneOf(emails.emails, "Este correo ya se encuentra dado de alta")
-      .required("Requerido"),
-    phone: yup
-      .string()
-      .matches(/^[0-9]*$/, "Sólo números")
-      .length(10, "La longitud exacta debe ser 10 dígitos")
-      .required("Requerido"),
-    password: yup
-      .string()
-      .min(5, "Entre 5 y 30 caracteres")
-      .required("Requerido"),
-    passwordConfirm: yup
-      .string()
-      .oneOf([yup.ref("password")], "Las contraseñas no coinciden")
-      .required("Requerido"),
+  const cart = useSelector(state => state.cart);
+
+  const yupSchema = yup.object({
     street: yup.string().required("Requerido"),
-    neighborhood: yup.string().required("Requerido"),
     municipality: yup.string().required("Requerido"),
+    neighborhood: yup.string().required("Requerido"),
     city: yup.string().required("Requerido"),
     state: yup.string().required("Requerido"),
     zipCode: yup
@@ -68,16 +30,32 @@ const Checkout = React.memo(() => {
         <Formik
           initialValues={{
             street: "",
-            neighborhood: "",
             municipality: "",
+            neighborhood: "",
             city: "",
             state: "",
             zipCode: ""
           }}
-          validationSchema={signupSchema}
+          validationSchema={yupSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            console.log("@values", values);
+            // generate a string including all cart items with their quantities
+            let cartStr = cart.items.reduce((acc, cv, idx) => {
+              if (idx === cart.items.length - 1) {
+                acc += cv._id + "-" + cv.qty;
+              } else {
+                acc += cv._id + "-" + cv.qty + ",";
+              }
+              return acc;
+            }, "");
+            API.checkStock(cartStr)
+              .then(() => alert("Compra realizada con éxito"))
+              .catch(err => {
+                console.log("@err.response", err.response);
+                const errors = err.response.data;
+                alert(JSON.stringify(errors));
+                // alert(err.response.data.msg);
+              });
           }}
         >
           {({
@@ -223,6 +201,11 @@ const Checkout = React.memo(() => {
                     <option>Yucatán</option>
                     <option>Zacatecas</option>
                   </Form.Control>
+                  <ErrorMessage
+                    className="text-danger"
+                    name="state"
+                    component="div"
+                  />
                 </Form.Group>
                 <Form.Group as={Col} md={3}>
                   <Form.Label>
@@ -248,7 +231,7 @@ const Checkout = React.memo(() => {
               </Form.Row>
               <h3>Forma de pago</h3>
               <hr className="myDivider" />
-              <p>Aquí va la forma de pago</p>
+              <p>Aquí van los datos de la tarjeta</p>
               <Button
                 className="mt-3"
                 size="lg"

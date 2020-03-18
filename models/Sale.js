@@ -6,13 +6,16 @@ const SaleSchema = new Schema({
     {
       product: {
         type: Schema.Types.ObjectId,
-        ref: "Product"
+        ref: "Product",
+        required: true
       },
       qty: {
-        type: Number
+        type: Number,
+        required: true
       },
       salePrice: {
-        type: Number
+        type: Number,
+        required: true
       }
     }
   ],
@@ -30,7 +33,8 @@ const SaleSchema = new Schema({
   },
   client: {
     type: Schema.Types.ObjectId,
-    ref: "Client"
+    ref: "Client",
+    required: false
   },
   address: {
     street: { type: String, required: true },

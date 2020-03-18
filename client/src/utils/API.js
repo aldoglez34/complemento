@@ -53,12 +53,12 @@ export default {
     return axios.get("/api/cart/products/" + cartString);
   },
 
-  buyProducts: function(data) {
-    return axios.post("/api/cart/buy", data);
+  checkStock: function(cartString) {
+    return axios.get("/api/cart/checkStock/" + cartString);
   },
 
-  updateStock: function(data) {
-    return axios.put("/api/cart/update/stock", data);
+  makeSale: function(data) {
+    return axios.post("/api/cart/buy", data);
   },
 
   // ---------------------------------------------------------------------------
