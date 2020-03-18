@@ -107,6 +107,13 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                   alt="product"
                   title={product.name}
                 />
+                {/* {product.price.discount.hasDiscount ? (
+                  <Image
+                    src="/images/tag.png"
+                    className="discountImg"
+                    alt="discount"
+                  />
+                ) : null} */}
               </Col>
               {/* info */}
               <Col md={7}>

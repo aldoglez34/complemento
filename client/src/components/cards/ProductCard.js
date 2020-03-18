@@ -21,36 +21,29 @@ const ProductCard = React.memo(function ProductCard(props) {
             className="productCardPhoto"
             src={"/images/products/" + props.product.photo}
           />
-          {props.product.price.discount.hasDiscount ? (
-            <Image
-              src="/images/tag.png"
-              className="productCardDiscount"
-              alt="discount"
-            />
-          ) : null}
           {/* name */}
           <div
             className="d-flex align-items-center justify-content-center my-3"
             style={{ height: "50px", maxHeight: "50px" }}
           >
-            <h5 className="text-center mb-0">{props.product.name}</h5>
+            <h4 className="text-center mb-0">{props.product.name}</h4>
           </div>
         </a>
         {/* price */}
         <div className="lead text-center mb-3" style={{ fontSize: "22px" }}>
           {props.product.price.discount.hasDiscount ? (
-            <>
-              <del style={{ color: "gainsboro" }}>
-                {"$" + props.product.price.salePrice}
-              </del>
+            <h4 className="mb-0 text-muted">
+              <small>
+                <del>{"$" + props.product.price.salePrice}</del>
+              </small>
               <strong className="text-danger ml-1">
                 {"$" + props.product.price.discount.newPrice}
               </strong>
-            </>
+            </h4>
           ) : (
-            <strong className="text-danger">
+            <h4 className="mb-0 text-danger">
               {"$" + props.product.price.salePrice}
-            </strong>
+            </h4>
           )}
         </div>
         {/* content and brand */}

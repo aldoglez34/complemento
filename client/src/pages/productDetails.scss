@@ -10,7 +10,7 @@
   height: 75px;
   width: 75px;
   top: 25px;
-  left: 125px;
+  left: 65px;
   z-index: 2;
 }
 
@@ -21,4 +21,17 @@
   top: 25px;
   left: 75px;
   z-index: 2;
+}
+
+@media only screen and (max-width: 991px) {
+  .discountImg {
+    left: 10px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .discountImg {
+    top: 95px;
+    left: 90px;
+  }
 }
