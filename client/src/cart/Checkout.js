@@ -248,6 +248,7 @@ const Checkout = React.memo(() => {
               </Form.Row>
               <h3>Forma de pago</h3>
               <hr className="myDivider" />
+              <p>Aquí va la forma de pago</p>
               <Button
                 className="mt-3"
                 size="lg"
