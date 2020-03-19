@@ -5,6 +5,7 @@ import { Row, Col, Table, Image, Badge, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 import QtyPickerForCart from "./QtyPickerForCart";
 import Summary from "./Summary";
+import BuyButton from "./components/BuyButton";
 
 const BigCart = React.memo(({ formatNumber, products = [] }) => {
   const dispatch = useDispatch();
@@ -145,16 +146,10 @@ const BigCart = React.memo(({ formatNumber, products = [] }) => {
               }, 0) + 70
             )}
           />
-          <Button
-            href="/checkout"
-            variant="danger"
-            size="lg"
-            block
-            className="mt-3"
-            title="Comprar"
-          >
-            COMPRAR
-          </Button>
+          {/* buy button */}
+          <div className="mt-3">
+            <BuyButton />
+          </div>
         </Col>
       </Row>
     </React.Fragment>

@@ -59,7 +59,7 @@ const CartErrorsModal = React.memo(
                       Solicitaste
                     </th>
                     <th className="border-top-0 border-right-0 border-left-0 text-center">
-                      Stock
+                      Tenemos
                     </th>
                     <th className="border-top-0 border-right-0 border-left-0"></th>
                   </tr>
