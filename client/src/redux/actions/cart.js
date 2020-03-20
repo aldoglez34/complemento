@@ -24,3 +24,10 @@ export const deleteItem = data => {
     data
   };
 };
+
+export const adjustCart = data => {
+  return {
+    type: "cart/adjustCart",
+    data
+  };
+};

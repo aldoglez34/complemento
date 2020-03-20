@@ -69,6 +69,32 @@ const cartReducers = (state = { counter: 0, items: [] }, action) => {
           return acc;
         }, [])
       };
+    case "cart/adjustCart":
+      // get both arrays
+      const { zeroStock, notEnoughStock } = action.data;
+      console.log("@notEnoughStock", notEnoughStock);
+      console.log("@zeroStock", zeroStock);
+      console.log("@state.items", state.items);
+      console.log("@state.counter", state.counter);
+      // delete all the items that have zero stock from the items array (if any)
+      // and adjust the qty on all the items that don't have enough stock
+      let counter = state.counter;
+      let items = [];
+      //
+      state.items.forEach(si => {
+        // get values
+        let zsIdx = zeroStock.findIndex(
+          zs => zs._id.toString() === si._id.toString()
+        );
+        let nesIdx = notEnoughStock.findIndex(
+          nes => nes._id.toString() === si._id.toString()
+        );
+        // if zero stock
+        if (zsIdx) {
+        }
+      });
+      // return stuff
+      return { counter: counter, items: items };
     default:
       return state;
   }

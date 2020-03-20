@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Modal, Button, Table, Alert, ListGroup, Badge } from "react-bootstrap";
 import API from "../../utils/API";
+import * as cartActions from "../../redux/actions/cart";
 
 const BuyButton = React.memo(() => {
+  const dispatch = useDispatch();
+
   const cart = useSelector(state => state.cart);
 
   const [show, setShow] = useState(false);
@@ -14,6 +17,8 @@ const BuyButton = React.memo(() => {
   const handleShow = () => setShow(true);
 
   const [loading, setLoading] = useState(false);
+
+  const [adjustCartLoading, setAdjustCartLoading] = useState(false);
 
   const checkStock = () => {
     // set loading to true so the user don't click the button again
@@ -31,11 +36,17 @@ const BuyButton = React.memo(() => {
       .then(() => (window.location.href = "/checkout"))
       .catch(err => {
         console.log("@err.response", err.response);
-        setNotEnoughStock(err.response.data.notEnoughStock);
         setZeroStock(err.response.data.zeroStock);
+        setNotEnoughStock(err.response.data.notEnoughStock);
         handleShow(true);
         // alert(err.response.data.msg);
       });
+  };
+
+  const adjustCart = () => {
+    setAdjustCartLoading(true);
+    dispatch(cartActions.adjustCart({ zeroStock, notEnoughStock }));
+    window.location.href = "/cart";
   };
 
   return (
@@ -122,7 +133,8 @@ const BuyButton = React.memo(() => {
               block
               variant="danger"
               title="Hacer ajustes a canasta"
-              onClick={() => alert("haciendo ajustes...")}
+              onClick={adjustCart}
+              disabled={adjustCartLoading}
             >
               Hacer ajustes a canasta
             </Button>
