@@ -1,19 +1,10 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import { Container, Col, Form, Button } from "react-bootstrap";
 import Layout from "../components/Layout";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
-import API from "../utils/API";
-import CartErrorsModal from "./components/CartErrorsModal";
 
 const Checkout = React.memo(() => {
-  const cart = useSelector(state => state.cart);
-
-  const [notEnoughStock, setNotEnoughStock] = useState([]);
-  const [zeroStock, setZeroStock] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-
   const yupSchema = yup.object({
     street: yup.string().required("Requerido"),
     municipality: yup.string().required("Requerido"),
@@ -29,11 +20,6 @@ const Checkout = React.memo(() => {
 
   return (
     <Layout hideBag={true}>
-      <CartErrorsModal
-        showModal={showModal}
-        notEnoughStock={notEnoughStock}
-        zeroStock={zeroStock}
-      />
       <Container className="my-4">
         <h3>Dirección de envío</h3>
         <hr className="myDivider" />
@@ -49,24 +35,6 @@ const Checkout = React.memo(() => {
           validationSchema={yupSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            // generate a string including all cart items with their quantities
-            let cartStr = cart.items.reduce((acc, cv, idx) => {
-              if (idx === cart.items.length - 1) {
-                acc += cv._id + "-" + cv.qty;
-              } else {
-                acc += cv._id + "-" + cv.qty + ",";
-              }
-              return acc;
-            }, "");
-            API.checkStock(cartStr)
-              .then(() => alert("Compra realizada con éxito"))
-              .catch(err => {
-                console.log("@err.response", err.response);
-                setNotEnoughStock(err.response.data.notEnoughStock);
-                setZeroStock(err.response.data.zeroStock);
-                setShowModal(true);
-                // alert(err.response.data.msg);
-              });
           }}
         >
           {({
