@@ -57,6 +57,10 @@ export default {
     return axios.get("/api/cart/checkStock/" + cartString);
   },
 
+  saveAddress: function(data) {
+    return axios.put("/api/cart/saveAddress", data);
+  },
+
   makeSale: function(data) {
     return axios.post("/api/cart/buy", data);
   },

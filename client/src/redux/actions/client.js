@@ -24,3 +24,10 @@ export const updateClient = data => {
     data
   };
 };
+
+export const addAddress = data => {
+  return {
+    type: "client/addAddress",
+    data
+  };
+};

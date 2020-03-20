@@ -1,10 +1,18 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as clientActions from "../redux/actions/client";
 import { Container, Col, Form, Button } from "react-bootstrap";
 import Layout from "../components/Layout";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
+import API from "../utils/API";
 
 const Checkout = React.memo(() => {
+  const dispatch = useDispatch();
+
+  const client = useSelector(state => state.client);
+  const cart = useSelector(state => state.cart);
+
   const yupSchema = yup.object({
     street: yup.string().required("Requerido"),
     municipality: yup.string().required("Requerido"),
@@ -18,23 +26,77 @@ const Checkout = React.memo(() => {
       .required("Requerido")
   });
 
+  const addressData = () => {
+    if (client.isLogged && client.address) {
+      return {
+        street: client.address.street,
+        municipality: client.address.municipality,
+        neighborhood: client.address.neighborhood,
+        city: client.address.city,
+        state: client.address.state,
+        zipCode: client.address.zipCode,
+        saveAddress: true
+      };
+    } else if (client.isLogged && !client.address) {
+      return {
+        street: "",
+        municipality: "",
+        neighborhood: "",
+        city: "",
+        state: "",
+        zipCode: "",
+        saveAddress: true
+      };
+    } else if (!client.isLogged) {
+      return {
+        street: "",
+        municipality: "",
+        neighborhood: "",
+        city: "",
+        state: "",
+        zipCode: "",
+        saveAddress: false
+      };
+    }
+  };
+
   return (
-    <Layout hideBag={true}>
+    <Layout hideBag={true} hideUser={client.isLogged ? false : true}>
       <Container className="my-4">
         <h3>Dirección de envío</h3>
         <hr className="myDivider" />
         <Formik
-          initialValues={{
-            street: "",
-            municipality: "",
-            neighborhood: "",
-            city: "",
-            state: "",
-            zipCode: ""
-          }}
+          initialValues={addressData()}
           validationSchema={yupSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
+            //
+            if (values.saveAddress) {
+              // if save address is checked
+              // update redux before updating db
+              dispatch(clientActions.addAddress(values));
+              API.saveAddress({ address: values, clientId: client._id })
+                .then(() => {
+                  API.makeSale({ items: cart.items, clientId: client._id })
+                    .then(() => alert("Compra registrada con éxito"))
+                    .catch(err => {
+                      console.log(err.response);
+                      alert(err.response.data.msg);
+                    });
+                })
+                .catch(err => {
+                  console.log(err.response);
+                  alert(err.response.data.msg);
+                });
+            } else if (!values.saveAddress) {
+              // if save address is NOT checked
+              API.makeSale({ items: cart.items, clientId: client._id })
+                .then(() => alert("Compra registrada con éxito"))
+                .catch(err => {
+                  console.log(err.response);
+                  alert(err.response.data.msg);
+                });
+            }
           }}
         >
           {({
@@ -142,7 +204,9 @@ const Checkout = React.memo(() => {
                     onBlur={handleBlur}
                     isValid={touched.state && !errors.state}
                     as="select"
-                    defaultValue={"DEFAULT"}
+                    defaultValue={
+                      client.address ? client.address.state : "DEFAULT"
+                    }
                   >
                     <option value="DEFAULT" disabled>
                       Elige...
@@ -208,6 +272,18 @@ const Checkout = React.memo(() => {
                   />
                 </Form.Group>
               </Form.Row>
+              {client.isLogged ? (
+                <Form.Group controlId="formBasicCheckbox">
+                  <Form.Check
+                    type="checkbox"
+                    label="Guardar dirección de envío en mi cuenta"
+                    name="saveAddress"
+                    value={values.saveAddress}
+                    onChange={handleChange}
+                    checked={values.saveAddress}
+                  />
+                </Form.Group>
+              ) : null}
               <h3>Forma de pago</h3>
               <hr className="myDivider" />
               <p>Aquí van los datos de la tarjeta</p>

@@ -11,7 +11,7 @@ import API from "../../utils/API";
 import "./mynavbar.scss";
 import PropTypes from "prop-types";
 
-const MyNavbar = React.memo(({ hideBag = false }) => {
+const MyNavbar = React.memo(({ hideBag, hideUser }) => {
   const [items, setItems] = useState({});
 
   const [store, setStore] = useState([]);
@@ -76,7 +76,11 @@ const MyNavbar = React.memo(({ hideBag = false }) => {
               {hideBag ? null : <BagDropdown size="large" />}
             </Nav.Item>
             <Nav.Item>
-              {client.isLogged ? <ClientDropdown /> : <LoginDropdown />}
+              {hideUser ? null : client.isLogged ? (
+                <ClientDropdown />
+              ) : (
+                <LoginDropdown />
+              )}
             </Nav.Item>
           </Nav>
         </div>

@@ -129,71 +129,97 @@ router.get("/checkStock/:cartStr", (req, res) => {
     });
 });
 
-// makeSale()
-// matches with /api/cart/buy
-router.post("/buy", function(req, res) {
-  let products = [];
-  let subTotal = 0;
-
-  req.body.products.map(p => {
-    let temp = {
-      product: p._id,
-      qty: p.qty,
-      salePrice: p.price.discount.hasDiscount
-        ? p.price.discount.newPrice
-        : p.price.salePrice
-    };
-    subTotal += p.qty * temp.salePrice;
-    products.push(temp);
-  });
-
-  const newSale = {
-    products,
-    subTotal,
-    shipment: 70,
-    grandTotal: subTotal + 70,
-    client: req.body.client.isLogged ? req.body.client._id : null,
-    address: req.body.client.isLogged
-      ? {
-          street: req.body.client.address.street,
-          neighborhood: req.body.client.address.neighborhood,
-          municipality: req.body.client.address.municipality,
-          city: req.body.client.address.city,
-          state: req.body.client.address.state,
-          zipCode: req.body.client.address.zipCode
-        }
-      : {
-          street: "N/A",
-          neighborhood: "N/A",
-          municipality: "N/A",
-          city: "N/A",
-          state: "N/A",
-          zipCode: "N/A"
-        }
-  };
-
-  model.Sale.create({
-    products: newSale.products,
-    subTotal: newSale.subTotal,
-    shipment: newSale.shipment,
-    grandTotal: newSale.grandTotal,
-    client: newSale.client,
-    address: {
-      street: newSale.address.street,
-      neighborhood: newSale.address.neighborhood,
-      municipality: newSale.address.municipality,
-      city: newSale.address.city,
-      state: newSale.address.state,
-      zipCode: newSale.address.zipCode
-    }
-  })
-    .then(data => res.json(data))
+// saveAddress()
+// matches with /api/cart/saveAddress
+router.put("/saveAddress", (req, res) => {
+  const { address, clientId } = req.body;
+  //
+  model.Client.findByIdAndUpdate(
+    clientId, // this is the _id of the user that is going to be updated
+    {
+      address: {
+        street: address.street,
+        neighborhood: address.neighborhood,
+        municipality: address.municipality,
+        city: address.city,
+        state: address.state,
+        zipCode: address.zipCode
+      }
+    },
+    { new: true } // returns the new document
+  )
+    .then(data => res.status(200).json(data))
     .catch(err => {
       console.log("@err", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
 });
 
+// ===============================================================================================
+
+// makeSale()
+// matches with /api/cart/buy
+router.post("/buy", function(req, res) {
+  const { items, clientId } = req.body;
+  console.log("@items", items);
+  console.log("@clientId", clientId);
+
+  const searchProductSalePrice = _id => {
+    model.Product.findById(_id)
+      .then(price => {
+        return price;
+      })
+      .catch(err => {
+        console.log("@err", err);
+        res
+          .status(422)
+          .send({ msg: "Lo sentimos. Ocurrió un error con tu orden." });
+      });
+  };
+
+  // first, generate the cart (handle errors)
+  const products = [];
+  items.forEach(i => {
+    let salePrice = searchProductSalePrice(i._id);
+
+    products.push({
+      product: i._id,
+      qty: i.qty,
+      salePrice: salePrice
+    });
+  });
+
+  console.log("@products", products);
+
+  res.status(200).send("OK");
+
+  // const newSale = {
+  //   products,
+  //   subTotal,
+  //   shipment: 70,
+  //   grandTotal: subTotal + 70,
+  //   client: req.body.client.isLogged ? req.body.client._id : null,
+  //   address: req.body.client.isLogged
+  //     ? {
+  //         street: req.body.client.address.street,
+  //         neighborhood: req.body.client.address.neighborhood,
+  //         municipality: req.body.client.address.municipality,
+  //         city: req.body.client.address.city,
+  //         state: req.body.client.address.state,
+  //         zipCode: req.body.client.address.zipCode
+  //       }
+  //     : {
+  //         street: "N/A",
+  //         neighborhood: "N/A",
+  //         municipality: "N/A",
+  //         city: "N/A",
+  //         state: "N/A",
+  //         zipCode: "N/A"
+  //       }
+  // };
+});
+
+// ?????????????????
 // updateStock()
 // matches with /api/cart/update/stock
 router.put("/update/stock", function(req, res) {

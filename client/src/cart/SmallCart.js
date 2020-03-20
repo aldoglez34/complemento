@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as cartActions from "../redux/actions/cart";
 import { Row, Col, Image, Badge, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
-import QtyPickerForCart from "./QtyPickerForCart";
+import QtyPickerForCart from "./components/QtyPickerForCart";
 import Summary from "./Summary";
 import BuyButton from "./components/BuyButton";
 

@@ -37,6 +37,18 @@ const clientReducers = (state = { isLogged: false }, action) => {
           neighborhood: action.data.neighborhood
         }
       };
+    case "client/addAddress":
+      return {
+        ...state,
+        address: {
+          street: action.data.street,
+          city: action.data.city,
+          state: action.data.state,
+          zipCode: action.data.zipCode,
+          municipality: action.data.municipality,
+          neighborhood: action.data.neighborhood
+        }
+      };
     default:
       return state;
   }

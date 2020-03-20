@@ -18,8 +18,6 @@ const BuyButton = React.memo(() => {
 
   const [loading, setLoading] = useState(false);
 
-  const [adjustCartLoading, setAdjustCartLoading] = useState(false);
-
   const checkStock = () => {
     // set loading to true so the user don't click the button again
     setLoading(true);
@@ -138,7 +136,6 @@ const BuyButton = React.memo(() => {
               variant="danger"
               title="Hacer ajustes a canasta"
               onClick={adjustCart}
-              disabled={adjustCartLoading}
             >
               Hacer ajustes a canasta
             </Button>

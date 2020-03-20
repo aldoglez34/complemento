@@ -127,7 +127,6 @@ class BagDropdown extends PureComponent {
                 </h3>
                 <Button block variant="danger" href="/cart">
                   Ir a canasta
-                  <i className="fas fa-arrow-right ml-1" />
                 </Button>
               </>
             ) : (
