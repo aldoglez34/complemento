@@ -72,29 +72,57 @@ const cartReducers = (state = { counter: 0, items: [] }, action) => {
     case "cart/adjustCart":
       // get both arrays
       const { zeroStock, notEnoughStock } = action.data;
-      console.log("@notEnoughStock", notEnoughStock);
-      console.log("@zeroStock", zeroStock);
-      console.log("@state.items", state.items);
-      console.log("@state.counter", state.counter);
       // delete all the items that have zero stock from the items array (if any)
       // and adjust the qty on all the items that don't have enough stock
-      let counter = state.counter;
-      let items = [];
-      //
-      state.items.forEach(si => {
-        // get values
-        let zsIdx = zeroStock.findIndex(
-          zs => zs._id.toString() === si._id.toString()
-        );
-        let nesIdx = notEnoughStock.findIndex(
-          nes => nes._id.toString() === si._id.toString()
-        );
-        // if zero stock
-        if (zsIdx) {
-        }
-      });
-      // return stuff
-      return { counter: counter, items: items };
+      return {
+        counter: state.items.reduce((acc, cv) => {
+          // get indexes
+          let zs = zeroStock.findIndex(
+            i => i._id.toString() === cv._id.toString()
+          );
+          let nes = notEnoughStock.findIndex(
+            i => i._id.toString() === cv._id.toString()
+          );
+          if (zs >= 0 && nes === -1) {
+            // it's in zero stock only
+            // substract qty (all of it because the item will be deleted)
+            acc -= cv.qty;
+          }
+          if (zs === -1 && nes >= 0) {
+            // it's in notenoughstock only so substract current stock to the qty
+            acc -= cv.qty - notEnoughStock[nes].stock;
+          }
+          if (zs === -1 && nes === -1) {
+            // item not in zeroStock and not in notEnoughStock
+            // ignore it
+          }
+          return acc;
+        }, state.counter),
+        items: state.items.reduce((acc, cv) => {
+          // get indexes
+          let zs = zeroStock.findIndex(
+            i => i._id.toString() === cv._id.toString()
+          );
+          let nes = notEnoughStock.findIndex(
+            i => i._id.toString() === cv._id.toString()
+          );
+          if (zs >= 0 && nes === -1) {
+            // it's in zero stock only so ignore it
+          }
+          if (zs === -1 && nes >= 0) {
+            // it's in notenoughstock only so substract current stock to the qty
+            acc.push({
+              _id: cv._id,
+              qty: notEnoughStock[nes].stock
+            });
+          }
+          if (zs === -1 && nes === -1) {
+            // item not in zeroStock and not in notEnoughStock so push it normally
+            acc.push(cv);
+          }
+          return acc;
+        }, [])
+      };
     default:
       return state;
   }

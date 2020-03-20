@@ -43,11 +43,8 @@ const BuyButton = React.memo(() => {
       });
   };
 
-  const adjustCart = () => {
-    setAdjustCartLoading(true);
+  const adjustCart = () =>
     dispatch(cartActions.adjustCart({ zeroStock, notEnoughStock }));
-    window.location.href = "/cart";
-  };
 
   return (
     <>
@@ -109,6 +106,7 @@ const BuyButton = React.memo(() => {
                     <th className="border-top-0 border-right-0 border-left-0 text-center">
                       Solicitaste
                     </th>
+                    <th className="border-top-0 border-right-0 border-left-0 text-center"></th>
                     <th className="border-top-0 border-right-0 border-left-0 text-center">
                       Tenemos
                     </th>
@@ -119,6 +117,12 @@ const BuyButton = React.memo(() => {
                     <tr key={e._id}>
                       <td className="border-0 py-2">{e.name}</td>
                       <td className="border-0 py-2 text-center">{e.qty}</td>
+                      <td className="border-0 py-2 text-center">
+                        <i
+                          className="fas fa-arrow-right"
+                          style={{ color: "#edcb58" }}
+                        />
+                      </td>
                       <td className="border-0 py-2 text-center">{e.stock}</td>
                     </tr>
                   ))}

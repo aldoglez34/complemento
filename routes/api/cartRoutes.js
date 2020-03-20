@@ -116,15 +116,12 @@ router.get("/checkStock/:cartStr", (req, res) => {
         if (cv.stock === 0) acc.push(cv);
         return acc;
       }, []);
-      if (notEnoughStock.length || zeroStock.legnth)
+
+      if (notEnoughStock.length || zeroStock.length) {
         res.status(422).json({ notEnoughStock, zeroStock });
-      // console.log("@merged", merged);
-      // merged.forEach(p => {
-      //   if (p.qty > p.stock)
-      //     res.status(422).send({
-      //       msg: `Disculpa las molestias. Por el momento sólo podemos ofrecerte ${p.stock} unidades del producto ${p.name}`
-      //     });
-      // });
+      } else {
+        res.status(200).json({ msg: "All good" });
+      }
     })
     .catch(err => {
       res.status(422).send({ msg: "Ocurrió un error" });
