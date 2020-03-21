@@ -19,7 +19,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: true,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar en el control del buen desarrollo de huesos y dientes en niños y adolescentes, Auxiliar en el control de la osteoporosis y fracturas en adultos",
       dose:
@@ -44,7 +44,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: true,
+      priority: Math.round(Math.random()),
       description: "Auxiliar en el desarrollo de las fibras musculares",
       dose: "Mezclar una porción en 500 ml de agua, beber antes de 15 minutos",
       ingredients: ["L-glutamina"],
@@ -67,7 +67,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: true,
+      priority: Math.round(Math.random()),
       description:
         "Contribuye a la correcta conservación y sintonización de proteínas y promueve el incremento de masa muscular",
       dose: "Tomar cuatro capsulas antes del entrenamiento",
@@ -91,7 +91,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: true,
+      priority: Math.round(Math.random()),
       description:
         "Snack 100% saludable, benéfico en el consumo de proteína natural sin azúcar",
       dose:
@@ -122,7 +122,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: true,
+      priority: Math.round(Math.random()),
       description: "Ayuda a quemar la grasa",
       dose: "Tomar dos capsulas por la mañana y 2 por la tarde",
       ingredients: ["Extracto de guaraná", "L-Carnitina", "Ginseng"],
@@ -145,7 +145,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: true,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar en mantener bajo el control de los niveles de azúcar en la sangre",
       dose:
@@ -170,7 +170,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: true,
+      priority: Math.round(Math.random()),
       description:
         "Auxilia en el tratamiento de ansiedad, insomnio, neurosis, nerviosismo, hipertensión, taquicardia, estrés, tiene actividad sedante y ansiolítica",
       dose:
@@ -201,7 +201,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description: "Auxiliar en el control del estrés",
       dose: "Tomar tres capsulas al día",
       ingredients: [
@@ -230,7 +230,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar en el control de la ansiedad, insomnio, nervios, dolor de cabeza, migraña, y falta de sueño",
       dose: "Agregue 50 gotas en medio vaso con agua , mínimo dos veces al día",
@@ -259,7 +259,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar en problemas de hiperplasia prostática benigna y en el tratamietno de la memoria",
       dose: "Tomar una cápsula con cada alimento",
@@ -288,7 +288,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Intensifica el rendimiento físico y mental y es auxiliar en retardar el envejecimiento celular",
       dose: "Una ampolleta al día",
@@ -312,7 +312,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description: "Auxiliar para el buen funcionamiento del sistema nervioso",
       dose:
         "Adultos: 1 ½ cucharada sopera en 300 ml de agua, tomar 2 a 3 veces al día. Niños: 1 cucharada cafetera en una taza de agua, tomar 2 a 3 veces al día",
@@ -342,7 +342,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Aroma cálido y dulce que evoca la playa y la relajación con salida a coco",
       dose:
@@ -367,7 +367,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Relajante que promueve el sueño y estimula la concentración. También alivia problemas de tos, asma y bronquitis",
       dose:
@@ -392,7 +392,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Relajante muscular que ayuda a aliviar dolorores, alivia el estrés y es muy beneficioso para el estado de ánimo",
       dose:
@@ -417,7 +417,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Ayuda a acelerar el metabolismo, quemar grasa y combatir la retención de líquidos",
       dose:
@@ -448,7 +448,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Reduce ansiedad de alimentos, talla y peso con eliminación de grasa acumulada",
       dose:
@@ -473,7 +473,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description: "Facilita la pérdida de peso",
       dose: "Tomar una capsula antes del desayuno y una antes de la cena",
       ingredients: ["Cetonas de frambuesa"],
@@ -496,7 +496,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar en tratamiento de estreñimiento, sistema digestivo y para control de peso",
       dose: "Máxima seis al dia, 2 por cada alimento",
@@ -520,7 +520,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Acelera el metabolismo para quemar calorías y reducir tallas",
       dose: "Aplique en el área deseada dando un ligero masaje",
@@ -550,7 +550,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Elimina la retención de líquidos y calma la ansiedad para reducir los excesos en la comida",
       dose: "Tomar una capsula al dia preferentemente con el desayuno",
@@ -580,7 +580,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description: "Auxiliar en la regularización de las hormonas",
       dose: "Tomar una tableta al día",
       ingredients: ["Fennel", "Sativa", "Kelp", "Ortiga", "Zarzaparrilla"],
@@ -603,7 +603,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Ayuda a mejorar la circulacion de flujo vascular y al tratamiento de la disfuncion erectil en hombres adultos",
       dose:
@@ -633,7 +633,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar en la regularización de las hormonas y a incrementar rápidamente el tamaño del busto",
       dose: "Tomar una tableta al día",
@@ -657,7 +657,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar en el control de la desinflamación y el dolor producido por golpes, esguinces y torceduras",
       dose: "Tomar 2 capsulas antes de cada alimento",
@@ -681,7 +681,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Es un tratamiento alternativo con propiedades antiinflamatorias, humectantes, regeneradoras y suavizantes",
       dose: "Se aplica con leves masajes sobre el área deseada",
@@ -705,7 +705,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Favorece una correcta circulación sanguínea, tiene propiedades antioxidantes, astringentes y cicatrizantes",
       dose:
@@ -735,7 +735,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar en el tratamiento de enfermedades cardiovasculares",
       dose: "Tomar una capsula antes de cada alimento",
@@ -759,7 +759,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description: "Tiene poderosas propiedades antioxidantes",
       dose: "Tomar una capsula antes de los alimentos",
       ingredients: [
@@ -788,7 +788,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar para reducir el colesterol malo y los triglicéridos y regular la coagulación de la sangre",
       dose: "Tomar dos capsulas antes de cada alimento, tres veces al día",
@@ -814,7 +814,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Purificación de hígado graso. Disminución acelerada del colesterol y triglicéridos en venas y arterias",
       dose:
@@ -841,7 +841,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar en el tratamiento del sobrepeso y la obesidad, así como para la disminución del colesterol",
       dose: "Tomar dos capsulas con cada alimento",
@@ -867,7 +867,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description: "Suplemento multivitamínico",
       dose: "Tomar 2 tabletas antes de cada alimento",
       ingredients: ["Alfalfa", "Miel de Abeja"],
@@ -892,7 +892,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar para mejorar la falta de vigor y para mejorar el desempeño sexual de hombres y mujeres",
       dose: "Tomar solo una tableta, una hora antes del acto",
@@ -922,7 +922,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Nutrientes específicos que contribuyen a un mejor desempeño físico, mental y sexual, que a la vez combate los síntomas de la menopausia",
       dose: "Tomar dos capsulas al día después del desayuno",
@@ -954,7 +954,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Nutrientes específicos que contribuyen una mejor energía y movimiento articular",
       dose: "Tomar dos capsulas al día después del desayuno",
@@ -986,7 +986,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar en el tratamiento para el estrés, depresión, nerviosismo e insomnio",
       dose: "Tomar 2 tabletas antes de cada alimento",
@@ -1012,7 +1012,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description: "Auxiliar en el tratamiento de la circulación sanguínea",
       dose: "Tomar dos capsulas con los alimentos",
       ingredients: ["Ginkgo"],
@@ -1037,7 +1037,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description: "Purifica la sangre y refresca el aparato circulatorio",
       dose: "Tomar dos tabletas antes de cada alimento",
       ingredients: ["Ajo deshidratado"],
@@ -1062,7 +1062,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar para personas que padecen alguna enfermedad cardiovascular y enfermedades de articulaciones",
       dose: "Tomar dos capsulas 3 veces al día con los alimentos",
@@ -1088,7 +1088,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description: "Auxiliar en el tratamiento de la hipertensión arterial",
       dose: "Tomar 20 gotas diluidas en ¼ de vaso de agua 3 veces al día",
       ingredients: ["Zapote Blanco", "Hojas de Olivo"],
@@ -1113,7 +1113,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar en el tratamiento de trastornos circulatorios, digestivos y de arteriosclerosis",
       dose: "Tomar de una a dos tabletas al día",
@@ -1139,7 +1139,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar en el control de los niveles adecuados de colesterol y triglicéridos",
       dose: "Tomar dos capsulas antes de cada alimento",
@@ -1165,7 +1165,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Coadyuvante en tratamiento de trastornos cardiovasculares con alto compromiso oxidativo",
       dose: "Mayores de 15 años, dos capsulas al día",
@@ -1191,7 +1191,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Coadyuvante en tratamiento de trastornos cardiovasculares con alto compromiso oxidativo",
       dose: "Mayores de 15 años, dos capsulas al día",
@@ -1217,7 +1217,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Acelera el metabolismo, disminuye la flacidez y sirve como tratamiento para la perdida de peso",
       dose: "Tomar 20 gotas 3 veces al día",
@@ -1249,7 +1249,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar para el tratamiento de la ansiedad, angustia e irritabilidad; coadyuvante para conciliar el sueño",
       dose:
@@ -1279,7 +1279,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Auxiliar en inflamaciones causadas por golpes, torceduras, esguinces, tensiones musculares, desgarres y problemas reumáticos",
       dose:
@@ -1306,7 +1306,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Ayuda a reducir el dolor e inflamación en músculos y articulaciones ya que posee propiedades analgésicas y antiinflamatorias",
       dose: "Aplicar la pomada frotando suavemente sobre la piel",
@@ -1332,7 +1332,7 @@ module.exports = providersList => {
         }
       },
       stock: Math.floor(Math.random() * 10),
-      priority: false,
+      priority: Math.round(Math.random()),
       description:
         "Favorecedor de la circulación, ayudando a reducir problemas en los músculos y las articulaciones",
       dose: "Diluir 10 gotas en un vaso de 250 ml de agua, 2 veces al día",

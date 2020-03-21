@@ -112,9 +112,10 @@ const AddToBagButton = React.memo(({ product, size }) => {
                 </span>
               </div>
               {/* buttons */}
-              <Col className="mt-3 p-0">
+              <hr />
+              <Col className="mt-3 p-0 text-center">
                 <Button
-                  size="lg"
+                  // size="lg"
                   variant="success"
                   block
                   onClick={() =>
@@ -123,21 +124,25 @@ const AddToBagButton = React.memo(({ product, size }) => {
                       handleClose();
                     })
                   }
-                  title="Agregar y seguir comprando"
+                  title="Seguir comprando"
+                  className="py-2"
                 >
-                  Agregar y seguir comprando
+                  <i className="fas fa-arrow-left mr-1" />
+                  Seguir comprando
                 </Button>
                 <Button
-                  size="lg"
+                  // size="lg"
                   className="mt-2"
                   block
-                  variant="outline-danger"
+                  variant="danger"
                   onClick={() =>
                     updateRedux().then(() => (window.location = "/cart"))
                   }
-                  title="Agregar e ir a canasta"
+                  title="Ir a canasta"
+                  className="py-2"
                 >
-                  Agregar e ir a canasta
+                  Ir a canasta
+                  <i className="fas fa-arrow-right ml-1" />
                 </Button>
               </Col>
             </Col>
