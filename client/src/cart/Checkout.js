@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as clientActions from "../redux/actions/client";
+import * as cartActions from "../redux/actions/cart";
 import { Container, Col, Form, Button } from "react-bootstrap";
 import Layout from "../components/Layout";
 import * as yup from "yup";
@@ -77,8 +78,17 @@ const Checkout = React.memo(() => {
               dispatch(clientActions.addAddress(values));
               API.saveAddress({ address: values, clientId: client._id })
                 .then(() => {
-                  API.makeSale({ items: cart.items, clientId: client._id })
-                    .then(() => alert("Compra registrada con éxito"))
+                  API.makeSale({
+                    items: cart.items,
+                    clientId: client._id,
+                    address: values,
+                    shipment: 70
+                  })
+                    .then(res => {
+                      alert(res.data.msg);
+                      dispatch(cartActions.clear());
+                      window.location.href = "/";
+                    })
                     .catch(err => {
                       console.log(err.response);
                       alert(err.response.data.msg);
@@ -90,8 +100,17 @@ const Checkout = React.memo(() => {
                 });
             } else if (!values.saveAddress) {
               // if save address is NOT checked
-              API.makeSale({ items: cart.items, clientId: client._id })
-                .then(() => alert("Compra registrada con éxito"))
+              API.makeSale({
+                items: cart.items,
+                clientId: client._id,
+                address: values,
+                shipment: 70
+              })
+                .then(res => {
+                  alert(res.data.msg);
+                  dispatch(cartActions.clear());
+                  window.location.href = "/";
+                })
                 .catch(err => {
                   console.log(err.response);
                   alert(err.response.data.msg);

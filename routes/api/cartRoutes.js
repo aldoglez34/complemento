@@ -160,38 +160,95 @@ router.put("/saveAddress", (req, res) => {
 // makeSale()
 // matches with /api/cart/buy
 router.post("/buy", function(req, res) {
-  const { items, clientId } = req.body;
-  console.log("@items", items);
-  console.log("@clientId", clientId);
+  const { items, clientId, shipment, address } = req.body;
 
-  const searchProductSalePrice = _id => {
-    model.Product.findById(_id)
-      .then(price => {
-        return price;
-      })
-      .catch(err => {
-        console.log("@err", err);
-        res
-          .status(422)
-          .send({ msg: "Lo sentimos. Ocurrió un error con tu orden." });
+  // generate arr of ids
+  const idsOnly = items.reduce((acc, cv) => {
+    acc.push(cv._id);
+    return acc;
+  }, []);
+
+  // search product prices
+  model.Product.find()
+    .select("price")
+    .where("_id")
+    .in(idsOnly)
+    .then(data => {
+      // merge arrays
+      let mergedProducts = data.reduce((acc, cv) => {
+        // search index of cv's _id in the items array (if not found this will return -1)
+        let idx = items.findIndex(p => p._id.toString() === cv._id.toString());
+        // if product not found, send 422 status
+        if (idx !== -1) {
+          acc.push({
+            _id: cv._id,
+            qty: items[idx].qty,
+            salePrice: cv.price.discount.hasDiscount
+              ? cv.price.discount.newPrice
+              : cv.price.salePrice
+          });
+        } else {
+          res.status(422).send({
+            msg:
+              "Lo sentimos. Ocurrió un error con alguno de los productos. Inténtalo de nuevo."
+          });
+        }
+        return acc;
+      }, []);
+      // calculate subtotal, grand total and shipment and add address
+      let subTotal = 0;
+      mergedProducts.forEach((item, idx) => {
+        let totalByProduct =
+          mergedProducts[idx].qty * mergedProducts[idx].salePrice;
+        mergedProducts[idx].totalByProduct = totalByProduct;
+        subTotal += totalByProduct;
       });
-  };
-
-  // first, generate the cart (handle errors)
-  const products = [];
-  items.forEach(i => {
-    let salePrice = searchProductSalePrice(i._id);
-
-    products.push({
-      product: i._id,
-      qty: i.qty,
-      salePrice: salePrice
+      // create sale obj
+      let sale = {
+        products: mergedProducts,
+        subTotal,
+        shipment,
+        grandTotal: subTotal + shipment,
+        client: clientId,
+        address: {
+          street: address.street,
+          neighborhood: address.neighborhood,
+          municipality: address.municipality,
+          city: address.city,
+          state: address.state,
+          zipCode: address.zipCode
+        }
+      };
+      // create new sale
+      return model.Sale.create(sale);
+    })
+    .then(() => {
+      // UPDATE PRODUCT STOCK
+    })
+    .then(() => res.status(200).send({ msg: "Compra realizada con éxito" }))
+    .catch(err => {
+      console.log("@err", err);
+      res.status(422).send({
+        msg:
+          "Lo sentimos. Ocurrió un error con alguno de los productos. Inténtalo de nuevo."
+      });
     });
-  });
 
-  console.log("@products", products);
+  // // first, generate the cart (handle errors)
+  // const products = [];
+  // items.forEach(i => {
+  //   let salePrice = searchProductSalePrice(i._id);
 
-  res.status(200).send("OK");
+  //   products.push({
+  //     product: i._id,
+  //     qty: i.qty,
+  //     salePrice: salePrice
+  //   });
+  // });
+
+  // console.log("@products", products);
+
+  // res.status(200).send("OK");
 
   // const newSale = {
   //   products,

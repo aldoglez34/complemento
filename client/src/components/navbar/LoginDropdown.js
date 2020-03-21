@@ -197,7 +197,7 @@ const LoginDropdown = React.memo(() => {
           )}
         </Formik>
         <hr />
-        <Dropdown.Item className="navbarDropdownItemStyle px-3" href="/signup">
+        <Dropdown.Item className="navbarDropdownItemStyle px-3" href="/signup" disabled>
           Regístrate con nosotros
         </Dropdown.Item>
       </>

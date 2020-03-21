@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const SaleSchema = new Schema({
   products: [
     {
-      product: {
+      _id: {
         type: Schema.Types.ObjectId,
         ref: "Product",
         required: true
@@ -14,6 +14,10 @@ const SaleSchema = new Schema({
         required: true
       },
       salePrice: {
+        type: Number,
+        required: true
+      },
+      totalByProduct: {
         type: Number,
         required: true
       }
