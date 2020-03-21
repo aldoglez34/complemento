@@ -15,6 +15,15 @@ const Checkout = React.memo(() => {
   const cart = useSelector(state => state.cart);
 
   const yupSchema = yup.object({
+    email: yup
+      .string()
+      .email("Formato inválido")
+      .required("Requerido"),
+    phone: yup
+      .string()
+      .matches(/^[0-9]*$/, "Formato inválido")
+      .length(10, "La longitud exacta debe ser 10 dígitos")
+      .required("Requerido"),
     street: yup.string().required("Requerido"),
     municipality: yup.string().required("Requerido"),
     neighborhood: yup.string().required("Requerido"),
@@ -23,13 +32,15 @@ const Checkout = React.memo(() => {
     zipCode: yup
       .string()
       .matches(/^[0-9]*$/, "Formato inválido")
-      .length(5, "La longitud exacta debe ser 5 dígitos")
+      .length(5, "Formato inválido")
       .required("Requerido")
   });
 
   const addressData = () => {
     if (client.isLogged && client.address) {
       return {
+        email: client.email,
+        phone: client.phone,
         street: client.address.street,
         municipality: client.address.municipality,
         neighborhood: client.address.neighborhood,
@@ -40,6 +51,8 @@ const Checkout = React.memo(() => {
       };
     } else if (client.isLogged && !client.address) {
       return {
+        email: "",
+        phone: "",
         street: "",
         municipality: "",
         neighborhood: "",
@@ -50,6 +63,8 @@ const Checkout = React.memo(() => {
       };
     } else if (!client.isLogged) {
       return {
+        email: "",
+        phone: "",
         street: "",
         municipality: "",
         neighborhood: "",
@@ -64,8 +79,6 @@ const Checkout = React.memo(() => {
   return (
     <Layout hideBag={true} hideUser={client.isLogged ? false : true}>
       <Container className="my-4">
-        <h3>Dirección de envío</h3>
-        <hr className="myDivider" />
         <Formik
           initialValues={addressData()}
           validationSchema={yupSchema}
@@ -128,6 +141,54 @@ const Checkout = React.memo(() => {
             isSubmitting
           }) => (
             <Form noValidate onSubmit={handleSubmit}>
+              <h3>Información</h3>
+              <hr className="myDivider" />
+              <h5 className="mt-3">Datos de contacto</h5>
+              <Form.Row>
+                <Form.Group as={Col} md={6}>
+                  <Form.Label>
+                    Correo
+                    <strong className="ml-1 text-danger">*</strong>
+                  </Form.Label>
+                  <Form.Control
+                    maxLength="100"
+                    placeholder="Correo"
+                    type="text"
+                    name="email"
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    isValid={touched.email && !errors.email}
+                  />
+                  <ErrorMessage
+                    className="text-danger"
+                    name="email"
+                    component="div"
+                  />
+                </Form.Group>
+                <Form.Group as={Col} md={6}>
+                  <Form.Label>
+                    Teléfono
+                    <strong className="ml-1 text-danger">*</strong>
+                  </Form.Label>
+                  <Form.Control
+                    maxLength="100"
+                    placeholder="Teléfono"
+                    type="text"
+                    name="phone"
+                    value={values.phone}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    isValid={touched.phone && !errors.phone}
+                  />
+                  <ErrorMessage
+                    className="text-danger"
+                    name="phone"
+                    component="div"
+                  />
+                </Form.Group>
+              </Form.Row>
+              <h5 className="mt-2">Dirección de envío</h5>
               <Form.Row>
                 <Form.Group as={Col} md={6}>
                   <Form.Label>
