@@ -51,8 +51,8 @@ const Checkout = React.memo(() => {
       };
     } else if (client.isLogged && !client.address) {
       return {
-        email: "",
-        phone: "",
+        email: client.email,
+        phone: client.phone,
         street: "",
         municipality: "",
         neighborhood: "",
@@ -89,7 +89,7 @@ const Checkout = React.memo(() => {
               // if save address is checked
               // update redux before updating db
               dispatch(clientActions.addAddress(values));
-              API.saveAddress({ address: values, clientId: client._id })
+              API.saveClientData({ data: values, clientId: client._id })
                 .then(() => {
                   API.makeSale({
                     items: cart.items,
@@ -148,7 +148,9 @@ const Checkout = React.memo(() => {
                 <Form.Group as={Col} md={6}>
                   <Form.Label>
                     Correo
-                    <strong className="ml-1 text-danger">*</strong>
+                    <strong className="ml-1 text-danger" title="Requerido">
+                      *
+                    </strong>
                   </Form.Label>
                   <Form.Control
                     maxLength="100"
@@ -169,10 +171,12 @@ const Checkout = React.memo(() => {
                 <Form.Group as={Col} md={6}>
                   <Form.Label>
                     Teléfono
-                    <strong className="ml-1 text-danger">*</strong>
+                    <strong className="ml-1 text-danger" title="Requerido">
+                      *
+                    </strong>
                   </Form.Label>
                   <Form.Control
-                    maxLength="100"
+                    maxLength="10"
                     placeholder="Teléfono"
                     type="text"
                     name="phone"
@@ -193,7 +197,9 @@ const Checkout = React.memo(() => {
                 <Form.Group as={Col} md={6}>
                   <Form.Label>
                     Calle con número
-                    <strong className="ml-1 text-danger">*</strong>
+                    <strong className="ml-1 text-danger" title="Requerido">
+                      *
+                    </strong>
                   </Form.Label>
                   <Form.Control
                     maxLength="100"
@@ -213,7 +219,10 @@ const Checkout = React.memo(() => {
                 </Form.Group>
                 <Form.Group as={Col} md={3}>
                   <Form.Label>
-                    Municipio<strong className="ml-1 text-danger">*</strong>
+                    Municipio
+                    <strong className="ml-1 text-danger" title="Requerido">
+                      *
+                    </strong>
                   </Form.Label>
                   <Form.Control
                     maxLength="100"
@@ -233,7 +242,10 @@ const Checkout = React.memo(() => {
                 </Form.Group>
                 <Form.Group as={Col} md={3}>
                   <Form.Label>
-                    Colonia<strong className="ml-1 text-danger">*</strong>
+                    Colonia
+                    <strong className="ml-1 text-danger" title="Requerido">
+                      *
+                    </strong>
                   </Form.Label>
                   <Form.Control
                     maxLength="100"
@@ -255,7 +267,10 @@ const Checkout = React.memo(() => {
               <Form.Row>
                 <Form.Group as={Col} md={6}>
                   <Form.Label>
-                    Ciudad<strong className="ml-1 text-danger">*</strong>
+                    Ciudad
+                    <strong className="ml-1 text-danger" title="Requerido">
+                      *
+                    </strong>
                   </Form.Label>
                   <Form.Control
                     maxLength="100"
@@ -275,7 +290,10 @@ const Checkout = React.memo(() => {
                 </Form.Group>
                 <Form.Group as={Col} md={3}>
                   <Form.Label>
-                    Estado<strong className="ml-1 text-danger">*</strong>
+                    Estado
+                    <strong className="ml-1 text-danger" title="Requerido">
+                      *
+                    </strong>
                   </Form.Label>
                   <Form.Control
                     name="state"
@@ -333,7 +351,9 @@ const Checkout = React.memo(() => {
                 <Form.Group as={Col} md={3}>
                   <Form.Label>
                     Código postal
-                    <strong className="ml-1 text-danger">*</strong>
+                    <strong className="ml-1 text-danger" title="Requerido">
+                      *
+                    </strong>
                   </Form.Label>
                   <Form.Control
                     maxLength="5"
@@ -356,7 +376,7 @@ const Checkout = React.memo(() => {
                 <Form.Group controlId="formBasicCheckbox">
                   <Form.Check
                     type="checkbox"
-                    label="Guardar dirección de envío en mi cuenta"
+                    label="Guardar datos en mi cuenta"
                     name="saveAddress"
                     value={values.saveAddress}
                     onChange={handleChange}

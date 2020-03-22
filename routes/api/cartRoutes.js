@@ -129,21 +129,23 @@ router.get("/checkStock/:cartStr", (req, res) => {
     });
 });
 
-// saveAddress()
-// matches with /api/cart/saveAddress
-router.put("/saveAddress", (req, res) => {
-  const { address, clientId } = req.body;
+// saveClientData()
+// matches with /api/cart/saveClientData
+router.put("/saveClientData", (req, res) => {
+  const { data, clientId } = req.body;
   //
   model.Client.findByIdAndUpdate(
     clientId, // this is the _id of the user that is going to be updated
     {
+      email: data.email,
+      phone: data.phone,
       address: {
-        street: address.street,
-        neighborhood: address.neighborhood,
-        municipality: address.municipality,
-        city: address.city,
-        state: address.state,
-        zipCode: address.zipCode
+        street: data.street,
+        neighborhood: data.neighborhood,
+        municipality: data.municipality,
+        city: data.city,
+        state: data.state,
+        zipCode: data.zipCode
       }
     },
     { new: true } // returns the new document
@@ -222,8 +224,19 @@ router.post("/buy", function(req, res) {
       // create new sale
       return model.Sale.create(sale);
     })
-    .then(() => {
-      // UPDATE PRODUCT STOCK
+    .then(data => {
+      // update product stock
+      // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      const { products } = data;
+      const idsOnly = products.reduce((acc, cv) => {
+        acc.push(cv._id);
+        return acc;
+      }, []);
+      return model.Product.update(
+        { _id: { $in: idsOnly } },
+        { $set: { stock: yourvisibility } },
+        { multi: true }
+      );
     })
     .then(() => res.status(200).send({ msg: "Compra realizada con éxito" }))
     .catch(err => {
@@ -233,47 +246,6 @@ router.post("/buy", function(req, res) {
           "Lo sentimos. Ocurrió un error con alguno de los productos. Inténtalo de nuevo."
       });
     });
-
-  // // first, generate the cart (handle errors)
-  // const products = [];
-  // items.forEach(i => {
-  //   let salePrice = searchProductSalePrice(i._id);
-
-  //   products.push({
-  //     product: i._id,
-  //     qty: i.qty,
-  //     salePrice: salePrice
-  //   });
-  // });
-
-  // console.log("@products", products);
-
-  // res.status(200).send("OK");
-
-  // const newSale = {
-  //   products,
-  //   subTotal,
-  //   shipment: 70,
-  //   grandTotal: subTotal + 70,
-  //   client: req.body.client.isLogged ? req.body.client._id : null,
-  //   address: req.body.client.isLogged
-  //     ? {
-  //         street: req.body.client.address.street,
-  //         neighborhood: req.body.client.address.neighborhood,
-  //         municipality: req.body.client.address.municipality,
-  //         city: req.body.client.address.city,
-  //         state: req.body.client.address.state,
-  //         zipCode: req.body.client.address.zipCode
-  //       }
-  //     : {
-  //         street: "N/A",
-  //         neighborhood: "N/A",
-  //         municipality: "N/A",
-  //         city: "N/A",
-  //         state: "N/A",
-  //         zipCode: "N/A"
-  //       }
-  // };
 });
 
 // ?????????????????
