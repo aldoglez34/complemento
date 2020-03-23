@@ -76,6 +76,32 @@ const Checkout = React.memo(() => {
     }
   };
 
+  const makeSaleAndUpdateStock = values => {
+    API.makeSale({
+      items: cart.items,
+      clientId: client._id,
+      address: values,
+      shipment: 70
+    })
+      .then(() => {
+        // after successffully registering the sale, update the stock
+        API.updateStock({ items: cart.items })
+          .then(res => {
+            alert(res.data.msg);
+            dispatch(cartActions.clear());
+            window.location.href = "/";
+          })
+          .catch(err => {
+            console.log(err.response);
+            // alert(err.response.data.msg);
+          });
+      })
+      .catch(err => {
+        console.log(err.response);
+        // alert(err.response.data.msg);
+      });
+  };
+
   return (
     <Layout hideBag={true} hideUser={client.isLogged ? false : true}>
       <Container className="my-4">
@@ -84,50 +110,20 @@ const Checkout = React.memo(() => {
           validationSchema={yupSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            //
             if (values.saveAddress) {
               // if save address is checked
-              // update redux before updating db
+              // update redux first
               dispatch(clientActions.addAddress(values));
+              // then update db
               API.saveClientData({ data: values, clientId: client._id })
-                .then(() => {
-                  API.makeSale({
-                    items: cart.items,
-                    clientId: client._id,
-                    address: values,
-                    shipment: 70
-                  })
-                    .then(res => {
-                      alert(res.data.msg);
-                      dispatch(cartActions.clear());
-                      window.location.href = "/";
-                    })
-                    .catch(err => {
-                      console.log(err.response);
-                      alert(err.response.data.msg);
-                    });
-                })
+                .then(() => makeSaleAndUpdateStock(values))
                 .catch(err => {
                   console.log(err.response);
                   alert(err.response.data.msg);
                 });
             } else if (!values.saveAddress) {
-              // if save address is NOT checked
-              API.makeSale({
-                items: cart.items,
-                clientId: client._id,
-                address: values,
-                shipment: 70
-              })
-                .then(res => {
-                  alert(res.data.msg);
-                  dispatch(cartActions.clear());
-                  window.location.href = "/";
-                })
-                .catch(err => {
-                  console.log(err.response);
-                  alert(err.response.data.msg);
-                });
+              // if save address is NOT checked just make sale
+              makeSaleAndUpdateStock(values);
             }
           }}
         >

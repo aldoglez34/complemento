@@ -158,6 +158,7 @@ router.put("/saveClientData", (req, res) => {
 });
 
 // ===============================================================================================
+// CHECKOUT
 
 // makeSale()
 // matches with /api/cart/buy
@@ -224,21 +225,7 @@ router.post("/buy", function(req, res) {
       // create new sale
       return model.Sale.create(sale);
     })
-    .then(data => {
-      // update product stock
-      // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      const { products } = data;
-      const idsOnly = products.reduce((acc, cv) => {
-        acc.push(cv._id);
-        return acc;
-      }, []);
-      return model.Product.update(
-        { _id: { $in: idsOnly } },
-        { $set: { stock: yourvisibility } },
-        { multi: true }
-      );
-    })
-    .then(() => res.status(200).send({ msg: "Compra realizada con éxito" }))
+    .then(() => res.status(200).send({ msg: "Compra registrada con éxito" }))
     .catch(err => {
       console.log("@err", err);
       res.status(422).send({
@@ -248,12 +235,13 @@ router.post("/buy", function(req, res) {
     });
 });
 
-// ?????????????????
 // updateStock()
 // matches with /api/cart/update/stock
 router.put("/update/stock", function(req, res) {
+  const { items } = req.body;
+
   let updateAll = new Promise((resolve, reject) => {
-    req.body.forEach((value, index, array) => {
+    items.forEach((value, index, array) => {
       model.Product.findByIdAndUpdate(value._id, {
         $inc: { unitsSold: value.qty, stock: -Math.abs(value.qty) }
       }).catch(err => res.json(err));
@@ -261,10 +249,13 @@ router.put("/update/stock", function(req, res) {
     });
   });
   updateAll
-    .then(data => res.json(data))
+    .then(() => res.status(200).send({ msg: "Compra realizada con éxito" }))
     .catch(err => {
       console.log("@err", err);
-      res.status(422).send({ msg: "Ocurrió un error" });
+      res.status(422).send({
+        msg:
+          "Lo sentimos. Ocurrió un error con alguno de los productos. Inténtalo de nuevo."
+      });
     });
 });
 
