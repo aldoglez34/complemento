@@ -37,16 +37,20 @@ const clientReducers = (state = { isLogged: false }, action) => {
           neighborhood: action.data.neighborhood
         }
       };
-    case "client/addAddress":
+    case "client/updateAfterPurchase":
       return {
         ...state,
+        name: action.data.name,
+        firstSurname: action.data.firstSurname,
+        secondSurname: action.data.secondSurname,
+        phone: action.data.phone,
         address: {
-          street: action.data.street,
-          city: action.data.city,
-          state: action.data.state,
-          zipCode: action.data.zipCode,
-          municipality: action.data.municipality,
-          neighborhood: action.data.neighborhood
+          street: action.data.address.street,
+          city: action.data.address.city,
+          state: action.data.address.state,
+          zipCode: action.data.address.zipCode,
+          municipality: action.data.address.municipality,
+          neighborhood: action.data.address.neighborhood
         }
       };
     default:

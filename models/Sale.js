@@ -35,19 +35,27 @@ const SaleSchema = new Schema({
     type: Number,
     required: true
   },
-  client: {
-    type: Schema.Types.ObjectId,
-    ref: "Client",
-    required: false
+  buyer: {
+    clientId: {
+      type: Schema.Types.ObjectId,
+      ref: "Client",
+      required: false
+    },
+    name: { type: String, required: true },
+    firstSurname: { type: String, required: true },
+    secondSurname: { type: String, required: true },
+    email: { type: String, required: true },
+    phone: { type: String, required: true },
+    address: {
+      street: { type: String, required: true },
+      neighborhood: { type: String, required: true },
+      municipality: { type: String, required: true },
+      city: { type: String, required: true },
+      state: { type: String, required: true },
+      zipCode: { type: String, required: true }
+    }
   },
-  address: {
-    street: { type: String, required: true },
-    neighborhood: { type: String, required: true },
-    municipality: { type: String, required: true },
-    city: { type: String, required: true },
-    state: { type: String, required: true },
-    zipCode: { type: String, required: true }
-  },
+
   saleDate: {
     type: Date,
     default: Date.now()

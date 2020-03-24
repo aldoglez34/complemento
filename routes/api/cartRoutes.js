@@ -129,23 +129,37 @@ router.get("/checkStock/:cartStr", (req, res) => {
     });
 });
 
+// ===============================================================================================
+// CHECKOUT
+
 // saveClientData()
 // matches with /api/cart/saveClientData
 router.put("/saveClientData", (req, res) => {
-  const { data, clientId } = req.body;
+  const {
+    clientId,
+    name,
+    firstSurname,
+    secondSurname,
+    email,
+    phone,
+    address
+  } = req.body;
   //
   model.Client.findByIdAndUpdate(
     clientId, // this is the _id of the user that is going to be updated
     {
-      email: data.email,
-      phone: data.phone,
+      name: name,
+      firstSurname: firstSurname,
+      secondSurname: secondSurname,
+      email: email,
+      phone: phone,
       address: {
-        street: data.street,
-        neighborhood: data.neighborhood,
-        municipality: data.municipality,
-        city: data.city,
-        state: data.state,
-        zipCode: data.zipCode
+        street: address.street,
+        neighborhood: address.neighborhood,
+        municipality: address.municipality,
+        city: address.city,
+        state: address.state,
+        zipCode: address.zipCode
       }
     },
     { new: true } // returns the new document
@@ -157,13 +171,19 @@ router.put("/saveClientData", (req, res) => {
     });
 });
 
-// ===============================================================================================
-// CHECKOUT
-
 // makeSale()
 // matches with /api/cart/buy
 router.post("/buy", function(req, res) {
-  const { items, clientId, shipment, address } = req.body;
+  const {
+    clientId,
+    name,
+    firstSurname,
+    secondSurname,
+    email,
+    phone,
+    address
+  } = req.body.buyer;
+  const { items, shipment } = req.body;
 
   // generate arr of ids
   const idsOnly = items.reduce((acc, cv) => {
@@ -212,20 +232,27 @@ router.post("/buy", function(req, res) {
         subTotal,
         shipment,
         grandTotal: subTotal + shipment,
-        client: clientId,
-        address: {
-          street: address.street,
-          neighborhood: address.neighborhood,
-          municipality: address.municipality,
-          city: address.city,
-          state: address.state,
-          zipCode: address.zipCode
+        buyer: {
+          clientId: clientId,
+          name: name,
+          firstSurname: firstSurname,
+          secondSurname: secondSurname,
+          email: email,
+          phone: phone,
+          address: {
+            street: address.street,
+            neighborhood: address.neighborhood,
+            municipality: address.municipality,
+            city: address.city,
+            state: address.state,
+            zipCode: address.zipCode
+          }
         }
       };
       // create new sale
       return model.Sale.create(sale);
     })
-    .then(() => res.status(200).send({ msg: "Compra registrada con éxito" }))
+    .then(data => res.status(200).json(data))
     .catch(err => {
       console.log("@err", err);
       res.status(422).send({
@@ -256,6 +283,20 @@ router.put("/update/stock", function(req, res) {
         msg:
           "Lo sentimos. Ocurrió un error con alguno de los productos. Inténtalo de nuevo."
       });
+    });
+});
+
+// fetchOrder()
+// matches with /api/cart/order/:saleId
+router.get("/api/cart/order/:saleId", function(req, res) {
+  model.Sale.findById(req.params.saleId)
+    .populate("product")
+    .then(data => {
+      res.status(200).json(data);
+    })
+    .catch(err => {
+      console.log("@err", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
     });
 });
 

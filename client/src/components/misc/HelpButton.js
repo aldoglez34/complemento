@@ -41,7 +41,7 @@ const HelpButton = React.memo(function HelpButton() {
       <Modal className="modal-open" show={show} onHide={handleClose}>
         <Modal.Body>
           <div className="d-flex flex-row pt-1 pb-2">
-            <h4 className="mb-0 text-dark">Ayuda</h4>
+            <h4 className="mb-0">Ayuda</h4>
             <i
               className="fas fa-times ml-auto"
               style={{ cursor: "pointer" }}

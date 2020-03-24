@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as clientActions from "../redux/actions/client";
 import * as cartActions from "../redux/actions/cart";
@@ -7,6 +7,7 @@ import Layout from "../components/Layout";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
 import API from "../utils/API";
+import Order from "./components/Order";
 
 const Checkout = React.memo(() => {
   const dispatch = useDispatch();
@@ -14,7 +15,13 @@ const Checkout = React.memo(() => {
   const client = useSelector(state => state.client);
   const cart = useSelector(state => state.cart);
 
+  const [saleId, setSaleId] = useState();
+  const [showOrder, setShowOrder] = useState(false);
+
   const yupSchema = yup.object({
+    name: yup.string().required("Requerido"),
+    firstSurname: yup.string().required("Requerido"),
+    secondSurname: yup.string().required("Requerido"),
     email: yup
       .string()
       .email("Formato inválido")
@@ -37,32 +44,26 @@ const Checkout = React.memo(() => {
   });
 
   const addressData = () => {
-    if (client.isLogged && client.address) {
+    if (client.isLogged) {
       return {
+        name: client.name,
+        firstSurname: client.firstSurname,
+        secondSurname: client.secondSurname,
         email: client.email,
         phone: client.phone,
-        street: client.address.street,
-        municipality: client.address.municipality,
-        neighborhood: client.address.neighborhood,
-        city: client.address.city,
-        state: client.address.state,
-        zipCode: client.address.zipCode,
-        saveAddress: true
-      };
-    } else if (client.isLogged && !client.address) {
-      return {
-        email: client.email,
-        phone: client.phone,
-        street: "",
-        municipality: "",
-        neighborhood: "",
-        city: "",
-        state: "",
-        zipCode: "",
+        street: client.address ? client.address.street : "",
+        municipality: client.address ? client.address.municipality : "",
+        neighborhood: client.address ? client.address.neighborhood : "",
+        city: client.address ? client.address.city : "",
+        state: client.address ? client.address.state : "",
+        zipCode: client.address ? client.address.zipCode : "",
         saveAddress: true
       };
     } else if (!client.isLogged) {
       return {
+        name: "",
+        firstSurname: "",
+        secondSurname: "",
         email: "",
         phone: "",
         street: "",
@@ -76,29 +77,31 @@ const Checkout = React.memo(() => {
     }
   };
 
-  const makeSaleAndUpdateStock = values => {
+  const makeSaleAndUpdateStock = buyer => {
+    let saleId;
+
     API.makeSale({
+      buyer,
       items: cart.items,
-      clientId: client._id,
-      address: values,
       shipment: 70
     })
-      .then(() => {
+      .then(res => {
+        saleId = res.data._id;
         // after successffully registering the sale, update the stock
         API.updateStock({ items: cart.items })
-          .then(res => {
-            alert(res.data.msg);
+          .then(() => {
             dispatch(cartActions.clear());
-            window.location.href = "/";
+            setSaleId(saleId);
+            setShowOrder(true);
           })
           .catch(err => {
             console.log(err.response);
-            // alert(err.response.data.msg);
+            alert(err.response.data.msg);
           });
       })
       .catch(err => {
         console.log(err.response);
-        // alert(err.response.data.msg);
+        alert(err.response.data.msg);
       });
   };
 
@@ -110,20 +113,37 @@ const Checkout = React.memo(() => {
           validationSchema={yupSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
+            // generate buyer obj with all the personal info of the buyer
+            let buyer = {
+              clientId: client._id,
+              name: values.name,
+              firstSurname: values.firstSurname,
+              secondSurname: values.secondSurname,
+              email: values.email,
+              phone: values.phone,
+              address: {
+                street: values.street,
+                municipality: values.municipality,
+                neighborhood: values.neighborhood,
+                city: values.city,
+                state: values.state,
+                zipCode: values.zipCode
+              }
+            };
             if (values.saveAddress) {
               // if save address is checked
               // update redux first
-              dispatch(clientActions.addAddress(values));
+              dispatch(clientActions.updateAfterPurchase(buyer));
               // then update db
-              API.saveClientData({ data: values, clientId: client._id })
-                .then(() => makeSaleAndUpdateStock(values))
+              API.saveClientData(buyer)
+                .then(() => makeSaleAndUpdateStock(buyer))
                 .catch(err => {
                   console.log(err.response);
                   alert(err.response.data.msg);
                 });
             } else if (!values.saveAddress) {
               // if save address is NOT checked just make sale
-              makeSaleAndUpdateStock(values);
+              makeSaleAndUpdateStock(buyer);
             }
           }}
         >
@@ -141,6 +161,71 @@ const Checkout = React.memo(() => {
               <hr className="myDivider" />
               <h5 className="mt-3">Datos de contacto</h5>
               <Form.Row>
+                <Form.Group as={Col} md={4}>
+                  Nombre(s)
+                  <strong className="ml-1 text-danger" title="Requerido">
+                    *
+                  </strong>
+                  <Form.Control
+                    maxLength="150"
+                    placeholder="Nombre(s)"
+                    type="text"
+                    name="name"
+                    value={values.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    isValid={touched.name && !errors.name}
+                  />
+                  <ErrorMessage
+                    className="text-danger"
+                    name="name"
+                    component="div"
+                  />
+                </Form.Group>
+                <Form.Group as={Col} md={4}>
+                  Apellido Materno
+                  <strong className="ml-1 text-danger" title="Requerido">
+                    *
+                  </strong>
+                  <Form.Control
+                    maxLength="150"
+                    placeholder="Apellido paterno"
+                    type="text"
+                    name="firstSurname"
+                    value={values.firstSurname}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    isValid={touched.firstSurname && !errors.firstSurname}
+                  />
+                  <ErrorMessage
+                    className="text-danger"
+                    name="firstSurname"
+                    component="div"
+                  />
+                </Form.Group>
+                <Form.Group as={Col} md={4}>
+                  Apellido materno
+                  <strong className="ml-1 text-danger" title="Requerido">
+                    *
+                  </strong>
+                  <Form.Control
+                    maxLength="150"
+                    placeholder="Apellido materno"
+                    type="text"
+                    name="secondSurname"
+                    value={values.secondSurname}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    isValid={touched.secondSurname && !errors.secondSurname}
+                  />
+                  <ErrorMessage
+                    className="text-danger"
+                    name="secondSurname"
+                    component="div"
+                  />
+                </Form.Group>
+              </Form.Row>
+              <Form.Row>
                 <Form.Group as={Col} md={6}>
                   <Form.Label>
                     Correo
@@ -149,7 +234,7 @@ const Checkout = React.memo(() => {
                     </strong>
                   </Form.Label>
                   <Form.Control
-                    maxLength="100"
+                    maxLength="150"
                     placeholder="Correo"
                     type="text"
                     name="email"
@@ -382,7 +467,8 @@ const Checkout = React.memo(() => {
               ) : null}
               <h3>Forma de pago</h3>
               <hr className="myDivider" />
-              <p>Aquí van los datos de la tarjeta</p>
+              <p>Aquí van los datos de la tarjeta :)</p>
+              <Order showOrder={showOrder} saleId={saleId} />
               <Button
                 className="my-3"
                 size="lg"

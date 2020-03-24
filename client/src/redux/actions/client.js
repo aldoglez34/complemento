@@ -25,9 +25,9 @@ export const updateClient = data => {
   };
 };
 
-export const addAddress = data => {
+export const updateAfterPurchase = data => {
   return {
-    type: "client/addAddress",
+    type: "client/updateAfterPurchase",
     data
   };
 };

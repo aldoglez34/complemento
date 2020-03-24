@@ -61,7 +61,7 @@ const BuyButton = React.memo(() => {
         <Modal.Body>
           {/* title */}
           <div className="d-flex flex-row">
-            <h4 className="mb-0 text-dark">Advertencia</h4>
+            <h4 className="mb-0">Advertencia</h4>
             <i
               className="fas fa-times ml-auto"
               style={{ cursor: "pointer" }}

@@ -69,6 +69,10 @@ export default {
     return axios.put("/api/cart/update/stock", data);
   },
 
+  fetchOrder: function(saleId) {
+    return axios.get("/api/cart/order/" + saleId);
+  },
+
   // ---------------------------------------------------------------------------
   // PRODUCT DETAILS
   // ---------------------------------------------------------------------------
