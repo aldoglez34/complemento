@@ -15,8 +15,7 @@ const Checkout = React.memo(() => {
   const client = useSelector(state => state.client);
   const cart = useSelector(state => state.cart);
 
-  const [saleId, setSaleId] = useState();
-  const [showOrder, setShowOrder] = useState(false);
+  const [order, setOrder] = useState();
 
   const yupSchema = yup.object({
     name: yup.string().required("Requerido"),
@@ -78,21 +77,28 @@ const Checkout = React.memo(() => {
   };
 
   const makeSaleAndUpdateStock = buyer => {
-    let saleId;
-
+    // first register the sale in the db
+    // second update stock and unitssold in each of the products
+    // last fetch the recently created sale and send it to the modal
     API.makeSale({
       buyer,
       items: cart.items,
       shipment: 70
     })
       .then(res => {
-        saleId = res.data._id;
+        const saleId = res.data._id;
         // after successffully registering the sale, update the stock
         API.updateStock({ items: cart.items })
           .then(() => {
-            dispatch(cartActions.clear());
-            setSaleId(saleId);
-            setShowOrder(true);
+            API.fetchOrder(saleId)
+              .then(res => {
+                dispatch(cartActions.clear());
+                setOrder(res.data);
+              })
+              .catch(err => {
+                console.log(err.response);
+                alert(err.response.data.msg);
+              });
           })
           .catch(err => {
             console.log(err.response);
@@ -468,7 +474,9 @@ const Checkout = React.memo(() => {
               <h3>Forma de pago</h3>
               <hr className="myDivider" />
               <p>Aquí van los datos de la tarjeta :)</p>
-              <Order showOrder={showOrder} saleId={saleId} />
+              {/* order modal */}
+              <Order order={order} />
+              {/* buy button */}
               <Button
                 className="my-3"
                 size="lg"

@@ -193,7 +193,7 @@ router.post("/buy", function(req, res) {
 
   // search product prices
   model.Product.find()
-    .select("price")
+    .select("name price")
     .where("_id")
     .in(idsOnly)
     .then(data => {
@@ -205,6 +205,7 @@ router.post("/buy", function(req, res) {
         if (idx !== -1) {
           acc.push({
             _id: cv._id,
+            name: cv.name,
             qty: items[idx].qty,
             salePrice: cv.price.discount.hasDiscount
               ? cv.price.discount.newPrice
@@ -288,9 +289,8 @@ router.put("/update/stock", function(req, res) {
 
 // fetchOrder()
 // matches with /api/cart/order/:saleId
-router.get("/api/cart/order/:saleId", function(req, res) {
+router.get("/order/:saleId", function(req, res) {
   model.Sale.findById(req.params.saleId)
-    .populate("product")
     .then(data => {
       res.status(200).json(data);
     })

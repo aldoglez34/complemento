@@ -6,7 +6,10 @@ const SaleSchema = new Schema({
     {
       _id: {
         type: Schema.Types.ObjectId,
-        ref: "Product",
+        ref: "Product"
+      },
+      name: {
+        type: String,
         required: true
       },
       qty: {
