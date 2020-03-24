@@ -112,7 +112,7 @@ const Checkout = React.memo(() => {
   };
 
   return (
-    <Layout hideBag={true} hideUser={client.isLogged ? false : true}>
+    <Layout hideBag={true}>
       <Container className="my-4">
         <Formik
           initialValues={addressData()}
@@ -473,7 +473,7 @@ const Checkout = React.memo(() => {
               ) : null}
               <h3>Forma de pago</h3>
               <hr className="myDivider" />
-              <p>Aquí van los datos de la tarjeta :)</p>
+              <p>Aquí van los datos de la tarjeta</p>
               {/* order modal */}
               <Order order={order} />
               {/* buy button */}
@@ -483,6 +483,7 @@ const Checkout = React.memo(() => {
                 variant="danger"
                 type="submit"
                 disabled={isSubmitting}
+                title="Pagar"
               >
                 PAGAR
               </Button>
