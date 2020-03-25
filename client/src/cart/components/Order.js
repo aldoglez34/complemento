@@ -181,11 +181,18 @@ const Order = React.memo(({ order }) => {
                 <p className="mb-4">
                   {order.buyer.address.city + ", " + order.buyer.address.state}
                 </p>
-                <div className="text-center text-muted pt-2">
-                  (Recibirás una copia de este resumen a tu correo)
-                </div>
               </Col>
             </Row>
+            {/* payment */}
+            <Row className="mt-4">
+              <Col>
+                <h4>Forma de pago</h4>
+                <p className="mb-0">xxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+              </Col>
+            </Row>
+            <div className="text-center text-muted pt-2">
+              (Recibirás una copia de este resumen a tu correo)
+            </div>
           </>
         ) : (
           <div className="h-100 d-flex align-items-center justify-content-center">

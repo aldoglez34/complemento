@@ -473,7 +473,7 @@ const Checkout = React.memo(() => {
               ) : null}
               <h3>Forma de pago</h3>
               <hr className="myDivider" />
-              <p>Aquí van los datos de la tarjeta</p>
+              <p>xxxxxxxxxxxxxxxxxxxxxxxxxx</p>
               {/* order modal */}
               <Order order={order} />
               {/* buy button */}
