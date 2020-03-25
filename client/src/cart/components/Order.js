@@ -49,11 +49,11 @@ const Order = React.memo(({ order }) => {
                   />
                 </div>
                 <h1
-                  className="text-center"
+                  className="text-center mb-3"
                   style={{
                     color: "#edcb58",
                     fontFamily: "Lobster",
-                    fontSize: "45px"
+                    fontSize: "40px"
                   }}
                 >
                   Tu Complemento
@@ -61,48 +61,55 @@ const Order = React.memo(({ order }) => {
                     className="fas fa-leaf ml-2"
                     style={{
                       color: "#edcb58",
-                      fontSize: "45px"
+                      fontSize: "37px"
                     }}
                   />
                 </h1>
-                <h4 className="text-center mb-4">
-                  ¡Gracias por tu compra, {order.buyer.name}!
-                </h4>
+                <h3 className="text-center mb-4">
+                  ¡Gracias, {order.buyer.name}!
+                </h3>
               </Col>
             </Row>
             {/* icons */}
             <Row>
               <Col>
                 <Table>
-                  <thead>
-                    <tr>
-                      <th></th>
-                      <th></th>
-                    </tr>
-                  </thead>
                   <tbody>
                     <tr>
-                      <td className="text-center">
+                      <td className="text-center border-top-0">
                         <Image
-                          style={{ height: "40px", width: "40px" }}
+                          style={{ height: "55px", width: "55px" }}
                           src="https://image.flaticon.com/icons/svg/456/456900.svg"
                         />
                       </td>
-                      <td>
-                        Te notificaremos a <strong>{order.buyer.email}</strong>{" "}
-                        cuando tus productos hayan sido enviados.
+                      <td className="border-top-0">
+                        Te notificaremos al correo{" "}
+                        <strong>{order.buyer.email}</strong> cuando tus
+                        productos hayan sido enviados.
                       </td>
                     </tr>
                     <tr>
-                      <td className="text-center">
+                      <td className="text-center border-top-0">
                         <Image
-                          style={{ height: "40px", width: "40px" }}
+                          style={{ height: "55px", width: "55px" }}
                           src="https://image.flaticon.com/icons/svg/1028/1028931.svg"
                         />
                       </td>
-                      <td>
-                        Estamos a tus órdenes al 2281112031 o
-                        ayuda@tucomplemento.com
+                      <td className="border-top-0">
+                        Estamos a tus órdenes al número{" "}
+                        <strong>2281112031</strong> o al correo{" "}
+                        <strong>tucomplemento@gmail.com</strong>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="text-center border-top-0">
+                        <Image
+                          style={{ height: "55px", width: "55px" }}
+                          src="https://image.flaticon.com/icons/svg/166/166143.svg"
+                        />
+                      </td>
+                      <td className="border-top-0">
+                        Tu número de pedido es <strong>{order._id}</strong>
                       </td>
                     </tr>
                   </tbody>
@@ -112,14 +119,11 @@ const Order = React.memo(({ order }) => {
             {/* order summary */}
             <Row>
               <Col>
-                <h5>Resumen del pedido</h5>
-                <p className="text-muted mb-3">
-                  Número de pedido: <em>{order._id}</em>
-                </p>
-                <ListGroup className="mb-3 mt-2">
+                <h4>Resumen del pedido</h4>
+                <ListGroup className="mb-2 pt-3">
                   {order.products.map(p => {
                     return (
-                      <ListGroup.Item key={p._id}>
+                      <ListGroup.Item variant="success" key={p._id}>
                         <div className="d-flex flex-row">
                           <strong>{p.name}</strong>
                           <span className="text-muted ml-1">
@@ -133,32 +137,39 @@ const Order = React.memo(({ order }) => {
                     );
                   })}
                 </ListGroup>
-                <div className="d-flex flex-column justify-center-start mb-2">
-                  <strong>
-                    SUBTOTAL:{" "}
-                    <strong className="text-danger">
-                      {formatNumber(order.subTotal)}
-                    </strong>
-                  </strong>
-                  <strong>
-                    ENVÍO:{" "}
-                    <strong className="text-danger">
-                      {formatNumber(order.shipment)}
-                    </strong>
-                  </strong>
-                  <strong>
-                    GRAN TOTAL:{" "}
-                    <strong className="text-danger">
-                      {formatNumber(order.grandTotal)}
-                    </strong>
-                  </strong>
-                </div>
+                {/* <p className="mb-1">Totales: </p> */}
+                <ListGroup>
+                  <ListGroup.Item variant="light">
+                    <div className="d-flex flex-row">
+                      <strong>SUBTOTAL</strong>
+                      <strong className="text-danger ml-auto">
+                        {formatNumber(order.subTotal)}
+                      </strong>
+                    </div>
+                  </ListGroup.Item>
+                  <ListGroup.Item variant="light">
+                    <div className="d-flex flex-row">
+                      <strong>ENVÍO</strong>
+                      <strong className="text-danger ml-auto">
+                        {formatNumber(order.shipment)}
+                      </strong>
+                    </div>
+                  </ListGroup.Item>
+                  <ListGroup.Item variant="light">
+                    <div className="d-flex flex-row">
+                      <strong>GRAN TOTAL</strong>
+                      <strong className="text-danger ml-auto">
+                        {formatNumber(order.grandTotal)}
+                      </strong>
+                    </div>
+                  </ListGroup.Item>
+                </ListGroup>
               </Col>
             </Row>
             {/* address */}
-            <Row>
+            <Row className="mt-4">
               <Col>
-                <h5>Dirección de envío</h5>
+                <h4>Dirección de envío</h4>
                 <p className="mb-0">{order.buyer.address.street}</p>
                 <p className="mb-0">
                   {order.buyer.address.municipality +
@@ -170,7 +181,7 @@ const Order = React.memo(({ order }) => {
                 <p className="mb-4">
                   {order.buyer.address.city + ", " + order.buyer.address.state}
                 </p>
-                <div className="text-center text-muted pt-3">
+                <div className="text-center text-muted pt-2">
                   (Recibirás una copia de este resumen a tu correo)
                 </div>
               </Col>

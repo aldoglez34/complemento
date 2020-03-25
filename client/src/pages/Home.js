@@ -68,7 +68,7 @@ const Home = React.memo(() => {
               (228) 111-2031
               <br />
               <i className="fas fa-envelope mr-2" />
-              complemento.natural@gmail.com
+              tucomplemento@gmail.com
             </address>
           </Col>
         </Row>
