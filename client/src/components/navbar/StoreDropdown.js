@@ -84,7 +84,7 @@ const StoreDropdown = React.memo(({ store }) => {
           <Dropdown.Toggle
             as={Nav.Link}
             className="navbarDropdownStyle p-2 pt-3"
-            title="Categorías"
+            title="Tienda"
           >
             <i className="fas fa-store mr-1" />
             Tienda
