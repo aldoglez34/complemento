@@ -32,7 +32,6 @@ const LoginDropdown = React.memo(() => {
     password: yup
       .string()
       .min(6, "Longitud incorrecta")
-      .max(15, "Longitud incorrecta")
       .required("Requerido"),
     rememberme: yup.boolean()
   });
@@ -133,6 +132,7 @@ const LoginDropdown = React.memo(() => {
                     </strong>
                   </Form.Label>
                   <Form.Control
+                    maxLength="100"
                     placeholder="Correo electrónico"
                     type="email"
                     name="email"
@@ -157,6 +157,7 @@ const LoginDropdown = React.memo(() => {
                     </strong>
                   </Form.Label>
                   <Form.Control
+                    maxLength="15"
                     placeholder="Contraseña"
                     type="password"
                     name="password"
@@ -197,7 +198,11 @@ const LoginDropdown = React.memo(() => {
           )}
         </Formik>
         <hr />
-        <Dropdown.Item className="navbarDropdownItemStyle px-3" href="/signup" disabled>
+        <Dropdown.Item
+          className="navbarDropdownItemStyle px-3"
+          href="/signup"
+          disabled
+        >
           Regístrate con nosotros
         </Dropdown.Item>
       </>

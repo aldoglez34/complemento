@@ -18,26 +18,35 @@ const Login = React.memo(function Login(props) {
   const loginSchema = yup.object({
     email: yup
       .string()
-      .email("Correo inválido")
+      .email("Formato inválido")
       .required("Requerido"),
     password: yup
       .string()
       .min(6, "Longitud incorrecta")
-      .max(15, "Longitud incorrecta")
       .required("Requerido")
   });
 
   return (
-    <Container>
+    <Container
+      fluid
+      className="h-100"
+      style={{
+        backgroundColor: "#0c2c2c"
+      }}
+    >
       <Row>
         <Col md={{ span: 4, offset: 4 }}>
           <h1
-            className="text-center text-muted mt-4 mb-4"
+            className="text-center py-3 my-4"
             style={{
-              fontFamily: "'Acme', sans-serif"
+              backgroundColor: "#0c2c2c",
+              color: "#edcb58",
+              fontFamily: "Lobster",
+              fontSize: "40px"
             }}
           >
-            Complemento Natural
+            Tu Complemento
+            <i className="fas fa-leaf ml-2" style={{ fontSize: "37px" }} />
           </h1>
           <Formik
             initialValues={{ email: "", password: "" }}
@@ -100,8 +109,14 @@ const Login = React.memo(function Login(props) {
               <Form noValidate onSubmit={handleSubmit}>
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Correo electrónico</Form.Label>
+                    <Form.Label className="text-light">
+                      Correo electrónico
+                      <strong className="ml-1 text-danger" title="Requerido">
+                        *
+                      </strong>
+                    </Form.Label>
                     <Form.Control
+                      maxLength="100"
                       placeholder="Correo electrónico"
                       type="email"
                       name="email"
@@ -119,8 +134,14 @@ const Login = React.memo(function Login(props) {
                 </Form.Row>
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Contraseña</Form.Label>
+                    <Form.Label className="text-light">
+                      Contraseña
+                      <strong className="ml-1 text-danger" title="Requerido">
+                        *
+                      </strong>
+                    </Form.Label>
                     <Form.Control
+                      maxLength="15"
                       placeholder="Contraseña"
                       type="password"
                       name="password"
@@ -136,15 +157,14 @@ const Login = React.memo(function Login(props) {
                     />
                   </Form.Group>
                 </Form.Row>
-                <div className="text-right">
-                  <Button
-                    variant="success"
-                    type="submit"
-                    disabled={isSubmitting}
-                  >
-                    Entrar
-                  </Button>
-                </div>
+                <Button
+                  variant="success"
+                  className="mt-3"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  Entrar
+                </Button>
               </Form>
             )}
           </Formik>

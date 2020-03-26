@@ -123,7 +123,7 @@ const Order = React.memo(({ order }) => {
                 <ListGroup className="mb-2 pt-3">
                   {order.products.map(p => {
                     return (
-                      <ListGroup.Item variant="success" key={p._id}>
+                      <ListGroup.Item variant="light" key={p._id}>
                         <div className="d-flex flex-row">
                           <strong>{p.name}</strong>
                           <span className="text-muted ml-1">
