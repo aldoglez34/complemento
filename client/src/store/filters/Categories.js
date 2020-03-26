@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Nav } from "react-bootstrap";
 
 const Categories = React.memo(props => {
+  console.log("rendering - categories.js");
   return (
     <React.Fragment>
       <h3>Categorías</h3>
