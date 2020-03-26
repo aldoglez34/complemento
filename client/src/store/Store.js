@@ -30,7 +30,6 @@ class Store extends PureComponent {
   };
 
   componentDidMount() {
-    console.log("rendering - Store.js");
     // fetch filters (left bar)
     API.fetchCategories()
       .then(res => this.setState({ categories: res.data }))
