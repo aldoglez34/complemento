@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const model = require("../../models");
 
-// fetchSales()
-// matches with /api/manager/sales/all
-router.get("/sales/all", function(req, res) {
+// mngr_fetchSales()
+// matches with /managerapi/sales/all
+router.get("/all", function(req, res) {
   model.Sale.find({})
     .sort({ saleDate: 1 })
-    .populate("client products.product")
+    .populate("buyer.clientId products.product")
     .then(data => res.json(data))
     .catch(err => {
       console.log("@error", err);

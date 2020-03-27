@@ -1,46 +1,60 @@
 const router = require("express").Router();
 const model = require("../../models");
 
-// fetchProvidersManager()
-// matches with /api/manager/providers/all
-router.get("/providers/all", function(req, res) {
+// mngr_fetchProviders()
+// matches with /managerapi/providers/all
+router.get("/all", function(req, res) {
   model.Provider.find({})
     .sort({ name: 1 })
-    .then(data => res.json(data))
+    .collation({ locale: "es" })
+    .then(data => res.status(200).json(data))
     .catch(err => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
 });
 
-// updateProvider()
-// matches with /api/manager/providers/update
-router.put("/providers/update", function(req, res) {
-  model.Provider.findByIdAndUpdate(req.body._id, {
-    name: req.body.name,
-    fullAddress: req.body.fullAddress,
-    rfc: req.body.rfc,
-    email: req.body.email,
-    phone: req.body.phone
+// mngr_updateProvider()
+// matches with /managerapi/providers/update
+router.put("/update", function(req, res) {
+  const { _id, name, fullAddress, rfc, email, phone } = req.body;
+
+  model.Provider.findByIdAndUpdate(_id, {
+    name,
+    fullAddress,
+    rfc,
+    email,
+    phone
   })
-    .then(data => res.json(data))
+    .then(editedProvider =>
+      res.status(200).send({
+        msg: "El proveedor fue editado correctamente.",
+        editedProvider
+      })
+    )
     .catch(err => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
 });
 
-// newProvider()
-// matches with /api/manager/providers/new
-router.post("/providers/new", async function(req, res) {
+// mngr_newProvider()
+// matches with /managerapi/providers/new
+router.post("/new", async function(req, res) {
+  const { name, rfc, email, phone, fullAddress } = req.body;
+
   model.Provider.create({
-    name: req.body.name,
-    rfc: req.body.rfc,
-    email: req.body.email,
-    phone: req.body.phone,
-    fullAddress: req.body.fullAddress
+    name: name,
+    rfc: rfc,
+    email: email,
+    phone: phone,
+    fullAddress: fullAddress
   })
-    .then(data => res.json(data))
+    .then(() => {
+      res.status(200).send({
+        msg: "El proveedor fue creado correctamente."
+      });
+    })
     .catch(err => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });

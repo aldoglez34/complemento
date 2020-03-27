@@ -4,115 +4,99 @@ export default {
   // ---------------------------------------------------------------------------
   // HOME
   // ---------------------------------------------------------------------------
-  fetchManagerByUID: function(uid) {
-    return axios.get("/managerapi/manager/" + uid);
+  mngr_fetchManagerByUID: function(uid) {
+    return axios.get("/managerapi/home/login/" + uid);
   },
 
   // ---------------------------------------------------------------------------
   // PRODUCTS
   // ---------------------------------------------------------------------------
 
-  fetchManagerProducts: function() {
-    return axios.get("/managerapi/manager/products/all");
+  mngr_fetchProducts: function() {
+    return axios.get("/managerapi/products/all");
   },
 
-  updateProduct: function(product) {
-    return axios.put("/managerapi/manager/products/update", product);
+  mngr_fetchCategories: function() {
+    return axios.get("/managerapi/products/categories/all");
   },
 
-  newProductManager: function(product) {
-    return axios.post("/managerapi/manager/products/new", product);
+  mngr_updateProduct: function(product) {
+    return axios.put("/managerapi/products/update", product);
+  },
+
+  mngr_newProduct: function(product) {
+    return axios.post("/managerapi/products/new", product);
   },
 
   // ---------------------------------------------------------------------------
   // DISCOUNTS
   // ---------------------------------------------------------------------------
 
-  fetchDiscountsManager: function() {
-    return axios.get("/managerapi/manager/discounts/all");
+  mngr_fetchDiscounts: function() {
+    return axios.get("/managerapi/discounts/all");
   },
 
-  fetchNotDiscountsManager: function() {
-    return axios.get("/managerapi/manager/notdiscounts/all");
+  mngr_newDiscount: function(discount) {
+    return axios.put("/managerapi/discounts/new", discount);
   },
 
-  newDiscount: function(discount) {
-    return axios.put("/managerapi/manager/discounts/new", discount);
+  mngr_deleteDiscount: function(discount) {
+    return axios.put("/managerapi/discounts/delete", discount);
   },
 
-  deleteDiscount: function(discount) {
-    return axios.put("/managerapi/manager/discounts/delete", discount);
-  },
-
-  updateDiscount: function(discount) {
-    return axios.put("/managerapi/manager/discounts/update", discount);
-  },
-
-  // ---------------------------------------------------------------------------
-  // CATEGORIES
-  // ---------------------------------------------------------------------------
-
-  fetchCategoriesManager: function() {
-    return axios.get("/managerapi/manager/categories/all");
-  },
-
-  updateCategory: function(category) {
-    return axios.put("/managerapi/manager/categories/update", category);
-  },
-
-  newCategory: function(data) {
-    return axios.post("/managerapi/manager/categories/new", data);
+  mngr_updateDiscount: function(discount) {
+    return axios.put("/managerapi/discounts/update", discount);
   },
 
   // ---------------------------------------------------------------------------
   // PROVIDERS
   // ---------------------------------------------------------------------------
 
-  fetchProvidersManager: function() {
-    return axios.get("/managerapi/manager/providers/all");
+  mngr_fetchProviders: function() {
+    return axios.get("/managerapi/providers/all");
   },
 
-  updateProvider: function(provider) {
-    return axios.put("/managerapi/manager/providers/update", provider);
+  mngr_updateProvider: function(provider) {
+    return axios.put("/managerapi/providers/update", provider);
   },
 
-  newProvider: function(provider) {
-    return axios.post("/managerapi/manager/providers/new", provider);
+  mngr_newProvider: function(provider) {
+    return axios.post("/managerapi/providers/new", provider);
   },
 
   // ---------------------------------------------------------------------------
   // USERS
   // ---------------------------------------------------------------------------
 
-  fetchClientsManager: function() {
-    return axios.get("/managerapi/manager/clients/all");
+  mngr_fetchClients: function() {
+    return axios.get("/managerapi/users/clients/all");
   },
 
-  fetchManagers: function() {
-    return axios.get("/managerapi/manager/managers/all");
+  mngr_fetchManagers: function() {
+    return axios.get("/managerapi/users/managers/all");
   },
 
   // ---------------------------------------------------------------------------
   // MESSAGES
   // ---------------------------------------------------------------------------
 
-  fetchMessages: function() {
-    return axios.get("/managerapi/manager/messages/all");
+  mngr_fetchMessages: function() {
+    return axios.get("/managerapi/messages/all");
   },
 
   // ---------------------------------------------------------------------------
   // SALES
   // ---------------------------------------------------------------------------
 
-  fetchSales: function() {
-    return axios.get("/managerapi/manager/sales/all");
+  mngr_fetchSales: function() {
+    return axios.get("/managerapi/sales/all");
   },
 
   // ---------------------------------------------------------------------------
   // PURCHASES
   // ---------------------------------------------------------------------------
 
-  fetchPurchases: function() {
-    return axios.get("/managerapi/manager/purchases/all");
+  mngr_fetchPurchases: function() {
+    return axios.get("/managerapi/purchases/all");
   }
 };
