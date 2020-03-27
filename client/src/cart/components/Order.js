@@ -125,7 +125,7 @@ const Order = React.memo(({ order }) => {
                     return (
                       <ListGroup.Item variant="light" key={p._id}>
                         <div className="d-flex flex-row">
-                          <strong>{p.name}</strong>
+                          <strong className="text-dark">{p.name}</strong>
                           <span className="text-muted ml-1">
                             {"(" + p.qty + ")"}
                           </span>
@@ -141,7 +141,7 @@ const Order = React.memo(({ order }) => {
                 <ListGroup>
                   <ListGroup.Item variant="light">
                     <div className="d-flex flex-row">
-                      <strong>SUBTOTAL</strong>
+                      <strong className="text-dark">SUBTOTAL</strong>
                       <strong className="text-danger ml-auto">
                         {formatNumber(order.subTotal)}
                       </strong>
@@ -149,7 +149,7 @@ const Order = React.memo(({ order }) => {
                   </ListGroup.Item>
                   <ListGroup.Item variant="light">
                     <div className="d-flex flex-row">
-                      <strong>ENVÍO</strong>
+                      <strong className="text-dark">ENVÍO</strong>
                       <strong className="text-danger ml-auto">
                         {formatNumber(order.shipment)}
                       </strong>
@@ -157,7 +157,7 @@ const Order = React.memo(({ order }) => {
                   </ListGroup.Item>
                   <ListGroup.Item variant="light">
                     <div className="d-flex flex-row">
-                      <strong>GRAN TOTAL</strong>
+                      <strong className="text-dark">GRAN TOTAL</strong>
                       <strong className="text-danger ml-auto">
                         {formatNumber(order.grandTotal)}
                       </strong>

@@ -57,7 +57,7 @@ const Login = React.memo(function Login(props) {
               firebase
                 .auth()
                 .setPersistence(firebase.auth.Auth.Persistence.SESSION)
-                .then(function() {
+                .then(() => {
                   return fb
                     .auth()
                     .signInWithEmailAndPassword(values.email, values.password)
