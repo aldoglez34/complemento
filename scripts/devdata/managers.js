@@ -1,6 +1,6 @@
 const managers = [
   {
-    firebaseUID: "704qOrG8LSQcGsvymh99QDwk6k92",
+    firebaseUID: "qrpd0VzqslW5iv9eTbVdgoMramg2",
     name: "Rosa Elena",
     firstSurname: "Solano",
     secondSurname: "González",

@@ -76,44 +76,25 @@ const SignUp = React.memo(() => {
           validationSchema={yupSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
+            ////////////////////////// signup //////////////////////////
             fire
               .auth()
               .createUserWithEmailAndPassword(values.email, values.password)
               .then(res => {
-                // set the uid from the newly created user in firebase in the values object
-                values.firebaseUID = res.user.uid;
-                console.log("@firebaseUID - new", res.user.uid);
-                console.log("@values", values);
-                // save the client info in the db
-                API.newClient(values)
-                  .then(res => {
-                    console.log("@newClient", res.data);
-                    // lastly, fetch the recently created client
-                    API.fetchClientByUID(values.firebaseUID)
-                      .then(res => {
-                        console.log("@fetchClientByUID", res.data);
-                        dispatch(clientActions.loginClient(res.data));
-                        alert(`Iniciaste sesión con éxito, ${res.data.name}`);
-                        window.location.href = "/";
-                      })
-                      .catch(err => {
-                        // print error
-                        console.log(err);
-                        setSubmitting(false);
-                      });
-                  })
-                  .catch(err => {
-                    console.log(err.response);
-                    alert(err.response.data.msg);
-                    setSubmitting(false);
-                  });
+                return res.user.updateProfile({
+                  displayName: "Client",
+                  phoneNumber: values.phone
+                });
               })
-              .catch(error => {
+              .catch(err => {
                 // firebase won't let duplicate emails
-                alert(`${values.email} ya está asignado a otra cuenta`);
+                alert(
+                  `Lo sentimos. El correo ${values.email} ya está asignado a otra cuenta`
+                );
                 setSubmitting(false);
-                console.log(error);
+                console.log(err);
               });
+            ////////////////////////////////////////////////////////////
           }}
         >
           {({

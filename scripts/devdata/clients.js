@@ -1,6 +1,6 @@
 const clients = [
   {
-    firebaseUID: "C7kTH27i1aSqbHgcgQwrtFuF3FO2",
+    firebaseUID: "FpefmCAST0bBryWQvBnYhvkVELG3",
     name: "Aldo",
     firstSurname: "Solano",
     secondSurname: "González",

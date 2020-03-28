@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as clientActions from "./redux/actions/client";
 import * as managerActions from "./redux/actions/manager";
@@ -41,13 +41,34 @@ function App() {
 
   const dispatch = useDispatch();
 
+  const [user, setUser] = useState();
+
   useEffect(() => {
+    // console.log("@App, currentUser", fire.auth().currentUser);
     // if the auth state changes, logout the client or manager
-    fire.auth().onAuthStateChanged(user => {
-      if (!user) {
-        dispatch(clientActions.logoutClient());
-        dispatch(managerActions.logoutManager());
+    fire.auth().onAuthStateChanged(u => {
+      setUser(u);
+      //
+      console.log("@onAuthStateChanged, user", u);
+      //
+      if (u !== null && u.displayName !== null)
+        console.log("@onAuthStateChanged user.displayName", u.displayName);
+      //
+      if (u !== null && u.displayName !== null)
+        console.log(
+          "@onAuthStateChanged user.displayName",
+          u.displayName === "Client"
+            ? `${u.email} ES UN CLIENTE`
+            : `${u.email} ES UN ADMINISTRADOR`
+        );
+      //
+      if (user) {
+        console.log("user en el state", user);
       }
+      // if (!user) {
+      //   dispatch(clientActions.logoutClient());
+      //   dispatch(managerActions.logoutManager());
+      // }
     });
   }, []);
 
