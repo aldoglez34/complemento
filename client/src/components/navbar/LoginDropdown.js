@@ -201,7 +201,7 @@ const LoginDropdown = React.memo(() => {
         <Dropdown.Item
           className="navbarDropdownItemStyle px-3"
           href="/signup"
-          disabled
+          // disabled
         >
           Regístrate con nosotros
         </Dropdown.Item>

@@ -189,7 +189,7 @@ const Checkout = React.memo(() => {
                   />
                 </Form.Group>
                 <Form.Group as={Col} md={4}>
-                  Apellido Materno
+                  Apellido paterno
                   <strong className="ml-1 text-danger" title="Requerido">
                     *
                   </strong>
