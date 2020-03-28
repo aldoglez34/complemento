@@ -5,7 +5,7 @@ import * as yup from "yup";
 import fb from "../firebase/fire";
 import { useDispatch } from "react-redux";
 import * as managerActions from "../redux/actions/manager";
-import API from "../utils/API";
+import APIManager from "../utils/APIManager";
 const firebase = require("firebase/app");
 
 const Login = React.memo(function Login(props) {
@@ -58,41 +58,27 @@ const Login = React.memo(function Login(props) {
                 .auth()
                 .setPersistence(firebase.auth.Auth.Persistence.SESSION)
                 .then(() => {
+                  console.log("pasó persistence...");
                   return fb
                     .auth()
                     .signInWithEmailAndPassword(values.email, values.password)
                     .then(res => {
-                      API.fetchManagerByUID(res.user.uid)
-                        .then(res => {
-                          // if (res.data) {
-                          //   dispatch(managerActions.loginManager(res.data));
-                          //   alert("¡Bienvenido!");
-                          //   props.history.push("/manager/dashboard");
-                          // } else {
-                          //   alert("Manager incorrecto");
-                          //   setSubmitting(false);
-                          // }
-                          dispatch(managerActions.loginManager(res.data));
-                          alert("¡Bienvenido!");
-                          props.history.push("/manager/dashboard");
-                        })
-                        .catch(error => {
-                          alert("Error de autenticación, revisa tus datos");
-                          console.log("Error de fetchClientByUID");
-                          console.log(error);
-                          setSubmitting(false);
-                        });
+                      console.log("res.user.uid", res.user.uid);
+                      console.log("pasó signInWithEmailAndPassword...");
+                      return APIManager.mngr_fetchManagerByUID(res.user.uid);
                     })
-                    .catch(error => {
-                      alert("Error de autenticación, revisa tus datos");
-                      console.log("Error de firebase signIn...");
-                      console.log(error);
-                      setSubmitting(false);
+                    .then(res => {
+                      console.log("pasó mngr_fetchManagerByUID...");
+                      dispatch(managerActions.loginManager(res.data));
+                      alert("¡Bienvenido!");
+                      props.history.push("/manager/dashboard");
                     });
                 })
-                .catch(error => {
-                  alert(error.code);
-                  alert(error.message);
+                .catch(err => {
+                  alert("Ocurrió un error, revisa tus datos.");
+                  console.log(err);
+                  // console.log(err);Ocurrió un error, revisa tus datos.
+                  setSubmitting(false);
                 });
               ////////////////////////////////////////
             }}
