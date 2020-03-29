@@ -86,6 +86,27 @@ const SignUp = React.memo(() => {
                   phoneNumber: values.phone
                 });
               })
+              .then(() => {
+                // login client to redux immediately
+                // API.fetchClientByUID(res.user.uid)
+                //   .then(res => {
+                //     if (res.data) {
+                //       dispatch(clientActions.loginClient(res.data));
+                //       alert(`Iniciaste sesión con éxito, ${res.data.name}`);
+                //       window.location.href = "/";
+                //     } else {
+                //       alert("Usuario incorrecto");
+                //       setSubmitting(false);
+                //     }
+                //   })
+                //   .catch(error => {
+                //     alert("Error de autenticación, revisa tus datos");
+                //     console.log("Error de fetchClientByUID");
+                //     console.log(error);
+                //     setSubmitting(false);
+                //   });
+                // window.location.href = "/";
+              })
               .catch(err => {
                 // firebase won't let duplicate emails
                 alert(

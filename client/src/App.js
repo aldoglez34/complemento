@@ -9,6 +9,7 @@ import {
   Redirect
 } from "react-router-dom";
 import fire from "./firebase/fire";
+import API from "./utils/API";
 // store
 import Home from "./pages/Home";
 import Store from "./store/Store";
@@ -35,34 +36,51 @@ import ProductsCreate from "./manager/products/ProductsCreate";
 import Sales from "./manager/sales/Sales";
 import Purchases from "./manager/purchases/Purchases";
 
-function App() {
-  const client = useSelector(state => state.client);
-  const manager = useSelector(state => state.manager);
+const App = React.memo(() => {
+  const clientRedux = useSelector(state => state.client);
+  const managerRedux = useSelector(state => state.manager);
 
   const dispatch = useDispatch();
 
-  const [user, setUser] = useState();
+  const [client, setClient] = useState();
+  const [manager, setManager] = useState();
 
   useEffect(() => {
     // console.log("@App, currentUser", fire.auth().currentUser);
     // if the auth state changes, logout the client or manager
     fire.auth().onAuthStateChanged(u => {
       console.log("@onAuthStateChanged, user", u);
-      //
-      if (u !== null && u.displayName !== null)
-        console.log("@onAuthStateChanged user.displayName", u.displayName);
-      //
-      if (u !== null && u.displayName !== null)
-        console.log(
-          "@onAuthStateChanged user.displayName",
-          u.displayName === "Client"
-            ? `${u.email} ES UN CLIENTE`
-            : `${u.email} ES UN ADMINISTRADOR`
-        );
-      // if (!user) {
-      //   dispatch(clientActions.logoutClient());
-      //   dispatch(managerActions.logoutManager());
-      // }
+
+      if (u !== null && u.displayName !== null) {
+        // get user type (could be either CLient or Manager)
+        const type = u.displayName;
+        // login client if user is type "Client"
+        if (type === "Client") {
+          // set client data in the state
+          setClient(u);
+          API.fetchClientByUID(u.uid)
+            .then(res => {
+              if (res.data) {
+                dispatch(clientActions.loginClient(res.data));
+                alert(`Iniciaste sesión con éxito, ${res.data.name}`);
+                window.location.href = "/";
+              } else {
+                alert("Usuario incorrecto");
+              }
+            })
+            .catch(err => {
+              alert("Error de autenticación, revisa tus datos");
+              console.log("Error de fetchClientByUID");
+              console.log(err);
+            });
+        }
+
+        // logout if user changes to undefined
+        if (!u) {
+          dispatch(clientActions.logoutClient());
+          dispatch(managerActions.logoutManager());
+        }
+      }
     });
   }, []);
 
@@ -101,7 +119,7 @@ function App() {
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/signup" component={SignUp} />
         {/* client routes */}
-        {client.isLogged ? (
+        {clientRedux.isLogged ? (
           <>
             <Route exact path="/client/info" component={ClientInfo} />
             <Route exact path="/client/favorites" component={ClientFavorites} />
@@ -110,7 +128,7 @@ function App() {
           <Redirect from="/client/" to="/" />
         )}
         {/* manager routes */}
-        {manager.isLogged ? (
+        {managerRedux.isLogged ? (
           <>
             <Route exact path="/manager/dashboard" component={Dashboard} />
             {/* categories */}
@@ -160,6 +178,6 @@ function App() {
       </Switch>
     </Router>
   );
-}
+});
 
 export default App;
