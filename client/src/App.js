@@ -47,8 +47,6 @@ function App() {
     // console.log("@App, currentUser", fire.auth().currentUser);
     // if the auth state changes, logout the client or manager
     fire.auth().onAuthStateChanged(u => {
-      setUser(u);
-      //
       console.log("@onAuthStateChanged, user", u);
       //
       if (u !== null && u.displayName !== null)
@@ -61,10 +59,6 @@ function App() {
             ? `${u.email} ES UN CLIENTE`
             : `${u.email} ES UN ADMINISTRADOR`
         );
-      //
-      if (user) {
-        console.log("user en el state", user);
-      }
       // if (!user) {
       //   dispatch(clientActions.logoutClient());
       //   dispatch(managerActions.logoutManager());
