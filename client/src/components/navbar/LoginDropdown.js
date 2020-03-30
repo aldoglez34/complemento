@@ -65,51 +65,16 @@ const LoginDropdown = React.memo(() => {
           initialValues={{ email: "", password: "", rememberme: false }}
           validationSchema={loginSchema}
           onSubmit={(values, { setSubmitting }) => {
-            //
             setSubmitting(true);
-            //
-            firebase
+            fire
               .auth()
-              .setPersistence(
-                values.rememberme
-                  ? firebase.auth.Auth.Persistence.LOCAL
-                  : firebase.auth.Auth.Persistence.SESSION
-              )
-              .then(() =>
-                fire
-                  .auth()
-                  .signInWithEmailAndPassword(values.email, values.password)
-                  .then(res => {
-                    API.fetchClientByUID(res.user.uid)
-                      .then(res => {
-                        if (res.data) {
-                          dispatch(clientActions.loginClient(res.data));
-                          alert(`Iniciaste sesión con éxito, ${res.data.name}`);
-                          window.location.href = "/";
-                        } else {
-                          alert("Usuario incorrecto");
-                          setSubmitting(false);
-                        }
-                      })
-                      .catch(error => {
-                        alert("Error de autenticación, revisa tus datos");
-                        console.log("Error de fetchClientByUID");
-                        console.log(error);
-                        setSubmitting(false);
-                      });
-                  })
-                  .catch(error => {
-                    alert("Error de autenticación, revisa tus datos");
-                    console.log("Error de firebase signIn...");
-                    console.log(error);
-                    setSubmitting(false);
-                  })
-              )
+              .signInWithEmailAndPassword(values.email, values.password)
               .catch(error => {
-                // Handle Errors here.
-                let errorCode = error.code;
-                let errorMessage = error.message;
-                alert(`Error ${errorCode} \n Mensaje: ${errorMessage}`);
+                alert(
+                  "Hubo un error al intentar iniciar sesión, por favor intenta de nuevo."
+                );
+                console.log(error);
+                setSubmitting(false);
               });
           }}
         >

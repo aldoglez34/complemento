@@ -36,51 +36,71 @@ import ProductsCreate from "./manager/products/ProductsCreate";
 import Sales from "./manager/sales/Sales";
 import Purchases from "./manager/purchases/Purchases";
 
-const App = React.memo(() => {
-  const clientRedux = useSelector(state => state.client);
-  const managerRedux = useSelector(state => state.manager);
+const App = () => {
+  const client = useSelector(state => state.client);
+  const manager = useSelector(state => state.manager);
 
   const dispatch = useDispatch();
 
-  const [client, setClient] = useState();
-  const [manager, setManager] = useState();
+  const [fireUserType, setFireUserType] = useState();
 
   useEffect(() => {
+    fire.auth().signOut();
     // console.log("@App, currentUser", fire.auth().currentUser);
     // if the auth state changes, logout the client or manager
-    fire.auth().onAuthStateChanged(u => {
-      console.log("@onAuthStateChanged, user", u);
+    fire.auth().onAuthStateChanged(fireUser => {
+      console.log("@onAuthStateChanged", fireUser);
 
-      if (u !== null && u.displayName !== null) {
-        // get user type (could be either CLient or Manager)
-        const type = u.displayName;
-        // login client if user is type "Client"
-        if (type === "Client") {
-          // set client data in the state
-          setClient(u);
-          API.fetchClientByUID(u.uid)
-            .then(res => {
-              if (res.data) {
-                dispatch(clientActions.loginClient(res.data));
-                alert(`Iniciaste sesión con éxito, ${res.data.name}`);
-                window.location.href = "/";
-              } else {
-                alert("Usuario incorrecto");
-              }
-            })
-            .catch(err => {
-              alert("Error de autenticación, revisa tus datos");
-              console.log("Error de fetchClientByUID");
-              console.log(err);
-            });
-        }
-
-        // logout if user changes to undefined
-        if (!u) {
-          dispatch(clientActions.logoutClient());
-          dispatch(managerActions.logoutManager());
+      if (fireUser) {
+        console.log("fireUser is NOT null");
+        // depending on whether it's a Client or a Manager
+        switch (fireUser.displayName) {
+          // CLIENT ======================================
+          case "Client":
+            console.log("user is a CLIENT");
+            // if client is NOT signed in on redux, sign the client
+            if (!client.isLogged) {
+              // fetch client from the db and set it on redux
+              console.log("client is NOT logged in on redux");
+              API.fetchClientByUID(fireUser.uid)
+                .then(res => {
+                  console.log("loggin client");
+                  dispatch(clientActions.loginClient(res.data));
+                  alert(`Iniciaste sesión con éxito, ${res.data.name}`);
+                  window.location.href = "/";
+                  setFireUserType("Client");
+                })
+                .catch(error => {
+                  alert(
+                    "Hubo un error al intentar iniciar sesión, por favor intenta de nuevo."
+                  );
+                  console.log(error);
+                });
+            }
+            break;
+          // MANAGER ======================================
+          case "Manager":
+            console.log("user is a MANAGER");
+            // if client is NOT signed in on redux, sign the client
+            if (!manager.isLogged) {
+              console.log("manager is NOT logged in on redux");
+            }
+            break;
         }
       }
+
+      // what if firebase user is undefined
+      // it could mean he just logged out or that he never signed in
+      if (!fireUser) {
+        // if either the client or the manager are logged in, sign them out
+        if (client.isLogged) dispatch(clientActions.logoutClient());
+        if (manager.isLogged) dispatch(managerActions.logoutManager());
+        setFireUserType(null);
+      }
+
+      console.log(
+        "======================================================================"
+      );
     });
   }, []);
 
@@ -119,7 +139,7 @@ const App = React.memo(() => {
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/signup" component={SignUp} />
         {/* client routes */}
-        {clientRedux.isLogged ? (
+        {fireUserType === "Client" ? (
           <>
             <Route exact path="/client/info" component={ClientInfo} />
             <Route exact path="/client/favorites" component={ClientFavorites} />
@@ -128,7 +148,7 @@ const App = React.memo(() => {
           <Redirect from="/client/" to="/" />
         )}
         {/* manager routes */}
-        {managerRedux.isLogged ? (
+        {fireUserType === "Manager" ? (
           <>
             <Route exact path="/manager/dashboard" component={Dashboard} />
             {/* categories */}
@@ -178,6 +198,6 @@ const App = React.memo(() => {
       </Switch>
     </Router>
   );
-});
+};
 
 export default App;
