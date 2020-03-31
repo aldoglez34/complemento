@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Dropdown, Nav, NavItem, Modal, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import fire from "../../firebase/fire";
-import * as clientActions from "../../redux/actions/client";
+import * as userActions from "../../redux/actions/user";
 
 const ClientDropdown = React.memo(function ClientDropdown() {
   const [show, setShow] = useState(false);
@@ -19,7 +19,7 @@ const ClientDropdown = React.memo(function ClientDropdown() {
       .auth()
       .signOut()
       .then(() => {
-        dispatch(clientActions.logoutClient());
+        dispatch(userActions.logoutUser());
         window.location.href = "/";
       })
       .catch(error => console.log(error));

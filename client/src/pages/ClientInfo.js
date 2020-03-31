@@ -7,7 +7,7 @@ import ScrollButton from "../components/misc/ScrollButton";
 import HelpButton from "../components/misc/HelpButton";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
-import * as clientActions from "../redux/actions/client";
+import * as userActions from "../redux/actions/user";
 
 const ClientInfo = React.memo(function ClientInfo() {
   const client = useSelector(state => state.client);
@@ -93,7 +93,7 @@ const ClientInfo = React.memo(function ClientInfo() {
             API.updateClient(trimmedValues)
               .then(res => {
                 alert("Cliente editado con éxito");
-                dispatch(clientActions.updateClient(trimmedValues));
+                dispatch(userActions.updateClient(trimmedValues));
                 setSubmitting(false);
                 window.location.href = "/";
               })

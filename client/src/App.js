@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import * as clientActions from "./redux/actions/client";
-import * as managerActions from "./redux/actions/manager";
+import * as userActions from "./redux/actions/user";
 import {
   BrowserRouter as Router,
   Route,
@@ -37,72 +36,59 @@ import Sales from "./manager/sales/Sales";
 import Purchases from "./manager/purchases/Purchases";
 
 const App = () => {
-  const client = useSelector(state => state.client);
-  const manager = useSelector(state => state.manager);
+  const user = useSelector(state => state.user);
 
   const dispatch = useDispatch();
 
-  const [fireUserType, setFireUserType] = useState();
+  const [loggedUser, setLoggedUser] = useState(null);
 
   useEffect(() => {
-    fire.auth().signOut();
-    // console.log("@App, currentUser", fire.auth().currentUser);
-    // if the auth state changes, logout the client or manager
+    // fire.auth().signOut();
     fire.auth().onAuthStateChanged(fireUser => {
-      console.log("@onAuthStateChanged", fireUser);
-
-      if (fireUser) {
-        console.log("fireUser is NOT null");
+      //
+      console.log("@fireUser", fireUser);
+      console.log("@loggedUser", loggedUser);
+      //
+      if (fireUser && !loggedUser) {
         // depending on whether it's a Client or a Manager
         switch (fireUser.displayName) {
           // CLIENT ======================================
           case "Client":
-            console.log("user is a CLIENT");
-            // if client is NOT signed in on redux, sign the client
-            if (!client.isLogged) {
-              // fetch client from the db and set it on redux
-              console.log("client is NOT logged in on redux");
-              API.fetchClientByUID(fireUser.uid)
-                .then(res => {
-                  console.log("loggin client");
-                  dispatch(clientActions.loginClient(res.data));
-                  alert(`Iniciaste sesión con éxito, ${res.data.name}`);
-                  window.location.href = "/";
-                  setFireUserType("Client");
-                })
-                .catch(error => {
-                  alert(
-                    "Hubo un error al intentar iniciar sesión, por favor intenta de nuevo."
-                  );
-                  console.log(error);
-                });
-            }
+            //
+            setLoggedUser("Client");
+            //
+            // API.fetchClientByUID(fireUser.uid)
+            //   .then(res => {
+            //     dispatch(userActions.loginClient(res.data));
+            //     alert(`Iniciaste sesión con éxito, ${res.data.name}`);
+            //     window.location.href = "/";
+            //   })
+            //   .catch(error => {
+            //     alert(
+            //       "Hubo un error al intentar iniciar sesión, por favor intenta de nuevo."
+            //     );
+            //     console.log(error);
+            //   });
             break;
           // MANAGER ======================================
           case "Manager":
-            console.log("user is a MANAGER");
-            // if client is NOT signed in on redux, sign the client
-            if (!manager.isLogged) {
-              console.log("manager is NOT logged in on redux");
-            }
+            // do manager stuff
+            //
+            setLoggedUser("Manager");
             break;
         }
+      } else if (!fireUser) {
+        dispatch(userActions.logoutUser());
+        setLoggedUser(null);
       }
 
-      // what if firebase user is undefined
-      // it could mean he just logged out or that he never signed in
-      if (!fireUser) {
-        // if either the client or the manager are logged in, sign them out
-        if (client.isLogged) dispatch(clientActions.logoutClient());
-        if (manager.isLogged) dispatch(managerActions.logoutManager());
-        setFireUserType(null);
-      }
+      // if (unsubscribe) {
+      //   unsubscribe();
+      // }
 
-      console.log(
-        "======================================================================"
-      );
+      console.log("===================================");
     });
-  }, []);
+  }, [loggedUser]);
 
   return (
     <Router>
@@ -139,7 +125,7 @@ const App = () => {
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/signup" component={SignUp} />
         {/* client routes */}
-        {fireUserType === "Client" ? (
+        {loggedUser === "Client" ? (
           <>
             <Route exact path="/client/info" component={ClientInfo} />
             <Route exact path="/client/favorites" component={ClientFavorites} />
@@ -148,7 +134,7 @@ const App = () => {
           <Redirect from="/client/" to="/" />
         )}
         {/* manager routes */}
-        {fireUserType === "Manager" ? (
+        {loggedUser === "Manager" ? (
           <>
             <Route exact path="/manager/dashboard" component={Dashboard} />
             {/* categories */}

@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button, Modal, Image } from "react-bootstrap";
 import PropTypes from "prop-types";
 import API from "../../utils/API";
-import * as clientActions from "../../redux/actions/client";
+import * as userActions from "../../redux/actions/user";
 import "./favbutton.scss";
 
 const FavButton = React.memo(({ product, isBlock }) => {
   const dispatch = useDispatch();
 
-  const isClientLogged = useSelector(state => state.client.isLogged);
+  const isClientLogged = useSelector(state => state.client);
   const client = useSelector(state => state.client);
 
   const [show, setShow] = useState(false);
@@ -27,7 +27,7 @@ const FavButton = React.memo(({ product, isBlock }) => {
       // post favorite in the db
       API.addFavorite({ clientId: client._id, product: product._id })
         .then(res =>
-          dispatch(clientActions.updateFavorites(res.data.favorites))
+          dispatch(userActions.updateFavorites(res.data.favorites))
         )
         .catch(err => {
           console.log(err.response);

@@ -76,7 +76,7 @@ const MyNavbar = React.memo(({ hideBag, hideUser }) => {
               {hideBag ? null : <BagDropdown size="large" />}
             </Nav.Item>
             <Nav.Item>
-              {hideUser ? null : client.isLogged ? (
+              {hideUser ? null : client ? (
                 <ClientDropdown />
               ) : (
                 <LoginDropdown />

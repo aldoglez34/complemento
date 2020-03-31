@@ -1,13 +1,9 @@
+// ==========================================================
+// client
 export const loginClient = data => {
   return {
     type: "client/login",
     data
-  };
-};
-
-export const logoutClient = () => {
-  return {
-    type: "client/logout"
   };
 };
 
@@ -29,5 +25,24 @@ export const updateAfterPurchase = data => {
   return {
     type: "client/updateAfterPurchase",
     data
+  };
+};
+
+// ==========================================================
+// manager
+
+export const loginManager = data => {
+  return {
+    type: "manager/login",
+    data
+  };
+};
+
+// ==========================================================
+// both
+
+export const logoutUser = () => {
+  return {
+    type: "client/logoutUser"
   };
 };

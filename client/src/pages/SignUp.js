@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import * as clientActions from "../redux/actions/client";
+import * as userActions from "../redux/actions/user";
 import { Container, Col, Form, Button } from "react-bootstrap";
 import Layout from "../components/Layout";
 import * as yup from "yup";
@@ -91,7 +91,7 @@ const SignUp = React.memo(() => {
                 // API.fetchClientByUID(res.user.uid)
                 //   .then(res => {
                 //     if (res.data) {
-                //       dispatch(clientActions.loginClient(res.data));
+                //       dispatch(userActions.loginClient(res.data));
                 //       alert(`Iniciaste sesión con éxito, ${res.data.name}`);
                 //       window.location.href = "/";
                 //     } else {

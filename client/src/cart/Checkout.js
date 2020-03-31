@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import * as clientActions from "../redux/actions/client";
+import * as userActions from "../redux/actions/user";
 import * as cartActions from "../redux/actions/cart";
 import { Container, Col, Form, Button } from "react-bootstrap";
 import Layout from "../components/Layout";
@@ -139,7 +139,7 @@ const Checkout = React.memo(() => {
             if (values.saveAddress) {
               // if save address is checked
               // update redux first
-              dispatch(clientActions.updateAfterPurchase(buyer));
+              dispatch(userActions.updateAfterPurchase(buyer));
               // then update db
               API.saveClientData(buyer)
                 .then(() => makeSaleAndUpdateStock(buyer))

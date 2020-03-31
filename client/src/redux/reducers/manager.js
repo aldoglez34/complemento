@@ -1,8 +1,7 @@
-const managerReducers = (state = { isLogged: false }, action) => {
+const managerReducers = (state = null, action) => {
   switch (action.type) {
     case "manager/login":
       return {
-        isLogged: true,
         firebaseUID: action.data.firebaseUID,
         name: action.data.name,
         firstSurname: action.data.firstSurname,
@@ -10,9 +9,7 @@ const managerReducers = (state = { isLogged: false }, action) => {
         email: action.data.email
       };
     case "manager/logout":
-      return {
-        isLogged: false
-      };
+      return null;
     default:
       return state;
   }

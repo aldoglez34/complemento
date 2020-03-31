@@ -19,7 +19,7 @@ const SmallNav = React.memo(({ store, items }) => {
     >
       <StoreDropdown store={store} />
       <SearchButton items={items} />
-      {client.isLogged ? <ClientDropdown /> : <LoginDropdown />}
+      {client ? <ClientDropdown /> : <LoginDropdown />}
     </Container>
   );
 });

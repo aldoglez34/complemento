@@ -11,7 +11,7 @@ import {
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
 import API from "../../utils/API";
-import * as clientActions from "../../redux/actions/client";
+import * as userActions from "../../redux/actions/user";
 import { useDispatch } from "react-redux";
 import fire from "../../firebase/fire";
 const firebase = require("firebase/app");
