@@ -16,7 +16,7 @@ const MyNavbar = React.memo(({ hideBag, hideUser }) => {
 
   const [store, setStore] = useState([]);
 
-  const client = useSelector(state => state.client);
+  const client = useSelector(state => state.user);
   const cart = useSelector(state => state.cart);
 
   useEffect(() => {

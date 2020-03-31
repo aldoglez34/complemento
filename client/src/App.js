@@ -36,7 +36,7 @@ import Sales from "./manager/sales/Sales";
 import Purchases from "./manager/purchases/Purchases";
 
 const App = () => {
-  const user = useSelector(state => state.user);
+  const userRedux = useSelector(state => state.user);
 
   const dispatch = useDispatch();
 
@@ -48,8 +48,9 @@ const App = () => {
       //
       console.log("@fireUser", fireUser);
       console.log("@loggedUser", loggedUser);
+      console.log("@userRedux", userRedux);
       //
-      if (fireUser && !loggedUser) {
+      if (fireUser && !loggedUser && !userRedux) {
         // depending on whether it's a Client or a Manager
         switch (fireUser.displayName) {
           // CLIENT ======================================
@@ -57,18 +58,16 @@ const App = () => {
             //
             setLoggedUser("Client");
             //
-            // API.fetchClientByUID(fireUser.uid)
-            //   .then(res => {
-            //     dispatch(userActions.loginClient(res.data));
-            //     alert(`Iniciaste sesión con éxito, ${res.data.name}`);
-            //     window.location.href = "/";
-            //   })
-            //   .catch(error => {
-            //     alert(
-            //       "Hubo un error al intentar iniciar sesión, por favor intenta de nuevo."
-            //     );
-            //     console.log(error);
-            //   });
+            API.fetchClientByUID(fireUser.uid)
+              .then(res => {
+                dispatch(userActions.loginClient(res.data));
+                alert(`Iniciaste sesión con éxito, ${res.data.name}`);
+                window.location.href = "/";
+              })
+              .catch(error => {
+                alert("Ocurrió un error, inténtalo nuevamente.");
+                console.log(error);
+              });
             break;
           // MANAGER ======================================
           case "Manager":
