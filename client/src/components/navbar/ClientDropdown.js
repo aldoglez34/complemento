@@ -12,14 +12,14 @@ const ClientDropdown = React.memo(function ClientDropdown() {
 
   const dispatch = useDispatch();
 
-  const client = useSelector(state => state.client);
+  const client = useSelector(state => state.user);
 
   const logout = () => {
     fire
       .auth()
       .signOut()
       .then(() => {
-        dispatch(userActions.logoutUser());
+        // dispatch(userActions.logoutUser());
         window.location.href = "/";
       })
       .catch(error => console.log(error));

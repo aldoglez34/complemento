@@ -9,8 +9,8 @@ import "./favbutton.scss";
 const FavButton = React.memo(({ product, isBlock }) => {
   const dispatch = useDispatch();
 
-  const isClientLogged = useSelector(state => state.client);
-  const client = useSelector(state => state.client);
+  const isClientLogged = useSelector(state => state.user);
+  const client = useSelector(state => state.user);
 
   const [show, setShow] = useState(false);
 

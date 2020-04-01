@@ -6,7 +6,7 @@ import API from "../utils/API";
 import ProductCard from "../components/cards/ProductCard";
 
 const ClientFavorites = React.memo(function ClientFavorites() {
-  const client = useSelector(state => state.client);
+  const client = useSelector(state => state.user);
 
   const [isLoading, setIsLoading] = useState(true);
   const [favorites, setFavorites] = useState();

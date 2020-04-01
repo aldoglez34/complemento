@@ -49,47 +49,43 @@ const App = () => {
       console.log("@fireUser", fireUser);
       console.log("@loggedUser", loggedUser);
       console.log("@userRedux", userRedux);
-      //
-      if (fireUser && !loggedUser && !userRedux) {
-        // depending on whether it's a Client or a Manager
-        switch (fireUser.displayName) {
-          // CLIENT ======================================
-          case "Client":
-            //
-            setLoggedUser("Client");
-            //
-            API.fetchClientByUID(fireUser.uid)
-              .then(res => {
-                dispatch(userActions.loginClient(res.data));
-                alert(`Iniciaste sesión con éxito, ${res.data.name}`);
-                window.location.href = "/";
-              })
-              .catch(error => {
-                alert("Ocurrió un error, inténtalo nuevamente.");
-                console.log(error);
-              });
-            break;
-          // MANAGER ======================================
-          case "Manager":
-            // do manager stuff
-            //
-            setLoggedUser("Manager");
-            break;
+
+      if (fireUser) {
+        // if logged user is null, set it
+        // if (loggedUser === null) setLoggedUser(fireUser.displayName);
+        // if user in redux is null, set it
+        if (userRedux === null) {
+          switch (fireUser.displayName) {
+            // CLIENT ======================================
+            case "Client":
+              API.fetchClientByUID(fireUser.uid)
+                .then(res => {
+                  setLoggedUser(fireUser.displayName);
+                  dispatch(userActions.loginClient(res.data));
+                  alert(`Iniciaste sesión con éxito, ${res.data.name}`);
+                  window.location.href = "/";
+                })
+                .catch(error => {
+                  alert("Ocurrió un error, inténtalo nuevamente.");
+                  console.log(error);
+                });
+              break;
+            // MANAGER ======================================
+            case "Manager":
+              setLoggedUser("Manager");
+              break;
+          }
         }
-      } else if (!fireUser) {
+      } else {
         dispatch(userActions.logoutUser());
         setLoggedUser(null);
       }
 
-      // if (unsubscribe) {
-      //   unsubscribe();
-      // }
-
       console.log("===================================");
     });
-  }, [loggedUser]);
+  }, []);
 
-  return (
+  return loggedUser ? (
     <Router>
       <Switch>
         {/* common routes (accessible for everyone) */}
@@ -130,7 +126,9 @@ const App = () => {
             <Route exact path="/client/favorites" component={ClientFavorites} />
           </>
         ) : (
-          <Redirect from="/client/" to="/" />
+          <>
+            <Redirect from="/client/" to="/" />
+          </>
         )}
         {/* manager routes */}
         {loggedUser === "Manager" ? (
@@ -182,7 +180,7 @@ const App = () => {
         <Route component={NoMatch} />
       </Switch>
     </Router>
-  );
+  ) : null;
 };
 
 export default App;

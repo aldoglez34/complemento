@@ -43,6 +43,6 @@ export const loginManager = data => {
 
 export const logoutUser = () => {
   return {
-    type: "user/client/logoutUser"
+    type: "user/logoutUser"
   };
 };
