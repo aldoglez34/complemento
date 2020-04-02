@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown, Nav, NavItem, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import fire from "../../firebase/fire";
+// import fire from "../../firebase/fire";
 import * as managerActions from "../../redux/actions/manager";
 
 const ManagerDropdown = React.memo(function ManagerDropdown() {
@@ -10,11 +10,11 @@ const ManagerDropdown = React.memo(function ManagerDropdown() {
   const manager = useSelector(state => state.manager);
 
   const logout = () => {
-    fire
-      .auth()
-      .signOut()
-      .then(() => dispatch(managerActions.logoutManager()))
-      .catch(error => console.log(error));
+    // fire
+    //   .auth()
+    //   .signOut()
+    //   .then(() => dispatch(managerActions.logoutManager()))
+    //   .catch(error => console.log(error));
   };
 
   return (

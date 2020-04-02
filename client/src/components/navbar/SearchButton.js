@@ -115,7 +115,7 @@ const SearchButton = React.memo(({ items }) => {
           <div className="d-flex flex-row pt-2 mb-3 px-3">
             <div className="d-flex flex-column">
               <h6>
-                <strong>BUSCAR</strong>
+                <strong style={{ fontSize: "16px" }}>BUSCAR</strong>
               </h6>
               <hr className="myDivider mb-0" />
             </div>
@@ -156,7 +156,7 @@ const SearchButton = React.memo(({ items }) => {
           variant="transparent"
           className="navbarDropdownStyle ml-0 p-0"
           onClick={handleShow}
-          style={{ outline: "none", boxShadow: "none" }}
+          style={{ outline: "none", boxShadow: "none", fontSize: "14px" }}
           title="Buscar"
         >
           <i className="fas fa-search mr-1" />
@@ -174,7 +174,7 @@ const SearchButton = React.memo(({ items }) => {
             className="navbarDropdownStyle ml-2 p-2 pt-3"
             variant="transparent"
             id="dropdown-basic"
-            style={{ outline: "none", boxShadow: "none" }}
+            style={{ outline: "none", boxShadow: "none", fontSize: "16px" }}
             title="Buscar"
           >
             <i className="fas fa-search mr-1" />

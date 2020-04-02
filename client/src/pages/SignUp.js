@@ -8,7 +8,7 @@ import { Formik, ErrorMessage } from "formik";
 import HelpButton from "../components/misc/HelpButton";
 import ScrollButton from "../components/misc/ScrollButton";
 import API from "../utils/API";
-import fire from "../firebase/fire";
+// import fire from "../firebase/fire";
 
 const SignUp = React.memo(() => {
   const dispatch = useDispatch();
@@ -77,16 +77,16 @@ const SignUp = React.memo(() => {
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
             ////////////////////////// signup //////////////////////////
-            fire
-              .auth()
-              .createUserWithEmailAndPassword(values.email, values.password)
-              .then(res => {
-                return res.user.updateProfile({
-                  displayName: "Client",
-                  phoneNumber: values.phone
-                });
-              })
-              .then(() => {
+            // fire
+            //   .auth()
+            //   .createUserWithEmailAndPassword(values.email, values.password)
+            //   .then(res => {
+            //     return res.user.updateProfile({
+            //       displayName: "Client",
+            //       phoneNumber: values.phone
+            //     });
+            //   })
+            //   .then(() => {
                 // login client to redux immediately
                 // API.fetchClientByUID(res.user.uid)
                 //   .then(res => {
@@ -106,15 +106,15 @@ const SignUp = React.memo(() => {
                 //     setSubmitting(false);
                 //   });
                 // window.location.href = "/";
-              })
-              .catch(err => {
-                // firebase won't let duplicate emails
-                alert(
-                  `Lo sentimos. El correo ${values.email} ya está asignado a otra cuenta`
-                );
-                setSubmitting(false);
-                console.log(err);
-              });
+              // })
+              // .catch(err => {
+              //   // firebase won't let duplicate emails
+              //   alert(
+              //     `Lo sentimos. El correo ${values.email} ya está asignado a otra cuenta`
+              //   );
+              //   setSubmitting(false);
+              //   console.log(err);
+              // });
             ////////////////////////////////////////////////////////////
           }}
         >

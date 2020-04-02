@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Dropdown, Nav, NavItem, Modal, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import fire from "../../firebase/fire";
+// import fire from "../../firebase/fire";
 import * as userActions from "../../redux/actions/user";
 
 const ClientDropdown = React.memo(function ClientDropdown() {
@@ -15,14 +15,14 @@ const ClientDropdown = React.memo(function ClientDropdown() {
   const client = useSelector(state => state.user);
 
   const logout = () => {
-    fire
-      .auth()
-      .signOut()
-      .then(() => {
-        // dispatch(userActions.logoutUser());
-        window.location.href = "/";
-      })
-      .catch(error => console.log(error));
+    // fire
+    //   .auth()
+    //   .signOut()
+    //   .then(() => {
+    //     // dispatch(userActions.logoutUser());
+    //     window.location.href = "/";
+    //   })
+    //   .catch(error => console.log(error));
   };
 
   const content = type => {

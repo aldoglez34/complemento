@@ -13,8 +13,8 @@ import { Formik, ErrorMessage } from "formik";
 import API from "../../utils/API";
 import * as userActions from "../../redux/actions/user";
 import { useDispatch } from "react-redux";
-import fire from "../../firebase/fire";
-const firebase = require("firebase/app");
+// import fire from "../../firebase/fire";
+// const firebase = require("firebase/app");
 
 const LoginDropdown = React.memo(() => {
   const [show, setShow] = useState(false);
@@ -66,16 +66,16 @@ const LoginDropdown = React.memo(() => {
           validationSchema={loginSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            fire
-              .auth()
-              .signInWithEmailAndPassword(values.email, values.password)
-              .catch(error => {
-                alert(
-                  "Hubo un error al intentar iniciar sesión, por favor intenta de nuevo."
-                );
-                console.log(error);
-                setSubmitting(false);
-              });
+            // fire
+            //   .auth()
+            //   .signInWithEmailAndPassword(values.email, values.password)
+            //   .catch(error => {
+            //     alert(
+            //       "Hubo un error al intentar iniciar sesión, por favor intenta de nuevo."
+            //     );
+            //     console.log(error);
+            //     setSubmitting(false);
+            //   });
           }}
         >
           {({

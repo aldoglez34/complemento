@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Firebase, { FirebaseContext } from "./firebase";
 import { useSelector, useDispatch } from "react-redux";
 import * as userActions from "./redux/actions/user";
 import {
@@ -7,7 +8,7 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
-import fire from "./firebase/fire";
+// import Firebase from "./firebase/Firebase";
 import API from "./utils/API";
 // store
 import Home from "./pages/Home";
@@ -36,91 +37,92 @@ import Sales from "./manager/sales/Sales";
 import Purchases from "./manager/purchases/Purchases";
 
 const App = () => {
-  const userRedux = useSelector(state => state.user);
+  // const userRedux = useSelector(state => state.user);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const [loggedUser, setLoggedUser] = useState(null);
+  // const [loggedUser, setLoggedUser] = useState(null);
 
-  useEffect(() => {
-    // fire.auth().signOut();
-    fire.auth().onAuthStateChanged(fireUser => {
-      //
-      console.log("@fireUser", fireUser);
-      console.log("@loggedUser", loggedUser);
-      console.log("@userRedux", userRedux);
+  // useEffect(() => {
+  //   // fire.auth().signOut();
+  //   fire.auth().onAuthStateChanged(fireUser => {
+  //     //
+  //     console.log("@fireUser", fireUser);
+  //     console.log("@loggedUser", loggedUser);
+  //     console.log("@userRedux", userRedux);
 
-      if (fireUser) {
-        // if logged user is null, set it
-        // if (loggedUser === null) setLoggedUser(fireUser.displayName);
-        // if user in redux is null, set it
-        if (userRedux === null) {
-          switch (fireUser.displayName) {
-            // CLIENT ======================================
-            case "Client":
-              API.fetchClientByUID(fireUser.uid)
-                .then(res => {
-                  setLoggedUser(fireUser.displayName);
-                  dispatch(userActions.loginClient(res.data));
-                  alert(`Iniciaste sesión con éxito, ${res.data.name}`);
-                  window.location.href = "/";
-                })
-                .catch(error => {
-                  alert("Ocurrió un error, inténtalo nuevamente.");
-                  console.log(error);
-                });
-              break;
-            // MANAGER ======================================
-            case "Manager":
-              setLoggedUser("Manager");
-              break;
-          }
-        }
-      } else {
-        dispatch(userActions.logoutUser());
-        setLoggedUser(null);
-      }
+  //     if (fireUser) {
+  //       // if logged user is null, set it
+  //       // if (loggedUser === null) setLoggedUser(fireUser.displayName);
+  //       // if user in redux is null, set it
+  //       if (userRedux === null) {
+  //         switch (fireUser.displayName) {
+  //           // CLIENT ======================================
+  //           case "Client":
+  //             API.fetchClientByUID(fireUser.uid)
+  //               .then(res => {
+  //                 setLoggedUser(fireUser.displayName);
+  //                 dispatch(userActions.loginClient(res.data));
+  //                 alert(`Iniciaste sesión con éxito, ${res.data.name}`);
+  //                 window.location.href = "/";
+  //               })
+  //               .catch(error => {
+  //                 alert("Ocurrió un error, inténtalo nuevamente.");
+  //                 console.log(error);
+  //               });
+  //             break;
+  //           // MANAGER ======================================
+  //           case "Manager":
+  //             setLoggedUser("Manager");
+  //             break;
+  //         }
+  //       }
+  //     } else {
+  //       dispatch(userActions.logoutUser());
+  //       setLoggedUser(null);
+  //     }
 
-      console.log("===================================");
-    });
-  }, []);
+  //     console.log("===================================");
+  //   });
+  // }, []);
 
-  return loggedUser ? (
-    <Router>
-      <Switch>
-        {/* common routes (accessible for everyone) */}
-        <Route exact path="/" component={Home} />
-        <Route
-          exact
-          path="/store"
-          render={props => <Store routeProps={props} />}
-        />
-        <Route
-          exact
-          path="/store/category/:category"
-          render={props => <Store routeProps={props} />}
-        />
-        <Route
-          exact
-          path="/store/brand/:brand"
-          render={props => <Store routeProps={props} />}
-        />
-        <Route
-          exact
-          path="/store/ingredient/:ingredient"
-          render={props => <Store routeProps={props} />}
-        />
-        <Redirect from="/store/" to="/store" />
-        <Route
-          exact
-          path="/product/details/:productId"
-          render={props => <ProductDetails routeProps={props} />}
-        />
-        <Route exact path="/cart" component={Cart} />
-        <Route exact path="/checkout" component={Checkout} />
-        <Route exact path="/signup" component={SignUp} />
-        {/* client routes */}
-        {loggedUser === "Client" ? (
+  return (
+    <FirebaseContext.Provider value={new Firebase()}>
+      <Router>
+        <Switch>
+          {/* common routes (accessible for everyone) */}
+          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/store"
+            render={props => <Store routeProps={props} />}
+          />
+          <Route
+            exact
+            path="/store/category/:category"
+            render={props => <Store routeProps={props} />}
+          />
+          <Route
+            exact
+            path="/store/brand/:brand"
+            render={props => <Store routeProps={props} />}
+          />
+          <Route
+            exact
+            path="/store/ingredient/:ingredient"
+            render={props => <Store routeProps={props} />}
+          />
+          <Redirect from="/store/" to="/store" />
+          <Route
+            exact
+            path="/product/details/:productId"
+            render={props => <ProductDetails routeProps={props} />}
+          />
+          <Route exact path="/cart" component={Cart} />
+          <Route exact path="/checkout" component={Checkout} />
+          <Route exact path="/signup" component={SignUp} />
+          {/* client routes */}
+          {/* {loggedUser === "Client" ? (
           <>
             <Route exact path="/client/info" component={ClientInfo} />
             <Route exact path="/client/favorites" component={ClientFavorites} />
@@ -129,45 +131,38 @@ const App = () => {
           <>
             <Redirect from="/client/" to="/" />
           </>
-        )}
-        {/* manager routes */}
-        {loggedUser === "Manager" ? (
+        )} */}
+          {/* manager routes */}
+          {/* {loggedUser === "Manager" ? (
           <>
             <Route exact path="/manager/dashboard" component={Dashboard} />
-            {/* categories */}
             <Route exact path="/manager/categories" component={Categories} />
             <Route
               exact
               path="/manager/categories/create"
               component={CategoriesCreate}
             />
-            {/* products */}
             <Route exact path="/manager/products" component={Products} />
             <Route
               exact
               path="/manager/products/create"
               component={ProductsCreate}
             />
-            {/* discounts */}
             <Route exact path="/manager/discounts" component={Discounts} />
             <Route
               exact
               path="/manager/discounts/create"
               component={DiscountsCreate}
             />
-            {/* providers */}
             <Route exact path="/manager/providers" component={Providers} />
             <Route
               exact
               path="/manager/providers/create"
               component={ProvidersCreate}
             />
-            {/* users */}
             <Route exact path="/manager/users" component={Users} />
             <Route exact path="/manager/messages" component={Messages} />
-            {/* sales */}
             <Route exact path="/manager/sales" component={Sales} />
-            {/* purchases */}
             <Route exact path="/manager/purchases" component={Purchases} />
           </>
         ) : (
@@ -175,12 +170,13 @@ const App = () => {
             <Route exact path="/manager" component={Login} />
             <Redirect from="/manager/" to="/manager" />
           </>
-        )}
-        {/* last routes */}
-        <Route component={NoMatch} />
-      </Switch>
-    </Router>
-  ) : null;
+        )} */}
+          {/* last routes */}
+          <Route component={NoMatch} />
+        </Switch>
+      </Router>
+    </FirebaseContext.Provider>
+  );
 };
 
 export default App;
