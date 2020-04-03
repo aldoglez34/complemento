@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Dropdown, Nav, NavItem, Modal, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-// import fire from "../../firebase/fire";
 import * as userActions from "../../redux/actions/user";
+import { withFirebase } from "../../firebase";
 
-const ClientDropdown = React.memo(function ClientDropdown() {
+const ClientDropdown = ({ firebase }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -13,17 +13,17 @@ const ClientDropdown = React.memo(function ClientDropdown() {
   const dispatch = useDispatch();
 
   const client = useSelector(state => state.user);
-
-  const logout = () => {
-    // fire
-    //   .auth()
-    //   .signOut()
-    //   .then(() => {
-    //     // dispatch(userActions.logoutUser());
-    //     window.location.href = "/";
-    //   })
-    //   .catch(error => console.log(error));
-  };
+  // const logout = firebase => {
+  //   // firebase._signOut;
+  //   // fire
+  //   //   .auth()
+  //   //   .signOut()
+  //   //   .then(() => {
+  //   //     // dispatch(userActions.logoutUser());
+  //   //     window.location.href = "/";
+  //   //   })
+  //   //   .catch(error => console.log(error));
+  // };
 
   const content = type => {
     return (
@@ -77,7 +77,7 @@ const ClientDropdown = React.memo(function ClientDropdown() {
         <Dropdown.Divider className="mt-1 mb-2" />
         <Dropdown.Item
           className="navbarDropdownItemStyle px-3"
-          onClick={logout}
+          onClick={firebase._signOut}
         >
           Cerrar sesión
         </Dropdown.Item>
@@ -86,8 +86,8 @@ const ClientDropdown = React.memo(function ClientDropdown() {
   };
 
   return (
-    <React.Fragment>
-      {/* sm */}
+    <>
+      {/* small screens */}
       <div className="d-block d-md-none">
         <Button
           variant="transparent"
@@ -100,10 +100,12 @@ const ClientDropdown = React.memo(function ClientDropdown() {
         </Button>
 
         <Modal show={show} onHide={handleClose}>
-          <Modal.Body className="px-0 py-2">{content("modal")}</Modal.Body>
+          <Modal.Body className="px-0 py-2">
+            {content("modal", firebase)}
+          </Modal.Body>
         </Modal>
       </div>
-      {/* md */}
+      {/* medium screens */}
       <div className="d-none d-md-block">
         <Dropdown as={NavItem}>
           <Dropdown.Toggle
@@ -116,12 +118,12 @@ const ClientDropdown = React.memo(function ClientDropdown() {
           </Dropdown.Toggle>
 
           <Dropdown.Menu alignRight data-display="static">
-            {content("dropdown")}
+            {content("dropdown", firebase)}
           </Dropdown.Menu>
         </Dropdown>
       </div>
-    </React.Fragment>
+    </>
   );
-});
+};
 
-export default ClientDropdown;
+export default withFirebase(ClientDropdown);

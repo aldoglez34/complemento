@@ -13,10 +13,9 @@ import { Formik, ErrorMessage } from "formik";
 import API from "../../utils/API";
 import * as userActions from "../../redux/actions/user";
 import { useDispatch } from "react-redux";
-// import fire from "../../firebase/fire";
-// const firebase = require("firebase/app");
+import { withFirebase } from "../../firebase";
 
-const LoginDropdown = React.memo(() => {
+const LoginDropdown = ({ firebase }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -27,7 +26,7 @@ const LoginDropdown = React.memo(() => {
   const loginSchema = yup.object({
     email: yup
       .string()
-      .email("Correo inválido")
+      .email("Formato de correo")
       .required("Requerido"),
     password: yup
       .string()
@@ -66,6 +65,12 @@ const LoginDropdown = React.memo(() => {
           validationSchema={loginSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
+            firebase
+              ._signInWithEmailAndPassword(values.email, values.password)
+              .then(authUser => {
+                console.log("authUser", authUser);
+              })
+              .catch(err => console.log(err));
             // fire
             //   .auth()
             //   .signInWithEmailAndPassword(values.email, values.password)
@@ -175,8 +180,8 @@ const LoginDropdown = React.memo(() => {
   };
 
   return (
-    <React.Fragment>
-      {/* sm */}
+    <>
+      {/* small screens */}
       <div className="d-block d-md-none">
         <Button
           variant="transparent"
@@ -192,7 +197,7 @@ const LoginDropdown = React.memo(() => {
           <Modal.Body className="px-0 py-2">{content("modal")}</Modal.Body>
         </Modal>
       </div>
-      {/* md */}
+      {/* medium screens */}
       <div className="d-none d-md-block">
         <Dropdown as={NavItem}>
           <Dropdown.Toggle
@@ -213,8 +218,8 @@ const LoginDropdown = React.memo(() => {
           </Dropdown.Menu>
         </Dropdown>
       </div>
-    </React.Fragment>
+    </>
   );
-});
+};
 
-export default LoginDropdown;
+export default withFirebase(LoginDropdown);
