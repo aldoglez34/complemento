@@ -171,7 +171,9 @@ const App = () => {
             <Redirect from="/manager/" to="/manager" />
           </>
         )} */}
-          {/* last routes */}
+          <Route exact path="/manager" component={Login} />
+          <Redirect from="/manager/" to="/manager" />
+          {/* no match 404 */}
           <Route component={NoMatch} />
         </Switch>
       </Router>
