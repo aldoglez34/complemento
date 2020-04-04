@@ -4,7 +4,6 @@ import AuthClientNavigation from "./ClientNavigation";
 import ManagerNavigation from "./ManagerNavigation";
 
 const Navigation = ({ authUser }) => {
-  console.log("@Navigation - index - authUser", authUser);
   return <ClientNavigation />;
 };
 

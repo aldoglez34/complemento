@@ -12,10 +12,9 @@ import { withFirebase } from "../firebase";
 const Login = ({ firebase }) => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log("@LOGIN, useEffect", firebase);
-    // localStorage.clear();
-  }, []);
+  // useEffect(() => {
+  //   // localStorage.clear();
+  // }, []);
 
   const loginSchema = yup.object({
     email: yup
@@ -36,7 +35,6 @@ const Login = ({ firebase }) => {
         backgroundColor: "#0c2c2c"
       }}
     >
-      {console.log("@RETURN", firebase)}
       <Row>
         <Col md={{ span: 4, offset: 4 }}>
           <h1

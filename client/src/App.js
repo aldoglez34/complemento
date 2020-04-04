@@ -10,25 +10,22 @@ class App extends Component {
   };
 
   componentDidMount() {
-    console.log("@componentDidMount", this.props);
-    // this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
-    //   authUser
-    //     ? this.setState({ authUser })
-    //     : this.setState({ authUser: null });
-    // });
+    this.listener = this.props.firebase.auth.onAuthStateChanged((authUser) => {
+      authUser
+        ? this.setState({ authUser })
+        : this.setState({ authUser: null });
+    });
   }
 
   componentWillUnmount() {
-    // this.listener();
+    this.listener();
   }
 
   render() {
     return (
-      <FirebaseContext.Provider value={new Firebase()}>
-        <Router>
-          <Navigation authUser={this.state.authUser} />
-        </Router>
-      </FirebaseContext.Provider>
+      <Router>
+        <Navigation authUser={this.state.authUser} />
+      </Router>
     );
   }
 }
