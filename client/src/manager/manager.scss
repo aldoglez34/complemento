@@ -2,6 +2,7 @@
 $green1: #0c2c2c;
 $green2: #264341;
 $green3: #59a49a;
+$activeItem: #f3d084;
 
 // layout
 #containerMargin {
@@ -12,7 +13,7 @@ $green3: #59a49a;
 
 // vertical nav
 #verticalNavStyle {
-  background-color: $green2 !important;
+  background-color: $green1;
   width: 247px;
   height: 100%;
   position: fixed;
@@ -38,12 +39,12 @@ $green3: #59a49a;
 
 .navLinkStyle {
   padding-bottom: 0px;
-  color: #99aab5 !important;
+  color: #99aab5;
   &:hover {
-    color: gainsboro !important;
+    color: gainsboro;
   }
   &.active {
-    color: white !important;
+    color: $activeItem;
   }
 }
 // top helper nav

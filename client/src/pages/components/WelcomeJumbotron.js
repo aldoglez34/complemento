@@ -15,7 +15,7 @@ const WelcomeJumbotron = React.memo(function WelcomeJumbotron() {
     <Jumbotron style={styles.jumbotron} fluid>
       <Container className="py-3 my-3">
         <h1 className="text-white">Tienda naturista en línea</h1>
-        <h5 className="text-light">Natural, siempre la decisión correcta</h5>
+        <p className="text-light lead">Natural, siempre la decisión correcta</p>
         <Button
           size="lg"
           href="/store"

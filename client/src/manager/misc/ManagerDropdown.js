@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 // import fire from "../../firebase/fire";
 import * as managerActions from "../../redux/actions/manager";
 
-const ManagerDropdown = React.memo(function ManagerDropdown() {
+const ManagerDropdown = React.memo(() => {
   const dispatch = useDispatch();
 
   const manager = useSelector(state => state.manager);
@@ -30,16 +30,16 @@ const ManagerDropdown = React.memo(function ManagerDropdown() {
         <div className="px-4 pt-2">
           <i className="fas fa-user mr-2" />
           <span>
-            {manager.name +
+            {/* {manager.name +
               " " +
               manager.firstSurname +
               " " +
-              manager.secondSurname}
+              manager.secondSurname} */}
           </span>
         </div>
         <div className="px-4 mt-2">
           <i className="fas fa-at mr-2" />
-          <span>{manager.email}</span>
+          {/* <span>{manager.email}</span> */}
         </div>
         <div className="px-4 mt-3 pb-2">
           <Button variant="dark" onClick={logout}>

@@ -4,25 +4,16 @@ import { Nav } from "react-bootstrap";
 const LeftNav = React.memo(function LeftNav(props) {
   return (
     <Nav className="d-none d-lg-flex flex-column h-100" id="verticalNavStyle">
-      <h2
+      <h3
         className="text-center mt-3 mb-0"
         style={{
-          color: "#f3d084",
-          fontFamily: "'Acme', sans-serif"
+          color: "#edcb58",
+          fontFamily: "'Lobster', cursive"
         }}
       >
-        Complemento
-      </h2>
-      <h2
-        className="text-center mb-0"
-        style={{
-          color: "#f3d084",
-          fontFamily: "'Acme', sans-serif"
-        }}
-      >
-        Natural
-      </h2>
-
+        Tu Complemento
+        <i className="fas fa-leaf ml-1" />
+      </h3>
       {/* menu */}
       <Nav.Item className="navItemStyle">Menú</Nav.Item>
       <Nav.Link

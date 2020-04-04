@@ -7,12 +7,14 @@ import { useDispatch } from "react-redux";
 import * as managerActions from "../redux/actions/manager";
 import APIManager from "../utils/APIManager";
 // const firebase = require("firebase/app");
+import { withFirebase } from "../firebase";
 
-const Login = React.memo(function Login(props) {
+const Login = ({ firebase }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    localStorage.clear();
+    console.log("@LOGIN, useEffect", firebase);
+    // localStorage.clear();
   }, []);
 
   const loginSchema = yup.object({
@@ -34,6 +36,7 @@ const Login = React.memo(function Login(props) {
         backgroundColor: "#0c2c2c"
       }}
     >
+      {console.log("@RETURN", firebase)}
       <Row>
         <Col md={{ span: 4, offset: 4 }}>
           <h1
@@ -53,6 +56,14 @@ const Login = React.memo(function Login(props) {
             validationSchema={loginSchema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
+              /////////////// login //////////////////
+              firebase
+                ._signInWithEmailAndPassword(values.email, values.password)
+                .then(authUser => {
+                  console.log("authUser", authUser);
+                  window.location.href = "/manager/dashboard";
+                })
+                .catch(err => console.log(err));
               /////////////// login //////////////////
               // firebase
               //   .auth()
@@ -158,6 +169,6 @@ const Login = React.memo(function Login(props) {
       </Row>
     </Container>
   );
-});
+};
 
-export default Login;
+export default withFirebase(Login);
