@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Navigation from "./navigation";
 import { withFirebase } from "./firebase";
+import Firebase, { FirebaseContext } from "./firebase";
 
 class App extends Component {
   state = {
-    authUser: null
+    authUser: null,
   };
 
   componentDidMount() {
@@ -23,10 +24,11 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        {console.log("@render", this.props)}
-        <Navigation authUser={this.state.authUser} />
-      </Router>
+      <FirebaseContext.Provider value={new Firebase()}>
+        <Router>
+          <Navigation authUser={this.state.authUser} />
+        </Router>
+      </FirebaseContext.Provider>
     );
   }
 }
