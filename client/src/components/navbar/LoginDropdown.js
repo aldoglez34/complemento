@@ -65,6 +65,7 @@ const LoginDropdown = ({ firebase }) => {
           validationSchema={loginSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
+            console.log("@LoginDropdown", firebase);
             firebase
               ._signInWithEmailAndPassword(values.email, values.password)
               .then(authUser => {

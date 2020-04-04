@@ -76,7 +76,7 @@ const SignUp = ({ firebase }) => {
           validationSchema={yupSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            console.log(firebase)
+            console.log(firebase);
             ////////////////////////// signup //////////////////////////
             firebase
               ._createUserWithEmailAndPassword(values.email, values.password)
