@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 
 class ScrollButton extends PureComponent {
   state = {
-    intervalId: 0
+    intervalId: 0,
   };
 
   scrollStep() {
@@ -41,7 +41,7 @@ class ScrollButton extends PureComponent {
 
 ScrollButton.propTypes = {
   scrollStepInPx: PropTypes.number.isRequired,
-  delayInMs: PropTypes.number.isRequired
+  delayInMs: PropTypes.number.isRequired,
 };
 
 export default ScrollButton;

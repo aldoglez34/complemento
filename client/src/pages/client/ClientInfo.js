@@ -1,16 +1,16 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Form, Col, Button } from "react-bootstrap";
-import API from "../utils/API";
-import Layout from "../components/Layout";
-import ScrollButton from "../components/misc/ScrollButton";
-import HelpButton from "../components/misc/HelpButton";
+import API from "../../utils/API";
+import Layout from "../../components/Layout";
+import ScrollButton from "../../components/scrollbutton/ScrollButton";
+import HelpButton from "../../components/helpbutton/HelpButton";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
-import * as userActions from "../redux/actions/user";
+import * as userActions from "../../redux/actions/user";
 
 const ClientInfo = React.memo(function ClientInfo() {
-  const client = useSelector(state => state.client);
+  const client = useSelector((state) => state.client);
   const dispatch = useDispatch();
 
   const changeInfoSchema = yup.object({
@@ -52,7 +52,7 @@ const ClientInfo = React.memo(function ClientInfo() {
       .string()
       .matches(/^[0-9]*$/, "Sólo números")
       .length(5, "La longitud exacta debe ser 5 dígitos")
-      .required("Requerido")
+      .required("Requerido"),
   });
 
   return client.isLogged ? (
@@ -71,7 +71,7 @@ const ClientInfo = React.memo(function ClientInfo() {
             municipality: client.address.municipality,
             city: client.address.city,
             state: client.address.state,
-            zipCode: client.address.zipCode
+            zipCode: client.address.zipCode,
           }}
           validationSchema={changeInfoSchema}
           onSubmit={(values, { setSubmitting }) => {
@@ -88,16 +88,16 @@ const ClientInfo = React.memo(function ClientInfo() {
               municipality: values.municipality.trim(),
               city: values.city.trim(),
               state: values.state,
-              zipCode: values.zipCode
+              zipCode: values.zipCode,
             };
             API.updateClient(trimmedValues)
-              .then(res => {
+              .then((res) => {
                 alert("Cliente editado con éxito");
                 dispatch(userActions.updateClient(trimmedValues));
                 setSubmitting(false);
                 window.location.href = "/";
               })
-              .catch(err => {
+              .catch((err) => {
                 console.log(err.response);
                 alert(err.response.data.msg);
               });
@@ -110,7 +110,7 @@ const ClientInfo = React.memo(function ClientInfo() {
             handleChange,
             handleBlur,
             handleSubmit,
-            isSubmitting
+            isSubmitting,
           }) => (
             <>
               <Form noValidate onSubmit={handleSubmit}>

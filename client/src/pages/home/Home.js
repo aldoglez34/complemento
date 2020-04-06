@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import Layout from "../components/Layout";
-import HelpButton from "../components/misc/HelpButton";
-import ScrollButton from "../components/misc/ScrollButton";
+import Layout from "../../components/Layout";
+import HelpButton from "../../components/helpbutton/HelpButton";
+import ScrollButton from "../../components/scrollbutton/ScrollButton";
 import WelcomeJumbotron from "./components/WelcomeJumbotron";
-import MyCarousel from "../components/carousel/MyCarousel";
-import API from "../utils/API";
+import MyCarousel from "../../components/carousel/MyCarousel";
+import API from "../../utils/API";
 
 const Home = React.memo(() => {
   const [prioritized, setPrioritized] = useState([]);
@@ -14,20 +14,20 @@ const Home = React.memo(() => {
 
   useEffect(() => {
     API.fetchPrioritized()
-      .then(res => setPrioritized(res.data))
-      .catch(err => {
+      .then((res) => setPrioritized(res.data))
+      .catch((err) => {
         console.log(err.response);
         alert(err.response.data.msg);
       });
     API.fetchProductsWithDiscount()
-      .then(res => setDiscounts(res.data))
-      .catch(err => {
+      .then((res) => setDiscounts(res.data))
+      .catch((err) => {
         console.log(err.response);
         alert(err.response.data.msg);
       });
     API.fetchBestSellers()
-      .then(res => setBestSellers(res.data))
-      .catch(err => {
+      .then((res) => setBestSellers(res.data))
+      .catch((err) => {
         console.log(err.response);
         alert(err.response.data.msg);
       });

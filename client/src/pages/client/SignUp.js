@@ -1,14 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import * as userActions from "../redux/actions/user";
+import * as userActions from "../../redux/actions/user";
 import { Container, Col, Form, Button } from "react-bootstrap";
-import Layout from "../components/Layout";
+import Layout from "../../components/Layout";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
-import HelpButton from "../components/misc/HelpButton";
-import ScrollButton from "../components/misc/ScrollButton";
-import API from "../utils/API";
-import { withFirebase } from "../firebase";
+import HelpButton from "../../components/helpbutton/HelpButton";
+import ScrollButton from "../../components/scrollbutton/ScrollButton";
+import API from "../../utils/API";
+import { withFirebase } from "../../firebase";
 
 const SignUp = ({ firebase }) => {
   const dispatch = useDispatch();

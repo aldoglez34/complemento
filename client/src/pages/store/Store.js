@@ -1,11 +1,11 @@
 import React, { PureComponent } from "react";
 import { Row, Col, Spinner, Container } from "react-bootstrap";
-import Layout from "../components/Layout";
+import Layout from "../../components/Layout";
 import ProductsSection from "./components/ProductsSection";
-import HelpButton from "../components/misc/HelpButton";
-import ScrollButton from "../components/misc/ScrollButton";
+import HelpButton from "../../components/helpbutton/HelpButton";
+import ScrollButton from "../../components/scrollbutton/ScrollButton";
 import "./store.scss";
-import API from "../utils/API";
+import API from "../../utils/API";
 import FilterSectionBig from "./filters/FilterSectionBig";
 import SortDropdown from "./dropdowns/SortDropdown";
 import ProductsPerPageDropdown from "./dropdowns/ProductsPerPageDropdown";
@@ -26,26 +26,26 @@ class Store extends PureComponent {
     limit: "",
     //
     filter: "",
-    sortBy: "Nombre ascendente"
+    sortBy: "Nombre ascendente",
   };
 
   componentDidMount() {
     // fetch filters (left bar)
     API.fetchCategories()
-      .then(res => this.setState({ categories: res.data }))
-      .catch(err => {
+      .then((res) => this.setState({ categories: res.data }))
+      .catch((err) => {
         console.log(err.response);
         alert(err.response.data.msg);
       });
     API.fetchBrands()
-      .then(res => this.setState({ brands: res.data }))
-      .catch(err => {
+      .then((res) => this.setState({ brands: res.data }))
+      .catch((err) => {
         console.log(err.response);
         alert(err.response.data.msg);
       });
     // fetch products
     API.fetchProducts()
-      .then(res => {
+      .then((res) => {
         this.setState(
           (prevState, props) => {
             //
@@ -58,34 +58,34 @@ class Store extends PureComponent {
                 products: res.data,
                 pageCount: Math.ceil(
                   res.data.length / prevState.productsPerPage
-                )
+                ),
               };
             }
             // if category filter
             if (category && !brand && !ingredient) {
-              let filtered = res.data.filter(p => p.category === category);
+              let filtered = res.data.filter((p) => p.category === category);
               return {
                 filter: category,
                 products: filtered,
                 pageCount: Math.ceil(
                   filtered.length / prevState.productsPerPage
-                )
+                ),
               };
             }
             // if brands filter
             if (!category && brand && !ingredient) {
-              let filtered = res.data.filter(p => p.brand === brand);
+              let filtered = res.data.filter((p) => p.brand === brand);
               return {
                 filter: brand,
                 products: filtered,
                 pageCount: Math.ceil(
                   filtered.length / prevState.productsPerPage
-                )
+                ),
               };
             }
             // if ingredient filter
             if (!category && !brand && ingredient) {
-              let filtered = res.data.filter(p =>
+              let filtered = res.data.filter((p) =>
                 p.ingredients.includes(ingredient)
               );
               return {
@@ -93,7 +93,7 @@ class Store extends PureComponent {
                 products: filtered,
                 pageCount: Math.ceil(
                   filtered.length / prevState.productsPerPage
-                )
+                ),
               };
             }
           },
@@ -103,7 +103,7 @@ class Store extends PureComponent {
           }
         );
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err.response);
         alert(err.response.data.msg);
       });
@@ -132,20 +132,20 @@ class Store extends PureComponent {
     this.setState({ productsPerPageOptions: pppopt });
   };
 
-  handleChangeProductsPerPage = pages => {
+  handleChangeProductsPerPage = (pages) => {
     this.setState(
-      prevState => {
+      (prevState) => {
         return {
           productsPerPage: pages,
-          pageCount: Math.ceil(prevState.products.length / pages)
+          pageCount: Math.ceil(prevState.products.length / pages),
         };
       },
       () => this.setOffsetAndLimit()
     );
   };
 
-  applySorting = opt => {
-    this.setState(prevState => {
+  applySorting = (opt) => {
+    this.setState((prevState) => {
       let sorted = [];
       switch (opt) {
         case "Nombre ascendente":
@@ -187,7 +187,7 @@ class Store extends PureComponent {
     });
   };
 
-  handleChangePage = page => {
+  handleChangePage = (page) => {
     this.setState({ activePage: page }, () => this.setOffsetAndLimit());
   };
 

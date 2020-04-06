@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal, Button, Table, Alert, ListGroup, Badge } from "react-bootstrap";
-import API from "../../utils/API";
-import * as cartActions from "../../redux/actions/cart";
+import API from "../../../utils/API";
+import * as cartActions from "../../../redux/actions/cart";
 
 const BuyButton = React.memo(() => {
   const dispatch = useDispatch();

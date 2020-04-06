@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import Home from "../pages/Home";
-import Store from "../store/Store";
-import ProductDetails from "../pages/ProductDetails";
-import Cart from "../cart/Cart";
-import Checkout from "../cart/Checkout";
-import SignUp from "../pages/SignUp";
+import Home from "../pages/home/Home";
+import Store from "../pages/store/Store";
+import ProductDetails from "../pages/productDetails/ProductDetails";
+import Cart from "../pages/cart/Cart";
+import Checkout from "../pages/cart/Checkout";
+import SignUp from "../pages/client/SignUp";
 import NoMatch from "../pages/NoMatch";
 import Login from "../manager/Login";
 

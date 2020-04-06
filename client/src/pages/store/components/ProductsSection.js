@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ProductCard from "../../components/cards/ProductCard";
+import ProductCard from "../../../components/cards/ProductCard";
 
 const ProductsSection = React.memo(({ products }) => {
   return (

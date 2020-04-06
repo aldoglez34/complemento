@@ -6,17 +6,17 @@ import {
   Image,
   Spinner,
   Badge,
-  Alert
+  Alert,
 } from "react-bootstrap";
-import Layout from "../components/Layout";
-import MyBreadcrumb from "../components/breadcrumb/MyBreadcrumb";
-import API from "../utils/API";
-import HelpButton from "../components/misc/HelpButton";
-import ScrollButton from "../components/misc/ScrollButton";
-import FavButton from "../components/buttons/FavButton";
-import AddToBagButton from "../components/buttons/AddToBagButton";
+import Layout from "../../components/Layout";
+import MyBreadcrumb from "../../components/breadcrumb/MyBreadcrumb";
+import API from "../../utils/API";
+import HelpButton from "../../components/helpbutton/HelpButton";
+import ScrollButton from "../../components/scrollbutton/ScrollButton";
+import FavButton from "../../components/buttons/FavButton";
+import AddToBagButton from "../../components/buttons/AddToBagButton";
 import "./productDetails.scss";
-import MyCarousel from "../components/carousel/MyCarousel";
+import MyCarousel from "../../components/carousel/MyCarousel";
 
 const ProductDetails = React.memo(function ProductDetails(props) {
   const [product, setProduct] = useState();
@@ -26,13 +26,13 @@ const ProductDetails = React.memo(function ProductDetails(props) {
 
   useEffect(() => {
     API.fetchProductDetails(props.routeProps.match.params.productId)
-      .then(res => {
+      .then((res) => {
         setProduct(res.data);
-        API.fetchSimilarProducts(res.data.category).then(res =>
+        API.fetchSimilarProducts(res.data.category).then((res) =>
           setSimilar(res.data)
         );
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err.response);
         alert(err.response.data.msg);
       });
@@ -60,9 +60,9 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                 { name: "Tienda", to: "/store" },
                 {
                   name: product.category,
-                  to: "/store/category/" + product.category
+                  to: "/store/category/" + product.category,
                 },
-                { name: product.name, to: "active" }
+                { name: product.name, to: "active" },
               ]}
             />
             <Row>
@@ -175,7 +175,7 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                           <ul>
                             {product.ingredients
                               .sort((a, b) => a.localeCompare(b))
-                              .map(ing => (
+                              .map((ing) => (
                                 <li key={ing}>{ing}</li>
                               ))}
                           </ul>

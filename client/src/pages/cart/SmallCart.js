@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import * as cartActions from "../redux/actions/cart";
+import * as cartActions from "../../redux/actions/cart";
 import { Row, Col, Image, Badge, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 import QtyPickerForCart from "./components/QtyPickerForCart";
@@ -10,10 +10,10 @@ import BuyButton from "./components/BuyButton";
 const SmallCart = React.memo(({ formatNumber, products = [] }) => {
   const dispatch = useDispatch();
 
-  const cart = useSelector(state => state.cart);
+  const cart = useSelector((state) => state.cart);
 
-  const handleDecrementQty = _id => dispatch(cartActions.decrementQty(_id));
-  const handleIncrementQty = _id =>
+  const handleDecrementQty = (_id) => dispatch(cartActions.decrementQty(_id));
+  const handleIncrementQty = (_id) =>
     dispatch(cartActions.addItem({ _id, qty: 1 }));
 
   return (
@@ -28,7 +28,7 @@ const SmallCart = React.memo(({ formatNumber, products = [] }) => {
         <>
           <h3>Canasta</h3>
           <hr className="myDivider" />
-          {products.map(p => {
+          {products.map((p) => {
             return (
               <React.Fragment key={p._id}>
                 <Row className="mb-3">
@@ -126,7 +126,7 @@ const SmallCart = React.memo(({ formatNumber, products = [] }) => {
 
 SmallCart.propTypes = {
   formatNumber: PropTypes.func.isRequired,
-  products: PropTypes.array.isRequired
+  products: PropTypes.array.isRequired,
 };
 
 export default SmallCart;

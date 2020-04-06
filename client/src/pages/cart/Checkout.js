@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import * as userActions from "../redux/actions/user";
-import * as cartActions from "../redux/actions/cart";
+import * as userActions from "../../redux/actions/user";
+import * as cartActions from "../../redux/actions/cart";
 import { Container, Col, Form, Button } from "react-bootstrap";
-import Layout from "../components/Layout";
+import Layout from "../../components/Layout";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
-import API from "../utils/API";
+import API from "../../utils/API";
 import Order from "./components/Order";
 
 const Checkout = React.memo(() => {
   const dispatch = useDispatch();
 
-  const client = useSelector(state => state.client);
-  const cart = useSelector(state => state.cart);
+  const client = useSelector((state) => state.client);
+  const cart = useSelector((state) => state.cart);
 
   const [order, setOrder] = useState();
 
@@ -21,10 +21,7 @@ const Checkout = React.memo(() => {
     name: yup.string().required("Requerido"),
     firstSurname: yup.string().required("Requerido"),
     secondSurname: yup.string().required("Requerido"),
-    email: yup
-      .string()
-      .email("Formato inválido")
-      .required("Requerido"),
+    email: yup.string().email("Formato inválido").required("Requerido"),
     phone: yup
       .string()
       .matches(/^[0-9]*$/, "Formato inválido")
@@ -39,7 +36,7 @@ const Checkout = React.memo(() => {
       .string()
       .matches(/^[0-9]*$/, "Formato inválido")
       .length(5, "Formato inválido")
-      .required("Requerido")
+      .required("Requerido"),
   });
 
   const addressData = () => {
@@ -56,7 +53,7 @@ const Checkout = React.memo(() => {
         city: client.address ? client.address.city : "",
         state: client.address ? client.address.state : "",
         zipCode: client.address ? client.address.zipCode : "",
-        saveAddress: true
+        saveAddress: true,
       };
     } else if (!client.isLogged) {
       return {
@@ -71,41 +68,41 @@ const Checkout = React.memo(() => {
         city: "",
         state: "",
         zipCode: "",
-        saveAddress: false
+        saveAddress: false,
       };
     }
   };
 
-  const makeSaleAndUpdateStock = buyer => {
+  const makeSaleAndUpdateStock = (buyer) => {
     // first register the sale in the db
     // second update stock and unitssold in each of the products
     // last fetch the recently created sale and send it to the modal
     API.makeSale({
       buyer,
       items: cart.items,
-      shipment: 70
+      shipment: 70,
     })
-      .then(res => {
+      .then((res) => {
         const saleId = res.data._id;
         // after successffully registering the sale, update the stock
         API.updateStock({ items: cart.items })
           .then(() => {
             API.fetchOrder(saleId)
-              .then(res => {
+              .then((res) => {
                 dispatch(cartActions.clear());
                 setOrder(res.data);
               })
-              .catch(err => {
+              .catch((err) => {
                 console.log(err.response);
                 alert(err.response.data.msg);
               });
           })
-          .catch(err => {
+          .catch((err) => {
             console.log(err.response);
             alert(err.response.data.msg);
           });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err.response);
         alert(err.response.data.msg);
       });
@@ -133,8 +130,8 @@ const Checkout = React.memo(() => {
                 neighborhood: values.neighborhood,
                 city: values.city,
                 state: values.state,
-                zipCode: values.zipCode
-              }
+                zipCode: values.zipCode,
+              },
             };
             if (values.saveAddress) {
               // if save address is checked
@@ -143,7 +140,7 @@ const Checkout = React.memo(() => {
               // then update db
               API.saveClientData(buyer)
                 .then(() => makeSaleAndUpdateStock(buyer))
-                .catch(err => {
+                .catch((err) => {
                   console.log(err.response);
                   alert(err.response.data.msg);
                 });
@@ -160,7 +157,7 @@ const Checkout = React.memo(() => {
             handleChange,
             handleBlur,
             handleSubmit,
-            isSubmitting
+            isSubmitting,
           }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <h3>Información</h3>

@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { clear, addItem, decrementQty } from "../redux/actions/cart";
+import { clear, addItem, decrementQty } from "../../redux/actions/cart";
 import { Container, Spinner } from "react-bootstrap";
-import Layout from "../components/Layout";
-import API from "../utils/API";
+import Layout from "../../components/Layout";
+import API from "../../utils/API";
 import "./cart.scss";
 import BigCart from "./BigCart";
 import SmallCart from "./SmallCart";
 
 class Cart extends Component {
   state = {
-    products: []
+    products: [],
   };
 
   formatNumber(num) {
@@ -48,8 +48,8 @@ class Cart extends Component {
       // fetch cart items (if there are any)
       if (cartStr !== "")
         API.fetchCartProducts(cartStr)
-          .then(res => this.setState({ products: res.data }))
-          .catch(err => {
+          .then((res) => this.setState({ products: res.data }))
+          .catch((err) => {
             console.log(err.response);
             alert(err.response.data.msg);
           });
@@ -94,16 +94,16 @@ class Cart extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    cart: state.cart
+    cart: state.cart,
   };
 };
 
 const mapDispatchToProps = {
   clear,
   addItem,
-  decrementQty
+  decrementQty,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
