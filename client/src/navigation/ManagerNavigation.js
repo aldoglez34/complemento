@@ -29,28 +29,28 @@ const ManagerNavigation = () => {
       <Route
         exact
         path="/store"
-        render={props => <Store routeProps={props} />}
+        render={(props) => <Store routeProps={props} />}
       />
       <Route
         exact
         path="/store/category/:category"
-        render={props => <Store routeProps={props} />}
+        render={(props) => <Store routeProps={props} />}
       />
       <Route
         exact
         path="/store/brand/:brand"
-        render={props => <Store routeProps={props} />}
+        render={(props) => <Store routeProps={props} />}
       />
       <Route
         exact
         path="/store/ingredient/:ingredient"
-        render={props => <Store routeProps={props} />}
+        render={(props) => <Store routeProps={props} />}
       />
       <Redirect from="/store/" to="/store" />
       <Route
         exact
         path="/product/details/:productId"
-        render={props => <ProductDetails routeProps={props} />}
+        render={(props) => <ProductDetails routeProps={props} />}
       />
       <Route exact path="/cart" component={Cart} />
       <Route exact path="/checkout" component={Checkout} />

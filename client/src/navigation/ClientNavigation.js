@@ -8,6 +8,8 @@ import Checkout from "../cart/Checkout";
 import SignUp from "../pages/SignUp";
 import NoMatch from "../pages/NoMatch";
 import Login from "../manager/Login";
+import ClientInfo from "../pages/ClientInfo";
+import ClientFavorites from "../pages/ClientFavorites";
 
 const ClientNavigation = () => {
   return (
@@ -16,34 +18,38 @@ const ClientNavigation = () => {
       <Route
         exact
         path="/store"
-        render={props => <Store routeProps={props} />}
+        render={(props) => <Store routeProps={props} />}
       />
       <Route
         exact
         path="/store/category/:category"
-        render={props => <Store routeProps={props} />}
+        render={(props) => <Store routeProps={props} />}
       />
       <Route
         exact
         path="/store/brand/:brand"
-        render={props => <Store routeProps={props} />}
+        render={(props) => <Store routeProps={props} />}
       />
       <Route
         exact
         path="/store/ingredient/:ingredient"
-        render={props => <Store routeProps={props} />}
+        render={(props) => <Store routeProps={props} />}
       />
       <Redirect from="/store/" to="/store" />
       <Route
         exact
         path="/product/details/:productId"
-        render={props => <ProductDetails routeProps={props} />}
+        render={(props) => <ProductDetails routeProps={props} />}
       />
       <Route exact path="/cart" component={Cart} />
       <Route exact path="/checkout" component={Checkout} />
       <Route exact path="/signup" component={SignUp} />
-      {/* manager login page */}
+      {/* auth client only */}
+      <Route exact path="/client/info" component={ClientInfo} />
+      <Route exact path="/client/favorites" component={ClientFavorites} />
+      {/*  manager login page */}
       <Route exact path="/manager" component={Login} />
+      <Redirect from="/manager/" to="/manager" />
       {/* 404 not found */}
       <Route component={NoMatch} />
     </Switch>

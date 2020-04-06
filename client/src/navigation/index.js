@@ -1,12 +1,22 @@
 import React from "react";
+import GuestNavigation from "./GuestNavigation";
 import ClientNavigation from "./ClientNavigation";
-import AuthClientNavigation from "./ClientNavigation";
 import ManagerNavigation from "./ManagerNavigation";
+import { AuthUserContext } from "../session";
 
-const Navigation = ({ authUser }) => {
-  return <ClientNavigation />;
-};
-
-// export { ClientNavigation, AuthClientNavigation, ManagerNavigation };
+const Navigation = () => (
+  <AuthUserContext.Consumer>
+    {(authUser) => {
+      console.log("@NAVIGATION", authUser);
+      return authUser === "Guest" ? (
+        <GuestNavigation />
+      ) : authUser === "Client" ? (
+        <ClientNavigation />
+      ) : authUser === "Manager" ? (
+        <ManagerNavigation />
+      ) : null;
+    }}
+  </AuthUserContext.Consumer>
+);
 
 export default Navigation;
