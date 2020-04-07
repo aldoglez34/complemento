@@ -16,21 +16,21 @@ const MyNavbar = React.memo(({ hideBag, hideUser }) => {
 
   const [store, setStore] = useState([]);
 
-  const client = useSelector(state => state.user);
-  const cart = useSelector(state => state.cart);
+  const client = useSelector((state) => state.user);
+  const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
     // fetch items for search bar
     API.fetchItemsForSearchBar()
-      .then(res => setItems(res.data))
-      .catch(err => {
+      .then((res) => setItems(res.data))
+      .catch((err) => {
         console.log(err.response);
         alert(err.response.data.msg);
       });
     // fetch items for categories dropdown
     API.fetchItemsForStoreDropdown()
-      .then(res => setStore(res.data))
-      .catch(err => {
+      .then((res) => setStore(res.data))
+      .catch((err) => {
         console.log(err.response);
         alert(err.response.data.msg);
       });
@@ -92,7 +92,7 @@ const MyNavbar = React.memo(({ hideBag, hideUser }) => {
 });
 
 MyNavbar.propTypes = {
-  hideBag: PropTypes.bool
+  hideBag: PropTypes.bool,
 };
 
 export default MyNavbar;

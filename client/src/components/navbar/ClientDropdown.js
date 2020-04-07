@@ -12,7 +12,7 @@ const ClientDropdown = ({ firebase }) => {
 
   const dispatch = useDispatch();
 
-  const client = useSelector(state => state.user);
+  const client = useSelector((state) => state.user);
   // const logout = firebase => {
   //   // firebase._signOut;
   //   // fire
@@ -25,7 +25,7 @@ const ClientDropdown = ({ firebase }) => {
   //   //   .catch(error => console.log(error));
   // };
 
-  const content = type => {
+  const content = (type) => {
     return (
       <>
         {/* title */}

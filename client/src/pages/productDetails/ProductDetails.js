@@ -60,11 +60,10 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                 { name: product.name, to: "active" },
               ]}
             />
-            {/* ============================================ */}
             <Row>
               {/* LEFT COLUMN (image) */}
               <Col md={5} className="text-center">
-                <div className="d-blokc d-md-none mb-3">
+                <div className="d-block d-md-none mb-2">
                   <TitleAndPrice name={product.name} price={product.price} />
                 </div>
                 <Image
@@ -78,7 +77,7 @@ const ProductDetails = React.memo(function ProductDetails(props) {
               {/* RIGHT COLUMN */}
               <Col md={7}>
                 {/* title and price for bigger devices */}
-                <div className="d-none d-md-block mb-3">
+                <div className="d-none d-md-block">
                   <TitleAndPrice name={product.name} price={product.price} />
                 </div>
                 {/* content, brand and description */}
@@ -106,7 +105,6 @@ const ProductDetails = React.memo(function ProductDetails(props) {
                 </Row>
               </Col>
             </Row>
-            {/* ============================================ */}
             {/* carousel */}
             <h3 className="mt-3">Similares</h3>
             <hr className="myDivider" />

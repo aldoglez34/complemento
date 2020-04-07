@@ -6,7 +6,7 @@ import {
   Button,
   Nav,
   NavItem,
-  Modal
+  Modal,
 } from "react-bootstrap";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
@@ -14,6 +14,7 @@ import API from "../../utils/API";
 import * as userActions from "../../redux/actions/user";
 import { useDispatch } from "react-redux";
 import { withFirebase } from "../../firebase";
+import { AuthUserContext } from "../../session";
 
 const LoginDropdown = ({ firebase }) => {
   const [show, setShow] = useState(false);
@@ -24,18 +25,12 @@ const LoginDropdown = ({ firebase }) => {
   const dispatch = useDispatch();
 
   const loginSchema = yup.object({
-    email: yup
-      .string()
-      .email("Formato de correo")
-      .required("Requerido"),
-    password: yup
-      .string()
-      .min(6, "Longitud incorrecta")
-      .required("Requerido"),
-    rememberme: yup.boolean()
+    email: yup.string().email("Formato de correo").required("Requerido"),
+    password: yup.string().min(6, "Longitud incorrecta").required("Requerido"),
+    rememberme: yup.boolean(),
   });
 
-  const content = type => {
+  const content = (type) => {
     return (
       <>
         {/* title */}
@@ -68,10 +63,10 @@ const LoginDropdown = ({ firebase }) => {
             console.log("@LoginDropdown", firebase);
             firebase
               ._signInWithEmailAndPassword(values.email, values.password)
-              .then(authUser => {
+              .then((authUser) => {
                 console.log("authUser", authUser);
               })
-              .catch(err => console.log(err));
+              .catch((err) => console.log(err));
             // fire
             //   .auth()
             //   .signInWithEmailAndPassword(values.email, values.password)
@@ -91,7 +86,7 @@ const LoginDropdown = ({ firebase }) => {
             handleChange,
             handleBlur,
             handleSubmit,
-            isSubmitting
+            isSubmitting,
           }) => (
             <Form className="px-3" noValidate onSubmit={handleSubmit}>
               <Form.Row className="mb-2">
@@ -201,14 +196,18 @@ const LoginDropdown = ({ firebase }) => {
       {/* medium screens */}
       <div className="d-none d-md-block">
         <Dropdown as={NavItem}>
-          <Dropdown.Toggle
-            as={Nav.Link}
-            className="navbarDropdownStyle p-2 pt-3"
-            title="Sesión"
-          >
-            <i className="fas fa-user mr-1" />
-            Sesión
-          </Dropdown.Toggle>
+          <AuthUserContext.Consumer>
+            {(authUser) => (
+              <Dropdown.Toggle
+                as={Nav.Link}
+                className="navbarDropdownStyle p-2 pt-3"
+                title="Sesión"
+              >
+                <i className="fas fa-user mr-1" />
+                {authUser}
+              </Dropdown.Toggle>
+            )}
+          </AuthUserContext.Consumer>
 
           <Dropdown.Menu
             alignRight

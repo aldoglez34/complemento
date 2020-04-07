@@ -8,7 +8,8 @@ const TitleAndPrice = React.memo(({ name, price }) => {
       <div className="d-flex flex-row">
         <h1 className="text-left mb-0 pr-4">
           <span className="mr-1">{name}</span>
-          {price.discount.hasDiscount ? (
+          <hr className="myDivider mt-2 mb-0" />
+          {/* {price.discount.hasDiscount ? (
             <Badge
               className="h4"
               variant="warning"
@@ -16,23 +17,23 @@ const TitleAndPrice = React.memo(({ name, price }) => {
             >
               {price.discount.percentage + "%"}
             </Badge>
-          ) : null}
+          ) : null} */}
         </h1>
-        <div className="ml-auto text-right d-flex align-items-center">
-          <h2 className="mb-0 text-danger">
+        <div className="ml-auto text-right">
+          <h1 className="mb-0 text-danger">
             {price.discount.hasDiscount ? (
               <div className="d-flex flex-column">
-                <small className="text-muted">
-                  <del>{"$" + price.salePrice}</del>
-                </small>
                 <span className="text-danger">
                   {"$" + price.discount.newPrice}
                 </span>
+                {/* <small className="text-muted">
+                  <del>{"$" + price.salePrice}</del>
+                </small> */}
               </div>
             ) : (
               <span className="text-danger">{"$" + price.salePrice}</span>
             )}
-          </h2>
+          </h1>
         </div>
       </div>
     </>
