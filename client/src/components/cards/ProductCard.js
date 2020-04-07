@@ -63,7 +63,7 @@ const ProductCard = React.memo(function ProductCard(props) {
 });
 
 ProductCard.propTypes = {
-  product: PropTypes.object.isRequired
+  product: PropTypes.object.isRequired,
 };
 
 export default ProductCard;

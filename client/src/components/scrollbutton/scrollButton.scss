@@ -1,6 +1,5 @@
 .scroll {
   opacity: 0.9;
-  background-color: #264341;
 
   width: 3.6rem;
   height: 3.6rem;
@@ -8,7 +7,7 @@
   position: fixed;
   right: 0.9rem;
 
-  bottom: 4.8em;
+  bottom: 5.3em;
 
   border-radius: 0.3125rem;
   border: none;
@@ -16,12 +15,14 @@
   &:hover {
     opacity: 1;
   }
+
+  cursor: pointer;
 }
 
-.arrow-up {
-  color: #f3d084;
-  font-size: 1.9rem;
-  margin: 0rem;
-  padding: 0rem;
-  padding-top: 3px;
-}
+// .arrow-up {
+//   color: #f3d084;
+//   font-size: 1.9rem;
+//   margin: 0rem;
+//   padding: 0rem;
+//   padding-top: 3px;
+// }

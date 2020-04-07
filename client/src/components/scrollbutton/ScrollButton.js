@@ -1,11 +1,12 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import "./scrollButton.scss";
-import { Button } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 
 class ScrollButton extends PureComponent {
   state = {
     intervalId: 0,
+    is_visible: false,
   };
 
   scrollStep() {
@@ -23,19 +24,37 @@ class ScrollButton extends PureComponent {
     this.setState({ intervalId: intervalId });
   }
 
+  toggleVisibility() {
+    if (window.pageYOffset > 300) {
+      this.setState({
+        is_visible: true,
+      });
+    } else {
+      this.setState({
+        is_visible: false,
+      });
+    }
+  }
+
+  componentDidMount() {
+    let scrollComponent = this;
+    document.addEventListener("scroll", function (e) {
+      scrollComponent.toggleVisibility();
+    });
+  }
+
   render() {
-    return (
-      <Button
-        title="Ir arriba"
-        variant="transparent"
-        className="scroll p-0"
+    return this.state.is_visible ? (
+      <Image
         onClick={() => {
           this.scrollToTop();
         }}
-      >
-        <i className="fas fa-chevron-up arrow-up" />
-      </Button>
-    );
+        className="scroll"
+        title="Ir arriba"
+        src="https://image.flaticon.com/icons/svg/2026/2026923.svg"
+        alt="scrolltop"
+      />
+    ) : null;
   }
 }
 

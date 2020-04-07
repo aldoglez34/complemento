@@ -7,8 +7,8 @@ const WelcomeJumbotron = React.memo(function WelcomeJumbotron() {
       backgroundImage: "url('images/carousel3.jpg')",
       backgroundSize: "cover",
       backgroundColor: "gray",
-      backgroundBlendMode: "multiply"
-    }
+      backgroundBlendMode: "multiply",
+    },
   };
 
   return (

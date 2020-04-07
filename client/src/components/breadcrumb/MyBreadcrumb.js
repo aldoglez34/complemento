@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 const MyBreadcrumb = React.memo(function MyBreadcrumb(props) {
   return (
     <div className="mb-3">
-      {props.routes.map(r => {
+      {props.routes.map((r) => {
         if (r.to !== "active") {
           return (
-            <span key={r.to}>
+            <span key={r.to} title={"Ir a " + r.name}>
               <a href={r.to} className="text-dark">
                 {r.name}
               </a>
@@ -19,7 +19,7 @@ const MyBreadcrumb = React.memo(function MyBreadcrumb(props) {
           );
         } else {
           return (
-            <span key={r.to} href={r.to} style={{ color: "grey" }}>
+            <span key={r.to} href={r.to} className="text-secondary">
               {r.name}
             </span>
           );
@@ -30,7 +30,7 @@ const MyBreadcrumb = React.memo(function MyBreadcrumb(props) {
 });
 
 MyBreadcrumb.propTypes = {
-  routes: PropTypes.array
+  routes: PropTypes.array,
 };
 
 export default MyBreadcrumb;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, Col } from "react-bootstrap";
+import { Image, Modal, Button, Form, Col } from "react-bootstrap";
 import "./helpButton.scss";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
@@ -24,24 +24,23 @@ const HelpButton = React.memo(function HelpButton() {
       .string()
       .email("Formato de correo incorrecto")
       .required("Requerido"),
-    message: yup.string().required("Requerido")
+    message: yup.string().required("Requerido"),
   });
 
   return (
     <>
-      <Button
-        title="Ayuda"
-        variant="transparent"
-        className="helpbttn p-0"
+      <Image
         onClick={handleShow}
-      >
-        <i className="fas fa-comments qMark" />
-      </Button>
+        title="Ayuda"
+        className="helpbttn"
+        src="https://image.flaticon.com/icons/svg/443/443142.svg"
+        alt="help"
+      />
 
       <Modal className="modal-open" show={show} onHide={handleClose}>
         <Modal.Body>
-          <div className="d-flex flex-row pt-1 pb-2">
-            <h4 className="mb-0">Ayuda</h4>
+          <div className="d-flex flex-row pt-1 pb-3">
+            <h4 className="mb-0">¿Necesitas ayuda?</h4>
             <i
               className="fas fa-times ml-auto"
               style={{ cursor: "pointer" }}
@@ -50,14 +49,14 @@ const HelpButton = React.memo(function HelpButton() {
             />
           </div>
           <p>
-            ¿Tienes dudas sobre algún producto? Envíanos tus
-            preguntas/comentarios y nosotros nos pondremos en contacto contigo.
+            Envíanos tus preguntas/comentarios y nosotros nos pondremos en
+            contacto contigo.
           </p>
           <Formik
             initialValues={{
               name: "",
               email: "",
-              message: ""
+              message: "",
             }}
             validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
@@ -68,7 +67,7 @@ const HelpButton = React.memo(function HelpButton() {
                     "Mensaje enviado con éxito. Nos pondremos en contacto contigo al correo proporcionado. "
                   )
                 )
-                .catch(err => {
+                .catch((err) => {
                   console.log(err.response);
                   alert(err.response.data.msg);
                 });
@@ -81,7 +80,7 @@ const HelpButton = React.memo(function HelpButton() {
               handleChange,
               handleBlur,
               handleSubmit,
-              isSubmitting
+              isSubmitting,
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
                 {/* name */}
@@ -156,7 +155,7 @@ const HelpButton = React.memo(function HelpButton() {
                 <Form.Row className="px-1">
                   <Button
                     className="ml-auto"
-                    variant="success"
+                    variant="warning"
                     type="submit"
                     disabled={isSubmitting}
                   >
