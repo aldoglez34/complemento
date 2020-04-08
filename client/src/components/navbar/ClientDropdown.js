@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Dropdown, Nav, NavItem, Modal, Button } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
-import * as userActions from "../../redux/actions/user";
+import { useSelector } from "react-redux";
 import { withFirebase } from "../../firebase";
 
 const ClientDropdown = ({ firebase }) => {
@@ -10,20 +9,7 @@ const ClientDropdown = ({ firebase }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const dispatch = useDispatch();
-
   const client = useSelector((state) => state.user);
-  // const logout = firebase => {
-  //   // firebase._signOut;
-  //   // fire
-  //   //   .auth()
-  //   //   .signOut()
-  //   //   .then(() => {
-  //   //     // dispatch(userActions.logoutUser());
-  //   //     window.location.href = "/";
-  //   //   })
-  //   //   .catch(error => console.log(error));
-  // };
 
   const content = (type) => {
     return (
@@ -117,7 +103,7 @@ const ClientDropdown = ({ firebase }) => {
             {client.name}
           </Dropdown.Toggle>
 
-          <Dropdown.Menu alignRight data-display="static">
+          <Dropdown.Menu alignRight data-display="static" id="dropdownMenuLG">
             {content("dropdown", firebase)}
           </Dropdown.Menu>
         </Dropdown>

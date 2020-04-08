@@ -10,19 +10,13 @@ import {
 } from "react-bootstrap";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
-import API from "../../utils/API";
-import * as userActions from "../../redux/actions/user";
-import { useDispatch } from "react-redux";
 import { withFirebase } from "../../firebase";
-import { AuthUserContext } from "../../session";
 
 const LoginDropdown = ({ firebase }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const dispatch = useDispatch();
 
   const loginSchema = yup.object({
     email: yup.string().email("Formato de correo").required("Requerido"),
@@ -60,23 +54,10 @@ const LoginDropdown = ({ firebase }) => {
           validationSchema={loginSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            console.log("@LoginDropdown", firebase);
+            //////// login ////////
             firebase
               ._signInWithEmailAndPassword(values.email, values.password)
-              .then((authUser) => {
-                console.log("authUser", authUser);
-              })
               .catch((err) => console.log(err));
-            // fire
-            //   .auth()
-            //   .signInWithEmailAndPassword(values.email, values.password)
-            //   .catch(error => {
-            //     alert(
-            //       "Hubo un error al intentar iniciar sesión, por favor intenta de nuevo."
-            //     );
-            //     console.log(error);
-            //     setSubmitting(false);
-            //   });
           }}
         >
           {({
@@ -164,11 +145,10 @@ const LoginDropdown = ({ firebase }) => {
           )}
         </Formik>
         <hr />
-        <Dropdown.Item
-          className="navbarDropdownItemStyle px-3"
-          href="/signup"
-          // disabled
-        >
+        <Dropdown.Item className="navbarDropdownItemStyle px-3" href="/signup">
+          ¿Olvidaste tu contraseña?
+        </Dropdown.Item>
+        <Dropdown.Item className="navbarDropdownItemStyle px-3" href="/signup">
           Regístrate con nosotros
         </Dropdown.Item>
       </>
@@ -196,18 +176,14 @@ const LoginDropdown = ({ firebase }) => {
       {/* medium screens */}
       <div className="d-none d-md-block">
         <Dropdown as={NavItem}>
-          <AuthUserContext.Consumer>
-            {(authUser) => (
-              <Dropdown.Toggle
-                as={Nav.Link}
-                className="navbarDropdownStyle p-2 pt-3"
-                title="Sesión"
-              >
-                <i className="fas fa-user mr-1" />
-                {authUser}
-              </Dropdown.Toggle>
-            )}
-          </AuthUserContext.Consumer>
+          <Dropdown.Toggle
+            as={Nav.Link}
+            className="navbarDropdownStyle p-2 pt-3"
+            title="Sesión"
+          >
+            <i className="fas fa-user mr-1" />
+            Sesión
+          </Dropdown.Toggle>
 
           <Dropdown.Menu
             alignRight
