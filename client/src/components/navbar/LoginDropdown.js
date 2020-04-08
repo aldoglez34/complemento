@@ -56,7 +56,11 @@ const LoginDropdown = ({ firebase }) => {
             setSubmitting(true);
             //////// login ////////
             firebase
-              ._signInWithEmailAndPassword(values.email, values.password)
+              ._signInWithEmailAndPassword(
+                values.email,
+                values.password,
+                values.rememberme
+              )
               .catch((err) => console.log(err));
           }}
         >

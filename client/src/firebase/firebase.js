@@ -24,11 +24,19 @@ class Firebase {
   }
 
   // auth api
-  _createUserWithEmailAndPassword = (email, password) =>
+  _createUserWithEmailAndPassword = (email, password) => {
     this.auth.createUserWithEmailAndPassword(email, password);
+  };
 
-  _signInWithEmailAndPassword = (email, password) =>
-    this.auth.signInWithEmailAndPassword(email, password);
+  _signInWithEmailAndPassword = (email, password, rememberMe) => {
+    this.auth
+      .setPersistence(
+        rememberMe
+          ? this.auth.Auth.Persistence.LOCAL
+          : this.auth.Auth.Persistence.SESSION
+      )
+      .then(() => this.auth.signInWithEmailAndPassword(email, password));
+  };
 
   _signOut = () => this.auth.signOut();
 

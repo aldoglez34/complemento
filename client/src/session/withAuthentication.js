@@ -15,6 +15,7 @@ const withAuthentication = (Component) => {
     componentDidMount() {
       this.listener = this.props.firebase.auth.onAuthStateChanged(
         (authUser) => {
+          console.log("@WITHAUTENTICATION", authUser);
           authUser
             ? this.setState({ authUser: authUser.displayName }, () =>
                 this.signInRedux(authUser.uid)
