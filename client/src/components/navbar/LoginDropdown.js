@@ -55,13 +55,11 @@ const LoginDropdown = ({ firebase }) => {
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
             //////// login ////////
-            firebase
-              ._signInWithEmailAndPassword(
-                values.email,
-                values.password,
-                values.rememberme
-              )
-              .catch((err) => console.log(err));
+            firebase._signInWithEmailAndPassword(
+              values.email,
+              values.password,
+              values.rememberme
+            );
           }}
         >
           {({
@@ -124,27 +122,17 @@ const LoginDropdown = ({ firebase }) => {
                   />
                 </Form.Group>
               </Form.Row>
-              <Form.Row className="mb-2">
-                <Form.Group as={Col}>
-                  <Form.Check
-                    type="checkbox"
-                    name="rememberme"
-                    onChange={handleChange}
-                    label="Recuérdame"
-                  />
-                </Form.Group>
-              </Form.Row>
-              <Form.Row>
-                <Form.Group as={Col}>
-                  <Button
-                    variant="warning"
-                    type="submit"
-                    disabled={isSubmitting}
-                  >
-                    Entrar
-                  </Button>
-                </Form.Group>
-              </Form.Row>
+              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Check
+                  type="checkbox"
+                  name="rememberme"
+                  onChange={handleChange}
+                  label="Recuérdame"
+                />
+              </Form.Group>
+              <Button variant="warning" type="submit" disabled={isSubmitting}>
+                Entrar
+              </Button>
             </Form>
           )}
         </Formik>

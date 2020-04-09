@@ -29,11 +29,12 @@ class Firebase {
   };
 
   _signInWithEmailAndPassword = (email, password, rememberMe) => {
+    const firebase = require("firebase/app");
     this.auth
       .setPersistence(
         rememberMe
-          ? this.auth.Auth.Persistence.LOCAL
-          : this.auth.Auth.Persistence.SESSION
+          ? firebase.auth.Auth.Persistence.LOCAL
+          : firebase.auth.Auth.Persistence.SESSION
       )
       .then(() => this.auth.signInWithEmailAndPassword(email, password));
   };
