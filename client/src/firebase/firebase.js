@@ -23,9 +23,16 @@ class Firebase {
     this.auth = app.auth();
   }
 
-  // auth api
+  //////// auth api ////////
   _createUserWithEmailAndPassword = (email, password) => {
-    this.auth.createUserWithEmailAndPassword(email, password);
+    this.auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((res) => {
+        return res.user.updateProfile({
+          displayName: "Client",
+        });
+      })
+      .then(() => (window.location.href = "/"));
   };
 
   _signInWithEmailAndPassword = (email, password, rememberMe) => {

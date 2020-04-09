@@ -1,18 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import * as userActions from "../../redux/actions/user";
 import { Container, Col, Form, Button } from "react-bootstrap";
 import Layout from "../../components/Layout";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
 import HelpButton from "../../components/helpbutton/HelpButton";
 import ScrollButton from "../../components/scrollbutton/ScrollButton";
-import API from "../../utils/API";
 import { withFirebase } from "../../firebase";
+import API from "../../utils/API";
 
 const SignUp = ({ firebase }) => {
-  const dispatch = useDispatch();
-
   const yupSchema = yup.object({
     clientName: yup
       .string()
@@ -57,7 +53,6 @@ const SignUp = ({ firebase }) => {
 
   return (
     <Layout>
-      {console.log("@SIGNUP", firebase)}
       <Container className="mt-4 mb-4">
         <h3>Regístrate con nosotros</h3>
         <hr className="myDivider" />
@@ -74,54 +69,35 @@ const SignUp = ({ firebase }) => {
           validationSchema={yupSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            ////////////////////////// signup //////////////////////////
+            //////// signup ////////
             firebase
               ._createUserWithEmailAndPassword(values.email, values.password)
-              .then((authUser) => {
-                console.log("authUser", authUser);
-                window.location.href = "/";
-              })
-              .catch((err) => console.log(err));
-            ////////////////////////// signup //////////////////////////
-            // fire
-            //   .auth()
-            //   .createUserWithEmailAndPassword(values.email, values.password)
-            //   .then(res => {
-            //     return res.user.updateProfile({
-            //       displayName: "Client",
-            //       phoneNumber: values.phone
-            //     });
-            //   })
-            //   .then(() => {
-            // login client to redux immediately
-            // API.fetchClientByUID(res.user.uid)
-            //   .then(res => {
-            //     if (res.data) {
-            //       dispatch(userActions.loginClient(res.data));
-            //       alert(`Iniciaste sesión con éxito, ${res.data.name}`);
-            //       window.location.href = "/";
-            //     } else {
-            //       alert("Usuario incorrecto");
-            //       setSubmitting(false);
-            //     }
-            //   })
-            //   .catch(error => {
-            //     alert("Error de autenticación, revisa tus datos");
-            //     console.log("Error de fetchClientByUID");
-            //     console.log(error);
-            //     setSubmitting(false);
-            //   });
-            // window.location.href = "/";
-            // })
-            // .catch(err => {
-            //   // firebase won't let duplicate emails
-            //   alert(
-            //     `Lo sentimos. El correo ${values.email} ya está asignado a otra cuenta`
-            //   );
-            //   setSubmitting(false);
-            //   console.log(err);
-            // });
-            ////////////////////////////////////////////////////////////
+              .then((res) => {
+                values.firebaseUID = res.user.uid;
+                // save the client info in the db
+                API.newClient(values)
+                  .then((res) => {
+                    console.log(res);
+                    // // lastly, fetch the recently created client
+                    // API.fetchClientByUID(values.firebaseUID)
+                    //   .then((res) => {
+                    //     console.log("@fetchClientByUID", res.data);
+                    //     dispatch(clientActions.loginClient(res.data));
+                    //     alert(`Iniciaste sesión con éxito, ${res.data.name}`);
+                    //     window.location.href = "/";
+                    //   })
+                    //   .catch((err) => {
+                    //     // print error
+                    //     console.log(err);
+                    //     setSubmitting(false);
+                    //   });
+                  })
+                  .catch((err) => {
+                    console.log(err.response);
+                    alert(err.response.data.msg);
+                    setSubmitting(false);
+                  });
+              });
           }}
         >
           {({
