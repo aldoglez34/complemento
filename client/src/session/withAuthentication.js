@@ -30,9 +30,11 @@ const withAuthentication = (Component) => {
           if (!this.props.user)
             API.fetchClientByUID(uid)
               .then((res) => {
-                this.props.loginClient(res.data);
-                alert(`Iniciaste sesión con éxito, ${res.data.name}`);
-                window.location.href = "/";
+                if (res.data) {
+                  this.props.loginClient(res.data);
+                  alert(`Iniciaste sesión con éxito, ${res.data.name}`);
+                  window.location.href = "/";
+                }
               })
               .catch((err) => {
                 // print error
