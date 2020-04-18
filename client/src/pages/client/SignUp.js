@@ -70,34 +70,11 @@ const SignUp = ({ firebase }) => {
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
             //////// signup ////////
-            firebase
-              ._createUserWithEmailAndPassword(values.email, values.password)
-              .then((res) => {
-                values.firebaseUID = res.user.uid;
-                // save the client info in the db
-                API.newClient(values)
-                  .then((res) => {
-                    console.log(res);
-                    // // lastly, fetch the recently created client
-                    // API.fetchClientByUID(values.firebaseUID)
-                    //   .then((res) => {
-                    //     console.log("@fetchClientByUID", res.data);
-                    //     dispatch(clientActions.loginClient(res.data));
-                    //     alert(`Iniciaste sesión con éxito, ${res.data.name}`);
-                    //     window.location.href = "/";
-                    //   })
-                    //   .catch((err) => {
-                    //     // print error
-                    //     console.log(err);
-                    //     setSubmitting(false);
-                    //   });
-                  })
-                  .catch((err) => {
-                    console.log(err.response);
-                    alert(err.response.data.msg);
-                    setSubmitting(false);
-                  });
-              });
+            firebase._createUserWithEmailAndPassword(
+              values.email,
+              values.password,
+              values
+            );
           }}
         >
           {({

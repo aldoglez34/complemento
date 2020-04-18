@@ -1,3 +1,5 @@
+import API from "../utils/API";
+
 // firebase app
 import app from "firebase/app";
 import "firebase/auth";
@@ -24,15 +26,36 @@ class Firebase {
   }
 
   //////// auth api ////////
-  _createUserWithEmailAndPassword = (email, password) => {
-    this.auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((res) => {
-        return res.user.updateProfile({
-          displayName: "Client",
+  _createUserWithEmailAndPassword = (email, password, values) => {
+    this.auth.createUserWithEmailAndPassword(email, password).then((u) => {
+      // set client type
+      u.user.updateProfile({
+        displayName: "Client",
+      });
+      // add client to db
+      values.firebaseUID = u.user.uid;
+      API.newClient(values)
+        .then((res) => {
+          window.location.href = "/";
+          // // lastly, fetch the recently created client
+          // API.fetchClientByUID(values.firebaseUID)
+          //   .then((res) => {
+          //     console.log("@fetchClientByUID", res.data);
+          //     dispatch(clientActions.loginClient(res.data));
+          //     alert(`Iniciaste sesión con éxito, ${res.data.name}`);
+          //     window.location.href = "/";
+          //   })
+          //   .catch((err) => {
+          //     // print error
+          //     console.log(err);
+          //     setSubmitting(false);
+          //   });
+        })
+        .catch((err) => {
+          console.log(err.response);
+          alert(err.response.data.msg);
         });
-      })
-      .then(() => (window.location.href = "/"));
+    });
   };
 
   _signInWithEmailAndPassword = (email, password, rememberMe) => {
