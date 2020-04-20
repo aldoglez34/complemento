@@ -3,6 +3,7 @@ import AuthUserContext from "./context";
 import { withFirebase } from "../firebase";
 import { connect } from "react-redux";
 import API from "../utils/API";
+import APIManager from "../utils/APIManager";
 import { loginClient, logoutUser } from "../redux/actions/user";
 
 // higher order component
@@ -43,7 +44,20 @@ const withAuthentication = (Component) => {
               });
           break;
         case "Manager":
-          // code block
+          if (!this.props.user)
+            APIManager.mngr_fetchManagerByUID(uid)
+              .then((res) => {
+                if (res.data) {
+                  this.props.loginClient(res.data);
+                  alert(`Iniciaste sesión con éxito, ${res.data.name}`);
+                  window.location.href = "/manager/dashboard";
+                }
+              })
+              .catch((err) => {
+                // print error
+                alert("Ocurrió un error. Vuelve a intentarlo.");
+                console.log(err);
+              });
           break;
         default:
           return null;

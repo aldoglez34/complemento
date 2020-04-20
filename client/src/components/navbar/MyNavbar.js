@@ -41,9 +41,9 @@ const MyNavbar = React.memo(({ hideBag, hideUser }) => {
       {/* top navbar */}
       <Navbar expand="md" id="navbarStyle">
         {/* brand */}
-        <Navbar.Brand href="/" id="navbarLogo">
+        <Navbar.Brand href="/" id="navbarLogo" title="Inicio">
           Tu Complemento
-          <i className="fas fa-leaf ml-2" id="navbarLogoLeaf" />
+          <i className="fas fa-leaf ml-1" id="navbarLogoLeaf"  />
         </Navbar.Brand>
         {/* toggle */}
         <Navbar.Toggle

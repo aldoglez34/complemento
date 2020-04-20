@@ -35,22 +35,7 @@ class Firebase {
       // add client to db
       values.firebaseUID = u.user.uid;
       API.newClient(values)
-        .then((res) => {
-          window.location.href = "/";
-          // // lastly, fetch the recently created client
-          // API.fetchClientByUID(values.firebaseUID)
-          //   .then((res) => {
-          //     console.log("@fetchClientByUID", res.data);
-          //     dispatch(clientActions.loginClient(res.data));
-          //     alert(`Iniciaste sesión con éxito, ${res.data.name}`);
-          //     window.location.href = "/";
-          //   })
-          //   .catch((err) => {
-          //     // print error
-          //     console.log(err);
-          //     setSubmitting(false);
-          //   });
-        })
+        .then(() => (window.location.href = "/"))
         .catch((err) => {
           console.log(err.response);
           alert(err.response.data.msg);

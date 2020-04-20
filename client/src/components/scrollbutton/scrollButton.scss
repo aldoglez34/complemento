@@ -7,22 +7,23 @@
   position: fixed;
   right: 0.9rem;
 
-  bottom: 5.3em;
+  bottom: 2.6em;
 
   border-radius: 0.3125rem;
   border: none;
   outline: none !important;
-  &:hover {
-    opacity: 1;
-  }
 
   cursor: pointer;
-}
 
-// .arrow-up {
-//   color: #f3d084;
-//   font-size: 1.9rem;
-//   margin: 0rem;
-//   padding: 0rem;
-//   padding-top: 3px;
-// }
+  background-color: darkslategray;
+  color: #edcb58;
+  padding: 8px;
+  font-size: 1.9rem;
+
+  &:hover {
+    transition: 0.5s;
+    opacity: 1;
+    background-color: #edcb58;
+    color: darkslategray;
+  }
+}

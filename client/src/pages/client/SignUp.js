@@ -6,7 +6,6 @@ import { Formik, ErrorMessage } from "formik";
 import HelpButton from "../../components/helpbutton/HelpButton";
 import ScrollButton from "../../components/scrollbutton/ScrollButton";
 import { withFirebase } from "../../firebase";
-import API from "../../utils/API";
 
 const SignUp = ({ firebase }) => {
   const yupSchema = yup.object({

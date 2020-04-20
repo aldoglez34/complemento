@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import "./scrollButton.scss";
-import { Image } from "react-bootstrap";
+import Fade from "react-reveal/Fade";
 
 class ScrollButton extends PureComponent {
   state = {
@@ -45,15 +45,17 @@ class ScrollButton extends PureComponent {
 
   render() {
     return this.state.is_visible ? (
-      <Image
-        onClick={() => {
-          this.scrollToTop();
-        }}
-        className="scroll"
-        title="Ir arriba"
-        src="https://image.flaticon.com/icons/svg/2026/2026923.svg"
-        alt="scrolltop"
-      />
+      <Fade right>
+        <span
+          onClick={() => {
+            this.scrollToTop();
+          }}
+          className="scroll d-flex align-items-center justify-content-center"
+          title="Ir arriba"
+        >
+          <i className="fas fa-chevron-up" />
+        </span>
+      </Fade>
     ) : null;
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, Modal, Button, Form, Col } from "react-bootstrap";
+import { Modal, Button, Form, Col } from "react-bootstrap";
 import "./helpButton.scss";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
@@ -29,13 +29,13 @@ const HelpButton = React.memo(function HelpButton() {
 
   return (
     <>
-      <Image
-        onClick={handleShow}
+      <span
         title="Ayuda"
-        className="helpbttn"
-        src="https://image.flaticon.com/icons/svg/443/443142.svg"
-        alt="help"
-      />
+        className="helpbttn d-flex align-items-center justify-content-center"
+        onClick={handleShow}
+      >
+        <i className="fas fa-comment-dots" />
+      </span>
 
       <Modal className="modal-open" show={show} onHide={handleClose}>
         <Modal.Body>
