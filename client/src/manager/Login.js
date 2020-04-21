@@ -37,14 +37,20 @@ const Login = ({ firebase }) => {
             validationSchema={loginSchema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
+              //////// login ////////
+              firebase._signInWithEmailAndPassword(
+                values.email,
+                values.password,
+                false
+              );
               /////////////// login //////////////////
-              firebase
-                ._signInWithEmailAndPassword(values.email, values.password)
-                .then((authUser) => {
-                  console.log("authUser", authUser);
-                  window.location.href = "/manager/dashboard";
-                })
-                .catch((err) => console.log(err));
+              // firebase
+              //   ._signInWithEmailAndPassword(values.email, values.password)
+              //   .then((authUser) => {
+              //     console.log("authUser", authUser);
+              //     window.location.href = "/manager/dashboard";
+              //   })
+              //   .catch((err) => console.log(err));
             }}
           >
             {({
