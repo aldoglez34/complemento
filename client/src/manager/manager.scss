@@ -27,18 +27,21 @@ $activeItem: #f3d084;
   background-color: $green1;
   height: 60px;
   align-self: center;
+  margin-bottom: 75px;
 }
 
 .navItemStyle {
   color: gray;
   padding-left: 16px;
-  padding-top: 8px;
+  padding-top: 6px;
   margin-top: 8px;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  font-size: 11px;
 }
 
 .navLinkStyle {
-  padding-bottom: 0px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   color: #99aab5;
   &:hover {
     color: gainsboro;
@@ -47,9 +50,11 @@ $activeItem: #f3d084;
     color: $activeItem;
   }
 }
+
 // top helper nav
 #topHelperStyle {
   height: 60px;
+  background-color: #264341;
 }
 
 .topHelperAuditOpened {
@@ -57,12 +62,72 @@ $activeItem: #f3d084;
   padding: 8px;
 }
 
-.topHelperItem {
-  color: darkslategray;
-  padding: 0px;
+.managerTopNavNewBttn {
+  background-color: transparent !important;
+  border: 0px;
+  color: #92a1a0;
+  font-size: 24px;
+  outline: none !important;
+  box-shadow: none !important;
+  &:hover {
+    color: whitesmoke;
+  }
+}
+
+#managerTopNavUser {
+  color: gainsboro;
+  background-color: transparent;
+  border-color: #92a1a0;
+  border-style: solid;
+  border-width: 1px;
+  outline: none !important;
+  box-shadow: none !important;
+  &:hover {
+    transition: 0.7s;
+    color: black;
+    background-color: whitesmoke;
+    border-color: whitesmoke;
+    background-color: whitesmoke;
+  }
 }
 
 // rows
 .rowStyle {
   cursor: pointer;
+}
+
+// filters
+.filterBttnManager {
+  background-color: #117a8b;
+  border-color: #117a8b;
+  outline: none !important;
+  box-shadow: none !important;
+  &:disabled {
+    background-color: #0e6c7a !important;
+    border-color: #0e6c7a !important;
+  }
+  &:hover {
+    transition: 0.9s;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+  }
+  &.active {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: black !important;
+    &:hover {
+      transition: 0.7s;
+      background-color: #ffcb2f !important;
+      border-color: #ffcb2f !important;
+      color: black !important;
+    }
+  }
+}
+
+// modals
+.managerTitleModal {
+  color: #464646 !important;
+  // font-family: "Open Sans", sans-serif;
+  font-weight: bolder;
+  margin-bottom: 8px;
 }

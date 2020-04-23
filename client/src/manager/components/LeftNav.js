@@ -3,19 +3,19 @@ import { Nav } from "react-bootstrap";
 
 const LeftNav = React.memo(function LeftNav(props) {
   return (
-    <Nav className="d-none d-lg-flex flex-column h-100" id="verticalNavStyle">
+    <Nav className="d-flex flex-column h-100" id="verticalNavStyle">
       <h3
-        className="text-center mt-3 mb-0"
+        className="text-center mt-3 mb-4"
         style={{
           color: "#edcb58",
-          fontFamily: "'Lobster', cursive"
+          fontFamily: "'Lobster', cursive",
         }}
       >
         Tu Complemento
         <i className="fas fa-leaf ml-1" />
       </h3>
       {/* menu */}
-      <Nav.Item className="navItemStyle">Menú</Nav.Item>
+      <Nav.Item className="navItemStyle">MENÚ</Nav.Item>
       <Nav.Link
         className="navLinkStyle"
         href="/manager/dashboard"
@@ -27,7 +27,7 @@ const LeftNav = React.memo(function LeftNav(props) {
         />
         <span className="ml-1">Inicio</span>
       </Nav.Link>
-      <Nav.Item className="navItemStyle">Productos</Nav.Item>
+      <Nav.Item className="navItemStyle">PRODUCTOS</Nav.Item>
       <Nav.Link
         className="navLinkStyle"
         href="/manager/products"
@@ -72,7 +72,7 @@ const LeftNav = React.memo(function LeftNav(props) {
         />
         <span className="ml-1">Proveedores</span>
       </Nav.Link>
-      <Nav.Item className="navItemStyle">Usuarios</Nav.Item>
+      <Nav.Item className="navItemStyle">USUARIOS</Nav.Item>
       <Nav.Link
         className="navLinkStyle"
         href="/manager/users"
@@ -95,7 +95,7 @@ const LeftNav = React.memo(function LeftNav(props) {
         />
         <span className="ml-1">Mensajes</span>
       </Nav.Link>
-      <Nav.Item className="navItemStyle">Tienda</Nav.Item>
+      <Nav.Item className="navItemStyle">TIENDA</Nav.Item>
       <Nav.Link
         className="navLinkStyle"
         href="/manager/sales"
@@ -118,7 +118,7 @@ const LeftNav = React.memo(function LeftNav(props) {
         />
         <span className="ml-1">Compras</span>
       </Nav.Link>
-      <Nav.Item className="navItemStyle">Reportes</Nav.Item>
+      <Nav.Item className="navItemStyle">REPORTES</Nav.Item>
       <Nav.Link
         className="navLinkStyle"
         href="/manager"

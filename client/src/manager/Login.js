@@ -43,14 +43,7 @@ const Login = ({ firebase }) => {
                 values.password,
                 false
               );
-              /////////////// login //////////////////
-              // firebase
-              //   ._signInWithEmailAndPassword(values.email, values.password)
-              //   .then((authUser) => {
-              //     console.log("authUser", authUser);
-              //     window.location.href = "/manager/dashboard";
-              //   })
-              //   .catch((err) => console.log(err));
+              setSubmitting(false);
             }}
           >
             {({

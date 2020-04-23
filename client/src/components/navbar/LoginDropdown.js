@@ -60,6 +60,7 @@ const LoginDropdown = ({ firebase }) => {
               values.password,
               values.rememberme
             );
+            setSubmitting(false);
           }}
         >
           {({

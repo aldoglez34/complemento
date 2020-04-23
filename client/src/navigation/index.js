@@ -6,16 +6,15 @@ import { AuthUserContext } from "../session";
 
 const Navigation = () => (
   <AuthUserContext.Consumer>
-    {(authUser) => {
-      console.log("@NAVIGATION", authUser);
-      return authUser === "Guest" ? (
+    {(authUser) =>
+      authUser === "Guest" ? (
         <GuestNavigation />
       ) : authUser === "Client" ? (
         <ClientNavigation />
       ) : authUser === "Manager" ? (
         <ManagerNavigation />
-      ) : null;
-    }}
+      ) : null
+    }
   </AuthUserContext.Consumer>
 );
 

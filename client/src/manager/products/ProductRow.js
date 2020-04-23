@@ -3,19 +3,16 @@ import { Button, Modal, Form, Col, InputGroup, Badge } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-import API from "../../utils/API";
+import APIManager from "../../utils/APIManager";
 
-const ProductRow = React.memo(function ProductRow(props) {
+const ProductRow = React.memo(({ product }) => {
   const [show, setshow] = useState(false);
 
   const handleClose = () => setshow(false);
   const handleShow = () => setshow(true);
 
   const yupschema = yup.object({
-    name: yup
-      .string()
-      .min(3, "Demasiado corto")
-      .required("Requerido"),
+    name: yup.string().min(3, "Demasiado corto").required("Requerido"),
     latestPurchasePrice: yup
       .number()
       .positive("Debe ser positivo")
@@ -29,10 +26,7 @@ const ProductRow = React.memo(function ProductRow(props) {
       .string()
       .min(3, "Nombre demasiado corto")
       .required("Requerido"),
-    brand: yup
-      .string()
-      .min(3, "Nombre demasiado corto")
-      .required("Requerido"),
+    brand: yup.string().min(3, "Nombre demasiado corto").required("Requerido"),
     category: yup
       .mixed()
       .notOneOf(["Elige..."], "Requerido")
@@ -43,13 +37,10 @@ const ProductRow = React.memo(function ProductRow(props) {
       .required("Requerido"),
     ingredients: yup.string(),
     sufferings: yup.string(),
-    stock: yup
-      .number()
-      .positive("Debe ser positivo")
-      .required("Requerido"),
+    stock: yup.number().positive("Debe ser positivo").required("Requerido"),
     photo: yup.string(),
     priority: yup.boolean(),
-    comments: yup.string()
+    comments: yup.string(),
   });
 
   return (
@@ -57,18 +48,8 @@ const ProductRow = React.memo(function ProductRow(props) {
       <tr onClick={handleShow} className="rowStyle">
         {/* name */}
         <td>
-          {props.product.name}
-          {props.product.stock === 0 ? (
-            <Badge
-              pill
-              className="ml-1"
-              variant="warning"
-              style={{ fontFamily: "Arial" }}
-            >
-              Sin existencias
-            </Badge>
-          ) : null}
-          {props.product.price.discount.hasDiscount ? (
+          {product.name}
+          {product.price.discount.hasDiscount ? (
             <Badge
               title="Este producto tiene descuento"
               pill
@@ -76,55 +57,54 @@ const ProductRow = React.memo(function ProductRow(props) {
               variant="warning"
               style={{ fontFamily: "Arial" }}
             >
-              {props.product.price.discount.percentage + "%"}
+              {product.price.discount.percentage + "%"}
             </Badge>
           ) : null}
         </td>
         {/* category */}
-        <td>{props.product.category.name}</td>
+        <td>{product.category}</td>
         {/* provider */}
-        <td>{props.product.provider.name}</td>
-        {/* priority */}
-        <td className="text-center">{props.product.priority ? "Sí" : "No"}</td>
+        <td>{product.provider.name}</td>
         {/* sale price */}
-        <td>
-          {props.product.price.discount.hasDiscount
-            ? props.product.price.discount.newPrice
-            : props.product.price.salePrice}
+        <td className="text-right">
+          {product.price.discount.hasDiscount
+            ? product.price.discount.newPrice
+            : product.price.salePrice}
         </td>
         {/* units sold */}
-        <td className="text-center">{props.product.unitsSold}</td>
+        <td className="text-right">{product.unitsSold}</td>
         {/* stock */}
-        <td className="text-center">{props.product.stock}</td>
+        <td className="text-right">{product.stock}</td>
       </tr>
 
       <Modal show={show} onHide={handleClose} size="lg">
-        <Modal.Body>
+        <Modal.Body className="p-4">
           <Formik
             initialValues={{
-              _id: props.product._id,
-              name: props.product.name,
-              photo: props.product.photo,
-              content: props.product.content,
-              brand: props.product.brand,
-              category: props.product.category.name,
-              provider: props.product.provider.name,
-              ingredients: props.product.ingredients.toString(),
-              sufferings: props.product.sufferings.toString(),
-              stock: props.product.stock,
-              priority: props.product.priority,
-              comments: props.product.comments,
+              _id: product._id,
+              name: product.name,
+              photo: product.photo,
+              content: product.content,
+              brand: product.brand,
+              category: product.category,
+              provider: product.provider.name,
+              ingredients: product.ingredients.toString(),
+              stock: product.stock,
+              priority: product.priority,
+              description: product.description,
+              dose: product.dose,
+              warning: product.warning,
               // prices
-              latestPurchasePrice: props.product.price.latestPurchasePrice,
-              salePrice: props.product.price.salePrice,
-              discount: props.product.price.discount.hasDiscount,
-              percentage: 0
+              latestPurchasePrice: product.price.latestPurchasePrice,
+              salePrice: product.price.salePrice,
+              discount: product.price.discount.hasDiscount,
+              percentage: 0,
             }}
             validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              API.updateProduct(values)
-                .then(res => {
+              APIManager.mngr_updateProduct(values)
+                .then((res) => {
                   if (res.data.errmsg) {
                     alert("ERROR => " + res.data.errmsg);
                     setSubmitting(false);
@@ -134,7 +114,7 @@ const ProductRow = React.memo(function ProductRow(props) {
                     window.location.reload();
                   }
                 })
-                .catch(err => {
+                .catch((err) => {
                   console.log(err.response);
                   alert(err.response.data.msg);
                 });
@@ -147,10 +127,11 @@ const ProductRow = React.memo(function ProductRow(props) {
               handleChange,
               handleBlur,
               handleSubmit,
-              isSubmitting
+              isSubmitting,
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
-                <h4>Detalle del producto</h4>
+                <h3 className="managerTitleModal">DETALLE</h3>
+                <hr className="myDivider" />
                 {/* name */}
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
@@ -260,7 +241,6 @@ const ProductRow = React.memo(function ProductRow(props) {
                       </span>
                     </Form.Label>
                     <Form.Control
-                      disabled
                       type="text"
                       name="category"
                       value={values.category}
@@ -325,31 +305,6 @@ const ProductRow = React.memo(function ProductRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* sufferings */}
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>
-                      Padecimientos
-                      <small className="ml-1">(separados por coma)</small>
-                    </Form.Label>
-                    <Form.Control
-                      maxLength="250"
-                      type="text"
-                      placeholder="Ingresa los padecimientos"
-                      name="sufferings"
-                      value={values.sufferings}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.sufferings && !errors.sufferings}
-                      isInvalid={touched.sufferings && !!errors.sufferings}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="sufferings"
-                      component="div"
-                    />
-                  </Form.Group>
-                </Form.Row>
                 {/* stock */}
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
@@ -360,7 +315,6 @@ const ProductRow = React.memo(function ProductRow(props) {
                       </span>
                     </Form.Label>
                     <Form.Control
-                      disabled
                       type="number"
                       placeholder="1"
                       name="stock"
@@ -399,32 +353,83 @@ const ProductRow = React.memo(function ProductRow(props) {
                     </Form.Control>
                   </Form.Group>
                 </Form.Row>
-                {/* comments */}
+                {/* description */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Comentarios</Form.Label>
+                    <Form.Label>Descripción</Form.Label>
                     <Form.Control
                       maxLength="250"
                       as="textarea"
                       rows="3"
                       type="text"
-                      placeholder="Ingresa los comentarios"
-                      name="comments"
-                      value={values.comments}
+                      placeholder="Ingresa la descripción"
+                      name="description"
+                      value={values.description}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      isValid={touched.comments && !errors.comments}
-                      isInvalid={touched.comments && !!errors.comments}
+                      isValid={touched.description && !errors.description}
+                      isInvalid={touched.description && !!errors.description}
                     />
                     <ErrorMessage
                       className="text-danger"
-                      name="comments"
+                      name="description"
+                      component="div"
+                    />
+                  </Form.Group>
+                </Form.Row>
+                {/* dose */}
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>Dosis</Form.Label>
+                    <Form.Control
+                      maxLength="250"
+                      as="textarea"
+                      rows="3"
+                      type="text"
+                      placeholder="Ingresa la dosis"
+                      name="dose"
+                      value={values.dose}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.dose && !errors.dose}
+                      isInvalid={touched.dose && !!errors.dose}
+                    />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="dose"
+                      component="div"
+                    />
+                  </Form.Group>
+                </Form.Row>
+                {/* warning */}
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>Advertencia</Form.Label>
+                    <Form.Control
+                      maxLength="250"
+                      as="textarea"
+                      rows="3"
+                      type="text"
+                      placeholder="Ingresa la advertencia"
+                      name="warning"
+                      value={values.warning}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.warning && !errors.warning}
+                      isInvalid={touched.warning && !!errors.warning}
+                    />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="warning"
                       component="div"
                     />
                   </Form.Group>
                 </Form.Row>
                 {/* prices */}
-                <h4>Precios</h4>
+                <h3 className="mb-2" style={{ color: "#464646" }}>
+                  PRECIOS
+                </h3>
+                <hr className="myDivider" />
                 {/* purchase price */}
                 <Form.Row>
                   <Form.Group as={Col} md={4}>
@@ -584,7 +589,7 @@ const ProductRow = React.memo(function ProductRow(props) {
 });
 
 ProductRow.propTypes = {
-  product: PropTypes.object.isRequired
+  product: PropTypes.object.isRequired,
 };
 
 export default ProductRow;

@@ -7,7 +7,6 @@ import Cart from "../pages/cart/Cart";
 import Checkout from "../pages/cart/Checkout";
 import SignUp from "../pages/client/SignUp";
 import NoMatch from "../pages/NoMatch";
-import Login from "../manager/Login";
 import Dashboard from "../manager/Dashboard";
 import Categories from "../manager/categories/Categories";
 import CategoriesCreate from "../manager/categories/CategoriesCreate";
@@ -56,7 +55,6 @@ const ManagerNavigation = () => {
       <Route exact path="/checkout" component={Checkout} />
       <Route exact path="/signup" component={SignUp} />
       {/*  manager pages */}
-      <Route exact path="/manager" component={Login} />
       <Route exact path="/manager/dashboard" component={Dashboard} />
       <Route exact path="/manager/categories" component={Categories} />
       <Route
@@ -82,6 +80,7 @@ const ManagerNavigation = () => {
       <Route exact path="/manager/messages" component={Messages} />
       <Route exact path="/manager/sales" component={Sales} />
       <Route exact path="/manager/purchases" component={Purchases} />
+      <Redirect from="/manager" to="/manager/dashboard" />
       {/* 404 not found */}
       <Route component={NoMatch} />
     </Switch>

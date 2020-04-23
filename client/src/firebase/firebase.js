@@ -27,20 +27,27 @@ class Firebase {
 
   //////// auth api ////////
   _createUserWithEmailAndPassword = (email, password, values) => {
-    this.auth.createUserWithEmailAndPassword(email, password).then((u) => {
-      // set client type
-      u.user.updateProfile({
-        displayName: "Client",
-      });
-      // add client to db
-      values.firebaseUID = u.user.uid;
-      API.newClient(values)
-        .then(() => (window.location.href = "/"))
-        .catch((err) => {
-          console.log(err.response);
-          alert(err.response.data.msg);
+    this.auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((u) => {
+        // set client type
+        u.user.updateProfile({
+          displayName: "Client",
         });
-    });
+        // add client to db
+        values.firebaseUID = u.user.uid;
+        API.newClient(values)
+          .then(() => (window.location.href = "/"))
+          .catch((err) => {
+            console.log(err.response);
+            alert(err.response.data.msg);
+          });
+      })
+      .catch(() =>
+        alert(
+          "Ocurrió un error al intentar iniciar sesión. Verifica tus datos y vuelve a intentarlo."
+        )
+      );
   };
 
   _signInWithEmailAndPassword = (email, password, rememberMe) => {
@@ -51,7 +58,12 @@ class Firebase {
           ? firebase.auth.Auth.Persistence.LOCAL
           : firebase.auth.Auth.Persistence.SESSION
       )
-      .then(() => this.auth.signInWithEmailAndPassword(email, password));
+      .then(() => this.auth.signInWithEmailAndPassword(email, password))
+      .catch(() =>
+        alert(
+          "Ocurrió un error al intentar iniciar sesión. Verifica tus datos y vuelve a intentarlo."
+        )
+      );
   };
 
   _signOut = () => this.auth.signOut();

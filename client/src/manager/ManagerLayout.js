@@ -1,42 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import LeftNav from "./misc/LeftNav";
-import TopHelperNav from "./misc/TopHelperNav";
+import { Container, Row, Col } from "react-bootstrap";
+import LeftNav from "./components/LeftNav";
+import TopHelperNav from "./components/TopHelperNav";
 import "./manager.scss";
 
 const ManagerLayout = React.memo(
-  ({ leftBarActive, backBttn, title, button, children }) => {
+  ({ leftBarActive, backBttn, newBttn, title, children, filters }) => {
     return (
       <div className="d-lg-flex flex-row h-100">
+        {/* vertical navbar */}
         <LeftNav leftBarActive={leftBarActive} />
+        {/* content */}
         <Container id="containerMargin" fluid>
-          <TopHelperNav backBttn={backBttn} />
-          <Container
-            style={{
-              paddingTop: "6px",
-              paddingLeft: "24px",
-              paddingRight: "24px",
-              paddingBottom: "24px"
-            }}
-            fluid
-          >
-            {/* title */}
-            <Row className="mb-1">
+          {/* top nav */}
+          <TopHelperNav backBttn={backBttn} newBttn={newBttn} />
+          {/* title */}
+          <Container className="pb-2" style={{ backgroundColor: "#264341" }}>
+            <Row>
               <Col md={8} className="d-flex align-items-center">
-                <h2>{title}</h2>
-              </Col>
-              <Col md={4} className="mt-1 mt-md-0 text-md-right">
-                {button ? (
-                  <Button variant="outline-success" href={button.to}>
-                    {button.text}
-                  </Button>
-                ) : null}
+                <h1 className="text-white">{title}</h1>
               </Col>
             </Row>
-            {/* divider */}
-            <hr className="myDivider" />
-            {/* content */}
+            {/* filters and search bar */}
+            {filters ? filters : null}
+          </Container>
+          {/* content */}
+          <Container fluid>
             <Row>
               <Col className="pt-2 pb-4">{children}</Col>
             </Row>
@@ -49,10 +39,11 @@ const ManagerLayout = React.memo(
 
 ManagerLayout.propTypes = {
   leftBarActive: PropTypes.string.isRequired,
-  backBttn: PropTypes.bool,
+  backBttn: PropTypes.string,
   title: PropTypes.string.isRequired,
-  button: PropTypes.object,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  filters: PropTypes.node,
+  newBttn: PropTypes.node,
 };
 
 export default ManagerLayout;

@@ -3,13 +3,13 @@ const model = require("../../models");
 
 // mngr_fetchProducts()
 // matches with /managerapi/products/all
-router.get("/all", function(req, res) {
+router.get("/all", function (req, res) {
   model.Product.find({})
     .sort({ name: 1 })
     .populate("provider")
     .collation({ locale: "es" })
-    .then(data => res.json(data))
-    .catch(err => {
+    .then((data) => res.json(data))
+    .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
@@ -17,28 +17,28 @@ router.get("/all", function(req, res) {
 
 // mngr_fetchCategories()
 // matches with /managerapi/products/categories/all
-router.get("/categories/all", function(req, res) {
+router.get("/categories/all", function (req, res) {
   model.Product.aggregate([
     {
       $group: {
         _id: "$category",
-        productCount: { $sum: 1 }
-      }
+        productCount: { $sum: 1 },
+      },
     },
     {
-      $sort: { _id: 1 }
+      $sort: { _id: 1 },
     },
     {
       $project: {
         _id: 0,
         name: "$_id",
-        productCount: 1
-      }
-    }
+        productCount: 1,
+      },
+    },
   ])
     .collation({ locale: "es" })
-    .then(data => res.json(data))
-    .catch(err => {
+    .then((data) => res.json(data))
+    .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
@@ -46,7 +46,7 @@ router.get("/categories/all", function(req, res) {
 
 // mngr_updateProduct()
 // matches with /managerapi/products/update
-router.put("/products/update", function(req, res) {
+router.put("/products/update", function (req, res) {
   // const {
   //   _id,
   //   name,
@@ -81,7 +81,7 @@ router.put("/products/update", function(req, res) {
 
 // mngr_newProduct()
 // matches with /managerapi/products/new
-router.post("/products/new", function(req, res) {
+router.post("/products/new", function (req, res) {
   // const {
   //   name,
   //   brand,
