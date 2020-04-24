@@ -21,7 +21,7 @@ const SearchButton = React.memo(({ items }) => {
     if (items.ingredients) setIngredients(items.ingredients);
   }, [items]);
 
-  const handleEditInputChange = e => {
+  const handleEditInputChange = (e) => {
     setValue(e.target.value.normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
     let v = e.target.value;
 
@@ -38,8 +38,8 @@ const SearchButton = React.memo(({ items }) => {
 
     // make search (by filtering suggestions)
     if (v.length >= 3) {
-      prodSugg = products.filter(p => regex.test(p.cleanName));
-      ingSugg = ingredients.filter(i => regex.test(i.cleanName));
+      prodSugg = products.filter((p) => regex.test(p.cleanName));
+      ingSugg = ingredients.filter((i) => regex.test(i.cleanName));
     }
     setProductSuggestions(prodSugg);
     setIngredientSuggestions(ingSugg);
@@ -71,7 +71,7 @@ const SearchButton = React.memo(({ items }) => {
           <h6 className="dropdown-header px-3" style={{ color: "#59a49a" }}>
             <strong>Productos</strong>
           </h6>
-          {productSuggestions.map(i => (
+          {productSuggestions.map((i) => (
             <Dropdown.Item
               className="navbarDropdownItemStyle px-3"
               key={i._id}
@@ -91,7 +91,7 @@ const SearchButton = React.memo(({ items }) => {
           <h6 className="dropdown-header px-3" style={{ color: "#59a49a" }}>
             <strong>Ingredientes</strong>
           </h6>
-          {ingredientSuggestions.map(i => (
+          {ingredientSuggestions.map((i) => (
             <Dropdown.Item
               className="navbarDropdownItemStyle px-3"
               key={i.name}
@@ -107,7 +107,7 @@ const SearchButton = React.memo(({ items }) => {
     return allSuggestions;
   };
 
-  const content = type =>
+  const content = (type) =>
     products.length ? (
       <>
         {/* title */}
@@ -191,7 +191,7 @@ const SearchButton = React.memo(({ items }) => {
 });
 
 SearchButton.propTypes = {
-  items: PropTypes.object.isRequired
+  items: PropTypes.object.isRequired,
 };
 
 export default SearchButton;

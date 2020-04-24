@@ -103,21 +103,22 @@ const ProductRow = React.memo(({ product }) => {
             validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              APIManager.mngr_updateProduct(values)
-                .then((res) => {
-                  if (res.data.errmsg) {
-                    alert("ERROR => " + res.data.errmsg);
-                    setSubmitting(false);
-                  } else {
-                    alert("Producto actualizado");
-                    handleClose();
-                    window.location.reload();
-                  }
-                })
-                .catch((err) => {
-                  console.log(err.response);
-                  alert(err.response.data.msg);
-                });
+              console.log(values);
+              // APIManager.mngr_updateProduct(values)
+              //   .then((res) => {
+              //     if (res.data.errmsg) {
+              //       alert("ERROR => " + res.data.errmsg);
+              //       setSubmitting(false);
+              //     } else {
+              //       alert("Producto actualizado");
+              //       handleClose();
+              //       window.location.reload();
+              //     }
+              //   })
+              //   .catch((err) => {
+              //     console.log(err.response);
+              //     alert(err.response.data.msg);
+              //   });
             }}
           >
             {({

@@ -10,7 +10,7 @@ import {
 import ManagerLayout from "../ManagerLayout";
 import APIManager from "../../utils/APIManager";
 import ProductRow from "./ProductRow";
-import ProductsCreate from "./ProductsCreate";
+import NewProduct from "./NewProduct";
 
 const Products = React.memo(() => {
   const [products, setProducts] = useState();
@@ -34,6 +34,7 @@ const Products = React.memo(() => {
   const filterProducts = (criteria) => {
     switch (criteria) {
       case "discounts":
+        document.getElementById("searchProducts").reset();
         setFilter(criteria === filter ? null : criteria);
         setFiltered(
           criteria === filter
@@ -42,6 +43,7 @@ const Products = React.memo(() => {
         );
         break;
       case "noStock":
+        document.getElementById("searchProducts").reset();
         setFilter(criteria === filter ? null : criteria);
         setFiltered(
           criteria === filter
@@ -50,6 +52,7 @@ const Products = React.memo(() => {
         );
         break;
       case "priority":
+        document.getElementById("searchProducts").reset();
         setFilter(criteria === filter ? null : criteria);
         setFiltered(
           criteria === filter
@@ -58,6 +61,7 @@ const Products = React.memo(() => {
         );
         break;
       default:
+        document.getElementById("searchProducts").reset();
         setFiltered(products);
     }
   };
@@ -65,6 +69,7 @@ const Products = React.memo(() => {
   const filters = () => {
     return (
       <Row className="px-3 pb-2 mt-2">
+        {/* filters */}
         <Button
           disabled={products ? false : true}
           active={filter === "discounts" ? true : false}
@@ -95,11 +100,35 @@ const Products = React.memo(() => {
           <i className="fas fa-star mr-1" />
           Destacados
         </Button>
-        <Form className="ml-auto" inline>
-          <FormControl type="text" placeholder="Buscar" />
+        {/* search bar */}
+        <Form className="ml-auto" id="searchProducts" inline>
+          <FormControl
+            disabled={products ? false : true}
+            type="text"
+            placeholder="Buscar producto"
+            onChange={handleEditInputChange}
+          />
         </Form>
       </Row>
     );
+  };
+
+  const handleEditInputChange = (e) => {
+    // for upper or lower case
+    let value = e.target.value.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    let regex = new RegExp(`^${value}`, "i");
+
+    // suggestions
+    let suggestions = [];
+
+    // make search (by filtering suggestions)
+    if (value.length > 0) {
+      setFilter(null);
+      suggestions = products.filter((p) => regex.test(p.cleanName));
+      setFiltered(suggestions);
+    } else if (value.length === 0) {
+      setFiltered(products);
+    }
   };
 
   return (
@@ -107,7 +136,7 @@ const Products = React.memo(() => {
       leftBarActive="Productos"
       title="Productos"
       filters={filters()}
-      newBttn={<ProductsCreate />}
+      newBttn={<NewProduct />}
     >
       {filtered ? (
         filtered.length ? (

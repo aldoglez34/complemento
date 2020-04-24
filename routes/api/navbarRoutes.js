@@ -3,26 +3,26 @@ const model = require("../../models");
 
 // fetchItemsForSearchBar()
 // matches with /api/navbar/searchbar/names
-router.get("/searchbar/names", function(req, res) {
+router.get("/searchbar/names", function (req, res) {
   let data = {};
   model.Product.find({})
     .select("name")
     .sort({ name: 1 })
     .collation({ locale: "es" })
-    .then(products => {
+    .then((products) => {
       // removing tildes
       data.products = products.reduce((acc, cv) => {
         acc.push({
           _id: cv._id,
           name: cv.name,
-          cleanName: cv.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+          cleanName: cv.name.normalize("NFD").replace(/[\u0300-\u036f]/g, ""),
         });
         return acc;
       }, []);
       //
       return model.Product.find({}).select("ingredients");
     })
-    .then(ingredients => {
+    .then((ingredients) => {
       // extract all ingredients into an array
       let ings = ingredients
         .reduce((acc, cv) => {
@@ -36,14 +36,14 @@ router.get("/searchbar/names", function(req, res) {
       data.ingredients = uniqueIngredients.reduce((acc, cv) => {
         acc.push({
           name: cv,
-          cleanName: cv.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+          cleanName: cv.normalize("NFD").replace(/[\u0300-\u036f]/g, ""),
         });
         return acc;
       }, []);
       //
       res.json(data);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
@@ -51,28 +51,28 @@ router.get("/searchbar/names", function(req, res) {
 
 // fetchItemsForStoreDropdown()
 // matches with /api/navbar/dropdown/store
-router.get("/dropdown/store", function(req, res) {
+router.get("/dropdown/store", function (req, res) {
   model.Product.aggregate([
     {
       $group: {
         _id: "$category",
-        productCount: { $sum: 1 }
-      }
+        productCount: { $sum: 1 },
+      },
     },
     {
-      $sort: { _id: 1 }
+      $sort: { _id: 1 },
     },
     {
       $project: {
         _id: 0,
         name: "$_id",
-        productCount: 1
-      }
-    }
+        productCount: 1,
+      },
+    },
   ])
     .collation({ locale: "es" })
-    .then(data => res.json(data))
-    .catch(err => {
+    .then((data) => res.json(data))
+    .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });

@@ -4,7 +4,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import APIManager from "../../utils/APIManager";
 
-const ProductCreate = React.memo((props) => {
+const NewProduct = React.memo((props) => {
   const [categories, setCategories] = useState();
   const [providers, setProviders] = useState();
 
@@ -18,13 +18,17 @@ const ProductCreate = React.memo((props) => {
       .then((res) => setCategories(res.data))
       .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error.");
       });
     APIManager.mngr_fetchProviders()
       .then((res) => setProviders(res.data))
       .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error.");
       });
   }, []);
 
@@ -518,4 +522,4 @@ const ProductCreate = React.memo((props) => {
   );
 });
 
-export default ProductCreate;
+export default NewProduct;

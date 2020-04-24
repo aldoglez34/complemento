@@ -17,7 +17,6 @@ import ProvidersCreate from "../manager/providers/ProvidersCreate";
 import Users from "../manager/users/Users";
 import Messages from "../manager/messages/Messages";
 import Products from "../manager/products/Products";
-import ProductsCreate from "../manager/products/ProductsCreate";
 import Sales from "../manager/sales/Sales";
 import Purchases from "../manager/purchases/Purchases";
 
@@ -63,7 +62,6 @@ const ManagerNavigation = () => {
         component={CategoriesCreate}
       />
       <Route exact path="/manager/products" component={Products} />
-      <Route exact path="/manager/products/create" component={ProductsCreate} />
       <Route exact path="/manager/discounts" component={Discounts} />
       <Route
         exact

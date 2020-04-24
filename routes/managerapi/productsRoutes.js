@@ -8,7 +8,32 @@ router.get("/all", function (req, res) {
     .sort({ name: 1 })
     .populate("provider")
     .collation({ locale: "es" })
-    .then((data) => res.json(data))
+    .then((products) => {
+      // removing tildes
+      let clean = products.reduce((acc, cv) => {
+        acc.push({
+          _id: cv._id,
+          name: cv.name,
+          cleanName: cv.name.normalize("NFD").replace(/[\u0300-\u036f]/g, ""),
+          price: cv.price,
+          ingredients: cv.ingredients,
+          unitsSold: cv.unitsSold,
+          priority: cv.priority,
+          createdAt: cv.createdAt,
+          provider: cv.provider,
+          category: cv.category,
+          brand: cv.brand,
+          content: cv.content,
+          warning: cv.warning,
+          stock: cv.stock,
+          description: cv.description,
+          dose: cv.dose,
+          photo: cv.photo,
+        });
+        return acc;
+      }, []);
+      res.json(clean);
+    })
     .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
@@ -18,25 +43,11 @@ router.get("/all", function (req, res) {
 // mngr_fetchCategories()
 // matches with /managerapi/products/categories/all
 router.get("/categories/all", function (req, res) {
-  model.Product.aggregate([
-    {
-      $group: {
-        _id: "$category",
-        productCount: { $sum: 1 },
-      },
-    },
-    {
-      $sort: { _id: 1 },
-    },
-    {
-      $project: {
-        _id: 0,
-        name: "$_id",
-        productCount: 1,
-      },
-    },
-  ])
+  model.Product.find({})
+    .select("category")
+    .sort({ category: 1 })
     .collation({ locale: "es" })
+    .distinct("category")
     .then((data) => res.json(data))
     .catch((err) => {
       console.log("@error", err);
@@ -47,36 +58,38 @@ router.get("/categories/all", function (req, res) {
 // mngr_updateProduct()
 // matches with /managerapi/products/update
 router.put("/products/update", function (req, res) {
-  // const {
-  //   _id,
-  //   name,
-  //   purchasePrice,
-  //   salePrice,
-  //   content,
-  //   brand,
-  //   ingredients,
-  //   priority,
-  //   warning,
-  //   description,
-  //   dose
-  // } = req.body;
-  // model.Product.findByIdAndUpdate(_id, {
-  //   name,
-  //   purchasePrice,
-  //   salePrice,
-  //   content,
-  //   brand,
-  //   ingredients: ingredients.split(","),
-  //   priority,
-  //   warning,
-  //   description,
-  //   dose
-  // })
-  //   .then(data => res.json(data))
-  //   .catch(err => {
-  //     console.log("@error", err);
-  //     res.status(422).send({ msg: "Ocurrió un error" });
-  //   });
+  // get data frmo body
+  const {
+    _id,
+    name,
+    content,
+    purchasePrice,
+    salePrice,
+    brand,
+    ingredients,
+    priority,
+    warning,
+    description,
+    dose,
+  } = req.body;
+  // update product
+  model.Product.findByIdAndUpdate(_id, {
+    name,
+    purchasePrice,
+    salePrice,
+    content,
+    brand,
+    ingredients: ingredients.split(","),
+    priority,
+    warning,
+    description,
+    dose,
+  })
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 // mngr_newProduct()
