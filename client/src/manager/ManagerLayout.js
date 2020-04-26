@@ -16,7 +16,7 @@ const ManagerLayout = React.memo(
           {/* top nav */}
           <TopHelperNav backBttn={backBttn} newBttn={newBttn} />
           {/* title */}
-          <Container className="pb-2" style={{ backgroundColor: "#264341" }}>
+          <Container fluid className="pb-2" style={{ backgroundColor: "#264341" }}>
             <Row>
               <Col md={8} className="d-flex align-items-center">
                 <h1 className="text-white">{title}</h1>

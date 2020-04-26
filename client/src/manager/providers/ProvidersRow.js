@@ -3,7 +3,7 @@ import { Button, Modal, Form, Col } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-import API from "../../utils/API";
+import APIManager from "../../utils/APIManager";
 
 const ProvidersRow = React.memo(function ProvidersRow(props) {
   const [show, setShow] = useState(false);
@@ -12,14 +12,8 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
   const handleShow = () => setShow(true);
 
   const yupschema = yup.object({
-    name: yup
-      .string()
-      .min(3, "Nombre demasiado corto")
-      .required("Requerido"),
-    rfc: yup
-      .string()
-      .length(12, "Formato incorrecto")
-      .required("Requerido"),
+    name: yup.string().min(3, "Nombre demasiado corto").required("Requerido"),
+    rfc: yup.string().length(12, "Formato incorrecto").required("Requerido"),
     email: yup
       .string()
       .email("Formato de correo incorrecto")
@@ -28,7 +22,7 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
       .string()
       .matches(/^[0-9]*$/, "Sólo números")
       .length(10, "Formato incorrecto"),
-    fullAddress: yup.string().min(3, "Dirección demasiado corta")
+    fullAddress: yup.string().min(3, "Dirección demasiado corta"),
   });
 
   return (
@@ -43,7 +37,7 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
       </tr>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Body>
+        <Modal.Body className="bg-light">
           <Formik
             initialValues={{
               _id: props.provider._id,
@@ -52,13 +46,13 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
               email: props.provider.email,
               phone: props.provider.phone,
               fullAddress: props.provider.fullAddress,
-              productCount: props.provider.productCount
+              productCount: props.provider.productCount,
             }}
             validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              API.updateProvider(values)
-                .then(res => {
+              APIManager.mngr_updateProvider(values)
+                .then((res) => {
                   if (res.data.errmsg) {
                     alert("ERROR => " + res.data.errmsg);
                     setSubmitting(false);
@@ -68,9 +62,11 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
                     window.location.reload();
                   }
                 })
-                .catch(err => {
+                .catch((err) => {
                   console.log(err.response);
-                  alert(err.response.data.msg);
+                  err.response.data.msg
+                    ? alert(err.response.data.msg)
+                    : alert("Ocurrió un error.");
                 });
             }}
           >
@@ -81,14 +77,20 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
               handleChange,
               handleBlur,
               handleSubmit,
-              isSubmitting
+              isSubmitting,
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
-                <h4>Detalle de proveedor</h4>
+                <h3 className="managerTitleModal">DETALLE</h3>
+                <hr className="myDivider" />
                 {/* name */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Nombre</Form.Label>
+                    <Form.Label>
+                      <strong>Nombre</strong>
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <Form.Control
                       maxLength="150"
                       type="text"
@@ -110,7 +112,12 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
                 {/* rfc */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>RFC</Form.Label>
+                    <Form.Label>
+                      <strong>RFC</strong>
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <Form.Control
                       maxLength="12"
                       type="text"
@@ -132,7 +139,12 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
                 {/* email */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Correo</Form.Label>
+                    <Form.Label>
+                      <strong>Correo</strong>
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <Form.Control
                       maxLength="100"
                       type="text"
@@ -154,7 +166,12 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
                 {/* phone */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Teléfono</Form.Label>
+                    <Form.Label>
+                      <strong>Teléfono</strong>
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <Form.Control
                       maxLength="10"
                       type="text"
@@ -176,7 +193,12 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
                 {/* full address */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Dirección</Form.Label>
+                    <Form.Label>
+                      <strong>Dirección</strong>
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <Form.Control
                       maxLength="200"
                       type="text"
@@ -198,7 +220,12 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
                 {/* product count */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Productos</Form.Label>
+                    <Form.Label>
+                      <strong>Productos</strong>
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <Form.Control
                       disabled
                       type="text"
@@ -235,7 +262,7 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
 });
 
 ProvidersRow.propTypes = {
-  provider: PropTypes.object.isRequired
+  provider: PropTypes.object.isRequired,
 };
 
 export default ProvidersRow;
