@@ -163,7 +163,9 @@ const LoginDropdown = ({ firebase }) => {
         </Button>
 
         <Modal show={show} onHide={handleClose}>
-          <Modal.Body className="px-0 py-2">{content("modal")}</Modal.Body>
+          <Modal.Body className="px-0 py-2 bg-light">
+            {content("modal")}
+          </Modal.Body>
         </Modal>
       </div>
       {/* medium screens */}
@@ -179,6 +181,7 @@ const LoginDropdown = ({ firebase }) => {
           </Dropdown.Toggle>
 
           <Dropdown.Menu
+            className="bg-light"
             alignRight
             id="loginDropdownMenu"
             data-display="static"

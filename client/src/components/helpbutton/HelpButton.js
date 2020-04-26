@@ -38,9 +38,9 @@ const HelpButton = React.memo(function HelpButton() {
       </span>
 
       <Modal className="modal-open" show={show} onHide={handleClose}>
-        <Modal.Body>
+        <Modal.Body className="bg-light">
           <div className="d-flex flex-row pt-1 pb-3">
-            <h4 className="mb-0">¿Necesitas ayuda?</h4>
+            <h3 className="mb-0">¿Necesitas ayuda?</h3>
             <i
               className="fas fa-times ml-auto"
               style={{ cursor: "pointer" }}

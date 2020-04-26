@@ -8,15 +8,11 @@ import Checkout from "../pages/cart/Checkout";
 import SignUp from "../pages/client/SignUp";
 import NoMatch from "../pages/NoMatch";
 import Dashboard from "../manager/Dashboard";
-import Categories from "../manager/categories/Categories";
-import CategoriesCreate from "../manager/categories/CategoriesCreate";
-import Discounts from "../manager/discounts/Discounts";
-import DiscountsCreate from "../manager/discounts/DiscountsCreate";
-import Providers from "../manager/providers/Providers";
-import ProvidersCreate from "../manager/providers/ProvidersCreate";
-import Users from "../manager/users/Users";
-import Messages from "../manager/messages/Messages";
-import Products from "../manager/products/Products";
+import Categories from "../manager/categories";
+import Providers from "../manager/providers";
+import Users from "../manager/users";
+import Messages from "../manager/messages";
+import Products from "../manager/products";
 import Sales from "../manager/sales/Sales";
 import Purchases from "../manager/purchases/Purchases";
 
@@ -56,24 +52,8 @@ const ManagerNavigation = () => {
       {/*  manager pages */}
       <Route exact path="/manager/dashboard" component={Dashboard} />
       <Route exact path="/manager/categories" component={Categories} />
-      <Route
-        exact
-        path="/manager/categories/create"
-        component={CategoriesCreate}
-      />
       <Route exact path="/manager/products" component={Products} />
-      <Route exact path="/manager/discounts" component={Discounts} />
-      <Route
-        exact
-        path="/manager/discounts/create"
-        component={DiscountsCreate}
-      />
       <Route exact path="/manager/providers" component={Providers} />
-      <Route
-        exact
-        path="/manager/providers/create"
-        component={ProvidersCreate}
-      />
       <Route exact path="/manager/users" component={Users} />
       <Route exact path="/manager/messages" component={Messages} />
       <Route exact path="/manager/sales" component={Sales} />

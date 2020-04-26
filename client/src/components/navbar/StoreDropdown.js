@@ -5,7 +5,7 @@ import {
   NavItem,
   Spinner,
   Modal,
-  Button
+  Button,
 } from "react-bootstrap";
 import PropTypes from "prop-types";
 
@@ -15,7 +15,7 @@ const StoreDropdown = React.memo(({ store }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const content = type =>
+  const content = (type) =>
     store.length ? (
       <>
         {/* title */}
@@ -40,7 +40,7 @@ const StoreDropdown = React.memo(({ store }) => {
           </div>
         ) : null}
         {/* the rest */}
-        {store.map(c => (
+        {store.map((c) => (
           <Dropdown.Item
             key={c.name}
             href={"/store/category/" + c.name}
@@ -75,7 +75,9 @@ const StoreDropdown = React.memo(({ store }) => {
         </Button>
 
         <Modal show={show} onHide={handleClose}>
-          <Modal.Body className="px-0 py-2">{content("modal")}</Modal.Body>
+          <Modal.Body className="px-0 py-2 bg-light">
+            {content("modal")}
+          </Modal.Body>
         </Modal>
       </div>
       {/* md */}
@@ -90,7 +92,7 @@ const StoreDropdown = React.memo(({ store }) => {
             Tienda
           </Dropdown.Toggle>
 
-          <Dropdown.Menu data-display="static">
+          <Dropdown.Menu className="bg-light" data-display="static">
             {content("dropdown")}
           </Dropdown.Menu>
         </Dropdown>
@@ -100,7 +102,7 @@ const StoreDropdown = React.memo(({ store }) => {
 });
 
 StoreDropdown.propTypes = {
-  store: PropTypes.array.isRequired
+  store: PropTypes.array.isRequired,
 };
 
 export default StoreDropdown;

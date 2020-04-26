@@ -5,7 +5,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import APIManager from "../../utils/APIManager";
 
-const ProductRow = React.memo(({ product }) => {
+const ProductRow = React.memo(({ product, categories }) => {
   const [show, setshow] = useState(false);
 
   const handleClose = () => setshow(false);
@@ -13,6 +13,21 @@ const ProductRow = React.memo(({ product }) => {
 
   const yupschema = yup.object({
     name: yup.string().min(3, "Demasiado corto").required("Requerido"),
+    photo: yup.string().required("Requerido"),
+    content: yup
+      .string()
+      .min(3, "Nombre demasiado corto")
+      .required("Requerido"),
+    brand: yup.string().min(3, "Nombre demasiado corto").required("Requerido"),
+    category: yup.string().required("Requerido"),
+    provider: yup.string().required("Requerido"),
+    ingredients: yup.string(),
+    stock: yup.number().moreThan(-1, "Número incorrecto").required("Requerido"),
+    priority: yup.boolean().required("Requerido"),
+    description: yup.string(),
+    dose: yup.string(),
+    warning: yup.string().required("Requerido"),
+    // prices
     latestPurchasePrice: yup
       .number()
       .positive("Debe ser positivo")
@@ -22,25 +37,10 @@ const ProductRow = React.memo(({ product }) => {
       .positive("Debe ser positivo")
       .moreThan(yup.ref("purchasePrice"), "Debe ser mayor al precio de compra")
       .required("Requerido"),
-    content: yup
-      .string()
-      .min(3, "Nombre demasiado corto")
+    percentage: yup
+      .number()
+      .positive("Debe ser positivo")
       .required("Requerido"),
-    brand: yup.string().min(3, "Nombre demasiado corto").required("Requerido"),
-    category: yup
-      .mixed()
-      .notOneOf(["Elige..."], "Requerido")
-      .required("Requerido"),
-    provider: yup
-      .mixed()
-      .notOneOf(["Elige..."], "Requerido")
-      .required("Requerido"),
-    ingredients: yup.string(),
-    sufferings: yup.string(),
-    stock: yup.number().positive("Debe ser positivo").required("Requerido"),
-    photo: yup.string(),
-    priority: yup.boolean(),
-    comments: yup.string(),
   });
 
   return (
@@ -50,13 +50,7 @@ const ProductRow = React.memo(({ product }) => {
         <td>
           {product.name}
           {product.price.discount.hasDiscount ? (
-            <Badge
-              title="Este producto tiene descuento"
-              pill
-              className="ml-1"
-              variant="warning"
-              style={{ fontFamily: "Arial" }}
-            >
+            <Badge pill className="ml-1" variant="warning">
               {product.price.discount.percentage + "%"}
             </Badge>
           ) : null}
@@ -78,7 +72,7 @@ const ProductRow = React.memo(({ product }) => {
       </tr>
 
       <Modal show={show} onHide={handleClose} size="lg">
-        <Modal.Body className="p-4">
+        <Modal.Body className="p-4 bg-light">
           <Formik
             initialValues={{
               _id: product._id,
@@ -115,10 +109,12 @@ const ProductRow = React.memo(({ product }) => {
               //       window.location.reload();
               //     }
               //   })
-              //   .catch((err) => {
-              //     console.log(err.response);
-              //     alert(err.response.data.msg);
-              //   });
+              // .catch((err) => {
+              //   console.log(err.response);
+              //   err.response.data.msg
+              //     ? alert(err.response.data.msg)
+              //     : alert("Ocurrió un error.");
+              // });
             }}
           >
             {({
@@ -133,11 +129,11 @@ const ProductRow = React.memo(({ product }) => {
               <Form noValidate onSubmit={handleSubmit}>
                 <h3 className="managerTitleModal">DETALLE</h3>
                 <hr className="myDivider" />
-                {/* name */}
+                {/* name and photo */}
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
                     <Form.Label>
-                      Nombre
+                      <strong>Nombre</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -162,7 +158,7 @@ const ProductRow = React.memo(({ product }) => {
                   {/* photo */}
                   <Form.Group as={Col} md={6}>
                     <Form.Label>
-                      Foto
+                      <strong>Foto</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -180,11 +176,11 @@ const ProductRow = React.memo(({ product }) => {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* content */}
+                {/* content and brand */}
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
                     <Form.Label>
-                      Contenido
+                      <strong>Contenido</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -209,7 +205,7 @@ const ProductRow = React.memo(({ product }) => {
                   {/* brand */}
                   <Form.Group as={Col} md={6}>
                     <Form.Label>
-                      Marca
+                      <strong>Marca</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -232,24 +228,33 @@ const ProductRow = React.memo(({ product }) => {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* category */}
+                {/* category and provider */}
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
                     <Form.Label>
-                      Categoría
+                      <strong>Categoría</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
                     </Form.Label>
                     <Form.Control
-                      type="text"
+                      // type="text"
+                      as="select"
                       name="category"
-                      value={values.category}
+                      // value={values.category}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       isValid={touched.category && !errors.category}
                       isInvalid={touched.category && !!errors.category}
-                    />
+                      defaultValue={values.category}
+                    >
+                      <option value="DEFAULT" disabled>
+                        Elige...
+                      </option>
+                      {categories.map((cat) => {
+                        return <option key={cat}>{cat}</option>;
+                      })}
+                    </Form.Control>
                     <ErrorMessage
                       className="text-danger"
                       name="category"
@@ -259,7 +264,7 @@ const ProductRow = React.memo(({ product }) => {
                   {/* provider */}
                   <Form.Group as={Col} md={6}>
                     <Form.Label>
-                      Proveedor
+                      <strong>Proveedor</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -285,7 +290,7 @@ const ProductRow = React.memo(({ product }) => {
                 <Form.Row>
                   <Form.Group as={Col}>
                     <Form.Label>
-                      Ingredientes
+                      <strong>Ingredientes</strong>
                       <small className="ml-1">(separados por coma)</small>
                     </Form.Label>
                     <Form.Control
@@ -306,11 +311,11 @@ const ProductRow = React.memo(({ product }) => {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* stock */}
+                {/* stock and priority */}
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
                     <Form.Label>
-                      Existencia
+                      <strong>Existencia</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -334,7 +339,7 @@ const ProductRow = React.memo(({ product }) => {
                   {/* priority */}
                   <Form.Group as={Col} md={6}>
                     <Form.Label>
-                      Destacado
+                      <strong>Destacado</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -357,7 +362,9 @@ const ProductRow = React.memo(({ product }) => {
                 {/* description */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Descripción</Form.Label>
+                    <Form.Label>
+                      <strong>Descripción</strong>
+                    </Form.Label>
                     <Form.Control
                       maxLength="250"
                       as="textarea"
@@ -381,7 +388,9 @@ const ProductRow = React.memo(({ product }) => {
                 {/* dose */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Dosis</Form.Label>
+                    <Form.Label>
+                      <strong>Dosis</strong>
+                    </Form.Label>
                     <Form.Control
                       maxLength="250"
                       as="textarea"
@@ -405,7 +414,12 @@ const ProductRow = React.memo(({ product }) => {
                 {/* warning */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Advertencia</Form.Label>
+                    <Form.Label>
+                      <strong>Advertencia</strong>
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
                     <Form.Control
                       maxLength="250"
                       as="textarea"
@@ -426,16 +440,16 @@ const ProductRow = React.memo(({ product }) => {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* prices */}
-                <h3 className="mb-2" style={{ color: "#464646" }}>
+                {/* ==== prices ==== */}
+                <h3 className="mb-2 mt-3" style={{ color: "#464646" }}>
                   PRECIOS
                 </h3>
                 <hr className="myDivider" />
-                {/* purchase price */}
+                {/* purchase and sell price */}
                 <Form.Row>
                   <Form.Group as={Col} md={4}>
                     <Form.Label>
-                      Compra
+                      <strong>Última Compra</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -470,7 +484,7 @@ const ProductRow = React.memo(({ product }) => {
                   {/* salePrice */}
                   <Form.Group as={Col} md={4}>
                     <Form.Label>
-                      Venta
+                      <strong>Venta</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -515,11 +529,16 @@ const ProductRow = React.memo(({ product }) => {
                     </InputGroup>
                   </Form.Group>
                 </Form.Row>
-                {/* discount */}
-                <Form.Row>
+                {/* ==== discount ==== */}
+                <h3 className="mb-2 mt-3" style={{ color: "#464646" }}>
+                  DESCUENTO
+                </h3>
+                <hr className="myDivider" />
+                {/* discount and percentage */}
+                <Form.Row className="mt-3">
                   <Form.Group as={Col} md={4}>
                     <Form.Label>
-                      Descuento
+                      <strong>Descuento</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -539,7 +558,7 @@ const ProductRow = React.memo(({ product }) => {
                   {/* percentage */}
                   <Form.Group as={Col} md={4}>
                     <Form.Label>
-                      Porcentaje
+                      <strong>Porcentaje</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -564,22 +583,18 @@ const ProductRow = React.memo(({ product }) => {
                     </Form.Control>
                   </Form.Group>
                 </Form.Row>
-                {/* buttons */}
-                <Form.Row className="px-1 mt-2">
-                  <Button disabled variant="danger">
-                    <i className="fas fa-times-circle mr-1" />
-                    Borrar
-                  </Button>
+                {/* ==== buttons ==== */}
+                <div className="text-center mt-4">
                   <Button
-                    className="ml-auto"
-                    variant="success"
+                    size="lg"
+                    variant="dark"
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    <i className="fas fa-check-circle mr-1" />
-                    Guardar
+                    <i className="fas fa-check-circle mr-2" />
+                    GUARDAR
                   </Button>
-                </Form.Row>
+                </div>
               </Form>
             )}
           </Formik>
@@ -591,6 +606,7 @@ const ProductRow = React.memo(({ product }) => {
 
 ProductRow.propTypes = {
   product: PropTypes.object.isRequired,
+  categories: PropTypes.array,
 };
 
 export default ProductRow;

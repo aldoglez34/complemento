@@ -3,24 +3,28 @@ import ManagerLayout from "../ManagerLayout";
 import { Table, Spinner, Tabs, Tab } from "react-bootstrap";
 import ClientsRow from "./ClientsRow";
 import ManagerRow from "./ManagerRow";
-import API from "../../utils/API";
+import APIManager from "../../utils/APIManager";
 
-const Users = React.memo(function Users() {
+const Users = React.memo(() => {
   const [clients, setClientes] = useState();
   const [managers, setManagers] = useState();
 
   useEffect(() => {
-    API.fetchClientsManager()
-      .then(res => setClientes(res.data))
-      .catch(err => {
+    APIManager.mngr_fetchClients()
+      .then((res) => setClientes(res.data))
+      .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error.");
       });
-    API.fetchManagers()
-      .then(res => setManagers(res.data))
-      .catch(err => {
+    APIManager.mngr_fetchManagers()
+      .then((res) => setManagers(res.data))
+      .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error.");
       });
   }, []);
 
@@ -41,7 +45,7 @@ const Users = React.memo(function Users() {
                 >
                   <thead>
                     <tr>
-                      <th className="text-center border-0">Nombre(s)</th>
+                      <th className="text-center border-0">Nombre</th>
                       <th className="text-center border-0">Apellido paterno</th>
                       <th className="text-center border-0">Email</th>
                       <th className="text-center border-0">Favoritos</th>
@@ -51,7 +55,7 @@ const Users = React.memo(function Users() {
                     </tr>
                   </thead>
                   <tbody>
-                    {clients.map(c => {
+                    {clients.map((c) => {
                       return <ClientsRow key={c._id} client={c} />;
                     })}
                   </tbody>
@@ -80,14 +84,14 @@ const Users = React.memo(function Users() {
                 >
                   <thead>
                     <tr>
-                      <th className="text-center border-0">Nombre(s)</th>
+                      <th className="text-center border-0">Nombre</th>
                       <th className="text-center border-0">Apellido paterno</th>
                       <th className="text-center border-0">Apellido materno</th>
                       <th className="text-center border-0">Email</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {managers.map(m => {
+                    {managers.map((m) => {
                       return <ManagerRow key={m._id} manager={m} />;
                     })}
                   </tbody>

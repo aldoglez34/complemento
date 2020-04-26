@@ -7,7 +7,7 @@ import "./addtobagbutton.scss";
 import QtyPicker from "../QtyPicker";
 
 const AddToBagButton = React.memo(({ product, size }) => {
-  const formatNumber = num => {
+  const formatNumber = (num) => {
     return num !== undefined
       ? "$" +
           num
@@ -57,7 +57,7 @@ const AddToBagButton = React.memo(({ product, size }) => {
       </Button>
 
       <Modal size="lg" show={show} onHide={handleClose}>
-        <Modal.Body>
+        <Modal.Body className="bg-light">
           <div className="d-flex flex-row px-2 pt-2">
             <i
               className="fas fa-times ml-auto"
@@ -154,7 +154,7 @@ const AddToBagButton = React.memo(({ product, size }) => {
 
 AddToBagButton.propTypes = {
   product: PropTypes.object.isRequired,
-  size: PropTypes.string.isRequired
+  size: PropTypes.string.isRequired,
 };
 
 export default AddToBagButton;

@@ -28,7 +28,9 @@ const ManagerLayout = React.memo(
           {/* content */}
           <Container fluid>
             <Row>
-              <Col className="pt-2 pb-4">{children}</Col>
+              <Col className="pt-2 pb-4">
+                <div className="my-3">{children}</div>
+              </Col>
             </Row>
           </Container>
         </Container>

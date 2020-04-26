@@ -9,8 +9,8 @@ import "./favbutton.scss";
 const FavButton = React.memo(({ product, isBlock }) => {
   const dispatch = useDispatch();
 
-  const isClientLogged = useSelector(state => state.user);
-  const client = useSelector(state => state.user);
+  const isClientLogged = useSelector((state) => state.user);
+  const client = useSelector((state) => state.user);
 
   const [show, setShow] = useState(false);
 
@@ -26,10 +26,10 @@ const FavButton = React.memo(({ product, isBlock }) => {
     } else {
       // post favorite in the db
       API.addFavorite({ clientId: client._id, product: product._id })
-        .then(res =>
+        .then((res) =>
           dispatch(userActions.updateFavorites(res.data.favorites))
         )
-        .catch(err => {
+        .catch((err) => {
           console.log(err.response);
           alert(err.response.data.msg);
         });
@@ -58,9 +58,9 @@ const FavButton = React.memo(({ product, isBlock }) => {
       </Button>
 
       <Modal size="md" show={show} onHide={handleClose} className="text-center">
-        <Modal.Body>
+        <Modal.Body className="bg-light">
           <div className="d-flex flex-row px-2 pt-2 pb-3">
-            <h4 className="mb-0">Producto agregado</h4>
+            <h3 className="mb-0">Producto agregado</h3>
             <i
               className="fas fa-times ml-auto"
               style={{ cursor: "pointer" }}
@@ -75,7 +75,7 @@ const FavButton = React.memo(({ product, isBlock }) => {
             title={product.name}
             style={{ cursor: "pointer" }}
           />
-          <h3 className="mb-0">
+          <h4 className="mt-2">
             <a
               href={"/product/details/" + product._id}
               title={product.name}
@@ -83,12 +83,11 @@ const FavButton = React.memo(({ product, isBlock }) => {
             >
               {product.name}
             </a>
-          </h3>
-          <hr />
-          <div className="mb-3">
+          </h4>
+          <div className="mb-2">
             El producto fue agregado a tu lista de favoritos.
           </div>
-          <div className="text-center mt-3">
+          <div className="text-center">
             <Button className="favbuttonstyle" href="/client/favorites/">
               Ir a mis favoritos
             </Button>
@@ -101,7 +100,7 @@ const FavButton = React.memo(({ product, isBlock }) => {
 
 FavButton.propTypes = {
   isBlock: PropTypes.bool.isRequired,
-  product: PropTypes.object.isRequired
+  product: PropTypes.object.isRequired,
 };
 
 export default FavButton;

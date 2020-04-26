@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import ManagerLayout from "../ManagerLayout";
-import API from "../../utils/API";
+import APIManager from "../../utils/APIManager";
 import { Table, Spinner } from "react-bootstrap";
+import NewProvider from "./NewProvider";
 import ProvidersRow from "./ProvidersRow";
 
 const Providers = React.memo(function Providers() {
   const [providers, setProviders] = useState();
 
   useEffect(() => {
-    API.fetchProvidersManager()
-      .then(res => setProviders(res.data))
-      .catch(err => {
+    APIManager.mngr_fetchProviders()
+      .then((res) => setProviders(res.data))
+      .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error.");
       });
   }, []);
 
@@ -20,7 +23,7 @@ const Providers = React.memo(function Providers() {
     <ManagerLayout
       leftBarActive="Proveedores"
       title="Proveedores"
-      button={{ text: "Nuevo proveedor", to: "/manager/providers/create" }}
+      newBttn={<NewProvider />}
     >
       {providers ? (
         providers.length ? (
@@ -37,7 +40,7 @@ const Providers = React.memo(function Providers() {
                 </tr>
               </thead>
               <tbody>
-                {providers.map(p => {
+                {providers.map((p) => {
                   return <ProvidersRow key={p._id} provider={p} />;
                 })}
               </tbody>

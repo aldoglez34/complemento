@@ -16,6 +16,8 @@ const Products = React.memo(() => {
   const [products, setProducts] = useState();
   const [filtered, setFiltered] = useState();
   const [filter, setFilter] = useState();
+  
+  const [categories, setCategories] = useState();
 
   useEffect(() => {
     APIManager.mngr_fetchProducts()
@@ -23,6 +25,14 @@ const Products = React.memo(() => {
         setProducts(res.data);
         setFiltered(res.data);
       })
+      .catch((err) => {
+        console.log(err.response);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error.");
+      });
+    APIManager.mngr_fetchCategories()
+      .then((res) => setCategories(res.data))
       .catch((err) => {
         console.log(err.response);
         err.response.data.msg
@@ -138,7 +148,7 @@ const Products = React.memo(() => {
       filters={filters()}
       newBttn={<NewProduct />}
     >
-      {filtered ? (
+      {filtered && categories ? (
         filtered.length ? (
           <>
             <Table
@@ -161,7 +171,13 @@ const Products = React.memo(() => {
               </thead>
               <tbody>
                 {filtered.map((p) => {
-                  return <ProductRow key={p._id} product={p} />;
+                  return (
+                    <ProductRow
+                      key={p._id}
+                      product={p}
+                      categories={categories}
+                    />
+                  );
                 })}
               </tbody>
             </Table>

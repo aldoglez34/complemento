@@ -11,7 +11,7 @@ const ClientsRow = React.memo(function ClientsRow(props) {
 
   const printFavorites = () => {
     let text = [];
-    props.client.favorites.forEach(f => {
+    props.client.favorites.forEach((f) => {
       let { name } = f;
       text.push(name + "\n");
     });
@@ -29,7 +29,7 @@ const ClientsRow = React.memo(function ClientsRow(props) {
       </tr>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Body>
+        <Modal.Body className="bg-light">
           <Formik
             initialValues={{
               _id: props.client._id,
@@ -38,12 +38,13 @@ const ClientsRow = React.memo(function ClientsRow(props) {
               email: props.client.email,
               phone: props.client.phone,
               favorites: printFavorites(),
-              createdAt: props.client.createdAt
+              createdAt: props.client.createdAt,
             }}
           >
             {({ values, handleChange, handleBlur, handleSubmit }) => (
               <Form noValidate>
-                <h4>Detalle del cliente</h4>
+                <h3 className="managerTitleModal">DETALLE</h3>
+                <hr className="myDivider" />
                 {/* name */}
                 <Form.Row>
                   <Form.Group as={Col}>
@@ -140,7 +141,7 @@ const ClientsRow = React.memo(function ClientsRow(props) {
 });
 
 ClientsRow.propTypes = {
-  client: PropTypes.object.isRequired
+  client: PropTypes.object.isRequired,
 };
 
 export default ClientsRow;

@@ -4,16 +4,16 @@ import { Nav } from "react-bootstrap";
 const LeftNav = React.memo(function LeftNav(props) {
   return (
     <Nav className="d-flex flex-column h-100" id="verticalNavStyle">
-      <h3
+      <h2
         className="text-center mt-3 mb-4"
         style={{
-          color: "#edcb58",
+          color: "#ffe486",
           fontFamily: "'Lobster', cursive",
         }}
       >
         Tu Complemento
         <i className="fas fa-leaf ml-1" />
-      </h3>
+      </h2>
       {/* menu */}
       <Nav.Item className="navItemStyle">MENÚ</Nav.Item>
       <Nav.Link
@@ -38,17 +38,6 @@ const LeftNav = React.memo(function LeftNav(props) {
           style={{ width: "26px", textAlign: "center" }}
         />
         <span className="ml-1">Productos</span>
-      </Nav.Link>
-      <Nav.Link
-        className="navLinkStyle"
-        href="/manager/discounts"
-        active={props.leftBarActive === "Descuentos" ? true : false}
-      >
-        <i
-          className="fas fa-tags"
-          style={{ width: "26px", textAlign: "center" }}
-        />
-        <span className="ml-1">Descuentos</span>
       </Nav.Link>
       <Nav.Link
         className="navLinkStyle"
@@ -117,29 +106,6 @@ const LeftNav = React.memo(function LeftNav(props) {
           style={{ width: "26px", textAlign: "center" }}
         />
         <span className="ml-1">Compras</span>
-      </Nav.Link>
-      <Nav.Item className="navItemStyle">REPORTES</Nav.Item>
-      <Nav.Link
-        className="navLinkStyle"
-        href="/manager"
-        active={props.leftBarActive === "Reporte 1" ? true : false}
-      >
-        <i
-          className="fas fa-chart-line"
-          style={{ width: "26px", textAlign: "center" }}
-        />
-        <span className="ml-1">Reporte 1</span>
-      </Nav.Link>
-      <Nav.Link
-        className="navLinkStyle"
-        href="/manager"
-        active={props.leftBarActive === "Reporte 2" ? true : false}
-      >
-        <i
-          className="fas fa-chart-bar"
-          style={{ width: "26px", textAlign: "center" }}
-        />
-        <span className="ml-1">Reporte 2</span>
       </Nav.Link>
     </Nav>
   );

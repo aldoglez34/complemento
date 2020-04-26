@@ -19,19 +19,20 @@ const ManagerRow = React.memo(function ManagerRow(props) {
       </tr>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Body>
+        <Modal.Body className="bg-light">
           <Formik
             initialValues={{
               _id: props.manager._id,
               name: props.manager.name,
               firstSurname: props.manager.firstSurname,
               secondSurname: props.manager.secondSurname,
-              email: props.manager.email
+              email: props.manager.email,
             }}
           >
             {({ values, handleChange, handleBlur, handleSubmit }) => (
               <Form noValidate>
-                <h4>Detalle del administrador</h4>
+                <h3 className="managerTitleModal">DETALLE</h3>
+                <hr className="myDivider" />
                 {/* name */}
                 <Form.Row>
                   <Form.Group as={Col}>
@@ -98,7 +99,7 @@ const ManagerRow = React.memo(function ManagerRow(props) {
 });
 
 ManagerRow.propTypes = {
-  manager: PropTypes.object.isRequired
+  manager: PropTypes.object.isRequired,
 };
 
 export default ManagerRow;

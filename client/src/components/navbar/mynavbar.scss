@@ -5,7 +5,7 @@
 
 // LOGO
 #navbarLogo {
-  color: #edcb58;
+  color: #ffe486;
   font-family: "Lobster", cursive;
   font-size: 30px;
 }
@@ -43,8 +43,11 @@
 }
 
 .navbarDropdownItemStyle {
+  &:hover {
+    background-color: #ffeeb3;
+  }
   &:focus {
-    background-color: #f3d084;
+    background-color: #ffe486;
     color: #0c2c2c;
   }
 }

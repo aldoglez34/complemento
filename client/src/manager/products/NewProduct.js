@@ -78,7 +78,7 @@ const NewProduct = React.memo((props) => {
       </Button>
 
       <Modal show={show} onHide={handleClose} size="lg">
-        <Modal.Body>
+        <Modal.Body className="bg-light">
           {providers ? (
             providers.length ? (
               <Formik

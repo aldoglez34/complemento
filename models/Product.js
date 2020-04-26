@@ -4,83 +4,83 @@ const Schema = mongoose.Schema;
 const ProductSchema = new Schema({
   provider: {
     type: Schema.Types.ObjectId,
-    ref: "Provider"
+    ref: "Provider",
   },
   category: {
     type: String,
     trim: true,
-    required: true
+    required: true,
   },
   brand: {
     type: String,
     trim: true,
-    required: true
+    required: true,
   },
   name: {
     type: String,
     unique: true,
     trim: true,
-    required: true
+    required: true,
   },
   content: {
     type: String,
     trim: true,
-    required: true
+    required: true,
   },
   description: {
     type: String,
     trim: true,
-    required: true
   },
   dose: {
     type: String,
     trim: true,
-    required: true
   },
   ingredients: [{ type: String, trim: true }],
   warning: {
     type: String,
-    trim: true
+    trim: true,
+    required: true,
   },
   price: {
     salePrice: {
       type: Number,
-      required: true
+      required: true,
     },
     latestPurchasePrice: {
       type: Number,
-      required: true
+      required: true,
     },
     discount: {
       hasDiscount: {
         type: Boolean,
-        required: true
+        required: true,
       },
       percentage: Number,
-      newPrice: Number
-    }
+      newPrice: Number,
+    },
   },
   unitsSold: {
     type: Number,
-    default: 0
+    default: 0,
   },
   stock: {
     type: Number,
-    required: true
+    required: true,
   },
   priority: {
     type: Boolean,
-    default: false
+    default: false,
+    required: true,
   },
   photo: {
     type: String,
     unique: true,
-    required: true
+    required: true,
   },
   createdAt: {
     type: Date,
-    default: Date.now()
-  }
+    default: Date.now(),
+  },
 });
 
 const Product = mongoose.model("Product", ProductSchema);

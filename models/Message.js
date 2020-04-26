@@ -6,22 +6,27 @@ const MessageSchema = new Schema({
     type: String,
     trim: true,
     unique: true,
-    required: "Nombre requerido"
+    required: "Nombre requerido",
   },
   email: {
     type: String,
     trim: true,
-    required: "Email requerido"
+    required: "Email requerido",
   },
   message: {
     type: String,
     trim: true,
-    required: "Mensaje requerido"
+    required: "Mensaje requerido",
+  },
+  seen: {
+    type: Boolean,
+    default: false,
+    required: true,
   },
   sentAt: {
     type: Date,
-    default: Date.now()
-  }
+    default: Date.now(),
+  },
 });
 
 const Message = mongoose.model("Message", MessageSchema);

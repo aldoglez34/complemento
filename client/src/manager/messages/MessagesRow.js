@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Modal, Form, Col } from "react-bootstrap";
+import { Modal, Form, Col, Badge } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 
-const MessagesRow = React.memo(function MessagesRow(props) {
+const MessagesRow = React.memo(({ message }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -12,24 +12,36 @@ const MessagesRow = React.memo(function MessagesRow(props) {
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
-        <td>{props.message.sentAt}</td>
-        <td className="text-center">{props.message.name}</td>
-        <td className="text-center">{props.message.email}</td>
-        <td className="text-center">
-          {props.message.message.length > 25
-            ? props.message.message.slice(0, 25) + "..."
-            : props.message.message}
+        <td>
+          {message.name}
+          {message.seen ? null : (
+            <Badge
+              variant="danger"
+              className="ml-1"
+              pill
+              style={{ fontFamily: "Arial" }}
+            >
+              Nuevo
+            </Badge>
+          )}
+        </td>
+        <td>{message.email}</td>
+        <td>{message.sentAt}</td>
+        <td>
+          {message.message.length > 50
+            ? message.message.slice(0, 50) + "..."
+            : message.message}
         </td>
       </tr>
 
       <Modal size="lg" show={show} onHide={handleClose}>
-        <Modal.Body>
+        <Modal.Body className="bg-light">
           <Formik
             initialValues={{
-              sentAt: props.message.sentAt,
-              name: props.message.name,
-              email: props.message.email,
-              message: props.message.message
+              sentAt: message.sentAt,
+              name: message.name,
+              email: message.email,
+              message: message.message,
             }}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
@@ -38,25 +50,14 @@ const MessagesRow = React.memo(function MessagesRow(props) {
           >
             {({ values, handleChange, handleBlur, handleSubmit }) => (
               <Form noValidate onSubmit={handleSubmit}>
-                <h4>Detalle del mensaje</h4>
-                {/* date */}
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>Fecha</Form.Label>
-                    <Form.Control
-                      disabled
-                      type="text"
-                      name="sentAt"
-                      value={values.sentAt}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </Form.Group>
-                </Form.Row>
+                <h3 className="managerTitleModal">MENSAJE</h3>
+                <hr className="myDivider" />
                 {/* name */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Nombre del cliente</Form.Label>
+                    <Form.Label>
+                      <strong>Cliente</strong>
+                    </Form.Label>
                     <Form.Control
                       disabled
                       type="text"
@@ -70,7 +71,9 @@ const MessagesRow = React.memo(function MessagesRow(props) {
                 {/* email */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Correo electrónico</Form.Label>
+                    <Form.Label>
+                      <strong>Correo</strong>
+                    </Form.Label>
                     <Form.Control
                       disabled
                       type="text"
@@ -81,10 +84,28 @@ const MessagesRow = React.memo(function MessagesRow(props) {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* date */}
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>
+                      <strong>Fecha</strong>
+                    </Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      name="sentAt"
+                      value={values.sentAt}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                </Form.Row>
                 {/* message */}
                 <Form.Row>
                   <Form.Group as={Col}>
-                    <Form.Label>Mensaje</Form.Label>
+                    <Form.Label>
+                      <strong>Mensaje</strong>
+                    </Form.Label>
                     <Form.Control
                       disabled
                       as="textarea"
@@ -107,7 +128,7 @@ const MessagesRow = React.memo(function MessagesRow(props) {
 });
 
 MessagesRow.propTypes = {
-  message: PropTypes.object.isRequired
+  message: PropTypes.object.isRequired,
 };
 
 export default MessagesRow;

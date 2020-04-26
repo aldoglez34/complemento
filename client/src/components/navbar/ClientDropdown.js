@@ -86,7 +86,7 @@ const ClientDropdown = ({ firebase }) => {
         </Button>
 
         <Modal show={show} onHide={handleClose}>
-          <Modal.Body className="px-0 py-2">
+          <Modal.Body className="px-0 py-2 bg-light">
             {content("modal", firebase)}
           </Modal.Body>
         </Modal>
@@ -103,7 +103,12 @@ const ClientDropdown = ({ firebase }) => {
             {client.name}
           </Dropdown.Toggle>
 
-          <Dropdown.Menu alignRight data-display="static" id="dropdownMenuLG">
+          <Dropdown.Menu
+            className="bg-light"
+            alignRight
+            data-display="static"
+            id="dropdownMenuLG"
+          >
             {content("dropdown", firebase)}
           </Dropdown.Menu>
         </Dropdown>
