@@ -9,10 +9,12 @@ const Sales = React.memo(function Sales() {
 
   useEffect(() => {
     API.fetchSales()
-      .then(res => setSales(res.data))
-      .catch(err => {
+      .then((res) => setSales(res.data))
+      .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error.");
       });
   }, []);
 
@@ -33,7 +35,7 @@ const Sales = React.memo(function Sales() {
                 </tr>
               </thead>
               <tbody>
-                {sales.map(s => {
+                {sales.map((s) => {
                   return <SalesRow key={s._id} sale={s} />;
                 })}
               </tbody>

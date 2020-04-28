@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Badge } from "react-bootstrap";
 
 const TitleAndPrice = React.memo(({ name, price }) => {
   return (
@@ -9,15 +8,6 @@ const TitleAndPrice = React.memo(({ name, price }) => {
         <h1 className="text-left mb-0 pr-4">
           <span className="mr-1">{name}</span>
           <hr className="myDivider mt-2 mb-0" />
-          {/* {price.discount.hasDiscount ? (
-            <Badge
-              className="h4"
-              variant="warning"
-              style={{ color: "#484a4b" }}
-            >
-              {price.discount.percentage + "%"}
-            </Badge>
-          ) : null} */}
         </h1>
         <div className="ml-auto text-right">
           <h1 className="mb-0 text-danger">

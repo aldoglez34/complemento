@@ -25,14 +25,22 @@ const MyNavbar = React.memo(({ hideBag, hideUser }) => {
       .then((res) => setItems(res.data))
       .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert(
+              "Ocurrió un error al cargar productos para la barra de búsqueda."
+            );
       });
     // fetch items for categories dropdown
     API.fetchItemsForStoreDropdown()
       .then((res) => setStore(res.data))
       .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert(
+              "Ocurrió un error al cargar categorías para menú desplegable."
+            );
       });
   }, []);
 
@@ -43,7 +51,7 @@ const MyNavbar = React.memo(({ hideBag, hideUser }) => {
         {/* brand */}
         <Navbar.Brand href="/" id="navbarLogo" title="Inicio">
           Tu Complemento
-          <i className="fas fa-leaf ml-1" id="navbarLogoLeaf"  />
+          <i className="fas fa-leaf ml-1" id="navbarLogoLeaf" />
         </Navbar.Brand>
         {/* toggle */}
         <Navbar.Toggle
@@ -60,7 +68,7 @@ const MyNavbar = React.memo(({ hideBag, hideUser }) => {
         {/* sm */}
         <div className="d-block d-md-none w-100">
           <Navbar.Collapse id="top-navbar">
-            <Container className="my-2 bg-white rounded" fluid>
+            <Container className="my-2 bg-light rounded" fluid>
               <BagDropdown size="small" />
             </Container>
           </Navbar.Collapse>

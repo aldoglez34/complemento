@@ -16,7 +16,7 @@ const Products = React.memo(() => {
   const [products, setProducts] = useState();
   const [filtered, setFiltered] = useState();
   const [filter, setFilter] = useState();
-  
+
   const [categories, setCategories] = useState();
 
   useEffect(() => {

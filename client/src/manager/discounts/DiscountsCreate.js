@@ -9,10 +9,12 @@ const DiscountsCreate = React.memo(function DiscountsCreate() {
 
   useEffect(() => {
     API.fetchNotDiscountsManager()
-      .then(res => setNotDiscounts(res.data))
-      .catch(err => {
+      .then((res) => setNotDiscounts(res.data))
+      .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error.");
       });
   }, []);
 
@@ -37,7 +39,7 @@ const DiscountsCreate = React.memo(function DiscountsCreate() {
                 </tr>
               </thead>
               <tbody>
-                {notdiscounts.map(nd => {
+                {notdiscounts.map((nd) => {
                   return <DiscountsCreateRow key={nd._id} notdiscount={nd} />;
                 })}
               </tbody>

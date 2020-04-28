@@ -12,10 +12,7 @@ const DiscountsCreateRow = React.memo(function DiscountsCreateRow(props) {
   const handleShow = () => setShow(true);
 
   const discountSchema = yup.object({
-    percentage: yup
-      .mixed()
-      .notOneOf([0], "Requerido")
-      .required("Requerido")
+    percentage: yup.mixed().notOneOf([0], "Requerido").required("Requerido"),
   });
 
   return (
@@ -42,7 +39,7 @@ const DiscountsCreateRow = React.memo(function DiscountsCreateRow(props) {
               unitsSold: props.notdiscount.unitsSold,
               stock: props.notdiscount.stock,
               percentage: 0,
-              newPrice: 0
+              newPrice: 0,
             }}
             validationSchema={discountSchema}
             onSubmit={(values, { setSubmitting }) => {
@@ -50,7 +47,7 @@ const DiscountsCreateRow = React.memo(function DiscountsCreateRow(props) {
               values.newPrice =
                 values.salePrice - values.salePrice * (values.percentage / 100);
               API.newDiscount(values)
-                .then(res => {
+                .then((res) => {
                   if (res.data.errmsg) {
                     alert("ERROR => " + res.data.errmsg);
                     setSubmitting(false);
@@ -60,9 +57,11 @@ const DiscountsCreateRow = React.memo(function DiscountsCreateRow(props) {
                     window.location.reload();
                   }
                 })
-                .catch(err => {
+                .catch((err) => {
                   console.log(err.response);
-                  alert(err.response.data.msg);
+                  err.response.data.msg
+                    ? alert(err.response.data.msg)
+                    : alert("Ocurrió un error.");
                 });
             }}
           >
@@ -73,7 +72,7 @@ const DiscountsCreateRow = React.memo(function DiscountsCreateRow(props) {
               handleChange,
               handleBlur,
               handleSubmit,
-              isSubmitting
+              isSubmitting,
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
                 {/* name */}
@@ -233,7 +232,7 @@ const DiscountsCreateRow = React.memo(function DiscountsCreateRow(props) {
 });
 
 DiscountsCreateRow.propTypes = {
-  notdiscount: PropTypes.object.isRequired
+  notdiscount: PropTypes.object.isRequired,
 };
 
 export default DiscountsCreateRow;

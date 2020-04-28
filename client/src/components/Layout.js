@@ -1,5 +1,5 @@
 import React from "react";
-import MyNavbar from "./navbar/MyNavbar";
+import MyNavbar from "./navbar";
 import MyFooter from "./footer/MyFooter";
 import PropTypes from "prop-types";
 

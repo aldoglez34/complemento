@@ -31,7 +31,7 @@ const ManagerRow = React.memo(function ManagerRow(props) {
           >
             {({ values, handleChange, handleBlur, handleSubmit }) => (
               <Form noValidate>
-                <h3 className="managerTitleModal">DETALLE</h3>
+                <h3 className="managerTitleModal">ADMINISTRADOR</h3>
                 <hr className="myDivider" />
                 {/* name */}
                 <Form.Row>

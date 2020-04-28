@@ -3,7 +3,7 @@ import { Button, Modal, Form, Col, InputGroup, Badge } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-import APIManager from "../../utils/APIManager";
+// import APIManager from "../../utils/APIManager";
 
 const ProductRow = React.memo(({ product, categories }) => {
   const [show, setshow] = useState(false);
@@ -584,14 +584,13 @@ const ProductRow = React.memo(({ product, categories }) => {
                   </Form.Group>
                 </Form.Row>
                 {/* ==== buttons ==== */}
-                <div className="text-center mt-4">
+                <div className="text-center mt-2">
                   <Button
                     size="lg"
                     variant="dark"
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    <i className="fas fa-check-circle mr-2" />
                     GUARDAR
                   </Button>
                 </div>

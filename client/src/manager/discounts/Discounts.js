@@ -9,10 +9,12 @@ const Discounts = React.memo(function Discounts() {
 
   useEffect(() => {
     API.fetchDiscountsManager()
-      .then(res => setProductsWithDiscount(res.data))
-      .catch(err => {
+      .then((res) => setProductsWithDiscount(res.data))
+      .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error.");
       });
   }, []);
 
@@ -37,7 +39,7 @@ const Discounts = React.memo(function Discounts() {
                 </tr>
               </thead>
               <tbody>
-                {productsWithDiscount.map(d => {
+                {productsWithDiscount.map((d) => {
                   return <DiscountsRow key={d._id} productWithDiscount={d} />;
                 })}
               </tbody>

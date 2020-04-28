@@ -239,19 +239,16 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
                   </Form.Group>
                 </Form.Row>
                 {/* buttons */}
-                <Form.Row className="px-1 mt-2">
-                  <Button disabled variant="danger" onClick={handleClose}>
-                    Borrar
-                  </Button>
+                <div className="text-center mt-2">
                   <Button
-                    className="ml-auto"
-                    variant="success"
+                    size="lg"
+                    variant="dark"
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    Guardar
+                    GUARDAR
                   </Button>
-                </Form.Row>
+                </div>
               </Form>
             )}
           </Formik>

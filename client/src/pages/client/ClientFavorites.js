@@ -19,7 +19,9 @@ const ClientFavorites = React.memo(function ClientFavorites() {
       })
       .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error.");
       });
   }, []);
 

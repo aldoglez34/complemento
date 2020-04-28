@@ -31,7 +31,9 @@ const FavButton = React.memo(({ product, isBlock }) => {
         )
         .catch((err) => {
           console.log(err.response);
-          alert(err.response.data.msg);
+          err.response.data.msg
+            ? alert(err.response.data.msg)
+            : alert("Ocurrió un error.");
         });
       // show modal
       setShow(true);

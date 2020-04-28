@@ -5,7 +5,7 @@ import {
   NavItem,
   Badge,
   Button,
-  Spinner
+  Spinner,
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import API from "../../utils/API";
@@ -13,7 +13,7 @@ import PropTypes from "prop-types";
 
 class BagDropdown extends PureComponent {
   state = {
-    products: []
+    products: [],
   };
 
   formatNumber(num) {
@@ -31,7 +31,7 @@ class BagDropdown extends PureComponent {
   }
 
   static propTypes = {
-    size: PropTypes.string.isRequired
+    size: PropTypes.string.isRequired,
   };
 
   componentDidUpdate(prevProps) {
@@ -55,10 +55,12 @@ class BagDropdown extends PureComponent {
       // fetch cart items (if there are any)
       if (cartStr !== "")
         API.fetchCartProducts(cartStr)
-          .then(res => this.setState({ products: res.data }))
-          .catch(err => {
+          .then((res) => this.setState({ products: res.data }))
+          .catch((err) => {
             console.log(err.response);
-            alert(err.response.data.msg);
+            err.response.data.msg
+              ? alert(err.response.data.msg)
+              : alert("Ocurrió un error.");
           });
     });
   }
@@ -83,7 +85,7 @@ class BagDropdown extends PureComponent {
 
         <Dropdown.Menu
           id="bagDropdownMenu"
-          className="dropdown-menu-xs-left dropdown-menu-md-right"
+          className="dropdown-menu-xs-left dropdown-menu-md-right bg-light"
         >
           <div className="px-3 py-2">
             {this.props.cart.counter === 0 ? (
@@ -103,7 +105,7 @@ class BagDropdown extends PureComponent {
                 </h6>
                 <hr className="myDivider mb-4" />
                 <div className="mb-3">
-                  {this.state.products.map(p => {
+                  {this.state.products.map((p) => {
                     return (
                       <div key={p._id} className="d-flex flex-row">
                         <span>{p.name}</span>
@@ -121,7 +123,7 @@ class BagDropdown extends PureComponent {
                   {"Total: " +
                     this.formatNumber(
                       this.state.products
-                        .map(p => p.subTotal)
+                        .map((p) => p.subTotal)
                         .reduce((prev, next) => prev + next)
                     )}
                 </h3>
@@ -156,7 +158,7 @@ class BagDropdown extends PureComponent {
             </h6>
             <hr className="myDivider mb-4" />
             <div className="mb-3">
-              {this.state.products.map(p => {
+              {this.state.products.map((p) => {
                 return (
                   <div key={p._id} className="d-flex flex-row">
                     <span>{p.name}</span>
@@ -172,7 +174,7 @@ class BagDropdown extends PureComponent {
               {"Total: " +
                 this.formatNumber(
                   this.state.products
-                    .map(p => p.subTotal)
+                    .map((p) => p.subTotal)
                     .reduce((prev, next) => prev + next)
                 )}
             </h3>
@@ -191,9 +193,9 @@ class BagDropdown extends PureComponent {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    cart: state.cart
+    cart: state.cart,
   };
 };
 

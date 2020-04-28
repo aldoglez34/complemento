@@ -51,7 +51,9 @@ class Cart extends Component {
           .then((res) => this.setState({ products: res.data }))
           .catch((err) => {
             console.log(err.response);
-            alert(err.response.data.msg);
+            err.response.data.msg
+              ? alert(err.response.data.msg)
+              : alert("Ocurrió un error.");
           });
     });
   }

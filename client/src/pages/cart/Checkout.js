@@ -94,17 +94,23 @@ const Checkout = React.memo(() => {
               })
               .catch((err) => {
                 console.log(err.response);
-                alert(err.response.data.msg);
+                err.response.data.msg
+                  ? alert(err.response.data.msg)
+                  : alert("Ocurrió un error.");
               });
           })
           .catch((err) => {
             console.log(err.response);
-            alert(err.response.data.msg);
+            err.response.data.msg
+              ? alert(err.response.data.msg)
+              : alert("Ocurrió un error.");
           });
       })
       .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error.");
       });
   };
 
@@ -142,7 +148,9 @@ const Checkout = React.memo(() => {
                 .then(() => makeSaleAndUpdateStock(buyer))
                 .catch((err) => {
                   console.log(err.response);
-                  alert(err.response.data.msg);
+                  err.response.data.msg
+                    ? alert(err.response.data.msg)
+                    : alert("Ocurrió un error.");
                 });
             } else if (!values.saveAddress) {
               // if save address is NOT checked just make sale

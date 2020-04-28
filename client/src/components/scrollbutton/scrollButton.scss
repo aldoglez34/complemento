@@ -1,13 +1,13 @@
 .scroll {
-  opacity: 0.9;
+  opacity: 0.9 !important;
 
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 3.2rem;
+  height: 3.2rem;
 
   position: fixed;
   right: 0.9rem;
 
-  bottom: 2.6em;
+  bottom: 2.4em;
 
   border-radius: 0.3125rem;
   border: none;
@@ -16,14 +16,14 @@
   cursor: pointer;
 
   background-color: darkslategray;
-  color: #edcb58;
+  color: #ffbc4f;
   padding: 8px;
   font-size: 1.9rem;
 
   &:hover {
     transition: 0.5s;
     opacity: 1;
-    background-color: #edcb58;
-    color: darkslategray;
+    background-color: #ffbc4f;
+    color: white;
   }
 }

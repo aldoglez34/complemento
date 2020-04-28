@@ -9,10 +9,12 @@ const Purchases = React.memo(function Purchases() {
 
   useEffect(() => {
     API.fetchPurchases()
-      .then(res => setPurchases(res.data))
-      .catch(err => {
+      .then((res) => setPurchases(res.data))
+      .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error.");
       });
   }, []);
 
@@ -33,7 +35,7 @@ const Purchases = React.memo(function Purchases() {
                 </tr>
               </thead>
               <tbody>
-                {purchases.map(p => {
+                {purchases.map((p) => {
                   return <PurchasesRow key={p._id} purchase={p} />;
                 })}
               </tbody>

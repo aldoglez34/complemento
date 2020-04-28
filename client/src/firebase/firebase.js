@@ -40,7 +40,9 @@ class Firebase {
           .then(() => (window.location.href = "/"))
           .catch((err) => {
             console.log(err.response);
-            alert(err.response.data.msg);
+            err.response.data.msg
+              ? alert(err.response.data.msg)
+              : alert("Ocurrió un error al crear nuevo cliente en la BD.");
           });
       })
       .catch(() =>
