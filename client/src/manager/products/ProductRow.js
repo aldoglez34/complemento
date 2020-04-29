@@ -109,12 +109,12 @@ const ProductRow = React.memo(({ product, categories }) => {
               //       window.location.reload();
               //     }
               //   })
-              // .catch((err) => {
-              //   console.log(err.response);
-              //   err.response.data.msg
-              //     ? alert(err.response.data.msg)
-              //     : alert("Ocurrió un error.");
-              // });
+              //   .catch((err) => {
+              //     console.log(err.response);
+              //     err.response.data.msg
+              //       ? alert(err.response.data.msg)
+              //       : alert("Ocurrió un error al actualizar el producto.");
+              //   });
             }}
           >
             {({

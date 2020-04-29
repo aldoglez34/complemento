@@ -16,7 +16,7 @@ const Users = React.memo(() => {
         console.log(err.response);
         err.response.data.msg
           ? alert(err.response.data.msg)
-          : alert("Ocurrió un error.");
+          : alert("Ocurrió un error al cargar los clientes.");
       });
     APIManager.mngr_fetchManagers()
       .then((res) => setManagers(res.data))
@@ -24,7 +24,7 @@ const Users = React.memo(() => {
         console.log(err.response);
         err.response.data.msg
           ? alert(err.response.data.msg)
-          : alert("Ocurrió un error.");
+          : alert("Ocurrió un error al cargar los administradores.");
       });
   }, []);
 

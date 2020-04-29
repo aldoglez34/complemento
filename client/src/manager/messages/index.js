@@ -19,7 +19,7 @@ const Messages = React.memo(() => {
         console.log(err.response);
         err.response.data.msg
           ? alert(err.response.data.msg)
-          : alert("Ocurrió un error.");
+          : alert("Ocurrió un error al cargar los mensajes.");
       });
   }, []);
 

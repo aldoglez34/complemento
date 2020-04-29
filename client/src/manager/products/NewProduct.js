@@ -20,7 +20,7 @@ const NewProduct = React.memo((props) => {
         console.log(err.response);
         err.response.data.msg
           ? alert(err.response.data.msg)
-          : alert("Ocurrió un error.");
+          : alert("Ocurrió un error al cargar las categorías.");
       });
     APIManager.mngr_fetchProviders()
       .then((res) => setProviders(res.data))
@@ -28,7 +28,7 @@ const NewProduct = React.memo((props) => {
         console.log(err.response);
         err.response.data.msg
           ? alert(err.response.data.msg)
-          : alert("Ocurrió un error.");
+          : alert("Ocurrió un error al cargar los proveedores.");
       });
   }, []);
 
@@ -114,7 +114,11 @@ const NewProduct = React.memo((props) => {
                     })
                     .catch((err) => {
                       console.log(err.response);
-                      alert(err.response.data.msg);
+                      err.response.data.msg
+                        ? alert(err.response.data.msg)
+                        : alert(
+                            "Ocurrió un error al registrar el producto nuevo."
+                          );
                     });
                 }}
               >

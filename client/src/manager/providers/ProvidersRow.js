@@ -66,7 +66,7 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
                   console.log(err.response);
                   err.response.data.msg
                     ? alert(err.response.data.msg)
-                    : alert("Ocurrió un error.");
+                    : alert("Ocurrió un error al actualizar el proveedor.");
                 });
             }}
           >

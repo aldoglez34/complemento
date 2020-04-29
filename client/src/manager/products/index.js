@@ -29,7 +29,7 @@ const Products = React.memo(() => {
         console.log(err.response);
         err.response.data.msg
           ? alert(err.response.data.msg)
-          : alert("Ocurrió un error.");
+          : alert("Ocurrió un  al cargar los productos.");
       });
     APIManager.mngr_fetchCategories()
       .then((res) => setCategories(res.data))
@@ -37,7 +37,7 @@ const Products = React.memo(() => {
         console.log(err.response);
         err.response.data.msg
           ? alert(err.response.data.msg)
-          : alert("Ocurrió un error.");
+          : alert("Ocurrió un error al cargar las categorías.");
       });
   }, []);
 

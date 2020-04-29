@@ -65,7 +65,7 @@ const NewProvider = React.memo((props) => {
                   console.log(err.response);
                   err.response.data.msg
                     ? alert(err.response.data.msg)
-                    : alert("Ocurrió un error.");
+                    : alert("Ocurrió un error al crear un nuevo proveedor.");
                 });
             }}
           >
