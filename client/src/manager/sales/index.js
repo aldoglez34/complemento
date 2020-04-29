@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ManagerLayout from "../ManagerLayout";
-import API from "../../utils/API";
+import APIManager from "../../utils/APIManager";
 import { Table, Spinner } from "react-bootstrap";
 import SalesRow from "./SalesRow";
 
@@ -8,7 +8,7 @@ const Sales = React.memo(function Sales() {
   const [sales, setSales] = useState();
 
   useEffect(() => {
-    API.fetchSales()
+    APIManager.mngr_fetchSales()
       .then((res) => setSales(res.data))
       .catch((err) => {
         console.log(err.response);

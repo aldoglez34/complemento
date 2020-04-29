@@ -79,12 +79,4 @@ export default {
   mngr_fetchSales: function () {
     return axios.get("/managerapi/sales/all");
   },
-
-  // ---------------------------------------------------------------------------
-  // PURCHASES
-  // ---------------------------------------------------------------------------
-
-  mngr_fetchPurchases: function () {
-    return axios.get("/managerapi/purchases/all");
-  },
 };

@@ -13,7 +13,7 @@ import Providers from "../manager/providers";
 import Users from "../manager/users";
 import Messages from "../manager/messages";
 import Products from "../manager/products";
-import Sales from "../manager/sales/Sales";
+import Sales from "../manager/sales";
 
 const ManagerNavigation = () => {
   return (

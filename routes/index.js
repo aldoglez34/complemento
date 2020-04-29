@@ -16,7 +16,6 @@ const mngr_providersRoutes = require("./managerapi/providersRoutes");
 const mngr_usersRoutes = require("./managerapi/usersRoutes");
 const mngr_messagesRoutes = require("./managerapi/messagesRoutes");
 const mngr_salesRoutes = require("./managerapi/salesRoutes");
-const mngr_purchasesRoutes = require("./managerapi/purchasesRoutes");
 
 // api
 router.use("/api/store", storeRoutes);
@@ -34,6 +33,5 @@ router.use("/managerapi/providers", mngr_providersRoutes);
 router.use("/managerapi/users", mngr_usersRoutes);
 router.use("/managerapi/messages", mngr_messagesRoutes);
 router.use("/managerapi/sales", mngr_salesRoutes);
-router.use("/managerapi/purchases", mngr_purchasesRoutes);
 
 module.exports = router;
