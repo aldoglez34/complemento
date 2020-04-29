@@ -74,23 +74,22 @@ const AddToBagButton = React.memo(({ product, size }) => {
                 src={"/images/products/" + product.photo}
                 title={product.name}
               />
-              {product.price.discount.hasDiscount ? (
+              {/* {product.price.discount.hasDiscount ? (
                 <Image
                   src="/images/tag.png"
                   className="addtobagbuttondiscount"
                   alt="discount"
                 />
-              ) : null}
+              ) : null} */}
             </Col>
             {/* right col */}
             <Col md={5}>
-              <h2 className="text-center mt-2 mt-md-0">{product.name}</h2>
-              <hr />
+              <h1 className="text-center mt-2 mt-md-0 mb-3">{product.name}</h1>
               <div className="mb-3">
                 Estás por agregar el producto <strong>{product.name}</strong> a
                 tu canasta de compras.
               </div>
-              <hr />
+              {/* <hr /> */}
               {/* qty picker */}
               <strong>Cantidad</strong>
               <div className="mb-4 mt-2">
@@ -112,7 +111,6 @@ const AddToBagButton = React.memo(({ product, size }) => {
                 </span>
               </div>
               {/* buttons */}
-              <hr />
               <Col className="mt-3 p-0 text-center">
                 <Button
                   // size="lg"

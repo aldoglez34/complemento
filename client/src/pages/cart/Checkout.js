@@ -96,21 +96,23 @@ const Checkout = React.memo(() => {
                 console.log(err.response);
                 err.response.data.msg
                   ? alert(err.response.data.msg)
-                  : alert("Ocurrió un error.");
+                  : alert("Ocurrió un error al buscar el número de orden.");
               });
           })
           .catch((err) => {
             console.log(err.response);
             err.response.data.msg
               ? alert(err.response.data.msg)
-              : alert("Ocurrió un error.");
+              : alert(
+                  "Ocurrió un error al actualizar la existencia de los productos adquiridos."
+                );
           });
       })
       .catch((err) => {
         console.log(err.response);
         err.response.data.msg
           ? alert(err.response.data.msg)
-          : alert("Ocurrió un error.");
+          : alert("Ocurrió un error al registrar la compra.");
       });
   };
 
@@ -150,7 +152,9 @@ const Checkout = React.memo(() => {
                   console.log(err.response);
                   err.response.data.msg
                     ? alert(err.response.data.msg)
-                    : alert("Ocurrió un error.");
+                    : alert(
+                        "Ocurrió un error al actualizar los datos del comprador."
+                      );
                 });
             } else if (!values.saveAddress) {
               // if save address is NOT checked just make sale

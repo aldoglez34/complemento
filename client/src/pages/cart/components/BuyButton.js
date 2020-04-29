@@ -7,7 +7,7 @@ import * as cartActions from "../../../redux/actions/cart";
 const BuyButton = React.memo(() => {
   const dispatch = useDispatch();
 
-  const cart = useSelector(state => state.cart);
+  const cart = useSelector((state) => state.cart);
 
   const [show, setShow] = useState(false);
 
@@ -32,8 +32,13 @@ const BuyButton = React.memo(() => {
     }, "");
     API.checkStock(cartStr)
       .then(() => (window.location.href = "/checkout"))
-      .catch(err => {
-        console.log("@err.response", err.response);
+      .catch((err) => {
+        console.log(err.response);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert(
+              "Ocurrió un error al revisar la existencia de los productos."
+            );
         setZeroStock(err.response.data.zeroStock);
         setNotEnoughStock(err.response.data.notEnoughStock);
         handleShow(true);
@@ -77,7 +82,7 @@ const BuyButton = React.memo(() => {
                 existencia.
               </Alert>
               <ListGroup>
-                {zeroStock.map(zs => (
+                {zeroStock.map((zs) => (
                   <ListGroup.Item key={zs._id}>
                     {zs.name}
                     <Badge variant="danger" className="ml-2">
@@ -111,7 +116,7 @@ const BuyButton = React.memo(() => {
                   </tr>
                 </thead>
                 <tbody>
-                  {notEnoughStock.map(e => (
+                  {notEnoughStock.map((e) => (
                     <tr key={e._id}>
                       <td className="border-0 py-2">{e.name}</td>
                       <td className="border-0 py-2 text-center">{e.qty}</td>

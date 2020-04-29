@@ -91,7 +91,7 @@ const ClientInfo = React.memo(function ClientInfo() {
               zipCode: values.zipCode,
             };
             API.updateClient(trimmedValues)
-              .then((res) => {
+              .then(() => {
                 alert("Cliente editado con éxito");
                 dispatch(userActions.updateClient(trimmedValues));
                 setSubmitting(false);
@@ -99,7 +99,11 @@ const ClientInfo = React.memo(function ClientInfo() {
               })
               .catch((err) => {
                 console.log(err.response);
-                alert(err.response.data.msg);
+                err.response.data.msg
+                  ? alert(err.response.data.msg)
+                  : alert(
+                      "Ocurrió un error al actualizar los datos del cliente."
+                    );
               });
           }}
         >

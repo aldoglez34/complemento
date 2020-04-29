@@ -14,7 +14,6 @@ import Users from "../manager/users";
 import Messages from "../manager/messages";
 import Products from "../manager/products";
 import Sales from "../manager/sales/Sales";
-import Purchases from "../manager/purchases/Purchases";
 
 const ManagerNavigation = () => {
   return (
@@ -57,7 +56,6 @@ const ManagerNavigation = () => {
       <Route exact path="/manager/users" component={Users} />
       <Route exact path="/manager/messages" component={Messages} />
       <Route exact path="/manager/sales" component={Sales} />
-      <Route exact path="/manager/purchases" component={Purchases} />
       <Redirect from="/manager" to="/manager/dashboard" />
       {/* 404 not found */}
       <Route component={NoMatch} />

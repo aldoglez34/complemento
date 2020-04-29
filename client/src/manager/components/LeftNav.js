@@ -96,17 +96,6 @@ const LeftNav = React.memo(function LeftNav(props) {
         />
         <span className="ml-1">Ventas</span>
       </Nav.Link>
-      <Nav.Link
-        className="navLinkStyle"
-        href="/manager/purchases"
-        active={props.leftBarActive === "Compras" ? true : false}
-      >
-        <i
-          className="fas fa-shopping-basket"
-          style={{ width: "26px", textAlign: "center" }}
-        />
-        <span className="ml-1">Compras</span>
-      </Nav.Link>
     </Nav>
   );
 });

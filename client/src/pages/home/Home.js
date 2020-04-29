@@ -17,19 +17,25 @@ const Home = React.memo(() => {
       .then((res) => setPrioritized(res.data))
       .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error al cargar los productos destacados.");
       });
     API.fetchProductsWithDiscount()
       .then((res) => setDiscounts(res.data))
       .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error al cargar productos con descuento.");
       });
     API.fetchBestSellers()
       .then((res) => setBestSellers(res.data))
       .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error al cargar productos más vendidos.");
       });
   }, []);
 

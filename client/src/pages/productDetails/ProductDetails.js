@@ -29,7 +29,9 @@ const ProductDetails = React.memo(function ProductDetails(props) {
       })
       .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error al cargar detalles del producto.");
       });
   }, []);
 

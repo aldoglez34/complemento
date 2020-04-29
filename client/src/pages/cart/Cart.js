@@ -53,7 +53,9 @@ class Cart extends Component {
             console.log(err.response);
             err.response.data.msg
               ? alert(err.response.data.msg)
-              : alert("Ocurrió un error.");
+              : alert(
+                  "Ocurrió un error al cargar los productos para la bolsa."
+                );
           });
     });
   }

@@ -35,13 +35,17 @@ class Store extends PureComponent {
       .then((res) => this.setState({ categories: res.data }))
       .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error al cargar las categorías.");
       });
     API.fetchBrands()
       .then((res) => this.setState({ brands: res.data }))
       .catch((err) => {
         console.log(err.response);
-        alert(err.response.data.msg);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error al cargar las marcas.");
       });
     // fetch products
     API.fetchProducts()
@@ -104,8 +108,11 @@ class Store extends PureComponent {
         );
       })
       .catch((err) => {
-        console.log(err.response);
         alert(err.response.data.msg);
+        console.log(err.response);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error al cargar los productos.");
       });
   }
 

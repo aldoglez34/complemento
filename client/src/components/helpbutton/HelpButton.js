@@ -64,7 +64,7 @@ const HelpButton = React.memo(function HelpButton() {
               API.postMessage(values)
                 .then(() =>
                   alert(
-                    "Mensaje enviado con éxito. Nos pondremos en contacto contigo al correo proporcionado. "
+                    "Mensaje enviado con éxito. Nos pondremos en contacto contigo al correo proporcionado."
                   )
                 )
                 .catch((err) => {

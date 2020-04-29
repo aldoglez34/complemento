@@ -5,7 +5,7 @@ import HeadShake from "react-reveal/HeadShake";
 const WelcomeJumbotron = React.memo(function WelcomeJumbotron() {
   const styles = {
     jumbotron: {
-      backgroundImage: "url('images/carousel3.jpg')",
+      backgroundImage: "url('images/carousel.jpg')",
       backgroundSize: "cover",
       backgroundColor: "gray",
       backgroundBlendMode: "multiply",
