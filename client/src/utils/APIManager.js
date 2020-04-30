@@ -72,6 +72,10 @@ export default {
     return axios.get("/managerapi/messages/all");
   },
 
+  mngr_markSeen: function (msgId) {
+    return axios.put("/managerapi/messages/markSeen/" + msgId);
+  },
+
   // ---------------------------------------------------------------------------
   // SALES
   // ---------------------------------------------------------------------------

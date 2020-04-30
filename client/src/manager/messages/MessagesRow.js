@@ -2,12 +2,32 @@ import React, { useState } from "react";
 import { Modal, Form, Col, Badge } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
+import APIManager from "../../utils/APIManager";
+const moment = require("moment");
 
 const MessagesRow = React.memo(({ message }) => {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setShow(false);
+    window.location.reload();
+  };
+  const handleShow = () => {
+    APIManager.mngr_markSeen(message._id)
+      .then((res) => console.log(res.data))
+      .catch((err) => {
+        console.log(err.response);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error al marcar mensaje como leído.");
+      });
+    setShow(true);
+  };
+
+  const formatDate = (date) => {
+    let convertedDate = moment(moment(date).format(moment.HTML5_FMT.DATE));
+    return convertedDate.format("DD/MM/YY");
+  };
 
   return (
     <>
@@ -26,7 +46,7 @@ const MessagesRow = React.memo(({ message }) => {
           )}
         </td>
         <td>{message.email}</td>
-        <td>{message.sentAt}</td>
+        <td>{formatDate(message.sentAt)}</td>
         <td>
           {message.message.length > 50
             ? message.message.slice(0, 50) + "..."

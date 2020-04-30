@@ -31,6 +31,18 @@ const Messages = React.memo(() => {
           criteria === filter ? messages : messages.filter((msg) => !msg.seen)
         );
         break;
+      case "lastWeek":
+        setFilter(criteria === filter ? null : criteria);
+        setFiltered(
+          criteria === filter ? messages : messages.filter((msg) => !msg.seen)
+        );
+        break;
+      case "lastMonth":
+        setFilter(criteria === filter ? null : criteria);
+        setFiltered(
+          criteria === filter ? messages : messages.filter((msg) => !msg.seen)
+        );
+        break;
       default:
         setFiltered(messages);
     }
@@ -48,6 +60,26 @@ const Messages = React.memo(() => {
         >
           <i className="fas fa-eye-slash mr-1" />
           No leídos
+        </Button>
+        <Button
+          disabled={messages ? false : true}
+          active={filter === "lastWeek" ? true : false}
+          className="filterBttnManager ml-2"
+          title="Última semana"
+          onClick={() => filterProducts("lastWeek")}
+        >
+          <i className="far fa-calendar-alt mr-1" />
+          Última semana
+        </Button>
+        <Button
+          disabled={messages ? false : true}
+          active={filter === "lastMonth" ? true : false}
+          className="filterBttnManager ml-2"
+          title="Último mes"
+          onClick={() => filterProducts("lastMonth")}
+        >
+          <i className="far fa-calendar-alt mr-1" />
+          Último mes
         </Button>
       </Row>
     );
@@ -67,7 +99,7 @@ const Messages = React.memo(() => {
                 <tr>
                   <th className="text-center border-0">Cliente</th>
                   <th className="text-center border-0">Correo</th>
-                  <th className="text-center border-0">Fecha</th>
+                  <th className="text-center border-0">Enviado</th>
                   <th className="text-center border-0">Mensaje</th>
                 </tr>
               </thead>

@@ -13,9 +13,9 @@ const clients = [
       municipality: "Banderilla",
       city: "Xalapa",
       state: "Veracruz",
-      zipCode: "91300"
-    }
-  }
+      zipCode: "91300",
+    },
+  },
 ];
 
 module.exports = clients;
