@@ -33,8 +33,16 @@ const Messages = React.memo(() => {
         break;
       case "lastWeek":
         setFilter(criteria === filter ? null : criteria);
+        let today = moment(moment(Date.now()).format(moment.HTML5_FMT.DATE));
         setFiltered(
-          criteria === filter ? messages : messages.filter((msg) => !msg.seen)
+          criteria === filter
+            ? messages
+            : messages.filter((msg) => {
+                let convertedDate = moment(
+                  moment(msg.sentAt).format(moment.HTML5_FMT.DATE)
+                );
+                
+              })
         );
         break;
       case "lastMonth":
