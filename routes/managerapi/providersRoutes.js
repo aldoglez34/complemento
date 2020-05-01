@@ -3,12 +3,29 @@ const model = require("../../models");
 
 // mngr_fetchProviders()
 // matches with /managerapi/providers/all
-router.get("/all", function(req, res) {
+router.get("/all", function (req, res) {
   model.Provider.find({})
     .sort({ name: 1 })
     .collation({ locale: "es" })
-    .then(data => res.status(200).json(data))
-    .catch(err => {
+    .then((providers) => {
+      providers.reduce((acc, cv) => {
+        //
+        model.Product.countDocuments({ provider: cv._id });
+        //
+        acc.push({
+          _id: cv.createdAt,
+          name: cv.name,
+          fullAddress: cv.fullAddress,
+          rfc: cv.rfc,
+          email: cv.email,
+          phone: cv.phone,
+          createdAt: cv.createdAt,
+        });
+        return acc;
+      }, []);
+      res.status(200).json(providers);
+    })
+    .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
@@ -16,7 +33,7 @@ router.get("/all", function(req, res) {
 
 // mngr_updateProvider()
 // matches with /managerapi/providers/update
-router.put("/update", function(req, res) {
+router.put("/update", function (req, res) {
   const { _id, name, fullAddress, rfc, email, phone } = req.body;
 
   model.Provider.findByIdAndUpdate(_id, {
@@ -24,15 +41,15 @@ router.put("/update", function(req, res) {
     fullAddress,
     rfc,
     email,
-    phone
+    phone,
   })
-    .then(editedProvider =>
+    .then((editedProvider) =>
       res.status(200).send({
         msg: "El proveedor fue editado correctamente.",
-        editedProvider
+        editedProvider,
       })
     )
-    .catch(err => {
+    .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
@@ -40,7 +57,7 @@ router.put("/update", function(req, res) {
 
 // mngr_newProvider()
 // matches with /managerapi/providers/new
-router.post("/new", async function(req, res) {
+router.post("/new", async function (req, res) {
   const { name, rfc, email, phone, fullAddress } = req.body;
 
   model.Provider.create({
@@ -48,14 +65,14 @@ router.post("/new", async function(req, res) {
     rfc: rfc,
     email: email,
     phone: phone,
-    fullAddress: fullAddress
+    fullAddress: fullAddress,
   })
     .then(() => {
       res.status(200).send({
-        msg: "El proveedor fue creado correctamente."
+        msg: "El proveedor fue creado correctamente.",
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });

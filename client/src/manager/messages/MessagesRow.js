@@ -24,9 +24,9 @@ const MessagesRow = React.memo(({ message }) => {
     setShow(true);
   };
 
-  const formatDate = (date) => {
+  const formatDate = (date, format) => {
     let convertedDate = moment(moment(date).format(moment.HTML5_FMT.DATE));
-    return convertedDate.format("DD/MM/YY");
+    return convertedDate.format(format);
   };
 
   return (
@@ -46,7 +46,7 @@ const MessagesRow = React.memo(({ message }) => {
           )}
         </td>
         <td>{message.email}</td>
-        <td>{formatDate(message.sentAt)}</td>
+        <td>{formatDate(message.sentAt, "DD/MM/YYYY")}</td>
         <td>
           {message.message.length > 50
             ? message.message.slice(0, 50) + "..."
@@ -58,9 +58,9 @@ const MessagesRow = React.memo(({ message }) => {
         <Modal.Body className="bg-light">
           <Formik
             initialValues={{
-              sentAt: message.sentAt,
               name: message.name,
               email: message.email,
+              sentAt: formatDate(message.sentAt, "MMMM Do YYYY"),
               message: message.message,
             }}
             onSubmit={(values, { setSubmitting }) => {

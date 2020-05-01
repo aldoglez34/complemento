@@ -132,6 +132,8 @@ const NewProduct = React.memo((props) => {
                   isSubmitting,
                 }) => (
                   <Form noValidate onSubmit={handleSubmit}>
+                    <h3 className="managerTitleModal">NUEVO PRODUCTO</h3>
+                    <hr className="myDivider" />
                     {/* name */}
                     <Form.Row>
                       <Form.Group as={Col} md={6}>

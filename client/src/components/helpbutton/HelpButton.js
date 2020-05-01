@@ -5,7 +5,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import API from "../../utils/API";
 
-const HelpButton = React.memo(function HelpButton() {
+const HelpButton = React.memo(() => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -62,11 +62,12 @@ const HelpButton = React.memo(function HelpButton() {
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               API.postMessage(values)
-                .then(() =>
+                .then(() => {
                   alert(
                     "Mensaje enviado con éxito. Nos pondremos en contacto contigo al correo proporcionado."
-                  )
-                )
+                  );
+                  handleClose();
+                })
                 .catch((err) => {
                   console.log(err.response);
                   err.response.data.msg

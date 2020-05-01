@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import ManagerLayout from "../ManagerLayout";
 import APIManager from "../../utils/APIManager";
 import { ListGroup, Spinner, Row, Col, Tab } from "react-bootstrap";
+import CategoryContent from "./CategoryContent";
+import "./categoriesmngr.scss";
 
 const Categories = React.memo(() => {
   const [categories, setCategories] = useState();
@@ -23,28 +25,31 @@ const Categories = React.memo(() => {
         categories.length ? (
           <Tab.Container defaultActiveKey={"#" + categories[0]}>
             <Row>
-              <Col sm={4}>
+              <Col sm={3}>
                 <ListGroup>
                   {categories.map((cat) => {
                     return (
-                      <ListGroup.Item key={cat} action href={"#" + cat}>
+                      <ListGroup.Item
+                        className="categoryMngrItem"
+                        key={cat}
+                        action
+                        href={"#" + cat}
+                      >
                         {cat}
                       </ListGroup.Item>
                     );
                   })}
                 </ListGroup>
               </Col>
-              <Col sm={8}>
+              <Col sm={9}>
                 <Tab.Content>
                   {categories.map((cat) => {
                     return (
                       <Tab.Pane key={cat} eventKey={"#" + cat}>
-                        <h2>{cat}</h2>
+                        <CategoryContent title={cat} />
                       </Tab.Pane>
                     );
                   })}
-                  <Tab.Pane eventKey="#link1">link 1</Tab.Pane>
-                  <Tab.Pane eventKey="#link2">link 2</Tab.Pane>
                 </Tab.Content>
               </Col>
             </Row>

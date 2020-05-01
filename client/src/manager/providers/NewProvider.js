@@ -11,7 +11,7 @@ const NewProvider = React.memo((props) => {
   const handleShow = () => setShow(true);
 
   const yupschema = yup.object({
-    name: yup.string().min(3, "Nombre demasiado corto").required("Requerido"),
+    name: yup.string().min(1, "Nombre demasiado corto").required("Requerido"),
     rfc: yup.string().length(12, "Formato incorrecto").required("Requerido"),
     email: yup
       .string()
@@ -38,7 +38,7 @@ const NewProvider = React.memo((props) => {
         <i className="fas fa-plus-circle" />
       </Button>
 
-      <Modal show={show} onHide={handleClose} size="lg">
+      <Modal show={show} onHide={handleClose}>
         <Modal.Body className="bg-light">
           <Formik
             initialValues={{
@@ -79,11 +79,13 @@ const NewProvider = React.memo((props) => {
               isSubmitting,
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
+                <h3 className="managerTitleModal">NUEVO PROVEEDOR</h3>
+                <hr className="myDivider" />
                 {/* name */}
                 <Form.Row>
-                  <Form.Group as={Col} md={6}>
+                  <Form.Group as={Col}>
                     <Form.Label>
-                      Nombre
+                      <strong>Nombre</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -105,10 +107,12 @@ const NewProvider = React.memo((props) => {
                       component="div"
                     />
                   </Form.Group>
+                </Form.Row>
+                <Form.Row>
                   {/* rfc */}
-                  <Form.Group as={Col} md={6}>
+                  <Form.Group as={Col}>
                     <Form.Label>
-                      RFC
+                      <strong>RFC</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -133,9 +137,9 @@ const NewProvider = React.memo((props) => {
                 </Form.Row>
                 {/* email */}
                 <Form.Row>
-                  <Form.Group as={Col} md={6}>
+                  <Form.Group as={Col}>
                     <Form.Label>
-                      Correo
+                      <strong>Correo</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -157,10 +161,12 @@ const NewProvider = React.memo((props) => {
                       component="div"
                     />
                   </Form.Group>
+                </Form.Row>
+                <Form.Row>
                   {/* phone */}
-                  <Form.Group as={Col} md={6}>
+                  <Form.Group as={Col}>
                     <Form.Label>
-                      Teléfono
+                      <strong>Teléfono</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -187,7 +193,7 @@ const NewProvider = React.memo((props) => {
                 <Form.Row>
                   <Form.Group as={Col}>
                     <Form.Label>
-                      Dirección
+                      <strong>Dirección</strong>
                       <span title="Requerido" className="text-danger">
                         *
                       </span>
@@ -211,15 +217,16 @@ const NewProvider = React.memo((props) => {
                   </Form.Group>
                 </Form.Row>
                 {/* buttons */}
-                <Form.Group>
+                <div className="text-center mt-2">
                   <Button
-                    variant="success"
+                    size="lg"
+                    variant="dark"
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    Crear
+                    CREAR
                   </Button>
-                </Form.Group>
+                </div>
               </Form>
             )}
           </Formik>

@@ -3,6 +3,7 @@ import ManagerLayout from "../ManagerLayout";
 import APIManager from "../../utils/APIManager";
 import { Table, Spinner, Row, Button } from "react-bootstrap";
 import MessagesRow from "./MessagesRow";
+const moment = require("moment");
 
 const Messages = React.memo(() => {
   const [messages, setMessages] = useState();
@@ -24,6 +25,9 @@ const Messages = React.memo(() => {
   }, []);
 
   const filterProducts = (criteria) => {
+    // get today's date
+    let today = moment(moment(Date.now()).format(moment.HTML5_FMT.DATE));
+    // switch
     switch (criteria) {
       case "unread":
         setFilter(criteria === filter ? null : criteria);
@@ -33,22 +37,44 @@ const Messages = React.memo(() => {
         break;
       case "lastWeek":
         setFilter(criteria === filter ? null : criteria);
-        let today = moment(moment(Date.now()).format(moment.HTML5_FMT.DATE));
         setFiltered(
           criteria === filter
             ? messages
             : messages.filter((msg) => {
-                let convertedDate = moment(
+                // get the date when the message was sent
+                let sentAt = moment(
                   moment(msg.sentAt).format(moment.HTML5_FMT.DATE)
                 );
-                
+                // get the difference in days
+                let daysDiff = today.diff(sentAt, "days");
+                // if daysDiff is equal or less than 7 (less than a week) return true, if not false
+                if (daysDiff <= 7) {
+                  return true;
+                } else {
+                  return false;
+                }
               })
         );
         break;
       case "lastMonth":
         setFilter(criteria === filter ? null : criteria);
         setFiltered(
-          criteria === filter ? messages : messages.filter((msg) => !msg.seen)
+          criteria === filter
+            ? messages
+            : messages.filter((msg) => {
+                // get the date when the message was sent
+                let sentAt = moment(
+                  moment(msg.sentAt).format(moment.HTML5_FMT.DATE)
+                );
+                // get the difference in days
+                let daysDiff = today.diff(sentAt, "days");
+                // if daysDiff is equal or less than 30 (less than a month) return true, if not false
+                if (daysDiff <= 30) {
+                  return true;
+                } else {
+                  return false;
+                }
+              })
         );
         break;
       default:

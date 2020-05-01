@@ -5,14 +5,14 @@ import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import APIManager from "../../utils/APIManager";
 
-const ProvidersRow = React.memo(function ProvidersRow(props) {
+const ProvidersRow = React.memo(({ provider }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const yupschema = yup.object({
-    name: yup.string().min(3, "Nombre demasiado corto").required("Requerido"),
+    name: yup.string().min(1, "Nombre demasiado corto").required("Requerido"),
     rfc: yup.string().length(12, "Formato incorrecto").required("Requerido"),
     email: yup
       .string()
@@ -21,32 +21,36 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
     phone: yup
       .string()
       .matches(/^[0-9]*$/, "Sólo números")
-      .length(10, "Formato incorrecto"),
-    fullAddress: yup.string().min(3, "Dirección demasiado corta"),
+      .length(10, "Formato incorrecto")
+      .required("Requerido"),
+    fullAddress: yup
+      .string()
+      .min(3, "Dirección demasiado corta")
+      .required("Requerido"),
   });
 
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
-        <td>{props.provider.name}</td>
-        <td>{props.provider.rfc}</td>
-        <td>{props.provider.email}</td>
-        <td>{props.provider.phone}</td>
-        <td>{props.provider.fullAddress}</td>
-        <td className="text-center">{props.provider.productCount}</td>
+        <td>{provider.name}</td>
+        <td>{provider.rfc}</td>
+        <td>{provider.email}</td>
+        <td>{provider.phone}</td>
+        <td>{provider.fullAddress}</td>
+        <td className="text-center">{provider.productCount}</td>
       </tr>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Body className="bg-light">
           <Formik
             initialValues={{
-              _id: props.provider._id,
-              name: props.provider.name,
-              rfc: props.provider.rfc,
-              email: props.provider.email,
-              phone: props.provider.phone,
-              fullAddress: props.provider.fullAddress,
-              productCount: props.provider.productCount,
+              _id: provider._id,
+              name: provider.name,
+              rfc: provider.rfc,
+              email: provider.email,
+              phone: provider.phone,
+              fullAddress: provider.fullAddress,
+              productCount: provider.productCount,
             }}
             validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
@@ -222,9 +226,6 @@ const ProvidersRow = React.memo(function ProvidersRow(props) {
                   <Form.Group as={Col}>
                     <Form.Label>
                       <strong>Productos</strong>
-                      <span title="Requerido" className="text-danger">
-                        *
-                      </span>
                     </Form.Label>
                     <Form.Control
                       disabled

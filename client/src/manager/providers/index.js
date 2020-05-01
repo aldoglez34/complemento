@@ -5,7 +5,7 @@ import { Table, Spinner } from "react-bootstrap";
 import NewProvider from "./NewProvider";
 import ProvidersRow from "./ProvidersRow";
 
-const Providers = React.memo(function Providers() {
+const Providers = React.memo(() => {
   const [providers, setProviders] = useState();
 
   useEffect(() => {
