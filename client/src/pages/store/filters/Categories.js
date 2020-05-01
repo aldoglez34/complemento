@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Nav } from "react-bootstrap";
 
-const Categories = React.memo(props => {
+const Categories = React.memo((props) => {
   return (
     <React.Fragment>
       <h3>Categorías</h3>
       <hr className="myDivider" style={{ backgroundColor: "#edcb58" }} />
-      {props.categories.map(category => {
+      {props.categories.map((category) => {
         return (
           <Nav.Item key={category.name}>
             <Nav.Link
@@ -33,7 +33,7 @@ const Categories = React.memo(props => {
 
 Categories.propTypes = {
   categories: PropTypes.array.isRequired,
-  filterSelected: PropTypes.string.isRequired
+  filterSelected: PropTypes.string.isRequired,
 };
 
 export default Categories;
