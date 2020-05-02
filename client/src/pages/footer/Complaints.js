@@ -2,20 +2,20 @@ import React from "react";
 import { Container, Image } from "react-bootstrap";
 import Layout from "../../components/Layout";
 
-const Terms = React.memo(() => {
+const Complaints = React.memo(() => {
   return (
     <Layout>
       <Container className="my-4">
         <div className="text-center text-md-left">
           <Image
             className="mb-4"
-            src="https://image.flaticon.com/icons/svg/1458/1458279.svg"
+            src="https://image.flaticon.com/icons/svg/1458/1458222.svg"
             width="105"
             height="105"
           />
         </div>
 
-        <h3>Términos y condiciones</h3>
+        <h3>Quejas y sugerencias</h3>
         <hr className="myDivider" />
 
         <p className="lead">
@@ -50,4 +50,4 @@ const Terms = React.memo(() => {
   );
 });
 
-export default Terms;
+export default Complaints;

@@ -18,7 +18,10 @@ const MyFooter = React.memo(() => {
                 </a>
               </p>
               <p className="mb-0">
-                <a href="/" className="text-light text-decoration-none">
+                <a
+                  href="/complaints"
+                  className="text-light text-decoration-none"
+                >
                   Quejas y sugerencias
                 </a>
               </p>
@@ -59,9 +62,9 @@ const MyFooter = React.memo(() => {
 
       <Container className="d-flex flex-row justify-content-center py-1 mt-4 text-light">
         <span
-          style={{ color: "#c8c0b0", fontFamily: "Lobster", fontSize: "16px" }}
+          style={{ color: "#f3d084", fontFamily: "Lobster", fontSize: "16px" }}
         >
-          ©Tu Complemento
+          Tu Complemento
           <i className="fas fa-leaf ml-1" />
         </span>
       </Container>
