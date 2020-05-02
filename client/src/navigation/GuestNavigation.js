@@ -11,6 +11,7 @@ import Login from "../manager/Login";
 // footer
 import Terms from "../pages/footer/Terms";
 import Complaints from "../pages/footer/Complaints";
+import About from "../pages/footer/About";
 
 const GuestNavigation = () => {
   return (
@@ -48,6 +49,7 @@ const GuestNavigation = () => {
       {/* footer */}
       <Route exact path="/terms" component={Terms} />
       <Route exact path="/complaints" component={Complaints} />
+      <Route exact path="/about" component={About} />
       {/* manager login page */}
       <Route exact path="/manager" component={Login} />
       <Redirect from="/manager/" to="/manager" />

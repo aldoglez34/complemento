@@ -31,7 +31,7 @@ const MyFooter = React.memo(() => {
             <h5 style={{ color: "#f3d084" }}>Nosotros</h5>
             <div>
               <p className="mb-0">
-                <a href="/" className="text-light text-decoration-none">
+                <a href="/about" className="text-light text-decoration-none">
                   ¿Quiénes somos?
                 </a>
               </p>

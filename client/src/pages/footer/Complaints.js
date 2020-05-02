@@ -28,7 +28,7 @@ const Complaints = React.memo(() => {
         <div className="text-center text-md-left">
           <Image
             className="mb-4"
-            src="https://image.flaticon.com/icons/svg/1458/1458222.svg"
+            src="./images/footer/chat.png"
             width="105"
             height="105"
           />
@@ -38,7 +38,7 @@ const Complaints = React.memo(() => {
         <hr className="myDivider" />
 
         <p>
-          Envíanos tus preguntas/comentarios y nosotros nos pondremos en
+          Envíanos tus quejas o surgerencias y nosotros nos pondremos en
           contacto contigo.
         </p>
         <Formik
@@ -55,6 +55,7 @@ const Complaints = React.memo(() => {
                 alert(
                   "Mensaje enviado con éxito. Nos pondremos en contacto contigo al correo proporcionado."
                 );
+                window.location.reload();
               })
               .catch((err) => {
                 console.log(err.response);

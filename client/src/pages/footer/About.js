@@ -2,20 +2,20 @@ import React from "react";
 import { Container, Image } from "react-bootstrap";
 import Layout from "../../components/Layout";
 
-const Terms = React.memo(() => {
+const About = React.memo(() => {
   return (
     <Layout>
       <Container className="my-4">
         <div className="text-center text-md-left">
           <Image
             className="mb-4"
-            src="./images/footer/terms.png"
+            src="./images/footer/courier.png"
             width="105"
             height="105"
           />
         </div>
 
-        <h3>Términos y condiciones</h3>
+        <h3>¿Quiénes somos?</h3>
         <hr className="myDivider" />
 
         <p className="lead">
@@ -50,4 +50,4 @@ const Terms = React.memo(() => {
   );
 });
 
-export default Terms;
+export default About;

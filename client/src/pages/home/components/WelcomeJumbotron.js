@@ -1,6 +1,6 @@
 import React from "react";
 import { Jumbotron, Container, Button } from "react-bootstrap";
-import Flip from "react-reveal/Flip";
+import Zoom from "react-reveal/Zoom";
 
 const WelcomeJumbotron = React.memo(function WelcomeJumbotron() {
   const styles = {
@@ -17,7 +17,7 @@ const WelcomeJumbotron = React.memo(function WelcomeJumbotron() {
       <Container className="py-3 my-3">
         <h1 className="text-white">Tienda naturista en línea</h1>
         <p className="text-light lead">Natural, siempre la decisión correcta</p>
-        <Flip bottom>
+        <Zoom>
           <Button
             size="lg"
             href="/store"
@@ -28,7 +28,7 @@ const WelcomeJumbotron = React.memo(function WelcomeJumbotron() {
             Explora la tienda
             <i className="fas fa-arrow-right ml-2" />
           </Button>
-        </Flip>
+        </Zoom>
       </Container>
     </Jumbotron>
   );
