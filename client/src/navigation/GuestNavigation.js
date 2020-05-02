@@ -8,6 +8,7 @@ import Checkout from "../pages/cart/Checkout";
 import SignUp from "../pages/client/SignUp";
 import NoMatch from "../pages/NoMatch";
 import Login from "../manager/Login";
+import Terms from "../pages/footer/Terms";
 
 const GuestNavigation = () => {
   return (
@@ -42,6 +43,8 @@ const GuestNavigation = () => {
       <Route exact path="/cart" component={Cart} />
       <Route exact path="/checkout" component={Checkout} />
       <Route exact path="/signup" component={SignUp} />
+      {/* footer */}
+      <Route exact path="/terms" component={Terms} />
       {/* manager login page */}
       <Route exact path="/manager" component={Login} />
       <Redirect from="/manager/" to="/manager" />

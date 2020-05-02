@@ -13,12 +13,12 @@ const MyFooter = React.memo(() => {
             <h5 style={{ color: "#f3d084" }}>Ayuda</h5>
             <div>
               <p className="mb-0">
-                <a href="/" className="text-light">
+                <a href="/terms" className="text-light text-decoration-none">
                   Términos y condiciones
                 </a>
               </p>
               <p className="mb-0">
-                <a href="/" className="text-light">
+                <a href="/" className="text-light text-decoration-none">
                   Quejas y sugerencias
                 </a>
               </p>
@@ -28,12 +28,12 @@ const MyFooter = React.memo(() => {
             <h5 style={{ color: "#f3d084" }}>Nosotros</h5>
             <div>
               <p className="mb-0">
-                <a href="/" className="text-light">
+                <a href="/" className="text-light text-decoration-none">
                   ¿Quiénes somos?
                 </a>
               </p>
               <p className="mb-0">
-                <a href="/" className="text-light">
+                <a href="/" className="text-light text-decoration-none">
                   Contáctanos
                 </a>
               </p>
@@ -43,12 +43,12 @@ const MyFooter = React.memo(() => {
             <h5 style={{ color: "#f3d084" }}>Pedidos</h5>
             <div>
               <p className="mb-0">
-                <a href="/" className="text-light">
+                <a href="/" className="text-light text-decoration-none">
                   Formas de pago
                 </a>
               </p>
               <p className="mb-0">
-                <a href="/" className="text-light">
+                <a href="/" className="text-light text-decoration-none">
                   Rastreador de pedidos
                 </a>
               </p>
