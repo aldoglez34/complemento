@@ -1,8 +1,27 @@
 import React from "react";
-import { Container, Image } from "react-bootstrap";
+import { Container, Image, Form, Col, Button } from "react-bootstrap";
+import { Formik, ErrorMessage } from "formik";
+import * as yup from "yup";
+import API from "../../utils/API";
 import Layout from "../../components/Layout";
 
 const Complaints = React.memo(() => {
+  const yupschema = yup.object({
+    name: yup
+      .string()
+      .matches(
+        /^[a-zA-Z-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñÑ ]+$/,
+        "Sólo letras"
+      )
+      .min(3, "Nombre demasiado corto")
+      .required("Requerido"),
+    email: yup
+      .string()
+      .email("Formato de correo incorrecto")
+      .required("Requerido"),
+    message: yup.string().required("Requerido"),
+  });
+
   return (
     <Layout>
       <Container className="my-4">
@@ -18,33 +37,125 @@ const Complaints = React.memo(() => {
         <h3>Quejas y sugerencias</h3>
         <hr className="myDivider" />
 
-        <p className="lead">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
         <p>
-          Quisque fringilla, tellus vel pulvinar sodales, sapien nulla pharetra
-          urna, sit amet ornare purus ipsum nec nulla. Ut condimentum neque ut
-          eleifend aliquet. Cras gravida euismod ante, maximus viverra ante
-          pellentesque placerat. Class aptent taciti sociosqu ad litora torquent
-          per conubia nostra, per inceptos himenaeos. Donec eu facilisis urna.
-          Vestibulum vitae arcu massa. Morbi faucibus luctus nulla a dignissim.
-          Nunc sed dapibus neque, id luctus ex. Vivamus luctus nulla augue, non
-          pharetra tellus ultricies vel. Quisque fringilla metus vitae tortor
-          bibendum molestie.
+          Envíanos tus preguntas/comentarios y nosotros nos pondremos en
+          contacto contigo.
         </p>
-        <p>
-          Aenean dignissim ipsum ligula, sit amet porttitor libero molestie eu.
-          Duis augue enim, aliquet a nisi eget, aliquet posuere odio. Nulla
-          tincidunt dolor id velit fermentum auctor. Nullam nec leo sed ante
-          dapibus tincidunt. Sed sodales vulputate urna et sollicitudin. Aliquam
-          consequat pellentesque risus sed aliquam. Maecenas sagittis erat et
-          diam facilisis, et tincidunt eros sollicitudin. Pellentesque et neque
-          posuere, aliquet velit sit amet, finibus tortor. Ut a lorem aliquam,
-          iaculis elit non, consequat leo. Sed pretium cursus semper. Donec
-          fermentum nunc mattis nisl suscipit, sit amet molestie magna pretium.
-          Curabitur elementum, mi at ullamcorper aliquam, eros purus vulputate
-          nisi, quis posuere augue diam eu mi.
-        </p>
+        <Formik
+          initialValues={{
+            name: "",
+            email: "",
+            message: "",
+          }}
+          validationSchema={yupschema}
+          onSubmit={(values, { setSubmitting }) => {
+            setSubmitting(true);
+            API.postMessage(values)
+              .then(() => {
+                alert(
+                  "Mensaje enviado con éxito. Nos pondremos en contacto contigo al correo proporcionado."
+                );
+              })
+              .catch((err) => {
+                console.log(err.response);
+                err.response.data.msg
+                  ? alert(err.response.data.msg)
+                  : alert("Ocurrió un error.");
+              });
+          }}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+          }) => (
+            <Form noValidate onSubmit={handleSubmit}>
+              {/* name */}
+              <Form.Row>
+                <Form.Group as={Col}>
+                  <Form.Label>
+                    <strong>Nombre</strong>
+                  </Form.Label>
+                  <Form.Control
+                    maxLength="150"
+                    type="text"
+                    placeholder="Ingresa tu nombre"
+                    name="name"
+                    value={values.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    isValid={touched.name && !errors.name}
+                    isInvalid={touched.name && !!errors.name}
+                  />
+                  <ErrorMessage
+                    className="text-danger"
+                    name="name"
+                    component="div"
+                  />
+                </Form.Group>
+              </Form.Row>
+              {/* email */}
+              <Form.Row>
+                <Form.Group as={Col}>
+                  <Form.Label>
+                    <strong>Correo electrónico</strong>
+                  </Form.Label>
+                  <Form.Control
+                    maxLength="150"
+                    type="text"
+                    placeholder="Ingresa tu correo"
+                    name="email"
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    isValid={touched.email && !errors.email}
+                    isInvalid={touched.email && !!errors.email}
+                  />
+                  <ErrorMessage
+                    className="text-danger"
+                    name="email"
+                    component="div"
+                  />
+                </Form.Group>
+              </Form.Row>
+              {/* message */}
+              <Form.Row>
+                <Form.Group as={Col}>
+                  <Form.Label>
+                    <strong>Mensaje</strong>
+                  </Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows="3"
+                    placeholder="Ingresa tu mensaje"
+                    maxLength="500"
+                    name="message"
+                    value={values.message}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    isValid={touched.message && !errors.message}
+                    isInvalid={touched.message && !!errors.message}
+                  />
+                </Form.Group>
+              </Form.Row>
+              {/* buttons */}
+              <Form.Row className="px-1">
+                <Button
+                  className="ml-auto"
+                  variant="warning"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  Enviar
+                </Button>
+              </Form.Row>
+            </Form>
+          )}
+        </Formik>
       </Container>
     </Layout>
   );
