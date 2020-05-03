@@ -12,6 +12,7 @@ import Login from "../manager/Login";
 import Terms from "../pages/footer/Terms";
 import Complaints from "../pages/footer/Complaints";
 import About from "../pages/footer/About";
+import Contact from "../pages/footer/Contact";
 
 const GuestNavigation = () => {
   return (
@@ -50,6 +51,7 @@ const GuestNavigation = () => {
       <Route exact path="/terms" component={Terms} />
       <Route exact path="/complaints" component={Complaints} />
       <Route exact path="/about" component={About} />
+      <Route exact path="/contact" component={Contact} />
       {/* manager login page */}
       <Route exact path="/manager" component={Login} />
       <Redirect from="/manager/" to="/manager" />

@@ -36,7 +36,7 @@ const MyFooter = React.memo(() => {
                 </a>
               </p>
               <p className="mb-0">
-                <a href="/" className="text-light text-decoration-none">
+                <a href="/contact" className="text-light text-decoration-none">
                   Contáctanos
                 </a>
               </p>
