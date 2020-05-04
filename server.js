@@ -34,7 +34,7 @@ app.get("*", (req, res) => {
 });
 
 // dotenv
-// require("dotenv").config();
+require("dotenv").config();
 
 // connect to the Mongo DB
 let MONGODB_URI =
