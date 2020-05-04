@@ -11,11 +11,11 @@ import storage from "redux-persist/lib/storage"; // defaults to localStorage for
 import rootReducer from "./redux/reducers";
 import Firebase, { FirebaseContext } from "./firebase";
 // dotenv
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 
-// dotenv
-// require("dotenv").config();
-dotenv.config();
+// // dotenv
+// // require("dotenv").config();
+// dotenv.config();
 
 const persistConfig = {
   key: "primary",

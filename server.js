@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 
 // middleware
 // use morgan logger for logging requests
