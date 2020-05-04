@@ -3,9 +3,10 @@ import ProductCard from "../cards/ProductCard";
 import { Spinner, Carousel } from "react-bootstrap";
 import PropTypes from "prop-types";
 import "./mycarousel.scss";
+import Fade from "react-reveal/Fade";
 
 const MyCarousel = React.memo(({ products }) => {
-  const renderProducts = productsPerPage => {
+  const renderProducts = (productsPerPage) => {
     let carouselItems = [];
 
     for (let i = 1; i <= Math.ceil(products.length / productsPerPage); i++) {
@@ -13,7 +14,7 @@ const MyCarousel = React.memo(({ products }) => {
         carouselItems.push(
           <Carousel.Item key={i}>
             <div className="d-flex flex-wrap justify-content-center">
-              {products.slice(0, productsPerPage).map(p => {
+              {products.slice(0, productsPerPage).map((p) => {
                 return <ProductCard key={p._id} product={p} />;
               })}
             </div>
@@ -25,7 +26,7 @@ const MyCarousel = React.memo(({ products }) => {
             <div className="d-flex flex-wrap justify-content-center">
               {products
                 .slice((i - 1) * productsPerPage, productsPerPage * i)
-                .map(p => {
+                .map((p) => {
                   return <ProductCard key={p._id} product={p} />;
                 })}
             </div>
@@ -37,7 +38,7 @@ const MyCarousel = React.memo(({ products }) => {
   };
 
   return products.length ? (
-    <React.Fragment>
+    <Fade>
       {/* small */}
       <div className="d-md-none">
         <Carousel indicators={false} interval={null}>
@@ -50,7 +51,7 @@ const MyCarousel = React.memo(({ products }) => {
           {renderProducts(4)}
         </Carousel>
       </div>
-    </React.Fragment>
+    </Fade>
   ) : (
     <div className="text-center my-4">
       <Spinner variant="warning" animation="grow" role="status" />
@@ -59,7 +60,7 @@ const MyCarousel = React.memo(({ products }) => {
 });
 
 MyCarousel.propTypes = {
-  products: PropTypes.array.isRequired
+  products: PropTypes.array.isRequired,
 };
 
 export default MyCarousel;

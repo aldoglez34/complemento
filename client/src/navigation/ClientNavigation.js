@@ -8,6 +8,14 @@ import Checkout from "../pages/cart/Checkout";
 import SignUp from "../pages/client/SignUp";
 import NoMatch from "../pages/NoMatch";
 import Login from "../manager/Login";
+// footer
+import Terms from "../pages/footer/Terms";
+import FAQ from "../pages/footer/FAQ";
+import About from "../pages/footer/About";
+import Contact from "../pages/footer/Contact";
+import Payment from "../pages/footer/Payment";
+import Tracker from "../pages/footer/Tracker";
+// client
 import ClientInfo from "../pages/client/ClientInfo";
 import ClientFavorites from "../pages/client/ClientFavorites";
 
@@ -44,6 +52,13 @@ const ClientNavigation = () => {
       <Route exact path="/cart" component={Cart} />
       <Route exact path="/checkout" component={Checkout} />
       <Route exact path="/signup" component={SignUp} />
+      {/* footer */}
+      <Route exact path="/terms" component={Terms} />
+      <Route exact path="/faq" component={FAQ} />
+      <Route exact path="/about" component={About} />
+      <Route exact path="/contact" component={Contact} />
+      <Route exact path="/payment" component={Payment} />
+      <Route exact path="/tracker" component={Tracker} />
       {/* auth client only */}
       <Route exact path="/client/info" component={ClientInfo} />
       <Route exact path="/client/favorites" component={ClientFavorites} />

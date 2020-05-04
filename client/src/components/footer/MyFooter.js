@@ -18,11 +18,8 @@ const MyFooter = React.memo(() => {
                 </a>
               </p>
               <p className="mb-0">
-                <a
-                  href="/complaints"
-                  className="text-light text-decoration-none"
-                >
-                  Quejas y sugerencias
+                <a href="/faq" className="text-light text-decoration-none">
+                  Preguntas frecuentes
                 </a>
               </p>
             </div>
@@ -46,12 +43,12 @@ const MyFooter = React.memo(() => {
             <h5 style={{ color: "#f3d084" }}>Pedidos</h5>
             <div>
               <p className="mb-0">
-                <a href="/" className="text-light text-decoration-none">
+                <a href="/payment" className="text-light text-decoration-none">
                   Formas de pago
                 </a>
               </p>
               <p className="mb-0">
-                <a href="/" className="text-light text-decoration-none">
+                <a href="/tracker" className="text-light text-decoration-none">
                   Rastreador de pedidos
                 </a>
               </p>

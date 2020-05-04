@@ -10,9 +10,11 @@ import NoMatch from "../pages/NoMatch";
 import Login from "../manager/Login";
 // footer
 import Terms from "../pages/footer/Terms";
-import Complaints from "../pages/footer/Complaints";
+import FAQ from "../pages/footer/FAQ";
 import About from "../pages/footer/About";
 import Contact from "../pages/footer/Contact";
+import Payment from "../pages/footer/Payment";
+import Tracker from "../pages/footer/Tracker";
 
 const GuestNavigation = () => {
   return (
@@ -49,9 +51,11 @@ const GuestNavigation = () => {
       <Route exact path="/signup" component={SignUp} />
       {/* footer */}
       <Route exact path="/terms" component={Terms} />
-      <Route exact path="/complaints" component={Complaints} />
+      <Route exact path="/faq" component={FAQ} />
       <Route exact path="/about" component={About} />
       <Route exact path="/contact" component={Contact} />
+      <Route exact path="/payment" component={Payment} />
+      <Route exact path="/tracker" component={Tracker} />
       {/* manager login page */}
       <Route exact path="/manager" component={Login} />
       <Redirect from="/manager/" to="/manager" />
