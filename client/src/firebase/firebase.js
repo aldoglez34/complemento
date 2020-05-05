@@ -16,9 +16,9 @@ const config = {
 
 class Firebase {
   constructor() {
-    console.log("~ INTENTO 1");
-    console.log("process.env.NODE_ENV", process.env.NODE_ENV);
-    console.log("config", config);
+    // console.log("~ INTENTO 1");
+    // console.log("process.env.NODE_ENV", process.env.NODE_ENV);
+    // console.log("config", config);
 
     app.initializeApp(config);
 

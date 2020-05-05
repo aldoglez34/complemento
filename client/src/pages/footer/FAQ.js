@@ -16,7 +16,7 @@ const FAQ = React.memo(() => {
         </div>
         <h3>Preguntas frecuentes</h3>
         <hr className="myDivider" />
-        <strong>¿Es seguro comprar en Super Naturista Online?</strong>
+        <strong>¿Es seguro comprar aquí?</strong>
         <p>
           Sí. Puedes comprar con total tranquilidad pues dedicamos un gran
           esfuerzo en disponer de recursos con los que garantizar la seguridad

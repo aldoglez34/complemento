@@ -6,7 +6,7 @@ import {
   Modal,
   Spinner,
   ListGroup,
-  Image
+  Image,
 } from "react-bootstrap";
 import PropTypes from "prop-types";
 
@@ -23,7 +23,7 @@ const Order = React.memo(({ order }) => {
     if (order) handleShow();
   }, [order]);
 
-  const formatNumber = num =>
+  const formatNumber = (num) =>
     num !== undefined
       ? "$" +
         num
@@ -53,7 +53,7 @@ const Order = React.memo(({ order }) => {
                   style={{
                     color: "#edcb58",
                     fontFamily: "Lobster",
-                    fontSize: "40px"
+                    fontSize: "40px",
                   }}
                 >
                   Tu Complemento
@@ -61,11 +61,11 @@ const Order = React.memo(({ order }) => {
                     className="fas fa-leaf ml-2"
                     style={{
                       color: "#edcb58",
-                      fontSize: "37px"
+                      fontSize: "37px",
                     }}
                   />
                 </h1>
-                <h3 className="text-center mb-4">
+                <h3 className="text-center mb-0">
                   ¡Gracias, {order.buyer.name}!
                 </h3>
               </Col>
@@ -79,23 +79,23 @@ const Order = React.memo(({ order }) => {
                       <td className="text-center border-top-0">
                         <Image
                           style={{ height: "55px", width: "55px" }}
-                          src="https://image.flaticon.com/icons/svg/456/456900.svg"
+                          src="./images/checkout/inventory.png"
                         />
                       </td>
-                      <td className="border-top-0">
+                      <td className="border-top-0 align-middle">
                         Te notificaremos al correo{" "}
                         <strong>{order.buyer.email}</strong> cuando tus
-                        productos hayan sido enviados.
+                        productos hayan sido enviados
                       </td>
                     </tr>
                     <tr>
                       <td className="text-center border-top-0">
                         <Image
                           style={{ height: "55px", width: "55px" }}
-                          src="https://image.flaticon.com/icons/svg/1028/1028931.svg"
+                          src="./images/checkout/courier.png"
                         />
                       </td>
-                      <td className="border-top-0">
+                      <td className="border-top-0 align-middle">
                         Estamos a tus órdenes al número{" "}
                         <strong>2281112031</strong> o al correo{" "}
                         <strong>tucomplemento@gmail.com</strong>
@@ -105,10 +105,10 @@ const Order = React.memo(({ order }) => {
                       <td className="text-center border-top-0">
                         <Image
                           style={{ height: "55px", width: "55px" }}
-                          src="https://image.flaticon.com/icons/svg/166/166143.svg"
+                          src="./images/checkout/seo.png"
                         />
                       </td>
-                      <td className="border-top-0">
+                      <td className="border-top-0 align-middle">
                         Tu número de pedido es <strong>{order._id}</strong>
                       </td>
                     </tr>
@@ -119,51 +119,42 @@ const Order = React.memo(({ order }) => {
             {/* order summary */}
             <Row>
               <Col>
-                <h4>Resumen del pedido</h4>
-                <ListGroup className="mb-2 pt-3">
-                  {order.products.map(p => {
+                <h4 className="mb-4">Resumen del pedido</h4>
+                <div className="p-3 border rounded border-warning">
+                  {order.products.map((p) => {
                     return (
-                      <ListGroup.Item variant="light" key={p._id}>
-                        <div className="d-flex flex-row">
-                          <strong className="text-dark">{p.name}</strong>
-                          <span className="text-muted ml-1">
-                            {"(" + p.qty + ")"}
-                          </span>
-                          <strong className="text-danger ml-auto">
-                            {formatNumber(p.totalByProduct)}
-                          </strong>
-                        </div>
-                      </ListGroup.Item>
+                      <div key={p._id} className="d-flex flex-row">
+                        <strong className="text-dark">{p.name}</strong>
+                        <span className="text-muted ml-1">
+                          {"(" + p.qty + ")"}
+                        </span>
+                        <strong className="text-danger ml-auto">
+                          {formatNumber(p.totalByProduct)}
+                        </strong>
+                      </div>
                     );
                   })}
-                </ListGroup>
-                {/* <p className="mb-1">Totales: </p> */}
-                <ListGroup>
-                  <ListGroup.Item variant="light">
-                    <div className="d-flex flex-row">
-                      <strong className="text-dark">SUBTOTAL</strong>
-                      <strong className="text-danger ml-auto">
-                        {formatNumber(order.subTotal)}
-                      </strong>
-                    </div>
-                  </ListGroup.Item>
-                  <ListGroup.Item variant="light">
-                    <div className="d-flex flex-row">
-                      <strong className="text-dark">ENVÍO</strong>
-                      <strong className="text-danger ml-auto">
-                        {formatNumber(order.shipment)}
-                      </strong>
-                    </div>
-                  </ListGroup.Item>
-                  <ListGroup.Item variant="light">
-                    <div className="d-flex flex-row">
-                      <strong className="text-dark">GRAN TOTAL</strong>
-                      <strong className="text-danger ml-auto">
-                        {formatNumber(order.grandTotal)}
-                      </strong>
-                    </div>
-                  </ListGroup.Item>
-                </ListGroup>
+                  <hr />
+                  {/* totals */}
+                  <div className="d-flex flex-row">
+                    <strong className="text-dark">SUBTOTAL</strong>
+                    <strong className="text-danger ml-auto">
+                      {formatNumber(order.subTotal)}
+                    </strong>
+                  </div>
+                  <div className="d-flex flex-row">
+                    <strong className="text-dark">ENVÍO</strong>
+                    <strong className="text-danger ml-auto">
+                      {formatNumber(order.shipment)}
+                    </strong>
+                  </div>
+                  <div className="d-flex flex-row">
+                    <strong className="text-dark">GRAN TOTAL</strong>
+                    <strong className="text-danger ml-auto">
+                      {formatNumber(order.grandTotal)}
+                    </strong>
+                  </div>
+                </div>
               </Col>
             </Row>
             {/* address */}
@@ -178,7 +169,7 @@ const Order = React.memo(({ order }) => {
                     " " +
                     order.buyer.address.zipCode}
                 </p>
-                <p className="mb-4">
+                <p className="mb-0">
                   {order.buyer.address.city + ", " + order.buyer.address.state}
                 </p>
               </Col>
@@ -190,7 +181,7 @@ const Order = React.memo(({ order }) => {
                 <p className="mb-0">xxxxxxxxxxxxxxxxxxxxxxxxxx</p>
               </Col>
             </Row>
-            <div className="text-center text-muted pt-2">
+            <div className="text-center text-muted pt-4">
               (Recibirás una copia de este resumen a tu correo)
             </div>
           </>
@@ -205,7 +196,7 @@ const Order = React.memo(({ order }) => {
 });
 
 Order.propTypes = {
-  order: PropTypes.object
+  order: PropTypes.object,
 };
 
 export default Order;

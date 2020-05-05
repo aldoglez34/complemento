@@ -12,7 +12,7 @@ import Order from "./components/Order";
 const Checkout = React.memo(() => {
   const dispatch = useDispatch();
 
-  const client = useSelector((state) => state.client);
+  const client = useSelector((state) => state.user);
   const cart = useSelector((state) => state.cart);
 
   const [order, setOrder] = useState();
@@ -40,7 +40,7 @@ const Checkout = React.memo(() => {
   });
 
   const addressData = () => {
-    if (client.isLogged) {
+    if (client) {
       return {
         name: client.name,
         firstSurname: client.firstSurname,
@@ -55,7 +55,7 @@ const Checkout = React.memo(() => {
         zipCode: client.address ? client.address.zipCode : "",
         saveAddress: true,
       };
-    } else if (!client.isLogged) {
+    } else if (!client) {
       return {
         name: "",
         firstSurname: "",
@@ -399,7 +399,11 @@ const Checkout = React.memo(() => {
                     isValid={touched.state && !errors.state}
                     as="select"
                     defaultValue={
-                      client.address ? client.address.state : "DEFAULT"
+                      client
+                        ? client.address
+                          ? client.address.state
+                          : "DEFAULT"
+                        : "DEFAULT"
                     }
                   >
                     <option value="DEFAULT" disabled>
@@ -468,7 +472,7 @@ const Checkout = React.memo(() => {
                   />
                 </Form.Group>
               </Form.Row>
-              {client.isLogged ? (
+              {client ? (
                 <Form.Group controlId="formBasicCheckbox">
                   <Form.Check
                     type="checkbox"
@@ -487,7 +491,7 @@ const Checkout = React.memo(() => {
               <Order order={order} />
               {/* buy button */}
               <Button
-                className="my-3"
+                className="my-2"
                 size="lg"
                 variant="danger"
                 type="submit"
