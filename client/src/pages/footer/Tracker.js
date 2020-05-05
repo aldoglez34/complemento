@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Image, Form, Button, Spinner, Col } from "react-bootstrap";
+import { Container, Image, Form, Button, Spinner, Col, Row } from "react-bootstrap";
 import API from "../../utils/API";
 import Layout from "../../components/Layout";
 import Slide from "react-reveal/Slide";
@@ -98,62 +98,71 @@ const Tracker = React.memo(() => {
             <hr className="myDivider" />
             <div className="bg-light rounded mt-4 px-3 py-4">
               {sale ? (
-                <>
-                  {/* code */}
-                  <h4>Código del pedido: </h4>
-                  <p className="h5 text-danger mb-3">{sale._id}</p>
-                  {/* address */}
-                  <h4>Dirección:</h4>
-                  <p className="mb-0">
-                    <strong>Calle:</strong>
-                    <span className="ml-2">{sale.buyer.address.street}</span>
-                  </p>
-                  <p className="mb-0">
-                    <strong>Colonia:</strong>
-                    <span className="ml-2">
-                      {sale.buyer.address.neighborhood}
-                    </span>
-                  </p>
-                  <p className="mb-0">
-                    <strong>Municipio:</strong>
-                    <span className="ml-2">
-                      {sale.buyer.address.municipality}
-                    </span>
-                  </p>
-                  <p className="mb-0">
-                    <strong>Ciudad:</strong>
-                    <span className="ml-2">{sale.buyer.address.city}</span>
-                  </p>
-                  <p className="mb-0">
-                    <strong>Estado:</strong>
-                    <span className="ml-2">{sale.buyer.address.state}</span>
-                  </p>
-                  <p className="mb-3">
-                    <strong>Código postal:</strong>
-                    <span className="ml-2">{sale.buyer.address.zipCode}</span>
-                  </p>
-                  <h4>Comprador:</h4>
-                  <p className="mb-0">
-                    <strong>Nombre:</strong>
-                    <span className="ml-2">{sale.buyer.name}</span>
-                  </p>
-                  <p className="mb-0">
-                    <strong>Apellido paterno:</strong>
-                    <span className="ml-2">{sale.buyer.firstSurname}</span>
-                  </p>
-                  <p className="mb-0">
-                    <strong>Apellido materno:</strong>
-                    <span className="ml-2">{sale.buyer.secondSurname}</span>
-                  </p>
-                  <p className="mb-0">
-                    <strong>Teléfono:</strong>
-                    <span className="ml-2">{sale.buyer.phone}</span>
-                  </p>
-                  <p className="mb-0">
-                    <strong>Correo electrónico:</strong>
-                    <span className="ml-2">{sale.buyer.email}</span>
-                  </p>
-                </>
+                <Container>
+                  <Row>
+                    <Col md={6}>
+                      {/* code */}
+                      <h4>Código del pedido: </h4>
+                      <p className="h5 text-danger mb-3">{sale._id}</p>
+                      {/* address */}
+                      <h4>Dirección:</h4>
+                      <p className="mb-0">
+                        <strong>Calle:</strong>
+                        <span className="ml-2">
+                          {sale.buyer.address.street}
+                        </span>
+                      </p>
+                      <p className="mb-0">
+                        <strong>Colonia:</strong>
+                        <span className="ml-2">
+                          {sale.buyer.address.neighborhood}
+                        </span>
+                      </p>
+                      <p className="mb-0">
+                        <strong>Municipio:</strong>
+                        <span className="ml-2">
+                          {sale.buyer.address.municipality}
+                        </span>
+                      </p>
+                      <p className="mb-0">
+                        <strong>Ciudad:</strong>
+                        <span className="ml-2">{sale.buyer.address.city}</span>
+                      </p>
+                      <p className="mb-0">
+                        <strong>Estado:</strong>
+                        <span className="ml-2">{sale.buyer.address.state}</span>
+                      </p>
+                      <p className="mb-3">
+                        <strong>Código postal:</strong>
+                        <span className="ml-2">
+                          {sale.buyer.address.zipCode}
+                        </span>
+                      </p>
+                      <h4>Comprador:</h4>
+                      <p className="mb-0">
+                        <strong>Nombre:</strong>
+                        <span className="ml-2">{sale.buyer.name}</span>
+                      </p>
+                      <p className="mb-0">
+                        <strong>Apellido paterno:</strong>
+                        <span className="ml-2">{sale.buyer.firstSurname}</span>
+                      </p>
+                      <p className="mb-0">
+                        <strong>Apellido materno:</strong>
+                        <span className="ml-2">{sale.buyer.secondSurname}</span>
+                      </p>
+                      <p className="mb-0">
+                        <strong>Teléfono:</strong>
+                        <span className="ml-2">{sale.buyer.phone}</span>
+                      </p>
+                      <p className="mb-0">
+                        <strong>Correo electrónico:</strong>
+                        <span className="ml-2">{sale.buyer.email}</span>
+                      </p>
+                    </Col>
+                    <Col md={6}></Col>
+                  </Row>
+                </Container>
               ) : (
                 <div className="text-center my-4">
                   <Spinner variant="warning" animation="grow" role="status" />
