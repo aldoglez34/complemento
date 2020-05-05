@@ -6,43 +6,43 @@ const SaleSchema = new Schema({
     {
       _id: {
         type: Schema.Types.ObjectId,
-        ref: "Product"
+        ref: "Product",
       },
       name: {
         type: String,
-        required: true
+        required: true,
       },
       qty: {
         type: Number,
-        required: true
+        required: true,
       },
       salePrice: {
         type: Number,
-        required: true
+        required: true,
       },
       totalByProduct: {
         type: Number,
-        required: true
-      }
-    }
+        required: true,
+      },
+    },
   ],
   subTotal: {
     type: Number,
-    required: true
+    required: true,
   },
   shipment: {
     type: Number,
-    required: true
+    required: true,
   },
   grandTotal: {
     type: Number,
-    required: true
+    required: true,
   },
   buyer: {
     clientId: {
       type: Schema.Types.ObjectId,
       ref: "Client",
-      required: false
+      required: false,
     },
     name: { type: String, required: true },
     firstSurname: { type: String, required: true },
@@ -55,14 +55,13 @@ const SaleSchema = new Schema({
       municipality: { type: String, required: true },
       city: { type: String, required: true },
       state: { type: String, required: true },
-      zipCode: { type: String, required: true }
-    }
+      zipCode: { type: String, required: true },
+    },
   },
-
   saleDate: {
     type: Date,
-    default: Date.now()
-  }
+    default: Date.now(),
+  },
 });
 
 const Sale = mongoose.model("Sale", SaleSchema);

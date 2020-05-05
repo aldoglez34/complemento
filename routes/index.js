@@ -7,6 +7,7 @@ const productDetailsRoutes = require("./api/productDetailsRoutes");
 const homeRoutes = require("./api/homeRoutes");
 const clientRoutes = require("./api/clientRoutes");
 const navbarRoutes = require("./api/navbarRoutes");
+const trackerRoutes = require("./api/trackerRoutes");
 
 // manager api
 const mngr_homeRoutes = require("./managerapi/homeRoutes");
@@ -24,6 +25,7 @@ router.use("/api/product", productDetailsRoutes);
 router.use("/api/home", homeRoutes);
 router.use("/api/client", clientRoutes);
 router.use("/api/navbar", navbarRoutes);
+router.use("/api/tracker", trackerRoutes);
 
 // managerapi
 router.use("/managerapi/home", mngr_homeRoutes);

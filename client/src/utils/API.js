@@ -5,15 +5,15 @@ export default {
   // HOME
   // ---------------------------------------------------------------------------
 
-  fetchPrioritized: function() {
+  fetchPrioritized: function () {
     return axios.get("/api/home/prioritized");
   },
 
-  fetchProductsWithDiscount: function() {
+  fetchProductsWithDiscount: function () {
     return axios.get("/api/home/discounts");
   },
 
-  fetchBestSellers: function() {
+  fetchBestSellers: function () {
     return axios.get("/api/home/bestsellers");
   },
 
@@ -21,11 +21,11 @@ export default {
   // NAVBAR
   // ---------------------------------------------------------------------------
 
-  fetchItemsForSearchBar: function() {
+  fetchItemsForSearchBar: function () {
     return axios.get("/api/navbar/searchbar/names");
   },
 
-  fetchItemsForStoreDropdown: function() {
+  fetchItemsForStoreDropdown: function () {
     return axios.get("/api/navbar/dropdown/store");
   },
 
@@ -33,15 +33,15 @@ export default {
   // STORE
   // ---------------------------------------------------------------------------
 
-  fetchCategories: function() {
+  fetchCategories: function () {
     return axios.get("/api/store/categories");
   },
 
-  fetchBrands: function() {
+  fetchBrands: function () {
     return axios.get("/api/store/brands");
   },
 
-  fetchProducts: function() {
+  fetchProducts: function () {
     return axios.get("/api/store/products");
   },
 
@@ -49,27 +49,27 @@ export default {
   // CART
   // ---------------------------------------------------------------------------
 
-  fetchCartProducts: function(cartString) {
+  fetchCartProducts: function (cartString) {
     return axios.get("/api/cart/products/" + cartString);
   },
 
-  checkStock: function(cartString) {
+  checkStock: function (cartString) {
     return axios.get("/api/cart/checkStock/" + cartString);
   },
 
-  saveClientData: function(data) {
+  saveClientData: function (data) {
     return axios.put("/api/cart/saveClientData", data);
   },
 
-  makeSale: function(data) {
+  makeSale: function (data) {
     return axios.post("/api/cart/buy", data);
   },
 
-  updateStock: function(data) {
+  updateStock: function (data) {
     return axios.put("/api/cart/update/stock", data);
   },
 
-  fetchOrder: function(saleId) {
+  fetchOrder: function (saleId) {
     return axios.get("/api/cart/order/" + saleId);
   },
 
@@ -77,39 +77,47 @@ export default {
   // PRODUCT DETAILS
   // ---------------------------------------------------------------------------
 
-  fetchProductDetails: function(productId) {
+  fetchProductDetails: function (productId) {
     return axios.get("/api/product/details/" + productId);
   },
 
-  fetchSimilarProducts: function(category) {
+  fetchSimilarProducts: function (category) {
     return axios.get("/api/product/similar/" + category);
+  },
+
+  // ---------------------------------------------------------------------------
+  // FOOTER
+  // ---------------------------------------------------------------------------
+
+  trackSale: function (saleId) {
+    return axios.get("/api/tracker/trackSale/" + saleId);
   },
 
   // ---------------------------------------------------------------------------
   // CLIENTS
   // ---------------------------------------------------------------------------
 
-  newClient: function(client) {
+  newClient: function (client) {
     return axios.post("/api/client/new", client);
   },
 
-  updateClient: function(client) {
+  updateClient: function (client) {
     return axios.put("/api/client/update", client);
   },
 
-  fetchClientByUID: function(uid) {
+  fetchClientByUID: function (uid) {
     return axios.get("/api/client/" + uid);
   },
 
-  addFavorite: function(data) {
+  addFavorite: function (data) {
     return axios.put("/api/client/favorite/new", data);
   },
 
-  fetchFavorites: function(clientId) {
+  fetchFavorites: function (clientId) {
     return axios.get("/api/client/favorites/" + clientId);
   },
 
-  postMessage: function(data) {
+  postMessage: function (data) {
     return axios.post("/api/client/message/new", data);
-  }
+  },
 };
