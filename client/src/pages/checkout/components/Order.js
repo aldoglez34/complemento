@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Table,
-  Row,
-  Col,
-  Modal,
-  Spinner,
-  ListGroup,
-  Image,
-} from "react-bootstrap";
+import { Table, Row, Col, Modal, Spinner, Image } from "react-bootstrap";
 import PropTypes from "prop-types";
 
 const Order = React.memo(({ order }) => {

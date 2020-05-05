@@ -3,7 +3,7 @@ import { Modal, Form, Col, InputGroup } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 
-const SalesRow = React.memo(function SalesRow(props) {
+const SalesRow = React.memo(({ sale }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -11,7 +11,7 @@ const SalesRow = React.memo(function SalesRow(props) {
 
   const printProducts = () => {
     let text = [];
-    props.sale.products.forEach(p => {
+    sale.products.forEach((p) => {
       let { qty, salePrice } = p;
       let name = p.name;
       let x = qty
@@ -25,38 +25,38 @@ const SalesRow = React.memo(function SalesRow(props) {
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
-        <td>{props.sale.saleDate}</td>
-        <td className="text-center">{props.sale.products.length}</td>
-        <td className="text-center">{props.sale.subTotal}</td>
-        <td className="text-center">{props.sale.shipment}</td>
-        <td className="text-center">{props.sale.grandTotal}</td>
-        <td>{props.sale.client ? props.sale.client.email : ""}</td>
+        <td>{sale.saleDate}</td>
+        <td className="text-center">{sale.products.length}</td>
+        <td className="text-center">{sale.subTotal}</td>
+        <td className="text-center">{sale.shipment}</td>
+        <td className="text-center">{sale.grandTotal}</td>
+        <td>{sale.client ? sale.client.email : ""}</td>
       </tr>
 
       <Modal size="lg" show={show} onHide={handleClose}>
         <Modal.Body>
           <Formik
             initialValues={{
-              purchaseDate: props.sale.saleDate,
+              purchaseDate: sale.saleDate,
               products: printProducts(),
-              subTotal: props.sale.subTotal,
-              shipment: props.sale.shipment,
-              grandTotal: props.sale.grandTotal,
-              clientName: props.sale.client
-                ? props.sale.client.name +
+              subTotal: sale.subTotal,
+              shipment: sale.shipment,
+              grandTotal: sale.grandTotal,
+              clientName: sale.buyer
+                ? sale.buyer.name +
                   " " +
-                  props.sale.client.firstSurname +
+                  sale.buyer.firstSurname +
                   " " +
-                  props.sale.client.secondSurname
+                  sale.buyer.secondSurname
                 : "",
-              clientEmail: props.sale.client ? props.sale.client.email : "",
-              clientPhone: props.sale.client ? props.sale.client.phone : "",
-              state: props.sale.address.state,
-              city: props.sale.address.city,
-              municipality: props.sale.address.municipality,
-              neighborhood: props.sale.address.neighborhood,
-              street: props.sale.address.street,
-              zipcode: props.sale.address.zipCode
+              clientEmail: sale.buyer ? sale.buyer.email : "",
+              clientPhone: sale.buyer ? sale.buyer.phone : "",
+              state: sale.buyer.address.state,
+              city: sale.buyer.address.city,
+              municipality: sale.buyer.address.municipality,
+              neighborhood: sale.buyer.address.neighborhood,
+              street: sale.buyer.address.street,
+              zipcode: sale.buyer.address.zipCode,
             }}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
@@ -65,7 +65,8 @@ const SalesRow = React.memo(function SalesRow(props) {
           >
             {({ values, handleChange, handleBlur, handleSubmit }) => (
               <Form noValidate onSubmit={handleSubmit}>
-                <h4>Detalle de venta</h4>
+                <h3 className="managerTitleModal">VENTA</h3>
+                <hr className="myDivider" />
                 {/* date */}
                 <Form.Row>
                   <Form.Group as={Col}>
@@ -148,7 +149,8 @@ const SalesRow = React.memo(function SalesRow(props) {
                   </Form.Group>
                 </Form.Row>
                 {/* client */}
-                <h4 className="mt-3">Cliente</h4>
+                <h3 className="managerTitleModal">CLIENTE</h3>
+                <hr className="myDivider" />
                 <Form.Row>
                   <Form.Group as={Col}>
                     <Form.Label>Nombre</Form.Label>
@@ -189,7 +191,8 @@ const SalesRow = React.memo(function SalesRow(props) {
                   </Form.Group>
                 </Form.Row>
                 {/* address */}
-                <h4 className="mt-3">Dirección de entrega</h4>
+                <h3 className="managerTitleModal">ENTRE</h3>
+                <hr className="myDivider" />
                 <Form.Row>
                   <Form.Group as={Col}>
                     <Form.Label>Estado</Form.Label>
@@ -272,7 +275,7 @@ const SalesRow = React.memo(function SalesRow(props) {
 });
 
 SalesRow.propTypes = {
-  sale: PropTypes.object.isRequired
+  sale: PropTypes.object.isRequired,
 };
 
 export default SalesRow;

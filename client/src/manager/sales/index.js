@@ -4,7 +4,7 @@ import APIManager from "../../utils/APIManager";
 import { Table, Spinner } from "react-bootstrap";
 import SalesRow from "./SalesRow";
 
-const Sales = React.memo(function Sales() {
+const Sales = React.memo(() => {
   const [sales, setSales] = useState();
 
   useEffect(() => {
