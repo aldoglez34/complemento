@@ -19,6 +19,9 @@ class Firebase {
     app.initializeApp(config);
 
     this.auth = app.auth();
+
+    console.log("process.env.NODE_ENV", process.env.NODE_ENV);
+    console.log("config", config);
   }
 
   //////// auth api ////////
