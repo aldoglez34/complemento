@@ -6,19 +6,15 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const bodyParser = require("body-parser");
-// dotenv
-require("dotenv").config();
 
 // middleware
 // use morgan logger for logging requests
 app.use(morgan("dev"));
 
 // parse request body as JSON (using body-parser)
-// app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json (using body-parser)
-// app.use(express.json());
 app.use(bodyParser.json());
 
 // serve up static assets (usually on heroku)
