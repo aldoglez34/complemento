@@ -207,7 +207,7 @@ const Tracker = React.memo(() => {
                       </span>
                       {/* productos */}
                       <h4 className="mt-3">Productos: </h4>
-                      <ul className="list-unstyled">
+                      <ul className="list-unstyled ml-2">
                         {sale.products.map((p) => {
                           return (
                             <li key={p.name}>
