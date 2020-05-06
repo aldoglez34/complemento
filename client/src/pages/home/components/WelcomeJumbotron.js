@@ -21,7 +21,7 @@ const WelcomeJumbotron = React.memo(function WelcomeJumbotron() {
           <Button
             size="lg"
             href="/store"
-            className="shadow p-3 mt-4"
+            className="shadow-sm p-3 mt-4"
             variant="success"
             title="Explora la tienda"
           >

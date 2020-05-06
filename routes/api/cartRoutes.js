@@ -1,13 +1,13 @@
 const router = require("express").Router();
 const model = require("../../models");
 
-const generateArrays = str => {
+const generateArrays = (str) => {
   // this fn receives a str and return two arrays
   // generate an array of cart items with their quantities
   let cartObjs = str.split(",").reduce((acc, cv) => {
     acc.push({
       _id: cv.split("-")[0],
-      qty: Number(cv.split("-")[1])
+      qty: Number(cv.split("-")[1]),
     });
     return acc;
   }, []);
@@ -22,20 +22,20 @@ const generateArrays = str => {
 
 // fetchCartProducts()
 // matches with /api/cart/products/:cartStr
-router.get("/products/:cartStr", function(req, res) {
+router.get("/products/:cartStr", function (req, res) {
   const { cartObjs, idsOnly } = generateArrays(req.params.cartStr);
   // consult list of ids in mongodb
   model.Product.find()
     .select("name price stock photo")
     .where("_id")
     .in(idsOnly)
-    .then(data => {
+    .then((data) => {
       // generate cart items report with subtotals
       // then sort it by product name
       let cartItems = data
         .reduce((acc, cv) => {
           let index = cartObjs
-            .map(obj => obj._id.toString())
+            .map((obj) => obj._id.toString())
             .indexOf(cv._id.toString());
           acc.push({
             _id: cv._id,
@@ -51,7 +51,7 @@ router.get("/products/:cartStr", function(req, res) {
               : null,
             subTotal: cv.price.discount.hasDiscount
               ? cv.price.discount.newPrice * Number(cartObjs[index].qty)
-              : cv.price.salePrice * Number(cartObjs[index].qty)
+              : cv.price.salePrice * Number(cartObjs[index].qty),
           });
           return acc;
         }, [])
@@ -70,7 +70,7 @@ router.get("/products/:cartStr", function(req, res) {
       // send result
       res.json(cartItems);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log("@err", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
@@ -85,12 +85,12 @@ router.get("/checkStock/:cartStr", (req, res) => {
     .select("stock name")
     .where("_id")
     .in(idsOnly)
-    .then(data => {
+    .then((data) => {
       // merge arrays
       let merged = data.reduce((acc, cv) => {
         // search index of cv's _id in the cartObjs array (if not found this will return -1)
         let idx = cartObjs.findIndex(
-          p => p._id.toString() === cv._id.toString()
+          (p) => p._id.toString() === cv._id.toString()
         );
         // merge arrays
         // if product not found, send 422 status
@@ -99,7 +99,7 @@ router.get("/checkStock/:cartStr", (req, res) => {
             _id: cv._id,
             name: cv.name,
             stock: cv.stock,
-            qty: cartObjs[idx].qty
+            qty: cartObjs[idx].qty,
           });
         } else {
           res.status(422).send({ msg: "Ocurrió un error" });
@@ -123,7 +123,7 @@ router.get("/checkStock/:cartStr", (req, res) => {
         res.status(200).json({ msg: "All good" });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(422).send({ msg: "Ocurrió un error" });
       console.log(err);
     });
@@ -142,7 +142,7 @@ router.put("/saveClientData", (req, res) => {
     secondSurname,
     email,
     phone,
-    address
+    address,
   } = req.body;
   //
   model.Client.findByIdAndUpdate(
@@ -159,13 +159,13 @@ router.put("/saveClientData", (req, res) => {
         municipality: address.municipality,
         city: address.city,
         state: address.state,
-        zipCode: address.zipCode
-      }
+        zipCode: address.zipCode,
+      },
     },
     { new: true } // returns the new document
   )
-    .then(data => res.status(200).json(data))
-    .catch(err => {
+    .then((data) => res.status(200).json(data))
+    .catch((err) => {
       console.log("@err", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
@@ -173,7 +173,7 @@ router.put("/saveClientData", (req, res) => {
 
 // makeSale()
 // matches with /api/cart/buy
-router.post("/buy", function(req, res) {
+router.post("/buy", function (req, res) {
   const {
     clientId,
     name,
@@ -181,7 +181,7 @@ router.post("/buy", function(req, res) {
     secondSurname,
     email,
     phone,
-    address
+    address,
   } = req.body.buyer;
   const { items, shipment } = req.body;
 
@@ -196,11 +196,13 @@ router.post("/buy", function(req, res) {
     .select("name price")
     .where("_id")
     .in(idsOnly)
-    .then(data => {
+    .then((data) => {
       // merge arrays
       let mergedProducts = data.reduce((acc, cv) => {
         // search index of cv's _id in the items array (if not found this will return -1)
-        let idx = items.findIndex(p => p._id.toString() === cv._id.toString());
+        let idx = items.findIndex(
+          (p) => p._id.toString() === cv._id.toString()
+        );
         // if product not found, send 422 status
         if (idx !== -1) {
           acc.push({
@@ -209,12 +211,12 @@ router.post("/buy", function(req, res) {
             qty: items[idx].qty,
             salePrice: cv.price.discount.hasDiscount
               ? cv.price.discount.newPrice
-              : cv.price.salePrice
+              : cv.price.salePrice,
           });
         } else {
           res.status(422).send({
             msg:
-              "Lo sentimos. Ocurrió un error con alguno de los productos. Inténtalo de nuevo."
+              "Lo sentimos. Ocurrió un error con alguno de los productos. Inténtalo de nuevo.",
           });
         }
         return acc;
@@ -229,6 +231,7 @@ router.post("/buy", function(req, res) {
       });
       // create sale obj
       let sale = {
+        status: "ordered",
         products: mergedProducts,
         subTotal,
         shipment,
@@ -246,55 +249,55 @@ router.post("/buy", function(req, res) {
             municipality: address.municipality,
             city: address.city,
             state: address.state,
-            zipCode: address.zipCode
-          }
-        }
+            zipCode: address.zipCode,
+          },
+        },
       };
       // create new sale
       return model.Sale.create(sale);
     })
-    .then(data => res.status(200).json(data))
-    .catch(err => {
+    .then((data) => res.status(200).json(data))
+    .catch((err) => {
       console.log("@err", err);
       res.status(422).send({
         msg:
-          "Lo sentimos. Ocurrió un error con alguno de los productos. Inténtalo de nuevo."
+          "Lo sentimos. Ocurrió un error con alguno de los productos. Inténtalo de nuevo.",
       });
     });
 });
 
 // updateStock()
 // matches with /api/cart/update/stock
-router.put("/update/stock", function(req, res) {
+router.put("/update/stock", function (req, res) {
   const { items } = req.body;
 
   let updateAll = new Promise((resolve, reject) => {
     items.forEach((value, index, array) => {
       model.Product.findByIdAndUpdate(value._id, {
-        $inc: { unitsSold: value.qty, stock: -Math.abs(value.qty) }
-      }).catch(err => res.json(err));
+        $inc: { unitsSold: value.qty, stock: -Math.abs(value.qty) },
+      }).catch((err) => res.json(err));
       if (index === array.length - 1) resolve();
     });
   });
   updateAll
     .then(() => res.status(200).send({ msg: "Compra realizada con éxito" }))
-    .catch(err => {
+    .catch((err) => {
       console.log("@err", err);
       res.status(422).send({
         msg:
-          "Lo sentimos. Ocurrió un error con alguno de los productos. Inténtalo de nuevo."
+          "Lo sentimos. Ocurrió un error con alguno de los productos. Inténtalo de nuevo.",
       });
     });
 });
 
 // fetchOrder()
 // matches with /api/cart/order/:saleId
-router.get("/order/:saleId", function(req, res) {
+router.get("/order/:saleId", function (req, res) {
   model.Sale.findById(req.params.saleId)
-    .then(data => {
+    .then((data) => {
       res.status(200).json(data);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log("@err", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });

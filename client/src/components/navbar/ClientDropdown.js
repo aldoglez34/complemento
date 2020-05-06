@@ -77,7 +77,7 @@ const ClientDropdown = ({ firebase }) => {
       <div className="d-block d-md-none">
         <Button
           variant="transparent"
-          className="clientLoginDropdown ml-0 p-0"
+          className="clientLoginDropdown ml-0 p-0 shadow-sm"
           onClick={handleShow}
           style={{ outline: "none", boxShadow: "none" }}
         >

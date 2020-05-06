@@ -129,7 +129,12 @@ class BagDropdown extends PureComponent {
                         .reduce((prev, next) => prev + next)
                     )}
                 </h3>
-                <Button block variant="danger" href="/cart">
+                <Button
+                  block
+                  variant="danger"
+                  href="/cart"
+                  className="shadow-sm"
+                >
                   Ir a canasta
                 </Button>
               </>
@@ -180,7 +185,7 @@ class BagDropdown extends PureComponent {
                     .reduce((prev, next) => prev + next)
                 )}
             </h3>
-            <Button block variant="danger" href="/cart">
+            <Button block variant="danger" href="/cart" className="shadow-sm">
               Ir a canasta
               <i className="fas fa-arrow-right ml-1" />
             </Button>

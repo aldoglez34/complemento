@@ -147,7 +147,12 @@ const Contact = React.memo(() => {
               </Form.Row>
               {/* buttons */}
               <Form.Row className="px-1">
-                <Button variant="warning" type="submit" disabled={isSubmitting}>
+                <Button
+                  className="shadow-sm"
+                  variant="warning"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
                   Enviar
                 </Button>
               </Form.Row>

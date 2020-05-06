@@ -157,7 +157,7 @@ const HelpButton = React.memo(() => {
                 {/* buttons */}
                 <Form.Row className="px-1">
                   <Button
-                    className="ml-auto"
+                    className="shadow-sm"
                     variant="warning"
                     type="submit"
                     disabled={isSubmitting}

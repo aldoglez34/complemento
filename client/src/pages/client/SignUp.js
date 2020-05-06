@@ -252,7 +252,7 @@ const SignUp = ({ firebase }) => {
                 </Form.Group>
               </Form.Row>
               <Button
-                className="mt-3 mb-4"
+                className="mt-3 mb-4 shadow-sm"
                 variant="warning"
                 type="submit"
                 disabled={isSubmitting}

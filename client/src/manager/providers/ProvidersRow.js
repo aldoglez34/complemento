@@ -242,6 +242,7 @@ const ProvidersRow = React.memo(({ provider }) => {
                 {/* buttons */}
                 <div className="text-center mt-2">
                   <Button
+                    className="shadow-sm"
                     size="lg"
                     variant="dark"
                     type="submit"

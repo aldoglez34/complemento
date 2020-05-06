@@ -46,6 +46,7 @@ const AddToBagButton = React.memo(({ product, size }) => {
   return (
     <>
       <Button
+        className="shadow-sm"
         variant="success"
         block
         onClick={handleShow}
@@ -74,13 +75,6 @@ const AddToBagButton = React.memo(({ product, size }) => {
                 src={"/images/products/" + product.photo}
                 title={product.name}
               />
-              {/* {product.price.discount.hasDiscount ? (
-                <Image
-                  src="/images/tag.png"
-                  className="addtobagbuttondiscount"
-                  alt="discount"
-                />
-              ) : null} */}
             </Col>
             {/* right col */}
             <Col md={5}>
@@ -113,7 +107,6 @@ const AddToBagButton = React.memo(({ product, size }) => {
               {/* buttons */}
               <Col className="mt-3 p-0 text-center">
                 <Button
-                  // size="lg"
                   variant="success"
                   block
                   onClick={() =>
@@ -123,14 +116,13 @@ const AddToBagButton = React.memo(({ product, size }) => {
                     })
                   }
                   title="Seguir comprando"
-                  className="py-2"
+                  className="py-2 shadow-sm"
                 >
                   <i className="fas fa-arrow-left mr-1" />
                   Seguir comprando
                 </Button>
                 <Button
-                  // size="lg"
-                  className="py-2"
+                  className="py-2 shadow-sm"
                   block
                   variant="danger"
                   onClick={() =>

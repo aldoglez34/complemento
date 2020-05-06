@@ -83,7 +83,7 @@ const Products = React.memo(() => {
         <Button
           disabled={products ? false : true}
           active={filter === "discounts" ? true : false}
-          className="filterBttnManager"
+          className="filterBttnManager shadow-sm"
           title="Descuentos"
           onClick={() => filterProducts("discounts")}
         >
@@ -93,7 +93,7 @@ const Products = React.memo(() => {
         <Button
           disabled={products ? false : true}
           active={filter === "noStock" ? true : false}
-          className="filterBttnManager ml-2"
+          className="filterBttnManager ml-2 shadow-sm"
           title="Sin existencia"
           onClick={() => filterProducts("noStock")}
         >
@@ -103,7 +103,7 @@ const Products = React.memo(() => {
         <Button
           disabled={products ? false : true}
           active={filter === "priority" ? true : false}
-          className="filterBttnManager ml-2"
+          className="filterBttnManager ml-2 shadow-sm"
           title="Destacados"
           onClick={() => filterProducts("priority")}
         >

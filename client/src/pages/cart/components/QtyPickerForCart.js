@@ -9,7 +9,7 @@ const QtyPickerForCart = React.memo(
         <Button
           style={{
             outline: "none",
-            boxShadow: "none"
+            boxShadow: "none",
           }}
           size="sm"
           onClick={() => handleDecrementQty(_id)}
@@ -24,14 +24,14 @@ const QtyPickerForCart = React.memo(
           className="text-right rounded-0 qtypickerforcart"
           style={{
             outline: "none",
-            boxShadow: "none"
+            boxShadow: "none",
           }}
           value={qty}
         />
         <Button
           style={{
             outline: "none",
-            boxShadow: "none"
+            boxShadow: "none",
           }}
           onClick={() => handleIncrementQty(_id)}
           className="rounded-0"
@@ -50,7 +50,7 @@ QtyPickerForCart.propTypes = {
   qty: PropTypes.number.isRequired,
   _id: PropTypes.string.isRequired,
   handleDecrementQty: PropTypes.func.isRequired,
-  handleIncrementQty: PropTypes.func.isRequired
+  handleIncrementQty: PropTypes.func.isRequired,
 };
 
 export default QtyPickerForCart;

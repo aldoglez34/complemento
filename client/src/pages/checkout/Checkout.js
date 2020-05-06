@@ -126,7 +126,7 @@ const Checkout = React.memo(() => {
             setSubmitting(true);
             // generate buyer obj with all the personal info of the buyer
             let buyer = {
-              clientId: client._id,
+              clientId: client ? client._id : null,
               name: values.name,
               firstSurname: values.firstSurname,
               secondSurname: values.secondSurname,
@@ -491,7 +491,7 @@ const Checkout = React.memo(() => {
               <Order order={order} />
               {/* buy button */}
               <Button
-                className="my-2"
+                className="my-2 shadow-sm"
                 size="lg"
                 variant="danger"
                 type="submit"

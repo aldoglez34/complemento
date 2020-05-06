@@ -154,7 +154,7 @@ const SearchButton = React.memo(({ items }) => {
       <div className="d-block d-md-none">
         <Button
           variant="transparent"
-          className="navbarDropdownStyle ml-0 p-0"
+          className="navbarDropdownStyle ml-0 p-0 shadow-sm"
           onClick={handleShow}
           style={{ outline: "none", boxShadow: "none", fontSize: "14px" }}
           title="Buscar"

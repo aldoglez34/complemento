@@ -88,8 +88,8 @@ const Tracker = React.memo(() => {
               {/* saleId */}
               <Form.Row>
                 <Form.Group as={Col}>
-                  <Form.Label>Ingresa el código de tu pedido</Form.Label>
                   <Form.Control
+                    className="w-25"
                     maxLength="24"
                     type="text"
                     placeholder="Ingresa el código de tu pedido"
@@ -108,7 +108,12 @@ const Tracker = React.memo(() => {
                 </Form.Group>
               </Form.Row>
               {/* search button */}
-              <Button variant="warning" type="submit" disabled={isSubmitting}>
+              <Button
+                className="shadow-sm"
+                variant="warning"
+                type="submit"
+                disabled={isSubmitting}
+              >
                 Buscar
               </Button>
             </Form>
@@ -125,9 +130,14 @@ const Tracker = React.memo(() => {
                 <Container>
                   <Row>
                     <Col md={6}>
+                      {/* status */}
+                      <h4>Estatus: </h4>
+                      <p className="lead text-danger mb-3 ml-2 ">
+                        {sale.status}
+                      </p>
                       {/* code */}
                       <h4>Código del pedido: </h4>
-                      <p className="h5 text-danger mb-3 ml-2 ">{sale._id}</p>
+                      <p className="lead text-danger mb-3 ml-2 ">{sale._id}</p>
                       {/* address */}
                       <h4>Dirección:</h4>
                       <p className="mb-0">
@@ -191,7 +201,7 @@ const Tracker = React.memo(() => {
                         {formatDate(sale.saleDate)}
                       </span>
                       {/* subTotal */}
-                      <h4 className="mt-3">Subtotal: </h4>
+                      <h4 className="mt-3">Sub-total: </h4>
                       <span className="ml-2 lead">
                         {formatNumber(sale.subTotal)}
                       </span>
@@ -201,7 +211,7 @@ const Tracker = React.memo(() => {
                         {formatNumber(sale.shipment)}
                       </span>
                       {/* grandTotal */}
-                      <h4 className="mt-3">Total final: </h4>
+                      <h4 className="mt-3">Total: </h4>
                       <span className="ml-2 lead">
                         {formatNumber(sale.grandTotal)}
                       </span>

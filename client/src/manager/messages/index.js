@@ -88,7 +88,7 @@ const Messages = React.memo(() => {
         <Button
           disabled={messages ? false : true}
           active={filter === "unread" ? true : false}
-          className="filterBttnManager"
+          className="filterBttnManager shadow-sm"
           title="No leídos"
           onClick={() => filterProducts("unread")}
         >
@@ -98,7 +98,7 @@ const Messages = React.memo(() => {
         <Button
           disabled={messages ? false : true}
           active={filter === "lastWeek" ? true : false}
-          className="filterBttnManager ml-2"
+          className="filterBttnManager ml-2 shadow-sm"
           title="Última semana"
           onClick={() => filterProducts("lastWeek")}
         >
@@ -108,7 +108,7 @@ const Messages = React.memo(() => {
         <Button
           disabled={messages ? false : true}
           active={filter === "lastMonth" ? true : false}
-          className="filterBttnManager ml-2"
+          className="filterBttnManager ml-2 shadow-sm"
           title="Último mes"
           onClick={() => filterProducts("lastMonth")}
         >

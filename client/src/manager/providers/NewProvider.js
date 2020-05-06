@@ -31,7 +31,7 @@ const NewProvider = React.memo((props) => {
   return (
     <>
       <Button
-        className="pt-2 px-0 mr-2 managerTopNavNewBttn"
+        className="pt-2 px-0 mr-2 managerTopNavNewBttn shadow-sm"
         title="Nuevo proveedor"
         onClick={handleShow}
       >
@@ -219,6 +219,7 @@ const NewProvider = React.memo((props) => {
                 {/* buttons */}
                 <div className="text-center mt-2">
                   <Button
+                    className="shadow-sm"
                     size="lg"
                     variant="dark"
                     type="submit"

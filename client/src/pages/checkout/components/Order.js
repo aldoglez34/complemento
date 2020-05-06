@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Table, Row, Col, Modal, Spinner, Image } from "react-bootstrap";
+import {
+  Button,
+  Table,
+  Row,
+  Col,
+  Modal,
+  Spinner,
+  Image,
+} from "react-bootstrap";
 import PropTypes from "prop-types";
 
 const Order = React.memo(({ order }) => {
@@ -173,7 +181,18 @@ const Order = React.memo(({ order }) => {
                 <p className="mb-0">xxxxxxxxxxxxxxxxxxxxxxxxxx</p>
               </Col>
             </Row>
-            <div className="text-center text-muted pt-4">
+            <div className="pt-4 pb-3 text-center">
+              <Button
+                variant="warning"
+                href="/store"
+                className="shadow-sm"
+                title="Regresa a la tienda"
+              >
+                <i className="fas fa-arrow-left mr-2" />
+                Volver a la tienda
+              </Button>
+            </div>
+            <div className="text-center text-muted">
               (Recibirás una copia de este resumen a tu correo)
             </div>
           </>

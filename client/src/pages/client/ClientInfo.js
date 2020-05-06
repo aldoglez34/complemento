@@ -367,6 +367,7 @@ const ClientInfo = React.memo(function ClientInfo() {
                 </Form.Row>
                 <Form.Group className="mt-3">
                   <Button
+                    className="shadow-sm"
                     type="submit"
                     variant="success"
                     disabled={isSubmitting}

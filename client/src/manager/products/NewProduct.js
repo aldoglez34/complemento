@@ -70,7 +70,7 @@ const NewProduct = React.memo((props) => {
   return (
     <>
       <Button
-        className="pt-2 px-0 mr-2 managerTopNavNewBttn"
+        className="pt-2 px-0 mr-2 managerTopNavNewBttn shadow-sm"
         title="Nuevo producto"
         onClick={handleShow}
       >
@@ -504,6 +504,7 @@ const NewProduct = React.memo((props) => {
                     {/* buttons */}
                     <Form.Group className="text-right">
                       <Button
+                        className="shadow-sm"
                         variant="success"
                         type="submit"
                         disabled={isSubmitting}

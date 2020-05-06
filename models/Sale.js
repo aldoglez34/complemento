@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const SaleSchema = new Schema({
+  status: {
+    type: String,
+    enum: ["ordered", "sent", "canceled"],
+    required: true,
+  },
   products: [
     {
       _id: {

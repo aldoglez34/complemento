@@ -45,7 +45,7 @@ const FavButton = React.memo(({ product, isBlock }) => {
       <Button
         title="Agregar a favoritos"
         variant="danger"
-        className="favbuttonstyle"
+        className="favbuttonstyle shadow-sm"
         onClick={
           isClientLogged
             ? handleShow
@@ -90,7 +90,10 @@ const FavButton = React.memo(({ product, isBlock }) => {
             El producto fue agregado a tu lista de favoritos.
           </div>
           <div className="text-center">
-            <Button className="favbuttonstyle" href="/client/favorites/">
+            <Button
+              className="favbuttonstyle shadow-sm"
+              href="/client/favorites/"
+            >
               Ir a mis favoritos
             </Button>
           </div>

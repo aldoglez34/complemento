@@ -108,7 +108,7 @@ const Login = ({ firebase }) => {
                 </Form.Row>
                 <Button
                   variant="success"
-                  className="mt-3"
+                  className="mt-3 shadow-sm"
                   type="submit"
                   disabled={isSubmitting}
                 >

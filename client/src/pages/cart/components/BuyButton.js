@@ -52,6 +52,7 @@ const BuyButton = React.memo(() => {
   return (
     <>
       <Button
+        className="shadow-sm"
         disabled={loading}
         variant="danger"
         size="lg"
@@ -136,6 +137,7 @@ const BuyButton = React.memo(() => {
           {/* adjust cart */}
           <div className="mt-3text-center">
             <Button
+              className="shadow-sm"
               size="lg"
               block
               variant="danger"

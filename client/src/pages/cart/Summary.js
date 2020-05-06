@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const Summary = React.memo(({ counter, subTotal, shipment, total }) => {
   return (
-    <Card>
+    <Card className="shadow-sm">
       <Card.Body>
         <div className="d-flex flex-row">
           <span className="text-muted">Cantidad de productos:</span>
@@ -32,7 +32,7 @@ Summary.propTypes = {
   counter: PropTypes.number.isRequired,
   subTotal: PropTypes.string.isRequired,
   shipment: PropTypes.string.isRequired,
-  total: PropTypes.string.isRequired
+  total: PropTypes.string.isRequired,
 };
 
 export default Summary;

@@ -12,7 +12,7 @@ const TopHelperNav = React.memo(({ backBttn, newBttn }) => {
           <Button
             variant="transparent"
             title="Regresar"
-            className="p-0"
+            className="p-0 shadow-sm"
             href={backBttn}
           >
             <i

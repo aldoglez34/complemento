@@ -66,7 +66,7 @@ const StoreDropdown = React.memo(({ store }) => {
       <div className="d-block d-md-none">
         <Button
           variant="transparent"
-          className="navbarDropdownStyle ml-0 p-0"
+          className="navbarDropdownStyle ml-0 p-0 shadow-sm"
           onClick={handleShow}
           style={{ outline: "none", boxShadow: "none" }}
         >

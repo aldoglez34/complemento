@@ -30,7 +30,11 @@ const ManagerDropdown = React.memo(({ firebase }) => {
           <i className="fas fa-at mr-2" />
           <span>{manager.email}</span>
         </div>
-        <Button className="mt-3" variant="warning" onClick={firebase._signOut}>
+        <Button
+          className="mt-3 shadow-sm"
+          variant="warning"
+          onClick={firebase._signOut}
+        >
           Cerrar sesión
         </Button>
       </Dropdown.Menu>

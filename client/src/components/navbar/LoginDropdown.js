@@ -131,7 +131,12 @@ const LoginDropdown = ({ firebase }) => {
                   label="Recuérdame"
                 />
               </Form.Group>
-              <Button variant="warning" type="submit" disabled={isSubmitting}>
+              <Button
+                variant="warning"
+                type="submit"
+                disabled={isSubmitting}
+                className="shadow-sm"
+              >
                 Entrar
               </Button>
             </Form>
@@ -154,7 +159,7 @@ const LoginDropdown = ({ firebase }) => {
       <div className="d-block d-md-none">
         <Button
           variant="transparent"
-          className="navbarDropdownStyle ml-0 p-0"
+          className="navbarDropdownStyle ml-0 p-0 shadow-sm"
           onClick={handleShow}
           style={{ outline: "none", boxShadow: "none" }}
         >
