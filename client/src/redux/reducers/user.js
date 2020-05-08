@@ -11,12 +11,12 @@ const clientReducers = (state = null, action) => {
         phone: action.data.phone,
         email: action.data.email,
         address: action.data.address,
-        favorites: action.data.favorites
+        favorites: action.data.favorites,
       };
     case "user/client/updateFavorites":
       return {
         ...state,
-        favorites: action.data
+        favorites: action.data,
       };
     case "user/client/update":
       return {
@@ -31,8 +31,8 @@ const clientReducers = (state = null, action) => {
           state: action.data.state,
           zipCode: action.data.zipCode,
           municipality: action.data.municipality,
-          neighborhood: action.data.neighborhood
-        }
+          neighborhood: action.data.neighborhood,
+        },
       };
     case "user/client/updateAfterPurchase":
       return {
@@ -47,8 +47,8 @@ const clientReducers = (state = null, action) => {
           state: action.data.address.state,
           zipCode: action.data.address.zipCode,
           municipality: action.data.address.municipality,
-          neighborhood: action.data.address.neighborhood
-        }
+          neighborhood: action.data.address.neighborhood,
+        },
       };
     // ============================================
     // manager
@@ -58,7 +58,7 @@ const clientReducers = (state = null, action) => {
         name: action.data.name,
         firstSurname: action.data.firstSurname,
         secondSurname: action.data.secondSurname,
-        email: action.data.email
+        email: action.data.email,
       };
     // ============================================
     // both

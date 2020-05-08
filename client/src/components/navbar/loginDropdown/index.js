@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
-import { withFirebase } from "../../firebase";
+import { withFirebase } from "../../../firebase";
 
 const LoginDropdown = ({ firebase }) => {
   const [show, setShow] = useState(false);

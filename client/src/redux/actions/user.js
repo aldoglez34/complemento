@@ -1,40 +1,40 @@
 // ==========================================================
 // client
-export const loginClient = data => {
+export const loginClient = (data) => {
   return {
     type: "user/client/login",
-    data
+    data,
   };
 };
 
-export const updateFavorites = data => {
+export const updateFavorites = (data) => {
   return {
     type: "user/client/updateFavorites",
-    data
+    data,
   };
 };
 
-export const updateClient = data => {
+export const updateClient = (data) => {
   return {
     type: "user/client/update",
-    data
+    data,
   };
 };
 
-export const updateAfterPurchase = data => {
+export const updateAfterPurchase = (data) => {
   return {
     type: "user/client/updateAfterPurchase",
-    data
+    data,
   };
 };
 
 // ==========================================================
 // manager
 
-export const loginManager = data => {
+export const loginManager = (data) => {
   return {
     type: "user/manager/login",
-    data
+    data,
   };
 };
 
@@ -43,6 +43,6 @@ export const loginManager = data => {
 
 export const logoutUser = () => {
   return {
-    type: "user/logoutUser"
+    type: "user/logoutUser",
   };
 };

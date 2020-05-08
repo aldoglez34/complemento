@@ -9,11 +9,11 @@ import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
 import * as userActions from "../../redux/actions/user";
 
-const ClientInfo = React.memo(function ClientInfo() {
-  const client = useSelector((state) => state.client);
+const ClientInfo = React.memo(() => {
+  const client = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const changeInfoSchema = yup.object({
+  const yupSchema = yup.object({
     name: yup
       .string()
       .min(2, "Debe ser más largo que 2 letras")
@@ -55,10 +55,10 @@ const ClientInfo = React.memo(function ClientInfo() {
       .required("Requerido"),
   });
 
-  return client.isLogged ? (
+  return client ? (
     <Layout>
       <Container className="my-4">
-        <h2>Mis datos</h2>
+        <h3>Mis datos</h3>
         <hr className="myDivider" />
         <Formik
           initialValues={{
@@ -66,14 +66,16 @@ const ClientInfo = React.memo(function ClientInfo() {
             firstSurname: client.firstSurname,
             secondSurname: client.secondSurname,
             phone: client.phone,
+            email: client.email,
             street: client.address.street,
+            // address
             neighborhood: client.address.neighborhood,
             municipality: client.address.municipality,
             city: client.address.city,
             state: client.address.state,
             zipCode: client.address.zipCode,
           }}
-          validationSchema={changeInfoSchema}
+          validationSchema={yupSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
             // this is necessary since the trim() function from yup is not working
@@ -93,6 +95,7 @@ const ClientInfo = React.memo(function ClientInfo() {
             API.updateClient(trimmedValues)
               .then(() => {
                 alert("Cliente editado con éxito");
+                // updating user info on redux
                 dispatch(userActions.updateClient(trimmedValues));
                 setSubmitting(false);
                 window.location.href = "/";
@@ -365,16 +368,14 @@ const ClientInfo = React.memo(function ClientInfo() {
                     />
                   </Form.Group>
                 </Form.Row>
-                <Form.Group className="mt-3">
-                  <Button
-                    className="shadow-sm"
-                    type="submit"
-                    variant="success"
-                    disabled={isSubmitting}
-                  >
-                    Guardar cambios
-                  </Button>
-                </Form.Group>
+                <Button
+                  className="shadow-sm"
+                  type="submit"
+                  variant="warning"
+                  disabled={isSubmitting}
+                >
+                  Guardar cambios
+                </Button>
               </Form>
             </>
           )}

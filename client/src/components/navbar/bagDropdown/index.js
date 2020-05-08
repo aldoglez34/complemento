@@ -8,7 +8,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { connect } from "react-redux";
-import API from "../../utils/API";
+import API from "../../../utils/API";
 import PropTypes from "prop-types";
 
 class BagDropdown extends PureComponent {

@@ -3,20 +3,15 @@ import { useSelector } from "react-redux";
 import Layout from "../../components/Layout";
 import { Container, Spinner } from "react-bootstrap";
 import API from "../../utils/API";
-import ProductCard from "../../components/cards/ProductCard";
 
-const ClientFavorites = React.memo(function ClientFavorites() {
+const ClientOrders = React.memo(() => {
   const client = useSelector((state) => state.user);
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [favorites, setFavorites] = useState();
+  const [orders, setOrders] = useState();
 
   useEffect(() => {
-    API.fetchFavorites(client._id)
-      .then((res) => {
-        setFavorites(res.data.favorites);
-        setIsLoading(false);
-      })
+    API.fetchOrders(client._id)
+      .then((res) => setOrders(res.data))
       .catch((err) => {
         console.log(err.response);
         err.response.data.msg
@@ -28,19 +23,21 @@ const ClientFavorites = React.memo(function ClientFavorites() {
   return (
     <Layout>
       <Container className="my-4">
-        <h3>Mis favoritos</h3>
+        <h3>Mis pedidos</h3>
         <hr className="myDivider" />
         <div className="d-flex flex-wrap justify-content-center">
-          {isLoading ? (
+          {orders ? (
+            orders.length ? (
+              orders.map((or) => {
+                return <span>{or}</span>;
+              })
+            ) : (
+              <span>Tu lista de pedidos está vacía</span>
+            )
+          ) : (
             <div className="text-center my-4">
               <Spinner variant="warning" animation="grow" role="status" />
             </div>
-          ) : favorites.length ? (
-            favorites.map((fav) => {
-              return <ProductCard key={fav._id} product={fav} />;
-            })
-          ) : (
-            <span>Tu lista de favoritos está vacía</span>
           )}
         </div>
       </Container>
@@ -48,4 +45,4 @@ const ClientFavorites = React.memo(function ClientFavorites() {
   );
 });
 
-export default ClientFavorites;
+export default ClientOrders;

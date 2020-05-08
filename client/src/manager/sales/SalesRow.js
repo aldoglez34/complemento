@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, Form, Col, InputGroup } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
+const moment = require("moment");
 
 const SalesRow = React.memo(({ sale }) => {
   const [show, setShow] = useState(false);
@@ -22,19 +23,35 @@ const SalesRow = React.memo(({ sale }) => {
     return text.join("");
   };
 
+  const formatDate = (date) => {
+    let convertedDate = moment(moment(date).format(moment.HTML5_FMT.DATE));
+    return convertedDate.format("DD/MMMM/YYYY");
+  };
+
+  const formatNumber = (num) => {
+    return num !== undefined
+      ? "$" +
+          num
+            .toFixed(2)
+            .toString()
+            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+      : null;
+  };
+
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
-        <td>{sale.saleDate}</td>
-        <td className="text-center">{sale.products.length}</td>
-        <td className="text-center">{sale.subTotal}</td>
-        <td className="text-center">{sale.shipment}</td>
-        <td className="text-center">{sale.grandTotal}</td>
-        <td>{sale.client ? sale.client.email : ""}</td>
+        <td className="text-right">{formatDate(sale.saleDate)}</td>
+        <td className="text-right">{sale.products.length}</td>
+        <td className="text-right">{formatNumber(sale.subTotal)}</td>
+        <td className="text-right">{formatNumber(sale.shipment)}</td>
+        <td className="text-right">{formatNumber(sale.grandTotal)}</td>
+        <td>{sale.buyer.name + " " + sale.buyer.firstSurname}</td>
+        <td>{sale.buyer.address.state}</td>
       </tr>
 
-      <Modal size="lg" show={show} onHide={handleClose}>
-        <Modal.Body>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Body className="bg-light">
           <Formik
             initialValues={{
               purchaseDate: sale.saleDate,
@@ -42,13 +59,12 @@ const SalesRow = React.memo(({ sale }) => {
               subTotal: sale.subTotal,
               shipment: sale.shipment,
               grandTotal: sale.grandTotal,
-              clientName: sale.buyer
-                ? sale.buyer.name +
-                  " " +
-                  sale.buyer.firstSurname +
-                  " " +
-                  sale.buyer.secondSurname
-                : "",
+              clientName:
+                sale.buyer.name +
+                " " +
+                sale.buyer.firstSurname +
+                " " +
+                sale.buyer.secondSurname,
               clientEmail: sale.buyer ? sale.buyer.email : "",
               clientPhone: sale.buyer ? sale.buyer.phone : "",
               state: sale.buyer.address.state,
@@ -191,7 +207,7 @@ const SalesRow = React.memo(({ sale }) => {
                   </Form.Group>
                 </Form.Row>
                 {/* address */}
-                <h3 className="managerTitleModal">ENTRE</h3>
+                <h3 className="managerTitleModal">DIRECCIÓN</h3>
                 <hr className="myDivider" />
                 <Form.Row>
                   <Form.Group as={Col}>

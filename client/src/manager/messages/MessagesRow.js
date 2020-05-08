@@ -46,7 +46,7 @@ const MessagesRow = React.memo(({ message }) => {
           )}
         </td>
         <td>{message.email}</td>
-        <td>{formatDate(message.sentAt, "DD/MM/YYYY")}</td>
+        <td>{formatDate(message.sentAt, "DD/MMMM/YYYY")}</td>
         <td>
           {message.message.length > 50
             ? message.message.slice(0, 50) + "..."

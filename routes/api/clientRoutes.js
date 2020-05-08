@@ -3,11 +3,11 @@ const model = require("../../models");
 
 // fetchClientByUID()
 // matches with /api/client/:uid
-router.get("/:uid", function(req, res) {
+router.get("/:uid", function (req, res) {
   model.Client.find({ firebaseUID: req.params.uid })
     .select("name firstSurname secondSurname phone email address favorites")
-    .then(data => res.json(data[0]))
-    .catch(err => {
+    .then((data) => res.json(data[0]))
+    .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
@@ -23,21 +23,32 @@ router.put("/favorite/new", (req, res) => {
     { $push: { favorites: product } },
     { new: true }
   )
-    .then(data => res.json(data))
-    .catch(err => {
+    .then((data) => res.json(data))
+    .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
 });
 
 // fetchFavorites()
-// matches with /api/client/favorites
+// matches with /api/client/favorites/:clientId
 router.get("/favorites/:clientId", (req, res) => {
   model.Client.findById(req.params.clientId)
     .populate("favorites") // this will get all the data from the provider collection
     .select("favorites")
-    .then(data => res.json(data))
-    .catch(err => {
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
+});
+
+// fetchOrders()
+// matches with /api/client/orders/:clientId
+router.get("/orders/:clientId", (req, res) => {
+  model.Sale.find({ "buyer._id": req.params.clientId })
+    .then((data) => res.json(data))
+    .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
@@ -45,7 +56,7 @@ router.get("/favorites/:clientId", (req, res) => {
 
 // newClient()
 // matches with /api/client/new
-router.post("/new", function(req, res) {
+router.post("/new", function (req, res) {
   model.Client.create({
     firebaseUID: req.body.firebaseUID,
     name: req.body.clientName,
@@ -53,10 +64,10 @@ router.post("/new", function(req, res) {
     secondSurname: req.body.secondSurname,
     email: req.body.email,
     phone: req.body.phone,
-    password: req.body.password
+    password: req.body.password,
   })
-    .then(data => res.json(data))
-    .catch(err => {
+    .then((data) => res.json(data))
+    .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
@@ -64,7 +75,7 @@ router.post("/new", function(req, res) {
 
 // updateClient()
 // matches with /api/client/update
-router.put("/update", function(req, res) {
+router.put("/update", function (req, res) {
   model.Client.findByIdAndUpdate(req.body._id, {
     name: req.body.name,
     firstSurname: req.body.firstSurname,
@@ -76,13 +87,13 @@ router.put("/update", function(req, res) {
       municipality: req.body.municipality,
       city: req.body.city,
       state: req.body.state,
-      zipCode: req.body.zipCode
-    }
+      zipCode: req.body.zipCode,
+    },
   })
-    .then(function(data) {
+    .then(function (data) {
       res.json(data);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
@@ -90,14 +101,14 @@ router.put("/update", function(req, res) {
 
 // postMessage()
 // matches with /api/client/message/new
-router.post("/message/new", function(req, res) {
+router.post("/message/new", function (req, res) {
   model.Message.create({
     name: req.body.name,
     email: req.body.email,
-    message: req.body.message
+    message: req.body.message,
   })
-    .then(data => res.json(data))
-    .catch(err => {
+    .then((data) => res.json(data))
+    .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });

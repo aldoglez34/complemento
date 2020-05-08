@@ -1,15 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
-import LoginDropdown from "../LoginDropdown";
-import ClientDropdown from "../ClientDropdown";
-import StoreDropdown from "../StoreDropdown";
+import LoginDropdown from "./loginDropdown";
+import ClientDropdown from "./clientDropdown";
+import StoreDropdown from "./storeDropdown/StoreDropdown";
 import PropTypes from "prop-types";
-import SearchButton from "../SearchButton";
-import "./smallnav.scss";
+import SearchButton from "./searchDropdown/SearchButton";
 
-const SmallNav = React.memo(({ store, items }) => {
-  const client = useSelector(state => state.client);
+const NavbarSM = React.memo(({ store, items }) => {
+  const client = useSelector((state) => state.user);
 
   return (
     <Container
@@ -24,9 +23,9 @@ const SmallNav = React.memo(({ store, items }) => {
   );
 });
 
-SmallNav.propTypes = {
+NavbarSM.propTypes = {
   store: PropTypes.array.isRequired,
-  items: PropTypes.object.isRequired
+  items: PropTypes.object.isRequired,
 };
 
-export default SmallNav;
+export default NavbarSM;

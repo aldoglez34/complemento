@@ -43,6 +43,16 @@ const ProductRow = React.memo(({ product, categories }) => {
       .required("Requerido"),
   });
 
+  const formatNumber = (num) => {
+    return num !== undefined
+      ? "$" +
+          num
+            .toFixed(2)
+            .toString()
+            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+      : null;
+  };
+
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
@@ -61,9 +71,11 @@ const ProductRow = React.memo(({ product, categories }) => {
         <td>{product.provider.name}</td>
         {/* sale price */}
         <td className="text-right">
-          {product.price.discount.hasDiscount
-            ? product.price.discount.newPrice
-            : product.price.salePrice}
+          {formatNumber(
+            product.price.discount.hasDiscount
+              ? product.price.discount.newPrice
+              : product.price.salePrice
+          )}
         </td>
         {/* units sold */}
         <td className="text-right">{product.unitsSold}</td>

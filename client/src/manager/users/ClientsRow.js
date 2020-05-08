@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Modal, Form, Col } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
+const moment = require("moment");
 
-const ClientsRow = React.memo(function ClientsRow(props) {
+const ClientsRow = React.memo(({ client }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -11,34 +12,39 @@ const ClientsRow = React.memo(function ClientsRow(props) {
 
   const printFavorites = () => {
     let text = [];
-    props.client.favorites.forEach((f) => {
+    client.favorites.forEach((f) => {
       let { name } = f;
       text.push(name + "\n");
     });
     return text.join("");
   };
 
+  const formatDate = (date) => {
+    let convertedDate = moment(moment(date).format(moment.HTML5_FMT.DATE));
+    return convertedDate.format("DD/MMMM/YYYY");
+  };
+
   return (
     <>
       <tr onClick={handleShow} className="rowStyle">
-        <td>{props.client.name}</td>
-        <td>{props.client.firstSurname}</td>
-        <td>{props.client.email}</td>
-        <td className="text-center">{props.client.favorites.length}</td>
-        <td>{props.client.createdAt}</td>
+        <td>{client.name}</td>
+        <td>{client.firstSurname}</td>
+        <td>{client.email}</td>
+        <td className="text-right">{client.favorites.length}</td>
+        <td className="text-right">{formatDate(client.createdAt)}</td>
       </tr>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Body className="bg-light">
           <Formik
             initialValues={{
-              _id: props.client._id,
-              name: props.client.name,
-              firstSurname: props.client.firstSurname,
-              email: props.client.email,
-              phone: props.client.phone,
+              _id: client._id,
+              name: client.name,
+              firstSurname: client.firstSurname,
+              email: client.email,
+              phone: client.phone,
               favorites: printFavorites(),
-              createdAt: props.client.createdAt,
+              createdAt: client.createdAt,
             }}
           >
             {({ values, handleChange, handleBlur, handleSubmit }) => (

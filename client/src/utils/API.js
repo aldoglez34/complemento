@@ -117,6 +117,10 @@ export default {
     return axios.get("/api/client/favorites/" + clientId);
   },
 
+  fetchOrders: function (clientId) {
+    return axios.get("/api/client/orders/" + clientId);
+  },
+
   postMessage: function (data) {
     return axios.post("/api/client/message/new", data);
   },

@@ -17,6 +17,7 @@ import Payment from "../pages/footer/Payment";
 import Tracker from "../pages/footer/Tracker";
 // client
 import ClientInfo from "../pages/client/ClientInfo";
+import ClientOrders from "../pages/client/ClientOrders";
 import ClientFavorites from "../pages/client/ClientFavorites";
 
 const ClientNavigation = () => {
@@ -61,6 +62,7 @@ const ClientNavigation = () => {
       <Route exact path="/tracker" component={Tracker} />
       {/* auth client only */}
       <Route exact path="/client/info" component={ClientInfo} />
+      <Route exact path="/client/orders" component={ClientOrders} />
       <Route exact path="/client/favorites" component={ClientFavorites} />
       {/*  manager login page */}
       <Route exact path="/manager" component={Login} />

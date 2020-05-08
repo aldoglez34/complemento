@@ -6,6 +6,7 @@ const SaleSchema = new Schema({
     type: String,
     enum: ["ordered", "sent", "canceled"],
     required: true,
+    default: "ordered",
   },
   products: [
     {
@@ -51,16 +52,16 @@ const SaleSchema = new Schema({
     },
     name: { type: String, required: true },
     firstSurname: { type: String, required: true },
-    secondSurname: { type: String, required: true },
+    secondSurname: { type: String },
     email: { type: String, required: true },
-    phone: { type: String, required: true },
+    phone: { type: String, required: true, minlength: 10, maxlength: 10 },
     address: {
       street: { type: String, required: true },
       neighborhood: { type: String, required: true },
       municipality: { type: String, required: true },
       city: { type: String, required: true },
       state: { type: String, required: true },
-      zipCode: { type: String, required: true },
+      zipCode: { type: String, required: true, minlength: 5, maxlength: 5 },
     },
   },
   saleDate: {

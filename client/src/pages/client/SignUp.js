@@ -3,8 +3,6 @@ import { Container, Col, Form, Button } from "react-bootstrap";
 import Layout from "../../components/Layout";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
-import HelpButton from "../../components/helpbutton/HelpButton";
-import ScrollButton from "../../components/scrollbutton/ScrollButton";
 import { withFirebase } from "../../firebase";
 
 const SignUp = ({ firebase }) => {
@@ -252,7 +250,7 @@ const SignUp = ({ firebase }) => {
                 </Form.Group>
               </Form.Row>
               <Button
-                className="mt-3 mb-4 shadow-sm"
+                className="shadow-sm"
                 variant="warning"
                 type="submit"
                 disabled={isSubmitting}
@@ -263,8 +261,6 @@ const SignUp = ({ firebase }) => {
           )}
         </Formik>
       </Container>
-      <HelpButton />
-      <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
     </Layout>
   );
 };

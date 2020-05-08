@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Dropdown, Nav, NavItem, Modal, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { withFirebase } from "../../firebase";
+import { withFirebase } from "../../../firebase";
 
 const ClientDropdown = ({ firebase }) => {
   const [show, setShow] = useState(false);
@@ -43,14 +43,12 @@ const ClientDropdown = ({ firebase }) => {
         <Dropdown.Item
           className="navbarDropdownItemStyle px-3"
           href="/client/info"
-          disabled
         >
           Mis datos
         </Dropdown.Item>
         <Dropdown.Item
           className="navbarDropdownItemStyle px-3"
-          href="/client/shipment"
-          disabled
+          href="/client/orders"
         >
           Mis pedidos
         </Dropdown.Item>

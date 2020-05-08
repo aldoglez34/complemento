@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Col } from "react-bootstrap";
-import "./helpButton.scss";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import API from "../../utils/API";
+import "./helpButton.scss";
 
 const HelpButton = React.memo(() => {
   const [show, setShow] = useState(false);

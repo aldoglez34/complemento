@@ -12,9 +12,9 @@ mongoose
   .connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false
+    useFindAndModify: false,
   })
-  .catch(error => console.log(error));
+  .catch((error) => console.log(error));
 
 models.Client.remove({})
   .then(() => models.Client.insertMany(clients))
@@ -33,15 +33,16 @@ models.Client.remove({})
     return models.Provider.remove({});
   })
   .then(() => models.Provider.insertMany(providers))
-  .then(data => {
+  .then((data) => {
     console.log(">providers added");
     let providersList = data.reduce((acc, cv) => {
       acc.push(cv._id);
       return acc;
     }, []);
+    // insert products
     insertProducts(providersList);
   })
-  .catch(err => {
+  .catch((err) => {
     console.log("@error", err);
     process.exit(1);
   });

@@ -1,6 +1,7 @@
 const models = require("../../models");
+const insertSales = require("./insertSales");
 
-module.exports = providersList => {
+module.exports = (providersList) => {
   const products = [
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -15,8 +16,8 @@ module.exports = providersList => {
         salePrice: 112,
         latestPurchasePrice: 95,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -25,7 +26,7 @@ module.exports = providersList => {
       dose:
         "Adultos: tomar 1 ampolletas al día preferentemente con sus alimentos, Niños: tomar la mitad de la dosis",
       ingredients: ["Calcio", "Extractos herbales", "Vitaminas y minerales"],
-      photo: "cartilago.jpg"
+      photo: "cartilago.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -40,15 +41,15 @@ module.exports = providersList => {
         salePrice: 215,
         latestPurchasePrice: 205,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
       description: "Auxiliar en el desarrollo de las fibras musculares",
       dose: "Mezclar una porción en 500 ml de agua, beber antes de 15 minutos",
       ingredients: ["L-glutamina"],
-      photo: "glutamina.jpg"
+      photo: "glutamina.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -63,8 +64,8 @@ module.exports = providersList => {
         salePrice: 207,
         latestPurchasePrice: 195,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -72,7 +73,7 @@ module.exports = providersList => {
         "Contribuye a la correcta conservación y sintonización de proteínas y promueve el incremento de masa muscular",
       dose: "Tomar cuatro capsulas antes del entrenamiento",
       ingredients: ["L-Leucina", "L-Isoleucina", "L-Valina", "L-Glutamina"],
-      photo: "bcaas.jpg"
+      photo: "bcaas.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -87,8 +88,8 @@ module.exports = providersList => {
         salePrice: 400,
         latestPurchasePrice: 380,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -101,9 +102,9 @@ module.exports = providersList => {
         "Blueberries",
         "Almendra",
         "Vainilla",
-        "Sal del himalaya"
+        "Sal del himalaya",
       ],
-      photo: "barrarandano.jpg"
+      photo: "barrarandano.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -118,15 +119,15 @@ module.exports = providersList => {
         salePrice: 171,
         latestPurchasePrice: 165,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
       description: "Ayuda a quemar la grasa",
       dose: "Tomar dos capsulas por la mañana y 2 por la tarde",
       ingredients: ["Extracto de guaraná", "L-Carnitina", "Ginseng"],
-      photo: "hippercuts.jpg"
+      photo: "hippercuts.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -141,8 +142,8 @@ module.exports = providersList => {
         salePrice: 169,
         latestPurchasePrice: 150,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -151,7 +152,7 @@ module.exports = providersList => {
       dose:
         "Tomar 30 g diluído en agua por las mañanas y antes de realizar ejercicio",
       ingredients: ["Carbohidratos semicomplejos y simples"],
-      photo: "carbopure.jpg"
+      photo: "carbopure.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -166,8 +167,8 @@ module.exports = providersList => {
         salePrice: 15,
         latestPurchasePrice: 8,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -180,9 +181,9 @@ module.exports = providersList => {
         "Tila",
         "Toronjiles",
         "Damiana",
-        "Zapote blanco"
+        "Zapote blanco",
       ],
-      photo: "gotasmevale.jpg"
+      photo: "gotasmevale.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -197,8 +198,8 @@ module.exports = providersList => {
         salePrice: 186,
         latestPurchasePrice: 175,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -209,9 +210,9 @@ module.exports = providersList => {
         "Salvadora",
         "Estafiate",
         "Laurel",
-        "Sauce"
+        "Sauce",
       ],
-      photo: "altapress.jpg"
+      photo: "altapress.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -226,8 +227,8 @@ module.exports = providersList => {
         salePrice: 36,
         latestPurchasePrice: 43,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -238,9 +239,9 @@ module.exports = providersList => {
         "Pasiflorina",
         "Damiana de California",
         "Valeriana",
-        "Flor de Tila"
+        "Flor de Tila",
       ],
-      photo: "pasiflorina.jpg"
+      photo: "pasiflorina.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -255,8 +256,8 @@ module.exports = providersList => {
         salePrice: 106,
         latestPurchasePrice: 90,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -267,9 +268,9 @@ module.exports = providersList => {
         "Ácido glutámico",
         "Lecitina de soya",
         "Fósforo",
-        "Ácido Fólico"
+        "Ácido Fólico",
       ],
-      photo: "acidGlutam.jpg"
+      photo: "acidGlutam.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -284,8 +285,8 @@ module.exports = providersList => {
         salePrice: 133,
         latestPurchasePrice: 105,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -293,7 +294,7 @@ module.exports = providersList => {
         "Intensifica el rendimiento físico y mental y es auxiliar en retardar el envejecimiento celular",
       dose: "Una ampolleta al día",
       ingredients: ["Vitaminas y Minerales", "Ácido glutámico", "Jalea Real"],
-      photo: "neurocerebryl.jpg"
+      photo: "neurocerebryl.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -308,8 +309,8 @@ module.exports = providersList => {
         salePrice: 130,
         latestPurchasePrice: 95,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -321,9 +322,9 @@ module.exports = providersList => {
         "Glicerofosfato de Sodio",
         "Glicerofosfato de calcio",
         "Ácido Fosfórico",
-        "Vitamina B"
+        "Vitamina B",
       ],
-      photo: "vitacebrol.jpg"
+      photo: "vitacebrol.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -338,8 +339,8 @@ module.exports = providersList => {
         salePrice: 77,
         latestPurchasePrice: 50,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -348,7 +349,7 @@ module.exports = providersList => {
       dose:
         "Colocar los palitos de bambú dentro del frasco y dejar absorber el aroma durante 10 minutos, posteriormente voltear los palitos",
       ingredients: ["Agua", "Extracto alcohólico de coco"],
-      photo: "aromatizante.jpg"
+      photo: "aromatizante.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -363,8 +364,8 @@ module.exports = providersList => {
         salePrice: 85,
         latestPurchasePrice: 50,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -373,7 +374,7 @@ module.exports = providersList => {
       dose:
         "Diluir en aceite o crema de preferencia para uso tópico. Uso en difusor",
       ingredients: ["Aceite concentrado natural de melisa"],
-      photo: "acemelisa.jpg"
+      photo: "acemelisa.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -388,8 +389,8 @@ module.exports = providersList => {
         salePrice: 186,
         latestPurchasePrice: 150,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -398,7 +399,7 @@ module.exports = providersList => {
       dose:
         "Con un difusor o quemador, añadir de 2 a 3 gotas del aceite esencial de romero e inhalar",
       ingredients: ["Aceite de oliva extra virgen", "Romero"],
-      photo: "romeroaceite.jpg"
+      photo: "romeroaceite.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -413,8 +414,8 @@ module.exports = providersList => {
         salePrice: 71.5,
         latestPurchasePrice: 50,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -427,9 +428,9 @@ module.exports = providersList => {
         "Citronella",
         "Eucalipto",
         "Menta",
-        "Árnica"
+        "Árnica",
       ],
-      photo: "jengibre.jpg"
+      photo: "jengibre.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -444,8 +445,8 @@ module.exports = providersList => {
         salePrice: 59,
         latestPurchasePrice: 45,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -454,7 +455,7 @@ module.exports = providersList => {
       dose:
         "Tomar dps capsulas por la mañana y por la noche, de preferencia acompañado de alimentos",
       ingredients: ["Raíz de tejocote Craetaegus mexicana"],
-      photo: "raiz.jpg"
+      photo: "raiz.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -469,15 +470,15 @@ module.exports = providersList => {
         salePrice: 79,
         latestPurchasePrice: 55,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
       description: "Facilita la pérdida de peso",
       dose: "Tomar una capsula antes del desayuno y una antes de la cena",
       ingredients: ["Cetonas de frambuesa"],
-      photo: "cetonas.jpg"
+      photo: "cetonas.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -492,8 +493,8 @@ module.exports = providersList => {
         salePrice: 94,
         latestPurchasePrice: 70,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -501,7 +502,7 @@ module.exports = providersList => {
         "Auxiliar en tratamiento de estreñimiento, sistema digestivo y para control de peso",
       dose: "Máxima seis al dia, 2 por cada alimento",
       ingredients: ["Raíz de Nopal", "Raíz de Toronja"],
-      photo: "raiznopal.jpg"
+      photo: "raiznopal.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -516,8 +517,8 @@ module.exports = providersList => {
         salePrice: 26,
         latestPurchasePrice: 15,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -529,9 +530,9 @@ module.exports = providersList => {
         "Extracto de Toronja",
         "Extracto de Limón",
         "Algas Marinas",
-        "Eucalipto"
+        "Eucalipto",
       ],
-      photo: "mangoaf.jpg"
+      photo: "mangoaf.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -546,8 +547,8 @@ module.exports = providersList => {
         salePrice: 205,
         latestPurchasePrice: 170,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -559,9 +560,9 @@ module.exports = providersList => {
         "Jamaica",
         "Té Verde",
         "Manzana",
-        "Vitaminas y Minerales"
+        "Vitaminas y Minerales",
       ],
-      photo: "pinalife.jpg"
+      photo: "pinalife.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -576,15 +577,15 @@ module.exports = providersList => {
         salePrice: 193,
         latestPurchasePrice: 160,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
       description: "Auxiliar en la regularización de las hormonas",
       dose: "Tomar una tableta al día",
       ingredients: ["Fennel", "Sativa", "Kelp", "Ortiga", "Zarzaparrilla"],
-      photo: "bsfm.jpg"
+      photo: "bsfm.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -599,8 +600,8 @@ module.exports = providersList => {
         salePrice: 137,
         latestPurchasePrice: 98,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -612,9 +613,9 @@ module.exports = providersList => {
         "Extracto de Tribulus Terrestris",
         "Maca root",
         "Damiana",
-        "Ácido abscórbico"
+        "Ácido abscórbico",
       ],
-      photo: "alpha.jpg"
+      photo: "alpha.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -629,8 +630,8 @@ module.exports = providersList => {
         salePrice: 196,
         latestPurchasePrice: 165,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -638,7 +639,7 @@ module.exports = providersList => {
         "Auxiliar en la regularización de las hormonas y a incrementar rápidamente el tamaño del busto",
       dose: "Tomar una tableta al día",
       ingredients: ["Fennel", "Fenogreco", "Kelp", "Zarzaparrilla", "Ortiga"],
-      photo: "bsfw.jpg"
+      photo: "bsfw.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -653,8 +654,8 @@ module.exports = providersList => {
         salePrice: 81,
         latestPurchasePrice: 56,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -662,7 +663,7 @@ module.exports = providersList => {
         "Auxiliar en el control de la desinflamación y el dolor producido por golpes, esguinces y torceduras",
       dose: "Tomar 2 capsulas antes de cada alimento",
       ingredients: ["Árnica"],
-      photo: "arnica.jpg"
+      photo: "arnica.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -677,8 +678,8 @@ module.exports = providersList => {
         salePrice: 28,
         latestPurchasePrice: 15,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -686,7 +687,7 @@ module.exports = providersList => {
         "Es un tratamiento alternativo con propiedades antiinflamatorias, humectantes, regeneradoras y suavizantes",
       dose: "Se aplica con leves masajes sobre el área deseada",
       ingredients: ["Extracto de Manzana", "Vaselina", "Polvo de Sulfatiazol"],
-      photo: "pomada.jpg"
+      photo: "pomada.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -701,8 +702,8 @@ module.exports = providersList => {
         salePrice: 86,
         latestPurchasePrice: 60,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -714,9 +715,9 @@ module.exports = providersList => {
         "Cloruro de Magnesio",
         "Carbómero",
         "Agua demineralizada",
-        "Mentol"
+        "Mentol",
       ],
-      photo: "cloruromag.jpg"
+      photo: "cloruromag.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -731,8 +732,8 @@ module.exports = providersList => {
         salePrice: 267,
         latestPurchasePrice: 225,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -740,7 +741,7 @@ module.exports = providersList => {
         "Auxiliar en el tratamiento de enfermedades cardiovasculares",
       dose: "Tomar una capsula antes de cada alimento",
       ingredients: ["Aceite de Omega 3 Salmón"],
-      photo: "omega3.jpg"
+      photo: "omega3.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -755,8 +756,8 @@ module.exports = providersList => {
         salePrice: 235,
         latestPurchasePrice: 195,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -767,9 +768,9 @@ module.exports = providersList => {
         "Aceite de Omega 3",
         "Agua purificada",
         "Grenetina",
-        "Metil Parabeno"
+        "Metil Parabeno",
       ],
-      photo: "aceitekrill.jpg"
+      photo: "aceitekrill.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -784,8 +785,8 @@ module.exports = providersList => {
         salePrice: 58,
         latestPurchasePrice: 35,
         discount: {
-          hasDiscount: false
-        }
+          hasDiscount: false,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -793,7 +794,7 @@ module.exports = providersList => {
         "Auxiliar para reducir el colesterol malo y los triglicéridos y regular la coagulación de la sangre",
       dose: "Tomar dos capsulas antes de cada alimento, tres veces al día",
       ingredients: ["Chía"],
-      photo: "chia.jpg"
+      photo: "chia.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -810,8 +811,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 5,
-          newPrice: 79.8
-        }
+          newPrice: 79.8,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -820,7 +821,7 @@ module.exports = providersList => {
       dose:
         "Tomar una capsula cada 12 horas o en caso de ser necesario una antes de cada alimento",
       ingredients: ["Omega 3", "Quinoa", "Hierba de Sapo"],
-      photo: "kolestril.jpg"
+      photo: "kolestril.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -837,8 +838,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 15,
-          newPrice: 170
-        }
+          newPrice: 170,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -846,7 +847,7 @@ module.exports = providersList => {
         "Auxiliar en el tratamiento del sobrepeso y la obesidad, así como para la disminución del colesterol",
       dose: "Tomar dos capsulas con cada alimento",
       ingredients: ["Lecitina de Soya"],
-      photo: "lecitina.jpg"
+      photo: "lecitina.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -863,15 +864,15 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 10,
-          newPrice: 93.6
-        }
+          newPrice: 93.6,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
       description: "Suplemento multivitamínico",
       dose: "Tomar 2 tabletas antes de cada alimento",
       ingredients: ["Alfalfa", "Miel de Abeja"],
-      photo: "neoalfalfa.jpg"
+      photo: "neoalfalfa.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -888,8 +889,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 5,
-          newPrice: 179.5
-        }
+          newPrice: 179.5,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -899,9 +900,9 @@ module.exports = providersList => {
       ingredients: [
         "Raíz de panax ginseng",
         "Polvo de epimedium brevicomun",
-        "Polvo de semilla de rapharus sativus"
+        "Polvo de semilla de rapharus sativus",
       ],
-      photo: "sensualtea.jpg"
+      photo: "sensualtea.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -918,8 +919,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 20,
-          newPrice: 191.2
-        }
+          newPrice: 191.2,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -931,9 +932,9 @@ module.exports = providersList => {
         "Carbonato de Calcio",
         "Cloruro de Magnesio",
         "Colágeno Hidrolizado",
-        "Óxido de Zinc"
+        "Óxido de Zinc",
       ],
-      photo: "womenplenna.jpg"
+      photo: "womenplenna.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -950,8 +951,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 15,
-          newPrice: 203.15
-        }
+          newPrice: 203.15,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -963,9 +964,9 @@ module.exports = providersList => {
         "Almidón de Maíz",
         "Sulfato de Glucosamina",
         "Colágeno hidrolizado",
-        "Cloruro de Magnesio"
+        "Cloruro de Magnesio",
       ],
-      photo: "mensilver.jpg"
+      photo: "mensilver.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -982,8 +983,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 10,
-          newPrice: 77.4
-        }
+          newPrice: 77.4,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -991,7 +992,7 @@ module.exports = providersList => {
         "Auxiliar en el tratamiento para el estrés, depresión, nerviosismo e insomnio",
       dose: "Tomar 2 tabletas antes de cada alimento",
       ingredients: ["Valeriana", "Lúpulo", "Pasionaria", "Tila"],
-      photo: "valenox.jpg"
+      photo: "valenox.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -1008,15 +1009,15 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 10,
-          newPrice: 60.3
-        }
+          newPrice: 60.3,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
       description: "Auxiliar en el tratamiento de la circulación sanguínea",
       dose: "Tomar dos capsulas con los alimentos",
       ingredients: ["Ginkgo"],
-      photo: "ginkgo.jpg"
+      photo: "ginkgo.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -1033,15 +1034,15 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 15,
-          newPrice: 96.05
-        }
+          newPrice: 96.05,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
       description: "Purifica la sangre y refresca el aparato circulatorio",
       dose: "Tomar dos tabletas antes de cada alimento",
       ingredients: ["Ajo deshidratado"],
-      photo: "ajorey.jpg"
+      photo: "ajorey.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -1058,8 +1059,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 15,
-          newPrice: 89.25
-        }
+          newPrice: 89.25,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -1067,7 +1068,7 @@ module.exports = providersList => {
         "Auxiliar para personas que padecen alguna enfermedad cardiovascular y enfermedades de articulaciones",
       dose: "Tomar dos capsulas 3 veces al día con los alimentos",
       ingredients: ["Aceite de hígado de tiburón", "Bht antioxidantes"],
-      photo: "higtiburon.jpg"
+      photo: "higtiburon.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -1084,15 +1085,15 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 15,
-          newPrice: 78.2
-        }
+          newPrice: 78.2,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
       description: "Auxiliar en el tratamiento de la hipertensión arterial",
       dose: "Tomar 20 gotas diluidas en ¼ de vaso de agua 3 veces al día",
       ingredients: ["Zapote Blanco", "Hojas de Olivo"],
-      photo: "zapotebco.jpg"
+      photo: "zapotebco.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -1109,8 +1110,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 25,
-          newPrice: 87
-        }
+          newPrice: 87,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -1118,7 +1119,7 @@ module.exports = providersList => {
         "Auxiliar en el tratamiento de trastornos circulatorios, digestivos y de arteriosclerosis",
       dose: "Tomar de una a dos tabletas al día",
       ingredients: ["Extracto de Ajo Deodorizado", "Excipiente CBP"],
-      photo: "ajodeo.jpg"
+      photo: "ajodeo.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -1135,8 +1136,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 20,
-          newPrice: 213.6
-        }
+          newPrice: 213.6,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -1144,7 +1145,7 @@ module.exports = providersList => {
         "Auxiliar en el control de los niveles adecuados de colesterol y triglicéridos",
       dose: "Tomar dos capsulas antes de cada alimento",
       ingredients: ["Aceite de Salmón", "Aceite de Lino", "Aceite de Olivo"],
-      photo: "triomega.jpg"
+      photo: "triomega.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -1161,8 +1162,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 10,
-          newPrice: 594.9
-        }
+          newPrice: 594.9,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -1170,7 +1171,7 @@ module.exports = providersList => {
         "Coadyuvante en tratamiento de trastornos cardiovasculares con alto compromiso oxidativo",
       dose: "Mayores de 15 años, dos capsulas al día",
       ingredients: ["Omega 5", "Ácido Punícico"],
-      photo: "omega5.jpg"
+      photo: "omega5.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -1187,8 +1188,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 5,
-          newPrice: 364.5
-        }
+          newPrice: 364.5,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -1196,7 +1197,7 @@ module.exports = providersList => {
         "Coadyuvante en tratamiento de trastornos cardiovasculares con alto compromiso oxidativo",
       dose: "Mayores de 15 años, dos capsulas al día",
       ingredients: ["Omega 5", "Ácido Punícico"],
-      photo: "omega530.jpg"
+      photo: "omega530.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -1213,8 +1214,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 5,
-          newPrice: 30.6
-        }
+          newPrice: 30.6,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -1226,9 +1227,9 @@ module.exports = providersList => {
         "Garcinia Cambogia",
         "Lecitina de Soya",
         "Bromelina",
-        "Nopal y Sábila"
+        "Nopal y Sábila",
       ],
-      photo: "semillabrasil.jpg"
+      photo: "semillabrasil.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -1245,8 +1246,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 15,
-          newPrice: 93.95
-        }
+          newPrice: 93.95,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -1256,9 +1257,9 @@ module.exports = providersList => {
         "En caso de nerviosismo tomar de una a dos tabletas 3 veces al día; para ayudar a conciliar el sueño tomar dos a tres tabletas una hora antes de acostarse",
       ingredients: [
         "Extracto de seco de Valeriana Officinalis",
-        "Extracto de seco de Pasiflora Incamata"
+        "Extracto de seco de Pasiflora Incamata",
       ],
-      photo: "taflavix.jpg"
+      photo: "taflavix.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -1275,8 +1276,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 15,
-          newPrice: 38.2
-        }
+          newPrice: 38.2,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -1285,7 +1286,7 @@ module.exports = providersList => {
       dose:
         "Aplíquese una capa delgada en el área afectada recomendablemente cada 6 horas",
       ingredients: ["Extracto de Árnica", "Extracto de Hamamelis Virginiana"],
-      photo: "arnidol.jpg"
+      photo: "arnidol.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -1302,8 +1303,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 15,
-          newPrice: 59.5
-        }
+          newPrice: 59.5,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -1311,7 +1312,7 @@ module.exports = providersList => {
         "Ayuda a reducir el dolor e inflamación en músculos y articulaciones ya que posee propiedades analgésicas y antiinflamatorias",
       dose: "Aplicar la pomada frotando suavemente sobre la piel",
       ingredients: ["Alcanfor", "Mentol", "Aceite de Clavo", "Aceite de Menta"],
-      photo: "balsamo.jpg"
+      photo: "balsamo.jpg",
     },
     {
       provider: providersList[Math.floor(Math.random() * 5)],
@@ -1328,8 +1329,8 @@ module.exports = providersList => {
         discount: {
           hasDiscount: true,
           percentage: 20,
-          newPrice: 67.2
-        }
+          newPrice: 67.2,
+        },
       },
       stock: Math.floor(Math.random() * 10),
       priority: Math.round(Math.random()),
@@ -1337,17 +1338,22 @@ module.exports = providersList => {
         "Favorecedor de la circulación, ayudando a reducir problemas en los músculos y las articulaciones",
       dose: "Diluir 10 gotas en un vaso de 250 ml de agua, 2 veces al día",
       ingredients: ["Ajo Negro"],
-      photo: "ajonegro.jpg"
-    }
+      photo: "ajonegro.jpg",
+    },
   ];
 
   return models.Product.remove({})
     .then(() => models.Product.insertMany(products))
-    .then(() => {
+    .then((prods) => {
       console.log(">products added");
-      process.exit(0);
+      const productsForSales = prods.reduce((acc, cv) => {
+        acc.push({ _id: cv._id, name: cv.name, salePrice: cv.price.salePrice });
+        return acc;
+      }, []);
+      // insert sales
+      insertSales(productsForSales);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       process.exit(1);
     });
