@@ -46,7 +46,8 @@ router.get("/favorites/:clientId", (req, res) => {
 // fetchOrders()
 // matches with /api/client/orders/:clientId
 router.get("/orders/:clientId", (req, res) => {
-  model.Sale.find({ "buyer._id": req.params.clientId })
+  model.Sale.find({ "buyer.clientId": req.params.clientId })
+    .sort({ saleDate: -1 })
     .then((data) => res.json(data))
     .catch((err) => {
       console.log("@error", err);
