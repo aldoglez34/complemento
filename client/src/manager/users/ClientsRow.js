@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Form, Col } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
+import APIManager from "../../utils/APIManager";
 const moment = require("moment");
 
 const ClientsRow = React.memo(({ client }) => {
@@ -9,6 +10,21 @@ const ClientsRow = React.memo(({ client }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [purchases, setPurchases] = useState();
+
+  useEffect(() => {
+    APIManager.fetchSalesByClient(client._id)
+      .then((res) => setPurchases(res.data))
+      .catch((err) => {
+        console.log(err.response);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert(
+              "Ocurrió un error al cargar las compras que ha realizado este cliente."
+            );
+      });
+  }, []);
 
   const printFavorites = () => {
     let text = [];
@@ -39,12 +55,16 @@ const ClientsRow = React.memo(({ client }) => {
           <Formik
             initialValues={{
               _id: client._id,
-              name: client.name,
-              firstSurname: client.firstSurname,
+              name:
+                client.name +
+                " " +
+                client.firstSurname +
+                " " +
+                client.secondSurname,
               email: client.email,
               phone: client.phone,
               favorites: printFavorites(),
-              createdAt: client.createdAt,
+              createdAt: formatDate(client.createdAt),
             }}
           >
             {({ values, handleChange, handleBlur, handleSubmit }) => (
@@ -60,20 +80,6 @@ const ClientsRow = React.memo(({ client }) => {
                       type="text"
                       name="name"
                       value={values.name}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </Form.Group>
-                </Form.Row>
-                {/* firstSurname */}
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>Apellido paterno</Form.Label>
-                    <Form.Control
-                      disabled
-                      type="text"
-                      name="firstSurname"
-                      value={values.firstSurname}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
@@ -121,6 +127,22 @@ const ClientsRow = React.memo(({ client }) => {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* purchases
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>Compras</Form.Label>
+                    <Form.Control
+                      disabled
+                      as="textarea"
+                      rows="5"
+                      type="text"
+                      name="favorites"
+                      value={values.favorites}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                </Form.Row> */}
                 {/* favorites */}
                 <Form.Row>
                   <Form.Group as={Col}>

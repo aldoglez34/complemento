@@ -53,10 +53,14 @@ export default {
   },
 
   // ---------------------------------------------------------------------------
-  // USERS
+  // CLIENTS & MANAGERS
   // ---------------------------------------------------------------------------
 
   mngr_fetchClients: function () {
+    return axios.get("/managerapi/users/clients/all");
+  },
+
+  mngr_fetchSalesByClient: function (clientId) {
     return axios.get("/managerapi/users/clients/all");
   },
 
