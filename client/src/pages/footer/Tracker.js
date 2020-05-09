@@ -13,6 +13,7 @@ import Layout from "../../components/Layout";
 import Slide from "react-reveal/Slide";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
+import HelpButton from "../../components/helpbutton/HelpButton";
 const moment = require("moment");
 
 const Tracker = React.memo(() => {
@@ -244,6 +245,8 @@ const Tracker = React.memo(() => {
             </div>
           </Slide>
         ) : null}
+
+        <HelpButton />
       </Container>
     </Layout>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Image } from "react-bootstrap";
 import Layout from "../../components/Layout";
+import HelpButton from "../../components/helpbutton/HelpButton";
 
 const About = React.memo(() => {
   return (
@@ -25,6 +26,8 @@ const About = React.memo(() => {
           alimenticios, remedios herbolarios, medicina alternativa y productos
           para el cuidado personal.
         </p>
+
+        <HelpButton />
       </Container>
     </Layout>
   );

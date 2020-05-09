@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Image } from "react-bootstrap";
 import Layout from "../../components/Layout";
+import HelpButton from "../../components/helpbutton/HelpButton";
 
 const FAQ = React.memo(() => {
   return (
@@ -56,6 +57,8 @@ const FAQ = React.memo(() => {
           Tu pago sera verificado y al ser confirmado se procedera a el envio
           del mismo
         </p>
+
+        <HelpButton />
       </Container>
     </Layout>
   );

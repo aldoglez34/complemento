@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Image } from "react-bootstrap";
 import Layout from "../../components/Layout";
+import HelpButton from "../../components/helpbutton/HelpButton";
 
 const Payment = React.memo(() => {
   return (
@@ -45,6 +46,8 @@ const Payment = React.memo(() => {
           Curabitur elementum, mi at ullamcorper aliquam, eros purus vulputate
           nisi, quis posuere augue diam eu mi.
         </p>
+
+        <HelpButton />
       </Container>
     </Layout>
   );
