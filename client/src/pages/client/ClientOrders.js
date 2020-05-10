@@ -33,7 +33,7 @@ const ClientOrders = React.memo(() => {
 
   const formatDate = (date) => {
     let convertedDate = moment(moment(date).format(moment.HTML5_FMT.DATE));
-    return convertedDate.format("DD/MMMM/YYYY");
+    return convertedDate.format("DD/MM/YY");
   };
 
   return (
@@ -52,6 +52,12 @@ const ClientOrders = React.memo(() => {
                         <div className="d-flex flex-column">
                           <strong>Estatus</strong>
                           <strong className="text-success">{o.status}</strong>
+                        </div>
+                        <div className="d-flex flex-column ml-4">
+                          <strong>Fecha</strong>
+                          <strong className="text-success">
+                            {formatDate(o.saleDate)}
+                          </strong>
                         </div>
                         <div className="d-flex flex-column ml-4">
                           <strong>Total</strong>

@@ -13,7 +13,7 @@ const CategoryContent = React.memo(({ title }) => {
             <Card.Title>
               <h1>$0</h1>
             </Card.Title>
-            <Card.Text>Pesos vendidos el último mes.</Card.Text>
+            <Card.Text>Gasté.</Card.Text>
           </Card.Body>
         </Card>
         <Card bg="light">
@@ -21,7 +21,7 @@ const CategoryContent = React.memo(({ title }) => {
             <Card.Title>
               <h1>$5,000</h1>
             </Card.Title>
-            <Card.Text>Pesos vendidos la última semana.</Card.Text>
+            <Card.Text>Gané.</Card.Text>
           </Card.Body>
         </Card>
         <Card bg="light">
@@ -29,7 +29,7 @@ const CategoryContent = React.memo(({ title }) => {
             <Card.Title>
               <h1>$50,000</h1>
             </Card.Title>
-            <Card.Text>Pesos vendidos el último mes.</Card.Text>
+            <Card.Text>Utilidad.</Card.Text>
           </Card.Body>
         </Card>
       </CardGroup>

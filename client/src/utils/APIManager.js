@@ -61,7 +61,7 @@ export default {
   },
 
   mngr_fetchSalesByClient: function (clientId) {
-    return axios.get("/managerapi/users/clients/all");
+    return axios.get("/managerapi/users/clients/sales/" + clientId);
   },
 
   mngr_fetchManagers: function () {

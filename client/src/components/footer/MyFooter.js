@@ -59,7 +59,7 @@ const MyFooter = React.memo(() => {
 
       <Container className="d-flex flex-row justify-content-center py-1 mt-4 text-light">
         <span
-          style={{ color: "#f3d084", fontFamily: "Lobster", fontSize: "16px" }}
+          style={{ color: "gray", fontFamily: "Lobster", fontSize: "16px" }}
         >
           Tu Complemento
           <i className="fas fa-leaf ml-1" />

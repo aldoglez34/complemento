@@ -7,7 +7,7 @@ const LeftNav = React.memo(function LeftNav(props) {
       <h2
         className="text-center mt-3 mb-4"
         style={{
-          color: "#ffe486",
+          color: "#edbc58",
           fontFamily: "'Lobster', cursive",
         }}
       >

@@ -9,7 +9,7 @@ router.get("/report", function (req, res) {
     .sort({ category: 1 })
     .collation({ locale: "es" })
     .distinct("category")
-    .then((data) => res.json(data))
+    .then((data) => res.json(data.sort()))
     .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
