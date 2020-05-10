@@ -143,7 +143,10 @@ const LoginDropdown = ({ firebase }) => {
           )}
         </Formik>
         <hr />
-        <Dropdown.Item className="navbarDropdownItemStyle px-3" href="/">
+        <Dropdown.Item
+          className="navbarDropdownItemStyle px-3"
+          href="/forgotpassword"
+        >
           ¿Olvidaste tu contraseña?
         </Dropdown.Item>
         <Dropdown.Item className="navbarDropdownItemStyle px-3" href="/signup">
