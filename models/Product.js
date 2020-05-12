@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
+  active: {
+    type: Boolean,
+    required: true,
+  },
   provider: {
     type: Schema.Types.ObjectId,
     ref: "Provider",
@@ -55,6 +59,8 @@ const ProductSchema = new Schema({
         type: Boolean,
         required: true,
       },
+      startDate: Date,
+      endDate: Date,
       percentage: Number,
       newPrice: Number,
     },

@@ -91,11 +91,6 @@ $activeItem: #f3d084;
   }
 }
 
-// rows
-.rowStyle {
-  cursor: pointer;
-}
-
 // filters
 .filterBttnManager {
   background-color: #117a8b;
@@ -127,7 +122,16 @@ $activeItem: #f3d084;
 // modals
 .managerTitleModal {
   color: #464646 !important;
-  // font-family: "Open Sans", sans-serif;
-  // font-weight: bolder;
   margin-bottom: 8px;
+}
+
+// checkbox (switch)
+.custom-control-label:before {
+  background-color: red;
+  border-color: red;
+}
+
+.custom-control .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: teal;
+  border-color: teal;
 }

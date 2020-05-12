@@ -13,6 +13,7 @@ router.get("/all", function (req, res) {
       let clean = products.reduce((acc, cv) => {
         acc.push({
           _id: cv._id,
+          active: cv.active,
           name: cv.name,
           cleanName: cv.name.normalize("NFD").replace(/[\u0300-\u036f]/g, ""),
           price: cv.price,
@@ -141,6 +142,36 @@ router.post("/products/new", function (req, res) {
   //     console.log("@error", err);
   //     res.status(422).send({ msg: "Ocurrió un error" });
   //   });
+});
+
+// mngr_activateProduct()
+// matches with /apimanager/products/active/:productId
+router.put("/products/activate/:productId", function (req, res) {
+  console.log("activando!!!!");
+  const { productId } = req.body;
+  model.Product.findByIdAndUpdate(productId, {
+    active: true,
+  })
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
+});
+
+// mngr_desactivateProduct()
+// matches with /apimanager/products/active/:productId
+router.put("/products/desactivate/:productId", function (req, res) {
+  console.log("desactivando!!!!");
+  const { productId } = req.body;
+  model.Product.findByIdAndUpdate(productId, {
+    active: false,
+  })
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 module.exports = router;

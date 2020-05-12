@@ -28,6 +28,14 @@ export default {
     return axios.post("/managerapi/products/new", product);
   },
 
+  mngr_activateProduct: function (productId) {
+    return axios.put("/managerapi/products/activate" + productId);
+  },
+
+  mngr_desactivateProduct: function (productId) {
+    return axios.put("/managerapi/products/desactivate", productId);
+  },
+
   // ---------------------------------------------------------------------------
   // CATEGORIES
   // ---------------------------------------------------------------------------

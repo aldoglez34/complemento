@@ -3,7 +3,7 @@ import { Button, Modal, Form, Col, InputGroup, Badge } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-// import APIManager from "../../utils/APIManager";
+import APIManager from "../../utils/APIManager";
 
 const ProductRow = React.memo(({ product, categories }) => {
   const [show, setshow] = useState(false);
@@ -53,9 +53,48 @@ const ProductRow = React.memo(({ product, categories }) => {
       : null;
   };
 
+  const handleChange = (isActive, productId) => {
+    if (isActive) {
+      APIManager.mngr_desactivateProduct(productId)
+        .then((res) => alert("El producto ha sido desactivado."))
+        .catch((err) => {
+          console.log(err.response);
+          err.response.data.msg
+            ? alert(err.response.data.msg)
+            : alert("Ocurrió un error al desactivar el producto.");
+        });
+    } else {
+      APIManager.mngr_activateProduct(productId)
+        .then((res) => alert("El producto ha sido activado."))
+        .catch((err) => {
+          console.log(err.response);
+          err.response.data.msg
+            ? alert(err.response.data.msg)
+            : alert("Ocurrió un error al activar el producto.");
+        });
+    }
+  };
+
   return (
     <>
-      <tr onClick={handleShow} className="rowStyle">
+      <tr>
+        {/* active */}
+        <td className="text-center">
+          <div className="custom-control custom-switch">
+            <input
+              type="checkbox"
+              onChange={() => handleChange(product.active, product._id)}
+              className="custom-control-input checkboxStyle"
+              id={product._id}
+              defaultChecked={product.active ? true : false}
+            />
+            <label
+              className="custom-control-label"
+              htmlFor={product._id}
+              style={{ cursor: "pointer" }}
+            />
+          </div>
+        </td>
         {/* name */}
         <td>
           {product.name}
@@ -81,6 +120,18 @@ const ProductRow = React.memo(({ product, categories }) => {
         <td className="text-right">{product.unitsSold}</td>
         {/* stock */}
         <td className="text-right">{product.stock}</td>
+        {/* edit */}
+        <td className="text-center">
+          <Button
+            variant="info"
+            size="sm"
+            title="Editar"
+            className="ml-3"
+            onClick={handleShow}
+          >
+            <i className="fas fa-pen" />
+          </Button>
+        </td>
       </tr>
 
       <Modal show={show} onHide={handleClose} size="lg">

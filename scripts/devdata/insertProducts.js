@@ -4,6 +4,7 @@ const insertSales = require("./insertSales");
 module.exports = (providersList) => {
   const products = [
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
@@ -29,6 +30,7 @@ module.exports = (providersList) => {
       photo: "cartilago.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
@@ -52,6 +54,7 @@ module.exports = (providersList) => {
       photo: "glutamina.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
@@ -76,6 +79,7 @@ module.exports = (providersList) => {
       photo: "bcaas.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
@@ -107,6 +111,7 @@ module.exports = (providersList) => {
       photo: "barrarandano.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
@@ -130,6 +135,7 @@ module.exports = (providersList) => {
       photo: "hippercuts.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
@@ -155,6 +161,7 @@ module.exports = (providersList) => {
       photo: "carbopure.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Antiestrés",
@@ -186,6 +193,7 @@ module.exports = (providersList) => {
       photo: "gotasmevale.jpg",
     },
     {
+      active: false,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Antiestrés",
@@ -215,6 +223,7 @@ module.exports = (providersList) => {
       photo: "altapress.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Antiestrés",
@@ -244,6 +253,7 @@ module.exports = (providersList) => {
       photo: "pasiflorina.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
@@ -273,6 +283,7 @@ module.exports = (providersList) => {
       photo: "acidGlutam.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
@@ -297,6 +308,7 @@ module.exports = (providersList) => {
       photo: "neurocerebryl.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
@@ -327,6 +339,7 @@ module.exports = (providersList) => {
       photo: "vitacebrol.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Insomnio",
@@ -352,6 +365,7 @@ module.exports = (providersList) => {
       photo: "aromatizante.jpg",
     },
     {
+      active: false,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Insomnio",
@@ -377,6 +391,7 @@ module.exports = (providersList) => {
       photo: "acemelisa.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Insomnio",
@@ -402,6 +417,7 @@ module.exports = (providersList) => {
       photo: "romeroaceite.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Pérdida y Control de Peso",
@@ -433,6 +449,7 @@ module.exports = (providersList) => {
       photo: "jengibre.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Pérdida y Control de Peso",
@@ -458,6 +475,7 @@ module.exports = (providersList) => {
       photo: "raiz.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Pérdida y Control de Peso",
@@ -481,6 +499,7 @@ module.exports = (providersList) => {
       photo: "cetonas.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Pérdida y Control de Peso",
@@ -505,6 +524,7 @@ module.exports = (providersList) => {
       photo: "raiznopal.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Pérdida y Control de Peso",
@@ -535,6 +555,7 @@ module.exports = (providersList) => {
       photo: "mangoaf.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Pérdida y Control de Peso",
@@ -565,6 +586,7 @@ module.exports = (providersList) => {
       photo: "pinalife.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Salud Sexual",
@@ -588,6 +610,7 @@ module.exports = (providersList) => {
       photo: "bsfm.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Salud Sexual",
@@ -618,6 +641,7 @@ module.exports = (providersList) => {
       photo: "alpha.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Salud Sexual",
@@ -642,6 +666,7 @@ module.exports = (providersList) => {
       photo: "bsfw.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Desinflamatorios",
@@ -666,6 +691,7 @@ module.exports = (providersList) => {
       photo: "arnica.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Desinflamatorios",
@@ -690,6 +716,7 @@ module.exports = (providersList) => {
       photo: "pomada.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Desinflamatorios",
@@ -720,6 +747,7 @@ module.exports = (providersList) => {
       photo: "cloruromag.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
@@ -744,6 +772,7 @@ module.exports = (providersList) => {
       photo: "omega3.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
@@ -773,6 +802,7 @@ module.exports = (providersList) => {
       photo: "aceitekrill.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
@@ -797,6 +827,7 @@ module.exports = (providersList) => {
       photo: "chia.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
@@ -810,6 +841,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 55,
         discount: {
           hasDiscount: true,
+          startDate: "2020-05-04",
+          endDate: "2020-05-13",
           percentage: 5,
           newPrice: 79.8,
         },
@@ -824,6 +857,7 @@ module.exports = (providersList) => {
       photo: "kolestril.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
@@ -837,6 +871,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 150,
         discount: {
           hasDiscount: true,
+          startDate: "2020-05-05",
+          endDate: "2020-05-12",
           percentage: 15,
           newPrice: 170,
         },
@@ -850,6 +886,7 @@ module.exports = (providersList) => {
       photo: "lecitina.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
@@ -863,6 +900,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 70,
         discount: {
           hasDiscount: true,
+          startDate: "2020-05-06",
+          endDate: "2020-05-13",
           percentage: 10,
           newPrice: 93.6,
         },
@@ -875,6 +914,7 @@ module.exports = (providersList) => {
       photo: "neoalfalfa.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Salud Sexual",
@@ -888,6 +928,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 145,
         discount: {
           hasDiscount: true,
+          startDate: "2020-05-05",
+          endDate: "2020-05-20",
           percentage: 5,
           newPrice: 179.5,
         },
@@ -905,6 +947,7 @@ module.exports = (providersList) => {
       photo: "sensualtea.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
@@ -918,6 +961,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 140,
         discount: {
           hasDiscount: true,
+          startDate: "2020-05-11",
+          endDate: "2020-05-30",
           percentage: 20,
           newPrice: 191.2,
         },
@@ -937,6 +982,7 @@ module.exports = (providersList) => {
       photo: "womenplenna.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Nutrición Deportiva",
@@ -950,6 +996,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 150,
         discount: {
           hasDiscount: true,
+          startDate: "2020-05-15",
+          endDate: "2020-05-20",
           percentage: 15,
           newPrice: 203.15,
         },
@@ -969,6 +1017,7 @@ module.exports = (providersList) => {
       photo: "mensilver.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Antiestrés",
@@ -982,6 +1031,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 50,
         discount: {
           hasDiscount: true,
+          startDate: "2020-05-15",
+          endDate: "2020-05-18",
           percentage: 10,
           newPrice: 77.4,
         },
@@ -995,6 +1046,7 @@ module.exports = (providersList) => {
       photo: "valenox.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
@@ -1008,6 +1060,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 40,
         discount: {
           hasDiscount: true,
+          startDate: "2020-05-15",
+          endDate: "2020-05-22",
           percentage: 10,
           newPrice: 60.3,
         },
@@ -1020,6 +1074,7 @@ module.exports = (providersList) => {
       photo: "ginkgo.jpg",
     },
     {
+      active: false,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Sistema Circulatorio",
@@ -1033,6 +1088,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 75,
         discount: {
           hasDiscount: true,
+          startDate: "2020-05-20",
+          endDate: "2020-05-25",
           percentage: 15,
           newPrice: 96.05,
         },
@@ -1045,6 +1102,7 @@ module.exports = (providersList) => {
       photo: "ajorey.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Sistema Circulatorio",
@@ -1058,6 +1116,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 60,
         discount: {
           hasDiscount: true,
+          startDate: "2020-06-01",
+          endDate: "2020-06-03",
           percentage: 15,
           newPrice: 89.25,
         },
@@ -1071,6 +1131,7 @@ module.exports = (providersList) => {
       photo: "higtiburon.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Sistema Circulatorio",
@@ -1084,6 +1145,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 78,
         discount: {
           hasDiscount: true,
+          startDate: "2020-06-01",
+          endDate: "2020-06-05",
           percentage: 15,
           newPrice: 78.2,
         },
@@ -1096,6 +1159,7 @@ module.exports = (providersList) => {
       photo: "zapotebco.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Sistema Circulatorio",
@@ -1109,6 +1173,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 60,
         discount: {
           hasDiscount: true,
+          startDate: "2020-06-02",
+          endDate: "2020-06-07",
           percentage: 25,
           newPrice: 87,
         },
@@ -1122,6 +1188,7 @@ module.exports = (providersList) => {
       photo: "ajodeo.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Colesterol",
@@ -1135,6 +1202,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 205,
         discount: {
           hasDiscount: true,
+          startDate: "2020-06-05",
+          endDate: "2020-06-10",
           percentage: 20,
           newPrice: 213.6,
         },
@@ -1148,6 +1217,7 @@ module.exports = (providersList) => {
       photo: "triomega.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
@@ -1161,6 +1231,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 570,
         discount: {
           hasDiscount: true,
+          startDate: "2020-06-07",
+          endDate: "2020-06-10",
           percentage: 10,
           newPrice: 594.9,
         },
@@ -1174,6 +1246,7 @@ module.exports = (providersList) => {
       photo: "omega5.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Cerebro y Memoria",
@@ -1187,6 +1260,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 330,
         discount: {
           hasDiscount: true,
+          startDate: "2020-06-09",
+          endDate: "2020-06-13",
           percentage: 5,
           newPrice: 364.5,
         },
@@ -1200,6 +1275,7 @@ module.exports = (providersList) => {
       photo: "omega530.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Pérdida y Control de Peso",
@@ -1213,6 +1289,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 20,
         discount: {
           hasDiscount: true,
+          startDate: "2020-06-20",
+          endDate: "2020-06-22",
           percentage: 5,
           newPrice: 30.6,
         },
@@ -1232,6 +1310,7 @@ module.exports = (providersList) => {
       photo: "semillabrasil.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Antiestrés",
@@ -1245,6 +1324,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 80,
         discount: {
           hasDiscount: true,
+          startDate: "2020-06-15",
+          endDate: "2020-06-20",
           percentage: 15,
           newPrice: 93.95,
         },
@@ -1262,6 +1343,7 @@ module.exports = (providersList) => {
       photo: "taflavix.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Desinflamatorios",
@@ -1275,6 +1357,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 30,
         discount: {
           hasDiscount: true,
+          startDate: "2020-07-01",
+          endDate: "2020-07-03",
           percentage: 15,
           newPrice: 38.2,
         },
@@ -1289,6 +1373,7 @@ module.exports = (providersList) => {
       photo: "arnidol.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Desinflamatorios",
@@ -1302,6 +1387,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 55,
         discount: {
           hasDiscount: true,
+          startDate: "2020-07-02",
+          endDate: "2020-07-05",
           percentage: 15,
           newPrice: 59.5,
         },
@@ -1315,6 +1402,7 @@ module.exports = (providersList) => {
       photo: "balsamo.jpg",
     },
     {
+      active: true,
       provider: providersList[Math.floor(Math.random() * 5)],
       unitsSold: Math.floor(Math.random() * 10),
       category: "Desinflamatorios",
@@ -1328,6 +1416,8 @@ module.exports = (providersList) => {
         latestPurchasePrice: 50,
         discount: {
           hasDiscount: true,
+          startDate: "2020-08-01",
+          endDate: "2020-08-03",
           percentage: 20,
           newPrice: 67.2,
         },

@@ -161,12 +161,14 @@ const Products = React.memo(() => {
             >
               <thead>
                 <tr>
+                  <th className="text-center border-0">Activo</th>
                   <th className="text-center border-0">Nombre</th>
                   <th className="text-center border-0">Categoría</th>
                   <th className="text-center border-0">Proveedor</th>
                   <th className="text-center border-0">PrecioVenta</th>
                   <th className="text-center border-0">Vendidos</th>
                   <th className="text-center border-0">Existencia</th>
+                  <th className="text-center border-0"></th>
                 </tr>
               </thead>
               <tbody>

@@ -26,6 +26,7 @@ router.get("/products/:cartStr", function (req, res) {
   const { cartObjs, idsOnly } = generateArrays(req.params.cartStr);
   // consult list of ids in mongodb
   model.Product.find()
+    .where({ active: true })
     .select("name price stock photo")
     .where("_id")
     .in(idsOnly)

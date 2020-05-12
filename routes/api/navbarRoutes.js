@@ -6,6 +6,7 @@ const model = require("../../models");
 router.get("/searchbar/names", function (req, res) {
   let data = {};
   model.Product.find({})
+    .where({ active: true })
     .select("name")
     .sort({ name: 1 })
     .collation({ locale: "es" })
@@ -53,6 +54,7 @@ router.get("/searchbar/names", function (req, res) {
 // matches with /api/navbar/dropdown/store
 router.get("/dropdown/store", function (req, res) {
   model.Product.aggregate([
+    { $match: { active: true } },
     {
       $group: {
         _id: "$category",
@@ -70,6 +72,7 @@ router.get("/dropdown/store", function (req, res) {
       },
     },
   ])
+    // .where({ active: true })
     .collation({ locale: "es" })
     .then((data) => res.json(data))
     .catch((err) => {
