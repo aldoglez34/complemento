@@ -55,7 +55,7 @@ const ProductRow = React.memo(({ product, categories }) => {
 
   const handleChange = (isActive, productId) => {
     if (isActive) {
-      APIManager.mngr_desactivateProduct(productId)
+      APIManager.mngr_deactivateProduct(productId)
         .then((res) => alert("El producto ha sido desactivado."))
         .catch((err) => {
           console.log(err.response);

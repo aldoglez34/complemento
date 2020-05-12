@@ -4,6 +4,7 @@ export default {
   // ---------------------------------------------------------------------------
   // HOME
   // ---------------------------------------------------------------------------
+
   mngr_fetchManagerByUID: function (uid) {
     return axios.get("/managerapi/home/login/" + uid);
   },
@@ -28,12 +29,14 @@ export default {
     return axios.post("/managerapi/products/new", product);
   },
 
+  // activation
+
   mngr_activateProduct: function (productId) {
-    return axios.put("/managerapi/products/activate" + productId);
+    return axios.put("/managerapi/products/activate/" + productId);
   },
 
-  mngr_desactivateProduct: function (productId) {
-    return axios.put("/managerapi/products/desactivate", productId);
+  mngr_deactivateProduct: function (productId) {
+    return axios.put("/managerapi/products/deactivate/" + productId);
   },
 
   // ---------------------------------------------------------------------------

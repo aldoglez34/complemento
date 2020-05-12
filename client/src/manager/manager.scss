@@ -127,8 +127,8 @@ $activeItem: #f3d084;
 
 // checkbox (switch)
 .custom-control-label:before {
-  background-color: red;
-  border-color: red;
+  background-color: gainsboro;
+  border-color: gainsboro;
 }
 
 .custom-control .custom-control-input:checked ~ .custom-control-label::before {

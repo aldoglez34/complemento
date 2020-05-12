@@ -59,7 +59,7 @@ router.get("/categories/all", function (req, res) {
 // mngr_updateProduct()
 // matches with /managerapi/products/update
 router.put("/products/update", function (req, res) {
-  // get data frmo body
+  // get data from body
   const {
     _id,
     name,
@@ -145,10 +145,9 @@ router.post("/products/new", function (req, res) {
 });
 
 // mngr_activateProduct()
-// matches with /apimanager/products/active/:productId
-router.put("/products/activate/:productId", function (req, res) {
-  console.log("activando!!!!");
-  const { productId } = req.body;
+// matches with /managerapi/products/activate/:productId
+router.put("/activate/:productId", function (req, res) {
+  const { productId } = req.params;
   model.Product.findByIdAndUpdate(productId, {
     active: true,
   })
@@ -159,11 +158,10 @@ router.put("/products/activate/:productId", function (req, res) {
     });
 });
 
-// mngr_desactivateProduct()
-// matches with /apimanager/products/active/:productId
-router.put("/products/desactivate/:productId", function (req, res) {
-  console.log("desactivando!!!!");
-  const { productId } = req.body;
+// mngr_deactivateProduct()
+// matches with /managerapi/products/deactivate/:productId
+router.put("/deactivate/:productId", function (req, res) {
+  const { productId } = req.params;
   model.Product.findByIdAndUpdate(productId, {
     active: false,
   })

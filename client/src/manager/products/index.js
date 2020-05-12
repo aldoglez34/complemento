@@ -70,6 +70,15 @@ const Products = React.memo(() => {
             : products.filter((product) => product.priority)
         );
         break;
+      case "inactives":
+        document.getElementById("searchProducts").reset();
+        setFilter(criteria === filter ? null : criteria);
+        setFiltered(
+          criteria === filter
+            ? products
+            : products.filter((product) => !product.active)
+        );
+        break;
       default:
         document.getElementById("searchProducts").reset();
         setFiltered(products);
@@ -82,8 +91,18 @@ const Products = React.memo(() => {
         {/* filters */}
         <Button
           disabled={products ? false : true}
-          active={filter === "discounts" ? true : false}
+          active={filter === "inactives" ? true : false}
           className="filterBttnManager shadow-sm"
+          title="Destacados"
+          onClick={() => filterProducts("inactives")}
+        >
+          <i className="fas fa-minus-circle mr-1" />
+          Inactivos
+        </Button>
+        <Button
+          disabled={products ? false : true}
+          active={filter === "discounts" ? true : false}
+          className="filterBttnManager ml-2 shadow-sm"
           title="Descuentos"
           onClick={() => filterProducts("discounts")}
         >
