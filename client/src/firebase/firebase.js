@@ -52,20 +52,30 @@ class Firebase {
       );
   };
 
-  _signInWithEmailAndPassword = (email, password, rememberMe) => {
+  _signInWithEmailAndPassword = (role, email, password, rememberMe) => {
     const firebase = require("firebase/app");
-    this.auth
-      .setPersistence(
-        rememberMe
-          ? firebase.auth.Auth.Persistence.LOCAL
-          : firebase.auth.Auth.Persistence.SESSION
-      )
-      .then(() => this.auth.signInWithEmailAndPassword(email, password))
-      .catch(() =>
-        alert(
-          "Ocurrió un error al intentar iniciar sesión. Verifica tus datos y vuelve a intentarlo."
-        )
-      );
+
+    switch (role) {
+      case "Client":
+        this.auth
+          .setPersistence(
+            rememberMe
+              ? firebase.auth.Auth.Persistence.LOCAL
+              : firebase.auth.Auth.Persistence.SESSION
+          )
+          .then(() => this.auth.signInWithEmailAndPassword(email, password))
+          .catch(() =>
+            alert(
+              "Ocurrió un error al intentar iniciar sesión. Verifica tus datos y vuelve a intentarlo."
+            )
+          );
+        break;
+      case "Manager":
+        // code block
+        break;
+      default:
+      // code block
+    }
   };
 
   _signOut = () => this.auth.signOut();
