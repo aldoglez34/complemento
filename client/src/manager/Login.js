@@ -2,9 +2,11 @@ import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-import { withFirebase } from "../firebase";
+import firebase from "../../../firebase/firebase";
+import fbApp from "firebase/app";
+import APIManager from "../utils/APIManager";
 
-const Login = ({ firebase }) => {
+const Login = () => {
   const loginSchema = yup.object({
     email: yup.string().email("Formato inválido").required("Requerido"),
     password: yup.string().min(6, "Longitud incorrecta").required("Requerido"),
@@ -38,11 +40,7 @@ const Login = ({ firebase }) => {
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               //////// login ////////
-              firebase._signInWithEmailAndPassword(
-                values.email,
-                values.password,
-                false
-              );
+              // APIManager.
               setSubmitting(false);
             }}
           >
@@ -123,4 +121,4 @@ const Login = ({ firebase }) => {
   );
 };
 
-export default withFirebase(Login);
+export default Login;

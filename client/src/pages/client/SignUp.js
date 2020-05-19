@@ -3,9 +3,8 @@ import { Container, Col, Form, Button } from "react-bootstrap";
 import Layout from "../../components/Layout";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
-import { withFirebase } from "../../firebase";
 
-const SignUp = ({ firebase }) => {
+const SignUp = () => {
   const yupSchema = yup.object({
     clientName: yup
       .string()
@@ -67,11 +66,11 @@ const SignUp = ({ firebase }) => {
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
             //////// signup ////////
-            firebase._createUserWithEmailAndPassword(
-              values.email,
-              values.password,
-              values
-            );
+            // firebase._createUserWithEmailAndPassword(
+            //   values.email,
+            //   values.password,
+            //   values
+            // );
           }}
         >
           {({
@@ -265,4 +264,4 @@ const SignUp = ({ firebase }) => {
   );
 };
 
-export default withFirebase(SignUp);
+export default SignUp;

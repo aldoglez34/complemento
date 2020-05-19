@@ -9,10 +9,16 @@ import {
   Modal,
 } from "react-bootstrap";
 import * as yup from "yup";
+import { useDispatch } from "react-redux";
+import * as clientActions from "../../../redux/actions/user";
 import { Formik, ErrorMessage } from "formik";
-import { withFirebase } from "../../../firebase";
+import firebase from "../../../firebase/firebase";
+import fbApp from "firebase/app";
+import API from "../../../utils/API";
 
-const LoginDropdown = ({ firebase }) => {
+const LoginDropdown = () => {
+  const dispatch = useDispatch();
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -54,13 +60,46 @@ const LoginDropdown = ({ firebase }) => {
           validationSchema={loginSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
+            console.log("entrnado al onSubmit");
             //////// login ////////
-            firebase._signInWithEmailAndPassword(
-              "Client",
-              values.email,
-              values.password,
-              values.rememberme
-            );
+            firebase
+              .auth()
+              .setPersistence(
+                values.rememberme
+                  ? fbApp.auth.Auth.Persistence.SESSION
+                  : fbApp.auth.Auth.Persistence.LOCAL
+              )
+              .then(() => {
+                return firebase
+                  .auth()
+                  .signInWithEmailAndPassword(values.email, values.password)
+                  .then((res) => {
+                    // if anything goes wrong from here, logout the user in firebase
+                    API.fetchClientByUID(res.user.uid)
+                      .then((res) => {
+                        if (res.data) {
+                          dispatch(clientActions.loginClient(res.data));
+                          alert(`Iniciaste sesión con éxito, ${res.data.name}`);
+                          window.location.href = "/";
+                        }
+                      })
+                      .catch((error) => {
+                        alert(
+                          "Ocurrió un error al iniciar sesión, vuelve a intentarlo."
+                        );
+                        console.log(error);
+                        setSubmitting(false);
+                      });
+                  });
+              })
+              .catch((error) => {
+                alert(
+                  "Ocurrió un error al iniciar sesión, vuelve a intentarlo."
+                );
+                console.log(error.code);
+                console.log(error.message);
+                setSubmitting(false);
+              });
             setSubmitting(false);
           }}
         >
@@ -203,4 +242,4 @@ const LoginDropdown = ({ firebase }) => {
   );
 };
 
-export default withFirebase(LoginDropdown);
+export default LoginDropdown;

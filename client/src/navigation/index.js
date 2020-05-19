@@ -4,18 +4,20 @@ import ClientNavigation from "./ClientNavigation";
 import ManagerNavigation from "./ManagerNavigation";
 import { AuthUserContext } from "../session";
 
-const Navigation = () => (
+const Navigation = React.memo(() => (
   <AuthUserContext.Consumer>
-    {(authUser) =>
-      authUser === "Guest" ? (
+    {(navigation) => {
+      console.log("@navigation", navigation);
+
+      return navigation === "Guest" ? (
         <GuestNavigation />
-      ) : authUser === "Client" ? (
+      ) : navigation === "Client" ? (
         <ClientNavigation />
-      ) : authUser === "Manager" ? (
+      ) : navigation === "Manager" ? (
         <ManagerNavigation />
-      ) : null
-    }
+      ) : null;
+    }}
   </AuthUserContext.Consumer>
-);
+));
 
 export default Navigation;

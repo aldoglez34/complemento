@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Navigation from "./navigation";
-import { withAuthentication } from "./session";
+import { withNavigation } from "./session";
 
 const App = () => {
   return (
@@ -11,4 +11,4 @@ const App = () => {
   );
 };
 
-export default withAuthentication(App);
+export default withNavigation(App);

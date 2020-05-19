@@ -1,7 +1,4 @@
-import API from "../utils/API";
-
-// firebase app
-import app from "firebase/app";
+import fbApp from "firebase/app";
 import "firebase/auth";
 
 const config = {
@@ -14,75 +11,4 @@ const config = {
   appId: process.env.REACT_APP_APP_ID,
 };
 
-class Firebase {
-  constructor() {
-    // console.log("~ INTENTO 1");
-    // console.log("process.env.NODE_ENV", process.env.NODE_ENV);
-    // console.log("config", config);
-
-    app.initializeApp(config);
-
-    this.auth = app.auth();
-  }
-
-  //////// auth api ////////
-  _createUserWithEmailAndPassword = (email, password, values) => {
-    this.auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((u) => {
-        // set client type
-        u.user.updateProfile({
-          displayName: "Client",
-        });
-        // add client to db
-        values.firebaseUID = u.user.uid;
-        API.newClient(values)
-          .then(() => (window.location.href = "/"))
-          .catch((err) => {
-            console.log(err.response);
-            err.response.data.msg
-              ? alert(err.response.data.msg)
-              : alert("Ocurrió un error al crear nuevo cliente en la BD.");
-          });
-      })
-      .catch(() =>
-        alert(
-          "Ocurrió un error al intentar iniciar sesión. Verifica tus datos y vuelve a intentarlo."
-        )
-      );
-  };
-
-  _signInWithEmailAndPassword = (role, email, password, rememberMe) => {
-    const firebase = require("firebase/app");
-
-    switch (role) {
-      case "Client":
-        this.auth
-          .setPersistence(
-            rememberMe
-              ? firebase.auth.Auth.Persistence.LOCAL
-              : firebase.auth.Auth.Persistence.SESSION
-          )
-          .then(() => this.auth.signInWithEmailAndPassword(email, password))
-          .catch(() =>
-            alert(
-              "Ocurrió un error al intentar iniciar sesión. Verifica tus datos y vuelve a intentarlo."
-            )
-          );
-        break;
-      case "Manager":
-        // code block
-        break;
-      default:
-      // code block
-    }
-  };
-
-  _signOut = () => this.auth.signOut();
-
-  _passwordReset = (email) => this.auth.sendPasswordResetEmail(email);
-  _passwordUpdate = (password) =>
-    this.auth.currentUser.updatePassword(password);
-}
-
-export default Firebase;
+export default fbApp.initializeApp(config);

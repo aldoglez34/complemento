@@ -1,9 +1,8 @@
 import React from "react";
 import { Dropdown, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { withFirebase } from "../../firebase";
 
-const ManagerDropdown = React.memo(({ firebase }) => {
+const ManagerDropdown = React.memo(() => {
   const manager = useSelector((state) => state.user);
 
   return (
@@ -33,7 +32,7 @@ const ManagerDropdown = React.memo(({ firebase }) => {
         <Button
           className="mt-3 shadow-sm"
           variant="warning"
-          onClick={firebase._signOut}
+          // onClick={firebase._signOut}
         >
           Cerrar sesión
         </Button>
@@ -42,4 +41,4 @@ const ManagerDropdown = React.memo(({ firebase }) => {
   );
 });
 
-export default withFirebase(ManagerDropdown);
+export default ManagerDropdown;

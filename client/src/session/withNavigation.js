@@ -1,28 +1,34 @@
 import React from "react";
 import AuthUserContext from "./context";
-import { withFirebase } from "../firebase";
 import { connect } from "react-redux";
 import API from "../utils/API";
 import APIManager from "../utils/APIManager";
 import { loginClient, logoutUser } from "../redux/actions/user";
+import firebase from "../firebase/firebase";
 
 // higher order component
-const withAuthentication = (Component) => {
-  class WithAuthentication extends React.Component {
+const withNavigation = (Component) => {
+  class WithNavigation extends React.Component {
     state = {
-      authUser: null,
+      navigation: null,
     };
 
     componentDidMount() {
-      this.listener = this.props.firebase.auth.onAuthStateChanged((authUser) =>
-        authUser
-          ? this.setState({ authUser: authUser.displayName }, () =>
-              this.signInRedux(authUser.uid)
-            )
-          : this.setState({ authUser: "Guest" }, () =>
-              this.props.user !== null ? this.props.logoutUser() : null
-            )
-      );
+      firebase.auth().onAuthStateChanged((fbUser) => {
+        console.log("fbUser", fbUser);
+
+        fbUser
+          ? this.setState({ navigation: fbUser.displayName })
+          : this.setState({ navigation: "Guest" });
+      });
+    }
+
+    render() {
+      return this.state.navigation ? (
+        <AuthUserContext.Provider value={this.state.navigation}>
+          <Component {...this.props} />
+        </AuthUserContext.Provider>
+      ) : null;
     }
 
     signInRedux(uid) {
@@ -67,14 +73,6 @@ const withAuthentication = (Component) => {
     componentWillUnmount() {
       this.listener();
     }
-
-    render() {
-      return this.state.authUser ? (
-        <AuthUserContext.Provider value={this.state.authUser}>
-          <Component {...this.props} />
-        </AuthUserContext.Provider>
-      ) : null;
-    }
   }
 
   const mapStateToProps = (state) => {
@@ -88,10 +86,7 @@ const withAuthentication = (Component) => {
     logoutUser,
   };
 
-  return connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(withFirebase(WithAuthentication));
+  return connect(mapStateToProps, mapDispatchToProps)(WithNavigation);
 };
 
-export default withAuthentication;
+export default withNavigation;
