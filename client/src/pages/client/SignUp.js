@@ -3,6 +3,7 @@ import { Container, Col, Form, Button } from "react-bootstrap";
 import Layout from "../../components/Layout";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
+import firebase from "../../firebase/firebase";
 
 const SignUp = () => {
   const yupSchema = yup.object({
