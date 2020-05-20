@@ -1,15 +1,31 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Dropdown, Nav, NavItem, Modal, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { withFirebase } from "../../../firebase";
+import firebase from "../../../firebase/firebase";
+import * as clientActions from "../../../redux/actions/user";
 
-const ClientDropdown = ({ firebase }) => {
+const ClientDropdown = () => {
+  const dispatch = useDispatch();
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const client = useSelector((state) => state.user);
+
+  const logout = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        dispatch(clientActions.logoutUser());
+        alert("¡Adiós!");
+        // window.location.href = "/";
+      })
+      .catch((error) => console.log(error));
+  };
 
   const content = (type) => {
     return (
@@ -61,7 +77,7 @@ const ClientDropdown = ({ firebase }) => {
         <Dropdown.Divider className="mt-1 mb-2" />
         <Dropdown.Item
           className="navbarDropdownItemStyle px-3"
-          onClick={firebase._signOut}
+          onClick={logout}
         >
           Cerrar sesión
         </Dropdown.Item>
@@ -85,7 +101,7 @@ const ClientDropdown = ({ firebase }) => {
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Body className="px-0 py-2 bg-light">
-            {content("modal", firebase)}
+            {content("modal")}
           </Modal.Body>
         </Modal>
       </div>
@@ -107,7 +123,7 @@ const ClientDropdown = ({ firebase }) => {
             data-display="static"
             id="dropdownMenuLG"
           >
-            {content("dropdown", firebase)}
+            {content("dropdown")}
           </Dropdown.Menu>
         </Dropdown>
       </div>
@@ -115,4 +131,4 @@ const ClientDropdown = ({ firebase }) => {
   );
 };
 
-export default withFirebase(ClientDropdown);
+export default ClientDropdown;

@@ -1,4 +1,4 @@
 import AuthUserContext from "./context";
-import withAuthentication from "./withAuthentication";
+import withNavigation from "./withNavigation";
 
-export { AuthUserContext, withAuthentication };
+export { AuthUserContext, withNavigation };

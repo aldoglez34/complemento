@@ -2,9 +2,15 @@ import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-import { withFirebase } from "../firebase";
+import firebase from "../firebase/firebase";
+import fbApp from "firebase/app";
+import APIManager from "../utils/APIManager";
+import * as managerActions from "../redux/actions/user";
+import { useDispatch } from "react-redux";
 
-const Login = ({ firebase }) => {
+const Login = () => {
+  const dispatch = useDispatch();
+
   const loginSchema = yup.object({
     email: yup.string().email("Formato inválido").required("Requerido"),
     password: yup.string().min(6, "Longitud incorrecta").required("Requerido"),
@@ -38,11 +44,42 @@ const Login = ({ firebase }) => {
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               //////// login ////////
-              firebase._signInWithEmailAndPassword(
-                values.email,
-                values.password,
-                false
-              );
+              firebase
+                .auth()
+                .setPersistence(fbApp.auth.Auth.Persistence.SESSION)
+                .then(() => {
+                  return firebase
+                    .auth()
+                    .signInWithEmailAndPassword(values.email, values.password)
+                    .then((res) => {
+                      // if anything goes wrong from here, logout the user in firebase
+                      APIManager.mngr_fetchManagerByUID(res.user.uid)
+                        .then((res) => {
+                          if (res.data) {
+                            dispatch(managerActions.loginManager(res.data));
+                            alert(
+                              `Iniciaste sesión con éxito, ${res.data.name}`
+                            );
+                            // window.location.href = "/manager/dashboard";
+                          }
+                        })
+                        .catch((error) => {
+                          alert(
+                            "Ocurrió un error al iniciar sesión, vuelve a intentarlo."
+                          );
+                          console.log(error);
+                          setSubmitting(false);
+                        });
+                    });
+                })
+                .catch((error) => {
+                  alert(
+                    "Ocurrió un error al iniciar sesión, vuelve a intentarlo."
+                  );
+                  console.log(error.code);
+                  console.log(error.message);
+                  setSubmitting(false);
+                });
               setSubmitting(false);
             }}
           >
@@ -123,4 +160,4 @@ const Login = ({ firebase }) => {
   );
 };
 
-export default withFirebase(Login);
+export default Login;

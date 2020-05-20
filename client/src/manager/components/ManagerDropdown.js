@@ -1,10 +1,26 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Dropdown, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { withFirebase } from "../../firebase";
+import firebase from "../../firebase/firebase";
+import * as managerActions from "../../redux/actions/user";
 
-const ManagerDropdown = React.memo(({ firebase }) => {
+const ManagerDropdown = React.memo(() => {
+  const dispatch = useDispatch();
+
   const manager = useSelector((state) => state.user);
+
+  const logout = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        alert("¡Adiós!");
+        dispatch(managerActions.logoutUser());
+        // window.location.href = "/manager";
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <Dropdown>
@@ -30,11 +46,7 @@ const ManagerDropdown = React.memo(({ firebase }) => {
           <i className="fas fa-at mr-2" />
           <span>{manager.email}</span>
         </div>
-        <Button
-          className="mt-3 shadow-sm"
-          variant="warning"
-          onClick={firebase._signOut}
-        >
+        <Button className="mt-3 shadow-sm" variant="warning" onClick={logout}>
           Cerrar sesión
         </Button>
       </Dropdown.Menu>
@@ -42,4 +54,4 @@ const ManagerDropdown = React.memo(({ firebase }) => {
   );
 });
 
-export default withFirebase(ManagerDropdown);
+export default ManagerDropdown;
