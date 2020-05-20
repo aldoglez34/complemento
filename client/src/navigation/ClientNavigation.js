@@ -5,7 +5,6 @@ import Store from "../pages/store/Store";
 import ProductDetails from "../pages/productDetails/ProductDetails";
 import Cart from "../pages/cart";
 import Checkout from "../pages/checkout/Checkout";
-import ForgotPassword from "../pages/client/ForgotPassword";
 import NoMatch from "../pages/NoMatch";
 import Login from "../manager/Login";
 // footer
@@ -52,7 +51,6 @@ const ClientNavigation = () => {
       />
       <Route exact path="/cart" component={Cart} />
       <Route exact path="/checkout" component={Checkout} />
-      <Route exact path="/forgotpassword" component={ForgotPassword} />
       {/* footer */}
       <Route exact path="/terms" component={Terms} />
       <Route exact path="/faq" component={FAQ} />
