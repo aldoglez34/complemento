@@ -6,17 +6,15 @@ import { AuthUserContext } from "../session";
 
 const Navigation = React.memo(() => (
   <AuthUserContext.Consumer>
-    {(navigation) => {
-      console.log("@navigation", navigation);
-
-      return navigation === "Guest" ? (
+    {(navigation) =>
+      navigation === "Guest" ? (
         <GuestNavigation />
       ) : navigation === "Client" ? (
         <ClientNavigation />
       ) : navigation === "Manager" ? (
         <ManagerNavigation />
-      ) : null;
-    }}
+      ) : null
+    }
   </AuthUserContext.Consumer>
 ));
 

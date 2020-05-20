@@ -5,7 +5,7 @@ import * as yup from "yup";
 import firebase from "../firebase/firebase";
 import fbApp from "firebase/app";
 import APIManager from "../utils/APIManager";
-import * as managerActions from "../redux/actions/manager";
+import * as managerActions from "../redux/actions/user";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
@@ -60,7 +60,7 @@ const Login = () => {
                             alert(
                               `Iniciaste sesión con éxito, ${res.data.name}`
                             );
-                            window.location.href = "/dashboard";
+                            // window.location.href = "/manager/dashboard";
                           }
                         })
                         .catch((error) => {
