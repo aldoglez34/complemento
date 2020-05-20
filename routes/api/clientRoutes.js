@@ -58,6 +58,7 @@ router.get("/orders/:clientId", (req, res) => {
 // newClient()
 // matches with /api/client/new
 router.post("/new", function (req, res) {
+  console.log(req.body);
   model.Client.create({
     firebaseUID: req.body.firebaseUID,
     name: req.body.clientName,
