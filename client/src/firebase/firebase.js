@@ -11,8 +11,8 @@ const config = {
   appId: process.env.REACT_APP_APP_ID,
 };
 
-console.log("~ INTENTO 1");
-console.log("process.env.NODE_ENV", process.env.NODE_ENV);
-console.log("config", config);
+// console.log("~ INTENTO 1");
+// console.log("process.env.NODE_ENV", process.env.NODE_ENV);
+// console.log("config", config);
 
 export default fbApp.initializeApp(config);
