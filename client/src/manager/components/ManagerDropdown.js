@@ -15,9 +15,9 @@ const ManagerDropdown = React.memo(() => {
       .auth()
       .signOut()
       .then(() => {
-        alert("¡Adiós!");
+        alert("¡Adiós, vuelve pronto!");
         dispatch(managerActions.logoutUser());
-        // window.location.href = "/manager";
+        window.location.href = "/manager";
       })
       .catch((error) => console.log(error));
   };
