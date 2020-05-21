@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Layout from "../../components/Layout";
-import { Container, Spinner, ListGroup, Card } from "react-bootstrap";
+import { Container, Spinner, ListGroup, Card, Row, Col } from "react-bootstrap";
 import API from "../../utils/API";
-const moment = require("moment");
+import moment from "moment";
 
 const ClientOrders = React.memo(() => {
   const client = useSelector((state) => state.user);
@@ -48,28 +48,32 @@ const ClientOrders = React.memo(() => {
                 return (
                   <Card className="mb-3" key={o._id}>
                     <Card.Header>
-                      <div className="d-flex flex-row">
-                        <div className="d-flex flex-column">
-                          <strong>Estatus</strong>
+                      <Row>
+                        <Col>
+                          <span>Estatus</span>
+                          <br />
                           <strong className="text-success">{o.status}</strong>
-                        </div>
-                        <div className="d-flex flex-column ml-4">
-                          <strong>Fecha</strong>
-                          <strong className="text-success">
+                        </Col>
+                        <Col>
+                          <span>Fecha</span>
+                          <br />
+                          <strong className="text-dark">
                             {formatDate(o.saleDate)}
                           </strong>
-                        </div>
-                        <div className="d-flex flex-column ml-4">
-                          <strong>Total</strong>
+                        </Col>
+                        <Col>
+                          <span>Total</span>
+                          <br />
                           <strong className="text-danger">
                             {formatNumber(o.grandTotal)}
                           </strong>
-                        </div>
-                        <div className="d-flex flex-column ml-auto">
-                          <strong>Código</strong>
-                          <strong className="text-success">{o._id}</strong>
-                        </div>
-                      </div>
+                        </Col>
+                        <Col className="mt-3 mt-md-0">
+                          <span>Código</span>
+                          <br />
+                          <strong className="text-dark">{o._id}</strong>
+                        </Col>
+                      </Row>
                     </Card.Header>
                     <ListGroup variant="flush">
                       {o.products.map((p) => (

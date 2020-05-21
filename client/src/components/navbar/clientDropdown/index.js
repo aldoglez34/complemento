@@ -21,7 +21,7 @@ const ClientDropdown = () => {
       .signOut()
       .then(() => {
         dispatch(clientActions.logoutUser());
-        alert("¡Adiós!");
+        alert("¡Adiós, vuelve pronto!");
         // window.location.href = "/";
       })
       .catch((error) => console.log(error));

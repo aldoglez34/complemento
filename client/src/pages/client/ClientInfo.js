@@ -43,16 +43,15 @@ const ClientInfo = React.memo(() => {
       .matches(/^[0-9]*$/, "Sólo números")
       .length(10, "La longitud exacta debe ser 10 dígitos")
       .required("Requerido"),
-    street: yup.string().required("Requerido"),
-    neighborhood: yup.string().required("Requerido"),
-    municipality: yup.string().required("Requerido"),
-    city: yup.string().required("Requerido"),
-    state: yup.string().required("Requerido"),
+    street: yup.string(),
+    neighborhood: yup.string(),
+    municipality: yup.string(),
+    city: yup.string(),
+    state: yup.string(),
     zipCode: yup
       .string()
       .matches(/^[0-9]*$/, "Sólo números")
-      .length(5, "La longitud exacta debe ser 5 dígitos")
-      .required("Requerido"),
+      .length(5, "La longitud exacta debe ser 5 dígitos"),
   });
 
   return client ? (
@@ -67,13 +66,13 @@ const ClientInfo = React.memo(() => {
             secondSurname: client.secondSurname,
             phone: client.phone,
             email: client.email,
-            street: client.address.street,
             // address
-            neighborhood: client.address.neighborhood,
-            municipality: client.address.municipality,
-            city: client.address.city,
-            state: client.address.state,
-            zipCode: client.address.zipCode,
+            street: client.address ? client.address.street : "",
+            neighborhood: client.address ? client.address.neighborhood : "",
+            municipality: client.address ? client.address.municipality : "",
+            city: client.address ? client.address.city : "",
+            state: client.address ? client.address.state : "",
+            zipCode: client.address ? client.address.zipCode : "",
           }}
           validationSchema={yupSchema}
           onSubmit={(values, { setSubmitting }) => {
@@ -212,10 +211,7 @@ const ClientInfo = React.memo(() => {
                 {/* <hr /> */}
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
-                    <Form.Label>
-                      Calle con número
-                      <strong className="ml-1 text-danger">*</strong>
-                    </Form.Label>
+                    <Form.Label>Calle con número</Form.Label>
                     <Form.Control
                       maxLength="100"
                       placeholder="Calle con número"
@@ -233,9 +229,7 @@ const ClientInfo = React.memo(() => {
                     />
                   </Form.Group>
                   <Form.Group as={Col} md={3}>
-                    <Form.Label>
-                      Municipio<strong className="ml-1 text-danger">*</strong>
-                    </Form.Label>
+                    <Form.Label>Municipio</Form.Label>
                     <Form.Control
                       maxLength="100"
                       placeholder="Municipio"
@@ -253,9 +247,7 @@ const ClientInfo = React.memo(() => {
                     />
                   </Form.Group>
                   <Form.Group as={Col} md={3}>
-                    <Form.Label>
-                      Colonia<strong className="ml-1 text-danger">*</strong>
-                    </Form.Label>
+                    <Form.Label>Colonia</Form.Label>
                     <Form.Control
                       maxLength="100"
                       placeholder="Colonia"
@@ -275,9 +267,7 @@ const ClientInfo = React.memo(() => {
                 </Form.Row>
                 <Form.Row>
                   <Form.Group as={Col} md={6}>
-                    <Form.Label>
-                      Ciudad<strong className="ml-1 text-danger">*</strong>
-                    </Form.Label>
+                    <Form.Label>Ciudad</Form.Label>
                     <Form.Control
                       maxLength="100"
                       placeholder="Ciudad"
@@ -295,9 +285,7 @@ const ClientInfo = React.memo(() => {
                     />
                   </Form.Group>
                   <Form.Group as={Col} md={3}>
-                    <Form.Label>
-                      Estado<strong className="ml-1 text-danger">*</strong>
-                    </Form.Label>
+                    <Form.Label>Estado</Form.Label>
                     <Form.Control
                       name="state"
                       // value={values.state}
@@ -347,10 +335,7 @@ const ClientInfo = React.memo(() => {
                     </Form.Control>
                   </Form.Group>
                   <Form.Group as={Col} md={3}>
-                    <Form.Label>
-                      Código postal
-                      <strong className="ml-1 text-danger">*</strong>
-                    </Form.Label>
+                    <Form.Label>Código postal</Form.Label>
                     <Form.Control
                       maxLength="5"
                       placeholder="Código postal"

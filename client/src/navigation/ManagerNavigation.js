@@ -6,7 +6,6 @@ import ProductDetails from "../pages/productDetails/ProductDetails";
 import Cart from "../pages/cart";
 import Checkout from "../pages/checkout/Checkout";
 import SignUp from "../pages/client/SignUp";
-import ForgotPassword from "../pages/client/ForgotPassword";
 import NoMatch from "../pages/NoMatch";
 // footer
 import Terms from "../pages/footer/Terms";
@@ -57,7 +56,6 @@ const ManagerNavigation = () => {
       <Route exact path="/cart" component={Cart} />
       <Route exact path="/checkout" component={Checkout} />
       <Route exact path="/signup" component={SignUp} />
-      <Route exact path="/forgotpassword" component={ForgotPassword} />
       {/* footer */}
       <Route exact path="/terms" component={Terms} />
       <Route exact path="/faq" component={FAQ} />

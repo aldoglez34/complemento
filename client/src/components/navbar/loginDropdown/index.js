@@ -60,7 +60,6 @@ const LoginDropdown = () => {
           validationSchema={loginSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            console.log("entrnado al onSubmit");
             //////// login ////////
             firebase
               .auth()
@@ -183,12 +182,6 @@ const LoginDropdown = () => {
           )}
         </Formik>
         <hr />
-        <Dropdown.Item
-          className="navbarDropdownItemStyle px-3"
-          href="/forgotpassword"
-        >
-          ¿Olvidaste tu contraseña?
-        </Dropdown.Item>
         <Dropdown.Item className="navbarDropdownItemStyle px-3" href="/signup">
           <strong>Regístrate con nosotros</strong>
         </Dropdown.Item>
