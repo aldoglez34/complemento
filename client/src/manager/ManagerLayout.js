@@ -6,7 +6,7 @@ import TopHelperNav from "./components/TopHelperNav";
 import "./manager.scss";
 
 const ManagerLayout = React.memo(
-  ({ leftBarActive, backBttn, newBttn, title, children, filters }) => {
+  ({ leftBarActive, backBttn, topBttn, title, children, filters }) => {
     return (
       <div className="d-lg-flex flex-row h-100">
         {/* vertical navbar */}
@@ -14,9 +14,13 @@ const ManagerLayout = React.memo(
         {/* content */}
         <Container id="containerMargin" fluid>
           {/* top nav */}
-          <TopHelperNav backBttn={backBttn} newBttn={newBttn} />
+          <TopHelperNav backBttn={backBttn} topBttn={topBttn} />
           {/* title */}
-          <Container fluid className="pb-2" style={{ backgroundColor: "#264341" }}>
+          <Container
+            fluid
+            className="pb-2"
+            style={{ backgroundColor: "#264341" }}
+          >
             <Row>
               <Col md={8} className="d-flex align-items-center">
                 <h1 className="text-white">{title}</h1>
@@ -45,7 +49,7 @@ ManagerLayout.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   filters: PropTypes.node,
-  newBttn: PropTypes.node,
+  topBttn: PropTypes.node,
 };
 
 export default ManagerLayout;

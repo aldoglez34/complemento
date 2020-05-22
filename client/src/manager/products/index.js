@@ -9,8 +9,8 @@ import {
 } from "react-bootstrap";
 import ManagerLayout from "../ManagerLayout";
 import APIManager from "../../utils/APIManager";
-import ProductRow from "./ProductRow";
-import NewProduct from "./NewProduct";
+import ProductRow from "./components/ProductRow";
+import TopRightBttn from "../components/TopRightBttn";
 
 const Products = React.memo(() => {
   const [products, setProducts] = useState();
@@ -93,7 +93,6 @@ const Products = React.memo(() => {
           disabled={products ? false : true}
           active={filter === "inactives" ? true : false}
           className="filterBttnManager shadow-sm"
-          title="Destacados"
           onClick={() => filterProducts("inactives")}
         >
           <i className="fas fa-minus-circle mr-1" />
@@ -103,7 +102,6 @@ const Products = React.memo(() => {
           disabled={products ? false : true}
           active={filter === "discounts" ? true : false}
           className="filterBttnManager ml-2 shadow-sm"
-          title="Descuentos"
           onClick={() => filterProducts("discounts")}
         >
           <i className="fas fa-tags mr-1" />
@@ -113,7 +111,6 @@ const Products = React.memo(() => {
           disabled={products ? false : true}
           active={filter === "noStock" ? true : false}
           className="filterBttnManager ml-2 shadow-sm"
-          title="Sin existencia"
           onClick={() => filterProducts("noStock")}
         >
           <i className="fas fa-exclamation-triangle mr-1" />
@@ -123,7 +120,6 @@ const Products = React.memo(() => {
           disabled={products ? false : true}
           active={filter === "priority" ? true : false}
           className="filterBttnManager ml-2 shadow-sm"
-          title="Destacados"
           onClick={() => filterProducts("priority")}
         >
           <i className="fas fa-star mr-1" />
@@ -165,29 +161,44 @@ const Products = React.memo(() => {
       leftBarActive="Productos"
       title="Productos"
       filters={filters()}
-      newBttn={<NewProduct />}
+      topBttn={
+        <>
+          <TopRightBttn
+            text={
+              <>
+                <i className="fas fa-plus-square mr-2" />
+                <span>Descuento</span>
+              </>
+            }
+            link="/manager/products/new"
+          />
+          <div className="ml-2" />
+          <TopRightBttn
+            text={
+              <>
+                <i className="fas fa-plus-square mr-2" />
+                <span>Producto</span>
+              </>
+            }
+            link="/manager/products/new"
+          />
+        </>
+      }
     >
       {filtered && categories ? (
         filtered.length ? (
           <>
-            <Table
-              striped
-              hover
-              size="sm"
-              responsive
-              variant="white"
-              className="mt-2"
-            >
+            <Table striped hover size="sm" responsive variant="white">
               <thead>
                 <tr>
-                  <th className="text-center border-0">Activo</th>
-                  <th className="text-center border-0">Nombre</th>
-                  <th className="text-center border-0">Categoría</th>
-                  <th className="text-center border-0">Proveedor</th>
-                  <th className="text-center border-0">PrecioVenta</th>
-                  <th className="text-center border-0">Vendidos</th>
-                  <th className="text-center border-0">Existencia</th>
-                  <th className="text-center border-0"></th>
+                  <th className="text-center border-0 pb-3">Activo</th>
+                  <th className="text-center border-0 pb-3">Nombre</th>
+                  <th className="text-center border-0 pb-3">Categoría</th>
+                  <th className="text-center border-0 pb-3">Proveedor</th>
+                  <th className="text-center border-0 pb-3">PrecioVenta</th>
+                  <th className="text-center border-0 pb-3">Vendidos</th>
+                  <th className="text-center border-0 pb-3">Existencia</th>
+                  <th className="text-center border-0 pb-3"></th>
                 </tr>
               </thead>
               <tbody>

@@ -1,7 +1,6 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Dropdown, Button } from "react-bootstrap";
-import { useSelector } from "react-redux";
 import firebase from "../../firebase/firebase";
 import * as managerActions from "../../redux/actions/user";
 
@@ -24,8 +23,8 @@ const ManagerDropdown = React.memo(() => {
 
   return (
     <Dropdown>
-      <Dropdown.Toggle id="managerTopNavUser" title="Administrador">
-        {manager.name}
+      <Dropdown.Toggle className="managerTopNavUser" title="Administrador">
+        <i className="fas fa-user-cog" />
       </Dropdown.Toggle>
       <Dropdown.Menu
         data-display="static"

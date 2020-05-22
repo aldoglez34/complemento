@@ -3,7 +3,7 @@ import { Button, Modal, Form, Col, InputGroup, Badge } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-import APIManager from "../../utils/APIManager";
+import APIManager from "../../../utils/APIManager";
 
 const ProductRow = React.memo(({ product, categories }) => {
   const [show, setshow] = useState(false);
