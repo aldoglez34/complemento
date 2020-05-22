@@ -11,7 +11,7 @@ const TopRightBttn = React.memo(({ text, link }) => {
 });
 
 TopRightBttn.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.node.isRequired,
   link: PropTypes.string.isRequired,
 };
 

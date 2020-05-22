@@ -1,37 +1,60 @@
 import React, { useState } from "react";
 import { Form, Col } from "react-bootstrap";
+import { ErrorMessage } from "formik";
 import PropTypes from "prop-types";
 
-const ChooseCategory = React.memo(({ categories }) => {
-  const [type, setType] = useState("Existente");
+const ChooseCategory = React.memo(
+  ({
+    categories,
+    value4New,
+    touchedNewCat,
+    errorsNewCat,
+    value4Existing,
+    onChange,
+    onBlur,
+  }) => {
+    const [type, setType] = useState("Nueva");
 
-  const handleChange = (event) => setType(event.target.value);
+    const handleChange = (event) => setType(event.target.value);
 
-  return (
-    <>
-      <Form.Group as={Col} md={2}>
-        <Form.Label>
-          <strong>Categoría</strong>
-          <span title="Requerido" className="text-danger">
-            *
-          </span>
-        </Form.Label>
-        <Form.Control as="select" onChange={handleChange}>
-          <option value="Existente">Existente</option>
-          <option value="Nueva">Nueva</option>
-        </Form.Control>
-      </Form.Group>
-      {type === "Existente" ? (
+    const NewCat = () => {
+      return (
+        <Form.Group as={Col} md={4}>
+          <Form.Label className="text-white">C</Form.Label>
+          <Form.Control
+            maxLength="80"
+            type="text"
+            placeholder="Ingresa la categoría"
+            name="newCategory"
+            value={value4New}
+            onChange={onChange}
+            onBlur={onBlur}
+            isValid={touchedNewCat && !errorsNewCat}
+            isInvalid={touchedNewCat && !!errorsNewCat}
+          />
+          <ErrorMessage
+            className="text-danger"
+            name="newCategory"
+            component="div"
+          />
+        </Form.Group>
+      );
+    };
+
+    const ExistingCat = () => {
+      return (
         <Form.Group as={Col} md={4}>
           <Form.Label className="text-white">C</Form.Label>
           <Form.Control
             as="select"
             type="text"
-            name="category"
-            defaultValue="Elige..."
-            // value={values.category}
-            // onChange={handleChange}
-            // onBlur={handleBlur}
+            name="existingCategory"
+            value={value4Existing}
+            // value="Elige..."
+            // defaultValue="Elige..."
+            // value={value4Existing}
+            onChange={onChange}
+            onBlur={onBlur}
           >
             <option disabled>Elige...</option>
             {categories.map((cat) => {
@@ -42,36 +65,36 @@ const ChooseCategory = React.memo(({ categories }) => {
               );
             })}
           </Form.Control>
-          {/* <ErrorMessage
+          <ErrorMessage
             className="text-danger"
-            name="category"
+            name="existingCategory"
             component="div"
-          /> */}
-        </Form.Group>
-      ) : (
-        <Form.Group as={Col} md={4}>
-          <Form.Label className="text-white">C</Form.Label>
-          <Form.Control
-            maxLength="80"
-            type="text"
-            placeholder="Ingresa la categoría"
-            name="category"
-            // value={values.category}
-            // onChange={handleChange}
-            // onBlur={handleBlur}
-            // isValid={touched.category && !errors.category}
-            // isInvalid={touched.category && !!errors.category}
           />
-          {/* <ErrorMessage
-            className="text-danger"
-            name="category"
-            component="div"
-          /> */}
         </Form.Group>
-      )}
-    </>
-  );
-});
+      );
+    };
+
+    return (
+      <>
+        <Form.Group as={Col} md={2}>
+          <Form.Label>
+            <strong>Categoría</strong>
+            <span title="Requerido" className="text-danger">
+              *
+            </span>
+          </Form.Label>
+          <Form.Control as="select" onChange={handleChange}>
+            <option value="Nueva">Nueva</option>
+            {categories.length ? (
+              <option value="Existente">Existente</option>
+            ) : null}
+          </Form.Control>
+        </Form.Group>
+        {type === "Nueva" ? <NewCat /> : <ExistingCat />}
+      </>
+    );
+  }
+);
 
 ChooseCategory.propTypes = {
   categories: PropTypes.array.isRequired,

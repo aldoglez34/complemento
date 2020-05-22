@@ -9,6 +9,7 @@ const ProductSchema = new Schema({
   provider: {
     type: Schema.Types.ObjectId,
     ref: "Provider",
+    required: true,
   },
   category: {
     type: String,

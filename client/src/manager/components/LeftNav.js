@@ -1,7 +1,7 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
 
-const LeftNav = React.memo(function LeftNav(props) {
+const LeftNav = React.memo(({ leftBarActive }) => {
   return (
     <Nav className="d-flex flex-column h-100" id="verticalNavStyle">
       <h2
@@ -19,7 +19,7 @@ const LeftNav = React.memo(function LeftNav(props) {
       <Nav.Link
         className="navLinkStyle"
         href="/manager/dashboard"
-        active={props.leftBarActive === "Inicio" ? true : false}
+        active={leftBarActive === "Inicio" ? true : false}
       >
         <i
           className="fas fa-tachometer-alt"
@@ -31,7 +31,7 @@ const LeftNav = React.memo(function LeftNav(props) {
       <Nav.Link
         className="navLinkStyle"
         href="/manager/products"
-        active={props.leftBarActive === "Productos" ? true : false}
+        active={leftBarActive === "Productos" ? true : false}
       >
         <i
           className="fas fa-pills"
@@ -42,7 +42,7 @@ const LeftNav = React.memo(function LeftNav(props) {
       <Nav.Link
         className="navLinkStyle"
         href="/manager/categories"
-        active={props.leftBarActive === "Categorías" ? true : false}
+        active={leftBarActive === "Categorías" ? true : false}
       >
         <i
           className="fas fa-th"
@@ -53,7 +53,7 @@ const LeftNav = React.memo(function LeftNav(props) {
       <Nav.Link
         className="navLinkStyle"
         href="/manager/providers"
-        active={props.leftBarActive === "Proveedores" ? true : false}
+        active={leftBarActive === "Proveedores" ? true : false}
       >
         <i
           className="fas fa-truck-moving"
@@ -65,7 +65,7 @@ const LeftNav = React.memo(function LeftNav(props) {
       <Nav.Link
         className="navLinkStyle"
         href="/manager/users"
-        active={props.leftBarActive === "Usuarios" ? true : false}
+        active={leftBarActive === "Usuarios" ? true : false}
       >
         <i
           className="fas fa-users"
@@ -76,7 +76,7 @@ const LeftNav = React.memo(function LeftNav(props) {
       <Nav.Link
         className="navLinkStyle"
         href="/manager/messages"
-        active={props.leftBarActive === "Mensajes" ? true : false}
+        active={leftBarActive === "Mensajes" ? true : false}
       >
         <i
           className="fas fa-comments"
@@ -88,7 +88,7 @@ const LeftNav = React.memo(function LeftNav(props) {
       <Nav.Link
         className="navLinkStyle"
         href="/manager/sales"
-        active={props.leftBarActive === "Ventas" ? true : false}
+        active={leftBarActive === "Ventas" ? true : false}
       >
         <i
           className="fas fa-shopping-bag"

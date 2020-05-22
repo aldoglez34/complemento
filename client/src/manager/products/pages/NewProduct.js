@@ -40,25 +40,20 @@ const NewProduct = React.memo(() => {
       .positive("Debe ser positivo")
       .moreThan(yup.ref("purchasePrice"), "Debe ser mayor al precio de compra")
       .required("Requerido"),
-    content: yup.string().min(3, "Demasiado corto").required("Requerido"),
+    newCategory: yup.string().min(3, "Nombre demasiado corto"),
+    // existingCategory: yup.mixed(),
     brand: yup.string().min(3, "Nombre demasiado corto").required("Requerido"),
-    category: yup
-      .mixed()
-      .notOneOf(["Elige..."], "Requerido")
-      .required("Requerido"),
+    content: yup.string().min(3, "Demasiado corto").required("Requerido"),
     provider: yup
       .mixed()
       .notOneOf(["Elige..."], "Requerido")
       .required("Requerido"),
-    ingredients: yup.string().required("Requerido"),
-    initialStock: yup
-      .number()
-      .positive("Debe ser positivo")
-      .required("Requerido"),
-    photo: yup.string().required("Requerido"),
-    priority: yup.string(),
-    description: yup.string(),
+    ingredients: yup.string(),
+    stock: yup.number().positive("Debe ser positivo").required("Requerido"),
+    // photo: yup.string().required("Requerido"),
+    priority: yup.boolean().required("Requerido"),
     dose: yup.string(),
+    description: yup.string(),
     warning: yup.string().required("Requerido"),
   });
 
@@ -73,25 +68,25 @@ const NewProduct = React.memo(() => {
           <Formik
             initialValues={{
               name: "",
-              photo: "",
-              content: "",
-              brand: "",
-              categoryType: "Existente",
-              category: "",
-              provider: "Elige...",
-              ingredients: "",
-              stock: "1",
-              priority: false,
-              description: "",
-              dose: "",
-              warning:
-                "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
               purchasePrice: "",
               salePrice: "",
+              newCategory: "",
+              existingCategory: "",
+              brand: "",
+              content: "",
+              provider: "",
+              ingredients: "",
+              stock: "1",
+              photo: "foto.png",
+              priority: false,
+              dose: "",
+              description: "",
+              warning:
+                "Este producto no es un medicamento. El consumo de este producto es responsabilidad de quien lo usa y de quien lo recomienda.",
             }}
-            validationSchema={yupschema}
+            // validationSchema={yupschema}
             onSubmit={(values, { setSubmitting }) => {
-              setSubmitting(true);
+              // setSubmitting(true);
               console.log(values);
               // APIManager.mngr_newProduct(values)
               //   .then((res) => {
@@ -228,9 +223,17 @@ const NewProduct = React.memo(() => {
                     </InputGroup>
                   </Form.Group>
                 </Form.Row>
-                {/* category */}
+                {/* category and brand */}
                 <Form.Row>
-                  <ChooseCategory categories={categories} />
+                  <ChooseCategory
+                    categories={categories}
+                    value4New={values.newCategory}
+                    touchedNewCat={touched.newCategory}
+                    errorsNewCat={errors.newCategory}
+                    value4Existing={values.existingCategory}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
                   <Form.Group as={Col} md={6}>
                     <Form.Label>
                       <strong>Marca</strong>
@@ -283,9 +286,9 @@ const NewProduct = React.memo(() => {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* provider */}
+                {/* provider and ingredients */}
                 <Form.Row>
-                  <Form.Group as={Col}>
+                  <Form.Group as={Col} md={6}>
                     <Form.Label>
                       <strong>Proveedor</strong>
                       <span title="Requerido" className="text-danger">
@@ -297,7 +300,8 @@ const NewProduct = React.memo(() => {
                       type="text"
                       name="provider"
                       // value={values.provider}
-                      value="Elige..."
+                      // value="Elige..."
+                      defaultValue="Elige..."
                       onChange={handleChange}
                       onBlur={handleBlur}
                       isValid={touched.provider && !errors.provider}
@@ -318,10 +322,7 @@ const NewProduct = React.memo(() => {
                       component="div"
                     />
                   </Form.Group>
-                </Form.Row>
-                {/* ingredients */}
-                <Form.Row>
-                  <Form.Group as={Col}>
+                  <Form.Group as={Col} md={6}>
                     <Form.Label>
                       <strong>Ingredientes</strong>
                       <small className="ml-1">(separados por coma)</small>
@@ -344,34 +345,9 @@ const NewProduct = React.memo(() => {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* sufferings */}
+                {/* initial stock, priority and photo */}
                 <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>
-                      <strong>Padecimientos</strong>
-                      <small className="ml-1">(separados por coma)</small>
-                    </Form.Label>
-                    <Form.Control
-                      maxLength="250"
-                      type="text"
-                      placeholder="Ingresa los padecimientos"
-                      name="sufferings"
-                      value={values.sufferings}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.sufferings && !errors.sufferings}
-                      isInvalid={touched.sufferings && !!errors.sufferings}
-                    />
-                    <ErrorMessage
-                      className="text-danger"
-                      name="sufferings"
-                      component="div"
-                    />
-                  </Form.Group>
-                </Form.Row>
-                {/* initial stock */}
-                <Form.Row>
-                  <Form.Group as={Col} md={4}>
+                  <Form.Group as={Col} md={3}>
                     <Form.Label>
                       <strong>Existencia inicial</strong>
                       <span title="Requerido" className="text-danger">
@@ -381,38 +357,20 @@ const NewProduct = React.memo(() => {
                     <Form.Control
                       type="number"
                       placeholder="1"
-                      name="initialStock"
-                      value={values.initialStock}
+                      name="stock"
+                      value={values.stock}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      isValid={touched.initialStock && !errors.initialStock}
-                      isInvalid={touched.initialStock && !!errors.initialStock}
+                      isValid={touched.stock && !errors.stock}
+                      isInvalid={touched.stock && !!errors.stock}
                     />
                     <ErrorMessage
                       className="text-danger"
-                      name="initialStock"
+                      name="stock"
                       component="div"
                     />
                   </Form.Group>
-                  {/* photo */}
-                  <Form.Group as={Col} md={4}>
-                    <Form.Label>
-                      <strong>Foto</strong>
-                    </Form.Label>
-                    <Form.Control
-                      disabled
-                      type="text"
-                      placeholder="Ingresa la foto"
-                      name="photo"
-                      value={values.photo}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.photo && !errors.photo}
-                      isInvalid={touched.photo && !!errors.photo}
-                    />
-                  </Form.Group>
-                  {/* priority */}
-                  <Form.Group as={Col} md={4}>
+                  <Form.Group as={Col} md={3}>
                     <Form.Label>
                       <strong>Destacado</strong>
                       <span title="Requerido" className="text-danger">
@@ -432,6 +390,25 @@ const NewProduct = React.memo(() => {
                       <option value={false}>No</option>
                       <option value={true}>Sí</option>
                     </Form.Control>
+                  </Form.Group>
+                  <Form.Group as={Col} md={6}>
+                    <Form.Label>
+                      <strong>Foto</strong>
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
+                    </Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      placeholder="Ingresa la foto"
+                      name="photo"
+                      value={values.photo}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.photo && !errors.photo}
+                      isInvalid={touched.photo && !!errors.photo}
+                    />
                   </Form.Group>
                 </Form.Row>
                 {/* dose */}
@@ -491,6 +468,9 @@ const NewProduct = React.memo(() => {
                   <Form.Group as={Col}>
                     <Form.Label>
                       <strong>Advertencia</strong>
+                      <span title="Requerido" className="text-danger">
+                        *
+                      </span>
                     </Form.Label>
                     <Form.Control
                       maxLength="250"
@@ -512,7 +492,7 @@ const NewProduct = React.memo(() => {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* buttons */}
+                {/* button */}
                 <Form.Group>
                   <Button
                     className="shadow-sm"
