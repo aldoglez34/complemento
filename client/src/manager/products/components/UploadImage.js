@@ -1,5 +1,5 @@
 import React from "react";
-import { Form } from "react-bootstrap";
+import { Form, Col } from "react-bootstrap";
 
 const UploadImage = React.memo(() => {
   return (
@@ -15,11 +15,11 @@ const UploadImage = React.memo(() => {
         type="text"
         placeholder="Ingresa la foto"
         name="photo"
-        value={values.photo}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        isValid={touched.photo && !errors.photo}
-        isInvalid={touched.photo && !!errors.photo}
+        // value={values.photo}
+        // onChange={handleChange}
+        // onBlur={handleBlur}
+        // isValid={touched.photo && !errors.photo}
+        // isInvalid={touched.photo && !!errors.photo}
       />
     </Form.Group>
   );

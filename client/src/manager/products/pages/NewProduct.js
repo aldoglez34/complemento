@@ -5,6 +5,7 @@ import * as yup from "yup";
 import APIManager from "../../../utils/APIManager";
 import ManagerLayout from "../../ManagerLayout";
 import ChooseCategory from "../components/ChooseCategory";
+import UploadImage from "../components/UploadImage";
 
 const NewProduct = React.memo(() => {
   const [categories, setCategories] = useState();
@@ -391,25 +392,7 @@ const NewProduct = React.memo(() => {
                       <option value={true}>Sí</option>
                     </Form.Control>
                   </Form.Group>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>
-                      <strong>Foto</strong>
-                      <span title="Requerido" className="text-danger">
-                        *
-                      </span>
-                    </Form.Label>
-                    <Form.Control
-                      disabled
-                      type="text"
-                      placeholder="Ingresa la foto"
-                      name="photo"
-                      value={values.photo}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.photo && !errors.photo}
-                      isInvalid={touched.photo && !!errors.photo}
-                    />
-                  </Form.Group>
+                  <UploadImage />
                 </Form.Row>
                 {/* dose */}
                 <Form.Row>
