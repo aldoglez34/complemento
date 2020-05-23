@@ -1,27 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Col } from "react-bootstrap";
 
-const UploadImage = React.memo(() => {
+const UploadImage = React.memo(({ onChange, value, onBlur }) => {
+  const [file, setFile] = useState();
+
+  // const onChange = (e) => {
+  //   setFile(e.target.files);
+  // };
+
   return (
-    <Form.Group as={Col} md={6}>
-      <Form.Label>
-        <strong>Foto</strong>
-        <span title="Requerido" className="text-danger">
-          *
-        </span>
-      </Form.Label>
-      <Form.Control
-        disabled
-        type="text"
-        placeholder="Ingresa la foto"
-        name="photo"
-        // value={values.photo}
-        // onChange={handleChange}
-        // onBlur={handleBlur}
-        // isValid={touched.photo && !errors.photo}
-        // isInvalid={touched.photo && !!errors.photo}
+    <Form>
+      <Form.File
+        id="custom-file-translate-html"
+        label="Ingresa foto"
+        data-browse="Buscar"
+        custom
       />
-    </Form.Group>
+    </Form>
   );
 });
 
