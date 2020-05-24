@@ -116,6 +116,7 @@ const NewProduct = React.memo(() => {
                 handleBlur,
                 handleSubmit,
                 isSubmitting,
+                setFieldValue,
               }) => (
                 <Form noValidate onSubmit={handleSubmit}>
                   {/* name */}
@@ -395,11 +396,7 @@ const NewProduct = React.memo(() => {
                         <option value={true}>Sí</option>
                       </Form.Control>
                     </Form.Group>
-                    {/* <UploadImage
-                    value={values.photo}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  /> */}
+                    <UploadImage setFieldValue={setFieldValue} />
                   </Form.Row>
                   {/* dose */}
                   <Form.Row>
@@ -496,7 +493,14 @@ const NewProduct = React.memo(() => {
                 </Form>
               )}
             </Formik>
-            <UploadImage />
+            <Form>
+              <Form.File
+                id="custom-file-translate-html"
+                label="Voeg je document toe"
+                data-browse="Bestand kiezen"
+                custom
+              />
+            </Form>
           </>
         ) : (
           <em>Asegúrate que haya mínimo 1 proveedor</em>
