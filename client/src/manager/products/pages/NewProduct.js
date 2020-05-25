@@ -30,7 +30,8 @@ const NewProduct = React.memo(() => {
       });
   }, []);
 
-  const FILE_SIZE = 160 * 1024;
+  // const FILE_SIZE = 160 * 1024;
+  const FILE_SIZE = 500000;
   const SUPPORTED_FORMATS = [
     "image/jpg",
     "image/jpeg",

@@ -13,7 +13,7 @@ const UploadImage = React.memo(({ setFieldValue, onBlur, file }) => {
         <small className="ml-1">(.jpg, .jpeg, .gif y .png)</small>
       </Form.Label>
       <Form.File
-        // label="Ingresa la imagen"
+        accept="image/*"
         label={file ? file.name : "Ingresa la imagen"}
         data-browse="Buscar"
         id="file"
