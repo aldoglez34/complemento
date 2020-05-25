@@ -14,7 +14,7 @@
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.6.3",
-    "react-bootstrap": "^1.0.0-beta.10",
+    "react-bootstrap": "^1.0.0",
     "react-dom": "^16.6.3",
     "react-redux": "^7.1.1",
     "react-reveal": "^1.2.2",

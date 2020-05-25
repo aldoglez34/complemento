@@ -1,13 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Col } from "react-bootstrap";
+import { ErrorMessage } from "formik";
 
-const UploadImage = React.memo(({ setFieldValue }) => {
-  const [file, setFile] = useState();
-
-  // const onChange = (e) => {
-  //   setFile(e.target.files);
-  // };
-
+const UploadImage = React.memo(({ setFieldValue, onBlur, file }) => {
   return (
     <Form.Group as={Col} md={6}>
       <Form.Label>
@@ -15,26 +10,11 @@ const UploadImage = React.memo(({ setFieldValue }) => {
         <span title="Requerido" className="text-danger">
           *
         </span>
+        <small className="ml-1">(.jpg, .jpeg, .gif y .png)</small>
       </Form.Label>
-      {/* <input
-        id="file"
-        name="file"
-        type="file"
-        onChange={(event) => {
-          setFieldValue("file", event.currentTarget.files[0]);
-        }}
-        className="form-control"
-      /> */}
-      {/* <Form.Control
-        id="file"
-        name="file"
-        type="file"
-        onChange={(event) => {
-          setFieldValue("file", event.currentTarget.files[0]);
-        }}
-      /> */}
       <Form.File
-        label="Ingresa la imagen"
+        // label="Ingresa la imagen"
+        label={file ? file.name : "Ingresa la imagen"}
         data-browse="Buscar"
         id="file"
         name="file"
@@ -42,19 +22,10 @@ const UploadImage = React.memo(({ setFieldValue }) => {
         onChange={(event) => {
           setFieldValue("file", event.currentTarget.files[0]);
         }}
+        onBlur={onBlur}
         custom
       />
-      {/* <Form.Control
-        maxLength="80"
-        type="text"
-        placeholder="Ingresa el contenido"
-        name="content"
-        value={values.content}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        isValid={touched.content && !errors.content}
-        isInvalid={touched.content && !!errors.content}
-      /> */}
+      <ErrorMessage className="text-danger" name="file" component="div" />
     </Form.Group>
   );
 });

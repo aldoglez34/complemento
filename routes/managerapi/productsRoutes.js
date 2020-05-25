@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const model = require("../../models");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 // mngr_fetchProducts()
 // matches with /managerapi/products/all
@@ -58,7 +60,7 @@ router.get("/categories/all", function (req, res) {
 
 // mngr_updateProduct()
 // matches with /managerapi/products/update
-router.put("/products/update", function (req, res) {
+router.put("/update", function (req, res) {
   // get data from body
   const {
     _id,
@@ -95,7 +97,8 @@ router.put("/products/update", function (req, res) {
 
 // mngr_newProduct()
 // matches with /managerapi/products/new
-router.post("/products/new", function (req, res) {
+router.post("/new", upload.single("file"), function (req, res) {
+  // console.log(req.body);
   // const {
   //   name,
   //   brand,
