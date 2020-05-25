@@ -1,7 +1,9 @@
 const router = require("express").Router();
 const model = require("../../models");
+// const multer = require("multer");
+// const upload = multer({ dest: "uploads/" });
+const path = require("path");
 const multer = require("multer");
-const upload = multer({ dest: "uploads/" });
 
 // mngr_fetchProducts()
 // matches with /managerapi/products/all
@@ -97,7 +99,20 @@ router.put("/update", function (req, res) {
 
 // mngr_newProduct()
 // matches with /managerapi/products/new
-router.post("/new", upload.single("file"), function (req, res) {
+
+const storage = multer.diskStorage({
+  destination: "./public/uploads/",
+  filename: function (req, file, cb) {
+    cb(null, "IMAGE-" + Date.now() + path.extname(file.originalname));
+  },
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 1000000 },
+}).single("myImage");
+
+router.post("/new", upload(req, res) {  
   // console.log(req.body);
   // const {
   //   name,
