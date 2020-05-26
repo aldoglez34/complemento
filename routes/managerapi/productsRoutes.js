@@ -99,28 +99,42 @@ const path = require("path");
 const multer = require("multer");
 
 const storage = multer.diskStorage({
-  destination: "./uploadsss/",
+  destination: "./client/public/images/products",
   filename: function (req, file, cb) {
-    cb(null, "IMAGE-" + Date.now() + path.extname(file.originalname));
+    // cb(null, "IMAGE-" + Date.now() + path.extname(file.originalname));
+    // set the name of the file
+    cb(null, req.body.photo);
   },
 });
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 1000000 },
+  limits: { fileSize: 4000000 },
 }).single("file");
 
 router.post("/new", function (req, res) {
+  console.log("entrando al post...");
   upload(req, res, function (err) {
     if (err instanceof multer.MulterError) {
       // A Multer error occurred when uploading.
-      console.log("A Multer error occurred when uploading.");
+      console.log("ERROR - A Multer error occurred when uploading.");
+      res.status(422).send({ msg: "Ocurrió un error." });
     } else if (err) {
       // An unknown error occurred when uploading.
-      console.log("An unknown error occurred when uploading.");
+      console.log("ERROR - An unknown error occurred when uploading.");
+      res.status(422).send({ msg: "Ocurrió un error." });
     }
-    // console.log("req", req);
-    console.log("Everything went fine.");
+    // Everything went fine.
+    // console.log("Everything went fine.");
+    model.Product.create({
+      name: req.body.name,
+      price: {
+        purchasePrice: req.body.purchasePrice,
+        salePrice: req.body.salePrice,
+      },
+      brand: req.body.brand,
+      content: req.body.brand,
+    });
   });
 });
 

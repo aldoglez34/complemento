@@ -5,6 +5,7 @@ const ProductSchema = new Schema({
   active: {
     type: Boolean,
     required: true,
+    default: true,
   },
   provider: {
     type: Schema.Types.ObjectId,

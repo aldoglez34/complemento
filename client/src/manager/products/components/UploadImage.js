@@ -14,7 +14,7 @@ const UploadImage = React.memo(({ setFieldValue, onBlur, file }) => {
       </Form.Label>
       <Form.File
         encType="multipart/form-data"
-        // accept="image/*"
+        accept="image/*"
         label={file ? file.name : "Ingresa la imagen"}
         data-browse="Buscar"
         id="file"

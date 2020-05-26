@@ -12,10 +12,9 @@ const bodyParser = require("body-parser");
 app.use(morgan("dev"));
 
 // parse request body as JSON (using body-parser)
-app.use(bodyParser.urlencoded({ extended: false }));
-
 // parse application/json (using body-parser)
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "50mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 // serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

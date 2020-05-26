@@ -99,8 +99,8 @@ const NewProduct = React.memo(() => {
               ingredients: "",
               stock: "1",
               priority: false,
-              file: undefined,
               photo: "",
+              file: undefined,
               dose: "",
               description: "",
               warning:
@@ -111,18 +111,26 @@ const NewProduct = React.memo(() => {
             onSubmit={(values, { setSubmitting }) => {
               // setSubmitting(true);
               console.log(values);
-              console.log(
-                JSON.stringify(
-                  {
-                    fileName: values.file.name,
-                    type: values.file.type,
-                    size: `${values.file.size} bytes`,
-                  },
-                  null,
-                  2
-                )
-              );
-              APIManager.mngr_newProduct(values.file)
+              // it's neccessary to create a FormData so multer can storage the image in the backedn
+              let data = new FormData();
+              data.append("name", values.name);
+              data.append("purchasePrice", values.purchasePrice);
+              data.append("salePrice", values.salePrice);
+              data.append("newCategory", values.newCategory);
+              data.append("existingCategory", values.existingCategory);
+              data.append("brand", values.brand);
+              data.append("content", values.content);
+              data.append("provider", values.provider);
+              data.append("ingredients", values.ingredients);
+              data.append("stock", values.stock);
+              data.append("priority", values.priority);
+              data.append("photo", values.photo);
+              data.append("file", values.file);
+              data.append("dose", values.dose);
+              data.append("description", values.description);
+              data.append("warning", values.warning);
+              //
+              APIManager.mngr_newProduct(data)
                 .then((res) => {
                   console.log(res);
                   // if (res.data.errmsg) {
@@ -299,9 +307,9 @@ const NewProduct = React.memo(() => {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* content */}
+                {/* content and provider */}
                 <Form.Row>
-                  <Form.Group as={Col} md={12}>
+                  <Form.Group as={Col} md={6}>
                     <Form.Label>
                       <strong>Contenido</strong>
                       <span title="Requerido" className="text-danger">
@@ -325,9 +333,6 @@ const NewProduct = React.memo(() => {
                       component="div"
                     />
                   </Form.Group>
-                </Form.Row>
-                {/* provider and ingredients */}
-                <Form.Row>
                   <Form.Group as={Col} md={6}>
                     <Form.Label>
                       <strong>Proveedor</strong>
@@ -362,7 +367,10 @@ const NewProduct = React.memo(() => {
                       component="div"
                     />
                   </Form.Group>
-                  <Form.Group as={Col} md={6}>
+                </Form.Row>
+                {/* provider and ingredients */}
+                <Form.Row>
+                  <Form.Group as={Col}>
                     <Form.Label>
                       <strong>Ingredientes</strong>
                       <small className="ml-1">(separados por coma)</small>
@@ -431,21 +439,11 @@ const NewProduct = React.memo(() => {
                       <option value={true}>Sí</option>
                     </Form.Control>
                   </Form.Group>
-                  <Form.Group as={Col} md={6}>
-                    <input
-                      id="file"
-                      name="file"
-                      type="file"
-                      onChange={(event) => {
-                        setFieldValue("file", event.currentTarget.files[0]);
-                      }}
-                    />  
-                  </Form.Group>
-                  {/* <UploadImage
+                  <UploadImage
                     setFieldValue={setFieldValue}
                     onBlur={handleBlur}
                     file={values.file}
-                  /> */}
+                  />
                 </Form.Row>
                 {/* dose */}
                 <Form.Row>
@@ -546,7 +544,7 @@ const NewProduct = React.memo(() => {
           <em>Asegúrate que haya mínimo 1 proveedor</em>
         )
       ) : (
-        <div className="text-center my-4">
+        <div className="text-center">
           <Spinner animation="grow" role="status" variant="warning" />
         </div>
       )}
