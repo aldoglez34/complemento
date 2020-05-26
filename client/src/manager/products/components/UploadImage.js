@@ -13,7 +13,8 @@ const UploadImage = React.memo(({ setFieldValue, onBlur, file }) => {
         <small className="ml-1">(.jpg, .jpeg, .gif y .png)</small>
       </Form.Label>
       <Form.File
-        accept="image/*"
+        encType="multipart/form-data"
+        // accept="image/*"
         label={file ? file.name : "Ingresa la imagen"}
         data-browse="Buscar"
         id="file"
@@ -21,6 +22,7 @@ const UploadImage = React.memo(({ setFieldValue, onBlur, file }) => {
         type="file"
         onChange={(event) => {
           setFieldValue("file", event.currentTarget.files[0]);
+          setFieldValue("photo", event.currentTarget.files[0].name);
         }}
         onBlur={onBlur}
         custom

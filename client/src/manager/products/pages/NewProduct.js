@@ -30,8 +30,7 @@ const NewProduct = React.memo(() => {
       });
   }, []);
 
-  // const FILE_SIZE = 160 * 1024;
-  const FILE_SIZE = 500000;
+  const PHOTO_SIZE = 1000000;
   const SUPPORTED_FORMATS = [
     "image/jpg",
     "image/jpeg",
@@ -46,7 +45,7 @@ const NewProduct = React.memo(() => {
       .test(
         "fileSize",
         "Imagen muy pesada",
-        (value) => value && value.size <= FILE_SIZE
+        (value) => value && value.size <= PHOTO_SIZE
       )
       .test(
         "fileFormat",
@@ -73,7 +72,6 @@ const NewProduct = React.memo(() => {
     //   .required("Requerido"),
     // ingredients: yup.string(),
     // stock: yup.number().positive("Debe ser positivo").required("Requerido"),
-    // // photo: yup.string().required("Requerido"),
     // priority: yup.boolean().required("Requerido"),
     // dose: yup.string(),
     // description: yup.string(),
@@ -84,7 +82,7 @@ const NewProduct = React.memo(() => {
     <ManagerLayout
       backBttn="/manager/products"
       leftBarActive="Productos"
-      title="Nuevo producto"
+      title="Nuevo Producto"
     >
       {categories && providers ? (
         providers.length ? (
@@ -100,9 +98,9 @@ const NewProduct = React.memo(() => {
               provider: "",
               ingredients: "",
               stock: "1",
-              photo: "",
               priority: false,
               file: undefined,
+              photo: "",
               dose: "",
               description: "",
               warning:
@@ -112,7 +110,18 @@ const NewProduct = React.memo(() => {
             validateOnBlur={true}
             onSubmit={(values, { setSubmitting }) => {
               // setSubmitting(true);
-              console.log(values.file);
+              console.log(values);
+              console.log(
+                JSON.stringify(
+                  {
+                    fileName: values.file.name,
+                    type: values.file.type,
+                    size: `${values.file.size} bytes`,
+                  },
+                  null,
+                  2
+                )
+              );
               APIManager.mngr_newProduct(values.file)
                 .then((res) => {
                   console.log(res);
@@ -422,11 +431,21 @@ const NewProduct = React.memo(() => {
                       <option value={true}>Sí</option>
                     </Form.Control>
                   </Form.Group>
-                  <UploadImage
+                  <Form.Group as={Col} md={6}>
+                    <input
+                      id="file"
+                      name="file"
+                      type="file"
+                      onChange={(event) => {
+                        setFieldValue("file", event.currentTarget.files[0]);
+                      }}
+                    />  
+                  </Form.Group>
+                  {/* <UploadImage
                     setFieldValue={setFieldValue}
                     onBlur={handleBlur}
                     file={values.file}
-                  />
+                  /> */}
                 </Form.Row>
                 {/* dose */}
                 <Form.Row>

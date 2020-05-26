@@ -1,9 +1,5 @@
 const router = require("express").Router();
 const model = require("../../models");
-// const multer = require("multer");
-// const upload = multer({ dest: "uploads/" });
-const path = require("path");
-const multer = require("multer");
 
 // mngr_fetchProducts()
 // matches with /managerapi/products/all
@@ -99,9 +95,11 @@ router.put("/update", function (req, res) {
 
 // mngr_newProduct()
 // matches with /managerapi/products/new
+const path = require("path");
+const multer = require("multer");
 
 const storage = multer.diskStorage({
-  destination: "./public/uploads/",
+  destination: "./uploadsss/",
   filename: function (req, file, cb) {
     cb(null, "IMAGE-" + Date.now() + path.extname(file.originalname));
   },
@@ -110,57 +108,29 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage: storage,
   limits: { fileSize: 1000000 },
-}).single("myImage");
+}).single("file");
 
-router.post("/new", upload(req, res) {  
-  // console.log(req.body);
-  // const {
-  //   name,
-  //   brand,
-  //   content,
-  //   comments,
-  //   purchasePrice,
-  //   salePrice,
-  //   stock,
-  //   priority,
-  //   ingredients
-  // } = req.body;
-  // model.Product.create({
-  //   name: req.body.name,
-  //   brand: req.body.brand,
-  //   content: req.body.content,
-  //   comments: req.body.comments,
-  //   purchasePrice: req.body.purchasePrice,
-  //   salePrice: req.body.salePrice,
-  //   stock: req.body.initialStock,
-  //   priority: req.body.priority,
-  //   ingredients: req.body.ingredients.split(","),
-  //   discount: {
-  //     hasDiscount: false
-  //   },
-  //   provider: req.body.provider,
-  //   category: req.body.category
-  // })
-  //   .then(() => {
-  //     return model.Category.findOneAndUpdate(
-  //       req.body.category,
-  //       { $inc: { productCount: 1 } },
-  //       { new: true }
-  //     );
-  //   })
-  //   .then(() => {
-  //     return model.Provider.findByIdAndUpdate(
-  //       req.body.provider,
-  //       { $inc: { productCount: 1 } },
-  //       { new: true }
-  //     );
-  //   })
-  //   .then(data => res.json(data))
-  //   .catch(err => {
-  //     console.log("@error", err);
-  //     res.status(422).send({ msg: "Ocurrió un error" });
-  //   });
+router.post("/new", function (req, res) {
+  upload(req, res, function (err) {
+    if (err instanceof multer.MulterError) {
+      // A Multer error occurred when uploading.
+      console.log("A Multer error occurred when uploading.");
+    } else if (err) {
+      // An unknown error occurred when uploading.
+      console.log("An unknown error occurred when uploading.");
+    }
+    // console.log("req", req);
+    console.log("Everything went fine.");
+  });
 });
+
+// router.post("/new", upload, function (req, res, next) {
+//   // req.file is the `avatar` file
+//   // req.body will hold the text fields, if there were any
+//   console.log("--------------doing stuff");
+//   console.log("req.files", req.files); // JSON Object
+//   console.log("req.file", req.file); // JSON Object
+// });
 
 // mngr_activateProduct()
 // matches with /managerapi/products/activate/:productId

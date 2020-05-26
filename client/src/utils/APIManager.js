@@ -25,8 +25,8 @@ export default {
     return axios.put("/managerapi/products/update", product);
   },
 
-  mngr_newProduct: function (product) {
-    return axios.post("/managerapi/products/new", product);
+  mngr_newProduct: function (formData) {
+    return axios.post("/managerapi/products/new", formData);
   },
 
   // activation
