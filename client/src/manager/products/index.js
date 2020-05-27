@@ -170,7 +170,7 @@ const Products = React.memo(() => {
                 <span>Descuento</span>
               </>
             }
-            link="/manager/products/new"
+            link="/manager/products/discounts/new"
           />
           <div className="ml-2" />
           <TopRightBttn
@@ -187,33 +187,27 @@ const Products = React.memo(() => {
     >
       {filtered && categories ? (
         filtered.length ? (
-          <>
-            <Table striped size="sm" responsive variant="white">
-              <thead>
-                <tr>
-                  <th className="text-center border-0 pb-3">Activo</th>
-                  <th className="text-center border-0 pb-3">Nombre</th>
-                  <th className="text-center border-0 pb-3">Categoría</th>
-                  <th className="text-center border-0 pb-3">Proveedor</th>
-                  <th className="text-center border-0 pb-3">PrecioVenta</th>
-                  <th className="text-center border-0 pb-3">Vendidos</th>
-                  <th className="text-center border-0 pb-3">Existencia</th>
-                  <th className="text-center border-0 pb-3"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.map((p) => {
-                  return (
-                    <ProductRow
-                      key={p._id}
-                      product={p}
-                      categories={categories}
-                    />
-                  );
-                })}
-              </tbody>
-            </Table>
-          </>
+          <Table striped size="sm" responsive variant="white">
+            <thead>
+              <tr>
+                <th className="text-center border-0 pb-3">Activo</th>
+                <th className="text-center border-0 pb-3">Nombre</th>
+                <th className="text-center border-0 pb-3">Categoría</th>
+                <th className="text-center border-0 pb-3">Proveedor</th>
+                <th className="text-center border-0 pb-3">PrecioVenta</th>
+                <th className="text-center border-0 pb-3">Vendidos</th>
+                <th className="text-center border-0 pb-3">Existencia</th>
+                <th className="text-center border-0 pb-3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {filtered.map((p) => {
+                return (
+                  <ProductRow key={p._id} product={p} categories={categories} />
+                );
+              })}
+            </tbody>
+          </Table>
         ) : (
           <em>No hay nada aquí</em>
         )

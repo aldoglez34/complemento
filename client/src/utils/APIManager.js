@@ -25,15 +25,21 @@ export default {
     return axios.get("/managerapi/products/getOne/" + productId);
   },
 
-  mngr_updateProduct: function (product) {
-    return axios.put("/managerapi/products/update", product);
-  },
-
   mngr_newProduct: function (formData) {
     return axios.post("/managerapi/products/new", formData);
   },
 
-  // activation
+  mngr_updateProduct: function (formData) {
+    return axios.put("/managerapi/products/update", formData);
+  },
+
+  // discounts
+
+  mngr_fetchDiscounts: function () {
+    return axios.put("/managerapi/products/discounts/all");
+  },
+
+  // product activation
 
   mngr_activateProduct: function (productId) {
     return axios.put("/managerapi/products/activate/" + productId);

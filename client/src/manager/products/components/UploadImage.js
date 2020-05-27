@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Col } from "react-bootstrap";
 import { ErrorMessage } from "formik";
 
-const UploadImage = React.memo(({ setFieldValue, onBlur, file }) => {
+const UploadImage = React.memo(({ setFieldValue, onBlur, photo }) => {
   return (
     <Form.Group as={Col} md={6}>
       <Form.Label>
@@ -12,10 +12,11 @@ const UploadImage = React.memo(({ setFieldValue, onBlur, file }) => {
         </span>
         <small className="ml-1">(.jpg, .jpeg, .gif y .png)</small>
       </Form.Label>
+      {/* the following FORM.FILE only works on "react-bootstrap": "^1.0.0",  */}
       <Form.File
         encType="multipart/form-data"
         accept="image/*"
-        label={file ? file.name : "Ingresa la imagen"}
+        label={photo ? photo : "Ingresa la imagen"}
         data-browse="Buscar"
         id="file"
         name="file"

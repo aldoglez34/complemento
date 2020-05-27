@@ -49,19 +49,19 @@ const EditProduct = React.memo((props) => {
   ];
 
   const yupschema = yup.object({
-    file: yup
-      .mixed()
-      .required("Requerido")
-      .test(
-        "fileSize",
-        "Imagen muy pesada",
-        (value) => value && value.size <= PHOTO_SIZE
-      )
-      .test(
-        "fileFormat",
-        "Formato no soportado",
-        (value) => value && SUPPORTED_FORMATS.includes(value.type)
-      ),
+    // file: yup
+    //   .mixed()
+    //   // .required("Requerido")
+    //   .test(
+    //     "fileSize",
+    //     "Imagen muy pesada",
+    //     (value) => value && value.size <= PHOTO_SIZE
+    //   )
+    //   .test(
+    //     "fileFormat",
+    //     "Formato no soportado",
+    //     (value) => value && SUPPORTED_FORMATS.includes(value.type)
+    //   ),
     name: yup.string().min(3, "Demasiado corto").required("Requerido"),
     purchasePrice: yup
       .number()
@@ -101,7 +101,7 @@ const EditProduct = React.memo((props) => {
             purchasePrice: product.price.latestPurchasePrice,
             salePrice: product.price.salePrice,
             newCategory: "",
-            existingCategory: "",
+            existingCategory: product.category,
             brand: product.brand,
             content: product.content,
             provider: product.provider._id,
@@ -117,9 +117,9 @@ const EditProduct = React.memo((props) => {
           validationSchema={yupschema}
           validateOnBlur={true}
           onSubmit={(values, { setSubmitting }) => {
-            // setSubmitting(true);
+            setSubmitting(true);
             console.log(values);
-            // it's neccessary to create a FormData so multer can storage the image in the backedn
+            // it's neccessary to create a FormData so multer can storage the image in the backend
             let data = new FormData();
             data.append("name", values.name);
             data.append("purchasePrice", values.purchasePrice);
@@ -142,23 +142,18 @@ const EditProduct = React.memo((props) => {
             data.append("description", values.description);
             data.append("warning", values.warning);
             //
-            // APIManager.mngr_newProduct(data)
-            //   .then((res) => {
-            //     alert(res.data.msg);
-            //     // if (res.data.errmsg) {
-            //     //   alert("ERROR => " + res.data.errmsg);
-            //     //   setSubmitting(false);
-            //     // } else {
-            //     //   alert("Producto creado");
-            //     //   props.history.push("/manager/products");
-            //     // }
-            //   })
-            //   .catch((err) => {
-            //     console.log(err.response);
-            //     err.response.data.msg
-            //       ? alert(err.response.data.msg)
-            //       : alert("Ocurrió un error al registrar el producto nuevo.");
-            //   });
+            APIManager.mngr_updateProduct(data)
+              .then((res) => {
+                console.log(res);
+                alert(res.data.msg);
+                props.history.push("/manager/products");
+              })
+              .catch((err) => {
+                console.log(err.response);
+                err.response.data.msg
+                  ? alert(err.response.data.msg)
+                  : alert("Ocurrió un error al registrar el producto nuevo.");
+              });
           }}
         >
           {({
@@ -451,6 +446,7 @@ const EditProduct = React.memo((props) => {
                   </Form.Control>
                 </Form.Group>
                 <UploadImage
+                  photo={values.photo}
                   setFieldValue={setFieldValue}
                   onBlur={handleBlur}
                   file={values.file}

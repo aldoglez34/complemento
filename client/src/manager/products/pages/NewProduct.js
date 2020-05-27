@@ -7,7 +7,7 @@ import ManagerLayout from "../../ManagerLayout";
 import ChooseCategory from "../components/ChooseCategory";
 import UploadImage from "../components/UploadImage";
 
-const NewProduct = React.memo(() => {
+const NewProduct = React.memo((props) => {
   const [categories, setCategories] = useState();
   const [providers, setProviders] = useState();
 
@@ -52,30 +52,30 @@ const NewProduct = React.memo(() => {
         "Formato no soportado",
         (value) => value && SUPPORTED_FORMATS.includes(value.type)
       ),
-    // name: yup.string().min(3, "Demasiado corto").required("Requerido"),
-    // purchasePrice: yup
-    //   .number()
-    //   .positive("Debe ser positivo")
-    //   .required("Requerido"),
-    // salePrice: yup
-    //   .number()
-    //   .positive("Debe ser positivo")
-    //   .moreThan(yup.ref("purchasePrice"), "Debe ser mayor al precio de compra")
-    //   .required("Requerido"),
-    // newCategory: yup.string().min(3, "Nombre demasiado corto"),
-    // // existingCategory: yup.mixed(),
-    // brand: yup.string().min(3, "Nombre demasiado corto").required("Requerido"),
-    // content: yup.string().min(3, "Demasiado corto").required("Requerido"),
-    // provider: yup
-    //   .mixed()
-    //   .notOneOf(["Elige..."], "Requerido")
-    //   .required("Requerido"),
-    // ingredients: yup.string(),
-    // stock: yup.number().positive("Debe ser positivo").required("Requerido"),
-    // priority: yup.boolean().required("Requerido"),
-    // dose: yup.string(),
-    // description: yup.string(),
-    // warning: yup.string().required("Requerido"),
+    name: yup.string().min(3, "Demasiado corto").required("Requerido"),
+    purchasePrice: yup
+      .number()
+      .positive("Debe ser positivo")
+      .required("Requerido"),
+    salePrice: yup
+      .number()
+      .positive("Debe ser positivo")
+      .moreThan(yup.ref("purchasePrice"), "Debe ser mayor al precio de compra")
+      .required("Requerido"),
+    newCategory: yup.string().min(3, "Nombre demasiado corto"),
+    // existingCategory: yup.mixed(),
+    brand: yup.string().min(3, "Nombre demasiado corto").required("Requerido"),
+    content: yup.string().min(3, "Demasiado corto").required("Requerido"),
+    provider: yup
+      .mixed()
+      .notOneOf(["Elige..."], "Requerido")
+      .required("Requerido"),
+    ingredients: yup.string(),
+    stock: yup.number().positive("Debe ser positivo").required("Requerido"),
+    priority: yup.boolean().required("Requerido"),
+    dose: yup.string(),
+    description: yup.string(),
+    warning: yup.string().required("Requerido"),
   });
 
   return (
@@ -99,7 +99,7 @@ const NewProduct = React.memo(() => {
               ingredients: "",
               stock: "1",
               priority: false,
-              photo: "",
+              photo: undefined,
               file: undefined,
               dose: "",
               description: "",
@@ -109,9 +109,8 @@ const NewProduct = React.memo(() => {
             validationSchema={yupschema}
             validateOnBlur={true}
             onSubmit={(values, { setSubmitting }) => {
-              // setSubmitting(true);
-              console.log(values);
-              // it's neccessary to create a FormData so multer can storage the image in the backedn
+              setSubmitting(true);
+              // it's neccessary to create a FormData so multer can storage the image in the backend
               let data = new FormData();
               data.append("name", values.name);
               data.append("purchasePrice", values.purchasePrice);
@@ -136,14 +135,9 @@ const NewProduct = React.memo(() => {
               //
               APIManager.mngr_newProduct(data)
                 .then((res) => {
+                  console.log(res);
                   alert(res.data.msg);
-                  // if (res.data.errmsg) {
-                  //   alert("ERROR => " + res.data.errmsg);
-                  //   setSubmitting(false);
-                  // } else {
-                  //   alert("Producto creado");
-                  //   props.history.push("/manager/products");
-                  // }
+                  props.history.push("/manager/products");
                 })
                 .catch((err) => {
                   console.log(err.response);
@@ -445,6 +439,7 @@ const NewProduct = React.memo(() => {
                     </Form.Control>
                   </Form.Group>
                   <UploadImage
+                    photo={values.photo}
                     setFieldValue={setFieldValue}
                     onBlur={handleBlur}
                     file={values.file}

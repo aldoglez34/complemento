@@ -101,7 +101,7 @@ const ProductRow = React.memo(({ product }) => {
           <Button
             variant="danger"
             size="sm"
-            title="Borrar"
+            title="Eliminar"
             className="ml-2"
             onClick={() => alert("No disponible por el momento.")}
           >
