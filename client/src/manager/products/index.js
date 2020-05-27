@@ -188,7 +188,7 @@ const Products = React.memo(() => {
       {filtered && categories ? (
         filtered.length ? (
           <>
-            <Table striped hover size="sm" responsive variant="white">
+            <Table striped size="sm" responsive variant="white">
               <thead>
                 <tr>
                   <th className="text-center border-0 pb-3">Activo</th>

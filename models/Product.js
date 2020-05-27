@@ -60,6 +60,7 @@ const ProductSchema = new Schema({
       hasDiscount: {
         type: Boolean,
         required: true,
+        default: false,
       },
       startDate: Date,
       endDate: Date,

@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 const ChooseCategory = React.memo(
   ({
+    starter,
     categories,
     value4New,
     touchedNewCat,
@@ -13,7 +14,7 @@ const ChooseCategory = React.memo(
     onChange,
     onBlur,
   }) => {
-    const [type, setType] = useState("Nueva");
+    const [type, setType] = useState(starter);
 
     const handleChange = (event) => setType(event.target.value);
 
@@ -50,9 +51,6 @@ const ChooseCategory = React.memo(
             type="text"
             name="existingCategory"
             value={value4Existing}
-            // value="Elige..."
-            // defaultValue="Elige..."
-            // value={value4Existing}
             onChange={onChange}
             onBlur={onBlur}
           >
@@ -83,7 +81,11 @@ const ChooseCategory = React.memo(
               *
             </span>
           </Form.Label>
-          <Form.Control as="select" onChange={handleChange}>
+          <Form.Control
+            as="select"
+            defaultValue={starter}
+            onChange={handleChange}
+          >
             <option value="Nueva">Nueva</option>
             {categories.length ? (
               <option value="Existente">Existente</option>

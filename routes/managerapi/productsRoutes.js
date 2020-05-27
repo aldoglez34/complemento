@@ -56,6 +56,19 @@ router.get("/categories/all", function (req, res) {
     });
 });
 
+// mngr_fetchOneProduct()
+// matches with /managerapi/products/getOne/:productId
+router.get("/getOne/:productId", function (req, res) {
+  const { productId } = req.params;
+  model.Product.findById(productId)
+    .populate("provider")
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
+});
+
 // mngr_updateProduct()
 // matches with /managerapi/products/update
 router.put("/update", function (req, res) {
@@ -95,7 +108,6 @@ router.put("/update", function (req, res) {
 
 // mngr_newProduct()
 // matches with /managerapi/products/new
-const path = require("path");
 const multer = require("multer");
 
 const storage = multer.diskStorage({
@@ -113,7 +125,6 @@ const upload = multer({
 }).single("file");
 
 router.post("/new", function (req, res) {
-  console.log("entrando al post...");
   upload(req, res, function (err) {
     if (err instanceof multer.MulterError) {
       // A Multer error occurred when uploading.
@@ -125,28 +136,28 @@ router.post("/new", function (req, res) {
       res.status(422).send({ msg: "Ocurrió un error." });
     }
     // Everything went fine.
-    // console.log("Everything went fine.");
     model.Product.create({
       name: req.body.name,
       price: {
-        purchasePrice: req.body.purchasePrice,
+        latestPurchasePrice: req.body.purchasePrice,
         salePrice: req.body.salePrice,
       },
       category: req.body.category,
       brand: req.body.brand,
       content: req.body.brand,
       provider: req.body.provider,
-    });
+      ingredients: req.body.ingredients.split(","),
+      stock: req.body.stock,
+      priority: req.body.priority,
+      photo: req.body.photo,
+      dose: req.body.dose,
+      description: req.body.description,
+      warning: req.body.warning,
+    })
+      .then(() => res.send({ msg: "El producto fue creado con éxito." }))
+      .catch(() => res.status(422).send({ msg: "Ocurrió un error." }));
   });
 });
-
-// router.post("/new", upload, function (req, res, next) {
-//   // req.file is the `avatar` file
-//   // req.body will hold the text fields, if there were any
-//   console.log("--------------doing stuff");
-//   console.log("req.files", req.files); // JSON Object
-//   console.log("req.file", req.file); // JSON Object
-// });
 
 // mngr_activateProduct()
 // matches with /managerapi/products/activate/:productId

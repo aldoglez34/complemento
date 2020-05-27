@@ -22,6 +22,7 @@ import Users from "../manager/users";
 import Messages from "../manager/messages";
 import Products from "../manager/products";
 import NewProduct from "../manager/products/pages/NewProduct";
+import EditProduct from "../manager/products/pages/EditProduct";
 import Sales from "../manager/sales";
 
 const ManagerNavigation = () => {
@@ -69,6 +70,11 @@ const ManagerNavigation = () => {
       <Route exact path="/manager/categories" component={Categories} />
       <Route exact path="/manager/products" component={Products} />
       <Route exact path="/manager/products/new" component={NewProduct} />
+      <Route
+        exact
+        path="/manager/products/edit/:productId"
+        render={(props) => <EditProduct routeProps={props} />}
+      />
       <Route exact path="/manager/providers" component={Providers} />
       <Route exact path="/manager/users" component={Users} />
       <Route exact path="/manager/messages" component={Messages} />

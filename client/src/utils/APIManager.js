@@ -21,6 +21,10 @@ export default {
     return axios.get("/managerapi/products/categories/all");
   },
 
+  mngr_fetchOneProduct: function (productId) {
+    return axios.get("/managerapi/products/getOne/" + productId);
+  },
+
   mngr_updateProduct: function (product) {
     return axios.put("/managerapi/products/update", product);
   },

@@ -22,7 +22,12 @@ const UploadImage = React.memo(({ setFieldValue, onBlur, file }) => {
         type="file"
         onChange={(event) => {
           setFieldValue("file", event.currentTarget.files[0]);
-          setFieldValue("photo", event.currentTarget.files[0].name);
+          setFieldValue(
+            "photo",
+            event.currentTarget.files[0]
+              ? event.currentTarget.files[0].name
+              : ""
+          );
         }}
         onBlur={onBlur}
         custom

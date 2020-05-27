@@ -118,7 +118,7 @@ const NewProduct = React.memo(() => {
               data.append("salePrice", values.salePrice);
               data.append(
                 "category",
-                values.newCategory
+                values.newCategory.length
                   ? values.newCategory
                   : values.existingCategory
               );
@@ -136,7 +136,7 @@ const NewProduct = React.memo(() => {
               //
               APIManager.mngr_newProduct(data)
                 .then((res) => {
-                  console.log(res);
+                  alert(res.data.msg);
                   // if (res.data.errmsg) {
                   //   alert("ERROR => " + res.data.errmsg);
                   //   setSubmitting(false);
@@ -278,6 +278,7 @@ const NewProduct = React.memo(() => {
                 {/* category and brand */}
                 <Form.Row>
                   <ChooseCategory
+                    starter="Nueva"
                     categories={categories}
                     value4New={values.newCategory}
                     touchedNewCat={touched.newCategory}
@@ -359,7 +360,7 @@ const NewProduct = React.memo(() => {
                       <option disabled>Elige...</option>
                       {providers.map((prov) => {
                         return (
-                          <option value={prov.name} key={prov._id}>
+                          <option value={prov._id} key={prov._id}>
                             {prov.name}
                           </option>
                         );
@@ -372,7 +373,7 @@ const NewProduct = React.memo(() => {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* provider and ingredients */}
+                {/* ingredients */}
                 <Form.Row>
                   <Form.Group as={Col}>
                     <Form.Label>
