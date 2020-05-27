@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Spinner, Table, Badge } from "react-bootstrap";
+import { Spinner, Table, Button } from "react-bootstrap";
 import APIManager from "../../../utils/APIManager";
 import ManagerLayout from "../../ManagerLayout";
 
@@ -7,7 +7,7 @@ const NewDiscount = React.memo(() => {
   const [products, setProducts] = useState();
 
   useEffect(() => {
-    APIManager.mngr_fetchCategories()
+    APIManager.mngr_fetchDiscounts()
       .then((res) => setProducts(res.data))
       .catch((err) => {
         console.log(err.response);
@@ -42,14 +42,14 @@ const NewDiscount = React.memo(() => {
                 <th className="text-center border-0 pb-3">PrecioCompra</th>
                 <th className="text-center border-0 pb-3">PrecioVenta</th>
                 <th className="text-center border-0 pb-3">Utilidad</th>
-                <th className="text-center border-0 pb-3"></th>
+                {/* <th className="text-center border-0 pb-3"></th> */}
               </tr>
             </thead>
             <tbody>
               {products.map((p) => {
                 return (
                   <tr key={p._id}>
-                    <td>{formatNumber(p.name)}</td>
+                    <td>{p.name}</td>
                     <td className="text-right">
                       {formatNumber(p.price.latestPurchasePrice)}
                     </td>
@@ -61,13 +61,14 @@ const NewDiscount = React.memo(() => {
                         p.price.salePrice - p.price.latestPurchasePrice
                       )}
                     </td>
-                    <td lassName="text-center">
-                      <Badge
+                    <td lassName="text-right">
+                      <Button
                         variant="warning"
+                        size="sm"
                         onClick={() => alert("aplicando descuento")}
                       >
                         Aplicar descuento
-                      </Badge>
+                      </Button>
                     </td>
                   </tr>
                 );

@@ -36,7 +36,7 @@ export default {
   // discounts
 
   mngr_fetchDiscounts: function () {
-    return axios.put("/managerapi/products/discounts/all");
+    return axios.get("/managerapi/products/discounts/all");
   },
 
   // product activation
