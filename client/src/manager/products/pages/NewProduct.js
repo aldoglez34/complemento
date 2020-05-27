@@ -116,8 +116,12 @@ const NewProduct = React.memo(() => {
               data.append("name", values.name);
               data.append("purchasePrice", values.purchasePrice);
               data.append("salePrice", values.salePrice);
-              data.append("newCategory", values.newCategory);
-              data.append("existingCategory", values.existingCategory);
+              data.append(
+                "category",
+                values.newCategory
+                  ? values.newCategory
+                  : values.existingCategory
+              );
               data.append("brand", values.brand);
               data.append("content", values.content);
               data.append("provider", values.provider);

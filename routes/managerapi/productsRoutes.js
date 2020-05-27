@@ -132,8 +132,10 @@ router.post("/new", function (req, res) {
         purchasePrice: req.body.purchasePrice,
         salePrice: req.body.salePrice,
       },
+      category: req.body.category,
       brand: req.body.brand,
       content: req.body.brand,
+      provider: req.body.provider,
     });
   });
 });
