@@ -40,13 +40,13 @@ const EditProduct = React.memo((props) => {
       });
   }, []);
 
-  const PHOTO_SIZE = 1000000;
-  const SUPPORTED_FORMATS = [
-    "image/jpg",
-    "image/jpeg",
-    "image/gif",
-    "image/png",
-  ];
+  // const PHOTO_SIZE = 1000000;
+  // const SUPPORTED_FORMATS = [
+  //   "image/jpg",
+  //   "image/jpeg",
+  //   "image/gif",
+  //   "image/png",
+  // ];
 
   const yupschema = yup.object({
     // file: yup

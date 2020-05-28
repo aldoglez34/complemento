@@ -17,10 +17,10 @@ const PinkDiscountDate = React.memo(() => {
 
   return (
     <DatePicker
+      className="p-2 pl-3 border rounded"
       selected={startDate}
       onChange={handleChange}
       locale="es"
-      //   dateFormat="Pp"
     />
   );
 });
