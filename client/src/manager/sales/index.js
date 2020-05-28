@@ -3,7 +3,7 @@ import ManagerLayout from "../ManagerLayout";
 import APIManager from "../../utils/APIManager";
 import { Row, Button, Table, Spinner } from "react-bootstrap";
 import SalesRow from "./SalesRow";
-const moment = require("moment");
+import moment from "moment";
 
 const Sales = React.memo(() => {
   const [sales, setSales] = useState();

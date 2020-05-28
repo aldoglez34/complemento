@@ -14,7 +14,8 @@ import Slide from "react-reveal/Slide";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import HelpButton from "../../components/helpbutton/HelpButton";
-const moment = require("moment");
+import { formatNumber } from "../../utils/formatNumber";
+import moment from "moment";
 
 const Tracker = React.memo(() => {
   const [sale, setSale] = useState();
@@ -27,16 +28,6 @@ const Tracker = React.memo(() => {
   const formatDate = (date) => {
     let convertedDate = moment(moment(date).format(moment.HTML5_FMT.DATE));
     return convertedDate.format("DD MMM YYYY");
-  };
-
-  const formatNumber = (num) => {
-    return num !== undefined
-      ? "$" +
-          num
-            .toFixed(2)
-            .toString()
-            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-      : null;
   };
 
   return (

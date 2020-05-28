@@ -3,7 +3,7 @@ import ManagerLayout from "../ManagerLayout";
 import APIManager from "../../utils/APIManager";
 import { Table, Spinner, Row, Button } from "react-bootstrap";
 import MessagesRow from "./MessagesRow";
-const moment = require("moment");
+import moment from "moment";
 
 const Messages = React.memo(() => {
   const [messages, setMessages] = useState();

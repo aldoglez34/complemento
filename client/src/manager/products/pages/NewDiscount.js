@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Spinner, Table, Button } from "react-bootstrap";
+import { Spinner, Table } from "react-bootstrap";
 import APIManager from "../../../utils/APIManager";
 import ManagerLayout from "../../ManagerLayout";
+import ApplyDiscountBttn from "../components/ApplyDiscountBttn";
+import { formatNumber } from "../../../utils/formatNumber";
 
 const NewDiscount = React.memo(() => {
   const [products, setProducts] = useState();
@@ -16,16 +18,6 @@ const NewDiscount = React.memo(() => {
           : alert("Ocurrió un error al cargar los productos.");
       });
   }, []);
-
-  const formatNumber = (num) => {
-    return num !== undefined
-      ? "$" +
-          num
-            .toFixed(2)
-            .toString()
-            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-      : null;
-  };
 
   return (
     <ManagerLayout
@@ -42,7 +34,8 @@ const NewDiscount = React.memo(() => {
                 <th className="text-center border-0 pb-3">PrecioCompra</th>
                 <th className="text-center border-0 pb-3">PrecioVenta</th>
                 <th className="text-center border-0 pb-3">Utilidad</th>
-                {/* <th className="text-center border-0 pb-3"></th> */}
+                <th className="text-center border-0 pb-3">Vendidos</th>
+                <th className="text-center border-0 pb-3">Existencia</th>
               </tr>
             </thead>
             <tbody>
@@ -61,14 +54,10 @@ const NewDiscount = React.memo(() => {
                         p.price.salePrice - p.price.latestPurchasePrice
                       )}
                     </td>
-                    <td lassName="text-right">
-                      <Button
-                        variant="warning"
-                        size="sm"
-                        onClick={() => alert("aplicando descuento")}
-                      >
-                        Aplicar descuento
-                      </Button>
+                    <td className="text-right">{p.unitsSold}</td>
+                    <td className="text-right">{p.stock}</td>
+                    <td className="text-center">
+                      <ApplyDiscountBttn product={p} />
                     </td>
                   </tr>
                 );

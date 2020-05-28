@@ -9,6 +9,7 @@ import {
   Image,
 } from "react-bootstrap";
 import PropTypes from "prop-types";
+import { formatNumber } from "../../../utils/formatNumber";
 
 const Order = React.memo(({ order }) => {
   const [show, setShow] = useState(false);
@@ -22,15 +23,6 @@ const Order = React.memo(({ order }) => {
   useEffect(() => {
     if (order) handleShow();
   }, [order]);
-
-  const formatNumber = (num) =>
-    num !== undefined
-      ? "$" +
-        num
-          .toFixed(2)
-          .toString()
-          .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-      : null;
 
   return (
     <Modal show={show} onHide={handleClose}>

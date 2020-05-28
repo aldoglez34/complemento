@@ -3,7 +3,7 @@ import { Modal, Form, Col, Badge } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 import APIManager from "../../utils/APIManager";
-const moment = require("moment");
+import moment from "moment";
 
 const MessagesRow = React.memo(({ message }) => {
   const [show, setShow] = useState(false);

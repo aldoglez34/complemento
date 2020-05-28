@@ -4,6 +4,7 @@ import Layout from "../../components/Layout";
 import { Container, Spinner, ListGroup, Card, Row, Col } from "react-bootstrap";
 import API from "../../utils/API";
 import moment from "moment";
+import { formatNumber } from "../../utils/formatNumber";
 
 const ClientOrders = React.memo(() => {
   const client = useSelector((state) => state.user);
@@ -20,16 +21,6 @@ const ClientOrders = React.memo(() => {
           : alert("Ocurrió un error al cargar los favoritos.");
       });
   }, []);
-
-  const formatNumber = (num) => {
-    return num !== undefined
-      ? "$" +
-          num
-            .toFixed(2)
-            .toString()
-            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-      : null;
-  };
 
   const formatDate = (date) => {
     let convertedDate = moment(moment(date).format(moment.HTML5_FMT.DATE));

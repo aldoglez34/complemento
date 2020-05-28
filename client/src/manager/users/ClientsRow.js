@@ -3,7 +3,7 @@ import { Modal, Form, Col, Spinner } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 import APIManager from "../../utils/APIManager";
-const moment = require("moment");
+import moment from "moment";
 
 const ClientsRow = React.memo(({ client }) => {
   const [show, setShow] = useState(false);

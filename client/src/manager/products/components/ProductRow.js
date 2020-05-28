@@ -2,18 +2,9 @@ import React from "react";
 import { Button, Badge } from "react-bootstrap";
 import PropTypes from "prop-types";
 import APIManager from "../../../utils/APIManager";
+import { formatNumber } from "../../../utils/formatNumber";
 
 const ProductRow = React.memo(({ product }) => {
-  const formatNumber = (num) => {
-    return num !== undefined
-      ? "$" +
-          num
-            .toFixed(2)
-            .toString()
-            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-      : null;
-  };
-
   const handleChange = (isActive, productId) => {
     if (isActive) {
       APIManager.mngr_deactivateProduct(productId)

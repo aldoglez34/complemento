@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Modal, Form, Col, InputGroup } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
-const moment = require("moment");
+import { formatNumber } from "../../utils/formatNumber";
+import moment from "moment";
 
 const SalesRow = React.memo(({ sale }) => {
   const [show, setShow] = useState(false);
@@ -26,16 +27,6 @@ const SalesRow = React.memo(({ sale }) => {
   const formatDate = (date) => {
     let convertedDate = moment(moment(date).format(moment.HTML5_FMT.DATE));
     return convertedDate.format("DD/MMMM/YYYY");
-  };
-
-  const formatNumber = (num) => {
-    return num !== undefined
-      ? "$" +
-          num
-            .toFixed(2)
-            .toString()
-            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-      : null;
   };
 
   return (

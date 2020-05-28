@@ -5,18 +5,9 @@ import { Button, Modal, Row, Col, Image } from "react-bootstrap";
 import PropTypes from "prop-types";
 import "./addtobagbutton.scss";
 import QtyPicker from "../QtyPicker";
+import { formatNumber } from "../../utils/formatNumber";
 
 const AddToBagButton = React.memo(({ product, size }) => {
-  const formatNumber = (num) => {
-    return num !== undefined
-      ? "$" +
-          num
-            .toFixed(2)
-            .toString()
-            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-      : null;
-  };
-
   const [show, setShow] = useState(false);
 
   const dispatch = useDispatch();
