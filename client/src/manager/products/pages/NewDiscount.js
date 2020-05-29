@@ -31,6 +31,7 @@ const NewDiscount = React.memo(() => {
             <thead>
               <tr>
                 <th className="text-center border-0 pb-3">Nombre</th>
+                <th className="text-center border-0 pb-3">Categoría</th>
                 <th className="text-center border-0 pb-3">PrecioCompra</th>
                 <th className="text-center border-0 pb-3">PrecioVenta</th>
                 <th className="text-center border-0 pb-3">Utilidad</th>
@@ -43,6 +44,7 @@ const NewDiscount = React.memo(() => {
                 return (
                   <tr key={p._id}>
                     <td>{p.name}</td>
+                    <td>{p.category}</td>
                     <td className="text-right">
                       {formatNumber(p.price.latestPurchasePrice)}
                     </td>

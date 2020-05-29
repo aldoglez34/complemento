@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import {
-  Modal,
-  Button,
-  Form,
-  Col,
-  Image,
-  Row,
-  ListGroup,
-} from "react-bootstrap";
-import { Formik } from "formik";
+import { Modal, Button, Col, Image, Row, ListGroup } from "react-bootstrap";
 import { formatNumber } from "../../../utils/formatNumber";
 import PropTypes from "prop-types";
-import PickDiscountDate from "../components/PickDiscountDate";
+import DatePicker from "react-datepicker";
+import { registerLocale } from "react-datepicker";
+import es from "date-fns/locale/es";
+import moment from "moment";
+registerLocale("es", es);
 
 const ApplyDiscountBttn = React.memo(({ product }) => {
   const [show, setShow] = useState(false);
+
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [percentage, setPercentage] = useState(5);
+
+  const onChangeStartDate = (date) => setStartDate(date);
+  const onChangeEndDate = (date) => setEndDate(date);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -29,6 +31,7 @@ const ApplyDiscountBttn = React.memo(({ product }) => {
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
           <h3 className="text-center mb-4">{product.name}</h3>
+          {/* product information */}
           <Row className="mb-4">
             <Col md={{ span: 3, offset: 2 }}>
               <Image
@@ -39,10 +42,6 @@ const ApplyDiscountBttn = React.memo(({ product }) => {
               />
             </Col>
             <Col md="auto">
-              <p className="mb-1">
-                <strong>Producto:</strong>
-                <span className="ml-2">{product.name}</span>
-              </p>
               <p className="mb-1">
                 <strong>Precio de la última compra:</strong>
                 <span className="ml-2">
@@ -65,110 +64,120 @@ const ApplyDiscountBttn = React.memo(({ product }) => {
               </p>
             </Col>
           </Row>
-
-          <hr />
-          <Formik
-            initialValues={{
-              name: "",
-            }}
-            // validationSchema={yupschema}
-            validateOnBlur={true}
-            onSubmit={(values, { setSubmitting }) => {
-              setSubmitting(true);
-            }}
-          >
-            {({
-              values,
-              errors,
-              touched,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              isSubmitting,
-            }) => (
-              <Form className="mt-2" noValidate onSubmit={handleSubmit}>
-                {/* dates */}
-                <Form.Row>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>
-                      <strong>Fecha de inicio</strong>
-                      <span title="Requerido" className="text-danger">
-                        *
-                      </span>
-                    </Form.Label>
-                    <PickDiscountDate />
-                  </Form.Group>
-                  <Form.Group as={Col} md={6}>
-                    <Form.Label>
-                      <strong>Fecha de término</strong>
-                      <span title="Requerido" className="text-danger">
-                        *
-                      </span>
-                    </Form.Label>
-                    <PickDiscountDate />
-                  </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>
-                      <strong>Porcentaje</strong>
-                      <span title="Requerido" className="text-danger">
-                        *
-                      </span>
-                    </Form.Label>
-                    <ListGroup horizontal>
-                      <ListGroup.Item className="text-center" action active>
-                        5%
-                      </ListGroup.Item>
-                      <ListGroup.Item className="text-center" action>
-                        10%
-                      </ListGroup.Item>
-                      <ListGroup.Item className="text-center" action>
-                        15%
-                      </ListGroup.Item>
-                      <ListGroup.Item className="text-center" action>
-                        20%
-                      </ListGroup.Item>
-                      <ListGroup.Item className="text-center" action>
-                        25%
-                      </ListGroup.Item>
-                      <ListGroup.Item className="text-center" action>
-                        30%
-                      </ListGroup.Item>
-                    </ListGroup>
-                  </Form.Group>
-                </Form.Row>
-                <hr />
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <p className="mb-1">
-                      <strong>Nuevo precio de venta:</strong>
-                      <strong className="ml-2 text-danger">
-                        {formatNumber(product.price.salePrice)}
-                      </strong>
-                    </p>
-                    <p className="mb-1">
-                      <strong>Nueva utilidad:</strong>
-                      <strong className="ml-2 text-danger">
-                        {formatNumber(product.price.salePrice)}
-                      </strong>
-                    </p>
-                  </Form.Group>
-                </Form.Row>
-                {/* buttons */}
-                <Form.Group>
-                  <Button
-                    className="shadow-sm"
-                    variant="warning"
-                    type="submit"
-                    disabled={isSubmitting}
-                  >
-                    Aplicar Descuento
-                  </Button>
-                </Form.Group>
-              </Form>
-            )}
-          </Formik>
+          {/* star date and end date */}
+          <Row className="mb-3">
+            <Col>
+              <strong className="mb-2">Fecha de inicio</strong>
+              <DatePicker
+                className="p-2 pl-3 border rounded"
+                selected={startDate}
+                onChange={onChangeStartDate}
+                locale="es"
+                dateFormat="dd/MM/yyyy"
+              />
+            </Col>
+            <Col>
+              <strong className="mb-2">Fecha de término</strong>
+              <DatePicker
+                className="p-2 pl-3 border rounded"
+                selected={endDate}
+                onChange={onChangeEndDate}
+                locale="es"
+                dateFormat="dd/MM/yyyy"
+              />
+            </Col>
+          </Row>
+          {/* percentages */}
+          <Row className="mb-3">
+            <Col>
+              <strong>Porcentaje</strong>
+              <ListGroup horizontal>
+                <ListGroup.Item
+                  className="text-center"
+                  action
+                  onClick={() => setPercentage(5)}
+                  active={percentage === 5 ? true : false}
+                >
+                  5%
+                </ListGroup.Item>
+                <ListGroup.Item
+                  className="text-center"
+                  action
+                  onClick={() => setPercentage(10)}
+                  active={percentage === 10 ? true : false}
+                >
+                  10%
+                </ListGroup.Item>
+                <ListGroup.Item
+                  className="text-center"
+                  action
+                  onClick={() => setPercentage(15)}
+                  active={percentage === 15 ? true : false}
+                >
+                  15%
+                </ListGroup.Item>
+                <ListGroup.Item
+                  className="text-center"
+                  action
+                  onClick={() => setPercentage(20)}
+                  active={percentage === 20 ? true : false}
+                >
+                  20%
+                </ListGroup.Item>
+                <ListGroup.Item
+                  className="text-center"
+                  action
+                  onClick={() => setPercentage(25)}
+                  active={percentage === 25 ? true : false}
+                >
+                  25%
+                </ListGroup.Item>
+                <ListGroup.Item
+                  className="text-center"
+                  action
+                  onClick={() => setPercentage(30)}
+                  active={percentage === 30 ? true : false}
+                >
+                  30%
+                </ListGroup.Item>
+              </ListGroup>
+            </Col>
+          </Row>
+          {/* new prices */}
+          <Row className="mb-3">
+            <Col>
+              <p className="mb-1">
+                <strong>Nuevo precio de venta:</strong>
+                <strong className="ml-2 text-danger">
+                  {formatNumber(product.price.salePrice)}
+                </strong>
+              </p>
+              <p className="mb-1">
+                <strong>Nueva utilidad:</strong>
+                <strong className="ml-2 text-danger">
+                  {formatNumber(product.price.salePrice)}
+                </strong>
+              </p>
+            </Col>
+          </Row>
+          {/* button */}
+          <Row>
+            <Col>
+              <Button
+                className="shadow-sm"
+                variant="warning"
+                onClick={() =>
+                  alert(
+                    `start date: ${moment(startDate).format(
+                      "DD MM YY"
+                    )}, end date: ${endDate}, percentage: ${percentage}`
+                  )
+                }
+              >
+                Aplicar Descuento
+              </Button>
+            </Col>
+          </Row>
         </Modal.Body>
       </Modal>
     </>
