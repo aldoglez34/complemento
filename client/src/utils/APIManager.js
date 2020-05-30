@@ -39,6 +39,10 @@ export default {
     return axios.get("/managerapi/products/discounts/all");
   },
 
+  mngr_newDiscount: function (data) {
+    return axios.put("/managerapi/products/discounts/new", data);
+  },
+
   // product activation
 
   mngr_activateProduct: function (productId) {

@@ -153,6 +153,22 @@ router.put("/update", function (req, res) {
     });
 });
 
+// mngr_deactivateProduct()
+// matches with /managerapi/products/deactivate/:productId
+router.put("/deactivate/:productId", function (req, res) {
+  const { productId } = req.params;
+  model.Product.findByIdAndUpdate(productId, {
+    active: false,
+  })
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
+});
+
+// discounts
+
 // mngr_fetchDiscounts()
 // matches with /managerapi/products/discounts/all
 router.get("/discounts/all", function (req, res) {
@@ -167,26 +183,30 @@ router.get("/discounts/all", function (req, res) {
     });
 });
 
-// mngr_activateProduct()
-// matches with /managerapi/products/activate/:productId
-router.put("/activate/:productId", function (req, res) {
-  const { productId } = req.params;
-  model.Product.findByIdAndUpdate(productId, {
-    active: true,
+// mngr_newDiscount()
+// matches with /managerapi/products/discounts/new
+router.put("/discounts/new", function (req, res) {
+  // console.log("@mngr_newDiscount", req.body);
+  model.Product.findByIdAndUpdate(req.body.productId, {
+    "price.discount.hasDiscount": true,
+    "price.discount.startDate": req.body.formattedStartDate,
+    "price.discount.endDate": req.body.formattedEndDate,
+    "price.discount.percentage": req.body.percentage,
+    "price.discount.newPrice": req.body.newPrice,
   })
-    .then((data) => res.json(data))
+    .then((data) => res.send({ msg: "El descuento fue aplicado con éxito." }))
     .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });
     });
 });
 
-// mngr_deactivateProduct()
-// matches with /managerapi/products/deactivate/:productId
-router.put("/deactivate/:productId", function (req, res) {
+// mngr_activateProduct()
+// matches with /managerapi/products/activate/:productId
+router.put("/activate/:productId", function (req, res) {
   const { productId } = req.params;
   model.Product.findByIdAndUpdate(productId, {
-    active: false,
+    active: true,
   })
     .then((data) => res.json(data))
     .catch((err) => {

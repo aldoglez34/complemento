@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button, Col, Image, Row, ListGroup } from "react-bootstrap";
 import { formatNumber } from "../../../utils/formatNumber";
+import APIManager from "../../../utils/APIManager";
 import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 import { registerLocale } from "react-datepicker";
@@ -21,6 +22,30 @@ const ApplyDiscountBttn = React.memo(({ product }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const applyDiscount = () => {
+    APIManager.mngr_newDiscount({
+      productId: product._id,
+      percentage: percentage,
+      newPrice:
+        product.price.salePrice - (product.price.salePrice * percentage) / 100,
+      formattedStartDate: moment(startDate).format("YYYY/MM/DD"),
+      formattedEndDate: moment(endDate).format("YYYY/MM/DD"),
+    })
+      .then((res) => {
+        console.log(res);
+        alert(
+          res.data.msg ? res.data.msg : "El descuento fue aplicado con éxito."
+        );
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err.response);
+        err.response.data.msg
+          ? alert(err.response.data.msg)
+          : alert("Ocurrió un error al aplicar el descuento.");
+      });
+  };
+
   return (
     <>
       <Button variant="warning" size="sm" onClick={handleShow}>
@@ -29,7 +54,7 @@ const ApplyDiscountBttn = React.memo(({ product }) => {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Body>
+        <Modal.Body className="pb-4">
           <h3 className="text-center mb-4">{product.name}</h3>
           {/* product information */}
           <Row className="mb-4">
@@ -44,32 +69,34 @@ const ApplyDiscountBttn = React.memo(({ product }) => {
             <Col md="auto">
               <p className="mb-1">
                 <strong>Precio de la última compra:</strong>
-                <span className="ml-2">
+                <strong className="ml-2 text-success">
                   {formatNumber(product.price.latestPurchasePrice)}
-                </span>
+                </strong>
               </p>
               <p className="mb-1">
                 <strong>Precio de venta:</strong>
-                <span className="ml-2">
+                <strong className="ml-2 text-success">
                   {formatNumber(product.price.salePrice)}
-                </span>
-              </p>
-              <p className="mb-1">
-                <strong>Unidades vendidas:</strong>
-                <span className="ml-2">{product.unitsSold}</span>
+                </strong>
               </p>
               <p className="mb-0">
                 <strong>Existencia:</strong>
-                <span className="ml-2">{product.stock}</span>
+                <strong className="ml-2 text-success">{product.stock}</strong>
+              </p>
+              <p className="mb-1">
+                <strong>Unidades vendidas:</strong>
+                <strong className="ml-2 text-success">
+                  {product.unitsSold}
+                </strong>
               </p>
             </Col>
           </Row>
           {/* star date and end date */}
           <Row className="mb-3">
             <Col>
-              <strong className="mb-2">Fecha de inicio</strong>
+              <strong>Fecha de inicio</strong>
               <DatePicker
-                className="p-2 pl-3 border rounded"
+                className="mt-2 p-2 pl-3 border rounded"
                 selected={startDate}
                 onChange={onChangeStartDate}
                 locale="es"
@@ -77,9 +104,9 @@ const ApplyDiscountBttn = React.memo(({ product }) => {
               />
             </Col>
             <Col>
-              <strong className="mb-2">Fecha de término</strong>
+              <strong>Fecha de término</strong>
               <DatePicker
-                className="p-2 pl-3 border rounded"
+                className="mt-2 p-2 pl-3 border rounded"
                 selected={endDate}
                 onChange={onChangeEndDate}
                 locale="es"
@@ -91,7 +118,7 @@ const ApplyDiscountBttn = React.memo(({ product }) => {
           <Row className="mb-3">
             <Col>
               <strong>Porcentaje</strong>
-              <ListGroup horizontal>
+              <ListGroup className="mt-2" horizontal>
                 <ListGroup.Item
                   className="text-center"
                   action
@@ -149,13 +176,20 @@ const ApplyDiscountBttn = React.memo(({ product }) => {
               <p className="mb-1">
                 <strong>Nuevo precio de venta:</strong>
                 <strong className="ml-2 text-danger">
-                  {formatNumber(product.price.salePrice)}
+                  {formatNumber(
+                    product.price.salePrice -
+                      (product.price.salePrice * percentage) / 100
+                  )}
                 </strong>
               </p>
               <p className="mb-1">
                 <strong>Nueva utilidad:</strong>
                 <strong className="ml-2 text-danger">
-                  {formatNumber(product.price.salePrice)}
+                  {formatNumber(
+                    product.price.salePrice -
+                      (product.price.salePrice * percentage) / 100 -
+                      product.price.latestPurchasePrice
+                  )}
                 </strong>
               </p>
             </Col>
@@ -166,13 +200,7 @@ const ApplyDiscountBttn = React.memo(({ product }) => {
               <Button
                 className="shadow-sm"
                 variant="warning"
-                onClick={() =>
-                  alert(
-                    `start date: ${moment(startDate).format(
-                      "DD MM YY"
-                    )}, end date: ${endDate}, percentage: ${percentage}`
-                  )
-                }
+                onClick={applyDiscount}
               >
                 Aplicar Descuento
               </Button>
