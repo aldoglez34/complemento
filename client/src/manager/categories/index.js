@@ -12,8 +12,8 @@ const Categories = React.memo(() => {
     APIManager.mngr_categoriesReport()
       .then((res) => setCategories(res.data))
       .catch((err) => {
-        console.log(err.response);
-        err.response.data.msg
+        console.log(err);
+        err.data
           ? alert(err.response.data.msg)
           : alert("Ocurrió un error al cargar el reporte de categorías.");
       });
