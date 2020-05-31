@@ -23,7 +23,7 @@ const Categories = React.memo(() => {
     <ManagerLayout leftBarActive="Categorías" title="Categorías">
       {categories ? (
         categories.length ? (
-          <Tab.Container defaultActiveKey={"#" + categories[0]}>
+          <Tab.Container defaultActiveKey={"#" + categories[0].category}>
             <Row>
               <Col sm={3}>
                 <ListGroup>
@@ -31,11 +31,11 @@ const Categories = React.memo(() => {
                     return (
                       <ListGroup.Item
                         className="categoryMngrItem"
-                        key={cat}
+                        key={cat.category}
                         action
-                        href={"#" + cat}
+                        href={"#" + cat.category}
                       >
-                        {cat}
+                        {cat.category}
                       </ListGroup.Item>
                     );
                   })}
@@ -45,8 +45,15 @@ const Categories = React.memo(() => {
                 <Tab.Content>
                   {categories.map((cat) => {
                     return (
-                      <Tab.Pane key={cat} eventKey={"#" + cat}>
-                        <CategoryContent title={cat} />
+                      <Tab.Pane
+                        key={cat.category}
+                        eventKey={"#" + cat.category}
+                      >
+                        <CategoryContent
+                          title={cat.category}
+                          productCount={cat.productCount}
+                          products={cat.products}
+                        />
                       </Tab.Pane>
                     );
                   })}

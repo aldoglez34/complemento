@@ -3,38 +3,38 @@ import { CardGroup, Card } from "react-bootstrap";
 import PropTypes from "prop-types";
 import ProductsByCategory from "./ProductsByCategory";
 
-const CategoryContent = React.memo(({ title }) => {
+const CategoryContent = React.memo(({ title, productCount, products }) => {
   return (
     <>
-      <h2 className="mb-4">{title}</h2>
+      <h1 className="mb-4">{title}</h1>
       <CardGroup>
         <Card bg="light">
           <Card.Body>
             <Card.Title>
-              <h1>$0</h1>
+              <h1>{productCount}</h1>
             </Card.Title>
-            <Card.Text>Gasté.</Card.Text>
+            <Card.Text>Productos</Card.Text>
           </Card.Body>
         </Card>
         <Card bg="light">
           <Card.Body>
             <Card.Title>
-              <h1>$5,000</h1>
+              <h1>X</h1>
             </Card.Title>
-            <Card.Text>Gané.</Card.Text>
+            <Card.Text>XX</Card.Text>
           </Card.Body>
         </Card>
         <Card bg="light">
           <Card.Body>
             <Card.Title>
-              <h1>$50,000</h1>
+              <h1>X</h1>
             </Card.Title>
-            <Card.Text>Utilidad.</Card.Text>
+            <Card.Text>XX</Card.Text>
           </Card.Body>
         </Card>
       </CardGroup>
       <br />
-      <ProductsByCategory />
+      <ProductsByCategory products={products} />
     </>
   );
 });

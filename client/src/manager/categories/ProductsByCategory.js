@@ -1,16 +1,45 @@
 import React from "react";
-import { ListGroup } from "react-bootstrap";
+import { ListGroup, Row, Col, Image, Button } from "react-bootstrap";
+import moment from "moment";
 
-const ProductsByCategory = React.memo(() => {
+const ProductsByCategory = React.memo(({ products }) => {
   return (
     <>
-      <h4 className="mb-3">Productos por categoría</h4>
+      {/* <h4 className="mb-3">Productos por categoría</h4> */}
       <ListGroup variant="flush">
-        <ListGroup.Item>Cras justo odio</ListGroup.Item>
-        <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-        <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-        <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-        <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+        {products.map((p) => {
+          return (
+            <ListGroup.Item key={p.name}>
+              <Row>
+                <Col md={2}>
+                  <Image
+                    src={"/images/products/" + p.photo}
+                    width="83"
+                    height="138"
+                  />
+                </Col>
+                <Col md={9}>
+                  <strong style={{ fontSize: "20px" }}>{p.name}</strong>
+                  <p className="mb-0">{p.content}</p>
+                  <p className="mb-2 lead">
+                    {moment(p.createdAt).format("DD/MMMM/YYYY")}
+                  </p>
+                  <Button
+                    className="shadow-sm"
+                    variant="info"
+                    href={"/manager/products/edit/" + p._id}
+                  >
+                    <i className="fas fa-pen mr-2" />
+                    Editar
+                  </Button>
+                </Col>
+                <Col md={1}>
+                  <h2 className="text-danger">$50</h2>
+                </Col>
+              </Row>
+            </ListGroup.Item>
+          );
+        })}
       </ListGroup>
     </>
   );

@@ -10,9 +10,14 @@ router.get("/report", function (req, res) {
         _id: "$category",
         productCount: { $sum: 1 },
         products: {
-          $push: { category: "$category", _id: "$_id" },
-          $push: { category: "$category", photo: "$photo" },
-          $push: { category: "$category", name: "$name" },
+          $push: {
+            _id: "$_id",
+            name: "$name",
+            photo: "$photo",
+            price: "$price",
+            content: "$content",
+            createdAt: "$createdAt",
+          },
         },
       },
     },
