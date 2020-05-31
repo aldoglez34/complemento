@@ -26,7 +26,7 @@ const Categories = React.memo(() => {
           <Tab.Container defaultActiveKey={"#" + categories[0].category}>
             <Row>
               <Col sm={3}>
-                <ListGroup>
+                <ListGroup className="shadow-sm">
                   {categories.map((cat) => {
                     return (
                       <ListGroup.Item

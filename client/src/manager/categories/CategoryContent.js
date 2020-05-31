@@ -6,12 +6,13 @@ import ProductsByCategory from "./ProductsByCategory";
 const CategoryContent = React.memo(({ title, productCount, products }) => {
   return (
     <>
-      <h1 className="mb-4">{title}</h1>
-      <CardGroup>
+      <h1 className="mb-1">{title}</h1>
+      <hr className="myDivider" />
+      <CardGroup className="shadow-sm pt-2">
         <Card bg="light">
           <Card.Body>
             <Card.Title>
-              <h1>{productCount}</h1>
+              <span className="display-4">{productCount}</span>
             </Card.Title>
             <Card.Text>Productos</Card.Text>
           </Card.Body>
@@ -19,7 +20,7 @@ const CategoryContent = React.memo(({ title, productCount, products }) => {
         <Card bg="light">
           <Card.Body>
             <Card.Title>
-              <h1>X</h1>
+              <span className="display-4">{productCount}</span>
             </Card.Title>
             <Card.Text>XX</Card.Text>
           </Card.Body>
@@ -27,7 +28,15 @@ const CategoryContent = React.memo(({ title, productCount, products }) => {
         <Card bg="light">
           <Card.Body>
             <Card.Title>
-              <h1>X</h1>
+              <span className="display-4">{productCount}</span>
+            </Card.Title>
+            <Card.Text>XX</Card.Text>
+          </Card.Body>
+        </Card>
+        <Card bg="light">
+          <Card.Body>
+            <Card.Title>
+              <span className="display-4">{productCount}</span>
             </Card.Title>
             <Card.Text>XX</Card.Text>
           </Card.Body>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ManagerLayout from "../ManagerLayout";
 import APIManager from "../../utils/APIManager";
 import { Table, Spinner } from "react-bootstrap";
-import NewProvider from "./NewProvider";
+import TopRightBttn from "../components/TopRightBttn";
 import ProvidersRow from "./ProvidersRow";
 
 const Providers = React.memo(() => {
@@ -23,7 +23,17 @@ const Providers = React.memo(() => {
     <ManagerLayout
       leftBarActive="Proveedores"
       title="Proveedores"
-      newBttn={<NewProvider />}
+      topBttn={
+        <TopRightBttn
+          text={
+            <>
+              <i className="fas fa-plus-square mr-2" />
+              <span>Proveedor</span>
+            </>
+          }
+          link="/manager/providers/new"
+        />
+      }
     >
       {providers ? (
         providers.length ? (
@@ -37,6 +47,7 @@ const Providers = React.memo(() => {
                   <th className="text-center border-0">Teléfono</th>
                   <th className="text-center border-0">Dirección</th>
                   <th className="text-center border-0">Productos</th>
+                  <th className="text-center border-0"></th>
                 </tr>
               </thead>
               <tbody>

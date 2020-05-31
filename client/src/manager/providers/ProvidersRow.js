@@ -38,6 +38,26 @@ const ProvidersRow = React.memo(({ provider }) => {
         <td>{provider.phone}</td>
         <td>{provider.fullAddress}</td>
         <td className="text-center">{provider.productCount}</td>
+        <td className="text-center">
+          <Button
+            variant="info"
+            size="sm"
+            title="Editar"
+            className="ml-3"
+            href={"/manager/products/edit/" + provider._id}
+          >
+            <i className="fas fa-pen pt-1" />
+          </Button>
+          <Button
+            variant="danger"
+            size="sm"
+            title="Eliminar"
+            className="ml-2"
+            onClick={() => alert("No disponible por el momento.")}
+          >
+            <i className="fas fa-trash-alt pt-1" />
+          </Button>
+        </td>
       </tr>
 
       <Modal show={show} onHide={handleClose}>
