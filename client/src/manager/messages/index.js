@@ -135,6 +135,7 @@ const Messages = React.memo(() => {
                   <th className="text-center border-0">Correo</th>
                   <th className="text-center border-0">Enviado</th>
                   <th className="text-center border-0">Mensaje</th>
+                  <th className="text-center border-0"></th>
                 </tr>
               </thead>
               <tbody>

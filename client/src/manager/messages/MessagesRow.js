@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Form, Col, Badge } from "react-bootstrap";
+import { Modal, Form, Col, Badge, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 import APIManager from "../../utils/APIManager";
@@ -51,6 +51,11 @@ const MessagesRow = React.memo(({ message }) => {
           {message.message.length > 50
             ? message.message.slice(0, 50) + "..."
             : message.message}
+        </td>
+        <td>
+          <Button variant="info" size="sm">
+            <i className="fas fa-eye" />
+          </Button>
         </td>
       </tr>
 
