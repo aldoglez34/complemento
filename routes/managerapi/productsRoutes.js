@@ -106,7 +106,7 @@ router.post("/new", function (req, res) {
       },
       category: req.body.category,
       brand: req.body.brand,
-      content: req.body.brand,
+      content: req.body.content,
       provider: req.body.provider,
       ingredients: req.body.ingredients.split(","),
       stock: req.body.stock,
