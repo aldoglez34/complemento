@@ -31,6 +31,19 @@ router.get("/all", function (req, res) {
     });
 });
 
+// mngr_fetchOneProvider
+// matches with /managerapi/providers/getOne/:providerId
+router.get("/getOne/:providerId", function (req, res) {
+  model.Provider.findById(req.params.providerId)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
+});
+
 // mngr_updateProvider()
 // matches with /managerapi/providers/update
 router.put("/update", function (req, res) {

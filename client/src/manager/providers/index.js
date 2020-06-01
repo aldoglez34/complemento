@@ -38,16 +38,16 @@ const Providers = React.memo(() => {
       {providers ? (
         providers.length ? (
           <>
-            <Table striped hover size="sm" responsive variant="white">
+            <Table striped size="sm" responsive variant="white">
               <thead>
                 <tr>
-                  <th className="text-center border-0">Nombre</th>
-                  <th className="text-center border-0">RFC</th>
-                  <th className="text-center border-0">Correo</th>
-                  <th className="text-center border-0">Teléfono</th>
-                  <th className="text-center border-0">Dirección</th>
-                  <th className="text-center border-0">Productos</th>
-                  <th className="text-center border-0"></th>
+                  <th className="text-center border-0 pb-3">Nombre</th>
+                  <th className="text-center border-0 pb-3">RFC</th>
+                  <th className="text-center border-0 pb-3">Correo</th>
+                  <th className="text-center border-0 pb-3">Teléfono</th>
+                  <th className="text-center border-0 pb-3">Dirección</th>
+                  <th className="text-center border-0 pb-3">Productos</th>
+                  <th className="text-center border-0 pb-3"></th>
                 </tr>
               </thead>
               <tbody>

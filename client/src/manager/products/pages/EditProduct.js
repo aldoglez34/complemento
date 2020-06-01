@@ -541,7 +541,7 @@ const EditProduct = React.memo((props) => {
                   type="submit"
                   disabled={isSubmitting}
                 >
-                  Guardar
+                  Editar
                 </Button>
               </Form.Group>
             </Form>

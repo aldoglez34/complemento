@@ -11,6 +11,8 @@ const NewProduct = React.memo((props) => {
   const [categories, setCategories] = useState();
   const [providers, setProviders] = useState();
 
+  const [activeCat, setActiveCat] = useState("Nueva");
+
   useEffect(() => {
     APIManager.mngr_fetchCategories()
       .then((res) => setCategories(res.data))
@@ -92,7 +94,7 @@ const NewProduct = React.memo((props) => {
               purchasePrice: "",
               salePrice: "",
               newCategory: "",
-              existingCategory: "",
+              existingCategory: categories[0],
               brand: "",
               content: "",
               provider: "",
@@ -117,7 +119,7 @@ const NewProduct = React.memo((props) => {
               data.append("salePrice", values.salePrice);
               data.append(
                 "category",
-                values.newCategory.length
+                activeCat === "Nueva"
                   ? values.newCategory
                   : values.existingCategory
               );
@@ -272,6 +274,7 @@ const NewProduct = React.memo((props) => {
                 {/* category and brand */}
                 <Form.Row>
                   <ChooseCategory
+                    setActiveCat={setActiveCat}
                     starter="Nueva"
                     categories={categories}
                     value4New={values.newCategory}

@@ -19,6 +19,7 @@ import Dashboard from "../manager/Dashboard";
 import Categories from "../manager/categories";
 import Providers from "../manager/providers";
 import NewProvider from "../manager/providers/pages/NewProvider";
+import EditProvider from "../manager/providers/pages/EditProvider";
 import Users from "../manager/users";
 import Messages from "../manager/messages";
 import Products from "../manager/products";
@@ -84,6 +85,11 @@ const ManagerNavigation = () => {
       />
       <Route exact path="/manager/providers" component={Providers} />
       <Route exact path="/manager/providers/new" component={NewProvider} />
+      <Route
+        exact
+        path="/manager/providers/edit/:providerId"
+        render={(props) => <EditProvider routeProps={props} />}
+      />
       <Route exact path="/manager/users" component={Users} />
       <Route exact path="/manager/messages" component={Messages} />
       <Route exact path="/manager/sales" component={Sales} />

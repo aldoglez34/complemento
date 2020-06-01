@@ -6,7 +6,7 @@ import ProductsByCategory from "./ProductsByCategory";
 const CategoryContent = React.memo(({ title, productCount, products }) => {
   return (
     <>
-      <h1 className="mb-1">{title}</h1>
+      <h2 className="mb-1">{title}</h2>
       <hr className="myDivider" />
       <CardGroup className="shadow-sm pt-2">
         <Card bg="light">
