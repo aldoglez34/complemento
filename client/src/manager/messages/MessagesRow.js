@@ -31,16 +31,11 @@ const MessagesRow = React.memo(({ message }) => {
 
   return (
     <>
-      <tr onClick={handleShow} className="rowStyle">
+      <tr className="rowStyle">
         <td>
           {message.name}
           {message.seen ? null : (
-            <Badge
-              variant="danger"
-              className="ml-1"
-              pill
-              style={{ fontFamily: "Arial" }}
-            >
+            <Badge variant="danger" className="ml-1" pill>
               Nuevo
             </Badge>
           )}
@@ -48,13 +43,14 @@ const MessagesRow = React.memo(({ message }) => {
         <td>{message.email}</td>
         <td>{formatDate(message.sentAt, "DD/MMMM/YYYY")}</td>
         <td>
-          {message.message.length > 50
-            ? message.message.slice(0, 50) + "..."
+          {message.message.length > 40
+            ? message.message.slice(0, 40) + "..."
             : message.message}
         </td>
         <td>
-          <Button variant="info" size="sm">
-            <i className="fas fa-eye" />
+          <Button variant="info" size="sm" onClick={handleShow}>
+            <i className="fas fa-glasses" />
+            {/* Leer */}
           </Button>
         </td>
       </tr>

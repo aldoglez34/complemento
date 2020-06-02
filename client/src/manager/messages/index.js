@@ -128,7 +128,7 @@ const Messages = React.memo(() => {
       {filtered ? (
         filtered.length ? (
           <>
-            <Table striped hover size="sm" responsive variant="white">
+            <Table striped size="sm" responsive variant="white">
               <thead>
                 <tr>
                   <th className="text-center border-0">Cliente</th>
