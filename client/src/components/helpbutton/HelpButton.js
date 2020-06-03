@@ -24,6 +24,10 @@ const HelpButton = React.memo(() => {
       .string()
       .email("Formato de correo incorrecto")
       .required("Requerido"),
+    subject: yup
+      .string()
+      .min(3, "Asunto demasiado corto")
+      .required("Requerido"),
     message: yup.string().required("Requerido"),
   });
 
@@ -56,6 +60,7 @@ const HelpButton = React.memo(() => {
             initialValues={{
               name: "",
               email: "",
+              subject: "",
               message: "",
             }}
             validationSchema={yupschema}
@@ -130,6 +135,30 @@ const HelpButton = React.memo(() => {
                     <ErrorMessage
                       className="text-danger"
                       name="email"
+                      component="div"
+                    />
+                  </Form.Group>
+                </Form.Row>
+                {/* email */}
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>
+                      <strong>Correo electrónico</strong>
+                    </Form.Label>
+                    <Form.Control
+                      maxLength="50"
+                      type="text"
+                      placeholder="Ingresa el asunto"
+                      name="subject"
+                      value={values.subject}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.subject && !errors.subject}
+                      isInvalid={touched.subject && !!errors.subject}
+                    />
+                    <ErrorMessage
+                      className="text-danger"
+                      name="subject"
                       component="div"
                     />
                   </Form.Group>

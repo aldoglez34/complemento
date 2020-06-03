@@ -13,7 +13,7 @@ import {
 import moment from "moment";
 import { formatNumber } from "../../../utils/formatNumber";
 
-const ProductsByProvider = React.memo(({ providerId, name }) => {
+const ProductsByProvider = React.memo(({ providerId }) => {
   const [show, setShow] = useState(false);
 
   const [products, setProducts] = useState();

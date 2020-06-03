@@ -14,7 +14,7 @@ const MessagesRow = React.memo(({ message }) => {
   };
   const handleShow = () => {
     APIManager.mngr_markSeen(message._id)
-      .then((res) => console.log(res.data))
+      .then((res) => console.log("marked seen."))
       .catch((err) => {
         console.log(err.response);
         err.response.data.msg
@@ -42,11 +42,7 @@ const MessagesRow = React.memo(({ message }) => {
         </td>
         <td>{message.email}</td>
         <td>{formatDate(message.sentAt, "DD/MM/YYYY")}</td>
-        <td>
-          {message.message.length > 48
-            ? message.message.slice(0, 48) + "..."
-            : message.message}
-        </td>
+        <td>{message.subject}</td>
         <td>
           <Button
             variant="info"
@@ -55,7 +51,7 @@ const MessagesRow = React.memo(({ message }) => {
             onClick={handleShow}
             title="Ver"
           >
-            <i className="far fa-eye" />
+            <i className="fas fa-envelope" />
           </Button>
         </td>
       </tr>
@@ -66,6 +62,7 @@ const MessagesRow = React.memo(({ message }) => {
             initialValues={{
               name: message.name,
               email: message.email,
+              subject: message.subject,
               sentAt: formatDate(message.sentAt, "MMMM Do YYYY"),
               message: message.message,
             }}
@@ -94,22 +91,6 @@ const MessagesRow = React.memo(({ message }) => {
                     />
                   </Form.Group>
                 </Form.Row>
-                {/* email */}
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>
-                      <strong>Correo</strong>
-                    </Form.Label>
-                    <Form.Control
-                      disabled
-                      type="text"
-                      name="email"
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </Form.Group>
-                </Form.Row>
                 {/* date */}
                 <Form.Row>
                   <Form.Group as={Col}>
@@ -126,6 +107,40 @@ const MessagesRow = React.memo(({ message }) => {
                     />
                   </Form.Group>
                 </Form.Row>
+                {/* email */}
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>
+                      <strong>Correo</strong>
+                    </Form.Label>
+                    <Form.Control
+                      disabled
+                      type="text"
+                      name="email"
+                      value={values.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                </Form.Row>
+                {/* subject */}
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>
+                      <strong>Asunto</strong>
+                    </Form.Label>
+                    <Form.Control
+                      disabled
+                      as="textarea"
+                      rows="2"
+                      type="text"
+                      name="subject"
+                      value={values.subject}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                </Form.Row>
                 {/* message */}
                 <Form.Row>
                   <Form.Group as={Col}>
@@ -135,7 +150,7 @@ const MessagesRow = React.memo(({ message }) => {
                     <Form.Control
                       disabled
                       as="textarea"
-                      rows="5"
+                      rows="6"
                       type="text"
                       name="message"
                       value={values.message}

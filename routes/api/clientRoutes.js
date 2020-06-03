@@ -107,6 +107,7 @@ router.post("/message/new", function (req, res) {
   model.Message.create({
     name: req.body.name,
     email: req.body.email,
+    subject: req.body.subject,
     message: req.body.message,
   })
     .then((data) => res.json(data))

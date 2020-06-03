@@ -12,7 +12,7 @@ const ProvidersRow = React.memo(({ provider }) => {
       <td>{provider.phone}</td>
       <td>{provider.fullAddress}</td>
       <td className="text-center">
-        <ProductsByProvider providerId={provider._id} name={provider.name} />
+        <ProductsByProvider providerId={provider._id} />
         <Button
           variant="info"
           size="sm"

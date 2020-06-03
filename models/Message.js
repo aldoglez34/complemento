@@ -13,6 +13,11 @@ const MessageSchema = new Schema({
     trim: true,
     required: "Email requerido",
   },
+  subject: {
+    type: String,
+    trim: true,
+    required: "Asunto requerido",
+  },
   message: {
     type: String,
     trim: true,
