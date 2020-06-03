@@ -69,6 +69,10 @@ export default {
     return axios.get("/managerapi/providers/all");
   },
 
+  mngr_fetchProductsByProvider: function (providerId) {
+    return axios.get("/managerapi/providers/fetchProducts/" + providerId);
+  },
+
   mngr_fetchOneProvider: function (providerId) {
     return axios.get("/managerapi/providers/getOne/" + providerId);
   },

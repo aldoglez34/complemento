@@ -31,6 +31,19 @@ router.get("/all", function (req, res) {
     });
 });
 
+// mngr_fetchProductsByProvider()
+// matches with /managerapi/providers/fetchProducts/:providerId
+router.get("/fetchProducts/:providerId", function (req, res) {
+  model.Product.find({ provider: req.params.providerId })
+    .sort({ name: 1 })
+    .collation({ locale: "es" })
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
+});
+
 // mngr_fetchOneProvider
 // matches with /managerapi/providers/getOne/:providerId
 router.get("/getOne/:providerId", function (req, res) {

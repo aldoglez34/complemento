@@ -41,16 +41,21 @@ const MessagesRow = React.memo(({ message }) => {
           )}
         </td>
         <td>{message.email}</td>
-        <td>{formatDate(message.sentAt, "DD/MMMM/YYYY")}</td>
+        <td>{formatDate(message.sentAt, "DD/MM/YYYY")}</td>
         <td>
-          {message.message.length > 40
-            ? message.message.slice(0, 40) + "..."
+          {message.message.length > 48
+            ? message.message.slice(0, 48) + "..."
             : message.message}
         </td>
         <td>
-          <Button variant="info" size="sm" onClick={handleShow}>
-            <i className="fas fa-glasses" />
-            {/* Leer */}
+          <Button
+            variant="info"
+            size="sm"
+            className="shadow-sm"
+            onClick={handleShow}
+            title="Ver"
+          >
+            <i className="far fa-eye" />
           </Button>
         </td>
       </tr>

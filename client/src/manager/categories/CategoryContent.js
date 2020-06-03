@@ -20,7 +20,7 @@ const CategoryContent = React.memo(({ title, productCount, products }) => {
         <Card bg="light">
           <Card.Body>
             <Card.Title>
-              <span className="display-4">{productCount}</span>
+              <span className="display-4">X</span>
             </Card.Title>
             <Card.Text>XX</Card.Text>
           </Card.Body>
@@ -28,7 +28,7 @@ const CategoryContent = React.memo(({ title, productCount, products }) => {
         <Card bg="light">
           <Card.Body>
             <Card.Title>
-              <span className="display-4">{productCount}</span>
+              <span className="display-4">X</span>
             </Card.Title>
             <Card.Text>XX</Card.Text>
           </Card.Body>
@@ -36,7 +36,7 @@ const CategoryContent = React.memo(({ title, productCount, products }) => {
         <Card bg="light">
           <Card.Body>
             <Card.Title>
-              <span className="display-4">{productCount}</span>
+              <span className="display-4">X</span>
             </Card.Title>
             <Card.Text>XX</Card.Text>
           </Card.Body>

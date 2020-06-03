@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import PropTypes from "prop-types";
+import ProductsByProvider from "./components/ProductsByProvider";
 
 const ProvidersRow = React.memo(({ provider }) => {
   return (
@@ -10,13 +11,13 @@ const ProvidersRow = React.memo(({ provider }) => {
       <td>{provider.email}</td>
       <td>{provider.phone}</td>
       <td>{provider.fullAddress}</td>
-      <td className="text-center">#</td>
       <td className="text-center">
+        <ProductsByProvider providerId={provider._id} />
         <Button
           variant="info"
           size="sm"
           title="Editar"
-          className="ml-3"
+          className="ml-2 shadow-sm"
           href={"/manager/providers/edit/" + provider._id}
         >
           <i className="fas fa-pen pt-1" />
@@ -25,7 +26,7 @@ const ProvidersRow = React.memo(({ provider }) => {
           variant="danger"
           size="sm"
           title="Eliminar"
-          className="ml-2"
+          className="ml-2 shadow-sm"
           onClick={() => alert("No disponible por el momento.")}
         >
           <i className="fas fa-trash-alt pt-1" />

@@ -84,7 +84,7 @@ const ProductRow = React.memo(({ product }) => {
             variant="info"
             size="sm"
             title="Editar"
-            className="ml-3"
+            className="ml-3 shadow-sm"
             href={"/manager/products/edit/" + product._id}
           >
             <i className="fas fa-pen pt-1" />
@@ -93,7 +93,7 @@ const ProductRow = React.memo(({ product }) => {
             variant="danger"
             size="sm"
             title="Eliminar"
-            className="ml-2"
+            className="ml-2 shadow-sm"
             onClick={() => alert("No disponible por el momento.")}
           >
             <i className="fas fa-trash-alt pt-1" />

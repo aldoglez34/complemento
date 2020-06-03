@@ -12,9 +12,9 @@ const Providers = React.memo(() => {
     APIManager.mngr_fetchProviders()
       .then((res) => setProviders(res.data))
       .catch((err) => {
-        console.log(err.response);
-        err.response.data.msg
-          ? alert(err.response.data.msg)
+        console.log(err);
+        err.data
+          ? alert(err.data.msg)
           : alert("Ocurrió un error al cargar los proveedores.");
       });
   }, []);
@@ -46,7 +46,6 @@ const Providers = React.memo(() => {
                   <th className="text-center border-0 pb-3">Correo</th>
                   <th className="text-center border-0 pb-3">Teléfono</th>
                   <th className="text-center border-0 pb-3">Dirección</th>
-                  <th className="text-center border-0 pb-3">Productos</th>
                   <th className="text-center border-0 pb-3"></th>
                 </tr>
               </thead>
