@@ -1,10 +1,22 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import APIManager from "../../../utils/APIManager";
-import { Spinner, Button, Modal } from "react-bootstrap";
+import {
+  Image,
+  Spinner,
+  Button,
+  Modal,
+  ListGroup,
+  Row,
+  Col,
+} from "react-bootstrap";
+import moment from "moment";
+import { formatNumber } from "../../../utils/formatNumber";
 
-const ProductsByProvider = React.memo(({ providerId }) => {
+const ProductsByProvider = React.memo(({ providerId, name }) => {
   const [show, setShow] = useState(false);
+
+  const [products, setProducts] = useState();
 
   const handleClose = () => setShow(false);
   const handleShow = () => {
@@ -20,8 +32,6 @@ const ProductsByProvider = React.memo(({ providerId }) => {
             );
       });
   };
-
-  const [products, setProducts] = useState();
 
   return (
     <>
@@ -39,7 +49,42 @@ const ProductsByProvider = React.memo(({ providerId }) => {
         <Modal.Body>
           {products ? (
             products.length ? (
-              <h3>aquí van los productos</h3>
+              <>
+                <ListGroup variant="flush">
+                  {products.map((p) => {
+                    return (
+                      <ListGroup.Item key={p.name}>
+                        <Row>
+                          <Col md={3} className="px-0 text-center">
+                            <Image
+                              src={"/images/products/" + p.photo}
+                              width="83"
+                              height="138"
+                            />
+                          </Col>
+                          <Col md={9}>
+                            <div
+                              className="d-flex flex-row"
+                              style={{ fontSize: "20px" }}
+                            >
+                              <strong>{p.name}</strong>
+                            </div>
+                            <p className="mb-0">{p.category}</p>
+                            <p className="mb-0">{p.brand}</p>
+                            <p className="mb-0">{p.content}</p>
+                            <p className="mb-0">{`Compra: ${formatNumber(
+                              p.price.latestPurchasePrice
+                            )} | Venta: ${formatNumber(p.price.salePrice)}`}</p>
+                            <p className="mb-2 lead">
+                              {moment(p.createdAt).format("DD/MM/YYYY")}
+                            </p>
+                          </Col>
+                        </Row>
+                      </ListGroup.Item>
+                    );
+                  })}
+                </ListGroup>
+              </>
             ) : (
               <em>Lista de productos vacía</em>
             )

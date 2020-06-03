@@ -197,86 +197,168 @@ const EditProduct = React.memo((props) => {
                     component="div"
                   />
                 </Form.Group>
-                {/* purchase price */}
-                <Form.Group as={Col} md={2}>
-                  <Form.Label>
-                    <strong>Compra</strong>
-                    <span title="Requerido" className="text-danger">
-                      *
-                    </span>
-                  </Form.Label>
-                  <InputGroup>
-                    <InputGroup.Prepend>
-                      <InputGroup.Text>$</InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <Form.Control
-                      type="number"
-                      placeholder="0.00"
-                      name="purchasePrice"
-                      value={values.purchasePrice}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.purchasePrice && !errors.purchasePrice}
-                      isInvalid={
-                        touched.purchasePrice && !!errors.purchasePrice
-                      }
-                    />
-                  </InputGroup>
-                  <ErrorMessage
-                    className="text-danger"
-                    name="purchasePrice"
-                    component="div"
-                  />
-                </Form.Group>
-                {/* salePrice */}
-                <Form.Group as={Col} md={2}>
-                  <Form.Label>
-                    <strong>Venta</strong>
-                    <span title="Requerido" className="text-danger">
-                      *
-                    </span>
-                  </Form.Label>
-                  <InputGroup>
-                    <InputGroup.Prepend>
-                      <InputGroup.Text>$</InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <Form.Control
-                      type="number"
-                      placeholder="0.00"
-                      name="salePrice"
-                      value={values.salePrice}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.salePrice && !errors.salePrice}
-                      isInvalid={touched.salePrice && !!errors.salePrice}
-                    />
-                  </InputGroup>
-                  <ErrorMessage
-                    className="text-danger"
-                    name="salePrice"
-                    component="div"
-                  />
-                </Form.Group>
-                {/* profit */}
-                <Form.Group as={Col} md={2}>
-                  <Form.Label>
-                    <strong>Utilidad</strong>
-                  </Form.Label>
-                  <InputGroup>
-                    <InputGroup.Prepend>
-                      <InputGroup.Text>$</InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <Form.Control
-                      disabled
-                      type="text"
-                      placeholder="0.00"
-                      name="profit"
-                      value={values.salePrice - values.purchasePrice}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </InputGroup>
-                </Form.Group>
+                {product.price.discount.hasDiscount ? (
+                  <>
+                    <Form.Group as={Col} md={1}>
+                      <Form.Label>
+                        <strong>Compra</strong>
+                        <span title="Requerido" className="text-danger">
+                          *
+                        </span>
+                      </Form.Label>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text>$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control
+                          disabled
+                          type="number"
+                          placeholder="0.00"
+                          name="purchasePrice"
+                          value={values.purchasePrice}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          isValid={
+                            touched.purchasePrice && !errors.purchasePrice
+                          }
+                          isInvalid={
+                            touched.purchasePrice && !!errors.purchasePrice
+                          }
+                        />
+                      </InputGroup>
+                    </Form.Group>
+                    {/* salePrice */}
+                    <Form.Group as={Col} md={1}>
+                      <Form.Label>
+                        <strong>Venta</strong>
+                        <span title="Requerido" className="text-danger">
+                          *
+                        </span>
+                      </Form.Label>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text>$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control
+                          disabled
+                          type="number"
+                          placeholder="0.00"
+                          name="salePrice"
+                          value={values.salePrice}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          isValid={touched.salePrice && !errors.salePrice}
+                          isInvalid={touched.salePrice && !!errors.salePrice}
+                        />
+                      </InputGroup>
+                    </Form.Group>
+                    {/* profit */}
+                    <Form.Group as={Col} md={1}>
+                      <Form.Label>
+                        <strong>Utilidad</strong>
+                      </Form.Label>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text>$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control
+                          disabled
+                          type="text"
+                          placeholder="0.00"
+                          name="profit"
+                          value={values.salePrice - values.purchasePrice}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                      </InputGroup>
+                    </Form.Group>
+                  </>
+                ) : (
+                  <>
+                    {/* purchase price */}
+                    <Form.Group as={Col} md={2}>
+                      <Form.Label>
+                        <strong>Compra</strong>
+                        <span title="Requerido" className="text-danger">
+                          *
+                        </span>
+                      </Form.Label>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text>$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control
+                          type="number"
+                          placeholder="0.00"
+                          name="purchasePrice"
+                          value={values.purchasePrice}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          isValid={
+                            touched.purchasePrice && !errors.purchasePrice
+                          }
+                          isInvalid={
+                            touched.purchasePrice && !!errors.purchasePrice
+                          }
+                        />
+                      </InputGroup>
+                      <ErrorMessage
+                        className="text-danger"
+                        name="purchasePrice"
+                        component="div"
+                      />
+                    </Form.Group>
+                    {/* salePrice */}
+                    <Form.Group as={Col} md={2}>
+                      <Form.Label>
+                        <strong>Venta</strong>
+                        <span title="Requerido" className="text-danger">
+                          *
+                        </span>
+                      </Form.Label>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text>$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control
+                          type="number"
+                          placeholder="0.00"
+                          name="salePrice"
+                          value={values.salePrice}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          isValid={touched.salePrice && !errors.salePrice}
+                          isInvalid={touched.salePrice && !!errors.salePrice}
+                        />
+                      </InputGroup>
+                      <ErrorMessage
+                        className="text-danger"
+                        name="salePrice"
+                        component="div"
+                      />
+                    </Form.Group>
+                    {/* profit */}
+                    <Form.Group as={Col} md={2}>
+                      <Form.Label>
+                        <strong>Utilidad</strong>
+                      </Form.Label>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text>$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control
+                          disabled
+                          type="text"
+                          placeholder="0.00"
+                          name="profit"
+                          value={values.salePrice - values.purchasePrice}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                      </InputGroup>
+                    </Form.Group>
+                  </>
+                )}
               </Form.Row>
               {/* category and brand */}
               <Form.Row>
