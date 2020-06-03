@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 const SaleSchema = new Schema({
   status: {
     type: String,
-    enum: ["ordered", "sent", "canceled"],
+    enum: ["Procesado", "Enviado", "Cancelado", "Entregado"],
     required: true,
-    default: "ordered",
+    default: "Procesado",
   },
   products: [
     {

@@ -108,7 +108,7 @@ const Sales = React.memo(() => {
       {filtered ? (
         filtered.length ? (
           <>
-            <Table striped hover size="sm" responsive variant="white">
+            <Table striped size="sm" responsive variant="white">
               <thead>
                 <tr>
                   <th className="text-center border-0">Fecha</th>
@@ -118,6 +118,7 @@ const Sales = React.memo(() => {
                   <th className="text-center border-0">Total</th>
                   <th className="text-center border-0">Comprador</th>
                   <th className="text-center border-0">Estado</th>
+                  <th className="text-center border-0"></th>
                 </tr>
               </thead>
               <tbody>

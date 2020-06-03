@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Form, Col, InputGroup } from "react-bootstrap";
+import { Modal, Form, Col, InputGroup, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 import { formatNumber } from "../../utils/formatNumber";
@@ -26,12 +26,13 @@ const SalesRow = React.memo(({ sale }) => {
 
   const formatDate = (date) => {
     let convertedDate = moment(moment(date).format(moment.HTML5_FMT.DATE));
-    return convertedDate.format("DD/MMMM/YYYY");
+    return convertedDate.format("DD/MM/YYYY");
   };
 
   return (
     <>
-      <tr onClick={handleShow} className="rowStyle">
+      <tr className="rowStyle">
+        <td className="text-right">{sale.status}</td>
         <td className="text-right">{formatDate(sale.saleDate)}</td>
         <td className="text-right">{sale.products.length}</td>
         <td className="text-right">{formatNumber(sale.subTotal)}</td>
@@ -39,13 +40,18 @@ const SalesRow = React.memo(({ sale }) => {
         <td className="text-right">{formatNumber(sale.grandTotal)}</td>
         <td>{sale.buyer.name + " " + sale.buyer.firstSurname}</td>
         <td>{sale.buyer.address.state}</td>
+        <td className="text-center">
+          <Button onClick={handleShow} variant="info" size="sm">
+            <i className="fas fa-search" />
+          </Button>
+        </td>
       </tr>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Body className="bg-light">
           <Formik
             initialValues={{
-              purchaseDate: sale.saleDate,
+              purchaseDate: formatDate(sale.saleDate),
               products: printProducts(),
               subTotal: sale.subTotal,
               shipment: sale.shipment,
