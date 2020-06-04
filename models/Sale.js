@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const SaleSchema = new Schema({
   status: {
     type: String,
-    enum: ["Procesado", "Enviado", "Cancelado", "Entregado"],
+    enum: ["Procesado", "Enviado", "Entregado", "Cancelado"],
     required: true,
     default: "Procesado",
   },

@@ -32,7 +32,7 @@ const SalesRow = React.memo(({ sale }) => {
   return (
     <>
       <tr className="rowStyle">
-        <td className="text-right">{sale.status}</td>
+        <td>{sale.status}</td>
         <td className="text-right">{formatDate(sale.saleDate)}</td>
         <td className="text-right">{sale.products.length}</td>
         <td className="text-right">{formatNumber(sale.subTotal)}</td>

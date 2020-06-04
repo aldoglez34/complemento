@@ -29,6 +29,14 @@ const Sales = React.memo(() => {
     let today = moment(moment(Date.now()).format(moment.HTML5_FMT.DATE));
     // switch
     switch (criteria) {
+      case "procesado":
+        setFilter(criteria === filter ? null : criteria);
+        setFiltered(
+          criteria === filter
+            ? sales
+            : sales.filter((s) => s.status === criteria)
+        );
+        break;
       case "lastWeek":
         setFilter(criteria === filter ? null : criteria);
         setFiltered(
@@ -50,27 +58,6 @@ const Sales = React.memo(() => {
               })
         );
         break;
-      case "lastMonth":
-        setFilter(criteria === filter ? null : criteria);
-        setFiltered(
-          criteria === filter
-            ? sales
-            : sales.filter((s) => {
-                // get the date when the message was sent
-                let saleDate = moment(
-                  moment(s.saleDate).format(moment.HTML5_FMT.DATE)
-                );
-                // get the difference in days
-                let daysDiff = today.diff(saleDate, "days");
-                // if daysDiff is equal or less than 30 (less than a month) return true, if not false
-                if (daysDiff <= 30) {
-                  return true;
-                } else {
-                  return false;
-                }
-              })
-        );
-        break;
       default:
         setFiltered(sales);
     }
@@ -81,23 +68,53 @@ const Sales = React.memo(() => {
       <Row className="px-3 pb-2 mt-2">
         <Button
           disabled={sales ? false : true}
-          active={filter === "lastWeek" ? true : false}
+          active={filter === "procesado" ? true : false}
           className="filterBttnManager shadow-sm"
+          title="Procesado"
+          onClick={() => filterSales("procesado")}
+        >
+          <i className="fas fa-cash-register mr-1" />
+          Procesado
+        </Button>
+        <Button
+          disabled={sales ? false : true}
+          active={filter === "Enviado" ? true : false}
+          className="filterBttnManager shadow-sm ml-2"
+          title="Enviado"
+          onClick={() => filterSales("Enviado")}
+        >
+          <i className="fas fa-truck mr-1" />
+          Enviado
+        </Button>
+        <Button
+          disabled={sales ? false : true}
+          active={filter === "Entregado" ? true : false}
+          className="filterBttnManager shadow-sm ml-2"
+          title="Entregado"
+          onClick={() => filterSales("Entregado")}
+        >
+          <i className="fas fa-truck-loading mr-1" />
+          Entregado
+        </Button>
+        <Button
+          disabled={sales ? false : true}
+          active={filter === "Cancelado" ? true : false}
+          className="filterBttnManager shadow-sm ml-2"
+          title="Cancelado"
+          onClick={() => filterSales("Cancelado")}
+        >
+          <i className="fas fa-ban mr-1" />
+          Cancelado
+        </Button>
+        <Button
+          disabled={sales ? false : true}
+          active={filter === "lastWeek" ? true : false}
+          className="filterBttnManager shadow-sm ml-2"
           title="Última semana"
           onClick={() => filterSales("lastWeek")}
         >
           <i className="far fa-calendar-alt mr-1" />
           Última semana
-        </Button>
-        <Button
-          disabled={sales ? false : true}
-          active={filter === "lastMonth" ? true : false}
-          className="filterBttnManager ml-2 shadow-sm"
-          title="Último mes"
-          onClick={() => filterSales("lastMonth")}
-        >
-          <i className="far fa-calendar-alt mr-1" />
-          Último mes
         </Button>
       </Row>
     );
