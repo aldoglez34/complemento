@@ -1,18 +1,21 @@
 import React, { useEffect } from "react";
 import ManagerLayout from "../../ManagerLayout";
 import Chart from "chart.js";
+import { Row, Col } from "react-bootstrap";
 
 const SalesChart = React.memo((props) => {
   const type = props.routeProps.match.params.chart;
   const title =
     type === "currentWeek"
-      ? "Ventas de la Semana"
+      ? "Ventas de Última Semana"
       : type === "currentMonth"
       ? "Ventas del mes"
       : "Ventas del semestre";
 
   useEffect(() => {
     const ctx = document.getElementById("myChart").getContext("2d");
+    // ctx.canvas.width = 800;
+    ctx.canvas.height = 420;
     const myChart = new Chart(ctx, {
       type: "line",
       data: {
@@ -39,6 +42,8 @@ const SalesChart = React.memo((props) => {
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         legend: {
           display: false,
         },
@@ -63,9 +68,12 @@ const SalesChart = React.memo((props) => {
         <i className="far fa-calendar-alt mr-2" />
         Hoy es Jueves
       </h3>
-      <div style={{ position: "relative", height: "40vh", width: "70vw" }}>
-        <canvas id="myChart"></canvas>
-      </div>
+      <Row>
+        <Col>
+          <canvas id="myChart"></canvas>
+        </Col>
+      </Row>
+      {/* <canvas id="myChart"></canvas> */}
     </ManagerLayout>
   );
 });
