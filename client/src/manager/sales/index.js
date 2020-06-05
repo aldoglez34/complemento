@@ -159,6 +159,16 @@ const Sales = React.memo(() => {
             }
             link="/manager/sales/chart/currentSemester"
           />
+          <div className="ml-2" />
+          <TopRightBttn
+            text={
+              <>
+                <i className="fas fa-map-marked-alt mr-2" />
+                <span>Ventas por estado</span>
+              </>
+            }
+            link="/manager/sales/chart/currentSemester"
+          />
         </>
       }
       title="Ventas"

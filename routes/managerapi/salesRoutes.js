@@ -22,34 +22,37 @@ router.get("/chart/currentWeek", function (req, res) {
   // moment().format("LLLL");
 
   const today = moment(Date.now()).format("dddd");
+  console.log("today", today);
   const number = moment(Date.now()).format("d");
-  console.log(number);
+  console.log("number", number);
+  const lastWeek = moment(Date.now()).subtract(7, "days").calendar();
+  console.log("lastWeek", lastWeek);
 
-  switch (today) {
-    case "lunes":
-      console.log("hoy es lunes");
-      break;
-    case "martes":
-      console.log("hoy es martes");
-      break;
-    case "miércoles":
-      console.log("hoy es miércoles");
-      break;
-    case "jueves":
-      console.log("hoy es jueves");
-      console.log(number - 4);
+  // switch (today) {
+  //   case "lunes":
+  //     console.log("hoy es lunes");
+  //     break;
+  //   case "martes":
+  //     console.log("hoy es martes");
+  //     break;
+  //   case "miércoles":
+  //     console.log("hoy es miércoles");
+  //     break;
+  //   case "jueves":
+  //     console.log("hoy es jueves");
+  //     console.log(number - 4);
 
-      break;
-    case "viernes":
-      console.log("hoy es viernes");
-      break;
-    case "sábado":
-      console.log("hoy es sábado");
-      break;
-    case "domingo":
-      console.log("hoy es domingo");
-      break;
-  }
+  //     break;
+  //   case "viernes":
+  //     console.log("hoy es viernes");
+  //     break;
+  //   case "sábado":
+  //     console.log("hoy es sábado");
+  //     break;
+  //   case "domingo":
+  //     console.log("hoy es domingo");
+  //     break;
+  // }
 
   model.Sale.find({})
     .sort({ saleDate: -1 })
