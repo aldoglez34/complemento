@@ -11,6 +11,7 @@ import {
   Col,
 } from "react-bootstrap";
 import moment from "moment";
+import "moment/locale/es";
 import { formatNumber } from "../../../utils/formatNumber";
 
 const ProductsByProvider = React.memo(({ providerId }) => {
@@ -45,7 +46,7 @@ const ProductsByProvider = React.memo(({ providerId }) => {
         Productos
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} size="lg" onHide={handleClose}>
         <Modal.Body>
           {products ? (
             products.length ? (
@@ -76,7 +77,7 @@ const ProductsByProvider = React.memo(({ providerId }) => {
                               p.price.latestPurchasePrice
                             )} | Venta: ${formatNumber(p.price.salePrice)}`}</p>
                             <p className="mb-2 lead">
-                              {moment(p.createdAt).format("DD/MM/YYYY")}
+                              {moment(p.createdAt).format("LLLL")}
                             </p>
                           </Col>
                         </Row>

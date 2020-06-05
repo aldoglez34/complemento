@@ -38,7 +38,6 @@ const Users = React.memo(() => {
                 <Table
                   className="mt-3"
                   striped
-                  hover
                   size="sm"
                   responsive
                   variant="white"
@@ -47,11 +46,10 @@ const Users = React.memo(() => {
                     <tr>
                       <th className="text-center border-0">Nombre</th>
                       <th className="text-center border-0">Apellido paterno</th>
-                      <th className="text-center border-0">Email</th>
+                      <th className="text-center border-0">Correo</th>
                       <th className="text-center border-0">Favoritos</th>
-                      <th className="text-center border-0">
-                        Fecha de registro
-                      </th>
+                      <th className="text-center border-0">Registro</th>
+                      <th className="text-center border-0"></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -77,7 +75,6 @@ const Users = React.memo(() => {
                 <Table
                   className="mt-3"
                   striped
-                  hover
                   size="sm"
                   responsive
                   variant="white"
@@ -87,7 +84,7 @@ const Users = React.memo(() => {
                       <th className="text-center border-0">Nombre</th>
                       <th className="text-center border-0">Apellido paterno</th>
                       <th className="text-center border-0">Apellido materno</th>
-                      <th className="text-center border-0">Email</th>
+                      <th className="text-center border-0">Correo</th>
                     </tr>
                   </thead>
                   <tbody>

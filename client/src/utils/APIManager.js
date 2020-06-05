@@ -120,4 +120,8 @@ export default {
   mngr_fetchSales: function () {
     return axios.get("/managerapi/sales/all");
   },
+
+  mngr_currentWeekChart: function () {
+    return axios.get("/managerapi/sales/chart/currentWeek");
+  },
 };

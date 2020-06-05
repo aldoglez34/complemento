@@ -4,6 +4,7 @@ import APIManager from "../../utils/APIManager";
 import { Row, Button, Table, Spinner } from "react-bootstrap";
 import SalesRow from "./SalesRow";
 import moment from "moment";
+import TopRightBttn from "../components/TopRightBttn";
 
 const Sales = React.memo(() => {
   const [sales, setSales] = useState();
@@ -29,7 +30,10 @@ const Sales = React.memo(() => {
     let today = moment(moment(Date.now()).format(moment.HTML5_FMT.DATE));
     // switch
     switch (criteria) {
-      case "procesado":
+      case "Procesado":
+      case "Enviado":
+      case "Entregado":
+      case "Cancelado":
         setFilter(criteria === filter ? null : criteria);
         setFiltered(
           criteria === filter
@@ -68,10 +72,10 @@ const Sales = React.memo(() => {
       <Row className="px-3 pb-2 mt-2">
         <Button
           disabled={sales ? false : true}
-          active={filter === "procesado" ? true : false}
+          active={filter === "Procesado" ? true : false}
           className="filterBttnManager shadow-sm"
           title="Procesado"
-          onClick={() => filterSales("procesado")}
+          onClick={() => filterSales("Procesado")}
         >
           <i className="fas fa-cash-register mr-1" />
           Procesado
@@ -121,20 +125,58 @@ const Sales = React.memo(() => {
   };
 
   return (
-    <ManagerLayout filters={filters()} leftBarActive="Ventas" title="Ventas">
+    <ManagerLayout
+      filters={filters()}
+      leftBarActive="Ventas"
+      topBttn={
+        <>
+          <TopRightBttn
+            text={
+              <>
+                <i className="fas fa-chart-bar mr-2" />
+                <span>Ventas semana</span>
+              </>
+            }
+            link="/manager/sales/chart/currentWeek"
+          />
+          <div className="ml-2" />
+          <TopRightBttn
+            text={
+              <>
+                <i className="fas fa-chart-area mr-2" />
+                <span>Ventas mes</span>
+              </>
+            }
+            link="/manager/sales/chart/currentMonth"
+          />
+          <div className="ml-2" />
+          <TopRightBttn
+            text={
+              <>
+                <i className="fas fa-chart-line mr-2" />
+                <span>Ventas semestre</span>
+              </>
+            }
+            link="/manager/sales/chart/currentSemester"
+          />
+        </>
+      }
+      title="Ventas"
+    >
       {filtered ? (
         filtered.length ? (
           <>
             <Table striped size="sm" responsive variant="white">
               <thead>
                 <tr>
+                  <th className="text-center border-0">Estado</th>
                   <th className="text-center border-0">Fecha</th>
                   <th className="text-center border-0">Productos</th>
                   <th className="text-center border-0">Subtotal</th>
                   <th className="text-center border-0">Envío</th>
                   <th className="text-center border-0">Total</th>
                   <th className="text-center border-0">Comprador</th>
-                  <th className="text-center border-0">Estado</th>
+                  <th className="text-center border-0">Locación</th>
                   <th className="text-center border-0"></th>
                 </tr>
               </thead>

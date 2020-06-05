@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Formik } from "formik";
 import APIManager from "../../utils/APIManager";
 import moment from "moment";
+import "moment/locale/es";
 
 const MessagesRow = React.memo(({ message }) => {
   const [show, setShow] = useState(false);
@@ -35,17 +36,17 @@ const MessagesRow = React.memo(({ message }) => {
         <td>
           {message.name}
           {message.seen ? null : (
-            <Badge variant="danger" className="ml-1" pill>
+            <Badge variant="danger" className="ml-1">
               Nuevo
             </Badge>
           )}
         </td>
         <td>{message.email}</td>
-        <td>{formatDate(message.sentAt, "DD/MM/YYYY")}</td>
+        <td>{moment(message.sentAt).format("L")}</td>
         <td>{message.subject}</td>
         <td>
           <Button
-            variant="info"
+            variant="warning"
             size="sm"
             className="shadow-sm"
             onClick={handleShow}
@@ -63,7 +64,7 @@ const MessagesRow = React.memo(({ message }) => {
               name: message.name,
               email: message.email,
               subject: message.subject,
-              sentAt: formatDate(message.sentAt, "MMMM Do YYYY"),
+              sentAt: message.sentAt,
               message: message.message,
             }}
             onSubmit={(values, { setSubmitting }) => {
@@ -101,7 +102,7 @@ const MessagesRow = React.memo(({ message }) => {
                       disabled
                       type="text"
                       name="sentAt"
-                      value={values.sentAt}
+                      value={moment(values.sentAt).format("LLLL")}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />

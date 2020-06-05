@@ -48,7 +48,7 @@ module.exports = (productsForSales) => {
           zipCode: 32787,
         },
       },
-      status: "Procesado",
+      status: "Entregado",
       saleDate: "2020-05-01",
       subTotal: productsForSales[1].salePrice * 3,
       shipment: 70,
@@ -80,7 +80,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Procesado",
-      saleDate: "2020-05-02",
+      saleDate: Date.now(),
       subTotal:
         productsForSales[2].salePrice * 1 + productsForSales[3].salePrice * 1,
       shipment: 70,
@@ -121,7 +121,7 @@ module.exports = (productsForSales) => {
           zipCode: 23443,
         },
       },
-      status: "Enviado",
+      status: "Entregado",
       saleDate: "2020-04-15",
       subTotal:
         productsForSales[4].salePrice * 2 + productsForSales[5].salePrice * 2,
@@ -164,7 +164,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Procesado",
-      saleDate: "2020-05-03",
+      saleDate: Date.now(),
       subTotal:
         productsForSales[6].salePrice * 1 +
         productsForSales[7].salePrice * 1 +
@@ -216,7 +216,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Procesado",
-      saleDate: "2020-05-02",
+      saleDate: Date.now(),
       subTotal:
         productsForSales[9].salePrice * 1 +
         productsForSales[10].salePrice * 2 +
@@ -330,7 +330,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Enviado",
-      saleDate: "2020-05-05",
+      saleDate: Date.now(),
       subTotal: productsForSales[30].salePrice * 3,
       shipment: 70,
       grandTotal: productsForSales[30].salePrice * 3 + 70,
@@ -360,8 +360,8 @@ module.exports = (productsForSales) => {
           zipCode: "23700",
         },
       },
-      status: "Procesado",
-      saleDate: "2020-05-04",
+      status: "Enviado",
+      saleDate: Date.now(),
       subTotal: productsForSales[45].salePrice * 1,
       shipment: 70,
       grandTotal: productsForSales[45].salePrice * 1 + 70,
@@ -390,7 +390,7 @@ module.exports = (productsForSales) => {
           zipCode: "23422",
         },
       },
-      status: "Enviado",
+      status: "Entregado",
       saleDate: "2020-04-30",
       subTotal: productsForSales[36].salePrice * 1,
       shipment: 70,
@@ -420,7 +420,7 @@ module.exports = (productsForSales) => {
           zipCode: "23422",
         },
       },
-      status: "Enviado",
+      status: "Cancelado",
       saleDate: "2020-04-23",
       subTotal: productsForSales[48].salePrice * 1,
       shipment: 70,
@@ -451,7 +451,7 @@ module.exports = (productsForSales) => {
           zipCode: "89671",
         },
       },
-      status: "Enviado",
+      status: "Entregado",
       saleDate: "2020-03-15",
       subTotal: productsForSales[15].salePrice * 1,
       shipment: 70,

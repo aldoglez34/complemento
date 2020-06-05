@@ -1,7 +1,8 @@
 import React from "react";
 import { ListGroup, Row, Col, Image, Button, Badge } from "react-bootstrap";
-import moment from "moment";
 import { formatNumber } from "../../utils/formatNumber";
+import moment from "moment";
+import "moment/locale/es";
 
 const ProductsByCategory = React.memo(({ products }) => {
   return (
@@ -31,7 +32,7 @@ const ProductsByCategory = React.memo(({ products }) => {
                 </div>
                 <p className="mb-0">{p.content}</p>
                 <p className="mb-2 lead">
-                  {moment(p.createdAt).format("DD/MMMM/YYYY")}
+                  {moment(p.createdAt).format("LLLL")}
                 </p>
                 <Button
                   className="shadow-sm"

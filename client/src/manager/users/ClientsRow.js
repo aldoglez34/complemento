@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Modal, Form, Col, Spinner } from "react-bootstrap";
+import { Modal, Form, Col, Spinner, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 import APIManager from "../../utils/APIManager";
 import moment from "moment";
+import "moment/locale/es";
 
 const ClientsRow = React.memo(({ client }) => {
   const [show, setShow] = useState(false);
@@ -34,19 +35,24 @@ const ClientsRow = React.memo(({ client }) => {
     return text.join("");
   };
 
-  const formatDate = (date) => {
-    let convertedDate = moment(moment(date).format(moment.HTML5_FMT.DATE));
-    return convertedDate.format("DD/MMMM/YYYY");
-  };
-
   return (
     <>
-      <tr onClick={handleShow} className="rowStyle">
+      <tr className="rowStyle">
         <td>{client.name}</td>
         <td>{client.firstSurname}</td>
         <td>{client.email}</td>
         <td className="text-right">{client.favorites.length}</td>
-        <td className="text-right">{formatDate(client.createdAt)}</td>
+        <td className="text-right">{moment(client.createdAt).format("LL")}</td>
+        <td className="text-center">
+          <Button
+            className="shadow-sm"
+            size="sm"
+            variant="warning"
+            onClick={handleShow}
+          >
+            <i className="fas fa-search" />
+          </Button>
+        </td>
       </tr>
 
       <Modal show={show} onHide={handleClose}>
@@ -65,7 +71,7 @@ const ClientsRow = React.memo(({ client }) => {
                 phone: client.phone,
                 purchases: purchases.length,
                 favorites: printFavorites(),
-                createdAt: formatDate(client.createdAt),
+                createdAt: client.createdAt,
               }}
             >
               {({ values, handleChange, handleBlur, handleSubmit }) => (
@@ -122,7 +128,7 @@ const ClientsRow = React.memo(({ client }) => {
                         disabled
                         type="text"
                         name="createdAt"
-                        value={values.createdAt}
+                        value={moment(values.createdAt).format("LLLL")}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
