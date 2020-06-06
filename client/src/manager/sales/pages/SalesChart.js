@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import ManagerLayout from "../../ManagerLayout";
 import Chart from "chart.js";
 import { Row, Col } from "react-bootstrap";
+import moment from "moment";
 
 const SalesChart = React.memo((props) => {
   const type = props.routeProps.match.params.chart;
   const title =
     type === "currentWeek"
-      ? "Ventas de Última Semana"
+      ? "Ventas de la Última Semana"
       : type === "currentMonth"
       ? "Ventas del mes"
       : "Ventas del semestre";
@@ -30,7 +31,6 @@ const SalesChart = React.memo((props) => {
         ],
         datasets: [
           {
-            label: "# of Votes",
             data: [12, 19, 3, 5, 2, 3, 40],
             backgroundColor: "rgba(255, 206, 86, 0.2)",
             borderColor: "rgba(255, 206, 86, 1)",
@@ -66,7 +66,9 @@ const SalesChart = React.memo((props) => {
     >
       <h3 className="text-danger mb-4">
         <i className="far fa-calendar-alt mr-2" />
-        Hoy es Jueves
+        <span style={{ textTransform: "uppercase" }}>
+          {moment(Date.now()).format("dddd")}
+        </span>
       </h3>
       <Row>
         <Col>

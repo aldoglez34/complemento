@@ -133,8 +133,8 @@ const Sales = React.memo(() => {
           <TopRightBttn
             text={
               <>
-                <i className="fas fa-chart-bar mr-2" />
-                <span>Ventas semana</span>
+                <i className="fas fa-chart-line mr-2" />
+                <span>Semana</span>
               </>
             }
             link="/manager/sales/chart/currentWeek"
@@ -143,8 +143,8 @@ const Sales = React.memo(() => {
           <TopRightBttn
             text={
               <>
-                <i className="fas fa-chart-area mr-2" />
-                <span>Ventas mes</span>
+                <i className="fas fa-chart-line mr-2" />
+                <span>Mes</span>
               </>
             }
             link="/manager/sales/chart/currentMonth"
@@ -154,7 +154,7 @@ const Sales = React.memo(() => {
             text={
               <>
                 <i className="fas fa-chart-line mr-2" />
-                <span>Ventas semestre</span>
+                <span>Semestre</span>
               </>
             }
             link="/manager/sales/chart/currentSemester"
@@ -164,7 +164,7 @@ const Sales = React.memo(() => {
             text={
               <>
                 <i className="fas fa-map-marked-alt mr-2" />
-                <span>Ventas por estado</span>
+                <span>Estados</span>
               </>
             }
             link="/manager/sales/chart/currentSemester"
