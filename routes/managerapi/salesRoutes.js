@@ -28,19 +28,37 @@ router.get("/chart/currentWeek", function (req, res) {
       $gte: lastWeek,
       $lt: today,
     },
+    status: { $ne: "Cancelado" },
   })
     .select("grandTotal saleDate")
     .sort({ saleDate: -1 })
     .then((data) => {
-      console.log("===============================");
-      // console.log("data =>", data);
-      const grouped = data.reduce((acc, cv) => {
-        acc.push({ saleDate: cv.saleDate, grandTotal: cv.grandTotal });
+      // setting the formatted date
+      const formattedData = data.reduce((acc, cv) => {
+        acc.push({
+          date: moment(cv.saleDate).format("L"),
+          saleDate: cv.saleDate,
+          grandTotal: cv.grandTotal,
+        });
         return acc;
       }, []);
-      console.log("grouped =>", grouped);
+
       // group data
-      res.send(grouped);
+      const grouped = formattedData.reduce((acc, cv) => {
+        const key = cv.date;
+
+        if (!acc[key]) {
+          acc[key] = [];
+        }
+
+        acc[key].push(cv);
+
+        return acc;
+      }, []);
+
+      console.log("grouped =>", grouped);
+
+      res.json(grouped);
     })
     .catch((err) => {
       console.log("@error", err);
