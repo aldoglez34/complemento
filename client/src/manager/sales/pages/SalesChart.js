@@ -66,9 +66,9 @@ const SalesChart = React.memo((props) => {
     >
       <h3 className="text-danger mb-4">
         <i className="far fa-calendar-alt mr-2" />
-        <span style={{ textTransform: "uppercase" }}>
+        <small style={{ textTransform: "uppercase" }}>
           {moment(Date.now()).format("dddd")}
-        </span>
+        </small>
       </h3>
       <Row>
         <Col>

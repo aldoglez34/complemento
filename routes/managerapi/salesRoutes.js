@@ -31,10 +31,10 @@ router.get("/chart/currentWeek", function (req, res) {
   })
     .select("grandTotal saleDate")
     .sort({ saleDate: -1 })
-    // .populate("buyer.clientId products.product")
     .then((data) => {
       console.log("data =>", data);
       // group data
+      res.send(data);
     })
     .catch((err) => {
       console.log("@error", err);
