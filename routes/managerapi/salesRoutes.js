@@ -32,9 +32,15 @@ router.get("/chart/currentWeek", function (req, res) {
     .select("grandTotal saleDate")
     .sort({ saleDate: -1 })
     .then((data) => {
-      console.log("data =>", data);
+      console.log("===============================");
+      // console.log("data =>", data);
+      const grouped = data.reduce((acc, cv) => {
+        acc.push({ saleDate: cv.saleDate, grandTotal: cv.grandTotal });
+        return acc;
+      }, []);
+      console.log("grouped =>", grouped);
       // group data
-      res.send(data);
+      res.send(grouped);
     })
     .catch((err) => {
       console.log("@error", err);
