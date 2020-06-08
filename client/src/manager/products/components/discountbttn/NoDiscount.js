@@ -24,7 +24,7 @@ const NoDiscount = React.memo(
         <Row className="mt-3 mb-4">
           <Col>
             <h4>PORCENTAJE</h4>
-            <div className="text-center">
+            <div className="text-center mt-3">
               <DiscountPercentages
                 percentage={percentage}
                 setPercentage={setPercentage}
@@ -41,6 +41,7 @@ const NoDiscount = React.memo(
               className="mt-2 p-2 pl-3 border rounded"
               selected={startDate}
               onChange={onChangeStartDate}
+              selectsStart
               locale="es"
               dateFormat="dd/MM/yyyy"
             />
@@ -58,6 +59,7 @@ const NoDiscount = React.memo(
                 )
               }
               selected={endDate}
+              selectsEnd
               onChange={onChangeEndDate}
               locale="es"
               dateFormat="dd/MM/yyyy"
