@@ -162,27 +162,15 @@ const Products = React.memo(() => {
       title="Productos"
       filters={filters()}
       topBttn={
-        <>
-          <TopRightBttn
-            text={
-              <>
-                <i className="fas fa-plus-square mr-2" />
-                <span>Descuento</span>
-              </>
-            }
-            link="/manager/products/discounts/new"
-          />
-          <div className="ml-2" />
-          <TopRightBttn
-            text={
-              <>
-                <i className="fas fa-plus-square mr-2" />
-                <span>Producto</span>
-              </>
-            }
-            link="/manager/products/new"
-          />
-        </>
+        <TopRightBttn
+          text={
+            <>
+              <i className="fas fa-plus-square mr-2" />
+              <span>Producto</span>
+            </>
+          }
+          link="/manager/products/new"
+        />
       }
     >
       {filtered && categories ? (

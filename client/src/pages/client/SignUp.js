@@ -91,7 +91,6 @@ const SignUp = () => {
                       secondSurname: values.secondSurname,
                       email: values.email,
                       phone: values.phone,
-                      password: values.password,
                     })
                       .then((res) => {
                         console.log("3 - then del newClient");

@@ -167,6 +167,20 @@ router.put("/deactivate/:productId", function (req, res) {
     });
 });
 
+// mngr_activateProduct()
+// matches with /managerapi/products/activate/:productId
+router.put("/activate/:productId", function (req, res) {
+  const { productId } = req.params;
+  model.Product.findByIdAndUpdate(productId, {
+    active: true,
+  })
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
+});
+
 // discounts
 
 // mngr_fetchDiscounts()
@@ -201,14 +215,14 @@ router.put("/discounts/new", function (req, res) {
     });
 });
 
-// mngr_activateProduct()
-// matches with /managerapi/products/activate/:productId
-router.put("/activate/:productId", function (req, res) {
-  const { productId } = req.params;
-  model.Product.findByIdAndUpdate(productId, {
-    active: true,
+// mngr_terminateDiscount()
+// matches with /managerapi/products/discounts/terminate
+router.put("/discounts/terminate", function (req, res) {
+  // console.log("@mngr_newDiscount", req.body);
+  model.Product.findByIdAndUpdate(req.body.productId, {
+    "price.discount.hasDiscount": false,
   })
-    .then((data) => res.json(data))
+    .then((data) => res.send({ msg: "El descuento fue terminado con éxito." }))
     .catch((err) => {
       console.log("@error", err);
       res.status(422).send({ msg: "Ocurrió un error" });

@@ -143,7 +143,7 @@ const HelpButton = React.memo(() => {
                 <Form.Row>
                   <Form.Group as={Col}>
                     <Form.Label>
-                      <strong>Correo electrónico</strong>
+                      <strong>Asunto</strong>
                     </Form.Label>
                     <Form.Control
                       maxLength="50"

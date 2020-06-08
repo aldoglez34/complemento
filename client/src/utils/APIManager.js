@@ -2,11 +2,31 @@ import axios from "axios";
 
 export default {
   // ---------------------------------------------------------------------------
-  // HOME
+  // HOME & DASHBOARD
   // ---------------------------------------------------------------------------
 
   mngr_fetchManagerByUID: function (uid) {
     return axios.get("/managerapi/home/login/" + uid);
+  },
+
+  mngr_fetchLatestProduct: function () {
+    return axios.get("/managerapi/home/dashboard/latestProduct");
+  },
+
+  mngr_fetchLastProvider: function () {
+    return axios.get("/managerapi/home/dashboard/lastProvider");
+  },
+
+  mngr_fetchLastSale: function () {
+    return axios.get("/managerapi/home/dashboard/lastSale");
+  },
+
+  mngr_fetchLastClient: function () {
+    return axios.get("/managerapi/home/dashboard/lastClient");
+  },
+
+  mngr_fetchLastMessage: function () {
+    return axios.get("/managerapi/home/dashboard/lastMessage");
   },
 
   // ---------------------------------------------------------------------------
@@ -41,6 +61,10 @@ export default {
 
   mngr_newDiscount: function (data) {
     return axios.put("/managerapi/products/discounts/new", data);
+  },
+
+  mngr_terminateDiscount: function (productId) {
+    return axios.put("/managerapi/products/discounts/terminate", productId);
   },
 
   // product activation

@@ -65,8 +65,8 @@ const LoginDropdown = () => {
               .auth()
               .setPersistence(
                 values.rememberme
-                  ? fbApp.auth.Auth.Persistence.SESSION
-                  : fbApp.auth.Auth.Persistence.LOCAL
+                  ? fbApp.auth.Auth.Persistence.LOCAL
+                  : fbApp.auth.Auth.Persistence.SESSION
               )
               .then(() => {
                 return firebase

@@ -2,6 +2,7 @@ import React from "react";
 import AuthUserContext from "./context";
 import { connect } from "react-redux";
 import firebase from "../firebase/firebase";
+import { logoutUser } from "../redux/actions/user";
 
 // higher order component
 const withNavigation = (Component) => {
@@ -16,6 +17,10 @@ const withNavigation = (Component) => {
         .onAuthStateChanged((fbUser) =>
           fbUser
             ? this.setState({ navigation: fbUser.displayName })
+            : this.props.user
+            ? this.setState({ navigation: "Guest" }, () =>
+                this.props.logoutUser()
+              )
             : this.setState({ navigation: "Guest" })
         );
     }
@@ -35,7 +40,11 @@ const withNavigation = (Component) => {
     };
   };
 
-  return connect(mapStateToProps, null)(WithNavigation);
+  const mapDispatchToProps = {
+    logoutUser,
+  };
+
+  return connect(mapStateToProps, mapDispatchToProps)(WithNavigation);
 };
 
 export default withNavigation;

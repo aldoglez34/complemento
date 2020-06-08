@@ -19,13 +19,13 @@ const LeftNav = React.memo(({ leftBarActive }) => {
       <Nav.Link
         className="navLinkStyle"
         href="/manager/dashboard"
-        active={leftBarActive === "Inicio" ? true : false}
+        active={leftBarActive === "Panel" ? true : false}
       >
         <i
           className="fas fa-tachometer-alt"
           style={{ width: "26px", textAlign: "center" }}
         />
-        <span className="ml-1">Inicio</span>
+        <span className="ml-1">Panel</span>
       </Nav.Link>
       <Nav.Item className="navItemStyle">PRODUCTOS</Nav.Item>
       <Nav.Link

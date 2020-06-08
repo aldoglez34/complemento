@@ -5,8 +5,7 @@ const managers = [
     firstSurname: "Solano",
     secondSurname: "González",
     email: "rosa.solano@freyssiniermex.com",
-    password: "123456"
-  }
+  },
 ];
 
 module.exports = managers;

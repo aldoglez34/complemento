@@ -15,7 +15,7 @@ import Contact from "../pages/footer/Contact";
 import Payment from "../pages/footer/Payment";
 import Tracker from "../pages/footer/Tracker";
 // manager
-import Dashboard from "../manager/Dashboard";
+import Dashboard from "../manager/dashboard";
 import Categories from "../manager/categories";
 import Providers from "../manager/providers";
 import NewProvider from "../manager/providers/pages/NewProvider";
@@ -24,7 +24,6 @@ import Users from "../manager/users";
 import Messages from "../manager/messages";
 import Products from "../manager/products";
 import NewProduct from "../manager/products/pages/NewProduct";
-import NewDiscount from "../manager/products/pages/NewDiscount";
 import EditProduct from "../manager/products/pages/EditProduct";
 import Sales from "../manager/sales";
 import SalesChart from "../manager/sales/pages/SalesChart";
@@ -74,11 +73,6 @@ const ManagerNavigation = () => {
       <Route exact path="/manager/categories" component={Categories} />
       <Route exact path="/manager/products" component={Products} />
       <Route exact path="/manager/products/new" component={NewProduct} />
-      <Route
-        exact
-        path="/manager/products/discounts/new"
-        component={NewDiscount}
-      />
       <Route
         exact
         path="/manager/products/edit/:productId"

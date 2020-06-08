@@ -6,7 +6,6 @@ const clients = [
     secondSurname: "González",
     phone: "2281112031",
     email: "aldoglez34@gmail.com",
-    password: "123456",
     address: {
       street: "5 de Febrero #14",
       neighborhood: "Centro",

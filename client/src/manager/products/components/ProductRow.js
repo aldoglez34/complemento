@@ -3,6 +3,7 @@ import { Button, Badge } from "react-bootstrap";
 import PropTypes from "prop-types";
 import APIManager from "../../../utils/APIManager";
 import { formatNumber } from "../../../utils/formatNumber";
+import DiscountBttn from "./DiscountBttn";
 
 const ProductRow = React.memo(({ product }) => {
   const handleChange = (isActive, productId) => {
@@ -78,13 +79,14 @@ const ProductRow = React.memo(({ product }) => {
         <td className="text-right">{product.unitsSold}</td>
         {/* stock */}
         <td className="text-right">{product.stock}</td>
-        {/* edit and delete buttons */}
+        {/* discount, edit and delete buttons */}
         <td className="text-center">
+          <DiscountBttn product={product} />
           <Button
             variant="info"
             size="sm"
             title="Editar"
-            className="ml-3 shadow-sm"
+            className="ml-2 shadow-sm"
             href={"/manager/products/edit/" + product._id}
           >
             <i className="fas fa-pen pt-1" />
