@@ -1,59 +1,92 @@
 import React from "react";
-import { ListGroup } from "react-bootstrap";
+import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import PropTypes from "prop-types";
+import "./discountpercentages.scss";
 
 const DiscountPercentages = React.memo(({ percentage, setPercentage }) => {
   return (
-    <ListGroup className="mt-2" horizontal>
-      <ListGroup.Item
-        className="text-center"
-        action
+    <ButtonGroup toggle>
+      <ToggleButton
+        className="discountPercentage"
+        type="radio"
+        variant="light"
+        value={5}
+        checked={percentage === 5 ? true : false}
         onClick={() => setPercentage(5)}
-        active={percentage === 5 ? true : false}
       >
         5%
-      </ListGroup.Item>
-      <ListGroup.Item
-        className="text-center"
-        action
+      </ToggleButton>
+      <ToggleButton
+        className="discountPercentage"
+        type="radio"
+        variant="light"
+        value={10}
+        checked={percentage === 10 ? true : false}
         onClick={() => setPercentage(10)}
-        active={percentage === 10 ? true : false}
       >
         10%
-      </ListGroup.Item>
-      <ListGroup.Item
-        className="text-center"
-        action
+      </ToggleButton>
+      <ToggleButton
+        className="discountPercentage"
+        type="radio"
+        variant="light"
+        value={15}
+        checked={percentage === 15 ? true : false}
         onClick={() => setPercentage(15)}
-        active={percentage === 15 ? true : false}
       >
         15%
-      </ListGroup.Item>
-      <ListGroup.Item
-        className="text-center"
-        action
+      </ToggleButton>
+      <ToggleButton
+        className="discountPercentage"
+        type="radio"
+        variant="light"
+        value={20}
+        checked={percentage === 20 ? true : false}
         onClick={() => setPercentage(20)}
-        active={percentage === 20 ? true : false}
       >
         20%
-      </ListGroup.Item>
-      <ListGroup.Item
-        className="text-center"
-        action
+      </ToggleButton>
+      <ToggleButton
+        className="discountPercentage"
+        type="radio"
+        variant="light"
+        value={25}
+        checked={percentage === 25 ? true : false}
         onClick={() => setPercentage(25)}
-        active={percentage === 25 ? true : false}
       >
         25%
-      </ListGroup.Item>
-      <ListGroup.Item
-        className="text-center"
-        action
+      </ToggleButton>
+      <ToggleButton
+        className="discountPercentage"
+        type="radio"
+        variant="light"
+        value={30}
+        checked={percentage === 30 ? true : false}
         onClick={() => setPercentage(30)}
-        active={percentage === 30 ? true : false}
       >
         30%
-      </ListGroup.Item>
-    </ListGroup>
+      </ToggleButton>
+      <ToggleButton
+        className="discountPercentage"
+        type="radio"
+        variant="light"
+        value={35}
+        checked={percentage === 35 ? true : false}
+        onClick={() => setPercentage(35)}
+      >
+        35%
+      </ToggleButton>
+      <ToggleButton
+        className="discountPercentage"
+        type="radio"
+        variant="light"
+        value={40}
+        checked={percentage === 40 ? true : false}
+        onClick={() => setPercentage(40)}
+      >
+        40%
+      </ToggleButton>
+    </ButtonGroup>
   );
 });
 

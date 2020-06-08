@@ -1,0 +1,12 @@
+.discountPercentage {
+  cursor: pointer !important;
+  font-size: 15px;
+
+  &.active {
+    background-color: crimson !important;
+    transition: 0.5s;
+    border-color: crimson !important;
+    color: white !important;
+    font-weight: bolder;
+  }
+}

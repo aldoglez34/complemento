@@ -90,12 +90,12 @@ const DiscountBttn = React.memo(({ product }) => {
           <ProductInformation product={product} />
           {/* discount or no discount */}
           {product.price.discount.hasDiscount ? (
-            <NoDiscount
+            <WithDiscount
               product={product}
               terminateDiscount={terminateDiscount}
             />
           ) : (
-            <WithDiscount
+            <NoDiscount
               percentage={percentage}
               setPercentage={setPercentage}
               startDate={startDate}

@@ -14,32 +14,32 @@ const ProductInformation = React.memo(({ product }) => {
           alt={product.photo}
         />
       </Col>
-      <Col md="auto">
+      <Col md="auto" className="lead">
         <p className="mb-1">
-          <strong>Última Compra:</strong>
-          <strong className="ml-2 text-success">
+          <span>Última Compra:</span>
+          <span className="ml-2 text-success">
             {formatNumber(product.price.latestPurchasePrice)}
-          </strong>
+          </span>
         </p>
         <p className="mb-1">
-          <strong>Venta:</strong>
-          <strong className="ml-2 text-success">
+          <span>Venta:</span>
+          <span className="ml-2 text-success">
             {formatNumber(product.price.salePrice)}
-          </strong>
+          </span>
         </p>
         <p className="mb-1">
-          <strong>Existencia:</strong>
-          <strong className="ml-2 text-success">{product.stock}</strong>
+          <span>Existencia:</span>
+          <span className="ml-2 text-success">{product.stock}</span>
         </p>
         <p className="mb-1">
-          <strong>Vendidos:</strong>
-          <strong className="ml-2 text-success">{product.unitsSold}</strong>
+          <span>Vendidos:</span>
+          <span className="ml-2 text-success">{product.unitsSold}</span>
         </p>
         <p className="mb-0">
-          <strong>Activo:</strong>
-          <strong className="ml-2 text-success">
+          <span>Activo:</span>
+          <span className="ml-2 text-success">
             {product.active ? "Sí" : "No"}
-          </strong>
+          </span>
         </p>
       </Col>
     </Row>
