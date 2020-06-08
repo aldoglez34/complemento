@@ -59,6 +59,7 @@ const NoDiscount = React.memo(
                 )
               }
               selected={endDate}
+              startDate={startDate}
               selectsEnd
               onChange={onChangeEndDate}
               locale="es"
