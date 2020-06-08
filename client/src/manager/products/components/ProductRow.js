@@ -3,7 +3,7 @@ import { Button, Badge } from "react-bootstrap";
 import PropTypes from "prop-types";
 import APIManager from "../../../utils/APIManager";
 import { formatNumber } from "../../../utils/formatNumber";
-import DiscountBttn from "./DiscountBttn";
+import DiscountBttn from "./discountbttn";
 
 const ProductRow = React.memo(({ product }) => {
   const handleChange = (isActive, productId) => {

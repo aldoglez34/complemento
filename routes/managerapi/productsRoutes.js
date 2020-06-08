@@ -218,8 +218,9 @@ router.put("/discounts/new", function (req, res) {
 // mngr_terminateDiscount()
 // matches with /managerapi/products/discounts/terminate
 router.put("/discounts/terminate", function (req, res) {
-  // console.log("@mngr_newDiscount", req.body);
-  model.Product.findByIdAndUpdate(req.body.productId, {
+  const { productId } = req.body;
+
+  model.Product.findByIdAndUpdate(productId, {
     "price.discount.hasDiscount": false,
   })
     .then((data) => res.send({ msg: "El descuento fue terminado con éxito." }))
