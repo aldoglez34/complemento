@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import ManagerLayout from "../ManagerLayout";
-import { Card, CardColumns, Spinner } from "react-bootstrap";
+import { CardColumns, Spinner } from "react-bootstrap";
 import APIManager from "../../utils/APIManager";
 import API from "../../utils/API";
 import moment from "moment";
@@ -85,14 +85,11 @@ const Dashboard = React.memo(() => {
       lastMessage ? (
         <CardColumns>
           <LastProductCard product={latestProd} />
+          <LastMessageCard message={lastMessage} />
           <LastSaleCard sale={lastSale} />
           <LastProviderCard provider={lastProvider} />
-          <CategoriesCard categories={categories} />
           <LastClientCard client={lastClient} />
-          <LastMessageCard message={lastMessage} />
-          <Card>
-            <Card.Img src="https://bit.ly/2MF8DPn" />
-          </Card>
+          <CategoriesCard categories={categories} />
         </CardColumns>
       ) : (
         <div className="text-center my-4">

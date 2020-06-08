@@ -102,9 +102,9 @@ const WithDiscount = React.memo(
 WithDiscount.propTypes = {
   percentage: PropTypes.number.isRequired,
   setPercentage: PropTypes.func.isRequired,
-  startDate: PropTypes.string.isRequired,
+  startDate: PropTypes.instanceOf(Date).isRequired,
   onChangeStartDate: PropTypes.func.isRequired,
-  endDate: PropTypes.string.isRequired,
+  endDate: PropTypes.instanceOf(Date).isRequired,
   onChangeEndDate: PropTypes.func.isRequired,
   product: PropTypes.object.isRequired,
   applyDiscount: PropTypes.func.isRequired,
