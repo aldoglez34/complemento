@@ -1,4 +1,8 @@
 const models = require("../../models");
+const moment = require("moment");
+moment.locale("es");
+
+const date = new Date();
 
 module.exports = (productsForSales) => {
   const sales = [
@@ -19,7 +23,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Entregado",
-      saleDate: "2020-04-20",
+      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 2),
       subTotal: productsForSales[0].salePrice * 1,
       shipment: 70,
       grandTotal: productsForSales[0].salePrice * 1 + 70,
@@ -49,7 +53,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Entregado",
-      saleDate: "2020-05-01",
+      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 1),
       subTotal: productsForSales[1].salePrice * 3,
       shipment: 70,
       grandTotal: productsForSales[1].salePrice * 3 + 70,
@@ -122,7 +126,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Entregado",
-      saleDate: "2020-04-15",
+      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 3),
       subTotal:
         productsForSales[4].salePrice * 2 + productsForSales[5].salePrice * 2,
       shipment: 70,
@@ -164,7 +168,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Procesado",
-      saleDate: Date.now(),
+      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 1),
       subTotal:
         productsForSales[6].salePrice * 1 +
         productsForSales[7].salePrice * 1 +
@@ -268,7 +272,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Entregado",
-      saleDate: "2020-05-02",
+      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 4),
       subTotal: productsForSales[12].salePrice * 5,
       shipment: 70,
       grandTotal: productsForSales[12].salePrice * 5 + 70,
@@ -330,7 +334,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Enviado",
-      saleDate: Date.now(),
+      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 5),
       subTotal: productsForSales[30].salePrice * 3,
       shipment: 70,
       grandTotal: productsForSales[30].salePrice * 3 + 70,
@@ -361,7 +365,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Enviado",
-      saleDate: Date.now(),
+      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 6),
       subTotal: productsForSales[45].salePrice * 1,
       shipment: 70,
       grandTotal: productsForSales[45].salePrice * 1 + 70,
@@ -391,7 +395,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Entregado",
-      saleDate: "2020-04-30",
+      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 7),
       subTotal: productsForSales[36].salePrice * 1,
       shipment: 70,
       grandTotal: productsForSales[36].salePrice * 1 + 70,
@@ -452,7 +456,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Entregado",
-      saleDate: "2020-03-15",
+      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 7),
       subTotal: productsForSales[15].salePrice * 1,
       shipment: 70,
       grandTotal: productsForSales[15].salePrice * 1 + 70,
@@ -483,7 +487,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Entregado",
-      saleDate: "2020-03-23",
+      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 8),
       subTotal:
         productsForSales[27].salePrice * 1 +
         productsForSales[37].salePrice * 1 +
@@ -535,7 +539,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Cancelado",
-      saleDate: "2020-03-27",
+      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 2),
       subTotal:
         productsForSales[47].salePrice * 1 + productsForSales[3].salePrice * 1,
       shipment: 70,
