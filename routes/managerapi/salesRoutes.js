@@ -17,14 +17,14 @@ router.get("/all", function (req, res) {
 // mngr_currentWeekChart()
 // matches with /managerapi/sales/chart/currentWeek
 
-router.get("/chart/currentWeek", async (req, res) => {
+router.get("/chart/currentWeek", function (req, res) {
   const moment = require("moment");
   moment.locale("es");
 
   const today = moment().endOf("day");
   const lastWeek = moment(Date.now()).subtract(7, "days").startOf("day");
 
-  const saleData = await model.Sale.find({
+  model.Sale.find({
     saleDate: {
       $gte: lastWeek,
       $lt: today,
@@ -32,9 +32,39 @@ router.get("/chart/currentWeek", async (req, res) => {
     status: { $ne: "Cancelado" },
   })
     .select("grandTotal saleDate")
-    .sort({ saleDate: -1 });
+    .sort({ saleDate: -1 })
+    .then((data) => {
+      // setting the formatted date
+      const formattedData = data.reduce((acc, cv) => {
+        acc.push({
+          date: moment(cv.saleDate).format("L"),
+          saleDate: cv.saleDate,
+          grandTotal: cv.grandTotal,
+        });
+        return acc;
+      }, []);
 
-  res.json(saleData);
+      // group data
+      return formattedData.reduce((acc, cv) => {
+        const key = cv.date;
+
+        if (!acc[key]) {
+          acc[key] = [];
+        }
+
+        acc[key].push(cv);
+
+        return acc;
+      }, []);
+    })
+    .then((toFront) => {
+      console.log("toFront", toFront);
+      res.send(toFront);
+    })
+    .catch((err) => {
+      console.log("@error", err);
+      res.status(422).send({ msg: "Ocurrió un error" });
+    });
 });
 
 module.exports = router;

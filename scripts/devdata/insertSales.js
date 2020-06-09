@@ -23,7 +23,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Entregado",
-      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 2),
+      saleDate: moment().subtract(1, "days").format("YYYY-MM-DD"),
       subTotal: productsForSales[0].salePrice * 1,
       shipment: 70,
       grandTotal: productsForSales[0].salePrice * 1 + 70,
@@ -53,7 +53,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Entregado",
-      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 1),
+      saleDate: moment().subtract(3, "days").format("YYYY-MM-DD"),
       subTotal: productsForSales[1].salePrice * 3,
       shipment: 70,
       grandTotal: productsForSales[1].salePrice * 3 + 70,
@@ -84,7 +84,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Procesado",
-      saleDate: Date.now(),
+      saleDate: moment().subtract(2, "days").format("YYYY-MM-DD"),
       subTotal:
         productsForSales[2].salePrice * 1 + productsForSales[3].salePrice * 1,
       shipment: 70,
@@ -126,7 +126,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Entregado",
-      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 3),
+      saleDate: moment().format("YYYY-MM-DD"),
       subTotal:
         productsForSales[4].salePrice * 2 + productsForSales[5].salePrice * 2,
       shipment: 70,
@@ -168,7 +168,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Procesado",
-      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 1),
+      saleDate: moment().format("YYYY-MM-DD"),
       subTotal:
         productsForSales[6].salePrice * 1 +
         productsForSales[7].salePrice * 1 +
@@ -220,7 +220,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Procesado",
-      saleDate: Date.now(),
+      saleDate: moment().subtract(4, "days").format("YYYY-MM-DD"),
       subTotal:
         productsForSales[9].salePrice * 1 +
         productsForSales[10].salePrice * 2 +
@@ -272,7 +272,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Entregado",
-      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 4),
+      saleDate: moment().subtract(5, "days").format("YYYY-MM-DD"),
       subTotal: productsForSales[12].salePrice * 5,
       shipment: 70,
       grandTotal: productsForSales[12].salePrice * 5 + 70,
@@ -303,7 +303,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Cancelado",
-      saleDate: "2020-04-30",
+      saleDate: moment().subtract(6, "days").format("YYYY-MM-DD"),
       subTotal: productsForSales[20].salePrice * 1,
       shipment: 70,
       grandTotal: productsForSales[20].salePrice * 1 + 70,
@@ -334,7 +334,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Enviado",
-      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 5),
+      saleDate: moment().subtract(4, "days").format("YYYY-MM-DD"),
       subTotal: productsForSales[30].salePrice * 3,
       shipment: 70,
       grandTotal: productsForSales[30].salePrice * 3 + 70,
@@ -365,7 +365,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Enviado",
-      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 6),
+      saleDate: moment().format("YYYY-MM-DD"),
       subTotal: productsForSales[45].salePrice * 1,
       shipment: 70,
       grandTotal: productsForSales[45].salePrice * 1 + 70,
@@ -395,7 +395,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Entregado",
-      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 7),
+      saleDate: moment().subtract(1, "days").format("YYYY-MM-DD"),
       subTotal: productsForSales[36].salePrice * 1,
       shipment: 70,
       grandTotal: productsForSales[36].salePrice * 1 + 70,
@@ -425,7 +425,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Cancelado",
-      saleDate: "2020-04-23",
+      saleDate: moment().subtract(2, "days").format("YYYY-MM-DD"),
       subTotal: productsForSales[48].salePrice * 1,
       shipment: 70,
       grandTotal: productsForSales[48].salePrice * 1 + 70,
@@ -456,7 +456,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Entregado",
-      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 7),
+      saleDate: moment().subtract(1, "days").format("YYYY-MM-DD"),
       subTotal: productsForSales[15].salePrice * 1,
       shipment: 70,
       grandTotal: productsForSales[15].salePrice * 1 + 70,
@@ -487,7 +487,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Entregado",
-      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 8),
+      saleDate: moment().subtract(3, "days").format("YYYY-MM-DD"),
       subTotal:
         productsForSales[27].salePrice * 1 +
         productsForSales[37].salePrice * 1 +
@@ -539,7 +539,7 @@ module.exports = (productsForSales) => {
         },
       },
       status: "Cancelado",
-      saleDate: Date(date.getFullYear(), date.getMonth(), date.getDate() - 2),
+      saleDate: moment().subtract(4, "days").format("YYYY-MM-DD"),
       subTotal:
         productsForSales[47].salePrice * 1 + productsForSales[3].salePrice * 1,
       shipment: 70,
