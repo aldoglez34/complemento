@@ -20,8 +20,19 @@ const SalesChart = React.memo((props) => {
     // getting data first
     APIManager.mngr_currentWeekChart()
       .then((res) => {
-        console.log(res.data);
-        setChartData(res.data);
+        setChartData(
+          res.data.reduce((acc, cv) => {
+            const key = cv.date;
+
+            if (!acc[key]) {
+              acc[key] = [];
+            }
+
+            acc[key].push(cv);
+
+            return acc;
+          }, [])
+        );
       })
       .catch((err) => {
         console.log(err.data);
@@ -90,6 +101,7 @@ const SalesChart = React.memo((props) => {
             </small>
           </h3>
           <Row>
+            {console.log(chartData)}
             <Col>
               <canvas id="myChart"></canvas>
             </Col>

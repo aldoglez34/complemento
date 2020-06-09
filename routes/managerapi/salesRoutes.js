@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const model = require("../../models");
+const moment = require("moment");
+moment.locale("es");
 
 // mngr_fetchSales()
 // matches with /managerapi/sales/all
@@ -16,11 +18,7 @@ router.get("/all", function (req, res) {
 
 // mngr_currentWeekChart()
 // matches with /managerapi/sales/chart/currentWeek
-
 router.get("/chart/currentWeek", function (req, res) {
-  const moment = require("moment");
-  moment.locale("es");
-
   const today = moment().endOf("day");
   const lastWeek = moment(Date.now()).subtract(7, "days").startOf("day");
 
@@ -31,35 +29,20 @@ router.get("/chart/currentWeek", function (req, res) {
     },
     status: { $ne: "Cancelado" },
   })
-    .select("grandTotal saleDate")
+    .select("grandTotal saleDate status")
     .sort({ saleDate: -1 })
     .then((data) => {
-      // setting the formatted date
-      const formattedData = data.reduce((acc, cv) => {
-        acc.push({
-          date: moment(cv.saleDate).format("L"),
-          saleDate: cv.saleDate,
-          grandTotal: cv.grandTotal,
-        });
-        return acc;
-      }, []);
-
-      // group data
-      return formattedData.reduce((acc, cv) => {
-        const key = cv.date;
-
-        if (!acc[key]) {
-          acc[key] = [];
-        }
-
-        acc[key].push(cv);
-
-        return acc;
-      }, []);
-    })
-    .then((toFront) => {
-      console.log("toFront", toFront);
-      res.send(toFront);
+      res.send(
+        data.reduce((acc, cv) => {
+          acc.push({
+            formattedDate: moment(cv.saleDate).format("L"),
+            saleDate: cv.saleDate,
+            grandTotal: cv.grandTotal,
+            status: cv.status,
+          });
+          return acc;
+        }, [])
+      );
     })
     .catch((err) => {
       console.log("@error", err);
