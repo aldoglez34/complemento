@@ -22,7 +22,7 @@ const SalesChart = React.memo((props) => {
       .then((res) => {
         setChartData(
           res.data.reduce((acc, cv) => {
-            const key = cv.date;
+            const key = cv.formattedDate;
 
             if (!acc[key]) {
               acc[key] = [];
@@ -42,48 +42,48 @@ const SalesChart = React.memo((props) => {
       });
 
     // building chart
-    // const ctx = document.getElementById("myChart").getContext("2d");
-    // // ctx.canvas.width = 800;
-    // ctx.canvas.height = 420;
-    // const myChart = new Chart(ctx, {
-    //   type: "line",
-    //   data: {
-    //     labels: [
-    //       "Lunes",
-    //       "Martes",
-    //       "Miércoles",
-    //       "Jueves",
-    //       "Viernes",
-    //       "Sábado",
-    //       "Domingo",
-    //     ],
-    //     datasets: [
-    //       {
-    //         data: [12, 19, 3, 5, 2, 3, 40],
-    //         backgroundColor: "rgba(255, 206, 86, 0.2)",
-    //         borderColor: "rgba(255, 206, 86, 1)",
-    //         label: "$",
-    //         pointBackgroundColor: "#f41206",
-    //         pointBorderColor: "#f75950",
-    //         pointRadius: 5,
-    //       },
-    //     ],
-    //   },
-    //   options: {
-    //     responsive: true,
-    //     maintainAspectRatio: false,
-    //     legend: {
-    //       display: false,
-    //     },
-    //     tooltips: {
-    //       callbacks: {
-    //         label: function (tooltipItem) {
-    //           return tooltipItem.yLabel;
-    //         },
-    //       },
-    //     },
-    //   },
-    // });
+    const ctx = document.getElementById("myChart").getContext("2d");
+    // ctx.canvas.width = 800;
+    ctx.canvas.height = 420;
+    const myChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: [
+          "Lunes",
+          "Martes",
+          "Miércoles",
+          "Jueves",
+          "Viernes",
+          "Sábado",
+          "Domingo",
+        ],
+        datasets: [
+          {
+            data: [12, 19, 3, 5, 2, 3, 40],
+            backgroundColor: "rgba(255, 206, 86, 0.2)",
+            borderColor: "rgba(255, 206, 86, 1)",
+            label: "$",
+            pointBackgroundColor: "#f41206",
+            pointBorderColor: "#f75950",
+            pointRadius: 5,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          display: false,
+        },
+        tooltips: {
+          callbacks: {
+            label: function (tooltipItem) {
+              return tooltipItem.yLabel;
+            },
+          },
+        },
+      },
+    });
   }, []);
 
   return (
