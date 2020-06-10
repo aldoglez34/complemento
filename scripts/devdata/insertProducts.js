@@ -1,5 +1,5 @@
 const models = require("../../models");
-const insertSales = require("./insertSales");
+const insertSalesAndClients = require("./insertSalesAndClients");
 
 module.exports = (providersList) => {
   const products = [
@@ -1440,8 +1440,8 @@ module.exports = (providersList) => {
         acc.push({ _id: cv._id, name: cv.name, salePrice: cv.price.salePrice });
         return acc;
       }, []);
-      // insert sales
-      insertSales(productsForSales);
+      // insert sales and clients
+      insertSalesAndClients(productsForSales);
     })
     .catch((err) => {
       console.log(err);

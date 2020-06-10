@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const models = require("../models");
-const clients = require("./devdata/clients");
 const managers = require("./devdata/managers");
 const messages = require("./devdata/messages");
 const providers = require("./devdata/providers");
@@ -16,13 +15,10 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-models.Client.remove({})
-  .then(() => models.Client.insertMany(clients))
+models.Manager.remove({})
   .then(() => {
-    console.log(">clients added");
-    return models.Manager.remove({});
+    return models.Manager.insertMany(managers);
   })
-  .then(() => models.Manager.insertMany(managers))
   .then(() => {
     console.log(">managers added");
     return models.Message.remove({});

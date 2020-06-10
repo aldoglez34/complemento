@@ -2,9 +2,7 @@ const models = require("../../models");
 const moment = require("moment");
 moment.locale("es");
 
-const date = new Date();
-
-module.exports = (productsForSales) => {
+module.exports = (productsCreated) => {
   const sales = [
     {
       buyer: {
@@ -24,16 +22,16 @@ module.exports = (productsForSales) => {
       },
       status: "Entregado",
       saleDate: moment().subtract(1, "days").format("YYYY-MM-DD"),
-      subTotal: productsForSales[0].salePrice * 1,
+      subTotal: productsCreated[0].salePrice * 1,
       shipment: 70,
-      grandTotal: productsForSales[0].salePrice * 1 + 70,
+      grandTotal: productsCreated[0].salePrice * 1 + 70,
       products: [
         {
-          _id: productsForSales[0]._id,
-          name: productsForSales[0].name,
+          _id: productsCreated[0]._id,
+          name: productsCreated[0].name,
           qty: 1,
-          salePrice: productsForSales[0].salePrice,
-          totalByProduct: productsForSales[0].salePrice * 1,
+          salePrice: productsCreated[0].salePrice,
+          totalByProduct: productsCreated[0].salePrice * 1,
         },
       ],
     },
@@ -54,16 +52,16 @@ module.exports = (productsForSales) => {
       },
       status: "Entregado",
       saleDate: moment().subtract(3, "days").format("YYYY-MM-DD"),
-      subTotal: productsForSales[1].salePrice * 3,
+      subTotal: productsCreated[1].salePrice * 3,
       shipment: 70,
-      grandTotal: productsForSales[1].salePrice * 3 + 70,
+      grandTotal: productsCreated[1].salePrice * 3 + 70,
       products: [
         {
-          _id: productsForSales[1]._id,
-          name: productsForSales[1].name,
+          _id: productsCreated[1]._id,
+          name: productsCreated[1].name,
           qty: 3,
-          salePrice: productsForSales[1].salePrice,
-          totalByProduct: productsForSales[1].salePrice * 3,
+          salePrice: productsCreated[1].salePrice,
+          totalByProduct: productsCreated[1].salePrice * 3,
         },
       ],
     },
@@ -86,26 +84,26 @@ module.exports = (productsForSales) => {
       status: "Procesado",
       saleDate: moment().subtract(2, "days").format("YYYY-MM-DD"),
       subTotal:
-        productsForSales[2].salePrice * 1 + productsForSales[3].salePrice * 1,
+        productsCreated[2].salePrice * 1 + productsCreated[3].salePrice * 1,
       shipment: 70,
       grandTotal:
-        productsForSales[2].salePrice * 1 +
-        productsForSales[3].salePrice * 1 +
+        productsCreated[2].salePrice * 1 +
+        productsCreated[3].salePrice * 1 +
         70,
       products: [
         {
-          _id: productsForSales[2]._id,
-          name: productsForSales[2].name,
+          _id: productsCreated[2]._id,
+          name: productsCreated[2].name,
           qty: 1,
-          salePrice: productsForSales[2].salePrice,
-          totalByProduct: productsForSales[2].salePrice * 1,
+          salePrice: productsCreated[2].salePrice,
+          totalByProduct: productsCreated[2].salePrice * 1,
         },
         {
-          _id: productsForSales[3]._id,
-          name: productsForSales[3].name,
+          _id: productsCreated[3]._id,
+          name: productsCreated[3].name,
           qty: 1,
-          salePrice: productsForSales[3].salePrice,
-          totalByProduct: productsForSales[3].salePrice * 1,
+          salePrice: productsCreated[3].salePrice,
+          totalByProduct: productsCreated[3].salePrice * 1,
         },
       ],
     },
@@ -128,26 +126,26 @@ module.exports = (productsForSales) => {
       status: "Entregado",
       saleDate: moment().format("YYYY-MM-DD"),
       subTotal:
-        productsForSales[4].salePrice * 2 + productsForSales[5].salePrice * 2,
+        productsCreated[4].salePrice * 2 + productsCreated[5].salePrice * 2,
       shipment: 70,
       grandTotal:
-        productsForSales[4].salePrice * 2 +
-        productsForSales[5].salePrice * 2 +
+        productsCreated[4].salePrice * 2 +
+        productsCreated[5].salePrice * 2 +
         70,
       products: [
         {
-          _id: productsForSales[4]._id,
-          name: productsForSales[4].name,
+          _id: productsCreated[4]._id,
+          name: productsCreated[4].name,
           qty: 2,
-          salePrice: productsForSales[4].salePrice,
-          totalByProduct: productsForSales[4].salePrice * 2,
+          salePrice: productsCreated[4].salePrice,
+          totalByProduct: productsCreated[4].salePrice * 2,
         },
         {
-          _id: productsForSales[5]._id,
-          name: productsForSales[5].name,
+          _id: productsCreated[5]._id,
+          name: productsCreated[5].name,
           qty: 2,
-          salePrice: productsForSales[5].salePrice,
-          totalByProduct: productsForSales[5].salePrice * 2,
+          salePrice: productsCreated[5].salePrice,
+          totalByProduct: productsCreated[5].salePrice * 2,
         },
       ],
     },
@@ -170,36 +168,36 @@ module.exports = (productsForSales) => {
       status: "Procesado",
       saleDate: moment().format("YYYY-MM-DD"),
       subTotal:
-        productsForSales[6].salePrice * 1 +
-        productsForSales[7].salePrice * 1 +
-        productsForSales[8].salePrice * 1,
+        productsCreated[6].salePrice * 1 +
+        productsCreated[7].salePrice * 1 +
+        productsCreated[8].salePrice * 1,
       shipment: 70,
       grandTotal:
-        productsForSales[6].salePrice * 1 +
-        productsForSales[7].salePrice * 1 +
-        productsForSales[8].salePrice * 1 +
+        productsCreated[6].salePrice * 1 +
+        productsCreated[7].salePrice * 1 +
+        productsCreated[8].salePrice * 1 +
         70,
       products: [
         {
-          _id: productsForSales[6]._id,
-          name: productsForSales[6].name,
+          _id: productsCreated[6]._id,
+          name: productsCreated[6].name,
           qty: 1,
-          salePrice: productsForSales[6].salePrice,
-          totalByProduct: productsForSales[6].salePrice * 1,
+          salePrice: productsCreated[6].salePrice,
+          totalByProduct: productsCreated[6].salePrice * 1,
         },
         {
-          _id: productsForSales[7]._id,
-          name: productsForSales[7].name,
+          _id: productsCreated[7]._id,
+          name: productsCreated[7].name,
           qty: 1,
-          salePrice: productsForSales[7].salePrice,
-          totalByProduct: productsForSales[7].salePrice * 1,
+          salePrice: productsCreated[7].salePrice,
+          totalByProduct: productsCreated[7].salePrice * 1,
         },
         {
-          _id: productsForSales[8]._id,
-          name: productsForSales[8].name,
+          _id: productsCreated[8]._id,
+          name: productsCreated[8].name,
           qty: 1,
-          salePrice: productsForSales[8].salePrice,
-          totalByProduct: productsForSales[8].salePrice * 1,
+          salePrice: productsCreated[8].salePrice,
+          totalByProduct: productsCreated[8].salePrice * 1,
         },
       ],
     },
@@ -222,36 +220,36 @@ module.exports = (productsForSales) => {
       status: "Procesado",
       saleDate: moment().subtract(4, "days").format("YYYY-MM-DD"),
       subTotal:
-        productsForSales[9].salePrice * 1 +
-        productsForSales[10].salePrice * 2 +
-        productsForSales[11].salePrice * 1,
+        productsCreated[9].salePrice * 1 +
+        productsCreated[10].salePrice * 2 +
+        productsCreated[11].salePrice * 1,
       shipment: 70,
       grandTotal:
-        productsForSales[9].salePrice * 1 +
-        productsForSales[10].salePrice * 2 +
-        productsForSales[11].salePrice * 1 +
+        productsCreated[9].salePrice * 1 +
+        productsCreated[10].salePrice * 2 +
+        productsCreated[11].salePrice * 1 +
         70,
       products: [
         {
-          _id: productsForSales[9]._id,
-          name: productsForSales[9].name,
+          _id: productsCreated[9]._id,
+          name: productsCreated[9].name,
           qty: 1,
-          salePrice: productsForSales[9].salePrice,
-          totalByProduct: productsForSales[9].salePrice * 1,
+          salePrice: productsCreated[9].salePrice,
+          totalByProduct: productsCreated[9].salePrice * 1,
         },
         {
-          _id: productsForSales[10]._id,
-          name: productsForSales[10].name,
+          _id: productsCreated[10]._id,
+          name: productsCreated[10].name,
           qty: 2,
-          salePrice: productsForSales[10].salePrice,
-          totalByProduct: productsForSales[10].salePrice * 2,
+          salePrice: productsCreated[10].salePrice,
+          totalByProduct: productsCreated[10].salePrice * 2,
         },
         {
-          _id: productsForSales[11]._id,
-          name: productsForSales[11].name,
+          _id: productsCreated[11]._id,
+          name: productsCreated[11].name,
           qty: 1,
-          salePrice: productsForSales[11].salePrice,
-          totalByProduct: productsForSales[11].salePrice * 1,
+          salePrice: productsCreated[11].salePrice,
+          totalByProduct: productsCreated[11].salePrice * 1,
         },
       ],
     },
@@ -273,16 +271,16 @@ module.exports = (productsForSales) => {
       },
       status: "Entregado",
       saleDate: moment().subtract(5, "days").format("YYYY-MM-DD"),
-      subTotal: productsForSales[12].salePrice * 5,
+      subTotal: productsCreated[12].salePrice * 5,
       shipment: 70,
-      grandTotal: productsForSales[12].salePrice * 5 + 70,
+      grandTotal: productsCreated[12].salePrice * 5 + 70,
       products: [
         {
-          _id: productsForSales[12]._id,
-          name: productsForSales[12].name,
+          _id: productsCreated[12]._id,
+          name: productsCreated[12].name,
           qty: 5,
-          salePrice: productsForSales[12].salePrice,
-          totalByProduct: productsForSales[12].salePrice * 5,
+          salePrice: productsCreated[12].salePrice,
+          totalByProduct: productsCreated[12].salePrice * 5,
         },
       ],
     },
@@ -304,16 +302,16 @@ module.exports = (productsForSales) => {
       },
       status: "Cancelado",
       saleDate: moment().subtract(6, "days").format("YYYY-MM-DD"),
-      subTotal: productsForSales[20].salePrice * 1,
+      subTotal: productsCreated[20].salePrice * 1,
       shipment: 70,
-      grandTotal: productsForSales[20].salePrice * 1 + 70,
+      grandTotal: productsCreated[20].salePrice * 1 + 70,
       products: [
         {
-          _id: productsForSales[20]._id,
-          name: productsForSales[20].name,
+          _id: productsCreated[20]._id,
+          name: productsCreated[20].name,
           qty: 1,
-          salePrice: productsForSales[20].salePrice,
-          totalByProduct: productsForSales[20].salePrice * 1,
+          salePrice: productsCreated[20].salePrice,
+          totalByProduct: productsCreated[20].salePrice * 1,
         },
       ],
     },
@@ -335,16 +333,16 @@ module.exports = (productsForSales) => {
       },
       status: "Enviado",
       saleDate: moment().subtract(4, "days").format("YYYY-MM-DD"),
-      subTotal: productsForSales[30].salePrice * 3,
+      subTotal: productsCreated[30].salePrice * 3,
       shipment: 70,
-      grandTotal: productsForSales[30].salePrice * 3 + 70,
+      grandTotal: productsCreated[30].salePrice * 3 + 70,
       products: [
         {
-          _id: productsForSales[30]._id,
-          name: productsForSales[30].name,
+          _id: productsCreated[30]._id,
+          name: productsCreated[30].name,
           qty: 3,
-          salePrice: productsForSales[30].salePrice,
-          totalByProduct: productsForSales[30].salePrice * 3,
+          salePrice: productsCreated[30].salePrice,
+          totalByProduct: productsCreated[30].salePrice * 3,
         },
       ],
     },
@@ -366,16 +364,16 @@ module.exports = (productsForSales) => {
       },
       status: "Enviado",
       saleDate: moment().format("YYYY-MM-DD"),
-      subTotal: productsForSales[45].salePrice * 1,
+      subTotal: productsCreated[45].salePrice * 1,
       shipment: 70,
-      grandTotal: productsForSales[45].salePrice * 1 + 70,
+      grandTotal: productsCreated[45].salePrice * 1 + 70,
       products: [
         {
-          _id: productsForSales[45]._id,
-          name: productsForSales[45].name,
+          _id: productsCreated[45]._id,
+          name: productsCreated[45].name,
           qty: 1,
-          salePrice: productsForSales[45].salePrice,
-          totalByProduct: productsForSales[45].salePrice * 1,
+          salePrice: productsCreated[45].salePrice,
+          totalByProduct: productsCreated[45].salePrice * 1,
         },
       ],
     },
@@ -396,16 +394,16 @@ module.exports = (productsForSales) => {
       },
       status: "Entregado",
       saleDate: moment().subtract(1, "days").format("YYYY-MM-DD"),
-      subTotal: productsForSales[36].salePrice * 1,
+      subTotal: productsCreated[36].salePrice * 1,
       shipment: 70,
-      grandTotal: productsForSales[36].salePrice * 1 + 70,
+      grandTotal: productsCreated[36].salePrice * 1 + 70,
       products: [
         {
-          _id: productsForSales[36]._id,
-          name: productsForSales[36].name,
+          _id: productsCreated[36]._id,
+          name: productsCreated[36].name,
           qty: 1,
-          salePrice: productsForSales[36].salePrice,
-          totalByProduct: productsForSales[36].salePrice * 1,
+          salePrice: productsCreated[36].salePrice,
+          totalByProduct: productsCreated[36].salePrice * 1,
         },
       ],
     },
@@ -426,16 +424,16 @@ module.exports = (productsForSales) => {
       },
       status: "Cancelado",
       saleDate: moment().subtract(2, "days").format("YYYY-MM-DD"),
-      subTotal: productsForSales[48].salePrice * 1,
+      subTotal: productsCreated[48].salePrice * 1,
       shipment: 70,
-      grandTotal: productsForSales[48].salePrice * 1 + 70,
+      grandTotal: productsCreated[48].salePrice * 1 + 70,
       products: [
         {
-          _id: productsForSales[48]._id,
-          name: productsForSales[48].name,
+          _id: productsCreated[48]._id,
+          name: productsCreated[48].name,
           qty: 1,
-          salePrice: productsForSales[48].salePrice,
-          totalByProduct: productsForSales[48].salePrice * 1,
+          salePrice: productsCreated[48].salePrice,
+          totalByProduct: productsCreated[48].salePrice * 1,
         },
       ],
     },
@@ -457,16 +455,16 @@ module.exports = (productsForSales) => {
       },
       status: "Entregado",
       saleDate: moment().subtract(1, "days").format("YYYY-MM-DD"),
-      subTotal: productsForSales[15].salePrice * 1,
+      subTotal: productsCreated[15].salePrice * 1,
       shipment: 70,
-      grandTotal: productsForSales[15].salePrice * 1 + 70,
+      grandTotal: productsCreated[15].salePrice * 1 + 70,
       products: [
         {
-          _id: productsForSales[15]._id,
-          name: productsForSales[15].name,
+          _id: productsCreated[15]._id,
+          name: productsCreated[15].name,
           qty: 1,
-          salePrice: productsForSales[15].salePrice,
-          totalByProduct: productsForSales[15].salePrice * 1,
+          salePrice: productsCreated[15].salePrice,
+          totalByProduct: productsCreated[15].salePrice * 1,
         },
       ],
     },
@@ -489,36 +487,36 @@ module.exports = (productsForSales) => {
       status: "Entregado",
       saleDate: moment().subtract(3, "days").format("YYYY-MM-DD"),
       subTotal:
-        productsForSales[27].salePrice * 1 +
-        productsForSales[37].salePrice * 1 +
-        productsForSales[47].salePrice * 1,
+        productsCreated[27].salePrice * 1 +
+        productsCreated[37].salePrice * 1 +
+        productsCreated[47].salePrice * 1,
       shipment: 70,
       grandTotal:
-        productsForSales[27].salePrice * 1 +
-        productsForSales[37].salePrice * 1 +
-        productsForSales[47].salePrice * 1 +
+        productsCreated[27].salePrice * 1 +
+        productsCreated[37].salePrice * 1 +
+        productsCreated[47].salePrice * 1 +
         70,
       products: [
         {
-          _id: productsForSales[27]._id,
-          name: productsForSales[27].name,
+          _id: productsCreated[27]._id,
+          name: productsCreated[27].name,
           qty: 1,
-          salePrice: productsForSales[27].salePrice,
-          totalByProduct: productsForSales[27].salePrice * 1,
+          salePrice: productsCreated[27].salePrice,
+          totalByProduct: productsCreated[27].salePrice * 1,
         },
         {
-          _id: productsForSales[37]._id,
-          name: productsForSales[37].name,
+          _id: productsCreated[37]._id,
+          name: productsCreated[37].name,
           qty: 1,
-          salePrice: productsForSales[37].salePrice,
-          totalByProduct: productsForSales[37].salePrice * 1,
+          salePrice: productsCreated[37].salePrice,
+          totalByProduct: productsCreated[37].salePrice * 1,
         },
         {
-          _id: productsForSales[47]._id,
-          name: productsForSales[47].name,
+          _id: productsCreated[47]._id,
+          name: productsCreated[47].name,
           qty: 1,
-          salePrice: productsForSales[47].salePrice,
-          totalByProduct: productsForSales[47].salePrice * 1,
+          salePrice: productsCreated[47].salePrice,
+          totalByProduct: productsCreated[47].salePrice * 1,
         },
       ],
     },
@@ -541,28 +539,65 @@ module.exports = (productsForSales) => {
       status: "Cancelado",
       saleDate: moment().subtract(4, "days").format("YYYY-MM-DD"),
       subTotal:
-        productsForSales[47].salePrice * 1 + productsForSales[3].salePrice * 1,
+        productsCreated[47].salePrice * 1 + productsCreated[3].salePrice * 1,
       shipment: 70,
       grandTotal:
-        productsForSales[47].salePrice * 1 +
-        productsForSales[3].salePrice * 1 +
+        productsCreated[47].salePrice * 1 +
+        productsCreated[3].salePrice * 1 +
         70,
       products: [
         {
-          _id: productsForSales[47]._id,
-          name: productsForSales[47].name,
+          _id: productsCreated[47]._id,
+          name: productsCreated[47].name,
           qty: 1,
-          salePrice: productsForSales[47].salePrice,
-          totalByProduct: productsForSales[47].salePrice * 1,
+          salePrice: productsCreated[47].salePrice,
+          totalByProduct: productsCreated[47].salePrice * 1,
         },
         {
-          _id: productsForSales[3]._id,
-          name: productsForSales[3].name,
+          _id: productsCreated[3]._id,
+          name: productsCreated[3].name,
           qty: 1,
-          salePrice: productsForSales[3].salePrice,
-          totalByProduct: productsForSales[3].salePrice * 1,
+          salePrice: productsCreated[3].salePrice,
+          totalByProduct: productsCreated[3].salePrice * 1,
         },
       ],
+    },
+  ];
+
+  const clients = [
+    {
+      firebaseUID: "zLjprSQDE4f7z9PMDEiET7gxLw33",
+      name: "Pedro",
+      firstSurname: "Ramírez",
+      secondSurname: "Hernández",
+      phone: "2238372645",
+      email: "pedro.ram@hotmail.com",
+      address: {
+        street: "Calzada conasupo 55",
+        neighborhood: "San José Terán",
+        municipality: "San José Terán",
+        city: "Tuxtla Gutiérrez",
+        state: "Chiapas",
+        zipCode: "36721",
+      },
+      favorites: [productsCreated[0]._id, productsCreated[1]._id],
+    },
+    {
+      firebaseUID: "RrMYP5LxfsQl8wcgNcdPEl0Fqif2",
+      name: "Chu",
+      firstSurname: "Gutiérrez",
+      secondSurname: "Franco",
+      phone: "2717161803",
+      email: "chu1234@hotmail.com",
+      address: {
+        street: "CALL 4 NO. 14 A",
+        neighborhood: "Centro",
+        municipality: "Alvarado",
+        city: "Alvarado",
+        state: "Veracruz",
+        zipCode: "94540",
+      },
+      favorites: [productsCreated[3]._id, productsCreated[2]._id],
     },
   ];
 
@@ -570,6 +605,11 @@ module.exports = (productsForSales) => {
     .then(() => models.Sale.insertMany(sales))
     .then(() => {
       console.log(">sales added");
+      return models.Client.remove({});
+    })
+    .then(() => models.Client.insertMany(clients))
+    .then(() => {
+      console.log(">clients added");
       process.exit(0);
     })
     .catch((err) => {

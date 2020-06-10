@@ -6,6 +6,13 @@ const managers = [
     secondSurname: "González",
     email: "rosa.solano@freyssiniermex.com",
   },
+  {
+    firebaseUID: "FpefmCAST0bBryWQvBnYhvkVELG3",
+    name: "Aldo",
+    firstSurname: "Solano",
+    secondSurname: "González",
+    email: "aldoglez34@gmail.com",
+  },
 ];
 
 module.exports = managers;
