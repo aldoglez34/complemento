@@ -599,17 +599,34 @@ module.exports = (productsCreated) => {
       },
       favorites: [productsCreated[3]._id, productsCreated[2]._id],
     },
+    {
+      firebaseUID: "",
+      name: "Chu",
+      firstSurname: "Gutiérrez",
+      secondSurname: "Franco",
+      phone: "2717161803",
+      email: "chu1234@hotmail.com",
+      address: {
+        street: "CALL 4 NO. 14 A",
+        neighborhood: "Centro",
+        municipality: "Alvarado",
+        city: "Alvarado",
+        state: "Veracruz",
+        zipCode: "94540",
+      },
+      favorites: [productsCreated[3]._id, productsCreated[2]._id],
+    },
   ];
 
-  return models.Sale.remove({})
-    .then(() => models.Sale.insertMany(sales))
-    .then(() => {
-      console.log(">sales added");
-      return models.Client.remove({});
-    })
+  return models.Client.remove({})
     .then(() => models.Client.insertMany(clients))
     .then(() => {
       console.log(">clients added");
+      return models.Sale.remove({});
+    })
+    .then(() => models.Sale.insertMany(sales))
+    .then(() => {
+      console.log(">sales added");
       process.exit(0);
     })
     .catch((err) => {
