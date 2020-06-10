@@ -3,6 +3,7 @@ import AuthUserContext from "./context";
 import { connect } from "react-redux";
 import firebase from "../firebase/firebase";
 import { logoutUser } from "../redux/actions/user";
+import API from "../utils/API";
 
 // higher order component
 const withNavigation = (Component) => {
@@ -10,6 +11,18 @@ const withNavigation = (Component) => {
     state = {
       navigation: null,
     };
+
+    isClient(uid) {
+      API.isClient(uid)
+        .then((res) => console.log(res.data))
+        .catch((err) => console.log(err));
+    }
+
+    isManager() {
+      API.isManager(uid)
+        .then((res) => console.log(res.data))
+        .catch((err) => console.log(err));
+    }
 
     componentDidMount() {
       firebase
