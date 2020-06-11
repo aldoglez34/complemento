@@ -232,7 +232,7 @@ router.post("/buy", function (req, res) {
       });
       // create sale obj
       let sale = {
-        status: "ordered",
+        status: "Procesado",
         products: mergedProducts,
         subTotal,
         shipment,
