@@ -34,7 +34,7 @@ const Contact = React.memo(() => {
           />
         </div>
 
-        <h3>Contáctanos</h3>
+        <h2>Contáctanos</h2>
         <hr className="myDivider" />
 
         <p>

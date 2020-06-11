@@ -42,7 +42,7 @@ const Tracker = React.memo(() => {
           />
         </div>
 
-        <h3>Rastreador de pedidos</h3>
+        <h2>Rastreador de Pedidos</h2>
         <hr className="myDivider" />
 
         <Formik
@@ -115,7 +115,7 @@ const Tracker = React.memo(() => {
         {/* sale details */}
         {showSaleArea ? (
           <Slide top>
-            <h3>Detalle del pedido</h3>
+            <h2>Detalle del Pedido</h2>
             <hr className="myDivider" />
             <div className="bg-light rounded mt-4 px-2 py-3">
               {sale ? (

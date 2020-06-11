@@ -56,7 +56,7 @@ const SignUp = () => {
   return (
     <Layout>
       <Container className="mt-4 mb-4">
-        <h3>Regístrate con nosotros</h3>
+        <h2>Regístrate con Nosotros</h2>
         <hr className="myDivider" />
         <Formik
           initialValues={{

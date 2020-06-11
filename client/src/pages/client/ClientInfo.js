@@ -57,7 +57,7 @@ const ClientInfo = React.memo(() => {
   return client ? (
     <Layout>
       <Container className="my-4">
-        <h3>Mis datos</h3>
+        <h2>Mis Datos</h2>
         <hr className="myDivider" />
         <Formik
           initialValues={{

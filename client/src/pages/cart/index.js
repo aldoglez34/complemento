@@ -65,7 +65,7 @@ class Cart extends Component {
       <Layout hideBag={true}>
         {this.props.cart.counter === 0 ? (
           <Container className="my-4">
-            <h3>Canasta</h3>
+            <h2>Canasta</h2>
             <hr className="myDivider" />
             <div className="my-4">
               <em>Canasta vacía</em>

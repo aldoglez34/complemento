@@ -3,7 +3,6 @@ import AuthUserContext from "./context";
 import { connect } from "react-redux";
 import firebase from "../firebase/firebase";
 import { logoutUser } from "../redux/actions/user";
-import API from "../utils/API";
 
 // higher order component
 const withNavigation = (Component) => {
@@ -12,30 +11,16 @@ const withNavigation = (Component) => {
       navigation: null,
     };
 
-    isClient(uid) {
-      API.isClient(uid)
-        .then((res) => console.log(res.data))
-        .catch((err) => console.log(err));
-    }
-
-    isManager() {
-      API.isManager(uid)
-        .then((res) => console.log(res.data))
-        .catch((err) => console.log(err));
-    }
-
     componentDidMount() {
-      firebase
-        .auth()
-        .onAuthStateChanged((fbUser) =>
-          fbUser
-            ? this.setState({ navigation: fbUser.displayName })
-            : this.props.user
-            ? this.setState({ navigation: "Guest" }, () =>
-                this.props.logoutUser()
-              )
-            : this.setState({ navigation: "Guest" })
-        );
+      firebase.auth().onAuthStateChanged((fbUser) => {
+        fbUser
+          ? this.setState({ navigation: fbUser.displayName })
+          : this.props.user
+          ? this.setState({ navigation: "Guest" }, () =>
+              this.props.logoutUser()
+            )
+          : this.setState({ navigation: "Guest" });
+      });
     }
 
     render() {

@@ -16,7 +16,7 @@ const About = React.memo(() => {
           />
         </div>
 
-        <h3>¿Quiénes somos?</h3>
+        <h2>¿Quiénes Somos?</h2>
         <hr className="myDivider" />
 
         <p>

@@ -5,7 +5,7 @@ import { Nav } from "react-bootstrap";
 const Categories = React.memo((props) => {
   return (
     <React.Fragment>
-      <h3>Categorías</h3>
+      <h2>Categorías</h2>
       <hr className="myDivider" style={{ backgroundColor: "#edcb58" }} />
       {props.categories.map((category) => {
         return (

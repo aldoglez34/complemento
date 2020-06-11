@@ -75,7 +75,7 @@ class BagDropdown extends PureComponent {
           className="navbarDropdownStyle ml-0 mr-md-2 p-0 p-md-2 pt-md-3"
           title="Canasta"
         >
-          <i className="fas fa-shopping-basket" style={{ fontSize: "21px" }} />
+          <i className="fas fa-shopping-basket" style={{ fontSize: "19px" }} />
           <Badge
             variant="danger"
             pill

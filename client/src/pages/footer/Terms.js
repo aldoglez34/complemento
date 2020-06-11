@@ -17,7 +17,7 @@ const Terms = React.memo(() => {
           />
         </div>
 
-        <h3>Términos y condiciones</h3>
+        <h2>Términos y condiciones</h2>
         <hr className="myDivider" />
 
         <div id="texte_a_afficher" className="texte_inselectionnable">

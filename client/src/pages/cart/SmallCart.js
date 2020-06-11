@@ -20,13 +20,13 @@ const SmallCart = React.memo(({ formatNumber, products = [] }) => {
     <React.Fragment>
       {cart.counter === 0 ? (
         <>
-          <h3>Canasta</h3>
+          <h2>Canasta</h2>
           <hr className="myDivider" />
           <em>Canasta vacía</em>
         </>
       ) : (
         <>
-          <h3>Canasta</h3>
+          <h2>Canasta</h2>
           <hr className="myDivider" />
           {products.map((p) => {
             return (
@@ -94,7 +94,7 @@ const SmallCart = React.memo(({ formatNumber, products = [] }) => {
           ) : null}
           <Row>
             <Col>
-              <h3>Resumen de compra</h3>
+              <h2>Resumen de Compra</h2>
               <hr className="myDivider" />
               <Summary
                 counter={cart.counter}

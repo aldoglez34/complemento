@@ -172,7 +172,7 @@ const Checkout = React.memo(() => {
             isSubmitting,
           }) => (
             <Form noValidate onSubmit={handleSubmit}>
-              <h3>Información</h3>
+              <h2>Información</h2>
               <hr className="myDivider" />
               <h5 className="mt-3">Datos de contacto</h5>
               <Form.Row>
@@ -484,7 +484,7 @@ const Checkout = React.memo(() => {
                   />
                 </Form.Group>
               ) : null}
-              <h3>Forma de pago</h3>
+              <h2>Forma de Pago</h2>
               <hr className="myDivider" />
               <p>xxxxxxxxxxxxxxxxxxxxxxxxxx</p>
               {/* order modal */}
