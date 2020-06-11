@@ -20,7 +20,7 @@ const BigCart = React.memo(({ formatNumber, products = [] }) => {
     <React.Fragment>
       <Row>
         <Col lg={8}>
-          <h3>Canasta</h3>
+          <h2>Canasta</h2>
           <hr className="myDivider" />
           <Table className="mb-0">
             <thead>
@@ -128,7 +128,7 @@ const BigCart = React.memo(({ formatNumber, products = [] }) => {
           ) : null}
         </Col>
         <Col lg={4}>
-          <h3>Resumen de compra</h3>
+          <h2>Resumen de Compra</h2>
           <hr className="myDivider" />
           <Summary
             counter={cart.counter}

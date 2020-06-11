@@ -28,7 +28,7 @@ const ClientFavorites = React.memo(function ClientFavorites() {
   return (
     <Layout>
       <Container className="my-4">
-        <h3>Mis favoritos</h3>
+        <h2>Mis Favoritos</h2>
         <hr className="myDivider" />
         <div className="d-flex flex-wrap justify-content-center">
           {isLoading ? (

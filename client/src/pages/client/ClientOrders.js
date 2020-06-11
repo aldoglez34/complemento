@@ -30,7 +30,7 @@ const ClientOrders = React.memo(() => {
   return (
     <Layout>
       <Container className="my-4">
-        <h3>Mis pedidos</h3>
+        <h2>Mis Pedidos</h2>
         <hr className="myDivider" />
         <div className="py-2">
           {orders ? (

@@ -6,6 +6,7 @@ import ScrollButton from "../../components/scrollbutton/ScrollButton";
 import WelcomeJumbotron from "./components/WelcomeJumbotron";
 import MyCarousel from "../../components/carousel/MyCarousel";
 import API from "../../utils/API";
+import Fade from "react-reveal/Fade";
 
 const Home = React.memo(() => {
   const [prioritized, setPrioritized] = useState([]);
@@ -48,7 +49,7 @@ const Home = React.memo(() => {
         {/* who are we & about */}
         <Row className="mb-3 py-4">
           <Col md={8} className="mt-2 mt-md-0">
-            <h3>¿Quiénes somos?</h3>
+            <h2>¿Quiénes Somos?</h2>
             <hr className="myDivider" />
             <p style={{ fontSize: "16px" }}>
               Somos una tienda Mexicana de productos complementarios naturales,
@@ -59,7 +60,7 @@ const Home = React.memo(() => {
             </p>
           </Col>
           <Col md={4} className="d-none d-md-block">
-            <h3>Contáctanos</h3>
+            <h2>Contáctanos</h2>
             <hr className="myDivider" />
             <address>
               <strong>Dirección</strong>
@@ -81,64 +82,66 @@ const Home = React.memo(() => {
         {/* 3 columns */}
         <Row className="mb-4 pt-3 pb-4">
           <Col>
-            <h3>¿Qué ofrecemos?</h3>
+            <h2>¿Qué Ofrecemos?</h2>
             <hr className="myDivider" />
-            <Row className="pt-4">
-              <Col md={4} className="d-flex flex-column text-center p-3">
-                <div className="mb-3 text-center">
-                  <Image
-                    src="./images/box.png"
-                    alt="box"
-                    width="64"
-                    height="64"
-                  />
-                </div>
-                <strong className="lead mb-1" style={{ color: "#343638" }}>
-                  <strong>Envíos seguros a todo México</strong>
-                </strong>
-                <span style={{ fontSize: "15px", color: "#78797a" }}>
-                  Contamos con envíos seguros a toda la República Mexicana.
-                </span>
-              </Col>
-              <Col md={4} className="d-flex flex-column text-center p-3">
-                <div className="mb-3 text-center">
-                  <Image
-                    src="/images/chat.png"
-                    alt="chat"
-                    width="64"
-                    height="64"
-                  />
-                </div>
-                <span className="lead mb-1" style={{ color: "#343638" }}>
-                  <strong>Asistencia en tus compras</strong>
-                </span>
-                <span style={{ fontSize: "15px", color: "#78797a" }}>
-                  ¿Miedo a comprar en línea? Nosotros te ayudamos.
-                </span>
-              </Col>
-              <Col md={4} className="d-flex flex-column text-center p-3">
-                <div className="mb-3 text-center">
-                  <Image
-                    src={"/images/tag.png"}
-                    alt="tag"
-                    width="64"
-                    height="64"
-                  />
-                </div>
-                <span className="lead mb-1" style={{ color: "#343638" }}>
-                  <strong>Ofertas semanales</strong>
-                </span>
-                <span style={{ fontSize: "15px", color: "#78797a" }}>
-                  En nuestra tienda encontrarás ofertas nuevas cada semana.
-                </span>
-              </Col>
-            </Row>
+            <Fade>
+              <Row className="pt-4">
+                <Col md={4} className="d-flex flex-column text-center p-3">
+                  <div className="mb-3 text-center">
+                    <Image
+                      src="./images/box.png"
+                      alt="box"
+                      width="64"
+                      height="64"
+                    />
+                  </div>
+                  <strong className="lead mb-1" style={{ color: "#343638" }}>
+                    <strong>Envíos seguros a todo México</strong>
+                  </strong>
+                  <span style={{ fontSize: "15px", color: "#78797a" }}>
+                    Contamos con envíos seguros a toda la República Mexicana.
+                  </span>
+                </Col>
+                <Col md={4} className="d-flex flex-column text-center p-3">
+                  <div className="mb-3 text-center">
+                    <Image
+                      src="/images/chat.png"
+                      alt="chat"
+                      width="64"
+                      height="64"
+                    />
+                  </div>
+                  <span className="lead mb-1" style={{ color: "#343638" }}>
+                    <strong>Asistencia en tus compras</strong>
+                  </span>
+                  <span style={{ fontSize: "15px", color: "#78797a" }}>
+                    ¿Miedo a comprar en línea? Nosotros te ayudamos.
+                  </span>
+                </Col>
+                <Col md={4} className="d-flex flex-column text-center p-3">
+                  <div className="mb-3 text-center">
+                    <Image
+                      src={"/images/tag.png"}
+                      alt="tag"
+                      width="64"
+                      height="64"
+                    />
+                  </div>
+                  <span className="lead mb-1" style={{ color: "#343638" }}>
+                    <strong>Ofertas semanales</strong>
+                  </span>
+                  <span style={{ fontSize: "15px", color: "#78797a" }}>
+                    En nuestra tienda encontrarás ofertas nuevas cada semana.
+                  </span>
+                </Col>
+              </Row>
+            </Fade>
           </Col>
         </Row>
         {/* carousel - prioritized */}
         <Row className="mb-4 py-4">
           <Col>
-            <h3>Destacados</h3>
+            <h2>Destacados</h2>
             <hr className="myDivider" />
             <MyCarousel products={prioritized} />
           </Col>
@@ -146,7 +149,7 @@ const Home = React.memo(() => {
         {/* carousel - latest offers */}
         <Row className="mb-4 py-4">
           <Col>
-            <h3>Últimas ofertas</h3>
+            <h2>Últimas Ofertas</h2>
             <hr className="myDivider" />
             <MyCarousel products={discounts} />
           </Col>
@@ -154,7 +157,7 @@ const Home = React.memo(() => {
         {/* best sellers */}
         <Row className="mb-4 py-4">
           <Col>
-            <h3>Más vendidos</h3>
+            <h2>Más Vendidos</h2>
             <hr className="myDivider" />
             <MyCarousel products={bestSellers} />
           </Col>

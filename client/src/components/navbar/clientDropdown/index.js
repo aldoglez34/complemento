@@ -96,7 +96,8 @@ const ClientDropdown = () => {
           style={{ outline: "none", boxShadow: "none" }}
         >
           <i className="fas fa-user dropdownIcon mr-1" />
-          {client.name}
+          {/* {client.name} */}
+          Sesión
         </Button>
 
         <Modal show={show} onHide={handleClose}>
@@ -114,7 +115,8 @@ const ClientDropdown = () => {
             title={client.name}
           >
             <i className="fas fa-user dropdownIcon mr-1" />
-            {client.name}
+            {/* {client.name} */}
+            {`${client.name} ${client.firstSurname}`}
           </Dropdown.Toggle>
 
           <Dropdown.Menu

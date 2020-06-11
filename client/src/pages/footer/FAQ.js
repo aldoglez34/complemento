@@ -15,7 +15,7 @@ const FAQ = React.memo(() => {
             height="105"
           />
         </div>
-        <h3>Preguntas frecuentes</h3>
+        <h2>Preguntas Frecuentes</h2>
         <hr className="myDivider" />
         <strong>¿Es seguro comprar aquí?</strong>
         <p>

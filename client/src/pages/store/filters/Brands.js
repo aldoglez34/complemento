@@ -5,7 +5,7 @@ import { Nav } from "react-bootstrap";
 const Brands = React.memo(function Brands(props) {
   return (
     <React.Fragment>
-      <h3>Marcas</h3>
+      <h2>Marcas</h2>
       <hr className="myDivider" style={{ backgroundColor: "#edcb58" }} />
       {props.brands.map(brand => {
         return (

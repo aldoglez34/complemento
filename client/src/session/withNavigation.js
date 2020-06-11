@@ -12,17 +12,15 @@ const withNavigation = (Component) => {
     };
 
     componentDidMount() {
-      firebase
-        .auth()
-        .onAuthStateChanged((fbUser) =>
-          fbUser
-            ? this.setState({ navigation: fbUser.displayName })
-            : this.props.user
-            ? this.setState({ navigation: "Guest" }, () =>
-                this.props.logoutUser()
-              )
-            : this.setState({ navigation: "Guest" })
-        );
+      firebase.auth().onAuthStateChanged((fbUser) => {
+        fbUser
+          ? this.setState({ navigation: fbUser.displayName })
+          : this.props.user
+          ? this.setState({ navigation: "Guest" }, () =>
+              this.props.logoutUser()
+            )
+          : this.setState({ navigation: "Guest" });
+      });
     }
 
     render() {

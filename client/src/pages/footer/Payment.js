@@ -16,7 +16,7 @@ const Payment = React.memo(() => {
           />
         </div>
 
-        <h3>Formas de pago</h3>
+        <h2>Formas de Pago</h2>
         <hr className="myDivider" />
 
         <p>

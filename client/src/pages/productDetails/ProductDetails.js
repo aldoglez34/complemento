@@ -108,7 +108,7 @@ const ProductDetails = React.memo(function ProductDetails(props) {
               </Col>
             </Row>
             {/* carousel */}
-            <h3 className="mt-3">Similares</h3>
+            <h2 className="mt-3">Similares</h2>
             <hr className="myDivider" />
             <MyCarousel products={similar} />
             <HelpButton />

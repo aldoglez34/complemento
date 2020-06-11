@@ -13,7 +13,9 @@ const Navigation = React.memo(() => (
         <ClientNavigation />
       ) : navigation === "Manager" ? (
         <ManagerNavigation />
-      ) : null
+      ) : (
+        <div className="bg-danger h-100">Cargando...</div>
+      )
     }
   </AuthUserContext.Consumer>
 ));
