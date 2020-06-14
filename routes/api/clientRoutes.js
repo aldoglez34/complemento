@@ -66,7 +66,6 @@ router.post("/new", function (req, res) {
     secondSurname: req.body.secondSurname,
     email: req.body.email,
     phone: req.body.phone,
-    password: req.body.password,
   })
     .then((data) => res.json(data))
     .catch((err) => {
